@@ -1,0 +1,34 @@
+{% load static %}
+<div class="gambo-Breadcrumb"><div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page"><a href="{% url 'dashboard' %}"></a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="dashboard-group">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="user-dt">
+					<div class="user-img">
+						<img src="{% static 'file/shop/images/avatar/img-5.jpg' %}" alt="">
+						<div class="img-add">
+							<input type="file" id="file">
+							<label for="file"><i class="uil uil-camera-plus"></i></label>
+						</div>
+					</div>
+					<h4> {{ user.get_full_name }}</h4>
+					<h5>{{ user.email }}<a href="#"><i class="uil uil-edit"></i></a></h5>
+					<p>+91999999999<a href="#"><i class="uil uil-edit"></i></a></p>
+					<div class="earn-points"><img src="{% static 'file/shop/images/Dollar.svg' %}" alt="">Бонусы : <span>20</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

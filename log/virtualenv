@@ -1,0 +1,21 @@
+/usr/lib/python3/dist-packages/virtualenv.py:1090: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+Using base prefix '/usr'
+New python executable in /home/c39682/coop-dostavka.ru/.env/bin/python3.9
+Also creating executable in /home/c39682/coop-dostavka.ru/.env/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
+Running virtualenv with interpreter /usr/bin/python3.9
+Collecting asgiref==3.3.4
+  Using cached asgiref-3.3.4-py3-none-any.whl (22 kB)
+Collecting Django==3.2.3
+  Using cached Django-3.2.3-py3-none-any.whl (7.9 MB)
+Collecting psycopg2-binary==2.8.6
+  Using cached psycopg2_binary-2.8.6-cp39-cp39-manylinux1_x86_64.whl (3.0 MB)
+Collecting pytz==2021.1
+  Using cached pytz-2021.1-py2.py3-none-any.whl (510 kB)
+Collecting sqlparse==0.4.1
+  Using cached sqlparse-0.4.1-py3-none-any.whl (42 kB)
+Collecting typing-extensions==3.10.0.0
+  Using cached typing_extensions-3.10.0.0-py3-none-any.whl (26 kB)
+Installing collected packages: sqlparse, pytz, asgiref, typing-extensions, psycopg2-binary, Django
+Successfully installed Django-3.2.3 asgiref-3.3.4 psycopg2-binary-2.8.6 pytz-2021.1 sqlparse-0.4.1 typing-extensions-3.10.0.0

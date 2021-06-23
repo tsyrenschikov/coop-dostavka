@@ -1,0 +1,21 @@
+{% extends 'shop/layouts/base.html' %}
+{% load static %}
+{% block title %}404{% endblock %}
+{% block stylesheets %}
+	<link href="{% static 'file/shop/css/404.css' %}" rel='stylesheet'>
+{% endblock stylesheets %}
+{% block content %}
+<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>:(</h1>
+			</div>
+			<h2>404 - Страница не найдена</h2>
+			<p>Страница, которую вы ищете, могла быть удалена из-за изменения ее названия или временно недоступна. </p>
+
+		</div>
+	</div>
+
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

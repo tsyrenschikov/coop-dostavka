@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mdi7b@#&2-j27j+j8$0v(6zqbyrh=1xr00fxtu$b9jartqz$8l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['coop-dostavka.ru']
 
@@ -65,6 +65,9 @@ GOOGLE_RECAPTCHA_SITE_KEY = '6LdBsisbAAAAAKbU7JNxgDaZj-4nWgJT79GV2G2_'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 600 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
+
+ROOT_URLCONF = 'coop_dostavka.urls'
+
 
 AUTHENTICATION_BACKENDS = (
  #   'social_core.backends.google.GoogleOAuth2',

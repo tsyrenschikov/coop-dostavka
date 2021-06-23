@@ -20,7 +20,6 @@ from .views import login_view, reset_user, faq, about, offers, register, career
 from . import views
 
 
-
 urls.handler404 = views.error_404
 urls.handler502 = views.error_502
 

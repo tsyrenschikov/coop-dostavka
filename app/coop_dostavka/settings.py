@@ -180,7 +180,7 @@ DATABASES = {
         'PORT': '5432',
         'NAME': 'c39682_coop_dostavka_ru',
         'USER': 'c39682_coop_dostavka_ru',
-        'PASSWORD': 'ZaNmeXugpuquy43',
+        'PASSWORD': 'BiVroLaqrejig48',
     },
 }
 

@@ -9,6 +9,15 @@
 	<script src="{% static 'file/shop/js/offset_overlay.js' %}"></script>
 	<script src="{% static 'file/shop/js/night-mode.js' %}"></script>
 
+	<script>
+    //global grecaptcha
+    grecaptcha.ready(function() {
+      grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+      });
+    });
+  	</script>
+
 	<!-- Vendor Stylesheets -->
 	<link href="{% static 'file/shop/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 	<link href="{% static 'file/shop/vendor/OwlCarousel/assets/owl.carousel.css' %}" rel="stylesheet">

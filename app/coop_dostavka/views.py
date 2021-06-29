@@ -77,3 +77,6 @@ def offers(reguest):
 
 def career(reguest):
     return render(reguest, 'shop/career.html')
+
+def demo(reguest):
+    return render(reguest, 'contact/demo.html')

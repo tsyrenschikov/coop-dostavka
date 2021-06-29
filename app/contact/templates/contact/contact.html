@@ -133,7 +133,7 @@
 				<h2>Отправить сообщение</h2>
 						</div>
 						<div class="contact-form">
-							<form role="form" method="POST">
+							<form action='.' method="POST">
 								{% csrf_token %}
 								<div class="form-group mt-1">
 									<label class="control-label">Имя*</label>
@@ -143,14 +143,6 @@
 										</div>
 									</div>
 								</div>
-								<!--<div class="form-group mt-1">
-									<label class="control-label">Тема*</label>
-									<div class="ui search focus">
-										<div class="ui left icon input swdh11 swdh19">
-											<input class="prompt srch_explore" type="text" name="subject" id="sendersubject" required="" placeholder="Тема"maxlength="50"></input>
-										</div>
-									</div>
-								</div>-->
 								<div class="form-group mt-1">
 									<label class="control-label">Email Адрес*</label>
 									<div class="ui search focus">
@@ -165,6 +157,13 @@
 										<textarea class="form-control" type="textarea" id="message" name="message" placeholder="Сообщение" maxlength="300" rows="5"></textarea>
 									</div>
 								</div>
+								 <!--add the reCAPTCHA Privacy and Terms of Service disclosure-->
+            						<p>
+                						<a href="https://policies.google.com/privacy">Политика конфиденциальности </a> и
+                						<a href="https://policies.google.com/terms">Условия использования</a>
+            						</p>
+								<!-- reCAPTCHA input -->
+    							<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 								<button type="submit"  name="submit" class="next-btn16 hover-btn mt-3">Отправить</button>
 							</form>
 						</div>

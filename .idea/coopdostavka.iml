@@ -6,5 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="tsyrenschikov" />
     <orderEntry type="module" module-name="pythonProject" />
+    <orderEntry type="module" module-name="Kursav" />
+    <orderEntry type="module" module-name="djangoProject" />
   </component>
 </module>

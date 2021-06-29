@@ -15,26 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import urls
-from django.urls import path,include
-from .views import login_view, reset_user, faq, about, offers, register, career
+from django.urls import path, include
+from .views import login_view, reset_user, faq, about, offers, register, career, demo
 from . import views
-
 
 urls.handler404 = views.error_404
 urls.handler502 = views.error_502
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('shop.urls')),
+    path('', include('shop.urls')),
     path('login/', login_view, name='login'),
     path('register/', register, name='register'),
     path('resetpass/', reset_user, name='reset'),
     path('dashboard/', include('dashboard.urls')),
-    path('grid/',include('grid.urls')),
+    path('grid/', include('grid.urls')),
     path('about/', about, name='about'),
     path('career/', career, name='career'),
-    path('contact/',include('contact.urls')),
+    path('contact/', include('contact.urls')),
     path('offers/', offers, name='offers'),
     path('faq/', faq, name='faq'),
+    path('demo/', demo, name='demo'),
 ]

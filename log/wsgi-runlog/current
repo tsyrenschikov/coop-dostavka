@@ -1,258 +1,931 @@
-2021-06-27_17:39:14.95487 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
-2021-06-27_17:39:15.19809 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
-2021-06-27_17:39:15.25802 *** Starting uWSGI 2.0.18-debian (64bit) on [Sun Jun 27 22:39:15 2021] ***
-2021-06-27_17:39:15.25803 compiled with version: 8.2.0 on 10 February 2019 02:42:46
-2021-06-27_17:39:15.25804 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
-2021-06-27_17:39:15.25804 nodename: h25.netangels.ru
-2021-06-27_17:39:15.25804 machine: x86_64
-2021-06-27_17:39:15.25804 clock source: unix
-2021-06-27_17:39:15.25804 pcre jit disabled
-2021-06-27_17:39:15.25805 detected number of CPU cores: 16
-2021-06-27_17:39:15.25805 current working directory: /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:39:15.25805 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
-2021-06-27_17:39:15.25820 detected binary path: /usr/bin/uwsgi-core
-2021-06-27_17:39:15.25820 chdir() to /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:39:15.25820 your processes number limit is 334269
-2021-06-27_17:39:15.25821 your memory page size is 4096 bytes
-2021-06-27_17:39:15.25821 detected max file descriptor number: 1024
-2021-06-27_17:39:15.25821 lock engine: pthread robust mutexes
-2021-06-27_17:39:15.25830 thunder lock: disabled (you can enable it with --thunder-lock)
-2021-06-27_17:39:15.25846 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
-2021-06-27_17:39:15.25848 Python version: 3.8.9 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
-2021-06-27_17:39:15.25859 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
-2021-06-27_17:39:15.26232 Python path configuration:
-2021-06-27_17:39:15.26232   PYTHONHOME = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:39:15.26277   PYTHONPATH = (not set)
-2021-06-27_17:39:15.26287   program name = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:39:15.26306   isolated = 0
-2021-06-27_17:39:15.26306   environment = 1
-2021-06-27_17:39:15.26307   user site = 1
-2021-06-27_17:39:15.26307   import site = 1
-2021-06-27_17:39:15.26307   sys._base_executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:39:15.26308   sys.base_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:39:15.26314   sys.base_exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:39:15.26314   sys.executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:39:15.26314   sys.prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:39:15.26315   sys.exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:39:15.26315   sys.path = [
-2021-06-27_17:39:15.26315     '/home/c39682/coop-dostavka.ru/.env/lib/python38.zip',
-2021-06-27_17:39:15.26316     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8',
-2021-06-27_17:39:15.26316     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8/lib-dynload',
-2021-06-27_17:39:15.26316   ]
-2021-06-27_17:39:15.26317 Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
-2021-06-27_17:39:15.26322 Python runtime state: core initialized
-2021-06-27_17:39:15.26322 ModuleNotFoundError: No module named 'encodings'
-2021-06-27_17:39:15.26323 
-2021-06-27_17:39:15.26323 Current thread 0x00007fb1fe67b780 (most recent call first):
-2021-06-27_17:39:15.26323 <no Python frame>
-2021-06-27_17:39:15.26336 VACUUM: pidfile removed.
-2021-06-27_17:39:15.26337 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
-2021-06-27_17:39:16.35826 Sleep 60s. before restart due to previous errors...
-2021-06-27_17:40:16.67929 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
-2021-06-27_17:40:16.87794 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
-2021-06-27_17:40:16.94434 *** Starting uWSGI 2.0.18-debian (64bit) on [Sun Jun 27 22:40:16 2021] ***
-2021-06-27_17:40:16.94435 compiled with version: 8.2.0 on 10 February 2019 02:42:46
-2021-06-27_17:40:16.94436 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
-2021-06-27_17:40:16.94437 nodename: h25.netangels.ru
-2021-06-27_17:40:16.94437 machine: x86_64
-2021-06-27_17:40:16.94437 clock source: unix
-2021-06-27_17:40:16.94437 pcre jit disabled
-2021-06-27_17:40:16.94437 detected number of CPU cores: 16
-2021-06-27_17:40:16.94438 current working directory: /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:40:16.94438 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
-2021-06-27_17:40:16.94439 detected binary path: /usr/bin/uwsgi-core
-2021-06-27_17:40:16.94439 chdir() to /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:40:16.94439 your processes number limit is 334269
-2021-06-27_17:40:16.94439 your memory page size is 4096 bytes
-2021-06-27_17:40:16.94439 detected max file descriptor number: 1024
-2021-06-27_17:40:16.94440 lock engine: pthread robust mutexes
-2021-06-27_17:40:16.94440 thunder lock: disabled (you can enable it with --thunder-lock)
-2021-06-27_17:40:16.94448 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
-2021-06-27_17:40:16.94472 Python version: 3.8.9 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
-2021-06-27_17:40:16.94473 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
-2021-06-27_17:40:16.94964 Python path configuration:
-2021-06-27_17:40:16.94965   PYTHONHOME = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:40:16.94993   PYTHONPATH = (not set)
-2021-06-27_17:40:16.94993   program name = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:40:16.94994   isolated = 0
-2021-06-27_17:40:16.94994   environment = 1
-2021-06-27_17:40:16.94994   user site = 1
-2021-06-27_17:40:16.94994   import site = 1
-2021-06-27_17:40:16.94994   sys._base_executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:40:16.94995   sys.base_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:40:16.94995   sys.base_exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:40:16.94995   sys.executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:40:16.94995   sys.prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:40:16.94995   sys.exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:40:16.94996   sys.path = [
-2021-06-27_17:40:16.94996     '/home/c39682/coop-dostavka.ru/.env/lib/python38.zip',
-2021-06-27_17:40:16.94996     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8',
-2021-06-27_17:40:16.94996     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8/lib-dynload',
-2021-06-27_17:40:16.94996   ]
-2021-06-27_17:40:16.95003 Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
-2021-06-27_17:40:16.95004 Python runtime state: core initialized
-2021-06-27_17:40:16.95004 ModuleNotFoundError: No module named 'encodings'
-2021-06-27_17:40:16.95004 
-2021-06-27_17:40:16.95004 Current thread 0x00007fea3f56f780 (most recent call first):
-2021-06-27_17:40:16.95005 <no Python frame>
-2021-06-27_17:40:16.95016 VACUUM: pidfile removed.
-2021-06-27_17:40:16.95017 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
-2021-06-27_17:40:17.03582 Sleep 60s. before restart due to previous errors...
-2021-06-27_17:41:17.24938 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
-2021-06-27_17:41:17.49434 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
-2021-06-27_17:41:17.55884 *** Starting uWSGI 2.0.18-debian (64bit) on [Sun Jun 27 22:41:17 2021] ***
-2021-06-27_17:41:17.55886 compiled with version: 8.2.0 on 10 February 2019 02:42:46
-2021-06-27_17:41:17.55886 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
-2021-06-27_17:41:17.55886 nodename: h25.netangels.ru
-2021-06-27_17:41:17.55886 machine: x86_64
-2021-06-27_17:41:17.55887 clock source: unix
-2021-06-27_17:41:17.55887 pcre jit disabled
-2021-06-27_17:41:17.55887 detected number of CPU cores: 16
-2021-06-27_17:41:17.55889 current working directory: /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:41:17.55889 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
-2021-06-27_17:41:17.55919 detected binary path: /usr/bin/uwsgi-core
-2021-06-27_17:41:17.55919 chdir() to /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:41:17.55951 your processes number limit is 334269
-2021-06-27_17:41:17.55975 your memory page size is 4096 bytes
-2021-06-27_17:41:17.55975 detected max file descriptor number: 1024
-2021-06-27_17:41:17.55975 lock engine: pthread robust mutexes
-2021-06-27_17:41:17.55990 thunder lock: disabled (you can enable it with --thunder-lock)
-2021-06-27_17:41:17.56015 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
-2021-06-27_17:41:17.56025 Python version: 3.8.9 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
-2021-06-27_17:41:17.56032 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
-2021-06-27_17:41:17.56534 Python path configuration:
-2021-06-27_17:41:17.56535   PYTHONHOME = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:41:17.56565   PYTHONPATH = (not set)
-2021-06-27_17:41:17.56565   program name = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:41:17.56567   isolated = 0
-2021-06-27_17:41:17.56567   environment = 1
-2021-06-27_17:41:17.56576   user site = 1
-2021-06-27_17:41:17.56577   import site = 1
-2021-06-27_17:41:17.56577   sys._base_executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:41:17.56577   sys.base_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:41:17.56577   sys.base_exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:41:17.56578   sys.executable = '/home/c39682/coop-dostavka.ru/.env/bin/python'
-2021-06-27_17:41:17.56578   sys.prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:41:17.56578   sys.exec_prefix = '/home/c39682/coop-dostavka.ru/.env'
-2021-06-27_17:41:17.56579   sys.path = [
-2021-06-27_17:41:17.56579     '/home/c39682/coop-dostavka.ru/.env/lib/python38.zip',
-2021-06-27_17:41:17.56579     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8',
-2021-06-27_17:41:17.56579     '/home/c39682/coop-dostavka.ru/.env/lib/python3.8/lib-dynload',
-2021-06-27_17:41:17.56579   ]
-2021-06-27_17:41:17.56583 Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
-2021-06-27_17:41:17.56583 Python runtime state: core initialized
-2021-06-27_17:41:17.56588 ModuleNotFoundError: No module named 'encodings'
-2021-06-27_17:41:17.56588 
-2021-06-27_17:41:17.56588 Current thread 0x00007f54c264c780 (most recent call first):
-2021-06-27_17:41:17.56588 <no Python frame>
-2021-06-27_17:41:17.56599 VACUUM: pidfile removed.
-2021-06-27_17:41:17.56599 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
-2021-06-27_17:41:17.65352 Sleep 60s. before restart due to previous errors...
-2021-06-27_17:42:19.20614 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
-2021-06-27_17:42:19.45396 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
-2021-06-27_17:42:19.52042 *** Starting uWSGI 2.0.18-debian (64bit) on [Sun Jun 27 22:42:19 2021] ***
-2021-06-27_17:42:19.52044 compiled with version: 8.2.0 on 10 February 2019 02:42:46
-2021-06-27_17:42:19.52044 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
-2021-06-27_17:42:19.52045 nodename: h25.netangels.ru
-2021-06-27_17:42:19.52045 machine: x86_64
-2021-06-27_17:42:19.52045 clock source: unix
-2021-06-27_17:42:19.52046 pcre jit disabled
-2021-06-27_17:42:19.52046 detected number of CPU cores: 16
-2021-06-27_17:42:19.52046 current working directory: /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:42:19.52047 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
-2021-06-27_17:42:19.52083 detected binary path: /usr/bin/uwsgi-core
-2021-06-27_17:42:19.52084 chdir() to /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:42:19.52084 your processes number limit is 334269
-2021-06-27_17:42:19.52085 your memory page size is 4096 bytes
-2021-06-27_17:42:19.52086 detected max file descriptor number: 1024
-2021-06-27_17:42:19.52086 lock engine: pthread robust mutexes
-2021-06-27_17:42:19.52087 thunder lock: disabled (you can enable it with --thunder-lock)
-2021-06-27_17:42:19.52112 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
-2021-06-27_17:42:19.52126 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
-2021-06-27_17:42:19.52127 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
-2021-06-27_17:42:19.53217 Python main interpreter initialized at 0x55842c3f4800
-2021-06-27_17:42:19.53218 python threads support enabled
-2021-06-27_17:42:19.53218 your server socket listen backlog is limited to 100 connections
-2021-06-27_17:42:19.53219 your mercy for graceful operations on workers is 60 seconds
-2021-06-27_17:42:19.53280 mapped 1099728 bytes (1073 KB) for 12 cores
-2021-06-27_17:42:19.53281 *** Operational MODE: preforking+threaded ***
-2021-06-27_17:42:19.53299 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
-2021-06-27_17:42:19.82213 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55842c3f4800 pid: 1
-2021-06-27_17:42:19.82215 mountpoint  already configured. skip.
-2021-06-27_17:42:19.82215 *** uWSGI is running in multiple interpreter mode ***
-2021-06-27_17:42:19.82215 spawned uWSGI master process (pid: 1)
-2021-06-27_17:42:19.82498 spawned uWSGI worker 1 (pid: 7, cores: 2)
-2021-06-27_17:42:19.82654 spawned uWSGI worker 2 (pid: 11, cores: 2)
-2021-06-27_17:42:19.82680 spawned 4 offload threads for uWSGI worker 1
-2021-06-27_17:42:19.82805 spawned uWSGI worker 3 (pid: 13, cores: 2)
-2021-06-27_17:42:19.83197 spawned uWSGI worker 4 (pid: 20, cores: 2)
-2021-06-27_17:42:19.83308 spawned 4 offload threads for uWSGI worker 3
-2021-06-27_17:42:19.83491 spawned 4 offload threads for uWSGI worker 2
-2021-06-27_17:42:19.83501 spawned 4 offload threads for uWSGI worker 4
-2021-06-27_17:42:19.83597 spawned uWSGI worker 5 (pid: 30, cores: 2)
-2021-06-27_17:42:19.83804 spawned uWSGI worker 6 (pid: 32, cores: 2)
-2021-06-27_17:42:19.84057 spawned 4 offload threads for uWSGI worker 5
-2021-06-27_17:42:19.84253 spawned 4 offload threads for uWSGI worker 6
-2021-06-27_17:42:54.81951 SIGINT/SIGQUIT received...killing workers...
-2021-06-27_17:42:55.84395 worker 1 buried after 1 seconds
-2021-06-27_17:42:55.84408 worker 2 buried after 1 seconds
-2021-06-27_17:42:55.84409 worker 3 buried after 1 seconds
-2021-06-27_17:42:55.84418 worker 4 buried after 1 seconds
-2021-06-27_17:42:55.84427 worker 5 buried after 1 seconds
-2021-06-27_17:42:55.84435 worker 6 buried after 1 seconds
-2021-06-27_17:42:55.84436 goodbye to uWSGI.
-2021-06-27_17:42:55.84461 VACUUM: pidfile removed.
-2021-06-27_17:42:55.84462 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
-2021-06-27_17:43:17.44233 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
-2021-06-27_17:43:17.78166 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
-2021-06-27_17:43:17.86565 *** Starting uWSGI 2.0.18-debian (64bit) on [Sun Jun 27 22:43:17 2021] ***
-2021-06-27_17:43:17.86567 compiled with version: 8.2.0 on 10 February 2019 02:42:46
-2021-06-27_17:43:17.86567 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
-2021-06-27_17:43:17.86568 nodename: h25.netangels.ru
-2021-06-27_17:43:17.86569 machine: x86_64
-2021-06-27_17:43:17.86569 clock source: unix
-2021-06-27_17:43:17.86570 pcre jit disabled
-2021-06-27_17:43:17.86570 detected number of CPU cores: 16
-2021-06-27_17:43:17.86570 current working directory: /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:43:17.86571 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
-2021-06-27_17:43:17.86572 detected binary path: /usr/bin/uwsgi-core
-2021-06-27_17:43:17.86572 chdir() to /home/c39682/coop-dostavka.ru/app
-2021-06-27_17:43:17.86573 your processes number limit is 334269
-2021-06-27_17:43:17.86574 your memory page size is 4096 bytes
-2021-06-27_17:43:17.86574 detected max file descriptor number: 1024
-2021-06-27_17:43:17.86574 lock engine: pthread robust mutexes
-2021-06-27_17:43:17.86603 thunder lock: disabled (you can enable it with --thunder-lock)
-2021-06-27_17:43:17.86634 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
-2021-06-27_17:43:17.86636 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
-2021-06-27_17:43:17.86646 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
-2021-06-27_17:43:17.87840 Python main interpreter initialized at 0x557813d19800
-2021-06-27_17:43:17.87843 python threads support enabled
-2021-06-27_17:43:17.87843 your server socket listen backlog is limited to 100 connections
-2021-06-27_17:43:17.87843 your mercy for graceful operations on workers is 60 seconds
-2021-06-27_17:43:17.87891 mapped 1099728 bytes (1073 KB) for 12 cores
-2021-06-27_17:43:17.87906 *** Operational MODE: preforking+threaded ***
-2021-06-27_17:43:17.87925 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
-2021-06-27_17:43:18.17867 WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x557813d19800 pid: 1
-2021-06-27_17:43:18.17869 mountpoint  already configured. skip.
-2021-06-27_17:43:18.17869 *** uWSGI is running in multiple interpreter mode ***
-2021-06-27_17:43:18.17869 spawned uWSGI master process (pid: 1)
-2021-06-27_17:43:18.18373 spawned uWSGI worker 1 (pid: 8, cores: 2)
-2021-06-27_17:43:18.18374 spawned uWSGI worker 2 (pid: 10, cores: 2)
-2021-06-27_17:43:18.18568 spawned 4 offload threads for uWSGI worker 2
-2021-06-27_17:43:18.18593 spawned 4 offload threads for uWSGI worker 1
-2021-06-27_17:43:18.18780 spawned uWSGI worker 3 (pid: 18, cores: 2)
-2021-06-27_17:43:18.18954 spawned 4 offload threads for uWSGI worker 3
-2021-06-27_17:43:18.19006 spawned uWSGI worker 4 (pid: 25, cores: 2)
-2021-06-27_17:43:18.19362 spawned uWSGI worker 5 (pid: 29, cores: 2)
-2021-06-27_17:43:18.19524 spawned 4 offload threads for uWSGI worker 4
-2021-06-27_17:43:18.19726 spawned uWSGI worker 6 (pid: 34, cores: 2)
-2021-06-27_17:43:18.19946 spawned 4 offload threads for uWSGI worker 5
-2021-06-27_17:43:18.19958 spawned 4 offload threads for uWSGI worker 6
-2021-06-27_17:44:05.80112 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:44:14.42722 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:44:50.49725 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:45:37.09310 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:45:38.98778 Not Found: /static/file/shop/images/career/default.jpg
-2021-06-27_17:45:40.73130 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:47:51.27402 Not Found: /static/file/shop/images/fav1.png
-2021-06-27_17:57:27.27666 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_07:35:44.20290 KeyError: 'static'
+2021-06-30_07:35:44.20292 
+2021-06-30_07:35:44.20292 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:44.20292 
+2021-06-30_07:35:44.20292 Traceback (most recent call last):
+2021-06-30_07:35:44.20293   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:44.20293     response = get_response(request)
+2021-06-30_07:35:44.20293   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:44.20293     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:44.20293   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:44.20294     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:44.20294   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:44.20294     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:44.20295   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:44.20295     return template.render(context, request)
+2021-06-30_07:35:44.20295   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:44.20296     return self.template.render(context)
+2021-06-30_07:35:44.20296   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:44.20296     return self._render(context)
+2021-06-30_07:35:44.20296   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:44.20297     return self.nodelist.render(context)
+2021-06-30_07:35:44.20298   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:44.20298     bit = node.render_annotated(context)
+2021-06-30_07:35:44.20298   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:44.20298     return self.render(context)
+2021-06-30_07:35:44.20298   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:44.20299     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:44.20299   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:44.20300     return self.find_template(parent, context)
+2021-06-30_07:35:44.20300   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:44.20300     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:44.20300   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:44.20300     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:44.20301   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:44.20301     return Template(
+2021-06-30_07:35:44.20301   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:44.20301     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:44.20301   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:44.20302     return parser.parse()
+2021-06-30_07:35:44.20302   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:44.20303     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:44.20304   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:44.20304     raise self.error(
+2021-06-30_07:35:44.20304 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:45.27160 Internal Server Error: /
+2021-06-30_07:35:45.27162 Traceback (most recent call last):
+2021-06-30_07:35:45.27163   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:45.27163     compile_func = self.tags[command]
+2021-06-30_07:35:45.27163 KeyError: 'static'
+2021-06-30_07:35:45.27164 
+2021-06-30_07:35:45.27164 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:45.27164 
+2021-06-30_07:35:45.27165 Traceback (most recent call last):
+2021-06-30_07:35:45.27165   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:45.27165     response = get_response(request)
+2021-06-30_07:35:45.27166   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:45.27166     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:45.27166   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:45.27167     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:45.27167   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:45.27167     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:45.27169   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:45.27169     return template.render(context, request)
+2021-06-30_07:35:45.27169   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:45.27170     return self.template.render(context)
+2021-06-30_07:35:45.27170   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:45.27170     return self._render(context)
+2021-06-30_07:35:45.27170   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:45.27171     return self.nodelist.render(context)
+2021-06-30_07:35:45.27171   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:45.27171     bit = node.render_annotated(context)
+2021-06-30_07:35:45.27171   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:45.27171     return self.render(context)
+2021-06-30_07:35:45.27172   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:45.27172     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:45.27173   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:45.27173     return self.find_template(parent, context)
+2021-06-30_07:35:45.27173   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:45.27173     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:45.27173   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:45.27174     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:45.27175   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:45.27176     return Template(
+2021-06-30_07:35:45.27176   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:45.27176     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:45.27176   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:45.27177     return parser.parse()
+2021-06-30_07:35:45.27177   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:45.27177     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:45.27178   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:45.27178     raise self.error(
+2021-06-30_07:35:45.27178 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:46.34308 Internal Server Error: /
+2021-06-30_07:35:46.34310 Traceback (most recent call last):
+2021-06-30_07:35:46.34310   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:46.34311     compile_func = self.tags[command]
+2021-06-30_07:35:46.34311 KeyError: 'static'
+2021-06-30_07:35:46.34311 
+2021-06-30_07:35:46.34312 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:46.34312 
+2021-06-30_07:35:46.34313 Traceback (most recent call last):
+2021-06-30_07:35:46.34313   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:46.34314     response = get_response(request)
+2021-06-30_07:35:46.34314   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:46.34314     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:46.34315   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:46.34315     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:46.34315   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:46.34316     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:46.34317   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:46.34318     return template.render(context, request)
+2021-06-30_07:35:46.34318   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:46.34318     return self.template.render(context)
+2021-06-30_07:35:46.34319   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:46.34319     return self._render(context)
+2021-06-30_07:35:46.34319   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:46.34320     return self.nodelist.render(context)
+2021-06-30_07:35:46.34320   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:46.34321     bit = node.render_annotated(context)
+2021-06-30_07:35:46.34321   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:46.34321     return self.render(context)
+2021-06-30_07:35:46.34322   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:46.34325     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:46.34325   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:46.34325     return self.find_template(parent, context)
+2021-06-30_07:35:46.34326   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:46.34326     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:46.34326   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:46.34327     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:46.34327   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:46.34328     return Template(
+2021-06-30_07:35:46.34328   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:46.34328     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:46.34329   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:46.34330     return parser.parse()
+2021-06-30_07:35:46.34330   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:46.34331     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:46.34331   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:46.34332     raise self.error(
+2021-06-30_07:35:46.34332 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:47.54017 Internal Server Error: /
+2021-06-30_07:35:47.54018 Traceback (most recent call last):
+2021-06-30_07:35:47.54018   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:47.54019     compile_func = self.tags[command]
+2021-06-30_07:35:47.54019 KeyError: 'static'
+2021-06-30_07:35:47.54019 
+2021-06-30_07:35:47.54019 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:47.54020 
+2021-06-30_07:35:47.54020 Traceback (most recent call last):
+2021-06-30_07:35:47.54020   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:47.54020     response = get_response(request)
+2021-06-30_07:35:47.54020   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:47.54021     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:47.54021   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:47.54021     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:47.54021   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:47.54021     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:47.54022   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:47.54022     return template.render(context, request)
+2021-06-30_07:35:47.54023   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:47.54023     return self.template.render(context)
+2021-06-30_07:35:47.54023   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:47.54023     return self._render(context)
+2021-06-30_07:35:47.54025   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:47.54025     return self.nodelist.render(context)
+2021-06-30_07:35:47.54025   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:47.54025     bit = node.render_annotated(context)
+2021-06-30_07:35:47.54025   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:47.54026     return self.render(context)
+2021-06-30_07:35:47.54026   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:47.54027     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:47.54027   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:47.54027     return self.find_template(parent, context)
+2021-06-30_07:35:47.54027   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:47.54027     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:47.54028   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:47.54028     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:47.54028   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:47.54028     return Template(
+2021-06-30_07:35:47.54028   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:47.54029     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:47.54029   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:47.54030     return parser.parse()
+2021-06-30_07:35:47.54030   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:47.54030     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:47.54030   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:47.54030     raise self.error(
+2021-06-30_07:35:47.54031 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:48.60652 Internal Server Error: /
+2021-06-30_07:35:48.60653 Traceback (most recent call last):
+2021-06-30_07:35:48.60653   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:48.60654     compile_func = self.tags[command]
+2021-06-30_07:35:48.60654 KeyError: 'static'
+2021-06-30_07:35:48.60654 
+2021-06-30_07:35:48.60654 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:48.60654 
+2021-06-30_07:35:48.60655 Traceback (most recent call last):
+2021-06-30_07:35:48.60655   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:48.60655     response = get_response(request)
+2021-06-30_07:35:48.60655   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:48.60655     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:48.60656   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:48.60656     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:48.60657   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:48.60658     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:48.60659   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:48.60659     return template.render(context, request)
+2021-06-30_07:35:48.60659   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:48.60659     return self.template.render(context)
+2021-06-30_07:35:48.60660   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:48.60660     return self._render(context)
+2021-06-30_07:35:48.60660   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:48.60660     return self.nodelist.render(context)
+2021-06-30_07:35:48.60660   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:48.60661     bit = node.render_annotated(context)
+2021-06-30_07:35:48.60661   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:48.60661     return self.render(context)
+2021-06-30_07:35:48.60661   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:48.60662     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:48.60662   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:48.60662     return self.find_template(parent, context)
+2021-06-30_07:35:48.60663   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:48.60663     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:48.60663   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:48.60663     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:48.60663   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:48.60664     return Template(
+2021-06-30_07:35:48.60664   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:48.60664     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:48.60664   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:48.60665     return parser.parse()
+2021-06-30_07:35:48.60665   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:48.60665     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:48.60666   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:48.60666     raise self.error(
+2021-06-30_07:35:48.60666 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:49.68409 Internal Server Error: /
+2021-06-30_07:35:49.68410 Traceback (most recent call last):
+2021-06-30_07:35:49.68410   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:49.68411     compile_func = self.tags[command]
+2021-06-30_07:35:49.68411 KeyError: 'static'
+2021-06-30_07:35:49.68411 
+2021-06-30_07:35:49.68411 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:49.68411 
+2021-06-30_07:35:49.68413 Traceback (most recent call last):
+2021-06-30_07:35:49.68413   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:49.68413     response = get_response(request)
+2021-06-30_07:35:49.68414   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:49.68414     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:49.68414   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:49.68414     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:49.68414   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:49.68415     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:49.68415   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:49.68416     return template.render(context, request)
+2021-06-30_07:35:49.68416   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:49.68416     return self.template.render(context)
+2021-06-30_07:35:49.68416   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:49.68416     return self._render(context)
+2021-06-30_07:35:49.68417   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:49.68417     return self.nodelist.render(context)
+2021-06-30_07:35:49.68417   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:49.68417     bit = node.render_annotated(context)
+2021-06-30_07:35:49.68417   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:49.68418     return self.render(context)
+2021-06-30_07:35:49.68418   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:49.68419     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:49.68419   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:49.68419     return self.find_template(parent, context)
+2021-06-30_07:35:49.68419   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:49.68419     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:49.68420   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:49.68420     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:49.68420   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:49.68420     return Template(
+2021-06-30_07:35:49.68420   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:49.68421     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:49.68421   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:49.68422     return parser.parse()
+2021-06-30_07:35:49.68422   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:49.68422     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:49.68422   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:49.68423     raise self.error(
+2021-06-30_07:35:49.68423 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:35:50.75129 Internal Server Error: /
+2021-06-30_07:35:50.75132 Traceback (most recent call last):
+2021-06-30_07:35:50.75132   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 470, in parse
+2021-06-30_07:35:50.75132     compile_func = self.tags[command]
+2021-06-30_07:35:50.75133 KeyError: 'static'
+2021-06-30_07:35:50.75133 
+2021-06-30_07:35:50.75133 During handling of the above exception, another exception occurred:
+2021-06-30_07:35:50.75134 
+2021-06-30_07:35:50.75134 Traceback (most recent call last):
+2021-06-30_07:35:50.75134   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:35:50.75135     response = get_response(request)
+2021-06-30_07:35:50.75135   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:35:50.75135     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:35:50.75136   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:35:50.75136     return render(request, 'shop/index.html', {})
+2021-06-30_07:35:50.75136   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:35:50.75137     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:35:50.75138   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:35:50.75139     return template.render(context, request)
+2021-06-30_07:35:50.75139   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:35:50.75140     return self.template.render(context)
+2021-06-30_07:35:50.75140   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:35:50.75140     return self._render(context)
+2021-06-30_07:35:50.75141   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:35:50.75141     return self.nodelist.render(context)
+2021-06-30_07:35:50.75142   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:35:50.75142     bit = node.render_annotated(context)
+2021-06-30_07:35:50.75142   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:35:50.75143     return self.render(context)
+2021-06-30_07:35:50.75143   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 127, in render
+2021-06-30_07:35:50.75144     compiled_parent = self.get_parent(context)
+2021-06-30_07:35:50.75145   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 124, in get_parent
+2021-06-30_07:35:50.75145     return self.find_template(parent, context)
+2021-06-30_07:35:50.75145   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 103, in find_template
+2021-06-30_07:35:50.75146     template, origin = context.template.engine.find_template(
+2021-06-30_07:35:50.75146   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/engine.py", line 125, in find_template
+2021-06-30_07:35:50.75147     template = loader.get_template(name, skip=skip)
+2021-06-30_07:35:50.75147   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loaders/base.py", line 29, in get_template
+2021-06-30_07:35:50.75149     return Template(
+2021-06-30_07:35:50.75149   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 155, in __init__
+2021-06-30_07:35:50.75150     self.nodelist = self.compile_nodelist()
+2021-06-30_07:35:50.75150   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 193, in compile_nodelist
+2021-06-30_07:35:50.75151     return parser.parse()
+2021-06-30_07:35:50.75152   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 472, in parse
+2021-06-30_07:35:50.75152     self.invalid_block_tag(token, command, parse_until)
+2021-06-30_07:35:50.75152   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 531, in invalid_block_tag
+2021-06-30_07:35:50.75153     raise self.error(
+2021-06-30_07:35:50.75153 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static'. Did you forget to register or load this tag?
+2021-06-30_07:36:25.31115 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_07:36:31.66656 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_07:40:34.81899 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_07:40:35.82237 worker 1 buried after 1 seconds
+2021-06-30_07:40:35.82242 worker 2 buried after 1 seconds
+2021-06-30_07:40:35.82263 worker 3 buried after 1 seconds
+2021-06-30_07:40:35.82278 worker 5 buried after 1 seconds
+2021-06-30_07:40:35.82290 worker 6 buried after 1 seconds
+2021-06-30_07:40:35.82290 worker 4 buried after 1 seconds
+2021-06-30_07:40:35.82290 goodbye to uWSGI.
+2021-06-30_07:40:35.82317 VACUUM: pidfile removed.
+2021-06-30_07:40:35.82317 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_07:40:37.10678 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_07:40:37.41996 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_07:40:37.49036 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 12:40:37 2021] ***
+2021-06-30_07:40:37.49038 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_07:40:37.49038 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_07:40:37.49039 nodename: h25.netangels.ru
+2021-06-30_07:40:37.49039 machine: x86_64
+2021-06-30_07:40:37.49040 clock source: unix
+2021-06-30_07:40:37.49040 pcre jit disabled
+2021-06-30_07:40:37.49040 detected number of CPU cores: 16
+2021-06-30_07:40:37.49041 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:40:37.49041 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_07:40:37.49046 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_07:40:37.49047 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:40:37.49048 your processes number limit is 334269
+2021-06-30_07:40:37.49048 your memory page size is 4096 bytes
+2021-06-30_07:40:37.49049 detected max file descriptor number: 1024
+2021-06-30_07:40:37.49049 lock engine: pthread robust mutexes
+2021-06-30_07:40:37.49061 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_07:40:37.49076 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_07:40:37.49104 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_07:40:37.49105 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_07:40:37.50216 Python main interpreter initialized at 0x5574d5982800
+2021-06-30_07:40:37.50217 python threads support enabled
+2021-06-30_07:40:37.50217 your server socket listen backlog is limited to 100 connections
+2021-06-30_07:40:37.50217 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_07:40:37.50263 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_07:40:37.50278 *** Operational MODE: preforking+threaded ***
+2021-06-30_07:40:37.50297 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_07:40:37.81731 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5574d5982800 pid: 1
+2021-06-30_07:40:37.81734 mountpoint  already configured. skip.
+2021-06-30_07:40:37.81735 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_07:40:37.81735 spawned uWSGI master process (pid: 1)
+2021-06-30_07:40:37.81915 spawned uWSGI worker 1 (pid: 7, cores: 2)
+2021-06-30_07:40:37.82177 spawned uWSGI worker 2 (pid: 11, cores: 2)
+2021-06-30_07:40:37.82198 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_07:40:37.82456 spawned uWSGI worker 3 (pid: 15, cores: 2)
+2021-06-30_07:40:37.82682 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_07:40:37.82726 spawned uWSGI worker 4 (pid: 21, cores: 2)
+2021-06-30_07:40:37.83090 spawned uWSGI worker 5 (pid: 25, cores: 2)
+2021-06-30_07:40:37.83209 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_07:40:37.83347 spawned uWSGI worker 6 (pid: 29, cores: 2)
+2021-06-30_07:40:37.83687 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_07:40:37.83886 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_07:40:37.84021 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_07:40:49.31576 Not Found: /dashboard/
+2021-06-30_07:44:07.21497 Internal Server Error: /
+2021-06-30_07:44:07.21499 Traceback (most recent call last):
+2021-06-30_07:44:07.21499   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/resolvers.py", line 600, in url_patterns
+2021-06-30_07:44:07.21499     iter(patterns)
+2021-06-30_07:44:07.21500 TypeError: 'module' object is not iterable
+2021-06-30_07:44:07.21500 
+2021-06-30_07:44:07.21500 The above exception was the direct cause of the following exception:
+2021-06-30_07:44:07.21500 
+2021-06-30_07:44:07.21501 Traceback (most recent call last):
+2021-06-30_07:44:07.21501   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_07:44:07.21501     response = get_response(request)
+2021-06-30_07:44:07.21501   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+2021-06-30_07:44:07.21501     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+2021-06-30_07:44:07.21502   File "/home/c39682/coop-dostavka.ru/app/shop/views.py", line 4, in shop
+2021-06-30_07:44:07.21502     return render(request, 'shop/index.html', {})
+2021-06-30_07:44:07.21502   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/shortcuts.py", line 19, in render
+2021-06-30_07:44:07.21502     content = loader.render_to_string(template_name, context, request, using=using)
+2021-06-30_07:44:07.21503   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+2021-06-30_07:44:07.21504     return template.render(context, request)
+2021-06-30_07:44:07.21504   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+2021-06-30_07:44:07.21504     return self.template.render(context)
+2021-06-30_07:44:07.21504   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 170, in render
+2021-06-30_07:44:07.21505     return self._render(context)
+2021-06-30_07:44:07.21505   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:44:07.21505     return self.nodelist.render(context)
+2021-06-30_07:44:07.21505   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:44:07.21505     bit = node.render_annotated(context)
+2021-06-30_07:44:07.21506   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:44:07.21506     return self.render(context)
+2021-06-30_07:44:07.21506   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
+2021-06-30_07:44:07.21508     return compiled_parent._render(context)
+2021-06-30_07:44:07.21508   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
+2021-06-30_07:44:07.21508     return self.nodelist.render(context)
+2021-06-30_07:44:07.21509   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 938, in render
+2021-06-30_07:44:07.21509     bit = node.render_annotated(context)
+2021-06-30_07:44:07.21509   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
+2021-06-30_07:44:07.21509     return self.render(context)
+2021-06-30_07:44:07.21509   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/template/defaulttags.py", line 446, in render
+2021-06-30_07:44:07.21510     url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+2021-06-30_07:44:07.21510   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/base.py", line 86, in reverse
+2021-06-30_07:44:07.21510     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+2021-06-30_07:44:07.21510   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/resolvers.py", line 627, in _reverse_with_prefix
+2021-06-30_07:44:07.21511     self._populate()
+2021-06-30_07:44:07.21511   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/resolvers.py", line 477, in _populate
+2021-06-30_07:44:07.21511     url_pattern._populate()
+2021-06-30_07:44:07.21512   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/resolvers.py", line 460, in _populate
+2021-06-30_07:44:07.21512     for url_pattern in reversed(self.url_patterns):
+2021-06-30_07:44:07.21512   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/utils/functional.py", line 48, in __get__
+2021-06-30_07:44:07.21512     res = instance.__dict__[self.name] = self.func(instance)
+2021-06-30_07:44:07.21512   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/urls/resolvers.py", line 607, in url_patterns
+2021-06-30_07:44:07.21513     raise ImproperlyConfigured(msg.format(name=self.urlconf_name)) from e
+2021-06-30_07:44:07.21513 django.core.exceptions.ImproperlyConfigured: The included URLconf '<module 'dashboard' from '/home/c39682/coop-dostavka.ru/app/dashboard/__init__.py'>' does not appear to have any patterns in it. If you see valid patterns in the file then the issue is probably caused by a circular import.
+2021-06-30_07:44:36.33150 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_07:44:37.33312 worker 1 buried after 1 seconds
+2021-06-30_07:44:37.33315 worker 2 buried after 1 seconds
+2021-06-30_07:44:37.33350 worker 3 buried after 1 seconds
+2021-06-30_07:44:37.33350 worker 4 buried after 1 seconds
+2021-06-30_07:44:37.33351 worker 5 buried after 1 seconds
+2021-06-30_07:44:37.33356 worker 6 buried after 1 seconds
+2021-06-30_07:44:37.33357 goodbye to uWSGI.
+2021-06-30_07:44:37.33385 VACUUM: pidfile removed.
+2021-06-30_07:44:37.33390 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_07:44:38.63471 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_07:44:38.90832 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_07:44:38.97578 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 12:44:38 2021] ***
+2021-06-30_07:44:38.97580 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_07:44:38.97581 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_07:44:38.97581 nodename: h25.netangels.ru
+2021-06-30_07:44:38.97582 machine: x86_64
+2021-06-30_07:44:38.97582 clock source: unix
+2021-06-30_07:44:38.97582 pcre jit disabled
+2021-06-30_07:44:38.97583 detected number of CPU cores: 16
+2021-06-30_07:44:38.97583 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:44:38.97585 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_07:44:38.97591 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_07:44:38.97592 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:44:38.97592 your processes number limit is 334269
+2021-06-30_07:44:38.97593 your memory page size is 4096 bytes
+2021-06-30_07:44:38.97608 detected max file descriptor number: 1024
+2021-06-30_07:44:38.97608 lock engine: pthread robust mutexes
+2021-06-30_07:44:38.97609 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_07:44:38.97640 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_07:44:38.97642 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_07:44:38.97642 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_07:44:38.98778 Python main interpreter initialized at 0x55891eb09800
+2021-06-30_07:44:38.98779 python threads support enabled
+2021-06-30_07:44:38.98779 your server socket listen backlog is limited to 100 connections
+2021-06-30_07:44:38.98779 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_07:44:38.98829 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_07:44:38.98853 *** Operational MODE: preforking+threaded ***
+2021-06-30_07:44:38.98866 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_07:44:39.28072 WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55891eb09800 pid: 1
+2021-06-30_07:44:39.28074 mountpoint  already configured. skip.
+2021-06-30_07:44:39.28078 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_07:44:39.28078 spawned uWSGI master process (pid: 1)
+2021-06-30_07:44:39.28267 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_07:44:39.28620 spawned uWSGI worker 2 (pid: 10, cores: 2)
+2021-06-30_07:44:39.28896 spawned uWSGI worker 3 (pid: 14, cores: 2)
+2021-06-30_07:44:39.29151 spawned uWSGI worker 4 (pid: 19, cores: 2)
+2021-06-30_07:44:39.29165 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_07:44:39.29496 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_07:44:39.29497 spawned uWSGI worker 5 (pid: 23, cores: 2)
+2021-06-30_07:44:39.29640 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_07:44:39.29785 spawned uWSGI worker 6 (pid: 27, cores: 2)
+2021-06-30_07:44:39.29986 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_07:44:39.30470 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_07:44:39.30496 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_07:53:23.49092 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_07:53:24.49207 worker 1 buried after 1 seconds
+2021-06-30_07:53:24.49215 worker 2 buried after 1 seconds
+2021-06-30_07:53:24.49235 worker 3 buried after 1 seconds
+2021-06-30_07:53:24.49235 worker 4 buried after 1 seconds
+2021-06-30_07:53:24.49240 worker 5 buried after 1 seconds
+2021-06-30_07:53:24.49252 worker 6 buried after 1 seconds
+2021-06-30_07:53:24.49252 goodbye to uWSGI.
+2021-06-30_07:53:24.49300 VACUUM: pidfile removed.
+2021-06-30_07:53:24.49301 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_07:53:25.77985 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_07:53:25.99873 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_07:53:26.06377 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 12:53:25 2021] ***
+2021-06-30_07:53:26.06379 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_07:53:26.06379 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_07:53:26.06379 nodename: h25.netangels.ru
+2021-06-30_07:53:26.06379 machine: x86_64
+2021-06-30_07:53:26.06380 clock source: unix
+2021-06-30_07:53:26.06380 pcre jit disabled
+2021-06-30_07:53:26.06380 detected number of CPU cores: 16
+2021-06-30_07:53:26.06380 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:53:26.06382 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_07:53:26.06406 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_07:53:26.06406 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_07:53:26.06407 your processes number limit is 334269
+2021-06-30_07:53:26.06407 your memory page size is 4096 bytes
+2021-06-30_07:53:26.06407 detected max file descriptor number: 1024
+2021-06-30_07:53:26.06407 lock engine: pthread robust mutexes
+2021-06-30_07:53:26.06419 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_07:53:26.06432 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_07:53:26.06443 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_07:53:26.06444 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_07:53:26.07558 Python main interpreter initialized at 0x55f8ecf15800
+2021-06-30_07:53:26.07558 python threads support enabled
+2021-06-30_07:53:26.07559 your server socket listen backlog is limited to 100 connections
+2021-06-30_07:53:26.07559 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_07:53:26.07618 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_07:53:26.07633 *** Operational MODE: preforking+threaded ***
+2021-06-30_07:53:26.07651 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_07:53:26.41350 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55f8ecf15800 pid: 1
+2021-06-30_07:53:26.41352 mountpoint  already configured. skip.
+2021-06-30_07:53:26.41352 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_07:53:26.41352 spawned uWSGI master process (pid: 1)
+2021-06-30_07:53:26.41537 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_07:53:26.41744 spawned uWSGI worker 2 (pid: 10, cores: 2)
+2021-06-30_07:53:26.42324 spawned uWSGI worker 3 (pid: 16, cores: 2)
+2021-06-30_07:53:26.42325 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_07:53:26.42325 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_07:53:26.42374 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_07:53:26.42529 spawned uWSGI worker 4 (pid: 25, cores: 2)
+2021-06-30_07:53:26.42735 spawned uWSGI worker 5 (pid: 29, cores: 2)
+2021-06-30_07:53:26.42988 spawned uWSGI worker 6 (pid: 31, cores: 2)
+2021-06-30_07:53:26.43014 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_07:53:26.43298 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_07:53:26.43722 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_08:45:15.65329 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_08:45:27.33900 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_08:45:28.57440 Not Found: /static/file/shop/images/career/default.jpg
+2021-06-30_08:45:28.84334 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_13:35:37.50957 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_13:51:53.94331 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_13:51:53.94351 Wed Jun 30 13:51:53 2021 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+2021-06-30_13:51:53.94351 Wed Jun 30 13:51:53 2021 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /static/file/shop/images/fav1.png (212.220.200.82)
+2021-06-30_13:51:53.94352 OSError: write error
+2021-06-30_13:51:54.88199 ... monitored exception detected, respawning worker 5 (pid: 29)...
+2021-06-30_13:51:54.88398 Respawned uWSGI worker 5 (new pid: 44)
+2021-06-30_13:51:54.88687 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_14:14:02.11149 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_14:27:44.38953 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_14:27:50.00623 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_14:27:51.00737 worker 1 buried after 1 seconds
+2021-06-30_14:27:51.00740 worker 2 buried after 1 seconds
+2021-06-30_14:27:51.00740 worker 3 buried after 1 seconds
+2021-06-30_14:27:51.00741 worker 4 buried after 1 seconds
+2021-06-30_14:27:51.00743 worker 6 buried after 1 seconds
+2021-06-30_14:27:51.00756 worker 5 buried after 1 seconds
+2021-06-30_14:27:51.00756 goodbye to uWSGI.
+2021-06-30_14:27:51.00766 VACUUM: pidfile removed.
+2021-06-30_14:27:51.00767 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_14:27:52.43855 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_14:27:52.70491 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_14:27:52.77273 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 19:27:52 2021] ***
+2021-06-30_14:27:52.77298 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_14:27:52.77299 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_14:27:52.77299 nodename: h25.netangels.ru
+2021-06-30_14:27:52.77299 machine: x86_64
+2021-06-30_14:27:52.77300 clock source: unix
+2021-06-30_14:27:52.77300 pcre jit disabled
+2021-06-30_14:27:52.77300 detected number of CPU cores: 16
+2021-06-30_14:27:52.77300 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_14:27:52.77301 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_14:27:52.77301 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_14:27:52.77301 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_14:27:52.77301 your processes number limit is 334269
+2021-06-30_14:27:52.77302 your memory page size is 4096 bytes
+2021-06-30_14:27:52.77302 detected max file descriptor number: 1024
+2021-06-30_14:27:52.77302 lock engine: pthread robust mutexes
+2021-06-30_14:27:52.77302 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_14:27:52.77326 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_14:27:52.77326 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_14:27:52.77345 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_14:27:52.78449 Python main interpreter initialized at 0x55dd63c82800
+2021-06-30_14:27:52.78455 python threads support enabled
+2021-06-30_14:27:52.78456 your server socket listen backlog is limited to 100 connections
+2021-06-30_14:27:52.78456 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_14:27:52.78510 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_14:27:52.78524 *** Operational MODE: preforking+threaded ***
+2021-06-30_14:27:52.78543 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_14:27:53.13682 WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55dd63c82800 pid: 1
+2021-06-30_14:27:53.13685 mountpoint  already configured. skip.
+2021-06-30_14:27:53.13685 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_14:27:53.13686 spawned uWSGI master process (pid: 1)
+2021-06-30_14:27:53.13991 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_14:27:53.14253 spawned uWSGI worker 2 (pid: 12, cores: 2)
+2021-06-30_14:27:53.14398 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_14:27:53.14572 spawned uWSGI worker 3 (pid: 18, cores: 2)
+2021-06-30_14:27:53.14690 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_14:27:53.14834 spawned uWSGI worker 4 (pid: 22, cores: 2)
+2021-06-30_14:27:53.15105 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_14:27:53.15195 spawned uWSGI worker 5 (pid: 28, cores: 2)
+2021-06-30_14:27:53.15450 spawned uWSGI worker 6 (pid: 31, cores: 2)
+2021-06-30_14:27:53.15647 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_14:27:53.15982 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_14:27:53.18818 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_14:28:11.07054 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_14:28:13.53389 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_14:31:47.37650 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_14:31:47.37688 Wed Jun 30 14:31:47 2021 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+2021-06-30_14:31:47.37690 Wed Jun 30 14:31:47 2021 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /static/file/shop/images/fav1.png (212.220.200.82)
+2021-06-30_14:31:47.37690 OSError: write error
+2021-06-30_14:31:47.39069 ... monitored exception detected, respawning worker 6 (pid: 31)...
+2021-06-30_14:31:47.39223 Respawned uWSGI worker 6 (new pid: 44)
+2021-06-30_14:31:47.39494 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_14:35:42.23595 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_16:04:45.47596 Not Found: /send.php
+2021-06-30_16:04:45.67210 Not Found: /feedback.php
+2021-06-30_16:04:45.99579 Not Found: /callback.php
+2021-06-30_16:04:46.34647 Not Found: /form.php
+2021-06-30_16:05:06.27251 Internal Server Error: /contact
+2021-06-30_16:05:06.27254 Traceback (most recent call last):
+2021-06-30_16:05:06.27254   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+2021-06-30_16:05:06.27254     response = get_response(request)
+2021-06-30_16:05:06.27254   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/utils/deprecation.py", line 116, in __call__
+2021-06-30_16:05:06.27255     response = self.process_request(request)
+2021-06-30_16:05:06.27255   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/middleware/common.py", line 54, in process_request
+2021-06-30_16:05:06.27255     path = self.get_full_path_with_slash(request)
+2021-06-30_16:05:06.27256   File "/home/c39682/coop-dostavka.ru/.env/lib/python3.9/site-packages/django/middleware/common.py", line 88, in get_full_path_with_slash
+2021-06-30_16:05:06.27256     raise RuntimeError(
+2021-06-30_16:05:06.27256 RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to coop-dostavka.ru/contact/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2021-06-30_16:10:24.37326 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_16:45:22.72030 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_16:45:23.74193 worker 1 buried after 1 seconds
+2021-06-30_16:45:23.74200 worker 2 buried after 1 seconds
+2021-06-30_16:45:23.74213 worker 3 buried after 1 seconds
+2021-06-30_16:45:23.74214 worker 4 buried after 1 seconds
+2021-06-30_16:45:23.74228 worker 5 buried after 1 seconds
+2021-06-30_16:45:23.74250 worker 6 buried after 1 seconds
+2021-06-30_16:45:23.74250 goodbye to uWSGI.
+2021-06-30_16:45:23.74265 VACUUM: pidfile removed.
+2021-06-30_16:45:23.74266 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_16:45:25.11097 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_16:45:25.36513 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_16:45:25.43712 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 21:45:25 2021] ***
+2021-06-30_16:45:25.43714 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_16:45:25.43714 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_16:45:25.43714 nodename: h25.netangels.ru
+2021-06-30_16:45:25.43715 machine: x86_64
+2021-06-30_16:45:25.43715 clock source: unix
+2021-06-30_16:45:25.43715 pcre jit disabled
+2021-06-30_16:45:25.43715 detected number of CPU cores: 16
+2021-06-30_16:45:25.43716 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_16:45:25.43716 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_16:45:25.43732 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_16:45:25.43733 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_16:45:25.43733 your processes number limit is 334269
+2021-06-30_16:45:25.43733 your memory page size is 4096 bytes
+2021-06-30_16:45:25.43734 detected max file descriptor number: 1024
+2021-06-30_16:45:25.43735 lock engine: pthread robust mutexes
+2021-06-30_16:45:25.43735 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_16:45:25.43759 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_16:45:25.43759 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_16:45:25.43759 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_16:45:25.44906 Python main interpreter initialized at 0x560d4e066800
+2021-06-30_16:45:25.44907 python threads support enabled
+2021-06-30_16:45:25.44907 your server socket listen backlog is limited to 100 connections
+2021-06-30_16:45:25.44907 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_16:45:25.44948 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_16:45:25.44963 *** Operational MODE: preforking+threaded ***
+2021-06-30_16:45:25.44983 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_16:45:25.74690 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x560d4e066800 pid: 1
+2021-06-30_16:45:25.74690 mountpoint  already configured. skip.
+2021-06-30_16:45:25.74691 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_16:45:25.74691 spawned uWSGI master process (pid: 1)
+2021-06-30_16:45:25.74997 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_16:45:25.75233 spawned uWSGI worker 2 (pid: 10, cores: 2)
+2021-06-30_16:45:25.75479 spawned uWSGI worker 3 (pid: 13, cores: 2)
+2021-06-30_16:45:25.75502 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_16:45:25.75711 spawned uWSGI worker 4 (pid: 17, cores: 2)
+2021-06-30_16:45:25.76032 spawned uWSGI worker 5 (pid: 21, cores: 2)
+2021-06-30_16:45:25.76056 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_16:45:25.76424 spawned uWSGI worker 6 (pid: 28, cores: 2)
+2021-06-30_16:45:25.76588 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_16:45:25.76625 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_16:45:25.76746 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_16:45:25.77074 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_17:23:54.35829 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_17:23:55.35994 worker 1 buried after 1 seconds
+2021-06-30_17:23:55.36028 worker 2 buried after 1 seconds
+2021-06-30_17:23:55.36028 worker 3 buried after 1 seconds
+2021-06-30_17:23:55.36029 worker 4 buried after 1 seconds
+2021-06-30_17:23:55.36029 worker 5 buried after 1 seconds
+2021-06-30_17:23:55.36029 worker 6 buried after 1 seconds
+2021-06-30_17:23:55.36029 goodbye to uWSGI.
+2021-06-30_17:23:55.36055 VACUUM: pidfile removed.
+2021-06-30_17:23:55.36055 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_17:23:56.64829 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_17:23:56.91981 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_17:23:56.99138 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 22:23:56 2021] ***
+2021-06-30_17:23:56.99139 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_17:23:56.99140 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_17:23:56.99140 nodename: h25.netangels.ru
+2021-06-30_17:23:56.99140 machine: x86_64
+2021-06-30_17:23:56.99140 clock source: unix
+2021-06-30_17:23:56.99141 pcre jit disabled
+2021-06-30_17:23:56.99141 detected number of CPU cores: 16
+2021-06-30_17:23:56.99141 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:23:56.99141 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_17:23:56.99172 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_17:23:56.99172 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:23:56.99173 your processes number limit is 334269
+2021-06-30_17:23:56.99176 your memory page size is 4096 bytes
+2021-06-30_17:23:56.99195 detected max file descriptor number: 1024
+2021-06-30_17:23:56.99196 lock engine: pthread robust mutexes
+2021-06-30_17:23:56.99204 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_17:23:56.99226 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_17:23:56.99232 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_17:23:56.99235 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_17:23:57.00395 Python main interpreter initialized at 0x5591aa61e800
+2021-06-30_17:23:57.00396 python threads support enabled
+2021-06-30_17:23:57.00396 your server socket listen backlog is limited to 100 connections
+2021-06-30_17:23:57.00397 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_17:23:57.00446 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_17:23:57.00458 *** Operational MODE: preforking+threaded ***
+2021-06-30_17:23:57.00488 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_17:23:57.42100 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5591aa61e800 pid: 1
+2021-06-30_17:23:57.42102 mountpoint  already configured. skip.
+2021-06-30_17:23:57.42103 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_17:23:57.42103 spawned uWSGI master process (pid: 1)
+2021-06-30_17:23:57.42295 spawned uWSGI worker 1 (pid: 7, cores: 2)
+2021-06-30_17:23:57.42372 spawned uWSGI worker 2 (pid: 9, cores: 2)
+2021-06-30_17:23:57.42693 spawned uWSGI worker 3 (pid: 13, cores: 2)
+2021-06-30_17:23:57.42802 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_17:23:57.42975 spawned uWSGI worker 4 (pid: 16, cores: 2)
+2021-06-30_17:23:57.43323 spawned uWSGI worker 5 (pid: 20, cores: 2)
+2021-06-30_17:23:57.43797 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_17:23:57.44261 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_17:23:57.44357 spawned uWSGI worker 6 (pid: 32, cores: 2)
+2021-06-30_17:23:57.44493 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_17:23:57.44817 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_17:23:57.45082 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_17:24:18.49512 Not Found: /dashboard/
+2021-06-30_17:24:18.54760 Not Found: /favicon.ico
+2021-06-30_17:31:17.58102 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_17:31:18.57700 worker 1 buried after 1 seconds
+2021-06-30_17:31:18.57702 worker 2 buried after 1 seconds
+2021-06-30_17:31:18.57727 worker 3 buried after 1 seconds
+2021-06-30_17:31:18.57728 worker 4 buried after 1 seconds
+2021-06-30_17:31:18.57736 worker 5 buried after 1 seconds
+2021-06-30_17:31:18.57758 worker 6 buried after 1 seconds
+2021-06-30_17:31:18.57758 goodbye to uWSGI.
+2021-06-30_17:31:18.57784 VACUUM: pidfile removed.
+2021-06-30_17:31:18.57785 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_17:31:20.07417 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_17:31:20.32047 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_17:31:20.39244 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 22:31:20 2021] ***
+2021-06-30_17:31:20.39246 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_17:31:20.39247 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_17:31:20.39247 nodename: h25.netangels.ru
+2021-06-30_17:31:20.39247 machine: x86_64
+2021-06-30_17:31:20.39248 clock source: unix
+2021-06-30_17:31:20.39248 pcre jit disabled
+2021-06-30_17:31:20.39249 detected number of CPU cores: 16
+2021-06-30_17:31:20.39249 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:31:20.39249 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_17:31:20.39280 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_17:31:20.39280 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:31:20.39281 your processes number limit is 334269
+2021-06-30_17:31:20.39281 your memory page size is 4096 bytes
+2021-06-30_17:31:20.39282 detected max file descriptor number: 1024
+2021-06-30_17:31:20.39282 lock engine: pthread robust mutexes
+2021-06-30_17:31:20.39292 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_17:31:20.39323 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_17:31:20.39333 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_17:31:20.39334 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_17:31:20.40624 Python main interpreter initialized at 0x55817b3a4800
+2021-06-30_17:31:20.40626 python threads support enabled
+2021-06-30_17:31:20.40627 your server socket listen backlog is limited to 100 connections
+2021-06-30_17:31:20.40627 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_17:31:20.40676 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_17:31:20.40710 *** Operational MODE: preforking+threaded ***
+2021-06-30_17:31:20.40738 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_17:31:20.77120 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55817b3a4800 pid: 1
+2021-06-30_17:31:20.77122 mountpoint  already configured. skip.
+2021-06-30_17:31:20.77123 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_17:31:20.77123 spawned uWSGI master process (pid: 1)
+2021-06-30_17:31:20.77587 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_17:31:20.77722 spawned uWSGI worker 2 (pid: 11, cores: 2)
+2021-06-30_17:31:20.77898 spawned uWSGI worker 3 (pid: 13, cores: 2)
+2021-06-30_17:31:20.78332 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_17:31:20.78369 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_17:31:20.78441 spawned uWSGI worker 4 (pid: 22, cores: 2)
+2021-06-30_17:31:20.78571 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_17:31:20.78885 spawned uWSGI worker 5 (pid: 29, cores: 2)
+2021-06-30_17:31:20.78978 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_17:31:20.79119 spawned uWSGI worker 6 (pid: 34, cores: 2)
+2021-06-30_17:31:20.79458 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_17:31:20.79719 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_17:31:27.87329 Not Found: /static/file/shop/images/career/default.jpg
+2021-06-30_17:36:23.66883 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_17:36:24.67017 worker 1 buried after 1 seconds
+2021-06-30_17:36:24.67059 worker 2 buried after 1 seconds
+2021-06-30_17:36:24.67060 worker 3 buried after 1 seconds
+2021-06-30_17:36:24.67060 worker 4 buried after 1 seconds
+2021-06-30_17:36:24.67063 worker 5 buried after 1 seconds
+2021-06-30_17:36:24.67064 worker 6 buried after 1 seconds
+2021-06-30_17:36:24.67064 goodbye to uWSGI.
+2021-06-30_17:36:24.67086 VACUUM: pidfile removed.
+2021-06-30_17:36:24.67087 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_17:36:26.13787 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_17:36:26.41323 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_17:36:26.48091 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 22:36:26 2021] ***
+2021-06-30_17:36:26.48093 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_17:36:26.48093 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_17:36:26.48093 nodename: h25.netangels.ru
+2021-06-30_17:36:26.48094 machine: x86_64
+2021-06-30_17:36:26.48094 clock source: unix
+2021-06-30_17:36:26.48094 pcre jit disabled
+2021-06-30_17:36:26.48094 detected number of CPU cores: 16
+2021-06-30_17:36:26.48095 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:36:26.48095 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_17:36:26.48110 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_17:36:26.48110 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:36:26.48121 your processes number limit is 334269
+2021-06-30_17:36:26.48122 your memory page size is 4096 bytes
+2021-06-30_17:36:26.48122 detected max file descriptor number: 1024
+2021-06-30_17:36:26.48122 lock engine: pthread robust mutexes
+2021-06-30_17:36:26.48143 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_17:36:26.48162 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_17:36:26.48170 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_17:36:26.48175 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_17:36:26.49350 Python main interpreter initialized at 0x55ad6dbc0800
+2021-06-30_17:36:26.49351 python threads support enabled
+2021-06-30_17:36:26.49351 your server socket listen backlog is limited to 100 connections
+2021-06-30_17:36:26.49359 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_17:36:26.49408 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_17:36:26.49427 *** Operational MODE: preforking+threaded ***
+2021-06-30_17:36:26.49452 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_17:36:26.91089 WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55ad6dbc0800 pid: 1
+2021-06-30_17:36:26.91090 mountpoint  already configured. skip.
+2021-06-30_17:36:26.91091 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_17:36:26.91091 spawned uWSGI master process (pid: 1)
+2021-06-30_17:36:26.91295 spawned uWSGI worker 1 (pid: 8, cores: 2)
+2021-06-30_17:36:26.91390 spawned uWSGI worker 2 (pid: 10, cores: 2)
+2021-06-30_17:36:26.91994 spawned uWSGI worker 3 (pid: 16, cores: 2)
+2021-06-30_17:36:26.91995 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_17:36:26.91995 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_17:36:26.91996 spawned uWSGI worker 4 (pid: 21, cores: 2)
+2021-06-30_17:36:26.92329 spawned uWSGI worker 5 (pid: 27, cores: 2)
+2021-06-30_17:36:26.92330 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_17:36:26.92598 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_17:36:26.92717 spawned uWSGI worker 6 (pid: 33, cores: 2)
+2021-06-30_17:36:26.93067 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_17:36:26.93345 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_17:38:41.41772 Not Found: /dashboars
+2021-06-30_17:38:45.71690 Not Found: /dashboard/
+2021-06-30_17:39:08.15217 SIGINT/SIGQUIT received...killing workers...
+2021-06-30_17:39:09.15055 worker 1 buried after 1 seconds
+2021-06-30_17:39:09.15068 worker 2 buried after 1 seconds
+2021-06-30_17:39:09.15083 worker 3 buried after 1 seconds
+2021-06-30_17:39:09.15100 worker 4 buried after 1 seconds
+2021-06-30_17:39:09.15110 worker 5 buried after 1 seconds
+2021-06-30_17:39:09.15123 worker 6 buried after 1 seconds
+2021-06-30_17:39:09.15123 goodbye to uWSGI.
+2021-06-30_17:39:09.15155 VACUUM: pidfile removed.
+2021-06-30_17:39:09.15168 VACUUM: unix socket /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock removed.
+2021-06-30_17:39:10.41117 OK[uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/wsgi.ini
+2021-06-30_17:39:10.68490 [uWSGI] getting INI configuration from /etc/hosting2/sv/coop-dostavka.ru-wsgi/conf/additional.ini
+2021-06-30_17:39:10.74794 *** Starting uWSGI 2.0.18-debian (64bit) on [Wed Jun 30 22:39:10 2021] ***
+2021-06-30_17:39:10.74795 compiled with version: 8.2.0 on 10 February 2019 02:42:46
+2021-06-30_17:39:10.74796 os: Linux-4.9.0-hosting12-amd64 #1 SMP Debian 4.9.210-1+deb9u1 (2020-06-07)
+2021-06-30_17:39:10.74796 nodename: h25.netangels.ru
+2021-06-30_17:39:10.74796 machine: x86_64
+2021-06-30_17:39:10.74796 clock source: unix
+2021-06-30_17:39:10.74796 pcre jit disabled
+2021-06-30_17:39:10.74797 detected number of CPU cores: 16
+2021-06-30_17:39:10.74797 current working directory: /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:39:10.74797 writing pidfile to /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.pid
+2021-06-30_17:39:10.74809 detected binary path: /usr/bin/uwsgi-core
+2021-06-30_17:39:10.74810 chdir() to /home/c39682/coop-dostavka.ru/app
+2021-06-30_17:39:10.74811 your processes number limit is 334269
+2021-06-30_17:39:10.74811 your memory page size is 4096 bytes
+2021-06-30_17:39:10.74811 detected max file descriptor number: 1024
+2021-06-30_17:39:10.74811 lock engine: pthread robust mutexes
+2021-06-30_17:39:10.74826 thunder lock: disabled (you can enable it with --thunder-lock)
+2021-06-30_17:39:10.74845 uwsgi socket 0 bound to UNIX address /home/c39682/coop-dostavka.ru/tmp/coop-dostavka.ru-wsgi.sock fd 3
+2021-06-30_17:39:10.74848 Python version: 3.9.4 (default, Apr  5 2021, 05:00:00)  [GCC 8.3.0]
+2021-06-30_17:39:10.74858 Set PythonHome to /home/c39682/coop-dostavka.ru/.env
+2021-06-30_17:39:10.76015 Python main interpreter initialized at 0x558cdfdfb800
+2021-06-30_17:39:10.76016 python threads support enabled
+2021-06-30_17:39:10.76016 your server socket listen backlog is limited to 100 connections
+2021-06-30_17:39:10.76016 your mercy for graceful operations on workers is 60 seconds
+2021-06-30_17:39:10.76065 mapped 1099728 bytes (1073 KB) for 12 cores
+2021-06-30_17:39:10.76083 *** Operational MODE: preforking+threaded ***
+2021-06-30_17:39:10.76113 added /home/c39682/coop-dostavka.ru/app/ to pythonpath.
+2021-06-30_17:39:11.11031 WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x558cdfdfb800 pid: 1
+2021-06-30_17:39:11.11034 mountpoint  already configured. skip.
+2021-06-30_17:39:11.11034 *** uWSGI is running in multiple interpreter mode ***
+2021-06-30_17:39:11.11034 spawned uWSGI master process (pid: 1)
+2021-06-30_17:39:11.11190 spawned uWSGI worker 1 (pid: 7, cores: 2)
+2021-06-30_17:39:11.11305 spawned uWSGI worker 2 (pid: 10, cores: 2)
+2021-06-30_17:39:11.11585 spawned uWSGI worker 3 (pid: 14, cores: 2)
+2021-06-30_17:39:11.11731 spawned 4 offload threads for uWSGI worker 2
+2021-06-30_17:39:11.11777 spawned uWSGI worker 4 (pid: 18, cores: 2)
+2021-06-30_17:39:11.11889 spawned 4 offload threads for uWSGI worker 1
+2021-06-30_17:39:11.11959 spawned uWSGI worker 5 (pid: 20, cores: 2)
+2021-06-30_17:39:11.12181 spawned uWSGI worker 6 (pid: 23, cores: 2)
+2021-06-30_17:39:11.12855 spawned 4 offload threads for uWSGI worker 4
+2021-06-30_17:39:11.12856 spawned 4 offload threads for uWSGI worker 3
+2021-06-30_17:39:11.12892 spawned 4 offload threads for uWSGI worker 6
+2021-06-30_17:39:11.12938 spawned 4 offload threads for uWSGI worker 5
+2021-06-30_17:39:13.59428 Not Found: /static/file/shop/images/fav1.png
+2021-06-30_17:39:44.56693 Not Found: /dashboard/my_orders/images/ribbon.svg
+2021-06-30_17:39:44.56904 Not Found: /dashboard/my_orders/images/groceries.svg
+2021-06-30_19:40:47.51678 Not Found: /static/file/shop/images/fav1.png

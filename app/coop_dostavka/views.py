@@ -62,12 +62,8 @@ def error_404(request, exception):
 def login_view(reguest):
     return render(reguest, 'shop/auth/login.html')
 
-
 def error_502(request, exception):
   return render(request, 'shop/404.html')
-
-def faq(request):
-    return render(request, 'shop/faq.html', {})
 
 def about(reguest):
     return render(reguest, 'shop/about.html')

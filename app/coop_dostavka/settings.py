@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'grid.apps.GridConfig',
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
+    'faq.apps.FaqConfig',
     'copyright',
     'django_hosts',
 

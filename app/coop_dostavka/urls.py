@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import urls
 from django.urls import path, include
-from .views import login_view, reset_user, about, offers, register, career, demo
+from .views import login_view, reset_user, about, offers, register, career, demo, faq
 from . import views
 
 urls.handler404 = views.error_404
@@ -25,7 +25,7 @@ urls.handler502 = views.error_502
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shop.urls')),
-    path('faq/', include('faq.urls')),
+    path('faq/', faq, name='faq'),
     path('login/', login_view, name='login'),
     path('register/', register, name='register'),
     path('resetpass/', reset_user, name='reset'),

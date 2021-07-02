@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'grid.apps.GridConfig',
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
-    'faq.apps.FaqConfig',
     'copyright',
     'django_hosts',
 
@@ -66,6 +65,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'coop_dostavka.urls'
 ROOT_HOSTCONF = 'coop_dostavka.hosts'
 DEFAULT_HOST= 'www'
+PARENT_HOST = 'coop-dostavka.ru'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 600 # set just 10 seconds to test

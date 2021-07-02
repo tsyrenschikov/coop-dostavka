@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
+    'adminpanel.apps.AdminpanelConfig',
     'dashboard.apps.DashboardConfig',
     'grid.apps.GridConfig',
     'plug.apps.PlugConfig',

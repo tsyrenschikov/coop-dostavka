@@ -17,4 +17,3 @@ def my_wishlist(request):
 
 def my_addresses(request):
     return render(request, 'dashboard/dashboard_my_addresses.html', {})
-

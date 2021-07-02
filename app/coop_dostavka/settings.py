@@ -27,7 +27,10 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6LdQrmQbAAAAADI0Zysnb0sYO3ji6uuE8ApsdqaW'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['coop-dostavka.ru']
+ALLOWED_HOSTS = ['coop-dostavka.ru','.coop-dostavka.ru']
+ROOT_URLCONF = 'coop_dostavka.urls'
+ROOT_HOSTCONF = 'coop_dostavka.hosts'
+DEFAULT_HOST = 'www'
 
 
 # Application definition
@@ -44,6 +47,8 @@ INSTALLED_APPS = [
     'grid.apps.GridConfig',
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
+    'panel.apps.PanelConfig',
+    'django_hosts',
     'copyright',
 ]
 
@@ -51,6 +56,7 @@ COPY_START_YEAR = 2020
 
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,15 +64,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 600 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
-
-ROOT_URLCONF = 'coop_dostavka.urls'
-
 
 AUTHENTICATION_BACKENDS = (
  #   'social_core.backends.google.GoogleOAuth2',

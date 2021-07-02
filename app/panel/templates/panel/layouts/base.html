@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description-gambolthemes" content="">
+	<meta name="author-gambolthemes" content="">
+	<title>КООП - {% block title %}{% endblock %}</title>
+	<link href="{% static 'file/panel/css/styles.css' %}" rel="stylesheet">
+	<link href="{% static 'file/panel/css/admin-style.css' %}" rel="stylesheet">
+
+	<!-- Vendor Stylesheets -->
+	<link href="{% static 'file/panel/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+</head>
+    <body class="sb-nav-fixed">
+		{% include 'panel/include/navbar.html' %}
+		<div id="layoutSidenav">
+		{% include 'panel/include/sidenav.html' %}
+			<div id="layoutSidenav_content">
+				{% block content %}{% endblock content %}
+		{% include 'panel/layouts/footer.html' %}
+			</div>
+		</div>
+{% include 'panel/include/scripts.html' %}
+    </body>
+</html>

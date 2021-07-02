@@ -30,6 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['coop-dostavka.ru','.coop-dostavka.ru']
 ROOT_URLCONF = 'coop_dostavka.urls'
 ROOT_HOSTCONF = 'coop_dostavka.hosts'
+PARENT_HOST = 'coop-dostavka.ru'
 DEFAULT_HOST = 'www'
 
 

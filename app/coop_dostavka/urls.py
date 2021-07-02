@@ -35,5 +35,4 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('offers/', offers, name='offers'),
     path('faq/', faq, name='faq'),
-    path('demo/', demo, name='demo'),
 ]

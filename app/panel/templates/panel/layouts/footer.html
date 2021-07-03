@@ -1,11 +1,12 @@
-
+{% load copyrighttags %}
+{% load hosts %}
+{% host_url 'homepage' as homepage_url %}
 <footer class="py-4 bg-footer mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted-1">© 2021 <b>///////</b>. by <a href="#">/////</a></div>
+                            <div class="text-muted-1">© {% getCopyrightYears %} COOP Интернет-магазин доставки продуктов</div>
                             <div class="footer-links">
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="{{ homepage_url }}">В магазин</a>
                             </div>
                         </div>
                     </div>

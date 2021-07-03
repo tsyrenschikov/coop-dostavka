@@ -8,4 +8,10 @@ urlpatterns = [
     path('add_post/', views.add_post, name='add_post'),
     path('post_categories/', views.post_categories, name='post_categories'),
     path('post_tags/', views.post_tags, name='post_tags'),
+    path('locations/', views.locations, name='locations'),
+    path('add_location/', views.add_location, name='add_location'),
+    path('areas/', views.areas, name='areas'),
+    path('add_area/', views.add_area, name='add_area'),
+    path('category/', views.category, name='category'),
+    path('add_category/', views.add_category, name='add_category'),
     ]

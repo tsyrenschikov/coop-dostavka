@@ -27,8 +27,8 @@
 							</a>
                             <div class="collapse" id="collapseLocations" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="locations.html">Все адреса</a>
-									<a class="nav-link sub_nav_link" href="add_location.html">Добавить адрес</a>
+									<a class="nav-link sub_nav_link" href="{%  url 'locations' %}">Все адреса</a>
+									<a class="nav-link sub_nav_link" href="{% url 'add_location' %}">Добавить адрес</a>
 								</nav>
                             </div>
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAreas" aria-expanded="false" aria-controls="collapseAreas">
@@ -38,8 +38,8 @@
 							</a>
                             <div class="collapse" id="collapseAreas" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="areas.html">Все зоны</a>
-									<a class="nav-link sub_nav_link" href="add_area.html">Добавить зону</a>
+									<a class="nav-link sub_nav_link" href="{% url 'areas' %}">Все зоны</a>
+									<a class="nav-link sub_nav_link" href="{% url 'add_area' %}">Добавить зону</a>
 								</nav>
                             </div>
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
@@ -49,8 +49,8 @@
 							</a>
                             <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="category.html">Все категории</a>
-									<a class="nav-link sub_nav_link" href="add_category.html">Добавить категорию</a>
+									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Все категории</a>
+									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
 								</nav>
                             </div>
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShops" aria-expanded="false" aria-controls="collapseShops">

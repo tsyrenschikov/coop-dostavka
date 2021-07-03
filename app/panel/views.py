@@ -12,3 +12,7 @@ def panel(request):
 def posts(request):
     return render(request, 'panel/posts.html', {})
 
+def add_post(request):
+    return render(request,'panel/add_post.html', {})
+
+

@@ -3,7 +3,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{%  url 'panel' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Панель управление
 							</a>
@@ -15,7 +15,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link sub_nav_link" href="{%  url 'posts' %}">Посты</a>
-									<a class="nav-link sub_nav_link" href="add_post.html">Добавить пост</a>
+									<a class="nav-link sub_nav_link" href="{%  url 'add_post' %}">Добавить пост</a>
 									<a class="nav-link sub_nav_link" href="post_categories.html">Категории</a>
 									<a class="nav-link sub_nav_link" href="post_tags.html">Теги</a>
 								</nav>

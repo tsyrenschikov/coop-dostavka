@@ -15,4 +15,11 @@ def posts(request):
 def add_post(request):
     return render(request,'panel/add_post.html', {})
 
+def post_categories(request):
+    return render(request, 'panel/post_categories.html', {})
+
+def post_tags(request):
+    return render(request, 'panel/post_tags.html', {})
+
+
 

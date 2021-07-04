@@ -47,3 +47,12 @@ def add_shop(request):
 
 def shop_view(request):
     return render(request, 'panel/shop_view.html', {})
+
+def products(request):
+    return render(request, 'panel/products.html', {})
+
+def product_view(request):
+    return render(request, 'panel/product_view.html', {})
+
+def add_product(request):
+    return render(request, 'panel/add_product.html', {})

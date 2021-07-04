@@ -62,3 +62,6 @@ def orders(request):
 
 def order_view(request):
     return render(request, 'panel/order_view.html', {})
+
+def order_edit(request):
+    return render(request, 'panel/order_edit.html', {})

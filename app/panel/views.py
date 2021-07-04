@@ -65,3 +65,12 @@ def order_view(request):
 
 def order_edit(request):
     return render(request, 'panel/order_edit.html', {})
+
+def customers(request):
+    return render(request, 'panel/customers.html', {})
+
+def customer_view(request):
+    return render(request, 'panel/customer_view.html', {})
+
+def customer_edit(request):
+    return render(request, 'panel/customer_edit.html', {})

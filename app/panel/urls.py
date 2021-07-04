@@ -20,4 +20,6 @@ urlpatterns = [
     path('products/', views.products, name='products'),
     path('product_view/', views.product_view, name='product_view'),
     path('add_product/', views.add_product, name='add_product'),
+    path('orders/', views.orders, name='orders'),
+    path('order_view/', views.order_view, name='order_view'),
     ]

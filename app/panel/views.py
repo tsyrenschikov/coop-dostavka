@@ -56,3 +56,9 @@ def product_view(request):
 
 def add_product(request):
     return render(request, 'panel/add_product.html', {})
+
+def orders(request):
+    return render(request, 'panel/orders.html', {})
+
+def order_view(request):
+    return render(request, 'panel/order_view.html', {})

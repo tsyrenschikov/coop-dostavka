@@ -74,3 +74,9 @@ def customer_view(request):
 
 def customer_edit(request):
     return render(request, 'panel/customer_edit.html', {})
+
+def offers(request):
+    return render(request, 'panel/offers.html', {})
+
+def offers_edit(request):
+    return render(request, 'panel/offers_edit.html', {})

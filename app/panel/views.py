@@ -38,3 +38,12 @@ def category(request):
 
 def add_category(request):
     return render(request, 'panel/add_category.html', {})
+
+def shops(request):
+    return render(request, 'panel/shops.html', {})
+
+def add_shop(request):
+    return render(request, 'panel/add_shop.html', {})
+
+def shop_view(request):
+    return render(request, 'panel/shop_view.html', {})

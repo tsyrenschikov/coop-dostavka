@@ -80,3 +80,20 @@ def offers(request):
 
 def offers_edit(request):
     return render(request, 'panel/offers_edit.html', {})
+
+def pages(request):
+    return render(request, 'panel/pages.html', {})
+
+def add_page(request):
+    return render(request, 'panel/add_page.html', {})
+
+def menu(request):
+    return render(request, 'panel/menu.html', {})
+
+def menu_add(request):
+    return render(request, 'panel/menu_add.html', {})
+
+def reports(request):
+    return render(request, 'panel/reports.html', {})
+
+

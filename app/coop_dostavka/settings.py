@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
+    'authcoop.apps.AuthConfig',
     'django_hosts',
     'copyright',
 ]

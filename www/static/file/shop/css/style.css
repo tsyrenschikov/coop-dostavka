@@ -1216,8 +1216,11 @@ i.icon1 {
 }
 
 .main-cart-title span{
-	color: #f69733;
+	color: #f55d2c;
     margin-left: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px
 }
 
 .bs-canvas-body {
@@ -1486,7 +1489,7 @@ i.icon1 {
 .quantity.buttons_added .plus {
     padding: 6px 10px 5px;
     height: 30px;
-    background-color: #2b2f4c;
+    background-color: green;
     border: 0;
 	color: #fff;
     cursor: pointer;
@@ -1587,7 +1590,7 @@ i.icon1 {
 }
 		
 .side-cart-header {
-    background: #2b2f4c;
+    background: linear-gradient(to right, rgba(91, 230, 132, 0.93), rgba(245, 195, 44, 0.75));
     color: #fff;
 	position: sticky;
     top: 0;
@@ -6352,7 +6355,9 @@ textarea {
     background: #fff;
     border-radius: 5px;
     padding: 20px 30px 30px;
+    margin-left: 20%;
 	margin-top: 34px;
+    margin-right: 20%;
 	margin-bottom: 14px;
 }
 

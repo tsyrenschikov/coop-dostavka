@@ -25,10 +25,8 @@ urls.handler502 = views.error_502
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shop.urls')),
-    path('login/', include('authcoop.urls')),
-    path('register/', include('authcoop.urls')),
-    path('resetpass/', include('authcoop.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('auth/', include('authent.urls')),
     path('grid/', include('grid.urls')),
     path('about/', about, name='about'),
     path('career/', career, name='career'),

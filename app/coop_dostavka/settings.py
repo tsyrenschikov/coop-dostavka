@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
+    'social_django',
     'django_hosts',
     'copyright',
 ]
@@ -75,17 +76,17 @@ SESSION_COOKIE_AGE = 600 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
 
 AUTHENTICATION_BACKENDS = (
- #   'social_core.backends.google.GoogleOAuth2',
- #   'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '328465962399-ohn1c05oo27b0204ubkpeclo87kro215.apps.googleusercontent.com'
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='_YIzixPeOwewaGcvZ7jbcnZD'
-#SOCIAL_AUTH_VK_OAUTH2_KEY = '7863979'
-#SOCIAL_AUTH_VK_OAUTH2_SECRET = 'tyz8QU6r3Y1ugrkwjDqU'
-#SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '328465962399-ohn1c05oo27b0204ubkpeclo87kro215.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='_YIzixPeOwewaGcvZ7jbcnZD'
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7901580'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'KWjRSWOIyi5KWR3zMkrr'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL = '/'

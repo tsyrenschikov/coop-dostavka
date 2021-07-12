@@ -120,7 +120,7 @@ table {
 }
 * {
 	margin:0;
-	padding: 0;
+	padding:0;
 }
 a:focus {
 	text-decoration: none;
@@ -6166,6 +6166,16 @@ textarea {
 .errornote {
     color: red; /* Цвет символа */
     font-size: 100%; /* Размер шрифта */
+}
+
+.social{
+    color:#2b2f4c;
+    font-size: 16px;
+    padding-top: 10px;
+}
+.socauth{
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .lgn_input {

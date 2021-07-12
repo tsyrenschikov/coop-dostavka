@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 
 
-def register(reguest):
-    return render(reguest, 'auth/register.html')
+def SignUp(reguest):
+    return render(reguest, 'auth/signup.html')
 
 def reset_user(request):
     pass

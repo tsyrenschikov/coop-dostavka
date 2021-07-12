@@ -18,11 +18,11 @@
 									<form method="post">
                                         {% csrf_token %}
 										<div class="form-title"><h6>Вход в личный кабинет</h6></div>
-                                        {% if form.errors %}
-                                            <p class="errornote">
-                                            <h4>Неверный логин или пароль.</h4>
-                                            </p>
-                                        {% endif %}
+                                            {% if form.errors %}
+                                                <p class="form-title errornote">
+                                                Неверный логин или пароль.
+                                                </p>
+                                            {% endif %}
 										<div class="form-group pos_rel">
                                             <input id="username" name="username" type="text" placeholder="Логин" class="form-control lgn_input" required="">
 											<i class="uil uil-mobile-android-alt lgn_icon"></i>
@@ -38,7 +38,7 @@
 									<a href="{% url 'reset' %}">Забыли пароль?</a>
 								</div>
 								<div class="signup-link">
-									<p>Нет учетной записи? - <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+									<p>Нет учетной записи? - <a href="{% url 'signup' %}">Зарегистрироваться</a></p>
 								</div>
 							</div>
 						</div>

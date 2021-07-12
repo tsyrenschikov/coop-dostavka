@@ -1210,6 +1210,7 @@ i.icon1 {
     top: 0;
 }
 
+
 .main-cart-title {
     font-size: 18px;
     font-weight: 600;
@@ -6160,6 +6161,11 @@ textarea {
 	font-weight: 700;
 	color: #2b2f4c;
 	font-size: 18px;
+}
+
+.errornote {
+    color: red; /* Цвет символа */
+    font-size: 100%; /* Размер шрифта */
 }
 
 .lgn_input {

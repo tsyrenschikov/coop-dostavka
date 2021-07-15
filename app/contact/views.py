@@ -1,8 +1,6 @@
-import self as self
 from django.conf import settings
-from django.core.mail import BadHeaderError, EmailMessage, send_mail
-from django.shortcuts import render, redirect
-from .forms import ContactForm
+from django.core.mail import BadHeaderError, send_mail
+from django.shortcuts import render
 from django.contrib import messages
 import requests
 

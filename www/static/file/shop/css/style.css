@@ -5869,6 +5869,7 @@ textarea {
 .form-control {
     color: #2b2f4c !important;
 	font-weight: 400 !important;
+    height: calc(1.5em + 1.75rem + 2px) !important;
 }
 
 .post-btn {
@@ -6212,7 +6213,7 @@ textarea {
 
 .signup-link {
 	margin-top: 30px;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0;
     text-align: center;
     padding: 15px 10px;
 	background: #f55d2c;
@@ -6222,7 +6223,7 @@ textarea {
     -ms-transition: all 0.2s ease-in-out;
     -webkit-transition: all 0.2s ease-in-out;
 	background-image: -webkit-linear-gradient(left, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
-    background-image: linear-gradient(to right, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+    background-image: linear-gradient(to right, rgba(91, 230, 132, 0.93), rgba(245, 195, 44, 0.75));
 }
 
 .signup-link p {

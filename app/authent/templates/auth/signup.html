@@ -15,7 +15,7 @@
 							</div>
 							<div class="form-dt">
 								<div class="form-inpts checout-address-step">
-									<form method="post">
+									<form method="post" name="ValidationForm" id="form_id" onsubmit="javascript:return validate('form_id','email');">
                                         {% csrf_token %}
 										<div class="form-title"><h6>Регистрация</h6></div>
 										<div class="form-group pos_rel">
@@ -31,15 +31,17 @@
 											<i class="uil uil-user-circle lgn_icon"></i>
 										</div>
 										<div class="form-group pos_rel">
-											<input id="email" name="email" type="email" placeholder="Email" class="form-control lgn_input" required="">
+											<input id="email" name="email" type="email" pattern="[^ @]*@[^ @]*" placeholder="Email" class="form-control lgn_input"  required="">
 											<i class="uil uil-envelope lgn_icon"></i>
 										</div>
                                         <div class="form-group pos_rel">
-											<input id="password" name="password" type="password" placeholder="Пароль" class="form-control lgn_input" required="">
+											<input id="password1" name="password" type="password" placeholder="Пароль не менее 6 символов" class="form-control lgn_input" minlength="6"
+       maxlength="8" size="8" required="">
 											<i class="uil uil-padlock lgn_icon"></i>
 										</div>
 										<div class="form-group pos_rel">
-											<input id="password" name="password2" type="password" placeholder="Повторите пароль еще раз" class="form-control lgn_input" required="">
+											<input id="password2" name="password2" type="password" placeholder="Повторите пароль не менее 6 символов" class="form-control lgn_input" minlength="6"
+       maxlength="8" size="8" required="">
 											<i class="uil uil-padlock lgn_icon"></i>
 										</div>
 										<input class="login-btn hover-btn" type="submit"  value="Регистрация">
@@ -58,5 +60,8 @@
 			</div>
 		</div>
 	</div>
-
+{% block javascripts %}
+    <script src="{% static 'file/shop/js/password.js' %}"></script>
+    <script src="{% static 'file/shop/js/email_valid.js' %}"></script>
+{% endblock javascripts %}
 {% endblock content %}

@@ -18,27 +18,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="tsyrenschikov" />
     <orderEntry type="module" module-name="pythonProject" />
-    <orderEntry type="module" module-name="Kursav" />
     <orderEntry type="module" module-name="djangoProject" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/app/plug/templates/plug_index" />
-        <option value="$MODULE_DIR$/app/shop/templates/shop" />
-        <option value="$MODULE_DIR$/app/shop/templates/shop/auth" />
-        <option value="$MODULE_DIR$/app/shop/templates/shop/auth/layouts" />
-        <option value="$MODULE_DIR$/app/shop/templates/shop/layouts" />
-        <option value="$MODULE_DIR$/app/shop/templates/shop/includes" />
-        <option value="$MODULE_DIR$/app/panel/templates/panel" />
-        <option value="$MODULE_DIR$/app/panel/templates/panel/include" />
-        <option value="$MODULE_DIR$/app/panel/templates/panel/layouts" />
-        <option value="$MODULE_DIR$/app/contact/templates/contact" />
-        <option value="$MODULE_DIR$/app/dashboard/templates/dashboard" />
-        <option value="$MODULE_DIR$/app/dashboard/templates/dashboard/include" />
-        <option value="$MODULE_DIR$/app/dashboard/templates/dashboard/layouts" />
-      </list>
-    </option>
   </component>
 </module>

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
+    'signup.apps.SignupConfig',
     'social_django',
     'django_hosts',
     'copyright',
@@ -80,7 +81,9 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1082854939163-n13fgc37tetjeia9m1bqgpf887qd8cp4.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='SVbewJUgmHt9tlkTnBnkQkUx'

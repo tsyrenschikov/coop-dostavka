@@ -15,11 +15,19 @@
 							</div>
 							<div class="form-dt">
 								<div class="form-inpts checout-address-step">
-									<form method="post" action="{% url 'dashboard' %}">
+									<form method="post">
                                         {% csrf_token %}
 										<div class="form-title"><h6>Регистрация</h6></div>
 										<div class="form-group pos_rel">
-											<input id="username" name="username" type="text" placeholder="Ваш логин" class="form-control lgn_input" required="">
+											<input id="username" name="username" type="text" placeholder="Логин" class="form-control lgn_input" required="">
+											<i class="uil uil-user-circle lgn_icon"></i>
+										</div>
+                                        <div class="form-group pos_rel">
+											<input id="first_name" name="first_name" type="text" placeholder="Ваше имя" class="form-control lgn_input" required="">
+											<i class="uil uil-user-circle lgn_icon"></i>
+										</div>
+                                        <div class="form-group pos_rel">
+											<input id="last_name" name="last_name" type="text" placeholder="Ваша фамилия" class="form-control lgn_input" required="">
 											<i class="uil uil-user-circle lgn_icon"></i>
 										</div>
 										<div class="form-group pos_rel">
@@ -27,15 +35,14 @@
 											<i class="uil uil-envelope lgn_icon"></i>
 										</div>
                                         <div class="form-group pos_rel">
-											<input id="password" name="password1" type="password" placeholder="Пароль" class="form-control lgn_input" required="">
+											<input id="password" name="password" type="password" placeholder="Пароль" class="form-control lgn_input" required="">
 											<i class="uil uil-padlock lgn_icon"></i>
 										</div>
 										<div class="form-group pos_rel">
-											<input id="password2" name="password2" type="password" placeholder="Повторите пароль еще раз" class="form-control lgn_input" required="">
+											<input id="password" name="password2" type="password" placeholder="Повторите пароль еще раз" class="form-control lgn_input" required="">
 											<i class="uil uil-padlock lgn_icon"></i>
 										</div>
-                                        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-										<button class="login-btn hover-btn" type="submit">Зарегистрироваться</button>
+										<input class="login-btn hover-btn" type="submit"  value="Регистрация">
 									</form>
 								</div>
 								<div class="signup-link">

@@ -34,4 +34,5 @@ urlpatterns = [
     path('offers/', offers, name='offers'),
     path('faq/', faq, name='faq'),
     path('', include('social_django.urls', namespace='social')),
+    path('signup/', include('signup.urls')),
 ]

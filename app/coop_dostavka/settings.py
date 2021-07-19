@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
-    'signup.apps.SignupConfig',
     'social_django',
     'django_hosts',
     'copyright',

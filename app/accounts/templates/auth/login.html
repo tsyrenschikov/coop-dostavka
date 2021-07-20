@@ -18,9 +18,10 @@
                                         {% csrf_token %}
 										<div class="form-title"><h6>Вход в личный кабинет</h6></div>
                                             {% if form.errors %}
-                                                <p class="form-title errornote">
-                                                Неверный логин или пароль.
-                                                </p>
+                                                <div class="alert alert-danger alert-dismissible">
+                                                <a href="{% url 'reset' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                <p>Логин или пароль не найдены</p>
+                                            </div>
                                             {% endif %}
 										<div class="form-group pos_rel">
                                             <input id="username" name="username" type="text" placeholder="Логин" class="form-control lgn_input" required="">

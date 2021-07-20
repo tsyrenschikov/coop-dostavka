@@ -22,6 +22,12 @@
 											<input id="username" name="username" type="text" placeholder="Логин" class="form-control lgn_input" required="">
 											<i class="uil uil-mobile-android-alt lgn_icon"></i>
 										</div>
+                                        {% if username %}
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            {{ username }}
+                                            </div>
+                                        {% endif %}
                                         <div class="form-group pos_rel">
 											<input id="first_name" name="first_name" type="text" placeholder="Ваше имя" class="form-control lgn_input" required="">
 											<i class="uil uil-user-circle lgn_icon"></i>
@@ -30,6 +36,12 @@
 											<input id="email" name="email" type="email" pattern="[^ @]*@[^ @]*" placeholder="Email" class="form-control lgn_input"  required="">
 											<i class="uil uil-envelope lgn_icon"></i>
 										</div>
+                                        {% if email %}
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            {{ email }}
+                                            </div>
+                                        {% endif %}
                                         <div class="form-group pos_rel">
 											<input id="password1" name="password" type="password" placeholder="Пароль" class="form-control lgn_input" minlength="6"
        maxlength="8" size="8" required="">

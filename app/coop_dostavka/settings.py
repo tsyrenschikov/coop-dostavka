@@ -42,18 +42,21 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
-    'authent.apps.AuthentConfig',
     'shop.apps.ShopConfig',
     'dashboard.apps.DashboardConfig',
     'grid.apps.GridConfig',
     'plug.apps.PlugConfig',
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
+    'accounts.apps.AccountsConfig',
     'social_django',
     'django_hosts',
     'copyright',
 ]
+
+SITE_ID=1
 
 COPY_START_YEAR = 2020
 
@@ -68,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
+
 ]
 
 
@@ -94,6 +98,7 @@ LOGIN_URL='login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.netangels.ru'

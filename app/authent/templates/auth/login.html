@@ -2,7 +2,6 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 {% load static %}
-{% load copyrighttags %}
 	<div class="sign-inup">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -53,9 +52,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="copyright-text text-center mt-3">
-						<i class="uil uil-copyright"></i>Copyright {% getCopyrightYears %}  Интернет-магазин доставки продуктов</b>
-				    </div>
+					{% include 'auth/include/footer.html' %}
                 </div>
 			</div>
 		</div>

@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description-gambolthemes" content="">
-	<meta name="author-gambolthemes" content="">
-	<title>КООП - {% block title %}{% endblock %}</title>
+	<meta name="description-panel" content="">
+	<meta name="tsyrenschikov.ru" content="">
+	<title>КООП Панель Управления - {% block title %}{% endblock %}</title>
 	<link href="{% static 'file/panel/css/styles.css' %}" rel="stylesheet">
 	<link href="{% static 'file/panel/css/admin-style.css' %}" rel="stylesheet">
 
@@ -16,6 +16,7 @@
 	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 
 </head>
+{% if user.is_authenticated %}
     <body class="sb-nav-fixed">
 		{% include 'panel/include/navbar.html' %}
 		<div id="layoutSidenav">
@@ -27,4 +28,9 @@
 		</div>
 {% include 'panel/include/scripts.html' %}
     </body>
+{% else %}
+<head>
+  <meta http-equiv="refresh" content="0; {% url 'login' %}" />
+</head>
+{% endif %}
 </html>

@@ -18,11 +18,11 @@
                                         {% csrf_token %}
                                             <div class="form-group">
                                                 {% if form.errors %}
-                                                <div class="alert alert-danger alert-dismissible">
-                                                <a href="{% url 'reset' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <p>Логин или пароль не найдены</p>
-                                            </div>
-                                            {% endif %}
+                                                    <div class="alert alert-danger alert-dismissible">
+                                                        <a href="{% url 'login' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <p>Логин или пароль не найдены</p>
+                                                    </div>
+                                                {% endif %}
 												<label class="form-label" for="inputEmailAddress">Логин*</label>
 												<input class="form-control py-3" id="username" name="username" type="text" placeholder="Введите логин" required="">
 											</div>

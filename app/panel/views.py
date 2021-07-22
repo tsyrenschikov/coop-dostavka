@@ -5,9 +5,6 @@ def homepage(request):
     homepage_url = reverse('homepage', host='www')
     return render(request, 'homepage.html', {'homepage_url': homepage_url})
 
-def PasswordChangeDoneView(request):
-    return render(request, 'panel/change_password_done.html', {})
-
 def panel(request):
     return render(request, 'panel/index.html', {})
 

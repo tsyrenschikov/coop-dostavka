@@ -5,6 +5,9 @@ def homepage(request):
     homepage_url = reverse('homepage', host='www')
     return render(request, 'homepage.html', {'homepage_url': homepage_url})
 
+def edit_profile(request):
+    return render(request, 'panel/edit_profile.html', {})
+
 def panel(request):
     return render(request, 'panel/index.html', {})
 

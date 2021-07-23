@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 {% load static %}
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,7 @@
 	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 
 </head>
-{% if user.is_authenticated %}
+{% if 'manager' in groups %}
     <body class="sb-nav-fixed">
 		{% include 'panel/include/navbar.html' %}
 		<div id="layoutSidenav">
@@ -28,7 +29,7 @@
 		</div>
 {% include 'panel/include/scripts.html' %}
     </body>
-{% else %}
+    {% else %}
 <head>
   <meta http-equiv="refresh" content="0; {% url 'login' %}" />
 </head>

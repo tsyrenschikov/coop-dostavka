@@ -2,7 +2,6 @@ from django.urls import path, include, reverse_lazy
 from . import views
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 
-
 urlpatterns = [
     path('', views.panel, name='panel'),
     path('login/',LoginView.as_view(template_name='panel/login.html'), name='login'),

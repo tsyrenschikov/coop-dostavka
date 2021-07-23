@@ -1,9 +1,19 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
+
+from django import template
+
+register = template.Library()
+
+@register.filter(name='manager')
+def manager(user, group_name):
+    return user.groups.filter(name=group_name).exists()
 
 def homepage(request):
     homepage_url = reverse('homepage', host='www')
     return render(request, 'homepage.html', {'homepage_url': homepage_url})
+
 
 def edit_profile(request):
     return render(request, 'panel/edit_profile.html', {})

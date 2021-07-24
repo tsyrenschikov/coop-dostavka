@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 {% load static %}
-
+{% load hosts %}
+{% host_url 'contact' as contact_url %}
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,13 @@
 	<link href="{% static 'file/panel/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 
+
 </head>
+{% if not user.is_authenticated %}
+    <head>
+        <meta http-equiv="refresh" content="0; {% url 'login' %}" />
+    </head>
+{% endif %}
 {% if 'manager' in groups %}
     <body class="sb-nav-fixed">
 		{% include 'panel/include/navbar.html' %}
@@ -29,9 +36,37 @@
 		</div>
 {% include 'panel/include/scripts.html' %}
     </body>
-    {% else %}
-<head>
-  <meta http-equiv="refresh" content="0; {% url 'login' %}" />
-</head>
+{% else %}
+        <body class="bg-sign">
+            <div id="layoutAuthentication">
+                <div id="layoutAuthentication_content">
+                    <main>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-5">
+                                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                        <div class="card-header card-sign-header">
+                                            <h3 class="text-center font-weight-light my-4">Доступ запрещён!</h3>
+                                            <p>Если вы менеджер, то Вам необходимо обратиться к администратору платформы.</p>
+                                            <p>E-mail:<a href="{{ contact_url }}">	info@coop-dostavka.ru</a> </p>
+                                            <p>Тел: +7(343)288-53-07 </p>
+                                        </div>
+                                        <div class="card-header card-sign-header">
+                                            <div class="signup-link">
+                                                <p>Панель управления - <a href="{% url 'login' %}">авторизация</a></p>
+							                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+        </body>
 {% endif %}
 </html>
+<!--<head>
+  <meta http-equiv="refresh" content="0; {% url 'login' %}" />
+</head>-->

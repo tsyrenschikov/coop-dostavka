@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 
@@ -13,6 +12,10 @@ def manager(user, group_name):
 def homepage(request):
     homepage_url = reverse('homepage', host='www')
     return render(request, 'homepage.html', {'homepage_url': homepage_url})
+
+def contact(request):
+    contact_url = reverse('contact', host='www')
+    return render(request, 'contact.html', {'contact_url': contact_url})
 
 
 def edit_profile(request):

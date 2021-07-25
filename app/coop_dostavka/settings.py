@@ -120,6 +120,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'panel.context_processors.user_groups_processor',
+                'shop.context_processors.user_groups_processor',
             ],
         },
     },

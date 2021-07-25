@@ -19,7 +19,13 @@
 											</div>
 											<div class="shopowner-dt-left">
 												<h4>КООП</h4>
-												<span>Admin</span>
+												<span>
+                                                    {% if user.is_staff %}
+                                                        Администратор
+                                                        {% else %}
+                                                        Менеджер магазина
+                                                    {% endif %}
+                                                </span>
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">

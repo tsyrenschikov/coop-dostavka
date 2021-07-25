@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
-
 from django import template
 
 register = template.Library()

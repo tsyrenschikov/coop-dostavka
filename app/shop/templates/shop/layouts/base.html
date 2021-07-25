@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 {% load static %}
+{% load hosts %}
+{% host_url 'contact' as panel_url %}
 
   <head>
     <meta charset="utf-8">
@@ -388,6 +390,11 @@
 							<a class="offer-link" href="{% url 'faq' %}"><i class="uil uil-question-circle"></i>Помощь</a>
 						</li>
 						<li class="ui dropdown">
+                            {%  if 'manager' in groups %}
+                                <head>
+                                    <meta http-equiv="refresh" content="0; https://panel.coop-dostavka.ru" />
+                                </head>
+                            {% endif %}
 							{% if user.is_authenticated %}
 							<a href="{% url 'my_wishlist' %}" class="option_links" title="Wishlist"><i class='uil uil-heart icon_wishlist'></i><span class="noti_count1">3</span></a>
 							<a href="#" class="opts_account">

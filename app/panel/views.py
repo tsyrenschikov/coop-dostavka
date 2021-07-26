@@ -2,8 +2,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
-from django.views.generic.list import ListView
-
 
 register = template.Library()
 
@@ -13,7 +11,8 @@ def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
 
 def add_manager(request):
-    return render(request, 'panel/add_manager.html', {} )
+    users = User.objects.filter(groups__name='manager')
+    return render(request, 'panel/add_manager.html', {'users': users} )
 
 def homepage(request):
     homepage_url = reverse('homepage', host='www')

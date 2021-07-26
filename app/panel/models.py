@@ -20,4 +20,3 @@ class Grade(models.Model):
     grade = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-

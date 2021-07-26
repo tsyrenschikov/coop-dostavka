@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='panel/login.html'),name='logout'),
     path('password_change/', PasswordChangeView.as_view(template_name='panel/change_password.html'),name='password_change'),
     path('password_change/done/', PasswordChangeDoneView.as_view(template_name='panel/change_password_done.html'),name='password_change_done'),
+    path('add_manager/', views.add_manager, name='add_manager'),
     path('edit_profile/',views.edit_profile, name='edit_profile'),
     path('posts/', views.posts, name = 'posts'),
     path('add_post/', views.add_post, name='add_post'),

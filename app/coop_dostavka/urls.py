@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import urls
 from django.urls import path, include
-from .views import faq, about, offers, career
+from .views import faq, offers, career
 from . import views
 
 urls.handler404 = views.error_404
@@ -28,7 +28,6 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('accounts/', include('accounts.urls')),
     path('grid/', include('grid.urls')),
-    path('about/', about, name='about'),
     path('career/', career, name='career'),
     path('contact/', include('contact.urls')),
     path('offers/', offers, name='offers'),

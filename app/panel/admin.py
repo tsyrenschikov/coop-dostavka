@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from panel.models import Person, Course, Grade
 
+
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     pass

@@ -1,5 +1,9 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+
+
+
+
 class Person(models.Model):
     last_name = models.TextField()
     first_name = models.TextField()
@@ -16,3 +20,4 @@ class Grade(models.Model):
     grade = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+

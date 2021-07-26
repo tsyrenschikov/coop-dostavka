@@ -13,9 +13,6 @@ def error_502(request, exception):
 def faq(request):
     return render(request, 'shop/faq.html', {})
 
-def about(reguest):
-    return render(reguest, 'shop/about.html')
-
 def offers(reguest):
     return render(reguest, 'shop/offers.html')
 

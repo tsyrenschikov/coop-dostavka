@@ -68,73 +68,97 @@
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-1.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-1.webp' %}" alt="">
 								</div>
-								<div class="text"> Фрукты и овощи </div>
+								<div class="text"> Овощи, фрукты </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-2.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-2.webp' %}" alt="">
 								</div>
-								<div class="text"> Продукты</div>
+								<div class="text"> Молочная продукция</div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-3.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-3.webp' %}" alt="">
 								</div>
-								<div class="text"> Молочные продукты и яйца </div>
+								<div class="text"> Мясо, птица </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-4.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-4.webp' %}" alt="">
 								</div>
-								<div class="text"> Напитки </div>
+								<div class="text"> Рыба и морепродукты </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-5.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-5.webp' %}" alt="">
 								</div>
-								<div class="text"> Закуски </div>
+								<div class="text"> Бакалея </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-6.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-6.webp' %}" alt="">
 								</div>
-								<div class="text"> Домашний уход </div>
+								<div class="text">Растительные масла, жиры </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-7.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-7.webp' %}" alt="">
 								</div>
-								<div class="text"> Лапша и сосусы </div>
+								<div class="text"> Воды, соки, напитки </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-8.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-8.webp' %}" alt="">
 								</div>
-								<div class="text"> Личная гигиена </div>
+								<div class="text"> Мясопродукты готовые </div>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-9.svg' %}" alt="">
+									<img src="{% static 'file/shop/images/category/icon-9.webp' %}" alt="">
 								</div>
-								<div class="text"> Уход за животными </div>
+								<div class="text"> Кондитерские изделия </div>
+							</a>
+						</li>
+                        <li>
+							<a href="#" class="single-cat-item">
+								<div class="icon">
+									<img src="{% static 'file/shop/images/category/icon-10.webp' %}" alt="">
+								</div>
+								<div class="text"> Яйца </div>
+							</a>
+						</li>
+                         <li>
+							<a href="#" class="single-cat-item">
+								<div class="icon">
+									<img src="{% static 'file/shop/images/category/icon-11.webp' %}" alt="">
+								</div>
+								<div class="text"> Хлеб и выпечка </div>
+							</a>
+						</li>
+                        <li>
+							<a href="#" class="single-cat-item">
+								<div class="icon">
+									<img src="{% static 'file/shop/images/category/icon-12.webp' %}" alt="">
+								</div>
+								<div class="text"> Консервация </div>
 							</a>
 						</li>
                     </ul>
@@ -461,8 +485,9 @@
 								<li
 										class="nav-item"><a href="{% url 'grid' %}" class="{% if request.path == '/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое
 									поступление</a></li>
-								<li class="nav-item"><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %} nav-link " title="About">О КООП</a></li>
-								<li class="nav-item"><a href="/contact" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная связь</a></li>
+								<li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Карьера</a></li>
+								<li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
+                                    связь</a></li>
 							</ul>
 
 						</div>

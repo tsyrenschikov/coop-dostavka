@@ -1,12 +1,19 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
+from django.views.generic.list import ListView
+
 
 register = template.Library()
+
 
 @register.filter(name='manager')
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
+
+def add_manager(request):
+    return render(request, 'panel/add_manager.html', {} )
 
 def homepage(request):
     homepage_url = reverse('homepage', host='www')
@@ -19,6 +26,7 @@ def contact(request):
 
 def edit_profile(request):
     return render(request, 'panel/edit_profile.html', {})
+
 
 def panel(request):
     return render(request, 'panel/index.html', {})

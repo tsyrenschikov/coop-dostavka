@@ -21,6 +21,7 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
+                                                        <th>ID</th>
 														<th>Имя</th>
 														<th>E-mail</th>
 														<th>Телефон</th>
@@ -31,6 +32,7 @@
 												<tbody>
                                                 {% for users in users %}
 													<tr>
+                                                        <td>{{ users.id }}</td>
 														<td>{{ users.get_full_name }}</td>
 														{% if users.email %}
                                                             <td>{{ users.email }}</td>

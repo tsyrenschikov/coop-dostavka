@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models.functions import Lower
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
@@ -9,6 +10,10 @@ register = template.Library()
 @register.filter(name='manager')
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
+
+def edit_manager(request):
+    users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
+    return render(request, 'panel/edit_manager.html', {'users' : users})
 
 def add_manager(request):
     users = User.objects.filter(groups__name='manager')

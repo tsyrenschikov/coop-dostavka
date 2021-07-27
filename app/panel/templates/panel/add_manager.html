@@ -7,8 +7,8 @@
                         <h2 class="mt-30 page-title">Пользователи</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'add_manager' %}">Добавить менеджера магазина</a></li>
-                            <li class="breadcrumb-item active">Менеджер</li>
+                            <li class="breadcrumb-item"><a href="{% url 'add_manager' %}">Менеджер</a></li>
+                            <li class="breadcrumb-item active">Добавить менеджера</li>
                         </ol>
                     <div class="row">
 							<div class="col-lg-4 col-md-5">
@@ -16,11 +16,11 @@
 									<div class="card-body-table">
 										<div class="shopowner-content-left text-center pd-20">
 											<div class="shopowner-dt-left">
-												<h4>Список менеджеров</h4>
+												<h4>Список последних добавленных менеджеров</h4>
 												        <span>
                                                             <ul>
                                                                 {% for users in users %}
-                                                                 <li>{{ users.get_full_name }} </li>
+                                                                 <li>{{ users.get_full_name }} {{ first_name }} </li>
                                                                 {% endfor %}
                                                             </ul>
                                                         </span>

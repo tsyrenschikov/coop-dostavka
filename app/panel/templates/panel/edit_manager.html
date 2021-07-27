@@ -1,0 +1,62 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Менеджеры</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item active"><a href="{% url 'add_manager' %}">Менеджер</a></li>
+                            <li class="breadcrumb-item active">Редактировать менеджера</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="card card-static-2 mb-30">
+									<div class="card-title-2">
+										<h4>Список менеджеров</h4>
+									</div>
+									<div class="card-body-table">
+										<div class="table-responsive">
+											<table class="table ucp-table table-hover">
+												<thead>
+													<tr>
+														<th>Имя</th>
+														<th>E-mail</th>
+														<th>Телефон</th>
+                                                        <th>Вход в систему</th>
+														<th>Действия</th>
+													</tr>
+												</thead>
+												<tbody>
+                                                {% for users in users %}
+													<tr>
+														<td>{{ users.get_full_name }}</td>
+														{% if users.email %}
+                                                            <td>{{ users.email }}</td>
+                                                            {% else %}
+                                                                <td>E-mail не указан</td>
+                                                            {% endif %}
+                                                        {% if users.phone %}
+														    <td>{{ users.phone }}</td>
+                                                        {% else %}
+                                                            <td>Номер не указан</td>
+                                                        {% endif %}
+                                                        <td>{{ users.last_login }}</td>
+														<td class="action-btns">
+															<a href="#" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
+															<a href="#" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>
+														</td>
+													</tr>
+                                                {% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+
+{% endblock content %}

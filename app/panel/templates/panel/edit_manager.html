@@ -21,8 +21,9 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-                                                        <th>ID</th>
-														<th>Имя</th>
+                                                        <th>Организация</th>
+														<th>Фамилия</th>
+                                                        <th>Имя</th>
 														<th>E-mail</th>
 														<th>Телефон</th>
                                                         <th>Вход в систему</th>
@@ -32,27 +33,41 @@
 												<tbody>
                                                 {% for users in users %}
 													<tr>
-                                                        <td>{{ users.id }}</td>
-														<td>{{ users.get_full_name }}</td>
+                                                        {% if users.org %}
+                                                        <td>{{ users.org }}</td>
+                                                            {% else %}
+                                                            <td><span style="color: red">Организация не указана</span></td>
+                                                        {% endif %}
+                                                        {% if users.last_name %}
+                                                        <td>{{ users.last_name }}</td>
+                                                            {% else %}
+                                                            <td><span style="color: red">"Фамилия" не указана</span></td>
+                                                            {% endif %}
+                                                        {% if users.first_name %}
+														<td>{{ users.first_name }}</td>
+                                                            {% else %}
+                                                            <td><span style="color: red">"Имя" не указано</span></td>
+                                                        {% endif %}
 														{% if users.email %}
                                                             <td>{{ users.email }}</td>
                                                             {% else %}
-                                                                <td>E-mail не указан</td>
+                                                            <td><span style="color: red">"E-mail" не указан</span></td>
                                                             {% endif %}
                                                         {% if users.phone %}
 														    <td>{{ users.phone }}</td>
                                                         {% else %}
-                                                            <td>Номер не указан</td>
+                                                            <td><span style="color: red">"Номер" не указан</span></td>
                                                         {% endif %}
                                                         {% if users.last_login %}
                                                         <td>{{ users.last_login }}</td>
                                                         {% else %}
-                                                        <td>Вход не осуществлялся</td>
+                                                            <td><span style="color: green">Вход не осуществлялся</span></td>
                                                         {% endif %}
 														<td class="action-btns">
+                                                            <a href="/view_manager/{{ users.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
 															<a href="/edit_prof_manager/{{ users.id }}" class="edit-btn" title="Редактировать"><i class="fas
 															fa-edit"></i></a>
-															<a href="#" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>
+															<a href="/delete_manager/{{ users.id }}" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>
 														</td>
 													</tr>
                                                 {% endfor %}

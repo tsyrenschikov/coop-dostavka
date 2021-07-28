@@ -1,0 +1,88 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Менеджер</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'edit_manager' %}">Менеджер</a></li>
+                            <li class="breadcrumb-item active">Карточка менеджера</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-5 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20">
+											<div class="customer_img">
+												<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
+											</div>
+											<div class="shopowner-dt-left mt-4">
+												<h4>{{ users.get_full_name }}</h4>
+												<span>{% if user.is_staff %}
+                                                        Администратор
+                                                        {% else %}
+                                                        Менеджер магазина
+                                                       {% endif %}
+                                                </span>
+											</div>
+
+											<div class="shopowner-dts">
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Логин</span>
+                                                    {% if users.username %}
+													<span class="right-dt">{{ users.username }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Логин не указан</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Имя</span>
+                                                    {% if users.first_name %}
+													<span class="right-dt">{{ users.first_name}}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Имя не указано</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Фамилия</span>
+                                                    {% if users.last_name %}
+													<span class="right-dt">{{ users.last_name}}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Фамилия не указана</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Email</span>
+                                                    {% if users.email %}
+													<span class="right-dt">{{ users.email }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">E-mail не указан</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Телефон</span>
+                                                    {% if users.phone %}
+													<span class="right-dt">{{ users.phone }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Номер не указан</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Организация</span>
+                                                    {% if users.org %}
+													<span class="right-dt">{{ users.org }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Организация не указана</span>
+                                                    {% endif %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+{% endblock content %}

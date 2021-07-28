@@ -21,10 +21,6 @@ def add_manager(request):
     users = User.objects.filter(groups__name='manager')
     return render(request, 'panel/add_manager.html', {'users': users})
 
-# Страница. Результат успешного изменения профиля менеджера
-def edit_ok_manager(request):
-    return render(request, "panel/edit_ok_manager.html", {})
-
 # Изменение данных в БД менеджера
 def edit_prof_manager(request,id):
     try:
@@ -42,9 +38,27 @@ def edit_prof_manager(request,id):
     except users.DoesNotExist:
         return render(request ,'panel/edit_error_manager.html', {'users' : users})
 
-def list_manager(request):
-    users = User.objects.filter(groups__name='manager')
-    return render(request, 'panel/include/list_manager.html', {'users' : users})
+# Страница. Результат успешного изменения профиля менеджера
+def edit_ok_manager(request):
+    return render(request, "panel/edit_ok_manager.html", {})
+
+# УУдаление данных из БД менеджера
+def delete_manager(request, id):
+    try:
+        users = User.objects.get(id=id)
+        users.delete()
+        return render(request, "panel/delete_ok_manager.html")
+    except users.DoesNotExist:
+        return render(request ,'panel/edit_error_manager.html', {'users' : users})
+
+# Страница. Результат успешного удаления профиля менеджера
+def delete_ok_manager(request):
+    return render(request, "panel/delete_ok_manager.html", {})
+
+# Просмотр карточки менеджера
+def view_manager(request, id):
+    users = User.objects.get(id=id)
+    return render(request, "panel/view_manager.html", {'users' : users})
 
 def homepage(request):
     homepage_url = reverse('homepage', host='www')

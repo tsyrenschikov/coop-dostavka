@@ -31,7 +31,7 @@ def edit_prof_manager(request,id):
             users.last_name = request.POST.get("last_name")
             users.email = request.POST.get("email")
             users.save()
-            return render(request, "panel/edit_ok_manager.html")
+            return render(request, "panel/edit_ok_manager.html", {'users':users})
 
         else:
             return render(request, "panel/edit_prof_manager.html", {"users": users})

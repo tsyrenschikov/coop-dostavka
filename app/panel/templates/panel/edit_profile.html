@@ -30,23 +30,59 @@
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Логин</span>
-													<span class="right-dt">{{ user.get_username }}</span>
+                                                    {% if user.get_username %}
+													<span class="right-dt" class="right-dt">{{ user.get_username }}</span>
+                                                    {% else %}
+                                                    Логин не указан
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">ФИО</span>
-													<span class="right-dt">{{ user.get_full_name }}</span>
-												</div>
-												<div class="shopowner-dt-list">
-													<span class="left-dt">Email</span>
-													<span class="right-dt">{{ user.email }}</span>
+													<span class="left-dt">Имя</span>
+                                                    {% if user.first_name %}
+													<span class="right-dt">{{ user.first_name }}</span>
+                                                    {% else %}
+                                                    <span style="color: red" class="right-dt">Имя не указано</span>
+                                                    {% endif %}
 												</div>
                                                 <div class="shopowner-dt-list">
-													<span class="left-dt">Номер телефона</span>
-													<span class="right-dt">****</span>
+													<span class="left-dt">Фамилия</span>
+                                                    {% if user.last_name %}
+													<span class="right-dt">{{ user.last_name }}</span>
+                                                    {% else %}
+                                                    <span style="color: red" class="right-dt">Фамилия не указана</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">E-mail</span>
+                                                    {% if user.email %}
+													<span class="right-dt">{{ user.email }}</span>
+                                                    {% else %}
+                                                    <span style="color: red" class="right-dt">E-mail не указан</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
+                                                <span class="left-dt">Номер телефона</span>
+                                                    {% if user.phone %}
+                                                        <span class="right-dt">{{  user.phone }}</span>
+                                                    {% else %}
+													<span style="color: red" class="right-dt">Номер не указан</span>
+                                                    {% endif %}
                                                 </div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Наименование организации</span>
-													<span class="right-dt">****</span>
+                                                    {% if user.org %}
+													<span class="right-dt">{{  user.org }}</span>
+                                                    {% else %}
+                                                    <span style="color: red" class="right-dt">Организация не указана</span>
+                                                    {% endif %}
+												</div>
+                                            <div class="shopowner-dt-list">
+													<span class="left-dt">Вход в систему</span>
+													<span class="right-dt">{{  user.last_login }}</span>
+												</div>
+                                            <div class="shopowner-dt-list">
+													<span class="left-dt">Дата регистрации</span>
+													<span class="right-dt">{{  user.date_joined }}</span>
 												</div>
 											</div>
 										</div>
@@ -62,6 +98,8 @@
 										<div class="news-content-right pd-20">
 											<div class="row">
 												<div class="col-lg-6">
+                                                    <form method="post">
+                                                        {% csrf_token %}
 													<div class="form-group mb-3">
 														<label class="form-label">Имя*</label>
 														<input type="text" class="form-control" name="first_name" value="" placeholder="Введите имя">
@@ -114,6 +152,7 @@
 												<div class="col-lg-12">
 													<button class="save-btn hover-btn" type="submit">Сохранить</button>
 												</div>
+                                                </form>
 											</div>
 										</div>
 									</div>

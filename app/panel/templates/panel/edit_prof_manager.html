@@ -1,0 +1,50 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Менеджеры</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'add_manager' %}">Менеджер</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'edit_manager' %}">Список менеджеров</a></li>
+                            <li class="breadcrumb-item active">Редактировать профиль менеджера</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-6 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-title-2">
+                                        <h4>Редактировать профиль менеджера :</h4>
+									</div>
+									<div class="card-body-table">
+                                        <form method="POST">
+                                            {% csrf_token %}
+										<div class="news-content-right pd-20">
+                                            <p><span style="color: green; font-size: 1.2em"> {{ users.get_full_name }}</span></p>
+											<div class="form-group">
+												<label class="form-label">Имя*</label>
+                                                <p><span style="color: red; font-size: 0.8em">Введите новое </span>"ИМЯ"<span style="color: red; font-size: 0.8em"> или оставьте поле со старым значением</span></p>
+												<input type="text" class="form-control" name="first_name" value="{{ users.first_name }}" placeholder="Изменить имя">
+											</div>
+                                            <div class="form-group">
+												<label class="form-label">Фамилия*</label>
+                                                <p><span style="color: red; font-size: 0.8em">Введите новую </span>"ФАМИЛИЮ" <span style="color: red; font-size: 0.8em"> или оставьте поле со старым значением</span></p>
+												<input type="text" class="form-control" name="last_name" value="{{ users.last_name }}" placeholder="Изменить Фамилию">
+											</div>
+											<div class="form-group">
+												<label class="form-label">E-mail*</label>
+                                                <p><span style="color: red; font-size: 0.8em">Введите новый </span>"E-MAIL" <span style="color: red; font-size: 0.8em">или оставьте поле со старым значением</span></p>
+												<input type="email" class="form-control" name="email" value="{{ users.email }}" placeholder="Изменить E-mail">
+											</div>
+											<button class="save-btn hover-btn" type="submit">Сохранить</button>
+										</div>
+                                        </form>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+
+{% endblock content %}

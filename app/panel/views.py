@@ -11,13 +11,40 @@ register = template.Library()
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
 
+# Получение списка пользователей входящих в группу 'manager' и сортировка фамилии по алфавиту
 def edit_manager(request):
     users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
     return render(request, 'panel/edit_manager.html', {'users' : users})
 
+# Получение списка пользователей входящих в группу 'manager'
 def add_manager(request):
     users = User.objects.filter(groups__name='manager')
-    return render(request, 'panel/add_manager.html', {'users': users} )
+    return render(request, 'panel/add_manager.html', {'users': users})
+
+# Страница. Результат успешного изменения профиля менеджера
+def edit_ok_manager(request):
+    return render(request, "panel/edit_ok_manager.html", {})
+
+# Изменение данных в БД менеджера
+def edit_prof_manager(request,id):
+    try:
+        users = User.objects.get(id = id)
+
+        if request.method == "POST":
+            users.first_name = request.POST.get("first_name")
+            users.last_name = request.POST.get("last_name")
+            users.email = request.POST.get("email")
+            users.save()
+            return render(request, "panel/edit_ok_manager.html")
+
+        else:
+            return render(request, "panel/edit_prof_manager.html", {"users": users})
+    except users.DoesNotExist:
+        return render(request ,'panel/edit_error_manager.html', {'users' : users})
+
+def list_manager(request):
+    users = User.objects.filter(groups__name='manager')
+    return render(request, 'panel/include/list_manager.html', {'users' : users})
 
 def homepage(request):
     homepage_url = reverse('homepage', host='www')

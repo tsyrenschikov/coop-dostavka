@@ -7,7 +7,7 @@
                         <h2 class="mt-30 page-title">Пользователи</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'add_manager' %}">Менеджер</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'edit_manager' %}">Менеджер</a></li>
                             <li class="breadcrumb-item active">Добавить менеджера</li>
                         </ol>
                     <div class="row">
@@ -33,7 +33,7 @@
 							<div class="col-lg-8 col-md-7">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-										<h4>Редактировать профиль</h4>
+										<h4>Добавить менеджера</h4>
 									</div>
 									<div class="card-body-table">
 										<div class="news-content-right pd-20">
@@ -60,32 +60,6 @@
 													<div class="form-group mb-3">
 														<label class="form-label">Телефон*</label>
 														<input type="text" class="form-control" value="" placeholder="Введите номер телефона">
-													</div>
-												</div>
-                                                <div class="col-lg-6">
-													<div class="form-group mb-3">
-														<label class="form-label">Фото профиля*</label>
-														<div class="input-group">
-															<div class="custom-file">
-																<input type="file" class="custom-file-input" id="profile-img" aria-describedby="inputGroupFileAddon04">
-																<label class="custom-file-label" for="profile-img">Выбрать фото</label>
-															</div>
-														</div>
-														<div class="add-cate-img-1">
-															<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
-														</div>
-													</div>
-												</div>
-                                                <div class="col-lg-6">
-													<div class="form-group mb-3">
-														<label class="form-label">Название магазина*</label>
-														<textarea class="text-control" placeholder="Например: Красноуфимское РАЙПО"></textarea>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="form-group mb-3">
-														<label class="form-label">Адрес магазина*</label>
-														<textarea class="text-control" placeholder="Например: 623300, Свердловская область, г. Красноуфимск, ул. Ленина 4"></textarea>
 													</div>
 												</div>
 												<div class="col-lg-12">

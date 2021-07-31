@@ -60,6 +60,7 @@ SITE_ID=1
 
 COPY_START_YEAR = 2020
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',

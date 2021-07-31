@@ -423,7 +423,7 @@
 							<a href="{% url 'my_wishlist' %}" class="option_links" title="Wishlist"><i class='uil uil-heart icon_wishlist'></i><span class="noti_count1">3</span></a>
 							<a href="#" class="opts_account">
 								<img src="{% static 'file/shop/images/avatar/img-5.jpg' %}" alt="">
-								<span class="user__name">{{ user.get_short_name }}</span>
+								<span class="user__name">{{ user.first_name }}</span>
 								<i class="uil uil-angle-down"></i>
 							</a>
 							<div class="menu dropdown_account">

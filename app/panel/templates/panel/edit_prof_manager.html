@@ -37,6 +37,18 @@
                                                 <p><span style="color: red; font-size: 0.8em">Введите </span>"E-MAIL" <span style="color: red; font-size: 0.8em">или оставьте поле со значением</span></p>
 												<input type="email" class="form-control" name="email" value="{{ users.email }}" placeholder="Изменить E-mail">
 											</div>
+                                            <div class="form-group">
+												<label class="form-label">E-mail*</label>
+                                                <p><span style="color: red; font-size: 0.8em">Введите </span>"НОМЕР" телефона <span style="color: red; font-size: 0.8em">или оставьте поле со
+                                                    значением</span></p>
+												<input type="phone" class="form-control" name="phoneNumber" value="{{ users.phone }}" placeholder="Изменить номер">
+											</div>
+                                            <div class="form-group">
+												<label class="form-label">Наименование организации*</label>
+                                                <p><span style="color: red; font-size: 0.8em">Введите </span>"НАИМЕНОВАНИЕ" организации <span style="color: red; font-size: 0.8em">или оставьте поле со
+                                                    значением</span></p>
+												<input type="text" class="form-control" name="org" value="{{ users.org }}" placeholder="Изменить наимнование организации">
+											</div>
 											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>
                                         </form>

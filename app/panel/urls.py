@@ -15,6 +15,7 @@ urlpatterns = [
     path('delete_ok_manager/<int:id>/', views.delete_ok_manager, name='delete_ok_manager'),
     path('view_manager/<int:id>/', views.view_manager, name='view_manager'),
     path('add_manager/', views.add_manager, name='add_manager'),
+    path('add_ok_manager/<int:id>/', views.add_manager, name='add_ok_manager'),
     path('edit_profile/',views.edit_profile, name='edit_profile'),
     path('posts/', views.posts, name = 'posts'),
     path('add_post/', views.add_post, name='add_post'),

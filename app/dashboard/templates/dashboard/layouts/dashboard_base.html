@@ -23,9 +23,13 @@
 							<label for="file"><i class="uil uil-camera-plus"></i></label>
 						</div>
 					</div>
-					<h4> {{ user.get_full_name }}</h4>
+					<h4> {{ user.first_name }}</h4>
 					<h5>{{ user.email }}<a href="#"><i class="uil uil-edit"></i></a></h5>
-					<p>+91999999999<a href="#"><i class="uil uil-edit"></i></a></p>
+                    {% if phone %}
+					<p>{{ user.phone }}<a href="#"><i class="uil uil-edit"></i></a></p>
+                    {% else %}
+                    <p>Телефон не указан<a href="#"><i class="uil uil-edit"></i></a></p>
+                    {% endif %}
 					<div class="earn-points"><img src="{% static 'file/shop/images/Dollar.svg' %}" alt="">Бонусы : <span>20</span></div>
 				</div>
 			</div>

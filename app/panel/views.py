@@ -1,8 +1,10 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.db.models.functions import Lower
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
 from django import template
+from django.contrib.auth.models import Group
 
 register = template.Library()
 
@@ -14,12 +16,38 @@ def manager(user, group_name):
 # Получение списка пользователей входящих в группу 'manager' и сортировка фамилии по алфавиту
 def edit_manager(request):
     users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
-    return render(request, 'panel/edit_manager.html', {'users' : users})
+    return render(request, 'panel/edit_manager.html', {'users': users})
 
 # Получение списка пользователей входящих в группу 'manager'
 def add_manager(request):
-    users = User.objects.filter(groups__name='manager')
-    return render(request, 'panel/add_manager.html', {'users': users})
+    alert = {
+        "email": request.GET.get('email', ''),
+    }
+
+
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        org = request.POST.get('org')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if password == password2:
+            if User.objects.filter(email=request.POST['email']).exists():
+                alert['email'] = "Почтовый ящик уже используется"
+            else:
+                User.objects.create_user(first_name=first_name,last_name=last_name,org=org, phone=phone, email=email, password=password)
+                user_group = Group.objects.get(name='manager')
+                users = User.objects.get(email=email)
+                users.groups.add(user_group)
+                return render(request,'panel/add_ok_manager.html',{'users':users})
+    return render(request, 'panel/add_manager.html', alert)
+
+def add_ok_manager(request):
+    return render(request, 'panel/add_ok_manager.html', {})
+
 
 # Изменение данных в БД менеджера
 def edit_prof_manager(request,id):
@@ -30,6 +58,7 @@ def edit_prof_manager(request,id):
             users.first_name = request.POST.get("first_name")
             users.last_name = request.POST.get("last_name")
             users.email = request.POST.get("email")
+            users.org = request.POST.get("org")
             users.save()
             return render(request, "panel/edit_ok_manager.html", {'users':users})
 

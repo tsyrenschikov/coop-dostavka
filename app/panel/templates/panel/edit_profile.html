@@ -29,14 +29,6 @@
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Логин</span>
-                                                    {% if user.get_username %}
-													<span class="right-dt" class="right-dt">{{ user.get_username }}</span>
-                                                    {% else %}
-                                                    Логин не указан
-                                                    {% endif %}
-												</div>
-												<div class="shopowner-dt-list">
 													<span class="left-dt">Имя</span>
                                                     {% if user.first_name %}
 													<span class="right-dt">{{ user.first_name }}</span>

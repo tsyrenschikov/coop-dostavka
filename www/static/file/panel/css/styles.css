@@ -953,6 +953,19 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
+.pos_rel {
+	position: relative;
+}
+
+.form-control:focus+.lgn_icon  {
+	color: #f55d2c;
+}
+
+.lgn_input {
+	padding: 0 1rem 0 3rem !important;
+}
+
 .signup-link {
   margin-top: 30px;
   border-radius: 0;

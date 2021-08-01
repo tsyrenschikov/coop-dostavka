@@ -118,8 +118,8 @@ def edit_profile(request):
         else:
             user = User.objects.get(email=request.POST.get('email', ''))
             return render(request,'panel/edit_profile.html',{'user':user},)
-    except user.DoesNotExist:
-        return render(request ,'panel/edit_er_profile.html' )
+    except User.DoesNotExist:
+        return render(request ,'panel/edit_profile.html' )
 
 def panel(request):
     return render(request, 'panel/index.html', {})

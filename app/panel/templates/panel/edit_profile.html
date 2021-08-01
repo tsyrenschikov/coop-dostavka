@@ -18,7 +18,9 @@
 												<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
 											</div>
 											<div class="shopowner-dt-left">
-												<h4>КООП</h4>
+                                            {% if user.org %}
+												<h4>КООП - {{ user.org }}</h4>
+                                            {% endif %}
 												<span>
                                                     {% if user.is_staff %}
                                                         Администратор

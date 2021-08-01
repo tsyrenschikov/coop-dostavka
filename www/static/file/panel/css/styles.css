@@ -958,6 +958,12 @@ body {
 	position: relative;
 }
 
+.input-text{
+    height:500px;
+    width:500px;
+    word-break: break-word;
+}
+
 .form-control:focus+.lgn_icon  {
 	color: #f55d2c;
 }

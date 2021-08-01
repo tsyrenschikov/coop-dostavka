@@ -71,6 +71,14 @@
                                                     {% endif %}
 												</div>
                                                 <div class="shopowner-dt-list">
+													<span class="left-dt">Адрес отгрузки</span>
+                                                    {% if users.org %}
+													<span class="right-dt">{{ users.address }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Адрес отгрузки не указан</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
                                                     <span class="left-dt">Вход в систему</span>
                                                     {% if users.last_login %}
                                                     <span class="right-dt">{{ users.last_login }}</span>

@@ -13,6 +13,7 @@ register = template.Library()
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
 
+
 # Получение списка пользователей входящих в группу 'manager' и сортировка фамилии по алфавиту
 def edit_manager(request):
     users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
@@ -31,6 +32,7 @@ def add_manager(request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         org = request.POST.get('org')
+        address = request.POST.get('address')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
@@ -38,7 +40,7 @@ def add_manager(request):
             if User.objects.filter(email=request.POST['email']).exists():
                 alert['email'] = "Почтовый ящик уже используется"
             else:
-                User.objects.create_user(first_name=first_name,last_name=last_name,org=org, phone=phone, email=email, password=password)
+                User.objects.create_user(first_name=first_name,last_name=last_name,org=org, phone=phone,address=address, email=email, password=password)
                 user_group = Group.objects.get(name='manager')
                 users = User.objects.get(email=email)
                 users.groups.add(user_group)
@@ -59,6 +61,7 @@ def edit_prof_manager(request,id):
             users.last_name = request.POST.get("last_name")
             users.email = request.POST.get("email")
             users.org = request.POST.get("org")
+            users.address = request.POST.get("address")
             users.save()
             return render(request, "panel/edit_ok_manager.html", {'users':users})
 
@@ -71,7 +74,7 @@ def edit_prof_manager(request,id):
 def edit_ok_manager(request):
     return render(request, "panel/edit_ok_manager.html", {})
 
-# УУдаление данных из БД менеджера
+# Удаление данных из БД менеджера
 def delete_manager(request, id):
     try:
         users = User.objects.get(id=id)
@@ -97,10 +100,26 @@ def contact(request):
     contact_url = reverse('contact', host='www')
     return render(request, 'contact.html', {'contact_url': contact_url})
 
-
+#Ревдактирование собственного профиля
 def edit_profile(request):
-    return render(request, 'panel/edit_profile.html', {})
+    user=''
+    try:
+        user=User.objects.get(email=request.POST.get('email', ''))
 
+        if request.method=="POST":
+            user.first_name=request.POST.get("first_name")
+            user.last_name=request.POST.get("last_name")
+            user.email=request.POST.get("email")
+            user.phone=request.POST.get("phone")
+            user.org=request.POST.get("org")
+            user.address=request.POST.get("address")
+            user.save()
+            return render(request, 'panel/edit_profile.html',{'user':user})
+        else:
+            user = User.objects.get(email=request.POST.get('email', ''))
+            return render(request,'panel/edit_profile.html',{'user':user},)
+    except user.DoesNotExist:
+        return render(request ,'panel/edit_er_profile.html' )
 
 def panel(request):
     return render(request, 'panel/index.html', {})

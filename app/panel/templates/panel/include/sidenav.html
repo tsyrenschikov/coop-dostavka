@@ -7,6 +7,7 @@
 								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Панель управление
 							</a>
+                            {% if 'super_manager' in groups %}
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManager" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Менеджер
@@ -18,6 +19,11 @@
                                     <a class="nav-link sub_nav_link" href="{% url 'edit_manager' %}">Редактировать менеджера</a>
                                 </nav>
                             </div>
+                            {% endif %}
+                            <a class="nav-link" href="{% url 'customers' %}">
+								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Клиенты
+							</a>
                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                                 Посты
@@ -89,10 +95,6 @@
 							<a class="nav-link" href="{%  url 'orders' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                                 Заказы
-							</a>
-							<a class="nav-link" href="{% url 'customers' %}">
-								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Клиенты
 							</a>
 							<a class="nav-link" href="{% url 'offers' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>

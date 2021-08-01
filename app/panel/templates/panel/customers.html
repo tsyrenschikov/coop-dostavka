@@ -52,9 +52,11 @@
                                                         {% endif %}
 														<td class="action-btns">
                                                             <a href="/view_customer/{{ users.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-															<!--<a href="/edit_customers/{{ users.id }}" class="edit-btn" title="Редактировать"><i class="fas
+                                                            {% if 'super_manager' in groups %}
+															<a href="/edit_customers/{{ users.id }}" class="edit-btn" title="Редактировать"><i class="fas
 															fa-edit"></i></a>
-															<a href="/delete_customer/{{ users.id }}" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>-->
+															<a href="/delete_customer/{{ users.id }}" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>
+                                                            {% endif %}
 														</td>
 													</tr>
                                                 {% endfor %}

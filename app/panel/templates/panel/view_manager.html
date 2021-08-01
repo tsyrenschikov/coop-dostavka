@@ -28,7 +28,6 @@
 												<h4>КООП - {{ user.org }}</h4>
                                             {% endif %}
 												<span>
-												<h4>{{ users.get_full_name }}</h4>
 												<span>{% if 'super_manager' in groups %}
                                                         Администратор
                                                         {% else %}
@@ -103,6 +102,8 @@
 									</div>
                                     <div class="col-lg-12">
 								        <a href="{% url 'edit_manager' %}" class="add-btn hover-btn">К списку менеджеров</a>
+                                    </div>
+                                <div class="shopowner-dt-left mt-4">
                                     </div>
 								</div>
 							</div>

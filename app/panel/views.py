@@ -181,13 +181,46 @@ def order_view(request):
 def order_edit(request):
     return render(request, 'panel/order_edit.html', {})
 
+#Клиенты
 def customers(request):
     users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
     return render(request, 'panel/customers.html', {'users':users})
 
+#Просмотр клиента
 def view_customer(request,id):
     users = User.objects.get(id=id)
     return render(request, "panel/view_customer.html", {'users': users})
+
+#Редактировать клиента
+def edit_customers(request, id):
+    try:
+        users = User.objects.get(id=id)
+
+        if request.method == "POST":
+            users.first_name = request.POST.get("first_name")
+            users.email = request.POST.get("email")
+            users.phone = request.POST.get("phone")
+            users.save()
+            return render(request, "panel/edit_ok_customer.html", {'users': users})
+
+        else:
+            return render(request, "panel/edit_customers.html", {"users": users})
+    except users.DoesNotExist:
+        return render(request, 'panel/edit_error_customers.html', {'users': users})
+
+#Удалить клиента
+def delete_customer(request, id):
+    try:
+        users = User.objects.get(id=id)
+        users.delete()
+        return render(request, "panel/delete_ok_customer.html")
+    except users.DoesNotExist:
+        return render(request ,'panel/edit_error_manager.html', {'users' : users})
+
+#Успешное удаление клиента
+def delete_ok_customer(request):
+    return render(request, "panel/delete_ok_customer.html", {})
+
 
 def customer_view(request):
     return render(request, 'panel/customer_view.html', {})

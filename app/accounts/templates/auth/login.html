@@ -20,11 +20,11 @@
                                             {% if form.errors %}
                                                 <div class="alert alert-danger alert-dismissible">
                                                 <a href="{% url 'reset' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <p>Логин или пароль не найдены</p>
+                                                <p>email или пароль не найдены</p>
                                             </div>
                                             {% endif %}
 										<div class="form-group pos_rel">
-                                            <input id="username" name="username" type="text" placeholder="Логин" class="form-control lgn_input" required="">
+                                            <input id="username" name="username" type="text" placeholder="E-mail" class="form-control lgn_input" required="">
 											<i class="uil uil-mobile-android-alt lgn_icon"></i>
 										</div>
 										<div class="form-group pos_rel">
@@ -33,17 +33,17 @@
 										</div>
 										<button class="login-btn hover-btn" type="submit">Войти</button>
 									</form>
-                                        <div class="socauth">
+                                       <!-- <div class="socauth">
                                             <p class="form-title social">
                                             Другие способы входа
-                                            </p>
+                                            </p>-->
                                                 <!--Регистрация VK-->
-                                            <a href="{% url 'social:begin' 'vk-oauth2' %}" class="btn btn-neutral btn-icon">
-                                            <span class="btn-inner--icon"><img src="{% static 'file/shop/images/vk.png'%}"></span></a>
+                                            <!--<a href="{% url 'social:begin' 'vk-oauth2' %}" class="btn btn-neutral btn-icon">
+                                            <span class="btn-inner--icon"><img src="{% static 'file/shop/images/vk.png'%}"></span></a>-->
                                                 <!--Регистрация Google -->
-                                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-neutral btn-icon">
+                                            <!--<a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-neutral btn-icon">
                                             <span class="btn-inner--icon"><img src="{% static 'file/shop/images/google.svg'%}"></span></a>
-                                        </div>
+                                        </div>-->
 								<div class="password-forgor">
 									<a href="{% url 'reset' %}">Забыли пароль?</a>
 								</div>

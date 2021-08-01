@@ -4,6 +4,11 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-body-table">
 										<div class="shopowner-content-left text-center pd-20">
+                                        {% if 'super_manager' in groups %}
+                                        <p class="breadcrumb-item">Карточка супер-менеджера</p>
+                                        {% else %}
+                                        <p class="breadcrumb-item">Карточка менеджера</p>
+                                        {% endif %}
 											<div class="customer_img">
 												<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
 											</div>

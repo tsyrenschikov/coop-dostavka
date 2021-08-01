@@ -15,13 +15,21 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-body-table">
 										<div class="shopowner-content-left text-center pd-20">
+                                        {% if 'super_manager' in groups %}
+                                        <p class="breadcrumb-item">Карточка супер-менеджера</p>
+                                        {% else %}
                                         <p class="breadcrumb-item">Карточка менеджера</p>
+                                        {% endif %}
 											<div class="customer_img">
 												<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
 											</div>
 											<div class="shopowner-dt-left mt-4">
+                                            {% if user.org %}
+												<h4>КООП - {{ user.org }}</h4>
+                                            {% endif %}
+												<span>
 												<h4>{{ users.get_full_name }}</h4>
-												<span>{% if users.is_staff %}
+												<span>{% if 'super_manager' in groups %}
                                                         Администратор
                                                         {% else %}
                                                         Менеджер магазина

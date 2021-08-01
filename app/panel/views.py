@@ -100,7 +100,7 @@ def contact(request):
     contact_url = reverse('contact', host='www')
     return render(request, 'contact.html', {'contact_url': contact_url})
 
-#Ревдактирование собственного профиля
+#Редактирование собственного профиля
 def edit_profile(request):
     user=''
     try:
@@ -182,7 +182,12 @@ def order_edit(request):
     return render(request, 'panel/order_edit.html', {})
 
 def customers(request):
-    return render(request, 'panel/customers.html', {})
+    users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
+    return render(request, 'panel/customers.html', {'users':users})
+
+def view_customer(request,id):
+    users = User.objects.get(id=id)
+    return render(request, "panel/view_customer.html", {'users': users})
 
 def customer_view(request):
     return render(request, 'panel/customer_view.html', {})

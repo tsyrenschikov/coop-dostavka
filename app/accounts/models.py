@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from .managers import CustomUserManager
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=30,blank=True, null=True,verbose_name='Имя пользователя')
     email = models.EmailField(_('email address'), unique=True)
     phone = models.CharField(max_length=30,verbose_name='Номер телефона')
     address = models.TextField(max_length=300,verbose_name='Адрес отгрузки')

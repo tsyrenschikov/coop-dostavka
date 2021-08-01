@@ -70,6 +70,7 @@
 									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
 								</nav>
                             </div>
+                        {% if 'super_manager' in groups %}
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShops" aria-expanded="false" aria-controls="collapseShops">
 								<div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
                                 Магазины
@@ -81,6 +82,7 @@
 									<a class="nav-link sub_nav_link" href="{%  url 'add_shop' %}">Добавить магазин</a>
 								</nav>
                             </div>
+                        {% endif %}
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
 								<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                                 Продукты
@@ -100,6 +102,7 @@
 								<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
                                 Акция
 							</a>
+                            {% if 'super_manager' in groups %}
 							<a class="nav-link" href="{% url 'pages' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Страницы
@@ -120,6 +123,7 @@
 									<a class="nav-link sub_nav_link" href="email_setting.html">Email настройка</a>
 								</nav>
                             </div>
+                        {% endif %}
 							<a class="nav-link" href="{% url 'reports' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
                                 Отчеты

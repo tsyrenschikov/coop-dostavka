@@ -23,6 +23,7 @@ def edit_manager(request):
 def add_manager(request):
     alert = {
         "email": request.GET.get('email', ''),
+        "phone": request.GET.get('phone', ''),
     }
 
 
@@ -39,6 +40,8 @@ def add_manager(request):
         if password == password2:
             if User.objects.filter(email=request.POST['email']).exists():
                 alert['email'] = "Почтовый ящик уже используется"
+            if User.objects.filter(phone=request.POST['phone']).exists():
+                alert['phone'] = "Номер телефона уже используется"
             else:
                 User.objects.create_user(first_name=first_name,last_name=last_name,org=org, phone=phone,address=address, email=email, password=password)
                 user_group = Group.objects.get(name='manager')
@@ -61,6 +64,7 @@ def edit_prof_manager(request,id):
             users.last_name = request.POST.get("last_name")
             users.email = request.POST.get("email")
             users.org = request.POST.get("org")
+            users.phone = request.POST.get("phone")
             users.address = request.POST.get("address")
             users.save()
             return render(request, "panel/edit_ok_manager.html", {'users':users})

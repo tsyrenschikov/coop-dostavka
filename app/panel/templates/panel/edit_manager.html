@@ -24,15 +24,17 @@
 										        </div>
 									        </div>
 								        </div>
-							        </div>
-									<div class="card-title-2">
-										<h4>Список менеджеров</h4>
-									</div>
-                                <div class="col-lg-12">
+                                        <div class="card-title-2">
+                                        </div>
+                                        <div class="col-lg-12">
 								                <a href="{% url 'add_manager' %}" class="add-btn hover-btn">Добавить менеджера</a>
-							                </div>
-                                <div class="card-title-2">
-                                </div>
+                                        </div>
+                                        <div class="card-title-2">
+                                        </div>
+							            </div>
+									    <div class="card-title-2">
+										    <h4>Список менеджеров</h4>
+									    </div>
 									<div class="card-body-table">
 										<div class="table-responsive">
 											<table class="table ucp-table table-hover">
@@ -82,9 +84,12 @@
                                                         {% endif %}
 														<td class="action-btns">
                                                             <a href="/view_manager/{{ users.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-															<a href="/edit_prof_manager/{{ users.id }}" class="edit-btn" title="Редактировать"><i class="fas
-															fa-edit"></i></a>
-															<a href="/delete_manager/{{ users.id }}" class="delete-btn" title="Удалить"><i class="fas fa-trash-alt"></i></a>
+															<a href="/edit_prof_manager/{{ users.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
+															<a href="/delete_manager/{{ users.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить менеджера??? (ДЕЙСТВИЕ НЕ ' +
+															 'ОБРАТИМО)')"><i
+                                                                    class="fas
+															fa-trash-alt" onSubmit="if(confirm('Sure?'))
+															this.submit"></i></a>
 														</td>
 													</tr>
                                                 {% endfor %}

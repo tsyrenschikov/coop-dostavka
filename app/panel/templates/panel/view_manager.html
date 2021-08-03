@@ -25,10 +25,11 @@
 											</div>
 											<div class="shopowner-dt-left mt-4">
                                             {% if user.org %}
-												<h4>КООП - {{ user.org }}</h4>
+												<h4>КООП - {{ users.org }}</h4>
                                             {% endif %}
 												<span>
-												<span>{% if 'super_manager' in groups %}
+												<span>
+                                                    {% if users.is_superuser %}
                                                         Администратор
                                                         {% else %}
                                                         Менеджер магазина

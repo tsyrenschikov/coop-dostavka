@@ -371,7 +371,7 @@
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 					<a href="/"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 				</div>
-				<div class="select_location">
+				<!--<div class="select_location">
 					<div class="ui inline dropdown loc-title">
 						<div class="text">
 						  <i class="uil uil-location-point"></i>
@@ -393,7 +393,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 				<div class="search120">
 					<div class="ui search">
 					  <div class="ui left icon input swdh10">
@@ -402,11 +402,14 @@
 					  </div>
 					</div>
 				</div>
+                <div class="search120">
+                <p style="color: red">Сайт в режиме разработки</p>
+                </div>
 				<div class="header_right">
 					<ul>
-						<li>
+						<!--<li>
 							<a href="tel:+7(343)288-53-07" class="offer-link"><i class="uil uil-phone-alt"></i>+7(343)288-53-07</a>
-						</li>
+						</li>-->
 						<li>
 							<a class="offer-link" href="{% url 'offers' %}"><i class="uil uil-gift"></i>Акция</a>
 						</li>
@@ -488,10 +491,11 @@
 								<li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Карьера</a></li>
 								<li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
                                     связь</a></li>
+
 							</ul>
 
 						</div>
-					</div>
+                    </div>
 				</nav>
 				<div class="catey__icon">
 					<a href="#" class="cate__btn" data-toggle="modal" data-target="#category_model" title="Categories"><i class="uil uil-apps"></i></a>

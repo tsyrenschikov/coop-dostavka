@@ -39,8 +39,8 @@ def add_manager(request):
 
         if password == password2:
             if User.objects.filter(email=request.POST['email']).exists():
-                alert['email'] = "Почтовый ящик уже используется"
-            if User.objects.filter(phone=request.POST['phone']).exists():
+                alert['email'] = "E-mail уже используется"
+            elif User.objects.filter(phone=request.POST['phone']).exists():
                 alert['phone'] = "Номер телефона уже используется"
             else:
                 User.objects.create_user(first_name=first_name,last_name=last_name,org=org, phone=phone,address=address, email=email, password=password)
@@ -58,6 +58,7 @@ def add_ok_manager(request):
 def edit_prof_manager(request,id):
     try:
         users = User.objects.get(id = id)
+
 
         if request.method == "POST":
             users.first_name = request.POST.get("first_name")

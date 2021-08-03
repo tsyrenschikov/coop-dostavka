@@ -16,13 +16,43 @@
                             <div class="collapse" id="collapseManager" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link sub_nav_link" href="{% url 'add_manager' %}">Добавить менеджера</a>
-                                    <a class="nav-link sub_nav_link" href="{% url 'edit_manager' %}">Редактировать менеджера</a>
+                                    <a class="nav-link sub_nav_link" href="{% url 'edit_manager' %}">Список менеджеров</a>
                                 </nav>
                             </div>
                             {% endif %}
                             <a class="nav-link" href="{% url 'customers' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Клиенты
+							</a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                Категории
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+                            <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Все категории</a>
+									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
+								</nav>
+                            </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+								<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                                Продукты
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+                            <div class="collapse" id="collapseProducts" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link sub_nav_link" href="{% url 'products' %}">Все продукты</a>
+									<a class="nav-link sub_nav_link" href="{% url 'add_product' %}">Добавить продукт</a>
+								</nav>
+                            </div>
+							<a class="nav-link" href="{%  url 'orders' %}">
+								<div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
+                                Заказы
+							</a>
+							<a class="nav-link" href="{% url 'offers' %}">
+								<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
+                                Акция
 							</a>
                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
@@ -59,17 +89,6 @@
 									<a class="nav-link sub_nav_link" href="{% url 'add_area' %}">Добавить зону</a>
 								</nav>
                             </div>
-							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
-								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                Категории
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-							</a>
-                            <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Все категории</a>
-									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
-								</nav>
-                            </div>
                         {% if 'super_manager' in groups %}
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShops" aria-expanded="false" aria-controls="collapseShops">
 								<div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
@@ -83,25 +102,6 @@
 								</nav>
                             </div>
                         {% endif %}
-							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
-								<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-                                Продукты
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-							</a>
-                            <div class="collapse" id="collapseProducts" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="{% url 'products' %}">Все продукты</a>
-									<a class="nav-link sub_nav_link" href="{% url 'add_product' %}">Добавить продукт</a>
-								</nav>
-                            </div>
-							<a class="nav-link" href="{%  url 'orders' %}">
-								<div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
-                                Заказы
-							</a>
-							<a class="nav-link" href="{% url 'offers' %}">
-								<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
-                                Акция
-							</a>
                             {% if 'super_manager' in groups %}
 							<a class="nav-link" href="{% url 'pages' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

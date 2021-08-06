@@ -1,4 +1,3 @@
-
 def user_groups_processor(request):
     groups = []
     user = request.user

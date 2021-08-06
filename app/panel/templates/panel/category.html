@@ -13,34 +13,10 @@
 							<div class="col-lg-12">
 								<a href="{%  url 'add_category' %}" class="add-btn hover-btn">Добавить</a>
 							</div>
-							<div class="col-lg-3 col-md-4">
-								<div class="bulk-section mt-30">
-									<div class="input-group">
-										<select id="action" name="action" class="form-control">
-											<option selected>Массовые действия</option>
-											<option value="1">Активировать</option>
-											<option value="2">Дезактивировать</option>
-											<option value="3">Удалить</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Применить</button>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="col-lg-5 col-md-6">
 								<div class="bulk-section mt-30">
 									<div class="search-by-name-input">
 										<input type="text" class="form-control" placeholder="Поиск">
-									</div>
-									<div class="input-group">
-										<select id="categeory" name="categeory" class="form-control">
-											<option selected>Активный</option>
-											<option value="1">Не активный</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Поиск категории</button>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -54,181 +30,47 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-														<th style="width:60px"><input type="checkbox" class="check-all"></th>
-														<th style="width:60px">ID</th>
+                                                        <th>Имя</th>
 														<th style="width:130px">Изображение</th>
-														<th>Имя</th>
 														<th>Описание</th>
 														<th>Статус</th>
+                                                        {% if user.is_superuser %}
 														<th>Действия</th>
+                                                        {% endif %}
 													</tr>
 												</thead>
 												<tbody>
+                                                    {% for categories in categories %}
 													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
-														<td>1</td>
+                                                    <td>{{ categories.name }}</td>
 														<td>
+                                                            {% if categories.image %}
 															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-1.svg' %}" alt="">
+																<img src="{{ categories.image.url }}" alt="">
 															</div>
+                                                                {% else %}
+                                                                <div class="cate-img">
+                                                                    <p>no image</p>
+															</div>
+                                                            {% endif %}
 														</td>
-														<td>Фрукты и овощи</td>
-														<td></td>
+                                                        {% if categories.descriptions %}
+														<td>{{ categories.descriptions }}</td>
+                                                        {% else %}
+                                                        <p>Нет описания</p>
+                                                        {% endif %}
+                                                        {% if categories.status %}
 														<td><span class="badge-item badge-status">Активный</span></td>
+                                                        {% else %}
+                                                        <td><span class="badge-item badge-status">Не активный</span></td>
+                                                        {% endif %}
+                                                        {% if user.is_superuser %}
 														<td class="action-btns">
 															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
 														</td>
+                                                        {% endif %}
 													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="10"></td>
-														<td>2</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-2.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Основные продукты</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="9"></td>
-														<td>3</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-3.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Молочные продукты и яйца </td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="8"></td>
-														<td>4</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-4.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Напитки</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="7"></td>
-														<td>5</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-5.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Закуски</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="6"></td>
-														<td>6</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-6.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Домашний уход</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="5"></td>
-														<td>7</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-7.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Лапша и соусы</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="4"></td>
-														<td>8</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-8.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Личная гигиена</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="3"></td>
-														<td>9</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-9.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Уход за животными</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="2"></td>
-														<td>10</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-10.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Мясо и морепродукты</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
-														<td>11</td>
-														<td>
-															<div class="cate-img">
-																<img src="{%  static 'file/panel/images/category/icon-11.svg' %}" alt="">
-															</div>
-														</td>
-														<td>Электроника</td>
-														<td></td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
+                                                {% endfor %}
 												</tbody>
 											</table>
 										</div>

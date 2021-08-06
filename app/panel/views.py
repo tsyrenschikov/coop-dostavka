@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.db.models.functions import Lower
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
+from .models import Category, Product
+
 
 register = template.Library()
 
@@ -154,7 +156,9 @@ def add_area(request):
     return render(request, 'panel/add_area.html', {})
 
 def category(request):
-    return render(request, 'panel/category.html', {})
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(request,'panel/category.html',{'categories': categories, 'users':users})
 
 def add_category(request):
     return render(request, 'panel/add_category.html', {})

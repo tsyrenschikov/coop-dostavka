@@ -1,5 +1,10 @@
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.shortcuts import render
 from django import template
+from django.apps import apps
+Category = apps.get_model('panel', 'Category')
+
 
 register = template.Library()
 
@@ -8,7 +13,9 @@ def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
 
 def shop(request):
-    return render(request, 'shop/index.html', {})
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'shop/index.html', {'users':users, 'categories' : categories})
 
 
 def product(request):

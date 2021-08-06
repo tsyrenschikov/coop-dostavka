@@ -112,102 +112,18 @@
 					</div>
 					<div class="col-md-12">
 						<div class="owl-carousel cate-slider owl-theme">
+                            {% for categories in categories %}
 							<div class="item">
 								<a href="#" class="category-item">
+                                    {% if categories.image %}
 									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-1.webp' %}" alt="">
+										<img src="{{ categories.image.url }}" alt="">
 									</div>
-									<h4>Овощи, фрукты</h4>
+                                    {% endif %}
+									<h4>{{ categories.name }}</h4>
 								</a>
 							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-2.webp' %}" alt="">
-									</div>
-									<h4> Молочная продукция </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-3.webp' %}" alt="">
-									</div>
-									<h4> Мясо, птица </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-4.webp' %}" alt="">
-									</div>
-									<h4> Рыба и морепродукты </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-5.webp' %}" alt="">
-									</div>
-									<h4> Бакалея </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-6.webp' %}" alt="">
-									</div>
-									<h4> Растительные масла, жиры </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-7.webp' %}" alt="">
-									</div>
-									<h4> Воды, соки, напитки </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-8.webp' %}" alt="">
-									</div>
-									<h4> Мясопродукты готовые </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-9.webp' %}" alt="">
-									</div>
-									<h4> Кондитерские изделия </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-10.webp' %}" alt="">
-									</div>
-									<h4> Яйца </h4>
-								</a>
-							</div>
-							<div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-11.webp' %}" alt="">
-									</div>
-									<h4> Хлеб и выпечка </h4>
-								</a>
-							</div>
-                            <div class="item">
-								<a href="#" class="category-item">
-									<div class="cate-img">
-										<img src="{% static 'file/shop/images/category/icon-12.webp' %}" alt="">
-									</div>
-									<h4> Консервация </h4>
-								</a>
-							</div>
+                            {% endfor %}
 						</div>
 					</div>
 				</div>

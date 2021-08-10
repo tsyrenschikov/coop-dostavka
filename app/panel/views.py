@@ -158,7 +158,7 @@ def add_area(request):
 
 def category(request):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(request,'panel/category.html',{'categories': categories, 'users':users})
 
 #Просмотр категории товаров
@@ -175,6 +175,7 @@ def edit_category(request,id):
             categories.name=request.POST.get("name")
             categories.descriptions=request.POST.get("descriptions")
             categories.status=request.POST.get("status")
+            categories.number = request.POST.get("number")
             categories.save()
             if request.FILES:
                 categories.image = request.FILES["image"]
@@ -213,6 +214,21 @@ def add_category(request):
 
 def add_ok_category(request):
     return render(request, 'panel/add_ok_category.html', {})
+
+#Удаления категории
+def delete_category(request, id):
+    categories =''
+    try:
+        categories = Category.objects.get(id=id)
+        categories.delete()
+        return render(request, "panel/delete_ok_category.html",{'categories':categories})
+    except categories.DoesNotExist:
+        return render(request ,'panel/edit_error_category.html', {})
+
+#Успешное удаления категории
+def delete_ok_category(request):
+    categories = Category.objects.all()
+    return render(request, 'panel/delete_ok_category.html', {'categories':categories})
 
 def shops(request):
     return render(request, 'panel/shops.html', {})

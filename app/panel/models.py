@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
+    number = models.IntegerField(blank=True, null=True,verbose_name='Номер')
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
     image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
     status = models.BooleanField(default=True, verbose_name='Активный')

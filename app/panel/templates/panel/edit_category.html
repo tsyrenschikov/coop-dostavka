@@ -20,6 +20,10 @@
                                         <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
 										<div class="news-content-right pd-20">
+                                            <div class="form-group">
+												<label class="form-label">Номер категории*</label>
+												<input type="text" class="form-control" name="number" value="{{ categories.number }}" placeholder="Введите номер категории">
+											</div>
 											<div class="form-group">
 												<label class="form-label">Название категории*</label>
 												<input type="text" class="form-control" name="name" value="{{ categories.name }}" placeholder="Введите название категории">

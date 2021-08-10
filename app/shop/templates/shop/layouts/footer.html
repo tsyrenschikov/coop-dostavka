@@ -33,17 +33,11 @@
 						<div class="second-row-item">
 							<h4>Категории</h4>
 							<ul>
-								<li><a href="#">Фрукты и овощи</a></li>
-								<li><a href="#">Продукты</a></li>
-								<li><a href="#">Молочные продукты и яйца </a></li>
-								<li><a href="#">Напитки</a></li>
-								<li><a href="#">Закуски</a></li>
-								<li><a href="#">Домашний уход</a></li>
-								<li><a href="#">Лапша и соусы</a></li>
-								<li><a href="#">Личная гигиена</a></li>
-								<li><a href="#">Уход за животными</a></li>
-								<li><a href="#">Мясо и морепродукты</a></li>
-								<li><a href="#">Электроника</a></li>
+                                {% for categories in categories %}
+                                    {% if categories.status %}
+								<li><a href="#">{{ categories.name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
 							</ul>
 						</div>
 					</div>

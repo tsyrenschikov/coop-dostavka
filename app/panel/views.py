@@ -140,6 +140,7 @@ def add_post(request):
 def post_categories(request):
     return render(request, 'panel/post_categories.html', {})
 
+
 def post_tags(request):
     return render(request, 'panel/post_tags.html', {})
 
@@ -160,8 +161,58 @@ def category(request):
     categories = Category.objects.all()
     return render(request,'panel/category.html',{'categories': categories, 'users':users})
 
+#Просмотр категории товаров
+def view_category(request,id):
+    categories = Category.objects.get(id=id)
+    return render(request, 'panel/view_category.html',{'categories':categories})
+
+#Редактировать категорию товара
+def edit_category(request,id):
+    try:
+        categories = Category.objects.get(id=id)
+
+        if request.method=="POST":
+            categories.name=request.POST.get("name")
+            categories.descriptions=request.POST.get("descriptions")
+            categories.status=request.POST.get("status")
+            categories.save()
+            if request.FILES:
+                categories.image = request.FILES["image"]
+                categories.save()
+                return render(request, 'panel/edit_ok_category.html', {'categories': categories})
+            return render(request, 'panel/edit_ok_category.html',{'categories':categories})
+        else:
+            return render(request,'panel/edit_category.html',{'categories':categories},)
+    except User.DoesNotExist:
+        return render(request, 'panel/edit_category.html',{})
+
+#Успешное редактирование категории товара
+def edit_ok_category(request,id):
+    categories = Category.objects.get(id=id)
+    return render(request, 'panel/edit_ok_category.html', {'categories':categories})
+
+#Добавить категорию товара
 def add_category(request):
+    alert = {
+        "name": request.GET.get('name', ''),
+    }
+
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        status = request.POST.get("status")
+        descriptions = request.POST.get("descriptions")
+
+
+        if name!="null":
+            if Category.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = "Имя категории уже существует"
+            else:
+                Category.objects.create(name=name,status=status,descriptions=descriptions)
+                return render(request, 'panel/add_ok_category.html', {'category': category})
     return render(request, 'panel/add_category.html', {})
+
+def add_ok_category(request):
+    return render(request, 'panel/add_ok_category.html', {})
 
 def shops(request):
     return render(request, 'panel/shops.html', {})

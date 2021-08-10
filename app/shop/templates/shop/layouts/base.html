@@ -51,7 +51,7 @@
 
   </head>
   <body>
-  <!-- Category Model Start-->
+<!-- Category Model Start-->
 	<div id="category_model" class="header-cate-model main-gambo-model modal fade" tabindex="-1" role="dialog" aria-modal="false">
         <div class="modal-dialog category-area" role="document">
             <div class="category-area-inner">
@@ -62,113 +62,29 @@
                 </div>
                 <div class="category-model-content modal-content">
 					<div class="cate-header">
-						<h4>Выбор категории</h4>
+						<h4>Выбрать категорию</h4>
 					</div>
                     <ul class="category-by-cat">
+                    {% for categories in categories %}
+                        {% if categories.status %}
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-1.webp' %}" alt="">
+
+									<img src="{{ categories.image.url }}"  alt="">
+
 								</div>
-								<div class="text"> Овощи, фрукты </div>
+								<div class="text"> {{ categories.name}} </div>
 							</a>
 						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-2.webp' %}" alt="">
-								</div>
-								<div class="text"> Молочная продукция</div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-3.webp' %}" alt="">
-								</div>
-								<div class="text"> Мясо, птица </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-4.webp' %}" alt="">
-								</div>
-								<div class="text"> Рыба и морепродукты </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-5.webp' %}" alt="">
-								</div>
-								<div class="text"> Бакалея </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-6.webp' %}" alt="">
-								</div>
-								<div class="text">Растительные масла, жиры </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-7.webp' %}" alt="">
-								</div>
-								<div class="text"> Воды, соки, напитки </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-8.webp' %}" alt="">
-								</div>
-								<div class="text"> Мясопродукты готовые </div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-9.webp' %}" alt="">
-								</div>
-								<div class="text"> Кондитерские изделия </div>
-							</a>
-						</li>
-                        <li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-10.webp' %}" alt="">
-								</div>
-								<div class="text"> Яйца </div>
-							</a>
-						</li>
-                         <li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-11.webp' %}" alt="">
-								</div>
-								<div class="text"> Хлеб и выпечка </div>
-							</a>
-						</li>
-                        <li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{% static 'file/shop/images/category/icon-12.webp' %}" alt="">
-								</div>
-								<div class="text"> Консервация </div>
-							</a>
-						</li>
+                        {% endif %}
+                        {% endfor %}
                     </ul>
-					<a href="#" class="morecate-btn"><i class="uil uil-apps"></i>Другие категории</a>
                 </div>
             </div>
         </div>
     </div>
 	<!-- Category Model End-->
-
 <!-- Search Model Start-->
 	<div id="search_model" class="header-cate-model main-gambo-model modal fade" tabindex="-1" role="dialog" aria-modal="false">
         <div class="modal-dialog search-ground-area" role="document">
@@ -371,29 +287,7 @@
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 					<a href="/"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 				</div>
-				<!--<div class="select_location">
-					<div class="ui inline dropdown loc-title">
-						<div class="text">
-						  <i class="uil uil-location-point"></i>
-						  Екатеринбург
-						</div>
-						<i class="uil uil-angle-down icon__14"></i>
-						<div class="menu dropdown_loc">
-							<div class="item channel_item">
-								<i class="uil uil-location-point"></i>
-								Красноуфимск
-							</div>
-							<div class="item channel_item">
-								<i class="uil uil-location-point"></i>
-								Первоуральск
-							</div>
-							<div class="item channel_item">
-								<i class="uil uil-location-point"></i>
-								Арти
-							</div>
-						</div>
-					</div>
-				</div>-->
+
 				<div class="search120">
 					<div class="ui search">
 					  <div class="ui left icon input swdh10">
@@ -473,12 +367,39 @@
 				</div>
 			</div>
 		</div>
+
+
+
+    <!--Всплывающие меню категорий-->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="{% static 'file/shop/images/logo.png' %}" height="40" width="70" style="vertical-align:middle;margin:12px
+            10vh"></a>
+            <ul >
+                    {% for categories in categories %}
+                        {% if categories.status %}
+						<li>
+							<a href="#" class="single-cat-items">
+								<div class="icon">
+                                    <img src="{{ categories.image.url }}" width="40" height="40"  alt="">
+                                </div>
+								<div class="text"> {{ categories.name}} </div>
+							</a>
+						</li>
+                        {% endif %}
+                    {% endfor %}
+            </ul>
+        </div>
+
+
+
 		<div class="sub-header-group">
 			<div class="sub-header">
 				<div class="ui dropdown">
-					<a href="#" class="category_drop hover-btn" data-toggle="modal" data-target="#category_model"
-					   title="Categories"><i class="uil uil-apps"></i><span class="cate__icon">Категории</span></a>
-				</div>
+                    <div id="main">
+					<a href="#" class="category_drop hover-btn cd-dropdown-trigger" data-toggle="offcanvas" data-target="#category_model" title="Categories"><i class="uil uil-apps"></i><span
+                            class="cate__icon" onclick="openNav()" >Категории</span></a>
+                    </div>
+                </div>
 				<nav class="navbar navbar-expand-lg navbar-light py-3">
 					<div class="container-fluid">
 						<button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>

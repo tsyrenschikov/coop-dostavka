@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth import get_user_model
+User = get_user_model()
+from django.apps import apps
+Category = apps.get_model('panel', 'Category')
 
 
 def dashboard(reguest):
@@ -11,13 +15,19 @@ def error_502(request, exception):
   return render(request, 'shop/404.html')
 
 def faq(request):
-    return render(request, 'shop/faq.html', {})
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'shop/faq.html', {'users':users, 'categories' : categories})
 
 def offers(reguest):
-    return render(reguest, 'shop/offers.html')
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(reguest, 'shop/offers.html', {'users':users, 'categories' : categories})
 
 def career(reguest):
-    return render(reguest, 'shop/career.html')
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories})
 
 def demo(reguest):
     return render(reguest, 'contact/demo.html')

@@ -3,8 +3,15 @@ from django.core.mail import BadHeaderError, send_mail
 from django.shortcuts import render
 from django.contrib import messages
 import requests
+from django.contrib.auth import get_user_model
+User = get_user_model()
+from django.apps import apps
+Category = apps.get_model('panel', 'Category')
+
 
 def contact(request):
+    users = User.objects.all()
+    categories = Category.objects.all()
     request.method == 'POST'
     if request.method == 'POST':
         subject = request.POST.get('subject')
@@ -30,16 +37,18 @@ def contact(request):
                     send_mail('Форма обратной связи', message, settings.EMAIL_HOST_USER, ['info@coop-dostavka.ru'],)
                 except BadHeaderError:
                     return render(request, 'contact/contact.html', {'recaptcha_site_key': settings.GOOGLE_RECAPTCHA_SITE_KEY})
-                return render(request, 'contact/thanks.html')
+                return render(request, 'contact/thanks.html',{'users':users, 'categories' : categories})
                 ''' if reCAPTCHA returns False '''
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             else:
                 # loading contacts.html if no requests
                 return render(request, 'contact/contact.html')
-    return render(request, "contact/contact.html", {"recaptcha_site_key": settings.GOOGLE_RECAPTCHA_SITE_KEY})
+    return render(request, "contact/contact.html", {"recaptcha_site_key": settings.GOOGLE_RECAPTCHA_SITE_KEY,'users':users, 'categories' : categories})
 
 
 def thanks(request):
-    return render(request, 'contact/thanks.html')
+    users = User.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'contact/thanks.html', {'users':users, 'categories' : categories})
 
 

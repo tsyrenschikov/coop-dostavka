@@ -113,6 +113,7 @@
 					<div class="col-md-12">
 						<div class="owl-carousel cate-slider owl-theme">
                             {% for categories in categories %}
+                                {% if categories.status %}
 							<div class="item">
 								<a href="#" class="category-item">
                                     {% if categories.image %}
@@ -123,6 +124,7 @@
 									<h4>{{ categories.name }}</h4>
 								</a>
 							</div>
+                                {% endif %}
                             {% endfor %}
 						</div>
 					</div>

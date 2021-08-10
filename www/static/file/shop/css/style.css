@@ -1054,6 +1054,11 @@ i.icon1 {
     padding: 20px 10px;
 	display: block;
 }
+.single-cat-items {
+    text-align: left;
+    padding: 20px 10px;
+	display: block;
+}
 
 .single-cat-item:hover {
 	background: #f9f9f9;
@@ -1910,7 +1915,7 @@ i.icon1 {
 
 .category-item {
     width: 100%;
-	display: block;
+	display: inline-block;
     background: #fff;
     border-radius: 10px;
     text-align: center;
@@ -6605,4 +6610,42 @@ textarea {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     display: inline-block;
+}
+
+/* Меню бокового бара */
+.sidebar {
+  height: 100%; /* 100% Полный рост */
+  width: 0; /* 0 ширина - измените это с помощью JavaScript */
+  position: fixed; /* Оставаться на месте */
+  z-index: 1; /* Оставайтесь на вершине */
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden; /* Отключить горизонтальную прокрутку */
+  padding-top: 60px; /* Поместите содержимое 60px сверху */
+  transition: 0.5s; /* 0.5 секунд эффект перехода для скольжения в боковой панели */
+}
+
+/* На боковой панели */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #000d19;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+/* При наведении курсора мыши на навигационные ссылки измените их цвет */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Положение и стиль кнопки закрытия (верхний правый угол) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }

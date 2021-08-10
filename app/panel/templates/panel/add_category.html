@@ -18,37 +18,38 @@
 									</div>
 									<div class="card-body-table">
                                         <form method="post">
+                                            {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Имя*</label>
-												<input type="text" class="form-control" placeholder="Имя категории">
+												<input type="text" name="name" class="form-control" placeholder="Имя категории">
 											</div>
+											<div class="form-group"></div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
-												<select id="status" name="status" class="form-control">
-													<option selected>Активный</option>
-													<option value="1">Не активный</option>
-												</select>
+                                                <div></div>
+                                                <select id="action" name="status" class="form-control">
+                                                    {% if categories.status  %}
+                                                    <option value="True">Активный</option>
+                                                    <option name="status" value="False">Не активный</option>
+                                                    {% else %}
+                                                    <option value="False">Не активный</option>
+                                                    <option name="status" value="True">Активный</option>
+                                                    {% endif %}
+										        </select>
 											</div>
-											<div class="form-group">
+											<!--<div class="form-group">
 												<label class="form-label">Изображение категории*</label>
 												<div class="input-group">
 													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-														<label class="custom-file-label" for="inputGroupFile04">Выбрать изображение</label>
+														<input type="file"  name="image" id="file" >
+														<label type="file"  for="file" ></label>
 													</div>
-												</div>
-												<div class="add-cate-img">
-													<img src="{%  static 'file/panel/images/category/icon-1.svg' %}" alt="">
-												</div>
-											</div>
+                                            </div>
+											</div>-->
 											<div class="form-group">
-												<label class="form-label">Описание*</label>
-												<div class="card card-editor">
-													<div class="content-editor">
-														<textarea class="text-control" placeholder="Описание"></textarea>
-													</div>
-												</div>
+												<label class="form-label">Описание категории*</label>
+												<input type="text" class="form-control" name="descriptions" value="{{ categories.descriptions }}" placeholder="Описание категории">
 											</div>
 											<button class="save-btn hover-btn" type="submit">Добавить категорию</button>
 										</div>

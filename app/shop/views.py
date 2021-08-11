@@ -14,7 +14,7 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories})
 
 

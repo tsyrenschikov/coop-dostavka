@@ -376,27 +376,24 @@
             10vh"></a>
             <ul >
                     {% for categories in categories %}
-                        {% if categories.status %}
-						<li>
-							<a href="#" class="single-cat-items">
-								<div class="icon">
-                                    <img src="{{ categories.image.url }}" width="40" height="40"  alt="">
-                                </div>
-								<div class="text"> {{ categories.name}} </div>
-							</a>
-						</li>
-                        {% endif %}
-                    {% endfor %}
+                            {% if categories.status %}
+                                <li>
+                                    <a href="#" class="single-cat-items">
+                                        <div class="icon">
+                                            <img src="{{ categories.image.url }}" width="40" height="40"  alt="">
+                                        </div>
+                                        <div class="text"> {{ categories.name}} </div>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
             </ul>
         </div>
-
-
-
-		<div class="sub-header-group">
+        <div class="sub-header-group">
 			<div class="sub-header">
 				<div class="ui dropdown">
                     <div id="main">
-					<a href="#" class="category_drop hover-btn cd-dropdown-trigger" data-toggle="offcanvas" data-target="#category_model" title="Categories"><i class="uil uil-apps"></i><span
+					<a href="#" class="category_drop hover-btn cd-dropdown-trigger" data-toggle="offcanvas" data-target="" title="Categories"><i class="uil uil-apps"></i><span
                             class="cate__icon" onclick="openNav()" >Категории</span></a>
                     </div>
                 </div>
@@ -419,7 +416,7 @@
                     </div>
 				</nav>
 				<div class="catey__icon">
-					<a href="#" class="cate__btn" data-toggle="modal" data-target="#category_model" title="Categories"><i class="uil uil-apps"></i></a>
+					<a href="#" class="cate__btn" data-toggle="modal" data-target="" onclick="openNav()"  title="Categories"><i class="uil uil-apps"></i></a>
 				</div>
 				<div class="header_cart order-1">
 					<a href="#" class="cart__btn hover-btn pull-bs-canvas-left"

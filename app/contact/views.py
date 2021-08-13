@@ -11,7 +11,7 @@ Category = apps.get_model('panel', 'Category')
 
 def contact(request):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     request.method == 'POST'
     if request.method == 'POST':
         subject = request.POST.get('subject')

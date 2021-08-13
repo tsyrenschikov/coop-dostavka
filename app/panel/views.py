@@ -180,7 +180,7 @@ def edit_category(request,id):
             if request.FILES:
                 categories.image = request.FILES["image"]
                 categories.save()
-                return render(request, 'panel/edit_ok_category.html', {'categories': categories})
+                return render(request, 'panel/edit_ok_category.html',{'categories': categories})
             return render(request, 'panel/edit_ok_category.html',{'categories':categories})
         else:
             return render(request,'panel/edit_category.html',{'categories':categories},)
@@ -203,6 +203,7 @@ def add_category(request):
         name = request.POST.get('name')
         status = request.POST.get('status')
         descriptions = request.POST.get('descriptions')
+        number = request.POST.get('number')
 
         if Category.objects.filter(number=request.POST['number']).exists():
             alert['number'] = 'Номер категории уже существует'

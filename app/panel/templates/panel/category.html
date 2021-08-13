@@ -10,6 +10,10 @@
                             <li class="breadcrumb-item active">Категории</li>
                         </ol>
                         <div class="row justify-content-between">
+                        <div class="col-lg-12">
+                            <p style="color: red">Внимание!</p>
+                                <p>У каждой категории имеется свой идентификационный номер, который позволяет сортировать по возрастанию на странице сайта.</p>
+                        </div>
                         {% if user.is_superuser %}
 							<div class="col-lg-12">
 								<a href="{%  url 'add_category' %}" class="add-btn hover-btn">Добавить категорию</a>

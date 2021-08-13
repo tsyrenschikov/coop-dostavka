@@ -16,17 +16,17 @@ def error_502(request, exception):
 
 def faq(request):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(request, 'shop/faq.html', {'users':users, 'categories' : categories})
 
 def offers(reguest):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(reguest, 'shop/offers.html', {'users':users, 'categories' : categories})
 
 def career(reguest):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories})
 
 def demo(reguest):

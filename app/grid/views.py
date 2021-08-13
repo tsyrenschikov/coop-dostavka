@@ -6,5 +6,5 @@ Category = apps.get_model('panel', 'Category')
 
 def grid(request):
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('number')
     return render(request, 'shop/shop_grid.html', {'users':users, 'categories' : categories})

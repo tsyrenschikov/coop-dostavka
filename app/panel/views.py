@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Category, Product
+from .models import Shop,Category,SubCategory, Product
 
 
 register = template.Library()
@@ -232,8 +232,12 @@ def delete_ok_category(request):
     categories = Category.objects.all()
     return render(request, 'panel/delete_ok_category.html', {'categories':categories})
 
+#Список магазинов
 def shops(request):
-    return render(request, 'panel/shops.html', {})
+    users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
+    shops = Shop.objects.all()
+    manager=Shop.objects.values('customuser__last_name','customuser__first_name')
+    return render(request, 'panel/shops.html', {'users':users, 'shops':shops,'manager':manager})
 
 def add_shop(request):
     return render(request, 'panel/add_shop.html', {})

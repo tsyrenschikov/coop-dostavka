@@ -1,10 +1,14 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
+from django.db.models.fields.related import ForeignKey
+
 
 class Shop(models.Model):
+    customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+' ,verbose_name='Пользователь')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название магазина')
     slug = models.SlugField(max_length=200,db_index=True, unique=True)
     status = models.BooleanField(default=True, verbose_name='Статус активный')
-    descriptions = models.TextField(max_length=300, null=True, verbose_name='Описание магазина')
+    address = models.TextField(max_length=300, null=True, verbose_name='Адрес магазина')
 
     class Meta:
         ordering = ('name',)

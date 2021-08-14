@@ -8,13 +8,13 @@
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
                             <li class="breadcrumb-item"><a href="{%  url 'areas' %}">Зоны</a></li>
-                            <li class="breadcrumb-item active">Добавить зону</li>
+                            <li class="breadcrumb-item active">Редактировать зону</li>
                         </ol>
                         <div class="row">
 							<div class="col-lg-5 col-md-6">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-										<h4>Добавить зону</h4>
+										<h4>Редактировать зону</h4>
 									</div>
 									<div class="card-body-table">
                                         <form method="post">
@@ -22,17 +22,11 @@
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Имя*</label>
-												<input type="text" type="text" name="name" class="form-control" placeholder="Имя зоны">
+												<input type="text" type="text" name="name" class="form-control" value="{{ areas.name }}" placeholder="Имя зоны">
 											</div>
-                                            {% if area %}
-                                            <div class="alert alert-danger alert-dismissible">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            {{ area }}
-                                            </div>
-                                                 {% endif %}
 											<div class="form-group">
 												<label class="form-label">Территория обслуживания*</label>
-                                                <input type="text" type="text" name="location" class="form-control" placeholder="Введите данные">
+                                                <input type="text" type="text" name="location" class="form-control" value="{{ areas.location }}" placeholder="Введите данные">
 											</div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
@@ -41,7 +35,7 @@
 													<option value="False">Не активный</option>
 												</select>
 											</div>
-											<button class="save-btn hover-btn" type="submit">Добавить</button>
+											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>
                                         </form>
 									</div>

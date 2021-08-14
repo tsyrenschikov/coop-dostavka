@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Category,SubCategory, Product
+from .models import Shop,Area,Category,SubCategory, Product
 
 
 register = template.Library()
@@ -150,11 +150,55 @@ def locations(request):
 def add_location(request):
     return render(request, 'panel/add_location.html', {})
 
+#Список зон продаж
 def areas(request):
-    return render(request, 'panel/areas.html', {})
+    areas=Area.objects.all()
+    return render(request, 'panel/areas.html', {'areas':areas})
 
+#Добавить зону
 def add_area(request):
-    return render(request, 'panel/add_area.html', {})
+    alert = {
+        "area": request.GET.get('area', ''),
+    }
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        location = request.POST.get('location')
+
+
+        if Area.objects.filter(name=request.POST['name']).exists():
+            alert['area'] = "Территория уже существует"
+        else:
+            Area.objects.create(name=name, location=location)
+            return render(request, 'panel/add_ok_area.html', {})
+    return render(request, 'panel/add_area.html', alert)
+
+#Редактировать территорию
+def edit_area(request,id):
+    try:
+        areas = Area.objects.get(id=id)
+
+        if request.method=="POST":
+            areas.name=request.POST.get("name")
+            areas.status=request.POST.get("status")
+            areas.location = request.POST.get("location")
+            areas.save()
+            return render(request, 'panel/edit_ok_area.html',{'areas':areas})
+        else:
+            return render(request,'panel/edit_area.html',{'areas':areas},)
+    except User.DoesNotExist:
+        return render(request, 'panel/edit_area.html',{})
+
+#Удалить зону - территорию
+def delete_area(request,id):
+    areas =''
+    try:
+        areas = Area.objects.get(id=id)
+        areas.delete()
+        return render(request,'panel/delete_ok_area.html',{'areas':areas},)
+    except areas.DoesNotExist:
+        return render(request ,'panel/delete_error_areas.html', {})
+
 
 def category(request):
     users = User.objects.all()

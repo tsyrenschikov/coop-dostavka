@@ -54,7 +54,7 @@
 														<td class="action-btns">
 															<a href="/shop_view/{{ shops.id }}" class="view-shop-btn"><i class="fas fa-eye"></i></a>
                                                             {% if 'super_manager' in groups %}
-															<a href="shop_products.html" class="list-btn"><i class="fas fa-list-alt"></i></a>
+															<a href="/shop_products/{{ shops.id }}" class="list-btn"><i class="fas fa-list-alt"></i></a>
 															<a href="{% url 'add_shop' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
                                                             {% endif %}
 														</td>

@@ -234,16 +234,20 @@ def delete_ok_category(request):
 
 #Список магазинов
 def shops(request):
-    users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
     shops = Shop.objects.all()
-    manager=Shop.objects.values('customuser__last_name','customuser__first_name')
-    return render(request, 'panel/shops.html', {'users':users, 'shops':shops,'manager':manager})
+    managers=Shop.objects.values('customuser__last_name','customuser__first_name')
+    return render(request, 'panel/shops.html', {'shops':shops,'managers':managers})
 
+#Добавить магазины
 def add_shop(request):
+
     return render(request, 'panel/add_shop.html', {})
 
-def shop_view(request):
-    return render(request, 'panel/shop_view.html', {})
+#Просмотр магазина
+def shop_view(request,id):
+    shops = Shop.objects.get()
+    users=Shop.objects.values('customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org').get(id=id)
+    return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
 
 def products(request):
     return render(request, 'panel/products.html', {})

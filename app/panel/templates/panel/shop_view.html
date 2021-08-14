@@ -19,8 +19,8 @@
 												<img src="{%  static 'file/panel/images/shop.svg' %}" alt="">
 											</div>
 											<div class="shop-dt-left">
-												<h4>Название магазина</h4>
-												<span>Свердловская область, г.Екатеринбург, ул. Ленина 9</span>
+												<h4>{{ shops.name }}</h4>
+												<span>{{ shops.address}}</span>
 											</div>
 										</div>
 									</div>
@@ -29,25 +29,41 @@
 									<div class="card-body-table">
 										<div class="shopowner-content-left pd-20">
 											<div class="shopowner-dt-left">
-												<h4>Василий Пупкин</h4>
-												<span>Владелец магазина</span>
+												<h4>
+                                                    {{ users.customuser__last_name }} {{ users.customuser__first_name }}
+                                                </h4>
+												<span>Менеджер магазина</span>
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Имя пользователя</span>
-													<span class="right-dt">Joginder1991</span>
+													<span class="left-dt">Фамилия и Имя</span>
+													<span class="right-dt">
+                                                        {{ users.customuser__last_name }} {{ users.customuser__first_name }}
+                                                    </span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Телефон</span>
-													<span class="right-dt">+918437176189</span>
+													<span class="right-dt">{{ users.customuser__phone }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Email</span>
-													<span class="right-dt">gambol943@gmail.com</span>
+													<span class="right-dt">{{ users.customuser__email }}</span>
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Наименование организации</span>
+                                                    {% if customuser__org %}
+													<span class="right-dt">{{ users.customuser__org }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не указано</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Адрес</span>
-													<span class="right-dt">Свердловская область, г.Екатеринбург, ул. Ленина 9</span>
+													<span class="left-dt">Адрес отгузки</span>
+                                                    {% if users.customuser__address %}
+													<span class="right-dt">{{ users.customuser__address }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не указан</span>
+                                                    {% endif %}
 												</div>
 											</div>
 										</div>
@@ -61,15 +77,15 @@
 											<div class="shopowner-dts mt-0">
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Имя :</span>
-													<span class="right-dt">Имя магазина</span>
+													<span class="right-dt">{{ users.customuser__last_name}} {{ users.customuser__first_name }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Зона</span>
 													<span class="right-dt">Свердловская область</span>
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Локация</span>
-													<span class="right-dt">г.Екатеринбург, ул.Ленина 9</span>
+													<span class="left-dt">Полный адрес</span>
+													<span class="right-dt">{{ shops.address }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Плата за доставку</span>
@@ -84,12 +100,10 @@
 													<span class="right-dt">45.5582</span>
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Текущие состояние</span>
-													<span class="right-dt">Да</span>
-												</div>
-												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
+                                                    {% if shops.status %}
 													<span class="right-dt">Активный</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Время открытия</span>
@@ -100,12 +114,12 @@
 													<span class="right-dt">10.00 PM</span>
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Адрес</span>
-													<span class="right-dt">#0000, 623100 г. Екатеринбург, ул. Ленина 9</span>
-												</div>
-												<div class="shopowner-dt-list">
 													<span class="left-dt">Описание</span>
-													<span class="right-dt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate, purus at tempor blandit, nulla felis dictum eros, sed volutpat odio sapien id lectus.</span>
+                                                    {% if users.customuser__descriptions %}
+													<span class="right-dt">{{ users.customuser__descriptions }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Без описания</span>
+                                                    {% endif %}
 												</div>
 											</div>
 										</div>

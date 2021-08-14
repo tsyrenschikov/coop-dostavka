@@ -43,11 +43,16 @@
                                                         {% for shops in shops %}
 														<td><input type="checkbox" class="check-item" name="ids[]" value="5"></td>
 														<td>{{ shops.name}}</td>
-														<td>{% for manager in manager %}{{ manager.customuser__last_name }} {{ manager.customuser__first_name }}{% endfor %}</td>
+														<td>
+                                                            {% for managers in managers %}
+                                                                {{ managers.customuser__last_name }}
+                                                                {{ managers.customuser__first_name }}
+                                                            {% endfor %}
+                                                        </td>
 														<td>{{ shops.address }}</td>
 														<td><span class="badge-item badge-status">Активный</span></td>
 														<td class="action-btns">
-															<a href="{%  url 'shop_view' %}" class="view-shop-btn"><i class="fas fa-eye"></i></a>
+															<a href="/shop_view/{{ shops.id }}" class="view-shop-btn"><i class="fas fa-eye"></i></a>
                                                             {% if 'super_manager' in groups %}
 															<a href="shop_products.html" class="list-btn"><i class="fas fa-list-alt"></i></a>
 															<a href="{% url 'add_shop' %}" class="edit-btn"><i class="fas fa-edit"></i></a>

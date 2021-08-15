@@ -45,12 +45,12 @@
                                                             {% if managers.customuser__last_name %}
                                                                 {{ managers.customuser__last_name }}
                                                             {% else %}
-                                                            <a href="{% url 'edit_manager' %}" <p style="color: red">Укажите Фамилию</p></td>
+                                                                <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите Фамилию</p></a>
                                                             {% endif %}
                                                             {% if managers.customuser__first_name %}
                                                                 {{ managers.customuser__first_name }}
                                                             {% else %}
-                                                            <a href="{% url 'edit_manager' %}"<p style="color: red">Укажите Имя</p></a>
+                                                            <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите Имя</p></a>
                                                             {% endif %}
                                                         </td>
 														<td>{{ managers.address }}</td>

@@ -51,7 +51,7 @@
 												</div>
                                                 <div class="shopowner-dt-list">
 													<span class="left-dt">Наименование организации</span>
-                                                    {% if customuser__org %}
+                                                    {% if users.customuser__org %}
 													<span class="right-dt">{{ users.customuser__org }}</span>
                                                     {% else %}
                                                     <span class="right-dt">Не указано</span>
@@ -59,7 +59,7 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Адрес отгузки</span>
-                                                    {% if users.customuser__address %}
+                                                    {% if users.customuser__address != 'None' %}
 													<span class="right-dt">{{ users.customuser__address }}</span>
                                                     {% else %}
                                                     <span class="right-dt">Не указан</span>
@@ -93,15 +93,15 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Плата за доставку</span>
-													<span class="right-dt">300 р.</span>
+													<span class="right-dt">{{ users.delivery_price }} р.</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Широта</span>
-													<span class="right-dt">30.4152</span>
+													<span class="right-dt">{{ users.latitude }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Долгота</span>
-													<span class="right-dt">45.5582</span>
+													<span class="right-dt">{{ users.longitude }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
@@ -113,16 +113,16 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Время открытия</span>
-													<span class="right-dt">09.00 AM</span>
+													<span class="right-dt">{{ users.open_time }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Время закрытия</span>
-													<span class="right-dt">10.00 PM</span>
+													<span class="right-dt">{{ users.close_time }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Описание</span>
-                                                    {% if users.customuser__descriptions %}
-													<span class="right-dt">{{ users.customuser__descriptions }}</span>
+                                                    {% if users.descriptions %}
+													<span class="right-dt">{{ users.descriptions }}</span>
                                                     {% else %}
                                                     <span class="right-dt">Без описания</span>
                                                     {% endif %}
@@ -130,6 +130,11 @@
 											</div>
 										</div>
 									</div>
+                                    <div class="col-lg-12">
+                                        <a href="{% url 'shops' %}" class="add-btn hover-btn">К списку магазинов</a>
+                                    </div>
+                                <div class="shopowner-dt-list">
+                                </div>
 								</div>
 							</div>
                         </div>

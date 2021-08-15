@@ -288,7 +288,10 @@ def add_shop(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    users=Shop.objects.values('name','address','status','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org',
+    users=Shop.objects.values('name','address','status','delivery_price','open_time','close_time','latitude','longitude','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
+                              'customuser__email',
+                              'customuser__address',\
+          'customuser__org',
                               'area__name').get(
         id=id)
     return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})

@@ -24,6 +24,12 @@ class Shop(models.Model):
     slug = models.SlugField(max_length=200,db_index=True, unique=True)
     status = models.BooleanField(default=True, verbose_name='Статус активный')
     address = models.TextField(max_length=300, null=True, verbose_name='Адрес магазина')
+    delivery_price=models.PositiveIntegerField(null=True,verbose_name='Цена доставки')
+    latitude=models.FloatField(max_length=200,db_index=True,null=True,verbose_name='Широта')
+    longitude=models.FloatField(max_length=200, db_index=True,null=True,verbose_name='Долгота')
+    open_time=models.TimeField(db_index=True,null=True,verbose_name='Время открытия')
+    close_time=models.TimeField(db_index=True,null=True,verbose_name='Время закрытия')
+    descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
 
     class Meta:
         ordering = ('name',)

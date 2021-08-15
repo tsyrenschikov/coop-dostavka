@@ -278,9 +278,8 @@ def delete_ok_category(request):
 
 #Список магазинов
 def shops(request):
-    shops = Shop.objects.all()
-    managers=Shop.objects.values('customuser__last_name','customuser__first_name')
-    return render(request, 'panel/shops.html', {'shops':shops,'managers':managers})
+    managers=Shop.objects.values('id','name','address','status','customuser__last_name','customuser__first_name')
+    return render(request, 'panel/shops.html', {'managers':managers})
 
 #Добавить магазины
 def add_shop(request):
@@ -288,9 +287,10 @@ def add_shop(request):
     return render(request, 'panel/add_shop.html', {})
 
 #Просмотр магазина
-def shop_view(request,id):
-    shops = Shop.objects.get()
-    users=Shop.objects.values('customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org').get(id=id)
+def shop_view(request, id):
+    users=Shop.objects.values('name','address','status','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org',
+                              'area__name').get(
+        id=id)
     return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
 
 def products(request):

@@ -19,8 +19,8 @@
 												<img src="{%  static 'file/panel/images/shop.svg' %}" alt="">
 											</div>
 											<div class="shop-dt-left">
-												<h4>{{ shops.name }}</h4>
-												<span>{{ shops.address}}</span>
+                                                <a href="{% url 'shops' %}"><h4>{{ users.name }}</h4></a>
+												<span>{{ users.address}}</span>
 											</div>
 										</div>
 									</div>
@@ -32,7 +32,7 @@
 												<h4>
                                                     {{ users.customuser__last_name }} {{ users.customuser__first_name }}
                                                 </h4>
-												<span>Менеджер магазина</span>
+                                                <a href="{% url 'edit_manager' %}"> <span>Менеджер магазина</span></a>
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
@@ -80,12 +80,16 @@
 													<span class="right-dt">{{ users.customuser__last_name}} {{ users.customuser__first_name }}</span>
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Зона</span>
-													<span class="right-dt">Свердловская область</span>
+													<span class="left-dt">Территория</span>
+                                                    {% if users.area__name %}
+													<span class="right-dt">{{ users.area__name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не назначена</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Полный адрес</span>
-													<span class="right-dt">{{ shops.address }}</span>
+													<span class="right-dt">{{ users.address }}</span>
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Плата за доставку</span>
@@ -101,8 +105,10 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
-                                                    {% if shops.status %}
-													<span class="right-dt">Активный</span>
+                                                    {% if users.status %}
+                                                        <span class="right-dt">Активный</span>
+                                                    {% else %}
+                                                        <span class="right-dt">Не активный</span>
                                                     {% endif %}
 												</div>
 												<div class="shopowner-dt-list">

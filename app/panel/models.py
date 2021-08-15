@@ -2,9 +2,24 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
+class Area(models.Model):
+    name = models.CharField(max_length=200,db_index=True, verbose_name='Имя зоны продаж')
+    slug = models.SlugField(max_length=200,db_index=True)
+    location = models.CharField(max_length=200, null=True, verbose_name='Локация')
+    status = models.BooleanField(default=True,verbose_name='Активный')
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Зона продаж'
+        verbose_name_plural = 'Зоны продаж'
+        index_together = (('id', 'slug'),)
+
+    def __str__(self):
+        return self.name
 
 class Shop(models.Model):
     customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+' ,verbose_name='Пользователь')
+    area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название магазина')
     slug = models.SlugField(max_length=200,db_index=True, unique=True)
     status = models.BooleanField(default=True, verbose_name='Статус активный')
@@ -65,22 +80,6 @@ class Product(models.Model):
         ordering = ('name',)
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
-        index_together = (('id', 'slug'),)
-
-    def __str__(self):
-        return self.name
-
-class Area(models.Model):
-    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
-    name = models.CharField(max_length=200,db_index=True, verbose_name='Имя зоны продаж')
-    slug = models.SlugField(max_length=200,db_index=True)
-    location = models.CharField(max_length=200, null=True, verbose_name='Локация')
-    status = models.BooleanField(default=True,verbose_name='Активный')
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Зона продаж'
-        verbose_name_plural = 'Зоны продаж'
         index_together = (('id', 'slug'),)
 
     def __str__(self):

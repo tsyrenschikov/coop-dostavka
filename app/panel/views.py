@@ -281,11 +281,6 @@ def shops(request):
     managers=Shop.objects.values('id','name','address','status','customuser__last_name','customuser__first_name')
     return render(request, 'panel/shops.html', {'managers':managers})
 
-#Добавить магазины
-def add_shop(request):
-
-    return render(request, 'panel/add_shop.html', {})
-
 #Просмотр магазина
 def shop_view(request, id):
     users=Shop.objects.values('name','address','status','delivery_price','open_time','close_time','latitude','longitude','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
@@ -295,6 +290,45 @@ def shop_view(request, id):
                               'area__name').get(
         id=id)
     return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
+
+#Добавить магазины
+def add_shop(request):
+    alert = {
+        'name': request.GET.get('name', ''),
+    }
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        delivery_price = request.POST.get('delivery_price')
+        latitude = request.POST.get('latitude')
+        longitude = request.POST.get('longitude')
+        status = request.POST.get('status')
+        open_time = request.POST.get('open_time')
+        close_time = request.POST.get('close_time')
+        descriptions = request.POST.get('descriptions')
+
+        if Shop.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Имя магазина уже существует'
+        else:
+            Shop.objects.create(name=name,address=address,delivery_price=delivery_price,latitude=latitude,longitude=longitude,status=status,open_time=open_time,close_time=close_time,
+                                descriptions=descriptions)
+        return render(request, 'panel/add_ok_shop.html')
+    return render(request, 'panel/add_shop.html',alert)
+
+#Успешное добавления магазина
+def add_ok_shop(request):
+    return render(request,'panel/add_ok_shop.html')
+
+#Удаление магазина
+def delete_shop(request,id):
+    shops = ''
+    try:
+        shops = Shop.objects.get(id=id)
+        shops.delete()
+        return render(request, 'panel/delete_ok_shop.html', {'shops': shops}, )
+    except shops.DoesNotExist:
+        return render(request, 'panel/delete_error_shop.html', {})
 
 def products(request):
     return render(request, 'panel/products.html', {})

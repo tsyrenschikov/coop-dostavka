@@ -28,6 +28,7 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-body-table">
 										<div class="shopowner-content-left pd-20">
+                                        {% if users.customuser__last_name != None or users.customuser__first_name != None %}
 											<div class="shopowner-dt-left">
 												<h4>
                                                     {{ users.customuser__last_name }} {{ users.customuser__first_name }}
@@ -59,13 +60,18 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Адрес отгузки</span>
-                                                    {% if users.customuser__address != 'None' %}
 													<span class="right-dt">{{ users.customuser__address }}</span>
-                                                    {% else %}
-                                                    <span class="right-dt">Не указан</span>
-                                                    {% endif %}
 												</div>
 											</div>
+                                        {% else %}
+                                            <div class="shopowner-dt-left">
+												<h4>
+                                                    <a href="{% url 'edit_manager' %}"> <span>Менеджер магазина</span></a>
+                                                 <p style="color: green">Пожалуйста, назначьте менеджера! Либо заполните все обязательные поля у ответственного лица.</p>
+                                                </h4>
+                                            </div>
+
+                                    {% endif %}
 										</div>
 									</div>
 								</div>
@@ -77,14 +83,18 @@
 											<div class="shopowner-dts mt-0">
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Имя :</span>
+                                                    {% if users.customuser__last_name != None and users.customuser__first_name != None %}
 													<span class="right-dt">{{ users.customuser__last_name}} {{ users.customuser__first_name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Укажите менеджера либо заполните все поля у ответственного лица.</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Территория</span>
                                                     {% if users.area__name %}
 													<span class="right-dt">{{ users.area__name }}</span>
                                                     {% else %}
-                                                    <span class="right-dt">Не назначена</span>
+                                                    <span class="right-dt" style="color: green">Не назначена</span>
                                                     {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
@@ -93,7 +103,11 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Плата за доставку</span>
+                                                    {% if users.delivery_price %}
 													<span class="right-dt">{{ users.delivery_price }} р.</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: red">Не указано</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Широта</span>
@@ -113,11 +127,19 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Время открытия</span>
+                                                    {% if users.open_time %}
 													<span class="right-dt">{{ users.open_time }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color:red">Не указано</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Время закрытия</span>
+                                                    {% if users.close_time %}
 													<span class="right-dt">{{ users.close_time }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color:red">Не указано</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Описание</span>

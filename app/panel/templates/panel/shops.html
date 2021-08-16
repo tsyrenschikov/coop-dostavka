@@ -11,7 +11,9 @@
                         </ol>
                         <div class="row justify-content-between">
 							<div class="col-lg-12">
+                                {% if 'super_manager' in groups %}
 								<a href="{% url 'add_shop' %}" class="add-btn hover-btn">Добавить магазин</a>
+                                {% endif %}
 							</div>
 							<div class="col-lg-5 col-md-6">
 								<div class="bulk-section mt-30">
@@ -42,15 +44,10 @@
 													<tr>
 														<td>{{ managers.name}}</td>
 														<td>
-                                                            {% if managers.customuser__last_name %}
-                                                                {{ managers.customuser__last_name }}
+                                                            {% if managers.customuser__last_name and managers.customuser__first_name %}
+                                                                {{ managers.customuser__last_name }} {{ managers.customuser__first_name }}
                                                             {% else %}
-                                                                <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите Фамилию</p></a>
-                                                            {% endif %}
-                                                            {% if managers.customuser__first_name %}
-                                                                {{ managers.customuser__first_name }}
-                                                            {% else %}
-                                                            <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите Имя</p></a>
+                                                                <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите менеджера либо заполните все поля у ответственного лица.</p></a>
                                                             {% endif %}
                                                         </td>
 														<td>{{ managers.address }}</td>
@@ -63,8 +60,9 @@
 														<td class="action-btns">
 															<a href="/shop_view/{{ managers.id }}" class="view-shop-btn"><i class="fas fa-eye"></i></a>
                                                             {% if 'super_manager' in groups %}
-															<a href="/shop_products/{{ shops.id }}" class="list-btn"><i class="fas fa-list-alt"></i></a>
-															<a href="{% url 'add_shop' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
+															<!--<a href="{% url 'add_shop' %}" class="edit-btn"><i class="fas fa-edit"></i></a>-->
+                                                            <a href="/delete_shop/{{ managers.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить клиента??? (ДЕЙСТВИЕ НЕ ' +
+															 'ОБРАТИМО)')"><i class="fas fa-trash-alt"></i></a>
                                                             {% endif %}
 														</td>
 													</tr>

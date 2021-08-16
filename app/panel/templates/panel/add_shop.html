@@ -19,112 +19,53 @@
 												<div class="card-title-2">
 													<h4>Добавить магазин</h4>
 												</div>
+                                                <form method="post">
+                                                    {% csrf_token %}
 												<div class="card-body-table">
 													<div class="add-shop-content pd-20">
 														<div class="form-group">
-															<label class="form-label">Имя*</label>
-															<input type="text" class="form-control" placeholder="Имя категории">
+															<label class="form-label">Название магазина*</label>
+															<input type="text" class="form-control" name="name" placeholder="Имя магазина">
 														</div>
-														<div class="form-group">
-															<label class="form-label">Локации*</label>
-															<select id="location" name="location" class="form-control">
-																<option selected>--Выбрать локацию--</option>
-																<option value="1">Екатеринбург</option>
-																<option value="2">Красноуфимск</option>
-																<option value="3">Арти</option>
-																<option value="4">Ачит</option>
-																<option value="5">Первоуральск</option>
-																<option value="6">Нижние Серги</option>
-																<option value="7">Михайловск</option>
-															</select>
-														</div>
-														<div class="form-group">
-															<label class="form-label">Зона*</label>
-															<select id="location" name="location" class="form-control">
-																<option selected>--Выбрать зону--</option>
-																<option value="1">Имя зона</option>
-																<option value="2">Имя зона</option>
-																<option value="3">Имя зона</option>
-																<option value="4">Имя зона</option>
-																<option value="5">Имя зона</option>
-																<option value="6">Имя зона</option>
-																<option value="7">Имя зона</option>
-															</select>
-														</div>
-														<div class="form-group">
-															<label class="form-label">Категория*</label>
-															<select id="categtory" name="categtory" class="form-control">
-																<option selected>--Выбрать категорию--</option>
-																<option value="1">Фрукты и овощи</option>
-																<option value="2">Основные продукты</option>
-																<option value="3">Молочные продукты и яйца </option>
-																<option value="4">Напитки</option>
-																<option value="5">Закуски</option>
-																<option value="6">Домашний уход</option>
-																<option value="7">Лапша и соусы</option>
-																<option value="8">Персональный уход</option>
-																<option value="9">Уход за животными</option>
-																<option value="10">Мясо и морепродукты</option>
-																<option value="11">Электроника</option>
-															</select>
+                                                        <div class="form-group">
+															<label class="form-label">Полный адрес*</label>
+															<div class="card card-editor">
+																<div class="content-editor">
+																	 <textarea class="text-control" name="address" placeholder="(индекс,область,город,улица,офис)"></textarea>
+																</div>
+															</div>
 														</div>
 														<div class="form-group">
 															<label class="form-label">Плата за доставку*</label>
-															<input class="form-control" placeholder="0 р.">
+															<input class="form-control" name="delivery_price" placeholder="0 р.">
 														</div>
 														<div class="form-group">
 															<label class="form-label">Широта*</label>
-															<input class="form-control" placeholder="0">
+															<input class="form-control" name="latitude" placeholder="0.0">
 														</div>
 														<div class="form-group">
 															<label class="form-label">Долгота*</label>
-															<input class="form-control" placeholder="0">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Текущее состояние*</label>
-															<select id="status" name="status" class="form-control">
-																<option selected>Да</option>
-																<option value="1">Нет</option>
-															</select>
+															<input class="form-control" name="longitude" placeholder="0.0">
 														</div>
 														<div class="form-group">
 															<label class="form-label">Статус*</label>
 															<select id="status" name="status" class="form-control">
-																<option selected>Активный</option>
-																<option value="1">Не активный</option>
+																<option selected value="True">Активный</option>
+																<option value="False">Не активный</option>
 															</select>
-														</div>
-														<div class="form-group">
-															<label class="form-label">Адрес*</label>
-															<div class="card card-editor">
-																<div class="content-editor">
-																	 <textarea class="text-control" placeholder="Введите адрес"></textarea>
-																</div>
-															</div>
 														</div>
 														<div class="form-group">
 															<label class="form-label">Описание*</label>
 															<div class="card card-editor">
 																<div class="content-editor">
-																	 <textarea class="text-control" placeholder="Описание объекта"></textarea>
+																	 <textarea class="text-control" name="descriptions" placeholder="Описание объекта"></textarea>
 																</div>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="form-label">Изображение магазина*</label>
-															<div class="input-group">
-																<div class="custom-file">
-																	<input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-																	<label class="custom-file-label" for="inputGroupFile04">Выбрать изображение</label>
-																</div>
-															</div>
-															<div class="add-cate-img-1">
-																<img src="{%  static 'file/panel/images/shop.svg' %}" alt="">
 															</div>
 														</div>
 														<button class="save-btn hover-btn" type="submit">Добавить магазин</button>
 													</div>
 												</div>
+                                                </form>
 											</div>
 											<div class="col-lg-6 col-md-6">
 												<div class="card-title-2">
@@ -134,44 +75,17 @@
 													<div class="add-shop-content pd-20">
 														<div class="form-group">
 															<label class="form-label">Время открытия*</label>
-															<input type="time" id="default-picker" class="form-control" placeholder="Select time">
+															<input type="time" id="default-picker" class="form-control" name="open_time" placeholder="Select time">
 														</div>
 														<div class="form-group">
 															<label class="form-label">Время закрытия*</label>
-															<input type="time" id="default-picker" class="form-control" placeholder="Select time">
+															<input type="time" id="default-picker" class="form-control" name="close_time" placeholder="Select time">
 														</div>
 													</div>
 												</div>
-
-												<div class="card-title-2">
-													<h4>Владелец магазина</h4>
-												</div>
 												<div class="card-body-table">
 													<div class="add-shop-content pd-20">
-														<div class="form-group">
-															<label class="form-label">Полное Имя*</label>
-															<input class="form-control" type="text" placeholder="Введите полное имя">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Имя пользователя*</label>
-															<input class="form-control" type="text" placeholder="Введите имя пользователя">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Email адрес*</label>
-															<input class="form-control" type="email" placeholder="Введите Email адрес">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Номер телефона*</label>
-															<input class="form-control" type="text" placeholder="Введите номер телефона">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Адрес Владельца*</label>
-															<div class="card card-editor">
-																<div class="content-editor">
-																	 <textarea class="text-control" placeholder="Введите адрес"></textarea>
-																</div>
-															</div>
-														</div>
+
 													</div>
 												</div>
 											</div>

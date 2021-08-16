@@ -4,14 +4,16 @@
     {% load static %}
         <main>
                     <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Зоны</h2>
+                        <h2 class="mt-30 page-title">Территория обслуживания</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item active">Зоны</li>
+                            <li class="breadcrumb-item active">Территория обслуживания</li>
                         </ol>
                         <div class="row justify-content-between">
 							<div class="col-lg-12">
-								<a href="{%  url 'add_area' %}" class="add-btn hover-btn">Добавить зону</a>
+                                {% if 'super_manager' in groups %}
+								<a href="{%  url 'add_area' %}" class="add-btn hover-btn">Добавить территорию</a>
+                                {% endif %}
 							</div>
 								<div class="col-lg-5 col-md-6">
 								        <div class="bulk-section mt-30">
@@ -23,7 +25,7 @@
 							<div class="col-lg-12 col-md-12">
 								<div class="card card-static-2 mt-30 mb-30">
 									<div class="card-title-2">
-										<h4>Все зоны</h4>
+										<h4>Список территорий обслуживания</h4>
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">

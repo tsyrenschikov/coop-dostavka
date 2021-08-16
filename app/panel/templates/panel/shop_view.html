@@ -110,35 +110,11 @@
                                                     {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Широта</span>
-													<span class="right-dt">{{ users.latitude }}</span>
-												</div>
-												<div class="shopowner-dt-list">
-													<span class="left-dt">Долгота</span>
-													<span class="right-dt">{{ users.longitude }}</span>
-												</div>
-												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
                                                     {% if users.status %}
                                                         <span class="right-dt">Активный</span>
                                                     {% else %}
                                                         <span class="right-dt">Не активный</span>
-                                                    {% endif %}
-												</div>
-												<div class="shopowner-dt-list">
-													<span class="left-dt">Время открытия</span>
-                                                    {% if users.open_time %}
-													<span class="right-dt">{{ users.open_time }}</span>
-                                                    {% else %}
-                                                    <span class="right-dt" style="color:red">Не указано</span>
-                                                    {% endif %}
-												</div>
-												<div class="shopowner-dt-list">
-													<span class="left-dt">Время закрытия</span>
-                                                    {% if users.close_time %}
-													<span class="right-dt">{{ users.close_time }}</span>
-                                                    {% else %}
-                                                    <span class="right-dt" style="color:red">Не указано</span>
                                                     {% endif %}
 												</div>
 												<div class="shopowner-dt-list">

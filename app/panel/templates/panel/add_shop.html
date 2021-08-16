@@ -17,7 +17,7 @@
 										<div class="row no-gutters">
 											<div class="col-lg-6 col-md-6">
 												<div class="card-title-2">
-													<h4>Добавить магазин</h4>
+													<h4 style="color: red">Добавить магазин</h4>
 												</div>
                                                 <form method="post">
                                                     {% csrf_token %}
@@ -25,27 +25,27 @@
 													<div class="add-shop-content pd-20">
 														<div class="form-group">
 															<label class="form-label">Название магазина*</label>
-															<input type="text" class="form-control" name="name" placeholder="Имя магазина">
+															<input type="text" class="form-control" name="name" placeholder="Название магазина" required="">
 														</div>
+                                                         <div class="form-group">
+                                                             {% if name %}
+                                                                 <div class="alert alert-danger alert-dismissible">
+                                                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                     {{ name }}
+                                                                 </div>
+                                                             {% endif %}
+                                                         </div>
                                                         <div class="form-group">
 															<label class="form-label">Полный адрес*</label>
 															<div class="card card-editor">
 																<div class="content-editor">
-																	 <textarea class="text-control" name="address" placeholder="(индекс,область,город,улица,офис)"></textarea>
+																	 <textarea class="text-control" name="address" placeholder="(индекс,область,город,улица,офис)" required=""></textarea>
 																</div>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="form-label">Плата за доставку*</label>
-															<input class="form-control" name="delivery_price" placeholder="0 р.">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Широта*</label>
-															<input class="form-control" name="latitude" placeholder="0.0">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Долгота*</label>
-															<input class="form-control" name="longitude" placeholder="0.0">
+															<input type="number" class="form-control" name="delivery_price" placeholder="0 р." required="">
 														</div>
 														<div class="form-group">
 															<label class="form-label">Статус*</label>
@@ -58,7 +58,7 @@
 															<label class="form-label">Описание*</label>
 															<div class="card card-editor">
 																<div class="content-editor">
-																	 <textarea class="text-control" name="descriptions" placeholder="Описание объекта"></textarea>
+																	 <textarea class="text-control" name="descriptions" placeholder="Описание объекта" required></textarea>
 																</div>
 															</div>
 														</div>
@@ -66,28 +66,6 @@
 													</div>
 												</div>
                                                 </form>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="card-title-2">
-													<h4>Добавить магазин</h4>
-												</div>
-												<div class="card-body-table">
-													<div class="add-shop-content pd-20">
-														<div class="form-group">
-															<label class="form-label">Время открытия*</label>
-															<input type="time" id="default-picker" class="form-control" name="open_time" placeholder="Select time">
-														</div>
-														<div class="form-group">
-															<label class="form-label">Время закрытия*</label>
-															<input type="time" id="default-picker" class="form-control" name="close_time" placeholder="Select time">
-														</div>
-													</div>
-												</div>
-												<div class="card-body-table">
-													<div class="add-shop-content pd-20">
-
-													</div>
-												</div>
 											</div>
 										</div>
 									</div>

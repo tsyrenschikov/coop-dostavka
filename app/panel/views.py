@@ -283,7 +283,7 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    users=Shop.objects.values('name','address','status','delivery_price','open_time','close_time','latitude','longitude','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
+    users=Shop.objects.values('name','address','status','delivery_price','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
                               'customuser__email',
                               'customuser__address',\
           'customuser__org',
@@ -296,24 +296,17 @@ def add_shop(request):
     alert = {
         'name': request.GET.get('name', ''),
     }
-
     if request.method == 'POST':
         name = request.POST.get('name')
         address = request.POST.get('address')
         delivery_price = request.POST.get('delivery_price')
-        latitude = request.POST.get('latitude')
-        longitude = request.POST.get('longitude')
         status = request.POST.get('status')
-        open_time = request.POST.get('open_time')
-        close_time = request.POST.get('close_time')
         descriptions = request.POST.get('descriptions')
-
         if Shop.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Имя магазина уже существует'
+            alert['name'] = 'Название магазина уже существует'
         else:
-            Shop.objects.create(name=name,address=address,delivery_price=delivery_price,latitude=latitude,longitude=longitude,status=status,open_time=open_time,close_time=close_time,
-                                descriptions=descriptions)
-        return render(request, 'panel/add_ok_shop.html')
+            Shop.objects.create(name=name,address=address,delivery_price=delivery_price,status=status,descriptions=descriptions)
+            return render(request, 'panel/add_ok_shop.html')
     return render(request, 'panel/add_shop.html',alert)
 
 #Успешное добавления магазина

@@ -285,7 +285,7 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    users=Shop.objects.values('name','address','status','delivery_price','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
+    users=Shop.objects.values('name','address','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
                               'customuser__email',
                               'customuser__address',\
           'customuser__org',

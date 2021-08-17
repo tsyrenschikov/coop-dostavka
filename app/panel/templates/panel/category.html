@@ -39,7 +39,8 @@
                                                         <th>Номер</th>
                                                         <th>Имя</th>
 														<th style="width:130px">Изображение</th>
-														<th>Описание</th>
+                                                        <th>Подкатегории</th>
+                                                        <th>Описание</th>
 														<th>Статус</th>
 														<th>Действия</th>
 													</tr>
@@ -66,6 +67,13 @@
 															</div>
                                                             {% endif %}
 														</td>
+                                                        <td>
+                                                            {% if subcategory.name %}
+                                                                {{ subcategory.name }}
+                                                            {% else %}
+                                                                <p>Подкатегория не присвоена</p>
+                                                            {% endif %}
+                                                        </td>
                                                         {% if categories.descriptions %}
 														<td>{{ categories.descriptions }}</td>
                                                         {% else %}

@@ -34,10 +34,11 @@
 													<tr>
 														<th>Имя</th>
 														<th>Территория</th>
+                                                        <th>Доставка</th>
 														<th>Статус</th>
 														<th>
                                                             {% if user.is_superuser %}
-                                                            Действие
+                                                            Действия
                                                         </th>
                                                         {% endif %}
 													</tr>
@@ -50,6 +51,11 @@
 														<td>{{ areas.location }}</td>
                                                             {% else %}
                                                             <td>Не указано</td>
+                                                            {% endif %}
+                                                            {% if areas.delivery_price %}
+                                                        <td>{{ areas.delivery_price }}.р</td>
+                                                            {% else %}
+                                                        <td>Не указано</td>
                                                             {% endif %}
                                                             {% if areas.status %}
 														<td><span class="badge-item badge-status">Активный</span></td>

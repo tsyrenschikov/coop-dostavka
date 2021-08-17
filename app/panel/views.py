@@ -150,12 +150,12 @@ def locations(request):
 def add_location(request):
     return render(request, 'panel/add_location.html', {})
 
-#Список зон продаж
+#Список территорий продаж
 def areas(request):
     areas=Area.objects.all()
     return render(request, 'panel/areas.html', {'areas':areas})
 
-#Добавить зону
+#Добавить территорию
 def add_area(request):
     alert = {
         "area": request.GET.get('area', ''),
@@ -164,12 +164,13 @@ def add_area(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         location = request.POST.get('location')
+        delivery_price = request.POST.get('delivery_price')
 
 
         if Area.objects.filter(name=request.POST['name']).exists():
             alert['area'] = "Территория уже существует"
         else:
-            Area.objects.create(name=name, location=location)
+            Area.objects.create(name=name, location=location,delivery_price=delivery_price)
             return render(request, 'panel/add_ok_area.html', {})
     return render(request, 'panel/add_area.html', alert)
 
@@ -182,6 +183,7 @@ def edit_area(request,id):
             areas.name=request.POST.get("name")
             areas.status=request.POST.get("status")
             areas.location = request.POST.get("location")
+            areas.delivery_price = request.POST.get('delivery_price')
             areas.save()
             return render(request, 'panel/edit_ok_area.html',{'areas':areas})
         else:

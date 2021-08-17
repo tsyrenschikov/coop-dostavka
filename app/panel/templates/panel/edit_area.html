@@ -22,12 +22,18 @@
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Имя*</label>
-												<input type="text" type="text" name="name" class="form-control" value="{{ areas.name }}" placeholder="Имя зоны">
+												<input type="text"  name="name" class="form-control" value="{{ areas.name }}" placeholder="Имя территории">
 											</div>
 											<div class="form-group">
 												<label class="form-label">Территория обслуживания*</label>
-                                                <input type="text" type="text" name="location" class="form-control" value="{{ areas.location }}" placeholder="Введите данные">
+                                                <p style="color: green;font-size:0.9em">Укажите через запятую населенные пункты.</p>
+                                                <textarea type="text" name="location" class="form-control" value="{{ areas.location }}" placeholder="Введите данные">{{ areas.location }}</textarea>
 											</div>
+                                            <div class="form-group">
+                                                <label class="form-label">Плата за доставку*</label>
+                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
+                                                <input type="number" class="form-control" name="delivery_price" value="{{ areas.delivery_price }}" placeholder="0 р." required="">
+                                            </div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
 												<select id="status" name="status" class="form-control">

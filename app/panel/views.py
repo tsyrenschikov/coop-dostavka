@@ -202,15 +202,16 @@ def delete_area(request,id):
         return render(request ,'panel/delete_error_areas.html', {})
 
 
-def category(request):
+def category(request, ):
     users = User.objects.all()
-    categories = Category.objects.order_by('number')
-    return render(request,'panel/category.html',{'categories': categories, 'users':users})
+    categories = Category.objects.all().order_by('number')
+    return render(request,'panel/category.html',{'categories':categories,'users':users})
 
 #Просмотр категории товаров
 def view_category(request,id):
-    categories = Category.objects.get(id=id)
-    return render(request, 'panel/view_category.html',{'categories':categories})
+    images = Category.objects.get(id=id)
+    categories = Category.objects.values('name','descriptions','status','image','subcategory__name','shop__name').get(id=id)
+    return render(request, 'panel/view_category.html',{'categories':categories,'images':images})
 
 #Редактировать категорию товара
 def edit_category(request,id):

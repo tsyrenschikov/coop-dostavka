@@ -41,6 +41,17 @@
 																<option selected value="True">Активный</option>
 																<option value="False">Не активный</option>
 															</select>
+                                                            <div class="card-title-2">
+													<h4>Менеджер магазина</h4>
+												</div>
+                                                <div class="form-group">
+															<select   class="form-control">
+																<option selected>--Выбрать менеджера--</option>
+                                                                {% for users in users %}
+                                                                <option name="man" value="{{ users.last_name }}">{{ users.last_name }} {{ users.first_name }}</option>
+                                                                {% endfor %}
+															</select>
+                                                </div>
 														</div>
 														<div class="form-group">
 															<label class="form-label">Описание</label>

@@ -17,17 +17,33 @@
 										<div class="shopowner-content-left text-center pd-20">
                                         <h4>Категория товара</h4>
 											<div class="customer_img">
-                                                {% if categories.image %}
-												<img src="{{ categories.image.url }}" alt="">
+                                                {% if images.image %}
+												<img src="{{ images.image.url}}" alt="">
                                                 {% endif %}
 											</div>
 											<div class="shopowner-dt-left mt-4">
-												<span>{{ categories.name }}</span>
+												<span>{{ categories.category__name }}</span>
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Название</span>
 													<span class="right-dt">{{ categories.name }}</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Подкатегории</span>
+                                                    {% if categories.subcategory__name %}
+													<span class="right-dt">{{ categories.subcategory__name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не указано</span>
+                                                    {% endif %}
+												</div>
+                                            <div class="shopowner-dt-list">
+													<span class="left-dt">Магазины</span>
+                                                    {% if categories.shop__name %}
+													<span class="right-dt">{{ categories.shop__name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не указано</span>
+                                                    {% endif %}
 												</div>
                                             <div class="shopowner-dt-list">
 													<span class="left-dt">Описание категории</span>

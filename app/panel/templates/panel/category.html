@@ -39,7 +39,6 @@
                                                         <th>Номер</th>
                                                         <th>Имя</th>
 														<th style="width:130px">Изображение</th>
-                                                        <th>Подкатегории</th>
                                                         <th>Описание</th>
 														<th>Статус</th>
 														<th>Действия</th>
@@ -55,30 +54,29 @@
                                                         <p style="color: red">Присвойте номер</p>
                                                         {% endif %}
                                                     </td>
-                                                    <td>{{ categories.name }}</td>
+                                                    <td>
+                                                        {% if categories.name %}
+                                                        {{ categories.name }}
+                                                        {% else %}
+                                                        Имя отсутствует
+                                                        {% endif %}
+                                                    </td>
 														<td>
                                                             {% if categories.image %}
 															<div class="cate-img">
 																<img src="{{ categories.image.url }}" alt="">
 															</div>
-                                                                {% else %}
-                                                                <div class="cate-img">
-                                                                    <p>no image</p>
-															</div>
+                                                            {% else %}
+                                                            No image
                                                             {% endif %}
 														</td>
                                                         <td>
-                                                            {% if subcategory.name %}
-                                                                {{ subcategory.name }}
+                                                            {% if categories.descriptions %}
+                                                            {{ categories.descriptions }}
                                                             {% else %}
-                                                                <p>Подкатегория не присвоена</p>
-                                                            {% endif %}
-                                                        </td>
-                                                        {% if categories.descriptions %}
-														<td>{{ categories.descriptions }}</td>
-                                                        {% else %}
-                                                        <p>Нет описания</p>
+                                                                <p>Нет описания</p>
                                                         {% endif %}
+                                                        </td>
                                                         {% if categories.status %}
 														<td><span class="badge-item badge-status">Активный</span></td>
                                                         {% else %}

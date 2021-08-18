@@ -298,19 +298,22 @@ def shop_view(request, id):
 def add_shop(request):
     alert = {
         'name': request.GET.get('name', ''),
+        'users':User.objects.filter(groups__name='manager').order_by('last_name'),
     }
+    users = User.objects.filter(groups__name='manager').order_by('last_name')
     if request.method == 'POST':
         name = request.POST.get('name')
         address = request.POST.get('address')
-        delivery_price = request.POST.get('delivery_price')
         status = request.POST.get('status')
+        users = request.POST.get('users')
         descriptions = request.POST.get('descriptions')
         if Shop.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Название магазина уже существует'
+            return render(request, 'panel/add_shop.html', alert,users)
         else:
-            Shop.objects.create(name=name,address=address,delivery_price=delivery_price,status=status,descriptions=descriptions)
+            Shop.objects.create(name=name,address=address,status=status,users=users,descriptions=descriptions)
             return render(request, 'panel/add_ok_shop.html')
-    return render(request, 'panel/add_shop.html',alert)
+    return render(request, 'panel/add_shop.html',{'users':users})
 
 #Успешное добавления магазина
 def add_ok_shop(request):

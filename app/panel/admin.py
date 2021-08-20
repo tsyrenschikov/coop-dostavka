@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shop, Area,Category,SubCategory, Product
+from .models import Shop, Area,Category,SubCategory, Product,Locations
 
 class ShopAdmin(admin.ModelAdmin):
     list_display = ['name']
@@ -8,6 +8,10 @@ admin.site.register(Shop, ShopAdmin)
 class AreaAdmin(admin.ModelAdmin):
     list_display = ['name']
 admin.site.register(Area, AreaAdmin)
+
+class LocationsAdmin(admin.ModelAdmin):
+    list_display = ['name']
+admin.site.register(Locations, LocationsAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name','number']

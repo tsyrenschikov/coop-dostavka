@@ -14,117 +14,49 @@
 							<div class="col-lg-12">
 								<a href="{%  url 'add_location' %}" class="add-btn hover-btn">Добавить</a>
 							</div>
-							<div class="col-lg-3 col-md-4">
-								<div class="bulk-section mt-30">
-									<div class="input-group">
-										<select id="action" name="action" class="form-control">
-											<option selected>Массовые действия</option>
-											<option value="1">Активировать</option>
-											<option value="2">Дезактивировать</option>
-											<option value="3">Удалить</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Применить</button>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="col-lg-5 col-md-6">
 								<div class="bulk-section mt-30">
 									<div class="search-by-name-input">
 										<input type="text" class="form-control" placeholder="Поиск">
-									</div>
-									<div class="input-group">
-										<select id="categeory" name="categeory" class="form-control">
-											<option selected>Активные</option>
-											<option value="1">Не активные</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Поиск</button>
-										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-12">
 								<div class="card card-static-2 mt-30 mb-30">
 									<div class="card-title-2">
-										<h4>Все локации</h4>
+										<h4>Список населенных пунктов</h4>
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-														<th style="width:60px"><input type="checkbox" class="check-all"></th>
-														<th style="width:60px">ID</th>
 														<th>Имя</th>
-														<th>Статус</th>
+                                                        <th>Доставка</th>
 														<th>Действия</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="7"></td>
-														<td>1</td>
-														<td>Екатеринбург</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
+                                                        {% for local in local %}
+														<td>
+                                                            {% if local.name %}
+                                                                {{ local.name }}
+                                                            {% else %}
+                                                                <p style="color:green">Не указано</p>
+                                                            {% endif %}
+                                                        </td>
+														<td>
+                                                            {% if local.delivery_price %}
+                                                                {{ local.delivery_price }}.p
+                                                            {% else %}
+                                                                <p style="color: green">Не указано</p>
+                                                            {% endif %}
+                                                        </td>
 														<td class="action-btns">
 															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
 														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="6"></td>
-														<td>2</td>
-														<td>Красноуфимск</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="5"></td>
-														<td>3</td>
-														<td>Первоуральск</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="4"></td>
-														<td>4</td>
-														<td>Арти</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="3"></td>
-														<td>5</td>
-														<td>Нижние Серги</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="2"></td>
-														<td>6</td>
-														<td>Ачит</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
-														<td>7</td>
-														<td>Михайловск</td>
-														<td><span class="badge-item badge-status">Активный</span></td>
-														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Редактировать</a>
-														</td>
+                                                        {% endfor %}
 													</tr>
 												</tbody>
 											</table>

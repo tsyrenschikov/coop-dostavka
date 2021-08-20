@@ -5,11 +5,10 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Category,SubCategory, Product
+from .models import Shop,Area,Locations,Category,SubCategory, Product
 
 
 register = template.Library()
-
 
 @register.filter(name='manager')
 def manager(user, group_name):
@@ -145,7 +144,8 @@ def post_tags(request):
     return render(request, 'panel/post_tags.html', {})
 
 def locations(request):
-    return render(request, 'panel/locations.html', {})
+    local= Locations.objects.all()
+    return render(request, 'panel/locations.html', {'local':local})
 
 def add_location(request):
     return render(request, 'panel/add_location.html', {})
@@ -294,24 +294,28 @@ def shop_view(request, id):
         id=id)
     return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
 
+
+
 #Добавить магазины
-def add_shop(request):
+def add_shop(request, **kwargs):
     alert = {
         'name': request.GET.get('name', ''),
         'users':User.objects.filter(groups__name='manager').order_by('last_name'),
     }
     users = User.objects.filter(groups__name='manager').order_by('last_name')
+    #areas = Area.objects.all().order_by('name')
     if request.method == 'POST':
         name = request.POST.get('name')
         address = request.POST.get('address')
         status = request.POST.get('status')
-        users = request.POST.get('users')
+        pk = request.POST.get('id')
+        #areas_id = request.POST.get('id')
         descriptions = request.POST.get('descriptions')
         if Shop.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Название магазина уже существует'
             return render(request, 'panel/add_shop.html', alert,users)
         else:
-            Shop.objects.create(name=name,address=address,status=status,users=users,descriptions=descriptions)
+            Shop.objects.create(name=name,address=address,customuser_id=pk,status=status,descriptions=descriptions)
             return render(request, 'panel/add_ok_shop.html')
     return render(request, 'panel/add_shop.html',{'users':users})
 

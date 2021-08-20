@@ -4,9 +4,7 @@ from django.db.models.fields.related import ForeignKey
 
 class Area(models.Model):
     name = models.CharField(max_length=200,db_index=True, verbose_name='Имя зоны продаж')
-    location = models.CharField(max_length=200, null=True, verbose_name='Локация')
     status = models.BooleanField(default=True,verbose_name='Активный')
-    delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
 
     class Meta:
         ordering = ['name']
@@ -16,6 +14,21 @@ class Area(models.Model):
 
     def __str__(self):
         return self.name
+
+class Locations(models.Model):
+    area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
+    name = models.CharField(max_length=200,db_index=True, verbose_name='Название наседенного пункта')
+    location = models.CharField(max_length=200, null=True, verbose_name='Локация')
+    delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Населенный пункт'
+        verbose_name_plural = 'Населенные пункты'
+        index_together = (('id'),)
+
+        def __str__(self):
+            return self.name
 
 class Shop(models.Model):
     customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+' ,verbose_name='Пользователь')

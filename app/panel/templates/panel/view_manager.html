@@ -80,7 +80,7 @@
 												</div>
                                                 <div class="shopowner-dt-list">
 													<span class="left-dt">Адрес отгрузки</span>
-                                                    {% if users.org %}
+                                                    {% if users.address != 'None' %}
 													<span class="right-dt">{{ users.address }}</span>
                                                     {% else %}
                                                     <span class="right-dt" style="color: red">Адрес отгрузки не указан</span>

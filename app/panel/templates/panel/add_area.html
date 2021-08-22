@@ -22,8 +22,13 @@
                                             <div class="news-content-right pd-20">
                                                 <div class="form-group">
                                                     <label class="form-label">Имя*</label>
-                                                    <input type="text" type="text" name="name" class="form-control" placeholder="Имя территории" required="">
+                                                    <input type="text" id="input" name="name" class="form-control" placeholder="Имя территории" required="">
                                                 </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Slug(ссылка на сайт)*</label>
+                                                <p style="color: green">(Поле заполняется автоматически)</p>
+                                                <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" disabled required="">
+                                            </div>
                                                 {% if area %}
                                                     <div class="alert alert-danger alert-dismissible">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -56,4 +61,5 @@
                         </div>
                     </div>
                 </main>
+
 {% endblock content %}

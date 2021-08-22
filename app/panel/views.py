@@ -214,12 +214,13 @@ def add_area(request, **kwargs):
         name = request.POST.get('name')
         status = request.POST.get('status')
         localname = request.POST.getlist('localname')
+        slug = request.POST.get('slug')
 
         if Area.objects.filter(name=request.POST['name']).exists():
             alert['area'] = "Территория уже существует"
             return render(request, 'panel/add_area.html', alert)
         else:
-            Area.objects.create(name=name, status=status,locality=localname )
+            Area.objects.create(name=name, status=status,locality=localname,slug=slug)
             return render(request, 'panel/add_ok_area.html')
     return render(request, 'panel/add_area.html', {'local':local})
 

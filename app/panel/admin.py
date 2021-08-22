@@ -6,7 +6,8 @@ class ShopAdmin(admin.ModelAdmin):
 admin.site.register(Shop, ShopAdmin)
 
 class AreaAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
 admin.site.register(Area, AreaAdmin)
 
 class LocationsAdmin(admin.ModelAdmin):

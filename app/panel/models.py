@@ -20,13 +20,14 @@ class Area(models.Model):
     locality = ArrayField(models.CharField(max_length=200), null=True,blank=True)
     location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')
     name = models.CharField(max_length=255,db_index=True, verbose_name='Территория продаж')
+    slug = models.SlugField(max_length=200,null=True, db_index=True)
     status = models.BooleanField(default=True,verbose_name='Активный')
 
     class Meta:
         ordering = ['name']
         verbose_name = 'Территория продаж'
         verbose_name_plural = 'Территории продаж'
-        index_together = (('id'),)
+        index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.name

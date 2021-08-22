@@ -143,51 +143,100 @@ def post_categories(request):
 def post_tags(request):
     return render(request, 'panel/post_tags.html', {})
 
+#Населенный пункт
 def locations(request):
     local= Locations.objects.all()
     return render(request, 'panel/locations.html', {'local':local})
 
+#Населенный пункт редактировать
+def edit_location(request,id):
+    try:
+        local = Locations.objects.get(id = id)
+
+
+        if request.method == "POST":
+            local.name = request.POST.get("name")
+            local.delivery_price = request.POST.get("delivery_price")
+            local.save()
+            return render(request, "panel/edit_ok_location.html", {'local':local})
+
+        else:
+            return render(request, "panel/edit_location.html", {"local": local})
+    except local.DoesNotExist:
+        return render(request ,'panel/edit_error_location.html', {'local' : local})
+
+#Населенный пункт добавить
 def add_location(request):
-    return render(request, 'panel/add_location.html', {})
+    alert = {
+        "name": request.GET.get('name', ''),
+    }
+    local = Locations.objects.all()
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        delivery_price = request.POST.get('delivery_price')
+
+        if Locations.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = "Название населенного пункта уже существует"
+            return render(request, 'panel/add_location.html', alert)
+        else:
+            Locations.objects.create(name=name,delivery_price=delivery_price)
+            return render(request, 'panel/locations.html', {'local': local})
+    return render(request, 'panel/add_location.html', {'local':local})
+
+#Населенный пункт удалить
+def delete_location(request, id):
+
+    local = Locations.objects.get(id=id)
+    local.delete()
+    return render(request, "panel/delete_ok_location.html",{'local':local})
+
+#Успешное удаления локации
+def delete_ok_location(request):
+    try:
+        local = Locations.objects.all()
+        return render(request, 'panel/delete_ok_location', {'local':local})
+    except local.DoesNotExist:
+        return render(request,'panel/delete_error_location.html',{'local':local})
 
 #Список территорий продаж
 def areas(request):
-    areas=Area.objects.all()
+    areas=Area.objects.values('name','location__name','status','id','locality')
     return render(request, 'panel/areas.html', {'areas':areas})
 
 #Добавить территорию
-def add_area(request):
+def add_area(request, **kwargs):
     alert = {
         "area": request.GET.get('area', ''),
+        "local":Locations.objects.values('name', 'id'),
     }
-
+    local=Locations.objects.values('name','id')
     if request.method == 'POST':
         name = request.POST.get('name')
-        location = request.POST.get('location')
-        delivery_price = request.POST.get('delivery_price')
-
+        status = request.POST.get('status')
+        localname = request.POST.getlist('localname')
 
         if Area.objects.filter(name=request.POST['name']).exists():
             alert['area'] = "Территория уже существует"
+            return render(request, 'panel/add_area.html', alert)
         else:
-            Area.objects.create(name=name, location=location,delivery_price=delivery_price)
-            return render(request, 'panel/add_ok_area.html', {})
-    return render(request, 'panel/add_area.html', alert)
+            Area.objects.create(name=name, status=status,locality=localname )
+            return render(request, 'panel/add_ok_area.html')
+    return render(request, 'panel/add_area.html', {'local':local})
 
 #Редактировать территорию
 def edit_area(request,id):
     try:
         areas = Area.objects.get(id=id)
+        local = Locations.objects.values('name')
 
         if request.method=="POST":
             areas.name=request.POST.get("name")
             areas.status=request.POST.get("status")
-            areas.location = request.POST.get("location")
-            areas.delivery_price = request.POST.get('delivery_price')
+            areas.localname = request.POST.getlist('localname')
             areas.save()
-            return render(request, 'panel/edit_ok_area.html',{'areas':areas})
+            return render(request, 'panel/edit_ok_area.html',{'areas':areas,'local':local})
         else:
-            return render(request,'panel/edit_area.html',{'areas':areas},)
+            return render(request,'panel/edit_area.html',{'areas':areas,'local':local},)
     except User.DoesNotExist:
         return render(request, 'panel/edit_area.html',{})
 

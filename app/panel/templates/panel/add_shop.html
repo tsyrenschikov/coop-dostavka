@@ -48,11 +48,11 @@
 															<select  name="id" value="{{ users.pk }}" class="form-control">
 																<option selected>--Выбрать менеджера--</option>
                                                                 {% for users in users %}
-                                                                <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
+                                                                    <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
                                                                 {% endfor %}
 															</select>
                                                 </div>
-                                                        <!--<div class="card-title-2">
+                                                        <div class="card-title-2">
                                                             <h4>Территория магазина</h4>
                                                         </div>
                                                             <div class="form-group">
@@ -62,7 +62,7 @@
                                                                         <option value="">{{ areas.name }}</option>
                                                                     {% endfor %}
                                                                 </select>
-                                                            </div>-->
+                                                            </div>
 
 														</div>
                                                         <div class="form-group">

@@ -1,24 +1,10 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
-
-class Area(models.Model):
-    name = models.CharField(max_length=200,db_index=True, verbose_name='Имя зоны продаж')
-    status = models.BooleanField(default=True,verbose_name='Активный')
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Зона продаж'
-        verbose_name_plural = 'Зоны продаж'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
+from django.contrib.postgres.fields import ArrayField
 
 class Locations(models.Model):
-    area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
-    name = models.CharField(max_length=200,db_index=True, verbose_name='Название наседенного пункта')
-    location = models.CharField(max_length=200, null=True, verbose_name='Локация')
+    name = models.CharField(max_length=200,db_index=True, verbose_name='Название населенного пункта')
     delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
 
     class Meta:
@@ -29,6 +15,21 @@ class Locations(models.Model):
 
         def __str__(self):
             return self.name
+
+class Area(models.Model):
+    locality = ArrayField(models.CharField(max_length=200), null=True,blank=True)
+    location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')
+    name = models.CharField(max_length=255,db_index=True, verbose_name='Территория продаж')
+    status = models.BooleanField(default=True,verbose_name='Активный')
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Территория продаж'
+        verbose_name_plural = 'Территории продаж'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
 
 class Shop(models.Model):
     customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+' ,verbose_name='Пользователь')

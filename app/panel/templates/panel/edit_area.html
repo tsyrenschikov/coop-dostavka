@@ -21,25 +21,32 @@
                                             {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
-												<label class="form-label">Имя*</label>
+												<label class="form-label">Название территории*</label>
 												<input type="text"  name="name" class="form-control" value="{{ areas.name }}" placeholder="Имя территории">
 											</div>
 											<div class="form-group">
-												<label class="form-label">Территория обслуживания*</label>
-                                                <p style="color: green;font-size:0.9em">Укажите через запятую населенные пункты.</p>
-                                                <textarea type="text" name="location" class="form-control" value="{{ areas.location }}" placeholder="Введите данные">{{ areas.location }}</textarea>
-											</div>
-                                            <div class="form-group">
-                                                <label class="form-label">Плата за доставку*</label>
-                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
-                                                <input type="number" class="form-control" name="delivery_price" value="{{ areas.delivery_price }}" placeholder="0 р." required="">
-                                            </div>
+                                                <label class="form-label">Населенный пункт</label>
+                                                    <select  name="localname"  class="selectpicker form-control" multiple data-live-search="true" multiple>
+                                                        {% for local in local %}
+                                                            {% if local.name %}<!--если существует, то вывести с галочкой-->
+                                                                <option value="{{ local.name }}">{{ local.name }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
-												<select id="status" name="status" class="form-control">
-													<option value="True" selected>Активный</option>
-													<option value="False">Не активный</option>
+                                                {% if areas.status %}
+												<select name="status" class="form-control">
+                                                    <option value="True">Активный</option>
+                                                    <option value="False">Не активный</option>
 												</select>
+                                                {% else %}
+                                                <select name="status" class="form-control">
+                                                    <option value="False">Не активный</option>
+                                                    <option value="True">Активный</option>
+												</select>
+                                                {% endif %}
 											</div>
 											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>

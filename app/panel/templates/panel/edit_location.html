@@ -8,7 +8,7 @@
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
                             <li class="breadcrumb-item"><a href="{% url 'locations'%}">Локации</a></li>
-                            <li class="breadcrumb-item active">Добавить локацию</li>
+                            <li class="breadcrumb-item active">Редактировать локацию</li>
                         </ol>
                         <div class="row">
 							<div class="col-lg-5 col-md-6">
@@ -18,24 +18,18 @@
 									</div>
 									<div class="card-body-table">
                                         <form method="post">
-                                        {% csrf_token %}
+                                            {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Название населенного пункта*</label>
-												<input type="text" name="name" class="form-control" placeholder="Название населенного пункта">
+												<input type="text" name="name" class="form-control" value="{{ local.name }}" placeholder="Название населенного пункта">
 											</div>
-                                            {% if name %}
-                                            <div class="alert alert-danger alert-dismissible">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            {{ name }}
-                                            </div>
-                                                 {% endif %}
-                                                <div class="form-group">
-												<label class="form-label">Плата за доставку*</label>
-                                                    <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
-                                                    <input type="number" name="delivery_price" class="form-control" placeholder="0 р.">
+                                            <div class="form-group">
+                                                <label class="form-label">Плата за доставку*</label>
+                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
+                                                <input type="text" name="delivery_price" class="form-control" value="{{ local.delivery_price }}" placeholder="0 р.">
 											</div>
-											<button class="save-btn hover-btn" type="submit">Добавить</button>
+											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>
                                         </form>
 									</div>

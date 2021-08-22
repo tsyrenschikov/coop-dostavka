@@ -33,11 +33,10 @@
 												<thead>
 													<tr>
 														<th>Имя</th>
-														<th>Территория</th>
-                                                        <th>Доставка</th>
+														<th>Населенные пункты</th>
 														<th>Статус</th>
 														<th>
-                                                            {% if user.is_superuser %}
+                                                            {% if 'super_manager' in groups %}
                                                             Действия
                                                         </th>
                                                         {% endif %}
@@ -47,15 +46,10 @@
                                                 {% for areas in areas %}
 													<tr>
 														<td>{{ areas.name}}</td>
-                                                            {% if areas.location %}
-														<td>{{ areas.location }}</td>
+                                                            {% if areas.locality %}
+														<td>{{ areas.locality|cut:"["|cut:"'"|cut:"]" }} </td>
                                                             {% else %}
                                                             <td>Не указано</td>
-                                                            {% endif %}
-                                                            {% if areas.delivery_price %}
-                                                        <td>{{ areas.delivery_price }}.р</td>
-                                                            {% else %}
-                                                        <td>Не указано</td>
                                                             {% endif %}
                                                             {% if areas.status %}
 														<td><span class="badge-item badge-status">Активный</span></td>
@@ -63,7 +57,7 @@
                                                             <td><span class="badge-item badge-status">Не активный</span></td>
                                                             {% endif %}
 														<td class="action-btns">
-															{% if user.is_superuser %}
+															{% if 'super_manager' in groups %}
 															<a href="/edit_area/{{ areas.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
                                                             <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +

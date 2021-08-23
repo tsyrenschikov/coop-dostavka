@@ -8,7 +8,9 @@
                                 Панель управление
 							</a>
                             {% if 'super_manager' in groups %}
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManager" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link {% if request.path == '/edit_manager/' or request.path == '/add_manager/' %}active{% endif %}" href="#" data-toggle="collapse"
+                               data-target="#collapseManager" aria-expanded="false"
+                               aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Менеджер
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -21,11 +23,12 @@
                                 </nav>
                             </div>
                             {% endif %}
-                            <a class="nav-link" href="{% url 'customers' %}">
+                            <a class="nav-link " href="{% url 'customers' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Клиенты
 							</a>
-                            <a class="nav-link active collapsed" href="#" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="false" aria-controls="collapseLocations">
+                            <a class="nav-link {% if request.path == '/locations/' or request.path == '/add_location/' %}active{% endif %}
+" href="#" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="false" aria-controls="collapseLocations">
                                 <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 Населенный пункт
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -36,9 +39,10 @@
 									<a class="nav-link sub_nav_link" href="{% url 'add_location' %}">Добавить населенный пункт</a>
 								</nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAreas" aria-expanded="false" aria-controls="collapseAreas">
+                            <a class="nav-link {% if request.path == '/areas/' or request.path == '/add_area/' %}active
+{% endif %}" href="#" data-toggle="collapse" data-target="#collapseAreas" aria-expanded="false" aria-controls="collapseAreas">
 								<div class="sb-nav-link-icon"><i class="fas fa-map-marked-alt"></i></div>
-                                Территория <Обслуживания></Обслуживания>
+                                Территория Обслуживания
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 							</a>
                             <div class="collapse" id="collapseAreas" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">

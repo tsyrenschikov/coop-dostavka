@@ -26,10 +26,10 @@
 											</div>
 											<div class="form-group">
                                                 <label class="form-label">Населенный пункт</label>
-                                                    <select  name="localname"  class="selectpicker form-control" multiple data-live-search="true" value="{{ local.name }}">
-                                                        {% for local in local %}
-                                                            {% if local.name %}<!--если существует, то вывести с галочкой-->
-                                                                <option value="{{ local.name }}">{{ local.name }}</option>
+                                                    <select  name="local_city"  class="selectpicker form-control" multiple data-live-search="true" value="{{ areas.local_city }}">
+                                                        {% for name in local %}
+                                                            {% if name.name %}<!--если существует, то вывести с галочкой-->
+                                                                <option value="{{ name.name }}">{{ name.name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>

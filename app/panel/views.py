@@ -225,17 +225,18 @@ def add_area(request, **kwargs):
     return render(request, 'panel/add_area.html', {'local':local})
 
 #Редактировать территорию
-def edit_area(request,id):
+def edit_area(request, id):
     try:
         areas = Area.objects.get(id=id)
         local = Locations.objects.values('name')
-
         if request.method=="POST":
             areas.name=request.POST.get("name")
             areas.status=request.POST.get("status")
-            areas.localname = request.POST.getlist("items[localname]")
             areas.save()
-            return render(request, 'panel/edit_ok_area.html',{'areas':areas,'local':local})
+        if request.method=="POST":
+            areas.localname = request.POST.getlist('local_city')
+            Area.objects.update(local_city=areas.localname)
+            return render(request, 'panel/edit_ok_area.html', {'areas': areas, 'local': local})
         else:
             return render(request,'panel/edit_area.html',{'areas':areas,'local':local},)
     except User.DoesNotExist:

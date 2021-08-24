@@ -27,7 +27,7 @@
                                             <div class="form-group">
                                                 <label class="form-label">Slug(ссылка на сайт)*</label>
                                                 <p style="color: green">(Поле заполняется автоматически)</p>
-                                                <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" disabled required="">
+                                                <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" readonly="readonly" required="">
                                             </div>
                                                 {% if area %}
                                                     <div class="alert alert-danger alert-dismissible">
@@ -37,9 +37,9 @@
                                                 {% endif %}
                                                 <div class="form-group">
                                                 <label class="form-label">Населенный пункт</label>
-                                                    <select  name="localname" class="selectpicker form-control" multiple data-live-search="true">
+                                                    <select  name="local_city" class="selectpicker form-control" multiple data-live-search="true">
                                                         {% for local in local %}
-                                                            <option>{{ local.name }}</option>
+                                                            <option name="local_city" value="{{ local.name }}">{{ local.name }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>

@@ -46,8 +46,8 @@
                                                 {% for areas in areas %}
 													<tr>
 														<td>{{ areas.name}}</td>
-                                                            {% if areas.locality %}
-														<td>{{ areas.locality|cut:"["|cut:"'"|cut:"]" }} </td>
+                                                            {% if areas.local_city %}
+														<td>{{ areas.local_city|cut:"["|cut:"'"|cut:"]" }} </td>
                                                             {% else %}
                                                             <td>Не указано</td>
                                                             {% endif %}

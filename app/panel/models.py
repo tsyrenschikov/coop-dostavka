@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
-from django.contrib.postgres.fields import ArrayField
+
 
 class Locations(models.Model):
     name = models.CharField(max_length=200,db_index=True, verbose_name='Название населенного пункта')
@@ -17,7 +17,7 @@ class Locations(models.Model):
             return self.name
 
 class Area(models.Model):
-    locality = ArrayField(models.CharField(max_length=200), null=True,blank=True)
+    local_city = models.JSONField(default=list,null=True,blank=True)
     location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')
     name = models.CharField(max_length=255,db_index=True, verbose_name='Территория продаж')
     slug = models.SlugField(max_length=200,null=True, db_index=True)

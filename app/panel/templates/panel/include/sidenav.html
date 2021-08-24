@@ -53,7 +53,8 @@
                                     {% endif %}
 								</nav>
                             </div>
-							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShops" aria-expanded="false" aria-controls="collapseShops">
+							<a class="nav-link {% if request.path == '/shops/' or request.path == '/add_shop/' %}active{% endif %}" href="#" data-toggle="collapse" data-target="#collapseShops"
+                               aria-expanded="false" aria-controls="collapseShops">
 								<div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
                                 Магазины
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -66,7 +67,8 @@
                                     {% endif     %}
 								</nav>
                             </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+                        <a class="nav-link {% if request.path == '/category/' or request.path == '/add_category/'  %}active{% endif %}" href="#" data-toggle="collapse"
+                            data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
 								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                                 Категории и подкатегории
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

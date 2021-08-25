@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../pythonProject/diplom/Kursav/.idea/Kursav.iml" filepath="$PROJECT_DIR$/../pythonProject/diplom/Kursav/.idea/Kursav.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/coopdostavka.iml" filepath="$PROJECT_DIR$/.idea/coopdostavka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../djangoProject/.idea/djangoProject.iml" filepath="$PROJECT_DIR$/../djangoProject/.idea/djangoProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/../pythonProject/.idea/pythonProject.iml" filepath="$PROJECT_DIR$/../pythonProject/.idea/pythonProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/../tsyrenschikov.ru/.idea/tsyrenschikov.iml" filepath="$PROJECT_DIR$/../tsyrenschikov.ru/.idea/tsyrenschikov.iml" />
     </modules>

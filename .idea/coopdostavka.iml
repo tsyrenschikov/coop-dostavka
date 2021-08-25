@@ -6,7 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="tsyrenschikov" />
     <orderEntry type="module" module-name="pythonProject" />
-    <orderEntry type="module" module-name="djangoProject" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

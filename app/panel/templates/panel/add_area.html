@@ -37,9 +37,9 @@
                                                 {% endif %}
                                                 <div class="form-group">
                                                 <label class="form-label">Населенный пункт</label>
-                                                    <select  name="local_city" class="selectpicker form-control" multiple data-live-search="true">
+                                                    <select class="form-control selectpicker" name="local_city" value="{{ local.name }}" multiple data-live-search="true">
                                                         {% for local in local %}
-                                                            <option name="local_city" value="{{ local.name }}">{{ local.name }}</option>
+                                                            <option name="local_city">{{ local.name }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
@@ -61,5 +61,9 @@
                         </div>
                     </div>
                 </main>
-
+<script>
+$(function () {
+    $('select').selectpick1er();
+});
+</script>
 {% endblock content %}

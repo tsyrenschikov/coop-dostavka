@@ -25,15 +25,37 @@
 												<input type="text"  name="name" class="form-control" value="{{ areas.name }}" placeholder="Имя территории">
 											</div>
 											<div class="form-group">
-                                                <label class="form-label">Населенный пункт</label>
-                                                    <select  name="local_city"  class="selectpicker form-control" multiple data-live-search="true" value="{{ areas.local_city }}">
-                                                        {% for name in local %}
-                                                            {% if name.name %}<!--если существует, то вывести с галочкой-->
-                                                                <option value="{{ name.name }}">{{ name.name }}</option>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
+                                                <label class="form-label">Населенный пункт*</label>
+                                                    <div class="row style-select">
+                                                        <div class="col-md-12">
+                                                            <div class="subject-info-box-1">
+                                                                <label>Варианты населенных пунктов:</label>
+                                                                <select multiple class="form-control" id="lstBox1">
+                                                                    {% for local in local %}
+                                                                    <option >{{ local.name }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="subject-info-arrows">
+                                                                <br />
+                                                                <input type='button' id='btnRight' value='Добавить в список' class="btn1 btn-default">
+                                                                &nbsp
+                                                                <input type='button' id='btnLeft' value='Убрать из списка' class="btn1 btn-default">
+                                                            </div>
+                                                                <br />
+                                                            <div class="subject-info-box-2">
+                                                                <label>Список добавленных населенных пунктов:</label>
+                                                                <select name="local_city" multiple class="form-control" id="lstBox2">
+                                                                    {% for i in areas.local_city %}
+                                                                        <option value="{{ i }}"><mark>{% if areas.local_city %}{{ i }}{% endif %}</mark></option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
                                                 {% if areas.status %}
@@ -50,6 +72,7 @@
 											</div>
 											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>
+                                        </div>
                                         </form>
 									</div>
 								</div>
@@ -57,5 +80,76 @@
                         </div>
                     </div>
                 </main>
+<script>
+        $('#btnAvenger').click(function (e) {
+            $('select').moveToList('#StaffList', '#PresenterList');
+            e.preventDefault();
+        });
 
+        $('#btnRemoveAvenger').click(function (e) {
+            $('select').removeSelected('#PresenterList');
+            e.preventDefault();
+        });
+
+        $('#btnAvengerUp').click(function (e) {
+            $('select').moveUpDown('#PresenterList', true, false);
+            e.preventDefault();
+        });
+
+        $('#btnAvengerDown').click(function (e) {
+            $('select').moveUpDown('#PresenterList', false, true);
+            e.preventDefault();
+        });
+
+        $('#btnShield').click(function (e) {
+            $('select').moveToList('#StaffList', '#ContactList');
+            e.preventDefault();
+        });
+
+        $('#btnRemoveShield').click(function (e) {
+            $('select').removeSelected('#ContactList');
+            e.preventDefault();
+        });
+
+        $('#btnShieldUp').click(function (e) {
+            $('select').moveUpDown('#ContactList', true, false);
+            e.preventDefault();
+        });
+
+        $('#btnShieldDown').click(function (e) {
+            $('select').moveUpDown('#ContactList', false, true);
+            e.preventDefault();
+        });
+
+        $('#btnJusticeLeague').click(function (e) {
+            $('select').moveToList('#StaffList', '#FacilitatorList');
+            e.preventDefault();
+        });
+
+        $('#btnRemoveJusticeLeague').click(function (e) {
+            $('select').removeSelected('#FacilitatorList');
+            e.preventDefault();
+        });
+
+        $('#btnJusticeLeagueUp').click(function (e) {
+            $('select').moveUpDown('#FacilitatorList', true, false);
+            e.preventDefault();
+        });
+
+        $('#btnJusticeLeagueDown').click(function (e) {
+            $('select').moveUpDown('#FacilitatorList', false, true);
+            e.preventDefault();
+        });
+
+        $('#btnRight').click(function (e) {
+            $('select').moveToListAndDelete('#lstBox1', '#lstBox2');
+            e.preventDefault();
+        });
+
+
+        $('#btnLeft').click(function (e) {
+            $('select').moveToListAndDelete('#lstBox2', '#lstBox1');
+            e.preventDefault();
+        });
+</script>
 {% endblock content %}

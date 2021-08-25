@@ -207,9 +207,9 @@ def areas(request):
 def add_area(request, **kwargs):
     alert = {
         "area": request.GET.get('area', ''),
-        "local":Locations.objects.values('name', 'id'),
+        "local":Locations.objects.values('name'),
     }
-    local=Locations.objects.values('name','id')
+    local=Locations.objects.values('name')
     if request.method == 'POST':
         name = request.POST.get('name')
         status = request.POST.get('status')

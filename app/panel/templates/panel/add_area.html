@@ -1,7 +1,12 @@
 {% extends 'panel/layouts/base.html' %}
 {% block title %}panel{% endblock %}
+{% load static %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+{% endblock stylesheet %}
 {% block content %}
-    {% load static %}
+
         <main>
                     <div class="container-fluid">
                         <h2 class="mt-30 page-title">Территория продаж</h2>
@@ -61,6 +66,7 @@
                         </div>
                     </div>
                 </main>
+
 <script>
 $(function () {
     $('select').selectpick1er();

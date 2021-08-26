@@ -337,12 +337,7 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    users=Shop.objects.values('name','address','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone',
-                              'customuser__email',
-                              'customuser__address',\
-          'customuser__org',
-                              'area__name').get(
-        id=id)
+    users=Shop.objects.values('name','address','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org','area__name').get(id=id)
     return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
 
 
@@ -352,23 +347,23 @@ def add_shop(request, **kwargs):
     alert = {
         'name': request.GET.get('name', ''),
         'users':User.objects.filter(groups__name='manager').order_by('last_name'),
+        'areas': Area.objects.all().order_by('name'),
     }
+    areas= Area.objects.all().order_by('name')
     users = User.objects.filter(groups__name='manager').order_by('last_name')
-    #areas = Area.objects.all().order_by('name')
     if request.method == 'POST':
         name = request.POST.get('name')
         address = request.POST.get('address')
         status = request.POST.get('status')
         pk = request.POST.get('id')
-        #areas_id = request.POST.get('id')
         descriptions = request.POST.get('descriptions')
         if Shop.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Название магазина уже существует'
-            return render(request, 'panel/add_shop.html', alert,users)
+            return render(request, 'panel/add_shop.html', alert)
         else:
             Shop.objects.create(name=name,address=address,customuser_id=pk,status=status,descriptions=descriptions)
             return render(request, 'panel/add_ok_shop.html')
-    return render(request, 'panel/add_shop.html',{'users':users})
+    return render(request, 'panel/add_shop.html',{'users':users,'areas':areas})
 
 #Успешное добавления магазина
 def add_ok_shop(request):

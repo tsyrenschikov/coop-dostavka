@@ -35,26 +35,16 @@
                                                                  </div>
                                                              {% endif %}
                                                          </div>
-														<div class="form-group">
-															<label class="form-label">Статус*</label>
-															<select id="status" name="status" class="form-control">
-																<option selected value="True">Активный</option>
-																<option value="False">Не активный</option>
-															</select>
-                                                            <div class="card-title-2">
-													<h4>Менеджер магазина</h4>
-												</div>
-                                                <div class="form-group">
-															<select  name="id" value="{{ users.pk }}" class="form-control">
-																<option selected>--Выбрать менеджера--</option>
+                                                        <label class="form-label">Менеджер магазина*</label>
+                                                        <div class="form-group">
+                                                            <select  name="id" value="{{ users.pk }}" class="form-control">
+                                                                <option selected>--Выбрать менеджера--</option>
                                                                 {% for users in users %}
                                                                     <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
                                                                 {% endfor %}
-															</select>
-                                                </div>
-                                                        <div class="card-title-2">
-                                                            <h4>Территория магазина</h4>
+                                                            </select>
                                                         </div>
+                                                        <label class="form-label">Территория магазина*</label>
                                                             <div class="form-group">
                                                                 <select  name="area_id" value="" class="form-control">
                                                                     <option selected>--Выбрать территорию--</option>
@@ -63,21 +53,18 @@
                                                                     {% endfor %}
                                                                 </select>
                                                             </div>
-
+                                                            <div class="form-group">
+															<label class="form-label">Статус*</label>
+															<select id="status" name="status" class="form-control">
+																<option selected value="True">Активный</option>
+																<option value="False">Не активный</option>
+															</select>
 														</div>
                                                         <div class="form-group">
 															<label class="form-label">Описание</label>
 															<div class="card card-editor">
 																<div class="content-editor">
 																	 <textarea class="text-control" name="descriptions" placeholder="Описание объекта"></textarea>
-																</div>
-															</div>
-														</div>
-                                                    <div class="form-group">
-															<label class="form-label">Адрес</label>
-															<div class="card card-editor">
-																<div class="content-editor">
-																	 <textarea class="text-control" name="address" placeholder="Адрес"></textarea>
 																</div>
 															</div>
 														</div>

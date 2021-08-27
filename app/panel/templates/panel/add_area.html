@@ -47,6 +47,13 @@
                                                             <option name="local_city">{{ local.name }}</option>
                                                         {% endfor %}
                                                     </select>
+                                                <div class="form-group">
+                                                <label class="form-label">Категории товара</label>
+                                                    <select class="form-control selectpicker" name="category_city" value="{{ category_city.name }}" multiple data-live-search="true">
+                                                        {% for category in category %}
+                                                            <option name="category_city">{{ category.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
                                                 </div>
                                                 <div id="variants">
                                                 <div class="form-group">

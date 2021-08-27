@@ -27,6 +27,24 @@
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Клиенты
 							</a>
+                         <a class="nav-link {% if request.path == '/category/' or request.path == '/add_category/'  %}active{% endif %}" href="#" data-toggle="collapse"
+                            data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                Категории и подкатегории
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+                            <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Список категорий</a>
+                                    {% if 'super_manager' in groups %}
+									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
+                                    {% endif %}
+                                    <a class="nav-link sub_nav_link" href="{%  url 'subcategory' %}">Список подкатегорий</a>
+                                {% if 'super_manager' in groups %}
+									<a class="nav-link sub_nav_link" href="">Добавить подкатегорию</a>
+                                    {% endif %}
+								</nav>
+                            </div>
                             <a class="nav-link {% if request.path == '/locations/' or request.path == '/add_location/' %}active{% endif %}
 " href="#" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="false" aria-controls="collapseLocations">
                                 <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -65,24 +83,6 @@
                                     {% if 'super_manager' in groups %}
 									<a class="nav-link sub_nav_link" href="{%  url 'add_shop' %}">Добавить магазин</a>
                                     {% endif     %}
-								</nav>
-                            </div>
-                        <a class="nav-link {% if request.path == '/category/' or request.path == '/add_category/'  %}active{% endif %}" href="#" data-toggle="collapse"
-                            data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
-								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                Категории и подкатегории
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-							</a>
-                            <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Список категорий</a>
-                                    {% if 'super_manager' in groups %}
-									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
-                                    {% endif %}
-                                    <a class="nav-link sub_nav_link" href="{%  url 'category' %}">Список подкатегорий</a>
-                                {% if 'super_manager' in groups %}
-									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить подкатегорию</a>
-                                    {% endif %}
 								</nav>
                             </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">

@@ -200,7 +200,7 @@ def delete_ok_location(request):
 
 #Список территорий продаж
 def areas(request):
-    areas=Area.objects.values('name','status','id','local_city')
+    areas=Area.objects.values('name','status','id','local_city','category_city')
     return render(request, 'panel/areas.html', {'areas':areas})
 
 #Добавить территорию
@@ -208,21 +208,24 @@ def add_area(request, **kwargs):
     alert = {
         "area": request.GET.get('area', ''),
         "local":Locations.objects.values('name'),
+        "category":Category.objects.values('name')
     }
     local=Locations.objects.values('name')
+    category=Category.objects.values('name')
     if request.method == 'POST':
         name = request.POST.get('name')
         status = request.POST.get('status')
         localname = request.POST.getlist('local_city')
         slug = request.POST.get('slug')
+        category=request.POST.getlist('category_city')
 
         if Area.objects.filter(name=request.POST['name']).exists():
             alert['area'] = "Территория уже существует"
             return render(request, 'panel/add_area.html', alert)
         else:
-            Area.objects.create(name=name, status=status,slug=slug,local_city=[localname])
+            Area.objects.create(name=name, status=status,slug=slug,local_city=[localname],category_city=[category])
             return render(request, 'panel/add_ok_area.html')
-    return render(request, 'panel/add_area.html', {'local':local})
+    return render(request, 'panel/add_area.html', {'local':local, 'category':category})
 
 #Редактировать территорию
 def edit_area(request, id):

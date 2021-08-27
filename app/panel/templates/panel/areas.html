@@ -34,6 +34,7 @@
 													<tr>
 														<th>Имя</th>
 														<th>Населенные пункты</th>
+                                                        <th>Категории товара</th>
 														<th>Статус</th>
 														<th>
                                                             {% if 'super_manager' in groups %}
@@ -52,6 +53,7 @@
                                                             <td>Не указано</td>
                                                             {% endif %}
                                                             {% if areas.status %}
+                                                        <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
 														<td><span class="badge-item badge-status">Активный</span></td>
                                                             {% else %}
                                                             <td><span class="badge-item badge-status">Не активный</span></td>

@@ -46,10 +46,10 @@
                                                         </div>
                                                         <label class="form-label">Территория магазина*</label>
                                                             <div class="form-group">
-                                                                <select  name="area_id" value="" class="form-control">
+                                                                <select  name="aid"  value="{{ areas.id }}" class="form-control">
                                                                     <option selected>--Выбрать территорию--</option>
                                                                     {% for areas in areas %}
-                                                                        <option value="">{{ areas.name }}</option>
+                                                                        <option value="{{ areas.id }}">{{ areas.name }}</option>
                                                                     {% endfor %}
                                                                 </select>
                                                             </div>

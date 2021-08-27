@@ -18,6 +18,7 @@ class Locations(models.Model):
 
 class Area(models.Model):
     local_city = models.JSONField(default=list,null=True,blank=True)
+    category_city = models.JSONField(default=list, null=True, blank=True)
     location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')
     name = models.CharField(max_length=255,db_index=True, verbose_name='Территория продаж')
     slug = models.SlugField(max_length=200,null=True, db_index=True)
@@ -37,11 +38,11 @@ class Shop(models.Model):
     area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название магазина')
     status = models.BooleanField(default=True, verbose_name='Статус активный')
-    address = models.TextField(max_length=300, null=True, verbose_name='Адрес магазина')
-    latitude=models.FloatField(max_length=200,db_index=True,null=True,verbose_name='Широта')
-    longitude=models.FloatField(max_length=200, db_index=True,null=True,verbose_name='Долгота')
-    open_time=models.TimeField(db_index=True,null=True,verbose_name='Время открытия')
-    close_time=models.TimeField(db_index=True,null=True,verbose_name='Время закрытия')
+    #address = models.TextField(max_length=300, null=True, verbose_name='Адрес магазина')
+    #latitude=models.FloatField(max_length=200,db_index=True,null=True,verbose_name='Широта')
+    #longitude=models.FloatField(max_length=200, db_index=True,null=True,verbose_name='Долгота')
+    #open_time=models.TimeField(db_index=True,null=True,verbose_name='Время открытия')
+    #close_time=models.TimeField(db_index=True,null=True,verbose_name='Время закрытия')
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
 
     class Meta:
@@ -53,7 +54,7 @@ class Shop(models.Model):
         return self.name
 
 class Category(models.Model):
-    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
+    area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
     number = models.IntegerField(blank=True, null=True,verbose_name='Номер')
     image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')

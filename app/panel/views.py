@@ -261,7 +261,7 @@ def category(request, ):
 #Просмотр категории товаров
 def view_category(request,id):
     images = Category.objects.get(id=id)
-    categories = Category.objects.values('name','descriptions','status','image','subcategory__name','shop__name').get(id=id)
+    categories = Category.objects.values('name','descriptions','status','image','subcategory__name').get(id=id)
     return render(request, 'panel/view_category.html',{'categories':categories,'images':images})
 
 #Редактировать категорию товара
@@ -284,6 +284,7 @@ def edit_category(request,id):
             return render(request,'panel/edit_category.html',{'categories':categories},)
     except User.DoesNotExist:
         return render(request, 'panel/edit_category.html',{})
+
 
 #Успешное редактирование категории товара
 def edit_ok_category(request,id):
@@ -332,13 +333,14 @@ def delete_ok_category(request):
 
 #Список магазинов
 def shops(request):
-    managers=Shop.objects.values('id','name','address','status','customuser__last_name','customuser__first_name')
+    managers=Shop.objects.values('id','name','status','customuser__last_name','customuser__first_name','area__name')
     return render(request, 'panel/shops.html', {'managers':managers})
 
 #Просмотр магазина
 def shop_view(request, id):
-    users=Shop.objects.values('name','address','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address','customuser__org','area__name').get(id=id)
-    return render(request, 'panel/shop_view.html', {'users':users,'shops':shops})
+    users=Shop.objects.values('name','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address',
+                              'customuser__org','area_id','area__name').get(id=id)
+    return render(request, 'panel/shop_view.html', {'users':users})
 
 
 
@@ -353,7 +355,7 @@ def add_shop(request, **kwargs):
     users = User.objects.filter(groups__name='manager').order_by('last_name')
     if request.method == 'POST':
         name = request.POST.get('name')
-        address = request.POST.get('address')
+        id = request.POST.get('aid')
         status = request.POST.get('status')
         pk = request.POST.get('id')
         descriptions = request.POST.get('descriptions')
@@ -361,7 +363,7 @@ def add_shop(request, **kwargs):
             alert['name'] = 'Название магазина уже существует'
             return render(request, 'panel/add_shop.html', alert)
         else:
-            Shop.objects.create(name=name,address=address,customuser_id=pk,status=status,descriptions=descriptions)
+            Shop.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions)
             return render(request, 'panel/add_ok_shop.html')
     return render(request, 'panel/add_shop.html',{'users':users,'areas':areas})
 

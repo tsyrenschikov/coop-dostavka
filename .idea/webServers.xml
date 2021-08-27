@@ -9,7 +9,7 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
-      <webServer id="95356193-e067-4ab4-8c3b-ce4e82809ce8" name="tsyrenschikov" url="http://h19.netangels.ru">
+      <webServer id="fb4b2630-3b71-42c2-8358-25573a80b401" name="tsyrenschikov" url="http://h19.netangels.ru">
         <fileTransfer host="h19.netangels.ru" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

@@ -334,6 +334,11 @@ def delete_ok_category(request):
     categories = Category.objects.all()
     return render(request, 'panel/delete_ok_category.html', {'categories':categories})
 
+#Список категорий
+def subcategory(request):
+    subcategories = SubCategory.objects.all()
+    return render(request, 'panel/subcategory.html', {'subcategories':subcategories})
+
 #Список магазинов
 def shops(request):
     managers=Shop.objects.values('id','name','status','customuser__last_name','customuser__first_name','area__name')

@@ -334,10 +334,30 @@ def delete_ok_category(request):
     categories = Category.objects.all()
     return render(request, 'panel/delete_ok_category.html', {'categories':categories})
 
-#Список категорий
+#Список подкатегорий
 def subcategory(request):
     subcategories = SubCategory.objects.all()
     return render(request, 'panel/subcategory.html', {'subcategories':subcategories})
+
+#Добавить категорию
+def add_subcategory(request):
+    alert = {
+        'number': request.GET.get('number', ''),
+        'name': request.GET.get('name', ''),
+    }
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+
+        if SubCategory.objects.filter(number=request.POST['number']).exists():
+            alert['number'] = 'Номер подкатегории уже существует'
+        elif SubCategory.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Имя подкатегории уже существует'
+        else:
+            SubCategory.objects.create(name=name, number=number)
+            return render(request, 'panel/subcategory.html')
+    return render(request, 'panel/add_subcategory.html', alert)
 
 #Список магазинов
 def shops(request):

@@ -55,6 +55,7 @@ class Shop(models.Model):
 
 class Category(models.Model):
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
+    subcat = models.JSONField(default=list, null=True, blank=True)
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
     number = models.IntegerField(blank=True, null=True,verbose_name='Номер')
     image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
@@ -72,6 +73,8 @@ class Category(models.Model):
 class SubCategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True, verbose_name='Категория')
     name = models.CharField(max_length=25, unique=True, verbose_name='Название')
+    number = models.IntegerField(blank=True, null=True, verbose_name='Номер')
+    image = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
 
     class Meta:
         verbose_name_plural = 'Подкатегория'

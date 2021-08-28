@@ -41,7 +41,7 @@
                                     {% endif %}
                                     <a class="nav-link sub_nav_link" href="{%  url 'subcategory' %}">Список подкатегорий</a>
                                 {% if 'super_manager' in groups %}
-									<a class="nav-link sub_nav_link" href="">Добавить подкатегорию</a>
+									<a class="nav-link sub_nav_link" href="{% url 'add_subcategory' %}">Добавить подкатегорию</a>
                                     {% endif %}
 								</nav>
                             </div>

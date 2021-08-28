@@ -314,10 +314,12 @@ def add_category(request):
         else:
             Category.objects.create(name=name,status=status,descriptions=descriptions,number=number)
             return render(request, 'panel/add_ok_category.html')
-    return render(request, 'panel/add_category.html', alert)
+    return render(request, 'panel/category.html', alert)
 
+#Успешное добавления категории
 def add_ok_category(request):
-    return render(request, 'panel/add_ok_category.html', {})
+    subcategory=SubCategory.objects.all()
+    return render(request, 'panel/add_ok_category.html', {'subcategory':subcategory})
 
 #Удаления категории
 def delete_category(request, id):
@@ -356,8 +358,12 @@ def add_subcategory(request):
             alert['name'] = 'Имя подкатегории уже существует'
         else:
             SubCategory.objects.create(name=name, number=number)
-            return render(request, 'panel/subcategory.html')
+            return render(request, 'panel/add_ok_subcategory.html')
     return render(request, 'panel/add_subcategory.html', alert)
+
+#Успешное добавления подкатегории
+def add_ok_subcategory(request):
+    return render(request, 'panel/add_ok_subcategory.html')
 
 #Просмотр подкатегории
 def view_subcategory(request, id):

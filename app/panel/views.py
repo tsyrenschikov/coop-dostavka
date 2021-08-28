@@ -380,6 +380,26 @@ def delete_subcategory(request, id):
     except subcategory.DoesNotExist:
         return render(request, 'panel/delete_error_subcategory.html', {})
 
+#Редактировать подкатегорию
+def edit_subcategory(request,id):
+    try:
+        subcategory = SubCategory.objects.get(id=id)
+
+        if request.method=="POST":
+            subcategory.name=request.POST.get("name")
+            subcategory.number = request.POST.get("number")
+            subcategory.save()
+            if request.FILES:
+                subcategory.image = request.FILES["image"]
+                subcategory.save()
+                return render(request, 'panel/subcategory.html',{'subcategory': subcategory})
+            return render(request, 'panel/subcategory.html',{'subcategory':subcategory})
+        else:
+            return render(request,'panel/edit_subcategory.html',{'subcategory':subcategory},)
+    except SubCategory.DoesNotExist:
+        return render(request, 'panel/edit_subcategory.html',{})
+
+
 #Успешное удаление подкатегории
 def delete_ok_subcategory(request):
     subcategory=SubCategory.objects.all()

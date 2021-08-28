@@ -359,6 +359,26 @@ def add_subcategory(request):
             return render(request, 'panel/subcategory.html')
     return render(request, 'panel/add_subcategory.html', alert)
 
+#Просмотр подкатегории
+def view_subcategory(request, id):
+    subcategory=SubCategory.objects.get(id=id)
+    return render(request, 'panel/view_subcategory.html', {'subcategory':subcategory})
+
+#Удаление подкатегории
+def delete_subcategory(request, id):
+    subcategory=''
+    try:
+        subcategory=SubCategory.objects.get(id=id)
+        subcategory.delete()
+        return render(request, 'panel/delete_ok_subcategory.html', {'subcategory':subcategory})
+    except subcategory.DoesNotExist:
+        return render(request, 'panel/delete_error_subcategory.html', {})
+
+#Успешное удаление подкатегории
+def delete_ok_subcategory(request):
+    subcategory=SubCategory.objects.all()
+    return render(request, 'panel/delete_ok_subcategory.html',{'subcategory':subcategory})
+
 #Список магазинов
 def shops(request):
     managers=Shop.objects.values('id','name','status','customuser__last_name','customuser__first_name','area__name')

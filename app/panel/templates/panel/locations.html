@@ -35,7 +35,7 @@
 													<tr>
 														<th>Имя</th>
                                                         <th>Доставка</th>
-                                                        <th>Мин сумма заказа</th>
+                                                        <th>Бесплатная доставка</th>
                                                         <th>Дни доставки</th>
 														<th>
                                                             {% if 'super_manager' in groups %}
@@ -55,14 +55,14 @@
                                                             {% endif %}
                                                         </td>
 														<td>
-                                                            {% if local.delivery_price %}
+                                                            {% if local.delivery_price or local.delivery_price == 0 %}
                                                                 {{ local.delivery_price }}.p
                                                             {% else %}
                                                                 <p style="color: green">Не указано</p>
                                                             {% endif %}
                                                         </td>
                                                         <td>
-                                                            {% if local.delivery_price_min %}
+                                                            {% if local.delivery_price_min or  local.delivery_price_min == 0 %}
                                                                 {{ local.delivery_price_min }}.р
                                                             {% else %}
                                                                 <p style="color: green">Не указано</p>
@@ -70,7 +70,7 @@
                                                         </td>
                                                         <td>
                                                             {% if local.day %}
-                                                                {{ day|cut:'['|cut:']'|cut:'"' }}
+                                                                {{ local.day|cut:"["|cut:"]"|cut:"'" }}
                                                             {% else %}
                                                                 <p style="color: green">Не указано</p>
                                                             {% endif %}

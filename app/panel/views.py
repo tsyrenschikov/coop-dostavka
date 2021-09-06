@@ -174,12 +174,14 @@ def add_location(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         delivery_price = request.POST.get('delivery_price')
+        delivery_price_min = request.POST.get('delivery_price_min')
+        day=request.POST.getlist('day')
 
         if Locations.objects.filter(name=request.POST['name']).exists():
             alert['name'] = "Название населенного пункта уже существует"
             return render(request, 'panel/add_location.html', alert)
         else:
-            Locations.objects.create(name=name,delivery_price=delivery_price)
+            Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,day=day)
             return render(request, 'panel/locations.html', {'local': local})
     return render(request, 'panel/add_location.html', {'local':local})
 

@@ -6,6 +6,8 @@ from django.db.models.fields.related import ForeignKey
 class Locations(models.Model):
     name = models.CharField(max_length=200,db_index=True, verbose_name='Название населенного пункта')
     delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
+    delivery_price_min = models.PositiveIntegerField(null=True, verbose_name='минимальная цена доставки')
+    day=models.JSONField(default=list,null=True,blank=True)
 
     class Meta:
         ordering = ['name']

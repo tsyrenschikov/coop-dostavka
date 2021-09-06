@@ -1,0 +1,126 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+         <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Магазины</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{%  url 'shops' %}">Магазины</a></li>
+                            <li class="breadcrumb-item active">Просмотр магазина</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-4 col-md-5">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shop-content-left pd-20">
+											<div class="shop_img">
+												<img src="{%  static 'file/panel/images/shop.svg' %}" alt="">
+											</div>
+											<div class="shop-dt-left">
+                                                <a href="{% url 'shops' %}"><h4>{{ users.name }}</h4></a>
+												<span>{{ users.area__name }}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left pd-20">
+                                        {% if users.customuser__last_name != None or users.customuser__first_name != None %}
+											<div class="shopowner-dt-left">
+												<h4>
+                                                    {{ users.customuser__last_name }} {{ users.customuser__first_name }}
+                                                </h4>
+                                                <a href="{% url 'edit_manager' %}"> <span>Менеджер магазина</span></a>
+											</div>
+											<div class="shopowner-dts">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Фамилия и Имя</span>
+													<span class="right-dt">
+                                                        {{ users.customuser__last_name }} {{ users.customuser__first_name }}
+                                                    </span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Телефон</span>
+													<span class="right-dt">{{ users.customuser__phone }}</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Email</span>
+													<span class="right-dt">{{ users.customuser__email }}</span>
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Наименование организации</span>
+                                                    {% if users.customuser__org %}
+													<span class="right-dt">{{ users.customuser__org }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Не указано</span>
+                                                    {% endif %}
+												</div>
+											</div>
+                                        {% else %}
+                                            <div class="shopowner-dt-left">
+												<h4>
+                                                    <a href="{% url 'edit_manager' %}"> <span>Менеджер магазина</span></a>
+                                                 <p style="color: green">Пожалуйста, назначьте менеджера! Либо заполните все обязательные поля у ответственного лица.</p>
+                                                </h4>
+                                            </div>
+
+                                    {% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-7">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left pd-20">
+											<div class="shopowner-dts mt-0">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Имя :</span>
+                                                    {% if users.customuser__last_name != None and users.customuser__first_name != None %}
+													<span class="right-dt">{{ users.customuser__last_name}} {{ users.customuser__first_name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Укажите менеджера либо заполните все поля у ответственного лица.</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Территория</span>
+                                                    {% if users.area__name %}
+													<span class="right-dt">{{ users.area__name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Не назначена</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Статус</span>
+                                                    {% if users.status %}
+                                                        <span class="right-dt">Активный</span>
+                                                    {% else %}
+                                                        <span class="right-dt">Не активный</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Описание</span>
+                                                    {% if users.descriptions %}
+													<span class="right-dt">{{ users.descriptions }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Без описания</span>
+                                                    {% endif %}
+												</div>
+											</div>
+										</div>
+									</div>
+                                    <div class="col-lg-12">
+                                        <a href="{% url 'shops' %}" class="add-btn hover-btn">К списку магазинов</a>
+                                    </div>
+                                <div class="shopowner-dt-list">
+                                </div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+
+{% endblock content %}

@@ -1,0 +1,118 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Акции</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item active">Акции</li>
+                        </ol>
+                        <div class="row justify-content-between">
+							<div class="col-lg-12">
+								<a href="add_offer.html" class="add-btn hover-btn">Добавить</a>
+							</div>
+							<div class="col-lg-3 col-md-4">
+								<div class="bulk-section mt-30">
+									<div class="input-group">
+										<select id="action" name="action" class="form-control">
+											<option selected>Массовые действия</option>
+											<option value="1">Активировать</option>
+											<option value="2">Дезактивировать</option>
+											<option value="3">Удалить</option>
+										</select>
+										<div class="input-group-append">
+											<button class="status-btn hover-btn" type="submit">Применить</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-5 col-md-6">
+								<div class="bulk-section mt-30">
+									<div class="search-by-name-input">
+										<input type="text" class="form-control" placeholder="Поиск">
+									</div>
+									<div class="input-group">
+										<select id="categeory" name="categeory" class="form-control">
+											<option selected>Активный</option>
+											<option value="1">Не активный</option>
+										</select>
+										<div class="input-group-append">
+											<button class="status-btn hover-btn" type="submit">Поиск акции</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12">
+								<div class="card card-static-2 mt-30 mb-30">
+									<div class="card-title-2">
+										<h4>Все акции</h4>
+									</div>
+									<div class="card-body-table">
+										<div class="table-responsive">
+											<table class="table ucp-table table-hover">
+												<thead>
+													<tr>
+														<th style="width:60px"><input type="checkbox" class="check-all"></th>
+														<th style="width:130px">Изображение</th>
+														<th>Заголовок</th>
+														<th>Описание</th>
+														<th>Статус</th>
+														<th>Действия</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><input type="checkbox" class="check-item" name="ids[]" value="3"></td>
+														<td>
+															<div class="offer-img">
+																<img src="{% static 'file/panel/images/offers/img-1.jpg' %}" alt="">
+															</div>
+														</td>
+														<td>📢  Название акции</td>
+														<td>Скидка до 25% на овощи, фрукты и многое другое </td>
+														<td><span class="badge-item badge-status">Активный</span></td>
+														<td class="action-btns">
+															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+														</td>
+													</tr>
+													<tr>
+														<td><input type="checkbox" class="check-item" name="ids[]" value="2"></td>
+														<td>
+															<div class="offer-img">
+																<img src="{% static 'file/panel/images/offers/img-2.jpg' %}" alt="">
+															</div>
+														</td>
+														<td>📢  Название акции</td>
+														<td>Скидка до 25% на овощи, фрукты и многое другое </td>
+														<td><span class="badge-item badge-status">Активный</span></td>
+														<td class="action-btns">
+															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+														</td>
+													</tr>
+													<tr>
+														<td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
+														<td>
+															<div class="offer-img">
+																<img src="{% static 'file/panel/images/offers/img-3.jpg' %}" alt="">
+															</div>
+														</td>
+														<td>📢  Название акции</td>
+														<td>Скидка до 25% на овощи, фрукты и многое другое </td>
+														<td><span class="badge-item badge-status">Активный</span></td>
+														<td class="action-btns">
+															<a href="#" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+
+{% endblock content %}

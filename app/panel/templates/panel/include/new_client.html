@@ -1,0 +1,65 @@
+{% load static %}
+<div class="row">
+							<div class="col-lg-5 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20">
+											<div class="customer_img">
+												<img src="{% static 'file/panel/images/avatar/img-1.jpg' %}" alt="">
+											</div>
+											<div class="shopowner-dt-left mt-4">
+                                                {% if users.first_name %}
+												<h4>{{ users.first_name}}</h4>
+												<span>Клиент</span>
+                                                {% else %}
+                                                    <span>Имя не указано</span>
+                                                {% endif %}
+											</div>
+											<ul class="product-dt-purchases">
+												<li>
+													<div class="product-status">
+														Куплено <span class="badge-item-2 badge-status">//</span>
+													</div>
+												</li>
+												<li>
+													<div class="product-status">
+														Бонусы <span class="badge-item-2 badge-status">//</span>
+													</div>
+												</li>
+											</ul>
+											<div class="shopowner-dts">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Имя</span>
+                                                    {% if users.first_name %}
+													<span class="right-dt">{{ users.first_name }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Имя не указано</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Email</span>
+                                                    {% if users.email %}
+													<span class="right-dt">{{ users.email }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">E-mail не указан</span>
+                                                    {% endif %}
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Телефон</span>
+                                                    {% if users.phone %}
+													<span class="right-dt">{{ users.phone }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Номер не указан</span>
+                                                    {% endif %}
+												</div>
+											</div>
+										</div>
+									</div>
+                                <div class="col-lg-12">
+								            <a href="{% url 'customers' %}" class="add-btn hover-btn">К списку клиентов</a>
+                                        </div>
+                                <div class="shopowner-dt-left mt-4">
+                                    </div>
+								</div>
+							</div>
+                        </div>

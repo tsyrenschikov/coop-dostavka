@@ -1,0 +1,44 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Клиенты</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item active">Подкатегории</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-5 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20">
+                                        <h4>Подкатегория товара</h4>
+											<div class="customer_img">
+                                                {% if subcategory.image %}
+												<img src="{{ subcategory.image.url}}" width="80" height="80" alt="">
+                                                {% endif %}
+											</div>
+											<div class="shopowner-dt-left mt-4">
+												<span>{{ subcategory.name }}</span>
+											</div>
+											<div class="shopowner-dts">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Название подкатегории</span>
+													<span class="right-dt">{{ subcategory.name }}</span>
+												</div>
+											</div>
+										</div>
+                                        <div class="col-lg-12">
+								            <a href="{% url 'subcategory' %}" class="add-btn hover-btn">К списку подкатегорий</a>
+                                        </div>
+                                    <div class="shopowner-dt-left mt-4">
+                                    </div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+{% endblock content %}

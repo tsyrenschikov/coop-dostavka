@@ -1,0 +1,173 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}Менеджер{% endblock %}
+{% block content %}
+    {% load static %}
+
+                <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Панель управления</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item active">Панель управления</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-report-card purple">
+									<div class="card-content">
+										<span class="card-title">Рассмотрение</span>
+										<span class="card-count">20</span>
+									</div>
+									<div class="card-media">
+										<i class="fab fa-rev"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+								<div class="dashboard-report-card red">
+									<div class="card-content">
+										<span class="card-title">Отмена</span>
+										<span class="card-count">0</span>
+									</div>
+									<div class="card-media">
+										<i class="far fa-times-circle"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-report-card info">
+									<div class="card-content">
+										<span class="card-title">Формирование</span>
+										<span class="card-count">5</span>
+									</div>
+									<div class="card-media">
+										<i class="fas fa-sync-alt rpt_icon"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+								<div class="dashboard-report-card success">
+									<div class="card-content">
+										<span class="card-title">Доход за сутки</span>
+										<span class="card-count">9568.00 р.</span>
+									</div>
+									<div class="card-media">
+										<i class="fas fa-money-bill rpt_icon"></i>
+									</div>
+                                </div>
+                            </div>
+							<div class="col-xl-12 col-md-12">
+								<div class="card card-static-1 mb-30">
+									<div class="card-body">
+                                        <div class="card-title-2">
+                                        <h4>////</h4>
+                                        </div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-12 col-md-12">
+								<div class="card card-static-2 mb-30">
+									<div class="card-title-2">
+										<h4>Последние Заказы </h4>
+										<a href="orders.html" class="view-btn hover-btn">Просмотреть все</a>
+									</div>
+									<div class="card-body-table">
+										<div class="table-responsive">
+											<table class="table ucp-table table-hover">
+												<thead>
+													<tr>
+														<th style="width:130px">Закз ID</th>
+														<th>Item</th>
+														<th style="width:200px">Дата</th>
+														<th style="width:300px">Адрес</th>
+														<th style="width:130px">Статус</th>
+														<th style="width:130px">Общее</th>
+														<th style="width:100px">Действие</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Заказ 12345</td>
+														<td>
+															<a href="#" target="_blank">Название продукт</a>
+														</td>
+														<td>
+															<span class="delivery-time">15/06/2021</span>
+															<span class="delivery-time">4:00PM - 6.00PM</span>
+														</td>
+														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
+														<td>
+															<span class="badge-item badge-status">Ожидание</span>
+														</td>
+														<td>900 р.</td>
+														<td class="action-btns">
+															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
+														</td>
+													</tr>
+													<tr>
+														<td>Заказ 12346</td>
+														<td>
+															<a href="#" target="_blank">Название продукт1</a>
+														</td>
+														<td>
+															<span class="delivery-time">13/06/2021</span>
+															<span class="delivery-time">2:00PM - 4.00PM</span>
+														</td>
+														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
+														 <td>
+															<span class="badge-item badge-status">Ожидание</span>
+														</td>
+														<td>1050 р.</td>
+														<td class="action-btns">
+															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
+														</td>
+													</tr>
+													<tr>
+														<td>Заказ 12347</td>
+														<td>
+															<a href="#" target="_blank">Название продукт1</a>
+														</td>
+														<td>
+															<span class="delivery-time">13/6/2021</span>
+															<span class="delivery-time">5:00PM - 7.00PM</span>
+														</td>
+														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
+														<td>
+															<span class="badge-item badge-status">Ожидание</span>
+														</td>
+														<td>600 р.</td>
+														<td class="action-btns">
+															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
+														</td>
+													</tr>
+													<tr>
+														<td>Заказ 12348</td>
+														<td>
+															<a href="#" target="_blank">Название продукт1</a>
+														</td>
+														<td>
+															<span class="delivery-time">12/06/2021</span>
+															<span class="delivery-time">01:00PM - 3.00PM</span>
+														</td>
+														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
+														<td>
+															<span class="badge-item badge-status">Ожидание</span>
+														</td>
+														<td>1200 р.</td>
+														<td class="action-btns">
+															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+{% endblock content %}

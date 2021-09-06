@@ -1,0 +1,76 @@
+﻿{% extends 'shop/layouts/base.html' %}
+{% block title %}dashboard{% endblock %}
+{% block content %}
+	{% load static %}
+{% if user.is_authenticated %}
+	<!-- Body Start -->
+<div class="wrapper">
+	{% include 'dashboard/layouts/dashboard_base.html' %}
+		<div class="">
+			<div class="container">
+				<div class="row">
+					{% include 'dashboard/include/sitebar.html' %}
+						<div class="col-lg-9 col-md-8">
+							<div class="dashboard-right">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="main-title-tab">
+											<h4><i class="uil uil-heart"></i>Избранные продукты</h4>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="pdpt-bg">
+											<div class="wishlist-body-dtt">
+												<div class="cart-item">
+													<div class="cart-product-img">
+														<img src="{% static 'file/shop/images/product/img-11.jpg' %}" alt="">
+														<div class="offer-badge">4% OFF</div>
+													</div>
+													<div class="cart-text">
+														<h4>.............</h4>
+														<div class="cart-item-price">150 р. <span>180 р.</span></div>
+														<button type="button" class="cart-close-btn"><i class="uil uil-trash-alt"></i></button>
+													</div>
+												</div>
+												<div class="cart-item">
+													<div class="cart-product-img">
+														<img src="{% static 'file/shop/images/product/img-2.jpg' %}" alt="">
+														<div class="offer-badge">1% OFF</div>
+													</div>
+													<div class="cart-text">
+														<h4>Молоко</h4>
+														<div class="cart-item-price">59 р. <span>65 р.</span></div>
+														<button type="button" class="cart-close-btn"><i class="uil uil-trash-alt"></i></button>
+													</div>
+												</div>
+												<div class="cart-item">
+													<div class="cart-product-img">
+														<img src="{% static 'file/shop/images/product/img-14.jpg' %}" alt="">
+													</div>
+													<div class="cart-text">
+														<h4>/////////////</h4>
+														<div class="cart-item-price">200 р.</div>
+														<button type="button" class="cart-close-btn"><i class="uil uil-trash-alt"></i></button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+				</div>
+			</div>
+	</div>
+</div>
+{% else %}
+<head>
+  <meta http-equiv="refresh" content="0; {% url 'login' %}" />
+</head>
+
+{% endif %}
+	<!-- Body End -->
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

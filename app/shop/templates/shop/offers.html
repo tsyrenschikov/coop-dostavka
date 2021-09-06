@@ -1,0 +1,73 @@
+﻿{% extends 'shop/layouts/base.html' %}
+
+{% block title %}offers{% endblock %}
+
+{% block content %}
+	{% load static %}
+
+	<!-- Body Start -->
+<div class="wrapper" xmlns="http://www.w3.org/1999/html">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Главная</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Акция</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid mb-14">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="default-title mt-4">
+							<h2>СКИДКИ!</h2>
+							<img src="{% static 'file/shop/images/line.svg' %}" alt="">
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<a href="#" class="offers-item">
+							<div class="offer-img">
+								<img src="{% static 'file/panel/images/offers/img-1.jpg' %}" alt="">
+							</div>
+							<div class="offers-text">
+								<h4>📢  Акция. Овощи и фрукты!</h4>
+								<p>Скидка до 25% скидка на овощи, фрукты и многое другое</p>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4">
+						<a href="#" class="offers-item">
+							<div class="offer-img">
+								<img src="{% static 'file/panel/images/offers/img-2.jpg' %}" alt="">
+							</div>
+							<div class="offers-text">
+								<h4>📢  Акция. Продукты!</h4>
+								<p>Скидка до 25% на продукты питания и многое другое </p>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4">
+						<a href="#" class="offers-item">
+							<div class="offer-img">
+								<img src="{% static 'file/panel/images/offers/img-3.jpg' %}" alt="">
+							</div>
+							<div class="offers-text">
+								<h4>📢  Акция. Средства личной гигиены!</h4>
+								<p>Скидка до 75% на средства личной гигиены и многое другое </p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<!-- Body End -->
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

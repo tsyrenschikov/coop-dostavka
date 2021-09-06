@@ -1,0 +1,39 @@
+{% extends 'shop/layouts/base.html' %}
+{% block title %}contact{% endblock %}
+{% block content %}
+	{% load static %}
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item active" aria-current="page">Обратная связь</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+ 					<div class="col-lg-6 col-md-6">
+						<div class="contact-title">
+				<h2>Ваше сообщение успешно отправлено.</h2>
+							<br>
+							<h2>Спасибо за обращение!</h2>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Body End -->
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}
+

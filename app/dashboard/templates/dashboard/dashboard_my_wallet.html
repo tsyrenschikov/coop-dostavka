@@ -1,0 +1,258 @@
+﻿{% extends 'shop/layouts/base.html' %}
+{% block title %}dashboard{% endblock %}
+{% block content %}
+	{% load static %}
+{% if user.is_authenticated %}
+	<!-- Body Start -->
+<div class="wrapper">
+	{% include 'dashboard/layouts/dashboard_base.html' %}
+	<div class="">
+		<div class="container">
+			<div class="row">
+				{% include 'dashboard/include/sitebar.html' %}
+					<div class="col-lg-9 col-md-8">
+						<div class="dashboard-right">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="main-title-tab">
+										<h4><i class="uil uil-wallet"></i>Мой кошелек</h4>
+									</div>
+								</div>								
+								<div class="col-lg-6 col-md-12">
+									<div class="pdpt-bg">
+										<div class="reward-body-dtt">
+											<div class="reward-img-icon">
+												<img src="{% static 'file/shop/images/money.svg' %}" alt="">
+											</div>
+											<span class="rewrd-title">Баланс</span>
+											<h4 class="cashbk-price">1200 р.</h4>
+											<span class="date-reward">Пополнено : 8 Июня 2021</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-12">
+									<div class="pdpt-bg">
+										<div class="gambo-body-cash">
+											<div class="reward-img-icon">
+												<img class="rotate-img" src="{% static 'file/shop/images/business.svg' %}" alt="">
+											</div>
+											<span class="rewrd-title">Кешбэк</span>
+											<h4 class="cashbk-price">50 р.</h4>
+											<p>Эту сумму можно использовать для следующего заказа.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12">
+									<div class="pdpt-bg">
+										<div class="pdpt-title">
+											<h4>Активные предложения</h4>
+										</div>
+										<div class="active-offers-body">
+											<div class="table-responsive">
+												<table class="table ucp-table earning__table">
+													<thead class="thead-s">
+														<tr>
+															<th scope="col">Предложения</th>
+															<th scope="col">Код продукта</th>
+															<th scope="col">Дата начала</th>
+															<th scope="col">Статус</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>										
+															<td>15%</td>	
+															<td>Кетчуп</td>
+															<td>31 Июня 2021</td>
+															<td><b class="offer_active">Активный</b></td>
+														</tr>
+														<tr>										
+															<td>10%</td>	
+															<td>Капуста</td>
+															<td>25 Июня 2021</td>
+															<td><b class="offer_active">Активный</b></td>
+														</tr>
+														<tr>										
+															<td>25%</td>	
+															<td>Мясо</td>
+															<td>20 Июня 2021</td>
+															<td><b class="offer_active">Активный</b></td>
+														</tr>
+														<tr>										
+															<td>5%</td>	
+															<td>Молоко</td>
+															<td>15 Июля 2021</td>
+															<td><b class="offer_active">Активный</b></td>
+														</tr>
+													</tbody>				
+												</table>
+											</div>	
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-12">
+									<div class="pdpt-bg">
+										<div class="pdpt-title">
+											<h4>Пополнить баланс</h4>
+										</div>
+										<div class="add-cash-body">
+											<div class="row">
+												<div class="col-lg-6 col-md-12">
+													<div class="form-group mt-1">
+														<label class="control-label">Владелец карты*</label>
+														<div class="ui search focus">
+															<div class="ui left icon input swdh11 swdh19">
+																<input class="prompt srch_explore" type="text" name="holdername" value="" id="holder[name]" required="" maxlength="64"
+																	   placeholder="Владелец карты">
+															</div>
+														</div>
+													</div>
+												</div> 
+												<div class="col-lg-6 col-md-12">
+													<div class="form-group mt-1">
+														<label class="control-label">Номер карты*</label>
+														<div class="ui search focus">
+															<div class="ui left icon input swdh11 swdh19">
+																<input class="prompt srch_explore" type="text" name="cardnumber" value="" id="card[number]" required="" maxlength="64"
+																	   placeholder="Номер карты">
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-4 col-md-4">
+													<div class="form-group mt-1">																	
+														<label class="control-label">Месяц*</label>
+														<select class="ui fluid search dropdown form-dropdown" name="card[expire-month]">
+															<option value="">Месяц</option>
+															<option value="1">01</option>
+															<option value="2">02</option>
+															<option value="3">03</option>
+															<option value="4">04</option>
+															<option value="5">05</option>
+															<option value="6">06</option>
+															<option value="7">07</option>
+															<option value="8">08</option>
+															<option value="9">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														  </select>	
+													</div>
+												</div>
+												<div class="col-lg-4 col-md-4">
+													<div class="form-group mt-1">
+														<label class="control-label">Год*</label>
+														<div class="ui search focus">
+															<div class="ui left icon input swdh11 swdh19">
+																<input class="prompt srch_explore" type="text" name="card[expire-year]" maxlength="4" placeholder="Год">
+
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-4 col-md-4">
+													<div class="form-group mt-1">
+														<label class="control-label">CVV*</label>
+														<div class="ui search focus">
+															<div class="ui left icon input swdh11 swdh19">
+																<input class="prompt srch_explore" name="card[cvc]" maxlength="3" placeholder="CVV">															
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-12 col-md-12">
+													<div class="form-group mt-1">
+														<label class="control-label">Пополнить*</label>
+														<div class="ui search focus">
+															<div class="ui left icon input swdh11 swdh19">
+																<input class="prompt srch_explore" type="text" name="addbalance" maxlength="3" placeholder="0 р">
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<a href="#" class="next-btn16 hover-btn mt-3">Пополнить баланс</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-12">
+									<div class="pdpt-bg">
+										<div class="pdpt-title">
+											<h4>История транзакций</h4>
+										</div>
+										<div class="history-body scrollstyle_4">
+											<ul class="history-list">
+												<li>
+													<div class="purchase-history">
+														<div class="purchase-history-left">
+															<h4>Purchase</h4>
+															<p>Transaction ID <ins>gambo14255896</ins></p>
+															<span>6 May 2018, 12.56PM</span>
+														</div>
+														<div class="purchase-history-right">
+															<span>-$25</span>
+															<a href="#">View</a>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="purchase-history">
+														<div class="purchase-history-left">
+															<h4>Purchase</h4>
+															<p>Transaction ID <ins>gambo14255895</ins></p>
+															<span>5 May 2018, 11.16AM</span>
+														</div>
+														<div class="purchase-history-right">
+															<span>-$21</span>
+															<a href="#">View</a>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="purchase-history">
+														<div class="purchase-history-left">
+															<h4>Purchase</h4>
+															<p>Transaction ID <ins>gambo14255894</ins></p>
+															<span>4 May 2018, 02.56PM</span>
+														</div>
+														<div class="purchase-history-right">
+															<span>-$30</span>
+															<a href="#">View</a>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="purchase-history">
+														<div class="purchase-history-left">
+															<h4>Purchase</h4>
+															<p>Transaction ID <ins>gambo14255893</ins></p>
+															<span>3 May 2018, 5.56PM</span>
+														</div>
+														<div class="purchase-history-right">
+															<span>-$15</span>
+															<a href="#">View</a>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>	
+		</div>	
+	</div>
+
+{% else %}
+<head>
+  <meta http-equiv="refresh" content="0; {% url 'login' %}" />
+</head>
+	<!-- Body End -->
+
+{% endif %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

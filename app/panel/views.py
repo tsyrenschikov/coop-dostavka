@@ -208,10 +208,12 @@ def add_area(request, **kwargs):
     alert = {
         "area": request.GET.get('area', ''),
         "local":Locations.objects.values('name'),
-        "category":Category.objects.values('name')
+        "category":Category.objects.values('name'),
+        "users":User.objects.filter(groups__name='manager').order_by('last_name'),
     }
     local=Locations.objects.values('name')
     category=Category.objects.values('name')
+    users = User.objects.filter(groups__name='manager').order_by('last_name')
     if request.method == 'POST':
         name = request.POST.get('name')
         status = request.POST.get('status')
@@ -225,23 +227,25 @@ def add_area(request, **kwargs):
         else:
             Area.objects.create(name=name, status=status,slug=slug,local_city=[localname],category_city=[category])
             return render(request, 'panel/add_ok_area.html')
-    return render(request, 'panel/add_area.html', {'local':local, 'category':category})
+    return render(request, 'panel/add_area.html', {'local':local, 'category':category,'users':users})
 
 #Редактировать территорию
 def edit_area(request, id):
     try:
         areas = Area.objects.get(id=id)
         local = Locations.objects.values('name')
+        categories=Category.objects.values('name')
         if request.method=="POST":
             areas.name=request.POST.get("name")
             areas.status=request.POST.get("status")
             areas.save()
         if request.method=="POST":
             areas.localname = request.POST.getlist('local_city')
-            Area.objects.update(local_city=areas.localname)
-            return render(request, 'panel/edit_ok_area.html', {'areas': areas, 'local': local})
+            areas.categories = request.POST.getlist('category_city')
+            Area.objects.update(local_city=areas.localname,category_city=areas.categories)
+            return render(request, 'panel/edit_ok_area.html', {'areas': areas, 'local': local,'categories':categories})
         else:
-            return render(request,'panel/edit_area.html',{'areas':areas,'local':local},)
+            return render(request,'panel/edit_area.html',{'areas':areas,'local':local,'categories':categories},)
     except User.DoesNotExist:
         return render(request, 'panel/edit_area.html',{})
 
@@ -392,8 +396,8 @@ def edit_subcategory(request,id):
             if request.FILES:
                 subcategory.image = request.FILES["image"]
                 subcategory.save()
-                return render(request, 'panel/subcategory.html',{'subcategory': subcategory})
-            return render(request, 'panel/subcategory.html',{'subcategory':subcategory})
+                return render(request, 'panel/edit_ok_subcategory.html',{'subcategory': subcategory})
+            return render(request, 'panel/edit_ok_subcategory.html',{'subcategory':subcategory})
         else:
             return render(request,'panel/edit_subcategory.html',{'subcategory':subcategory},)
     except SubCategory.DoesNotExist:

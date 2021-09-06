@@ -52,8 +52,12 @@
                                                             {% else %}
                                                             <td>Не указано</td>
                                                             {% endif %}
-                                                            {% if areas.status %}
+                                                            {% if areas.category_city %}
                                                         <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
+                                                            {% else %}
+                                                        <td>Категории не указаны</td>
+                                                            {% endif %}
+                                                            {% if areas.status %}
 														<td><span class="badge-item badge-status">Активный</span></td>
                                                             {% else %}
                                                             <td><span class="badge-item badge-status">Не активный</span></td>

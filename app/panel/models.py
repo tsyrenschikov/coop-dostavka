@@ -17,6 +17,7 @@ class Locations(models.Model):
             return self.name
 
 class Area(models.Model):
+    customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
     local_city = models.JSONField(default=list,null=True,blank=True)
     category_city = models.JSONField(default=list, null=True, blank=True)
     location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')

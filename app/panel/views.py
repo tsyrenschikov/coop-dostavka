@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Locations,Category,SubCategory, Product
+from .models import Shop,Area,Locations,Category,SubCategory, Days, Product
 
 
 register = template.Library()
@@ -152,18 +152,21 @@ def locations(request):
 def edit_location(request,id):
     try:
         local = Locations.objects.get(id = id)
-
-
+        days = Days.objects.values('name','id').order_by('id')
         if request.method == "POST":
             local.name = request.POST.get("name")
             local.delivery_price = request.POST.get("delivery_price")
+            local.delivery_price_min = request.POST.get("delivery_price_min")
             local.save()
-            return render(request, "panel/edit_ok_location.html", {'local':local})
-
+        if request.method == 'POST':
+            local = Locations.objects.get(id = id)
+            local.days = request.POST.getlist('day')
+            local.save(update_fields=['days'])
+            return render(request, "panel/edit_ok_location.html", {'local': local,'days':days})
         else:
-            return render(request, "panel/edit_location.html", {"local": local})
+            return render(request, "panel/edit_location.html", {"local": local,'days':days})
     except local.DoesNotExist:
-        return render(request ,'panel/edit_error_location.html', {'local' : local})
+        return render(request ,'panel/edit_error_location.html', {'local' : local,'days':days})
 
 #Населенный пункт добавить
 def add_location(request):
@@ -182,12 +185,16 @@ def add_location(request):
             return render(request, 'panel/add_location.html', alert)
         else:
             Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,day=day)
-            return render(request, 'panel/locations.html', {'local': local})
+            return render(request, 'panel/add_ok_location.html', {'local': local})
     return render(request, 'panel/add_location.html', {'local':local})
+
+#Успешное добавления территории
+def add_ok_location(request):
+    local=Locations.objects.all()
+    return render(request, 'panel/add_ok_location.html', {'local':local})
 
 #Населенный пункт удалить
 def delete_location(request, id):
-
     local = Locations.objects.get(id=id)
     local.delete()
     return render(request, "panel/delete_ok_location.html",{'local':local})

@@ -26,6 +26,7 @@ urlpatterns = [
     path('locations/', views.locations, name='locations'),
     path('edit_location/<int:id>/',views.edit_location,name="edit_location"),
     path('add_location/', views.add_location, name='add_location'),
+    path('add_ok_location/',views.add_ok_location, name='add_ok_location'),
     path('delete_location/<int:id>/', views.delete_location, name='delete_location'),
     path('areas/', views.areas, name='areas'),
     path('add_area/', views.add_area, name='add_area'),

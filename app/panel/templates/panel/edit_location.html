@@ -1,7 +1,10 @@
 {% extends 'panel/layouts/base.html' %}
+{% load static %}
+    {% block stylesheet %}
+        <link rel='stylesheet' href="{% static 'file/panel/css/semantic_select.css' %}">
+    {% endblock stylesheet %}
 {% block title %}panel{% endblock %}
 {% block content %}
-    {% load static %}
         <main>
                     <div class="container-fluid">
                         <h2 class="mt-30 page-title">Локации</h2>
@@ -29,6 +32,21 @@
                                                 <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
                                                 <input type="text" name="delivery_price" class="form-control" value="{{ local.delivery_price }}" placeholder="0 р.">
 											</div>
+                                            <div class="form-group">
+                                                <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
+                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
+                                                <input type="text" name="delivery_price_min" class="form-control" value="{{ local.delivery_price_min }}" placeholder="0 р.">
+											</div>
+                                            <div class="form-group">
+                                            <label class="form-label">Дни недели поставки</label>
+                                        </div>
+                                            <div class="ui">
+                                                <select name="day"  class="multiple selection dropdown">
+                                                    {% for days in days %}
+                                                        <option value="{{ days.name }}">{{ days.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
 											<button class="save-btn hover-btn" type="submit">Сохранить</button>
 										</div>
                                         </form>
@@ -38,5 +56,9 @@
                         </div>
                     </div>
                 </main>
-
+{% block js %}
+        <script src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'></script>
+        <script src='https://fomantic-ui.com/dist/semantic.min.js'></script>
+        <script  src="{% static 'file/panel/js/script_selectcalendar.js' %}"></script>
+    {% endblock js %}
 {% endblock content %}

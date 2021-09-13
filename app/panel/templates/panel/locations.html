@@ -69,8 +69,8 @@
                                                             {% endif %}
                                                         </td>
                                                         <td>
-                                                            {% if local.day %}
-                                                                {{ local.day|cut:"["|cut:"]"|cut:"'" }}
+                                                            {% if local.days %}
+                                                                {{ local.days|cut:"["|cut:"]"|cut:"'" }}
                                                             {% else %}
                                                                 <p style="color: green">Не указано</p>
                                                             {% endif %}

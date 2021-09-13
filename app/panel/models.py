@@ -2,12 +2,23 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
+class Days(models.Model):
+    name = models.CharField(max_length=200, db_index=True,verbose_name='День недели')
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'День недели'
+        verbose_name_plural = 'День недели'
+        index_together = (['id'])
+
+    def __str__(self):
+        return self.name
 
 class Locations(models.Model):
     name = models.CharField(max_length=200,db_index=True, verbose_name='Название населенного пункта')
     delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
     delivery_price_min = models.PositiveIntegerField(null=True, verbose_name='минимальная цена доставки')
-    day=models.JSONField(default=list,null=True,blank=True)
+    days = models.JSONField(default=list, null=True, blank=True, verbose_name='День недели')
 
     class Meta:
         ordering = ['name']

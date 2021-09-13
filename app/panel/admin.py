@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shop, Area,Category,SubCategory, Product,Locations
+from .models import Shop, Area, Category, SubCategory, Product, Locations, Days
 
 class ShopAdmin(admin.ModelAdmin):
     list_display = ['name']
@@ -22,7 +22,9 @@ class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
 admin.site.register(SubCategory, SubCategoryAdmin)
 
-
+class DaysAdmin(admin.ModelAdmin):
+    list_display = ['name']
+admin.site.register(Days, DaysAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'stock', 'available', 'created', 'updated']

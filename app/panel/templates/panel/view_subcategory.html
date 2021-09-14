@@ -7,7 +7,7 @@
                         <h2 class="mt-30 page-title">Клиенты</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item active">Подкатегории</li>
+                            <li class="breadcrumb-item active">Товарные группы</li>
                         </ol>
                         <div class="row">
 							<div class="col-lg-5 col-md-6">
@@ -25,13 +25,13 @@
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Название подкатегории</span>
+													<span class="left-dt">Название товарной группы</span>
 													<span class="right-dt">{{ subcategory.name }}</span>
 												</div>
 											</div>
 										</div>
                                         <div class="col-lg-12">
-								            <a href="{% url 'subcategory' %}" class="add-btn hover-btn">К списку подкатегорий</a>
+								            <a href="{% url 'subcategory' %}" class="add-btn hover-btn">К товарным группам</a>
                                         </div>
                                     <div class="shopowner-dt-left mt-4">
                                     </div>

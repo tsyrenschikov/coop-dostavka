@@ -44,11 +44,7 @@
                                                     {% for subcategories in subcategories %}
 													<tr>
                                                     <td>
-                                                        {% if subcategories.number  %}
-                                                        {{ subcategories.number }}
-                                                        {% else %}
-                                                        <p style="color: red">Присвойте номер</p>
-                                                        {% endif %}
+                                                        {{ subcategories.number|stringformat:".1f" }}
                                                     </td>
                                                     <td>
                                                         {% if subcategories.name %}

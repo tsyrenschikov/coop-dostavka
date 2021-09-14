@@ -27,7 +27,7 @@
                                         <div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Номер*</label>
-												<input type="number" name="number" class="form-control" pattern="[0-9]{,3}" placeholder="Порядковый номер" required="">
+												<input  name="number" class="form-control" pattern="^[0-9]*[.]?[0-9]+$" placeholder="Порядковый номер" required="">
 											</div>
                                                 {% if number %}
                                                 <div class="alert alert-danger alert-dismissible">

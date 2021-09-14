@@ -10,6 +10,7 @@ from .models import Shop,Area,Locations,Category,SubCategory, Days, Product
 
 register = template.Library()
 
+
 @register.filter(name='manager')
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
@@ -350,7 +351,7 @@ def delete_ok_category(request):
 
 #Список подкатегорий
 def subcategory(request):
-    subcategories = SubCategory.objects.all()
+    subcategories = SubCategory.objects.all().order_by('number')
     return render(request, 'panel/subcategory.html', {'subcategories':subcategories})
 
 #Добавить категорию

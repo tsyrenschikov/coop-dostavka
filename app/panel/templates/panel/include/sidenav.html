@@ -27,10 +27,14 @@
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Клиенты
 							</a>
+                        <a class="nav-link " href="{% url 'subcategory' %}">
+								<div class="sb-nav-link-icon"><i class="fas fa-shopping-basket"></i></div>
+                                Товарные группы
+							</a>
                          <a class="nav-link {% if request.path == '/category/' or request.path == '/add_category/'  %}active{% endif %}" href="#" data-toggle="collapse"
                             data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
 								<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                Категории и подкатегории
+                                Категории
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 							</a>
                             <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
@@ -39,9 +43,13 @@
                                     {% if 'super_manager' in groups %}
 									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
                                     {% endif %}
-                                    <a class="nav-link sub_nav_link" href="{%  url 'subcategory' %}">Список подкатегорий</a>
-                                {% if 'super_manager' in groups %}
-									<a class="nav-link sub_nav_link" href="{% url 'add_subcategory' %}">Добавить подкатегорию</a>
+								</nav>
+                            </div>
+                            <div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link sub_nav_link" href="{%  url 'category' %}">Список товарных групп</a>
+                                    {% if 'super_manager' in groups %}
+									<a class="nav-link sub_nav_link" href="{%  url 'add_category' %}">Добавить категорию</a>
                                     {% endif %}
 								</nav>
                             </div>

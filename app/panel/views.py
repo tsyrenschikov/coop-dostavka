@@ -277,7 +277,7 @@ def category(request, ):
 #Просмотр категории товаров
 def view_category(request,id):
     images = Category.objects.get(id=id)
-    categories = Category.objects.values('name','descriptions','status','image','subcategory__name').get(id=id)
+    categories = Category.objects.values('name','status','image','subcategory__name').get(id=id)
     return render(request, 'panel/view_category.html',{'categories':categories,'images':images})
 
 #Редактировать категорию товара
@@ -287,7 +287,6 @@ def edit_category(request,id):
 
         if request.method=="POST":
             categories.name=request.POST.get("name")
-            categories.descriptions=request.POST.get("descriptions")
             categories.status=request.POST.get("status")
             categories.number = request.POST.get("number")
             categories.save()
@@ -327,7 +326,7 @@ def add_category(request):
         else:
             Category.objects.create(name=name,status=status,descriptions=descriptions,number=number)
             return render(request, 'panel/add_ok_category.html')
-    return render(request, 'panel/category.html', alert)
+    return render(request, 'panel/add_category.html', alert)
 
 #Успешное добавления категории
 def add_ok_category(request):

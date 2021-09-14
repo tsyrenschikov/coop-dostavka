@@ -74,7 +74,6 @@ class Category(models.Model):
     number = models.IntegerField(blank=True, null=True,verbose_name='Номер')
     image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
     status = models.BooleanField(default=True, verbose_name='Активный')
-    descriptions = models.TextField(max_length=300, null=True,verbose_name='Описание категории')
 
     class Meta:
         ordering = ('name',)

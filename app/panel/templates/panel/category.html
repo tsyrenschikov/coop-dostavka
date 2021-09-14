@@ -39,7 +39,7 @@
                                                         <th>Номер</th>
                                                         <th>Имя</th>
 														<th style="width:130px">Изображение</th>
-                                                        <th>Описание</th>
+                                                        <th>Товарная группа</th>
 														<th>Статус</th>
 														<th>Действия</th>
 													</tr>
@@ -71,11 +71,7 @@
                                                             {% endif %}
 														</td>
                                                         <td>
-                                                            {% if categories.descriptions %}
-                                                            {{ categories.descriptions }}
-                                                            {% else %}
-                                                                <p>Нет описания</p>
-                                                        {% endif %}
+                                                            Товар группа
                                                         </td>
                                                         {% if categories.status %}
 														<td><span class="badge-item badge-status">Опубликован</span></td>

@@ -44,11 +44,11 @@
                                                     {% for subcategories in subcategories %}
 													<tr>
                                                     <td>
-                                                        {{ subcategories.number|stringformat:".1f" }}
+                                                        {{ subcategories.number  }}
                                                     </td>
                                                     <td>
                                                         {% if subcategories.name %}
-                                                        {{ subcategories.name }}
+                                                            {{ subcategories.name }}
                                                         {% else %}
                                                         Имя отсутствует
                                                         {% endif %}
@@ -80,6 +80,14 @@
 									</div>
 								</div>
 							</div>
+                            {% if user.is_superuser %}
+                                <div class="col-lg-12">
+                                    <a href="{%  url 'add_subcategory' %}" class="add-btn hover-btn">Добавить товарную группу</a>
+                                </div>
+                            {% endif %}
+                            <div class="col-lg-5 col-md-6"><div class="bulk-section mt-30">
+									<div class="search-by-name-input">
+									</div></div>
                         </div>
                     </div>
                 </main>

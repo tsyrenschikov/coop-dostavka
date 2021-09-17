@@ -2,6 +2,10 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+{% endblock stylesheet %}
         <main>
                     <div class="container-fluid">
                         <h2 class="mt-30 page-title">Клиенты</h2>
@@ -33,9 +37,14 @@
 												<input type="text" class="form-control" name="name" value="{{ categories.name }}" placeholder="Введите название категории">
 											</div>
 											<div class="form-group">
-												<label class="form-label">Описание категории*</label>
-												<input type="text" class="form-control" name="descriptions" value="{{ categories.descriptions }}" placeholder="Описание категории">
-											</div>
+                                                <label class="form-label">Товарная группа</label>
+                                                    <select class="form-control selectpicker" name="subcat" value="{{ categories.subcat }}" multiple data-live-search="true">
+                                                        {{ categories.subcat }}
+                                                        {% for subcategory in subcategory %}
+                                                            <option name="subcat">{{ subcategory.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                        </div>
                                             <div class="form-group">
                                                 <label class="form-label">Загрузка изображения*</label>
                                             </div>
@@ -73,5 +82,8 @@
                         </div>
                     </div>
                 </main>
-
+$(function () {
+    $('select').selectpick1er();
+});
+</script>
 {% endblock content %}

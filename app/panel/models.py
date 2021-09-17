@@ -67,6 +67,20 @@ class Shop(models.Model):
     def __str__(self):
         return self.name
 
+class SubCategory(models.Model):
+    name = models.CharField(max_length=200, unique=True, verbose_name='Название')
+    number = models.FloatField(blank=True, null=True, verbose_name='Номер')
+    image = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name_plural = 'Подкатегория'
+        verbose_name = 'Подкатегория'
+        ordering = ['name']
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
 class Category(models.Model):
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     subcat = models.JSONField(default=list, null=True, blank=True)
@@ -79,21 +93,6 @@ class Category(models.Model):
         ordering = ('name',)
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-
-    def __str__(self):
-        return self.name
-
-class SubCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True, verbose_name='Категория')
-    name = models.CharField(max_length=200, unique=True, verbose_name='Название')
-    number = models.FloatField(blank=True, null=True, verbose_name='Номер')
-    image = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
-
-    class Meta:
-        verbose_name_plural = 'Подкатегория'
-        verbose_name = 'Подкатегория'
-        ordering = ['name']
-        index_together = (('id'),)
 
     def __str__(self):
         return self.name

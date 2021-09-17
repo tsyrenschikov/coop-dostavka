@@ -71,7 +71,11 @@
                                                             {% endif %}
 														</td>
                                                         <td>
-                                                            Товар группа
+                                                            {% if categories.subcat %}
+                                                                {{ categories.subcat|cut:'['|cut:"'"|cut:']' }}
+                                                            {% else %}
+                                                                <p style="color: red">Товарная группа не назначена</p>
+                                                            {% endif %}
                                                         </td>
                                                         {% if categories.status %}
 														<td><span class="badge-item badge-status">Опубликован</span></td>

@@ -285,19 +285,23 @@ def view_category(request,id):
 def edit_category(request,id):
     try:
         categories = Category.objects.get(id=id)
-
+        subcategory=SubCategory.objects.all()
         if request.method=="POST":
             categories.name=request.POST.get("name")
             categories.status=request.POST.get("status")
             categories.number = request.POST.get("number")
             categories.save()
+        if request.method=='POST':
+            categories = Category.objects.get(id=id)
+            categories.subcat = request.POST.getlist('subcat')
+            categories.save(update_fields=['subcat'])
             if request.FILES:
                 categories.image = request.FILES["image"]
                 categories.save()
-                return render(request, 'panel/edit_ok_category.html',{'categories': categories})
-            return render(request, 'panel/edit_ok_category.html',{'categories':categories})
+                return render(request, 'panel/edit_ok_category.html',{'categories': categories, 'subcategory':subcategory})
+            return render(request, 'panel/edit_ok_category.html',{'categories':categories, 'subcategory':subcategory})
         else:
-            return render(request,'panel/edit_category.html',{'categories':categories},)
+            return render(request,'panel/edit_category.html',{'categories':categories, 'subcategory':subcategory},)
     except User.DoesNotExist:
         return render(request, 'panel/edit_category.html',{})
 

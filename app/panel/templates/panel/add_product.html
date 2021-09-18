@@ -17,96 +17,50 @@
 										<h4>Добавить продукт</h4>
 									</div>
 									<div class="card-body-table">
+                                        <form method="post">
+                                            {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Имя*</label>
-												<input type="text" class="form-control" placeholder="Имя категории">
+												<input type="text" name="name" class="form-control" placeholder="Наименование товара">
 											</div>
+                                            {% if name %}
+                                                <div class="alert alert-danger alert-dismissible">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    {{ name }}
+                                                </div>
+                                            {% endif %}
 											<div class="form-group">
 												<label class="form-label">Категория*</label>
-												<select id="categtory" name="categtory" class="form-control">
+												<select id="categtory" name="subcategory" class="form-control">
 													<option selected>--Выбрать категорию--</option>
-													<option value="1">Фрукты и овощи</option>
-													<option value="2">Основные продукты </option>
-													<option value="3">Молочные продукты и яйца </option>
-													<option value="4">Напитки</option>
-													<option value="5">Закуски</option>
-													<option value="6">Домашний уход</option>
-													<option value="7">Лапша и соусы</option>
-													<option value="8">Личная гигиена</option>
-													<option value="9">Уход за животными</option>
-													<option value="10">Мясо и морепродукты</option>
-													<option value="11">Электроника</option>
+                                                    {% for subcategory in subcategory %}
+                                                        <option value="{{ subcategory_id }}">{{ subcategory.name }}</option>
+                                                    {% endfor %}
 												</select>
 											</div>
 											<div class="form-group">
-												<label class="form-label">MRP*</label>
-												<input type="text" class="form-control" placeholder="10 р.">
+												<label class="form-label">Цена*</label>
+												<input type="text"  name="price" class="form-control" placeholder="10 р.">
 											</div>
 											<div class="form-group">
-												<label class="form-label">Скидка MRP*</label>
-												<input type="text" class="form-control" placeholder="5" р.>
+												<label class="form-label">Цена со скидкой</label>
+												<input type="text" name="discount" class="form-control" placeholder="5 р.">
 											</div>
 											<div class="form-group">
 												<label class="form-label">Статус*</label>
-												<select id="status" name="status" class="form-control">
-													<option selected>Активный</option>
-													<option value="1">Не активный</option>
-												</select>
+												<select id="action" name="status" class="form-control">
+                                                    <option value="True">Опубликован</option>
+                                                    <option name="status" value="False">Не опубликован</option>
+										        </select>
 											</div>
 											<div class="form-group">
-												<label class="form-label">Описание*</label>
-												<div class="card card-editor">
-													<div class="content-editor">
-														 <div id='edit'></div>
-													</div>
-												</div>
+												<label class="form-label">Описание товара</label>
+												<input type="text" class="form-control" name="description" placeholder="Описание товара" required="">
 											</div>
-											<div class="form-group">
-												<label class="form-label">Изображение категории*</label>
-												<div class="input-group">
-													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-														<label class="custom-file-label" for="inputGroupFile04">Выбрать изображение</label>
-													</div>
-												</div>
-												<div class="add-cate-img-1">
-													<img src="{%  static 'file/panel/images/product/img-11.jpg' %}" alt="">
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Добавить изображение*</label>
-												<div class="input-group">
-													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05">
-														<label class="custom-file-label" for="inputGroupFile05">Выбрать изображение</label>
-													</div>
-												</div>
-												<ul class="add-produc-imgs">
-													<li>
-														<div class="add-cate-img-1">
-															<img src="{%  static 'file/panel/images/product/big-1.jpg' %}" alt="">
-														</div>
-													</li>
-													<li>
-														<div class="add-cate-img-1">
-															<img src="{%  static 'file/panel/images/product/big-2.jpg' %}" alt="">
-														</div>
-													</li>
-													<li>
-														<div class="add-cate-img-1">
-															<img src="{%  static 'file/panel/images/product/big-3.jpg' %}" alt="">
-														</div>
-													</li>
-													<li>
-														<div class="add-cate-img-1">
-															<img src="{%  static 'file/panel/images/product/big-4.jpg' %}" alt="">
-														</div>
-													</li>
-												</ul>
-											</div>
-											<button class="save-btn hover-btn" type="submit">Добавить изображение</button>
-										</div>
+											<button class="save-btn hover-btn" type="submit">Добавить продукт</button>
+                                        </div>
+                                    </form>
 									</div>
 								</div>
 							</div>

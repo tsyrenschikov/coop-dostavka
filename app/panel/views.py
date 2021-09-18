@@ -472,14 +472,38 @@ def delete_shop(request,id):
     except shops.DoesNotExist:
         return render(request, 'panel/delete_error_shop.html', {})
 
+
+#Продукты
 def products(request):
-    return render(request, 'panel/products.html', {})
+    products=Product.objects.all()
+    return render(request, 'panel/products.html', {'products':products})
 
 def product_view(request):
     return render(request, 'panel/product_view.html', {})
 
+#Добавить продукт
 def add_product(request):
-    return render(request, 'panel/add_product.html', {})
+    alert = {
+        'name': request.GET.get('name', ''),
+        "products":Product.objects.values('name','subcategory__name'),
+    }
+    products = Product.objects.values('subcategory__name','subcategory_id')
+    subcategory=SubCategory.objects.all()
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price=request.POST.get('price')
+        discount=request.POST.get('discount')
+        status = request.POST.get('status')
+        description = request.POST.get('description')
+
+
+        if Product.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Наименование товара уже существует'
+            return render(request, 'panel/add_product.html', alert)
+        else:
+            Product.objects.create(name=name,price=price,status=status,discount=discount,description=description)
+            return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
+    return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 
 def orders(request):
     return render(request, 'panel/orders.html', {})

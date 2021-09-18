@@ -27,7 +27,5 @@ class DaysAdmin(admin.ModelAdmin):
 admin.site.register(Days, DaysAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'stock', 'available', 'created', 'updated']
-    list_filter = ['available', 'created', 'updated']
-    list_editable = ['price', 'stock', 'available']
+    list_display = ['name', 'price']
 admin.site.register(Product, ProductAdmin)

@@ -85,7 +85,8 @@
                                     {% endif     %}
 								</nav>
                             </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+                        <a class="nav-link  {% if request.path == '/product/' or request.path == '/add_product/' %}active{% endif %}" href="#" data-toggle="collapse" data-target="#collapseProducts"
+                           aria-expanded="false" aria-controls="collapseProducts">
 								<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                                 Продукты
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

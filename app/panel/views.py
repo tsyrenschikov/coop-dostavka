@@ -278,7 +278,7 @@ def category(request, ):
 #Просмотр категории товаров
 def view_category(request,id):
     images = Category.objects.get(id=id)
-    categories = Category.objects.values('name','status','image','subcategory__name').get(id=id)
+    categories = Category.objects.values('name','status','image','subcat','area__name').get(id=id)
     return render(request, 'panel/view_category.html',{'categories':categories,'images':images})
 
 #Редактировать категорию товара
@@ -478,8 +478,16 @@ def products(request):
     products=Product.objects.all()
     return render(request, 'panel/products.html', {'products':products})
 
-def product_view(request):
-    return render(request, 'panel/product_view.html', {})
+#Просмотр товара
+def product_view(request,id):
+    products=Product.objects.get(id=id)
+    product=Product.objects.values('subcategory__name').get(id=id)
+    return render(request, 'panel/product_view.html', {'products': products, 'product':product})
+
+#Редактировать товар
+def edit_product(request, id):
+    products=Product.objects.get(id=id)
+    return render(request,'panel/edit_product.html', {'products':products})
 
 #Добавить продукт
 def add_product(request):
@@ -504,6 +512,16 @@ def add_product(request):
             Product.objects.create(name=name,price=price,status=status,discount=discount,description=description)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
+
+#Удаление товара
+def delete_product(request,id):
+    products = ''
+    try:
+        products = Product.objects.get(id=id)
+        products.delete()
+        return render(request, 'panel/delete_ok_product.html', {'products': products}, )
+    except products.DoesNotExist:
+        return render(request, 'panel/delete_error_product.html', {})
 
 def orders(request):
     return render(request, 'panel/orders.html', {})

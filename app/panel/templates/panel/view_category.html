@@ -22,7 +22,7 @@
                                                 {% endif %}
 											</div>
 											<div class="shopowner-dt-left mt-4">
-												<span>{{ categories.category__name }}</span>
+												<span>{{ categories.name }}</span>
 											</div>
 											<div class="shopowner-dts">
 												<div class="shopowner-dt-list">
@@ -30,17 +30,17 @@
 													<span class="right-dt">{{ categories.name }}</span>
 												</div>
 												<div class="shopowner-dt-list">
-													<span class="left-dt">Подкатегории</span>
-                                                    {% if categories.subcategory__name %}
-													<span class="right-dt">{{ categories.subcategory__name }}</span>
+													<span class="left-dt">Товарная группа</span>
+                                                    {% if categories.subcat %}
+													<span class="right-dt">{{ categories.subcat|cut:'['|cut:"'"|cut:']' }}</span>
                                                     {% else %}
                                                     <span class="right-dt">Не указано</span>
                                                     {% endif %}
 												</div>
                                             <div class="shopowner-dt-list">
-													<span class="left-dt">Территория</span>
+													<span class="left-dt">Территория доставки</span>
                                                     {% if categories.shop__name %}
-													<span class="right-dt">{{ categories.shop__name }}</span>
+													<span class="right-dt">{{ categories.area__name }}</span>
                                                     {% else %}
                                                     <span class="right-dt">Не указано</span>
                                                     {% endif %}

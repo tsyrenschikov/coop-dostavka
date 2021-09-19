@@ -1,0 +1,33 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Продукты</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{%  url 'products' %}">Продукты</a></li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-4 col-md-5">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20">
+											<div class="shopowner-dt-left">
+												        <span>
+                                                            <ul>
+                                                                <p style="color: green; font-size: 1.2em"> Товар -<span style="color: red; font-size: 1.1em">"{{ products.name }}"</span> успешно
+                                                изменена</p>
+                                                            </ul>
+                                                        </span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                       {% include 'panel/include/new_product.html' %}
+                    </div>
+                </main>
+{% endblock content %}

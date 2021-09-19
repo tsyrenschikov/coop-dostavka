@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="50ba2482-e736-4e98-8324-9ee0d69596db" name="coop-dostavka" url="http://h25.netangels.ru">
+        <fileTransfer host="h25.netangels.ru" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="fb4b2630-3b71-42c2-8358-25573a80b401" name="tsyrenschikov" url="http://h19.netangels.ru">
+        <fileTransfer host="h19.netangels.ru" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

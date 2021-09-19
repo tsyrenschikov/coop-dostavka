@@ -476,6 +476,7 @@ def delete_shop(request,id):
 #Продукты
 def products(request):
     products=Product.objects.all()
+
     return render(request, 'panel/products.html', {'products':products})
 
 #Просмотр товара
@@ -486,21 +487,41 @@ def product_view(request,id):
 
 #Редактировать товар
 def edit_product(request, id):
-    products=Product.objects.get(id=id)
-    return render(request,'panel/edit_product.html', {'products':products})
+    try:
+        products = Product.objects.get(id=id)
+        subcategory = SubCategory.objects.all()
+        if request.method == "POST":
+            products.name = request.POST.get("name")
+            products.status = request.POST.get("status")
+            products.price = request.POST.get("price")
+            products.discount = request.POST.get("discount")
+            products.description = request.POST.get("description")
+            products.id = request.POST.get('id')
+            products.save()
+            if request.FILES:
+                products.image = request.FILES["image"]
+                products.save()
+                return render(request, 'panel/edit_ok_product.html', {'products': products,'subcategory':subcategory})
+            return render(request, 'panel/edit_ok_product.html', {'products': products,'subcategory':subcategory})
+        else:
+            return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
+    except User.DoesNotExist:
+        return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
 
 #Добавить продукт
-def add_product(request):
+def add_product(request, **kwargs):
     alert = {
         'name': request.GET.get('name', ''),
-        "products":Product.objects.values('name','subcategory__name'),
+        'products': Product.objects.all(),
+        'subcategory': SubCategory.objects.all()
     }
-    products = Product.objects.values('subcategory__name','subcategory_id')
+    products = Product.objects.all()
     subcategory=SubCategory.objects.all()
     if request.method == 'POST':
         name = request.POST.get('name')
         price=request.POST.get('price')
         discount=request.POST.get('discount')
+        pk=request.POST.get('id')
         status = request.POST.get('status')
         description = request.POST.get('description')
 
@@ -509,7 +530,7 @@ def add_product(request):
             alert['name'] = 'Наименование товара уже существует'
             return render(request, 'panel/add_product.html', alert)
         else:
-            Product.objects.create(name=name,price=price,status=status,discount=discount,description=description)
+            Product.objects.create(name=name,price=price,status=status,discount=discount,subcategory_id=pk,description=description)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 

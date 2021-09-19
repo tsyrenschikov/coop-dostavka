@@ -7,7 +7,7 @@
                         <h2 class="mt-30 page-title">Магазины</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="shops.html">Магазины</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'products' %}">Продукты</a></li>
                             <li class="breadcrumb-item active">Просмотр продукта</li>
                         </ol>
                         <div class="row">
@@ -19,6 +19,10 @@
 											<div class="shop_img">
 												<img src="{{ products.image.url }}" alt="">
 											</div>
+                                            {% else %}
+                                                <div class="shop_img">
+                                                Нет картинки
+                                                </div>
                                             {% endif %}
 											<ul class="product-dt-purchases">
 												<li>
@@ -28,7 +32,7 @@
 												</li>
 												<li>
 													<div class="product-status">
-														Магазин <span class="badge-item-2 badge-status">...</span>
+														Территория <span class="badge-item-2 badge-status">...</span>
 													</div>
 												</li>
 											</ul>
@@ -39,7 +43,11 @@
 												</div>
                                                 <div class="shopowner-dt-list">
 													<span class="left-dt">Цена со скидкой</span>
+                                                    {% if products.discount %}
 													<span class="right-dt">{{ products.discount }} р.</span>
+                                                    {% else %}
+                                                    <span class="right-dt">Скидки нет</span>
+                                                    {% endif %}
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
@@ -51,7 +59,11 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Товарная группа</span>
+                                                    {% if products.subcategory_id != None %}
 													<span class="right-dt">{{ product.subcategory__name }}</span>
+                                                    {% else %}
+                                                        <span class="right-dt">Не назначена</span>
+                                                    {% endif %}
 												</div>
 											</div>
 										</div>

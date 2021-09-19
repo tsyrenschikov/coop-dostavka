@@ -32,9 +32,9 @@
 													<tr>
 														<th>Имя</th>
                                                         <th style="width:100px">Изображение</th>
-                                                        <th>Описание</th>
                                                         <th>Цена</th>
                                                         <th>Цена со скидкой</th>
+                                                        <th>Описание</th>
 														<th>Статус</th>
 														<th>Действия</th>
 													</tr>
@@ -48,16 +48,22 @@
                                                         <td>
                                                             {% if products.image %}
 															<div class="cate-img">
-																<img src="{{ products.image.url }}" alt="">
+																<img src="{{ products.image.url  }}" alt="">
 															</div>
+                                                            {% else %}
+                                                                <div class="cate-img">Нет изображения
                                                             {% endif %}
 														</td>
+                                                        </td>
+														<td>{{ products.price }} .р</td>
+                                                        <td>{{ products.discount }} .р</td>
                                                         <td>
+                                                            {% if products.description %}
                                                             {{ products.description }}
+                                                            {% else %}
+                                                            Без описания
+                                                            {% endif %}
                                                         </td>
-                                                        </td>
-														<td>{{ products.price }}</td>
-                                                        <td>{{ products.discount }}</td>
                                                         {% if products.status %}
                                                             <td><span class="badge-item badge-status">Опубликован</span></td>
                                                         {% else %}

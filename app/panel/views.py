@@ -487,28 +487,29 @@ def products(request):
 #Просмотр товара
 def product_view(request,id):
     products=Product.objects.get(id=id)
-    product=Product.objects.values('subcategory__name').get(id=id)
-    return render(request, 'panel/product_view.html', {'products': products, 'product':product})
+    return render(request, 'panel/product_view.html', {'products': products})
 
 #Редактировать товар
 def edit_product(request, id):
     try:
         products = Product.objects.get(id=id)
-        subcategory = SubCategory.objects.all()
-        product = Product.objects.values('subcategory__name').get(id=id)
+        subcategory=SubCategory.objects.all()
         if request.method == "POST":
             products.name = request.POST.get("name")
             products.status = request.POST.get("status")
             products.price = request.POST.get("price")
             products.discount = request.POST.get("discount")
             products.description = request.POST.get("description")
-            products.id = request.POST.get('id')
+            products.subcategory__name = request.POST.get('subcategory__name')
             products.save()
+        if request.method == 'POST':
+            products.subcat = request.POST.getlist('subcat')
+            products.save(update_fields=['subcat'])
             if request.FILES:
-                products = Product.objects.get(id=id)
                 products.image = request.FILES["image"]
-                products.update()
-            return render(request, 'panel/edit_ok_product.html', {'products': products,'product':product})
+                products.save()
+                return render(request, 'panel/edit_ok_product.html', {'products': products})
+            return render(request, 'panel/edit_ok_product.html', {'products': products})
         else:
             return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
     except User.DoesNotExist:
@@ -523,20 +524,21 @@ def add_product(request, **kwargs):
     }
     products = Product.objects.all()
     subcategory=SubCategory.objects.all()
-    if request.method == 'POST':
+    if request.method == 'POST' and request.FILES:
         name = request.POST.get('name')
         price=request.POST.get('price')
         discount=request.POST.get('discount')
-        pk=request.POST.get('id')
+        subcat=request.POST.get('subcat')
         status = request.POST.get('status')
         description = request.POST.get('description')
+        image = request.FILES["image"]
 
 
         if Product.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Наименование товара уже существует'
             return render(request, 'panel/add_product.html', alert)
         else:
-            Product.objects.create(name=name,price=price,status=status,discount=discount,subcategory_id=pk,description=description)
+            Product.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 

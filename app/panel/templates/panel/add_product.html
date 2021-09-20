@@ -17,7 +17,7 @@
 										<h4>Добавить продукт</h4>
 									</div>
 									<div class="card-body-table">
-                                        <form method="post">
+                                        <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
@@ -31,11 +31,11 @@
                                                 </div>
                                             {% endif %}
 											<div class="form-group">
-												<label class="form-label">Товарная группа*</label>
-												<select id="categtory" name="id" class="form-control">
-													<option selected disabled value=''>--Прикрепить к товарной группе--</option>
+												<label class="form-label">Товарная группа</label>
+												<select id="categtory" name="subcat" class="form-control">
+													<option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
                                                     {% for subcategory in subcategory %}
-                                                        <option value="{{ subcategory.id }}" required="">{{ subcategory.name }}</option>
+                                                        <option name="subcat" >{{ subcategory.name }}</option>
                                                     {% endfor %}
 												</select>
 											</div>

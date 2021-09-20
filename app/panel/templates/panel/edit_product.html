@@ -17,7 +17,7 @@
 										<h4>Редактировать продукт</h4>
 									</div>
 									<div class="card-body-table">
-                                        <form method="post">
+                                        <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
@@ -32,10 +32,10 @@
                                             {% endif %}
 											<div class="form-group">
 												<label class="form-label">Товарная группа</label>
-												<select id="categtory" name="id" class="form-control">
-													<option selected>{{ products.subcategory__name }}</option>
+												<select id="categtory" name="subcat" class="form-control">
+													<option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
                                                     {% for subcategory in subcategory %}
-                                                        <option name="id" value="{{ subcategory.id }}">{{ subcategory.name }}</option>
+                                                        <option name="subcat" >{{ subcategory.name }}</option>
                                                     {% endfor %}
 												</select>
 											</div>
@@ -52,14 +52,16 @@
                                             </div>
                                             <div class="form-group">
                                                 {% if products.image %}
-                                                <label class="" ><img src="{{ products.image.url }}"/></label>
+                                                <label class=""><img src="{{ products.image.url }}"></label>
                                                 {% endif %}
                                             </div>
                                             <div class="input-group">
 													<div class="custom-file">
-														<input type="file" name="image" >
+														<input type="file" name="image" value="{{ products.image }}" id="file" >
+														<label type="file"  for="file" ></label>
 													</div>
                                             </div>
+                                            <div class="form-group"></div>
                                             <div class="form-group">
 												<label class="form-label">Статус*</label>
 												<select id="action" name="status" class="form-control">

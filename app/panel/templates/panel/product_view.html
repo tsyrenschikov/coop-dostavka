@@ -59,8 +59,8 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Товарная группа</span>
-                                                    {% if products.subcategory_id != None %}
-													<span class="right-dt">{{ product.subcategory__name }}</span>
+                                                    {% if products.subcat != None %}
+													<span class="right-dt">{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</span>
                                                     {% else %}
                                                         <span class="right-dt">Не назначена</span>
                                                     {% endif %}

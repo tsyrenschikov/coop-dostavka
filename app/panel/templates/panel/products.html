@@ -35,6 +35,7 @@
                                                         <th>Цена</th>
                                                         <th>Цена со скидкой</th>
                                                         <th>Описание</th>
+                                                        <th>Товарная группа</th>
 														<th>Статус</th>
 														<th>Действия</th>
 													</tr>
@@ -45,16 +46,17 @@
 														<td>
                                                             {{ products.name }}
                                                         </td>
-                                                        <td>
-                                                            {% if products.image %}
-															<div class="cate-img">
-																<img src="{{ products.image.url  }}" alt="">
-															</div>
-                                                            {% else %}
-                                                                <div class="cate-img">Нет изображения
-                                                            {% endif %}
-														</td>
-                                                        </td>
+                                                        {% if products.image %}
+                                                            <td>
+                                                                <div class="cate-img">
+                                                                    <img src="{{ products.image.url  }}" alt="">
+                                                                </div>
+                                                            </td>
+                                                        {% else %}
+                                                            <td>
+                                                                <div class="cate-img">Нет изображения</div>
+                                                            </td>
+                                                        {% endif %}
 														<td>{{ products.price }} .р</td>
                                                         <td>{{ products.discount }} .р</td>
                                                         <td>
@@ -62,6 +64,13 @@
                                                             {{ products.description }}
                                                             {% else %}
                                                             Без описания
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+                                                            {% if products.subcat != None %}
+                                                            {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                                            {% else %}
+                                                            Товарная группа не назначена
                                                             {% endif %}
                                                         </td>
                                                         {% if products.status %}

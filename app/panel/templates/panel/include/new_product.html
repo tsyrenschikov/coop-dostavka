@@ -24,7 +24,7 @@
                                             </div>
                                             <div class="shopowner-dt-list">
 													<span class="left-dt">Товарная группа</span>
-													<span class="right-dt">{{ product.subcategory__name }}</span>
+													<span class="right-dt">{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</span>
                                             </div>
                                             <div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>

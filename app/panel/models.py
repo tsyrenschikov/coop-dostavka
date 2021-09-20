@@ -98,12 +98,12 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True , related_name='Подкатегория')
     name = models.CharField(max_length=200, db_index=True,verbose_name='Название продукта')
-    image = models.ImageField(upload_to='products/%Y/%m/%d',null=True, blank=True)
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
     description = models.TextField(blank=True,verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')
     discount = models.DecimalField(max_digits=10,decimal_places=2,null=True,verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:

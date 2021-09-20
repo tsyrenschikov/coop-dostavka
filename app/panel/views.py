@@ -503,6 +503,7 @@ def edit_product(request, id):
             products.id = request.POST.get('id')
             products.save()
             if request.FILES:
+                products = Product.objects.get(id=id)
                 products.image = request.FILES["image"]
                 products.save()
                 return render(request, 'panel/edit_ok_product.html', {'products': products,'subcategory':subcategory})

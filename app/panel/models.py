@@ -100,7 +100,7 @@ class Category(models.Model):
 class Product(models.Model):
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True , related_name='Подкатегория')
     name = models.CharField(max_length=200, db_index=True,verbose_name='Название продукта')
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='products/%Y/%m/%d',null=True, blank=True)
     description = models.TextField(blank=True,verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')
     discount = models.DecimalField(max_digits=10,decimal_places=2,null=True,verbose_name='Скидка')

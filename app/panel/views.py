@@ -6,6 +6,7 @@ from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
 from .models import Shop,Area,Locations,Category,SubCategory, Days, Product
+from django.core.files.storage import FileSystemStorage
 
 
 register = template.Library()
@@ -494,6 +495,7 @@ def edit_product(request, id):
     try:
         products = Product.objects.get(id=id)
         subcategory = SubCategory.objects.all()
+        product = Product.objects.values('subcategory__name').get(id=id)
         if request.method == "POST":
             products.name = request.POST.get("name")
             products.status = request.POST.get("status")
@@ -505,9 +507,8 @@ def edit_product(request, id):
             if request.FILES:
                 products = Product.objects.get(id=id)
                 products.image = request.FILES["image"]
-                products.save()
-                return render(request, 'panel/edit_ok_product.html', {'products': products,'subcategory':subcategory})
-            return render(request, 'panel/edit_ok_product.html', {'products': products,'subcategory':subcategory})
+                products.update()
+            return render(request, 'panel/edit_ok_product.html', {'products': products,'product':product})
         else:
             return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
     except User.DoesNotExist:

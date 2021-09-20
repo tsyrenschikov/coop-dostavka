@@ -23,8 +23,12 @@
 													<span class="right-dt">{{ products.description }}</span>
                                             </div>
                                             <div class="shopowner-dt-list">
+													<span class="left-dt">Товарная группа</span>
+													<span class="right-dt">{{ product.subcategory__name }}</span>
+                                            </div>
+                                            <div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
-                                                {% if categories.status == 'True' %}
+                                                {% if products.status == 'True' %}
                                                     <span class="right-dt">Активный</span>
                                                 {% else %}
                                                     <span class="right-dt">Не активный</span>

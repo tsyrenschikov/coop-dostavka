@@ -49,6 +49,20 @@
                                                 <label class="form-label" style="color: red">(формат записи цены со скидкой 00.00)</label>
 												<input type="number" name="discount" class="form-control" value="0" placeholder="7 р.">
 											</div>
+                                        <div class="form-group">
+                                                <label class="form-label">Загрузка изображения*</label>
+                                            </div>
+                                            <div class="form-group">
+                                                {% if products.image %}
+                                                <label class="" ><img src="{{ products.image.url }}"/></label>
+                                                {% endif %}
+                                            </div>
+                                            <div class="input-group">
+													<div class="custom-file">
+														<input type="file" value="{{ products.image }}" name="image" id="file" >
+														<label type="file"  for="file" ></label>
+													</div>
+                                            </div>
                                             <div class="form-group">
 												<label class="form-label">Статус*</label>
 												<select id="action" name="status" class="form-control">

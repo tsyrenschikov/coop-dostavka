@@ -250,9 +250,13 @@ def edit_area(request, id):
             areas.status=request.POST.get("status")
             areas.save()
         if request.method=="POST":
-            areas.localname = request.POST.getlist('local_city')
-            areas.categories = request.POST.getlist('category_city')
-            Area.objects.update(local_city=areas.localname,category_city=areas.categories)
+            areas = Area.objects.get(id=id)
+            areas.local_city = request.POST.getlist('local_city')
+            areas.save(update_fields=['local_city'])
+        if request.method=="POST":
+            areas = Area.objects.get(id=id)
+            areas.category_city = request.POST.getlist('category_city')
+            areas.save(update_fields=['category_city'])
             return render(request, 'panel/edit_ok_area.html', {'areas': areas, 'local': local,'categories':categories})
         else:
             return render(request,'panel/edit_area.html',{'areas':areas,'local':local,'categories':categories},)

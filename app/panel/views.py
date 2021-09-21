@@ -326,7 +326,6 @@ def add_category(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         status = request.POST.get('status')
-        descriptions = request.POST.get('descriptions')
         number = request.POST.get('number')
 
         if Category.objects.filter(number=request.POST['number']).exists():
@@ -334,7 +333,7 @@ def add_category(request):
         elif Category.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Имя категории уже существует'
         else:
-            Category.objects.create(name=name,status=status,descriptions=descriptions,number=number)
+            Category.objects.create(name=name,status=status, number=number)
             return render(request, 'panel/add_ok_category.html')
     return render(request, 'panel/add_category.html', alert)
 

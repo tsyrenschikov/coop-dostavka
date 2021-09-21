@@ -5,7 +5,7 @@
                         <div class="nav">
                             <a class="nav-link" href="{%  url 'panel' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Панель управление
+                                Панель управления
 							</a>
                             {% if 'super_manager' in groups %}
                             <a class="nav-link {% if request.path == '/edit_manager/' or request.path == '/add_manager/' %}active{% endif %}" href="#" data-toggle="collapse"

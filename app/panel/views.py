@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Locations,Category,SubCategory, Days, Product
+from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product
 from django.core.files.storage import FileSystemStorage
 
 
@@ -425,6 +425,70 @@ def edit_subcategory(request,id):
 def delete_ok_subcategory(request):
     subcategory=SubCategory.objects.all()
     return render(request, 'panel/delete_ok_subcategory.html',{'subcategory':subcategory})
+
+#Подподкатегория
+def subsubcategory(request):
+    subsubcategory = SubSubCategory.objects.all()
+    return render(request, 'panel/subsubcategory.html', {'subsubcategory':subsubcategory})
+
+#Добавить подподкатегорию
+def add_subsubcategory(request):
+    alert = {
+        'number': request.GET.get('number', ''),
+        'name': request.GET.get('name', ''),
+    }
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+
+        if SubSubCategory.objects.filter(number=request.POST['number']).exists():
+            alert['number'] = 'Номер товарной подгруппы уже существует'
+        elif SubSubCategory.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Имя товарной подгруппы уже существует'
+        else:
+            SubSubCategory.objects.create(name=name, number=number)
+            return render(request, 'panel/add_ok_subsubcategory.html')
+    return render(request, 'panel/add_subsubcategory.html', alert)
+
+#Успешное добавления подподкатегории
+def add_ok_subsubcategory(request):
+    return render(request, 'panel/add_ok_subsubcategory.html')
+
+#Редактировать подподкатегорию
+def edit_subsubcategory(request,id):
+    try:
+        subsubcategory = SubSubCategory.objects.get(id=id)
+
+        if request.method=="POST":
+            subsubcategory.name=request.POST.get("name")
+            subsubcategory.number = request.POST.get("number")
+            subsubcategory.save()
+            if request.FILES:
+                subsubcategory.image = request.FILES["image"]
+                subsubcategory.save()
+                return render(request, 'panel/edit_ok_subsubcategory.html',{'subsubcategory': subsubcategory})
+            return render(request, 'panel/edit_ok_subsubcategory.html',{'subsubcategory':subsubcategory})
+        else:
+            return render(request,'panel/edit_subsubcategory.html',{'subsubcategory':subsubcategory},)
+    except SubSubCategory.DoesNotExist:
+        return render(request, 'panel/edit_subsubcategory.html',{})
+
+#Удаление подкатегории
+def delete_subsubcategory(request, id):
+    subsubcategory =""
+    try:
+        subsubcategory=SubSubCategory.objects.get(id=id)
+        subsubcategory.delete()
+        return render(request, 'panel/delete_ok_subsubcategory.html', {'subsubcategory':subsubcategory})
+    except subcategory.DoesNotExist:
+        return render(request, 'panel/delete_error_subsubcategory.html', {})
+
+#Успешное удаление подподкатегории
+def delete_ok_subsubcategory(request):
+    subsubcategory=SubSubCategory.objects.all()
+    return render(request, 'panel/delete_ok_subsubcategory.html',{'subsubcategory':subsubcategory})
+
 
 #Список магазинов
 def shops(request):

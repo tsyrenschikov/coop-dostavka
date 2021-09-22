@@ -67,6 +67,20 @@ class Shop(models.Model):
     def __str__(self):
         return self.name
 
+class SubSubCategory(models.Model):
+    name = models.CharField(max_length=200, unique=True, verbose_name='Название')
+    number = models.FloatField(blank=True, null=True, verbose_name='Номер')
+    image = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name_plural = 'Подподкатегория'
+        verbose_name = 'Подподкатегория'
+        ordering = ['name']
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True, verbose_name='Название')
     number = models.FloatField(blank=True, null=True, verbose_name='Номер')
@@ -104,6 +118,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')
     discount = models.DecimalField(max_digits=10,decimal_places=2,null=True,verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    #subprod= models.OneToOneField()
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:

@@ -27,9 +27,13 @@
 								<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Клиенты
 							</a>
-                        <a class="nav-link " href="{% url 'subcategory' %}">
+                            <a class="nav-link {% if request.path == '/subcategory/' %}active{% endif %}" href="{% url 'subcategory' %}">
 								<div class="sb-nav-link-icon"><i class="fas fa-shopping-basket"></i></div>
                                 Товарная группа
+							</a>
+                            <a class="nav-link {% if request.path == '/subsubcategory/' %}active{% endif %}" href="{% url 'subsubcategory' %}">
+								<div class="sb-nav-link-icon"><i class="fas fa-shopping-basket"></i></div>
+                                Товарная подгруппа
 							</a>
                          <a class="nav-link {% if request.path == '/category/' or request.path == '/add_category/'  %}active{% endif %}" href="#" data-toggle="collapse"
                             data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">

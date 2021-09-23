@@ -37,6 +37,7 @@
                                                         <th>Номер</th>
                                                         <th>Имя</th>
 														<th style="width:130px">Изображение</th>
+                                                        <th>Товарная подгруппа</th>
 														<th>Действия</th>
 													</tr>
 												</thead>
@@ -62,6 +63,17 @@
                                                             No image
                                                             {% endif %}
 														</td>
+                                                        <td>
+                                                            {% if subcategories.subcat_id != None %}
+                                                                {% for subsubcategory in subsubcategory %}
+                                                                    {% if subcategories.subcat_id == subsubcategory.id %}
+                                                                    {{ subsubcategory.name }}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                {% else %}
+                                                                Не назначено
+                                                            {% endif %}
+                                                        </td>
 														<td class="action-btns">
                                                             <a href="/view_subcategory/{{ subcategories.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
                                                             {% if 'super_manager' in groups %}

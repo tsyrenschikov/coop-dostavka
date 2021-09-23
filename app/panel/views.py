@@ -360,7 +360,8 @@ def delete_ok_category(request):
 #Список подкатегорий
 def subcategory(request):
     subcategories = SubCategory.objects.all().order_by('number')
-    return render(request, 'panel/subcategory.html', {'subcategories':subcategories})
+    subsubcategory = SubSubCategory.objects.all()
+    return render(request, 'panel/subcategory.html', {'subcategories':subcategories,'subsubcategory':subsubcategory})
 
 #Добавить категорию
 def add_subcategory(request):
@@ -389,7 +390,8 @@ def add_ok_subcategory(request):
 #Просмотр подкатегории
 def view_subcategory(request, id):
     subcategory=SubCategory.objects.get(id=id)
-    return render(request, 'panel/view_subcategory.html', {'subcategory':subcategory})
+    subsubcategory = SubSubCategory.objects.all()
+    return render(request, 'panel/view_subcategory.html', {'subcategory':subcategory,'subsubcategory':subsubcategory})
 
 #Удаление подкатегории
 def delete_subcategory(request, id):
@@ -405,18 +407,23 @@ def delete_subcategory(request, id):
 def edit_subcategory(request,id):
     try:
         subcategory = SubCategory.objects.get(id=id)
+        subsubcategory = SubSubCategory.objects.all()
 
         if request.method=="POST":
             subcategory.name=request.POST.get("name")
             subcategory.number = request.POST.get("number")
             subcategory.save()
+            if request.method == 'POST':
+                subsubcategory.id = request.POST.get('id')
+                subcategory.subcat_id=subsubcategory.id
+                subcategory.save()
             if request.FILES:
                 subcategory.image = request.FILES["image"]
                 subcategory.save()
-                return render(request, 'panel/edit_ok_subcategory.html',{'subcategory': subcategory})
-            return render(request, 'panel/edit_ok_subcategory.html',{'subcategory':subcategory})
+                return render(request, 'panel/edit_ok_subcategory.html',{'subcategory': subcategory,'subsubcategory':subsubcategory})
+            return render(request, 'panel/edit_ok_subcategory.html',{'subcategory':subcategory,'subsubcategory':subsubcategory})
         else:
-            return render(request,'panel/edit_subcategory.html',{'subcategory':subcategory},)
+            return render(request,'panel/edit_subcategory.html',{'subcategory':subcategory,'subsubcategory':subsubcategory})
     except SubCategory.DoesNotExist:
         return render(request, 'panel/edit_subcategory.html',{})
 
@@ -428,7 +435,7 @@ def delete_ok_subcategory(request):
 
 #Подподкатегория
 def subsubcategory(request):
-    subsubcategory = SubSubCategory.objects.all()
+    subsubcategory = SubSubCategory.objects.all().order_by('number')
     return render(request, 'panel/subsubcategory.html', {'subsubcategory':subsubcategory})
 
 #Добавить подподкатегорию

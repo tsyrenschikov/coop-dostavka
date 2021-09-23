@@ -29,6 +29,20 @@
 													<span class="right-dt">{{ subcategory.name }}</span>
 												</div>
 											</div>
+                                            <div class="shopowner-dts">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Название товарной подгруппы</span>
+													<span class="right-dt">
+                                                        {% if subcategory.subcat_id != None %}
+                                                                {% for subsubcategory in subsubcategory %}
+                                                                    {% if subcategory.subcat_id == subsubcategory.id %}
+                                                                        {{ subsubcategory.name }}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                        {% endif %}
+                                                    </span>
+												</div>
+											</div>
 										</div>
                                         <div class="col-lg-12">
 								            <a href="{% url 'subcategory' %}" class="add-btn hover-btn">К товарным группам</a>

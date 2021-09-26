@@ -85,7 +85,7 @@ class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True, verbose_name='Название')
     number = models.FloatField(blank=True, null=True, verbose_name='Номер')
     image = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
-    subcat = models.OneToOneField(SubSubCategory, on_delete=models.CASCADE, null=True, verbose_name='Товарная подгруппа')
+    subsubcat = models.JSONField(default=list, null=True, blank=True, verbose_name='Товарная подгруппа')
 
     class Meta:
         verbose_name_plural = 'Подкатегория'

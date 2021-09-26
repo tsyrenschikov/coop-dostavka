@@ -40,9 +40,9 @@
 											</div>
                                             <div class="form-group">
                                                 <label class="form-label">Товарная подгруппа</label>
-                                                    <select class="form-control selectpicker" name="id" multiple data-live-search="true">
+                                                    <select class="form-control selectpicker" name="subsubcat" multiple data-live-search="true">
                                                     {% for subsubcategory in subsubcategory %}
-                                                            <option name="id" value="{{ subsubcategory.id }}">{{ subsubcategory.name }}</option>
+                                                            <option name="subsubcat" value="{{ subsubcategory.name }}">{{ subsubcategory.name }}</option>
                                                     {% endfor %}
                                                     </select>
                                         </div>

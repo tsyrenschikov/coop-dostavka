@@ -360,8 +360,7 @@ def delete_ok_category(request):
 #Список подкатегорий
 def subcategory(request):
     subcategories = SubCategory.objects.all().order_by('number')
-    subsubcategory = SubSubCategory.objects.all()
-    return render(request, 'panel/subcategory.html', {'subcategories':subcategories,'subsubcategory':subsubcategory})
+    return render(request, 'panel/subcategory.html', {'subcategories':subcategories})
 
 #Добавить категорию
 def add_subcategory(request):
@@ -390,8 +389,7 @@ def add_ok_subcategory(request):
 #Просмотр подкатегории
 def view_subcategory(request, id):
     subcategory=SubCategory.objects.get(id=id)
-    subsubcategory = SubSubCategory.objects.all()
-    return render(request, 'panel/view_subcategory.html', {'subcategory':subcategory,'subsubcategory':subsubcategory})
+    return render(request, 'panel/view_subcategory.html', {'subcategory':subcategory})
 
 #Удаление подкатегории
 def delete_subcategory(request, id):
@@ -413,10 +411,9 @@ def edit_subcategory(request,id):
             subcategory.name=request.POST.get("name")
             subcategory.number = request.POST.get("number")
             subcategory.save()
-            if request.method == 'POST':
-                subsubcategory.id = request.POST.get('id')
-                subcategory.subcat_id=subsubcategory.id
-                subcategory.save()
+        if request.method == 'POST':
+            subcategory.subsubcat = request.POST.getlist('subsubcat')
+            subcategory.save(update_fields=['subsubcat'])
             if request.FILES:
                 subcategory.image = request.FILES["image"]
                 subcategory.save()

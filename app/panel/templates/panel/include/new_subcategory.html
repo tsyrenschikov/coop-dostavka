@@ -22,7 +22,11 @@
 													<span class="left-dt">Название</span>
 													<span class="right-dt">{{ subcategory.name }}</span>
 												</div>
-											</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Товарная подгруппа</span>
+													<span class="right-dt">{{ subcategory.subsubcat|cut:'['|cut:']'|cut:"'" }}</span>
+												</div>
+                                            </div>
 										</div>
                                         <div class="col-lg-12">
 								            <a href="{% url 'subcategory' %}" class="add-btn hover-btn">К списку подкатегорий</a>

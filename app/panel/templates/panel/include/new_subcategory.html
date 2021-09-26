@@ -24,7 +24,11 @@
 												</div>
                                                 <div class="shopowner-dt-list">
 													<span class="left-dt">Товарная подгруппа</span>
-													<span class="right-dt">{{ subcategory.subsubcat|cut:'['|cut:']'|cut:"'" }}</span>
+													{% if subcategory.subsubcat|length > 0  %}
+                                                        <span class="right-dt">{{ subcategory.subsubcat|cut:'['|cut:']'|cut:"'" }}</span>
+                                                    {% else %}
+                                                        <span class="right-dt">Не назначено</span>
+                                                    {% endif %}
 												</div>
                                             </div>
 										</div>

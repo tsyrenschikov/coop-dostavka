@@ -42,8 +42,8 @@
 												</thead>
 												<tbody>
                                                 {% for products in products %}
-                                                    <tr>
-                                                        <td>
+													<tr>
+														<td>
                                                             {{ products.name }}
                                                         </td>
                                                         {% if products.image %}
@@ -57,20 +57,20 @@
                                                                 <div class="cate-img">Нет изображения</div>
                                                             </td>
                                                         {% endif %}
-                                                        <td>{{ products.price }} .р</td>
+														<td>{{ products.price }} .р</td>
                                                         <td>{{ products.discount }} .р</td>
                                                         <td>
                                                             {% if products.description %}
-                                                                {{ products.description }}
+                                                            {{ products.description }}
                                                             {% else %}
-                                                                Без описания
+                                                            Без описания
                                                             {% endif %}
                                                         </td>
                                                         <td>
                                                             {% if products.subcat != None %}
-                                                                {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                                            {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
                                                             {% else %}
-                                                                Товарная группа не назначена
+                                                            Товарная группа не назначена
                                                             {% endif %}
                                                         </td>
                                                         {% if products.status %}
@@ -79,18 +79,18 @@
                                                             <td><span class="badge-item badge-status">Не опубликован</span></td>
                                                         {% endif %}
                                                         </td>
-                                                        <td class="action-btns">
+														<td class="action-btns">
                                                             <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                                            <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
+															<a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
                                                             <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар??? (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                                        </td>
-                                                    </tr>
+														</td>
+													</tr>
                                                 {% endfor %}
-                                                </tbody>
-                                            </table>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>

@@ -52,11 +52,8 @@ class Shop(models.Model):
     area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название магазина')
     status = models.BooleanField(default=True, verbose_name='Статус активный')
-    #address = models.TextField(max_length=300, null=True, verbose_name='Адрес магазина')
-    #latitude=models.FloatField(max_length=200,db_index=True,null=True,verbose_name='Широта')
-    #longitude=models.FloatField(max_length=200, db_index=True,null=True,verbose_name='Долгота')
-    #open_time=models.TimeField(db_index=True,null=True,verbose_name='Время открытия')
-    #close_time=models.TimeField(db_index=True,null=True,verbose_name='Время закрытия')
+    name_id = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Краткое название')
+    slug = models.SlugField(max_length=200, null=True, db_index=True)
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
 
     class Meta:
@@ -125,6 +122,62 @@ class Product(models.Model):
         ordering = ('name',)
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+class rezh(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='rezh/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Реж'
+        verbose_name_plural = 'Реж'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+
+class arti(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='arti/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Арти'
+        verbose_name_plural = 'Арти'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+
+class bogdan(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='bogdan/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Богданович'
+        verbose_name_plural = 'Богданович'
         index_together = (('id'),)
 
     def __str__(self):

@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product
+from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product,rezh,arti,bogdan
 from django.core.files.storage import FileSystemStorage
 
 
@@ -522,11 +522,13 @@ def add_shop(request, **kwargs):
         status = request.POST.get('status')
         pk = request.POST.get('id')
         descriptions = request.POST.get('descriptions')
+        name_id = request.POST.get('name_id')
+        slug = request.POST.get('slug')
         if Shop.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Название магазина уже существует'
             return render(request, 'panel/add_shop.html', alert)
         else:
-            Shop.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions)
+            Shop.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions,name_id=name_id,slug=slug)
             return render(request, 'panel/add_ok_shop.html')
     return render(request, 'panel/add_shop.html',{'users':users,'areas':areas})
 
@@ -544,22 +546,28 @@ def delete_shop(request,id):
     except shops.DoesNotExist:
         return render(request, 'panel/delete_error_shop.html', {})
 
-
 #Продукты
-def products(request):
-    products=Product.objects.all()
 
-    return render(request, 'panel/products.html', {'products':products})
+def products(request,id,slug=True):
+    manager=Shop.objects.values_list('customuser_id', flat=True).distinct()
+    users= User.objects.values_list('id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    products=rezh.objects.all()
+    instances = User.objects.filter(slug=slug)
+    if request.user.is_authenticated:
 
-#Просмотр товара
+        return render(request, 'panel/products.html', {'products':products, 'users':users, 'manager':manager})
+
+
+#Просмотр продукта
 def product_view(request,id):
-    products=Product.objects.get(id=id)
+    products=rezh.objects.get(id=id)
     return render(request, 'panel/product_view.html', {'products': products})
 
-#Редактировать товар
+#Редактировать продукт
 def edit_product(request, id):
     try:
-        products = Product.objects.get(id=id)
+        products = rezh.objects.get(id=id)
         subcategory=SubCategory.objects.all()
         if request.method == "POST":
             products.name = request.POST.get("name")
@@ -586,10 +594,10 @@ def edit_product(request, id):
 def add_product(request, **kwargs):
     alert = {
         'name': request.GET.get('name', ''),
-        'products': Product.objects.all(),
+        'products': rezh.objects.all(),
         'subcategory': SubCategory.objects.all()
     }
-    products = Product.objects.all()
+    products = rezh.objects.all()
     subcategory=SubCategory.objects.all()
     if request.method == 'POST' and request.FILES:
         name = request.POST.get('name')
@@ -601,11 +609,11 @@ def add_product(request, **kwargs):
         image = request.FILES["image"]
 
 
-        if Product.objects.filter(name=request.POST['name']).exists():
+        if rezh.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Наименование товара уже существует'
             return render(request, 'panel/add_product.html', alert)
         else:
-            Product.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
+            rezh.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 
@@ -613,7 +621,7 @@ def add_product(request, **kwargs):
 def delete_product(request,id):
     products = ''
     try:
-        products = Product.objects.get(id=id)
+        products = rezh.objects.get(id=id)
         products.delete()
         return render(request, 'panel/delete_ok_product.html', {'products': products}, )
     except products.DoesNotExist:
@@ -680,20 +688,4 @@ def offers(request):
 
 def offers_edit(request):
     return render(request, 'panel/offers_edit.html', {})
-
-def pages(request):
-    return render(request, 'panel/pages.html', {})
-
-def add_page(request):
-    return render(request, 'panel/add_page.html', {})
-
-def menu(request):
-    return render(request, 'panel/menu.html', {})
-
-def menu_add(request):
-    return render(request, 'panel/menu_add.html', {})
-
-def reports(request):
-    return render(request, 'panel/reports.html', {})
-
 

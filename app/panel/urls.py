@@ -1,7 +1,5 @@
-from django.urls import path, include, reverse_lazy
+from django.urls import path
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 
 urlpatterns = [
@@ -71,9 +69,4 @@ urlpatterns = [
     path('delete_customer/<int:id>/', views.delete_customer, name='delete_customer'),
     path('delete_ok_customer/<int:id>/', views.delete_ok_customer, name='delete_ok_customer'),
     path('offers/', views.offers, name='offers'),
-    path('pages/', views.pages, name='pages'),
-    path('add_page/', views.add_page, name='add_page'),
-    path('menu/', views.menu, name='menu'),
-    path('menu_add/', views.menu_add, name='menu_add'),
-    path('reports/', views.reports, name='reports'),
 ]

@@ -164,6 +164,24 @@ class arti(models.Model):
     def __str__(self):
         return self.name
 
+class arti_p(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='arti_p/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Арти Промторг'
+        verbose_name_plural = 'Арти Промторг'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
 
 class bogdan(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
@@ -178,6 +196,24 @@ class bogdan(models.Model):
         ordering = ('name',)
         verbose_name = 'Богданович'
         verbose_name_plural = 'Богданович'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+class chetkarino(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='chetkarin/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Четкарино'
+        verbose_name_plural = 'Четкарино'
         index_together = (('id'),)
 
     def __str__(self):

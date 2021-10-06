@@ -5,8 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product,rezh,arti,bogdan
-from django.core.files.storage import FileSystemStorage
+from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product,rezh,chetkarino,arti,arti_p,bogdan
 
 
 register = template.Library()
@@ -501,6 +500,8 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+
     users=Shop.objects.values('name','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address',
                               'customuser__org','area_id','area__name').get(id=id)
     return render(request, 'panel/shop_view.html', {'users':users})
@@ -547,73 +548,134 @@ def delete_shop(request,id):
         return render(request, 'panel/delete_error_shop.html', {})
 
 #Продукты
-
-def products(request,id,slug=True):
-    manager=Shop.objects.values_list('customuser_id', flat=True).distinct()
-    users= User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    products=rezh.objects.all()
-    instances = User.objects.filter(slug=slug)
-    if request.user.is_authenticated:
-
-        return render(request, 'panel/products.html', {'products':products, 'users':users, 'manager':manager})
+def products(request):
+    users = User.objects.values_list('id', flat=True).distinct()
+    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+    shops=Shop.objects.values_list('customuser_id','slug' ).distinct()
+    for u in users:
+        for m in manager:
+            if u == m and request.user.id == u:
+                for s,slug in shops:
+                    if s==m:
+                        name=eval(slug)
+                        products = name.objects.all()
+                        return render(request, 'panel/products.html', {'products': products})
+    return render(request, 'panel/error_products.html')
 
 
 #Просмотр продукта
 def product_view(request,id):
-    products=rezh.objects.get(id=id)
-    return render(request, 'panel/product_view.html', {'products': products})
+    users = User.objects.values_list('id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    for u in users:
+        if request.user.id == u:
+            for s,slug in shops:
+                if u == s:
+                    name=eval(slug)
+                    products = name.objects.get(id=id)
+                    return render(request, 'panel/product_view.html', {'products': products})
+
 
 #Редактировать продукт
 def edit_product(request, id):
     try:
-        products = rezh.objects.get(id=id)
-        subcategory=SubCategory.objects.all()
-        if request.method == "POST":
-            products.name = request.POST.get("name")
-            products.status = request.POST.get("status")
-            products.price = request.POST.get("price")
-            products.discount = request.POST.get("discount")
-            products.description = request.POST.get("description")
-            products.subcategory__name = request.POST.get('subcategory__name')
-            products.save()
-        if request.method == 'POST':
-            products.subcat = request.POST.getlist('subcat')
-            products.save(update_fields=['subcat'])
-            if request.FILES:
-                products.image = request.FILES["image"]
-                products.save()
-                return render(request, 'panel/edit_ok_product.html', {'products': products})
-            return render(request, 'panel/edit_ok_product.html', {'products': products})
-        else:
-            return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        for u in users:
+            if request.user.id == u:
+                for s, slug in shops:
+                    if u == s:
+                        name = eval(slug)
+                        products = name.objects.get(id=id)
+                        subcategory=SubCategory.objects.all()
+                        if request.method == "POST":
+                            products.name = request.POST.get("name")
+                            products.status = request.POST.get("status")
+                            products.price = request.POST.get("price")
+                            products.discount = request.POST.get("discount")
+                            products.description = request.POST.get("description")
+                            products.subcategory__name = request.POST.get('subcategory__name')
+                            products.save()
+                        if request.method == 'POST':
+                            products.subcat = request.POST.getlist('subcat')
+                            products.save(update_fields=['subcat'])
+                            if request.FILES:
+                                products.image = request.FILES["image"]
+                                products.save()
+                                return render(request, 'panel/edit_ok_product.html', {'products': products})
+                            return render(request, 'panel/edit_ok_product.html', {'products': products})
+                        else:
+                            return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
     except User.DoesNotExist:
         return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory})
 
 #Добавить продукт
 def add_product(request, **kwargs):
-    alert = {
-        'name': request.GET.get('name', ''),
-        'products': rezh.objects.all(),
-        'subcategory': SubCategory.objects.all()
-    }
-    products = rezh.objects.all()
-    subcategory=SubCategory.objects.all()
-    if request.method == 'POST' and request.FILES:
-        name = request.POST.get('name')
-        price=request.POST.get('price')
-        discount=request.POST.get('discount')
-        subcat=request.POST.get('subcat')
-        status = request.POST.get('status')
-        description = request.POST.get('description')
-        image = request.FILES["image"]
-
-
-        if rezh.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Наименование товара уже существует'
-            return render(request, 'panel/add_product.html', alert)
-        else:
-            rezh.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
+    if request.user.id == 71:
+        alert = {
+            'name': request.GET.get('name', ''),
+            'products': rezh.objects.all(),
+            'subcategory': SubCategory.objects.all()
+                }
+        products = rezh.objects.all()
+        subcategory=SubCategory.objects.all()
+        if request.method == 'POST' and request.FILES:
+            name = request.POST.get('name')
+            price=request.POST.get('price')
+            discount=request.POST.get('discount')
+            subcat=request.POST.get('subcat')
+            status = request.POST.get('status')
+            description = request.POST.get('description')
+            image = request.FILES["image"]
+            if rezh.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Наименование товара уже существует'
+                return render(request, 'panel/add_product.html', alert)
+            else:
+                rezh.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
+            return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
+    if request.user.id == 75:
+        alert = {
+            'name': request.GET.get('name', ''),
+            'products': chetkarino.objects.all(),
+            'subcategory': SubCategory.objects.all()
+                }
+        products = chetkarino.objects.all()
+        subcategory=SubCategory.objects.all()
+        if request.method == 'POST' and request.FILES:
+            name = request.POST.get('name')
+            price=request.POST.get('price')
+            discount=request.POST.get('discount')
+            subcat=request.POST.get('subcat')
+            status = request.POST.get('status')
+            description = request.POST.get('description')
+            image = request.FILES["image"]
+            if chetkarino.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Наименование товара уже существует'
+                return render(request, 'panel/add_product.html', alert)
+            else:
+                chetkarino.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
+            return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
+    if request.user.id == 80:
+        alert = {
+            'name': request.GET.get('name', ''),
+            'products': arti_p.objects.all(),
+            'subcategory': SubCategory.objects.all()
+                }
+        products = arti_p.objects.all()
+        subcategory=SubCategory.objects.all()
+        if request.method == 'POST' and request.FILES:
+            name = request.POST.get('name')
+            price=request.POST.get('price')
+            discount=request.POST.get('discount')
+            subcat=request.POST.get('subcat')
+            status = request.POST.get('status')
+            description = request.POST.get('description')
+            image = request.FILES["image"]
+            if arti_p.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Наименование товара уже существует'
+                return render(request, 'panel/add_product.html', alert)
+            else:
+                arti_p.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 
@@ -621,9 +683,18 @@ def add_product(request, **kwargs):
 def delete_product(request,id):
     products = ''
     try:
-        products = rezh.objects.get(id=id)
-        products.delete()
-        return render(request, 'panel/delete_ok_product.html', {'products': products}, )
+        if request.user.id == 71:
+            products = rezh.objects.get(id=id)
+            products.delete()
+            return render(request, 'panel/delete_ok_product.html', {'products': products}, )
+        if request.user.id == 75:
+            products = chetkarino.objects.get(id=id)
+            products.delete()
+            return render(request, 'panel/delete_ok_product.html', {'products': products}, )
+        if request.user.id == 80:
+            products = arti_p.objects.get(id=id)
+            products.delete()
+            return render(request, 'panel/delete_ok_product.html', {'products': products}, )
     except products.DoesNotExist:
         return render(request, 'panel/delete_error_product.html', {})
 

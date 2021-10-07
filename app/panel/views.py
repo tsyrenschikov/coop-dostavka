@@ -504,7 +504,16 @@ def shops(request):
 def shop_view(request, id):
     users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
                                 'customuser__org', 'area_id', 'area__name').get(id=id)
-    list=Product.objects.values_list('id').count()
+    us = User.objects.values_list('id', flat=True).distinct()
+    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    for u in us:
+        for m in manager:
+            if u == m:
+                for s, slug in shops:
+                    if s == m:
+                        name = eval(slug)
+                        list=name.objects.values_list('id').count()
     return render(request, 'panel/shop_view.html', {'users':users,'list':list})
 
 def products_view_shop(request):

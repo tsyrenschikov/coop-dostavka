@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.db.models.functions import Lower
-from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
+from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
@@ -458,6 +459,7 @@ def add_subsubcategory(request):
 def add_ok_subsubcategory(request):
     return render(request, 'panel/add_ok_subsubcategory.html')
 
+
 #Редактировать подподкатегорию
 def edit_subsubcategory(request,id):
     try:
@@ -500,13 +502,19 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
+                                'customuser__org', 'area_id', 'area__name').get(id=id)
+    list=Product.objects.values_list('id').count()
+    return render(request, 'panel/shop_view.html', {'users':users,'list':list})
 
-    users=Shop.objects.values('name','status','descriptions','customuser__last_name', 'customuser__first_name','customuser__phone','customuser__email','customuser__address',
-                              'customuser__org','area_id','area__name').get(id=id)
-    return render(request, 'panel/shop_view.html', {'users':users})
-
-
+def products_view_shop(request):
+    id = request.GET.get('id')
+    manager = Shop.objects.values_list('id', 'slug').distinct()
+    for m, slug in manager:
+        if m == id:
+            name = eval(slug)
+            products = name.objects.all()
+            return render(request, 'panel/products_shop.html', {'products': products})
 
 #Добавить магазины
 def add_shop(request, **kwargs):
@@ -676,6 +684,28 @@ def add_product(request, **kwargs):
                 return render(request, 'panel/add_product.html', alert)
             else:
                 arti_p.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
+            return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
+    if request.user.id == 72:
+        alert = {
+            'name': request.GET.get('name', ''),
+            'products': bogdan.objects.all(),
+            'subcategory': SubCategory.objects.all()
+                }
+        products = arti_p.objects.all()
+        subcategory=SubCategory.objects.all()
+        if request.method == 'POST' and request.FILES:
+            name = request.POST.get('name')
+            price=request.POST.get('price')
+            discount=request.POST.get('discount')
+            subcat=request.POST.get('subcat')
+            status = request.POST.get('status')
+            description = request.POST.get('description')
+            image = request.FILES["image"]
+            if bogdan.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Наименование товара уже существует'
+                return render(request, 'panel/add_product.html', alert)
+            else:
+                bogdan.objects.create(name=name,price=price,status=status,discount=discount,subcat=subcat,description=description,image=image)
             return render(request, 'panel/add_ok_product.html',{'products':products,'subcategory':subcategory})
     return render(request, 'panel/add_product.html', {'products':products,'subcategory':subcategory})
 

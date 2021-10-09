@@ -597,7 +597,8 @@ def delete_product(request,id):
         for u in users:
             for s, slug in shops:
                 if u == s and request.user.id == u:
-                    products = rezh.objects.get(id=id)
+                    name=eval(slug)
+                    products = name.objects.get(id=id)
                     products.delete()
                     return render(request, 'panel/delete_ok_product.html', {'products': products}, )
     except products.DoesNotExist:

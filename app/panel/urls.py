@@ -52,7 +52,6 @@ urlpatterns = [
     path('add_shop/', views.add_shop, name='add_shop'),
     path('add_ok_shop/',views.add_ok_shop,name='add_ok_shop'),
     path('shop_view/<int:id>/', views.shop_view, name='shop_view'),
-    path('products_view_shop/', views.products_view_shop, name='products_view_shop'),
     path('delete_shop/<int:id>/',views.delete_shop,name='delete_shop'),
     path('products/', views.products, name='products'),
     path('product_view/<int:id>/', views.product_view, name='product_view'),

@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.models import Group
-from .models import Shop,Area,Locations,Category,SubCategory,SubSubCategory, Days, Product,rezh,chetkarino,arti,arti_p,bogdan
+from panel.models import *
 
 
 register = template.Library()
@@ -98,6 +98,7 @@ def delete_ok_manager(request):
 # Просмотр карточки менеджера
 def view_manager(request, id):
     users = User.objects.get(id=id)
+
     return render(request, "panel/view_manager.html", {'users' : users})
 
 def homepage(request):
@@ -608,7 +609,14 @@ def delete_product(request,id):
 #Список магазинов
 def shops(request):
     managers=Shop.objects.values('id','name','status','customuser__last_name','customuser__first_name','area__name')
-    return render(request, 'panel/shops.html', {'managers':managers})
+    users=User.objects.values_list('id', flat=True).distinct()
+    shops=Shop.objects.values_list('customuser_id', 'slug').distinct()
+    for u in users:
+        for s, slug in shops:
+            if u==s:
+                name=eval(slug)
+                count=name.objects.count()
+                return render(request, 'panel/shops.html', {'managers':managers,'count':count})
 
 #Просмотр магазина
 def shop_view(request, id):

@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.db.models.functions import Lower
-from django.db.models import Count
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from django import template
+from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
 from panel.models import *
 
@@ -71,8 +71,15 @@ def edit_prof_manager(request,id):
             users.phone = request.POST.get("phone")
             users.address = request.POST.get("address")
             users.save()
-            return render(request, "panel/edit_ok_manager.html", {'users':users})
-
+            if request.method == "POST":
+                users.password = request.POST.get('password')
+                users.password2 = request.POST.get('password2')
+                if users.password == users.password2:
+                    users.password2 = make_password(users.password2,hasher='default')
+                    User.objects.filter(id=id).update(password=users.password2)
+                    return render(request, "panel/edit_ok_manager.html", {'users':users})
+                return render(request, "panel/edit_ok_manager.html", {'users': users})
+            return render(request, "panel/edit_prof_manager.html", {"users": users})
         else:
             return render(request, "panel/edit_prof_manager.html", {"users": users})
     except users.DoesNotExist:
@@ -98,7 +105,6 @@ def delete_ok_manager(request):
 # Просмотр карточки менеджера
 def view_manager(request, id):
     users = User.objects.get(id=id)
-
     return render(request, "panel/view_manager.html", {'users' : users})
 
 def homepage(request):

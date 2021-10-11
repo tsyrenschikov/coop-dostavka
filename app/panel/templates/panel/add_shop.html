@@ -47,7 +47,7 @@
                                                         <label class="form-label">Менеджер магазина*</label>
                                                         <div class="form-group">
                                                             <select  name="id" value="{{ users.pk }}" class="form-control">
-                                                                <option selected>--Выбрать менеджера--</option>
+                                                                <!--<option selected>--Выбрать менеджера--</option>-->
                                                                 {% for users in users %}
                                                                     <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
                                                                 {% endfor %}
@@ -56,7 +56,7 @@
                                                         <label class="form-label">Территория магазина*</label>
                                                             <div class="form-group">
                                                                 <select  name="aid"  value="{{ areas.id }}" class="form-control">
-                                                                    <option selected>--Выбрать территорию--</option>
+                                                                    <!--<option selected>--Выбрать территорию--</option>-->
                                                                     {% for areas in areas %}
                                                                         <option value="{{ areas.id }}">{{ areas.name }}</option>
                                                                     {% endfor %}

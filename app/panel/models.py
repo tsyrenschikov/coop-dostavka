@@ -128,6 +128,7 @@ class Product(models.Model):
         return self.name
 
 class rezh(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='rezh/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
@@ -147,6 +148,7 @@ class rezh(models.Model):
 
 
 class arti(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='arti/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
@@ -165,6 +167,7 @@ class arti(models.Model):
         return self.name
 
 class arti_p(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='arti_p/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
@@ -184,6 +187,7 @@ class arti_p(models.Model):
 
 
 class bogdan(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='bogdan/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
@@ -202,6 +206,7 @@ class bogdan(models.Model):
         return self.name
 
 class chetkarino(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='chetkarin/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
@@ -218,3 +223,23 @@ class chetkarino(models.Model):
 
     def __str__(self):
         return self.name
+
+class shalinsk(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    image = models.ImageField(upload_to='shalinsk/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описания продукта')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
+    subcat = models.JSONField(default=list, null=True, blank=True)
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Шалинск'
+        verbose_name_plural = 'Шалинск'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+

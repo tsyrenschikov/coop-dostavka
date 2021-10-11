@@ -566,10 +566,11 @@ def edit_product(request, id):
 #Добавить продукт
 def add_product(request, **kwargs):
     users=User.objects.values_list('id', flat=True).distinct()
-    shops=Shop.objects.values_list('customuser_id', 'slug').distinct()
+    shops=Shop.objects.values_list('customuser_id', 'slug','id').distinct()
+
     for u in users:
         if request.user.id == u:
-            for s, slug in shops:
+            for s, slug,id in shops:
                 if u == s:
                     n=eval(slug)
                     alert = {
@@ -591,7 +592,7 @@ def add_product(request, **kwargs):
                             alert['name'] = 'Наименование товара уже существует'
                             return render(request, 'panel/add_product.html', alert)
                         else:
-                            n.objects.create(name=name, price=price, status=status, discount=discount, subcat=subcat, description=description, image=image)
+                            n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, description=description, image=image)
                             return render(request, 'panel/add_ok_product.html', {'products': products, 'subcategory': subcategory})
                     return render(request, 'panel/add_product.html', {'products': products, 'subcategory': subcategory})
 
@@ -626,7 +627,7 @@ def shops(request):
 
 #Просмотр магазина
 def shop_view(request, id):
-    object_id = int([i for i in str(request.path).split('/') if i][-1])
+    object_id = int([i for i in str(request.path).split('/') if i][-1])#Взять из строки число
     users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
                                 'customuser__org', 'area_id', 'area__name').get(id=id)
     id = Shop.objects.values_list('id','slug').distinct()
@@ -636,6 +637,11 @@ def shop_view(request, id):
             count_product=name.objects.count()
             products=name.objects.all()
             return render(request, 'panel/shop_view.html', {'users':users,'object_id':object_id,'count_product':count_product,'products':products})
+        if i==object_id:
+            return slug
+
+
+
 
 #Добавить магазины
 def add_shop(request, **kwargs):

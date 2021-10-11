@@ -67,100 +67,63 @@
 							<div class="col-xl-12 col-md-12">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-										<h4>Последние Заказы </h4>
-										<a href="orders.html" class="view-btn hover-btn">Просмотреть все</a>
+                                        <h4>Последние добавленные товары: <p style="color: red"> Кол-во всего ( {{ count }} )</p> </h4>
+                                        {% if not user.is_superuser %}
+                                        <a href="{% url 'products' %}" class="view-btn hover-btn">Продукты (Товары)</a>
+                                        {% else %}
+                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Магазины</a>
+                                        {% endif %}
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-														<th style="width:130px">Закз ID</th>
-														<th>Item</th>
-														<th style="width:200px">Дата</th>
-														<th style="width:300px">Адрес</th>
-														<th style="width:130px">Статус</th>
-														<th style="width:130px">Общее</th>
-														<th style="width:100px">Действие</th>
+														<th>Название</th>
+														<th>Изображение</th>
+														<th >Цена</th>
+														<th>Скидка</th>
+														<th>Описание</th>
+                                                        <th>Статус</th>
 													</tr>
 												</thead>
 												<tbody>
+                                                {% for products in products %}
 													<tr>
-														<td>Заказ 12345</td>
 														<td>
-															<a href="#" target="_blank">Название продукт</a>
-														</td>
-														<td>
-															<span class="delivery-time">15/06/2021</span>
-															<span class="delivery-time">4:00PM - 6.00PM</span>
-														</td>
-														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
-														<td>
-															<span class="badge-item badge-status">Ожидание</span>
-														</td>
-														<td>900 р.</td>
-														<td class="action-btns">
-															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td>Заказ 12346</td>
-														<td>
-															<a href="#" target="_blank">Название продукт1</a>
+															{{ products.name}}
 														</td>
 														<td>
-															<span class="delivery-time">13/06/2021</span>
-															<span class="delivery-time">2:00PM - 4.00PM</span>
-														</td>
-														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
-														 <td>
-															<span class="badge-item badge-status">Ожидание</span>
-														</td>
-														<td>1050 р.</td>
-														<td class="action-btns">
-															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td>Заказ 12347</td>
-														<td>
-															<a href="#" target="_blank">Название продукт1</a>
+                                                            {% if products.image %}
+                                                                <img src="{{ products.image.url  }}" width="60" height="55" alt="">
+                                                            {% endif %}
 														</td>
 														<td>
-															<span class="delivery-time">13/6/2021</span>
-															<span class="delivery-time">5:00PM - 7.00PM</span>
-														</td>
-														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
+                                                            {{ products.price }} .p
+                                                        </td>
 														<td>
-															<span class="badge-item badge-status">Ожидание</span>
-														</td>
-														<td>600 р.</td>
-														<td class="action-btns">
-															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td>Заказ 12348</td>
-														<td>
-															<a href="#" target="_blank">Название продукт1</a>
+                                                            {% if products.discount %}
+															    {{ products.discount }}
+                                                            {% else %}
+                                                            Не назначена
+                                                            {% endif %}
 														</td>
 														<td>
-															<span class="delivery-time">12/06/2021</span>
-															<span class="delivery-time">01:00PM - 3.00PM</span>
-														</td>
-														<td>#623300 Свердловская область, г. Красноуфимск, ул. Советская, дом 49, кв 19</td>
-														<td>
-															<span class="badge-item badge-status">Ожидание</span>
-														</td>
-														<td>1200 р.</td>
-														<td class="action-btns">
-															<a href="order_view.html" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="order_edit.html" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
+                                                            {% if products.description %}
+                                                                {{ products.description }}
+                                                            {% else %}
+                                                                Без описания
+                                                            {% endif %}
+                                                        </td>
+                                                        </td>
+                                                        {% if products.status %}
+                                                            <td><span class="badge-item badge-status">Опубликован</span></td>
+                                                        {% else %}
+                                                            <td><span class="badge-item badge-status">Не опубликован</span></td>
+                                                        {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
 												</tbody>
 											</table>
 										</div>

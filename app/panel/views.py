@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.db.models.functions import Lower
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.hashers import  make_password
@@ -136,8 +136,23 @@ def edit_profile(request):
     except User.DoesNotExist:
         return render(request ,'panel/edit_profile.html' )
 
+#Главна страница панели управления
 def panel(request):
-    return render(request, 'panel/index.html', {})
+    shops=Shop.objects.values_list('customuser_id','name','slug').distinct()
+    users=User.objects.values_list('id', flat=True).distinct()
+    if not request.user.is_superuser:
+        for u in users:
+            for c,n,slug_p in shops:
+                if  request.user.id == u and u == c:
+                    name_p= eval(slug_p)
+                    products=name_p.objects.all()[:3][::-1]
+                    count=name_p.objects.count()
+                    return render(request, 'panel/index.html', {'products':products,'count':count})
+    if request.user.is_superuser:
+        return render(request, 'panel/index.html')
+    else:
+        return redirect ('https://panel.coop-dostavka.ru/login')
+
 
 def posts(request):
     return render(request, 'panel/posts.html', {})

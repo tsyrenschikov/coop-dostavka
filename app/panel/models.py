@@ -269,8 +269,8 @@ class offers(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Заках'
-        verbose_name_plural = 'Заказ'
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акция'
         index_together = (('id'),)
 
     def __str__(self):

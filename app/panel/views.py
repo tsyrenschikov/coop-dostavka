@@ -749,19 +749,12 @@ def delete_customer(request, id):
 def delete_ok_customer(request):
     return render(request, "panel/delete_ok_customer.html", {})
 
-
-def customer_view(request):
-    return render(request, 'panel/customer_view.html', {})
-
-def customer_edit(request):
-    return render(request, 'panel/customer_edit.html', {})
-
-
 # Акции
 def offer(request):
     offer=offers.objects.all()
     return render(request, 'panel/offers.html', {'offer' : offer })
 
+#Добавить акцию
 def add_offer(request):
     alert = {
         'name': request.GET.get('name', ''),
@@ -778,15 +771,16 @@ def add_offer(request):
         descriptions = request.POST.get('descriptions')
         name_id = request.POST.get('name_id')
         slug = request.POST.get('slug')
-        if Shop.objects.filter(name=request.POST['name']).exists():
+        if offer.objects.filter(name=request.POST['name']).exists():
             alert['name'] = 'Название акции уже существует'
             return render(request, 'panel/add_offer.html', alert)
         else:
-            Shop.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions,name_id=name_id,slug=slug)
+            offer.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions,name_id=name_id,slug=slug)
             return render(request, 'panel/add_ok_offer.html')
     return render(request, 'panel/add_offer.html',{'users':users,'areas':areas})
 
+#Редактировать акцию
 def offer_edit(request,id):
-    offer=offers.objects.all()
+    offer=offers.objects.get(id=id)
     return render(request, 'panel/offers_edit.html', {'offer' : offer })
 

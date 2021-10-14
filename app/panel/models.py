@@ -243,3 +243,32 @@ class shalinsk(models.Model):
     def __str__(self):
         return self.name
 
+class zakaz(models.Model):
+    name=models.CharField(max_length=200, db_index=True, verbose_name='Название заказа')
+    data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
+    time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
+
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Заках'
+        verbose_name_plural = 'Заказ'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+class offers(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Акции')
+    image = models.ImageField(upload_to='offers/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
+    status = models.BooleanField(default=True, verbose_name='Активный')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Заках'
+        verbose_name_plural = 'Заказ'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name

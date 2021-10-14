@@ -1,0 +1,128 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}СуперМенеджер{% endblock %}
+{% block content %}
+    {% load static %}
+
+                <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Панель управления</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item active">Панель управления</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-report-card purple">
+									<div class="card-content">
+										<span class="card-title">Рассмотрение</span>
+										<span class="card-count">20</span>
+									</div>
+									<div class="card-media">
+										<i class="fab fa-rev"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+								<div class="dashboard-report-card red">
+									<div class="card-content">
+										<span class="card-title">Отмена</span>
+										<span class="card-count">0</span>
+									</div>
+									<div class="card-media">
+										<i class="far fa-times-circle"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-report-card info">
+									<div class="card-content">
+										<span class="card-title">Формирование</span>
+										<span class="card-count">5</span>
+									</div>
+									<div class="card-media">
+										<i class="fas fa-sync-alt rpt_icon"></i>
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+								<div class="dashboard-report-card success">
+									<div class="card-content">
+										<span class="card-title">Доход за сутки</span>
+										<span class="card-count">9568.00 р.</span>
+									</div>
+									<div class="card-media">
+										<i class="fas fa-money-bill rpt_icon"></i>
+									</div>
+                                </div>
+                            </div>
+							<div class="col-xl-12 col-md-12">
+								<div class="card card-static-1 mb-30">
+									<div class="card-body">
+                                        <div class="card-title-2">
+                                        <h4>
+
+                                        </h4>
+                                        </div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-12 col-md-12">
+								<div class="card card-static-2 mb-30">
+									<div class="card-title-2">
+                                        <h4>
+                                            Последние заказы
+                                        </h4>
+                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
+									</div>
+									<div class="card-body-table">
+										<div class="table-responsive">
+											<table class="table ucp-table table-hover">
+												<thead>
+													<tr>
+														<th>Название организации</th>
+														<th>Продукты</th>
+														<th >Цена</th>
+														<th>Скидка</th>
+														<th>Описание</th>
+                                                        <th>Статус</th>
+													</tr>
+												</thead>
+												<tbody>
+                                                    <tr>
+														<td>
+                                                            1
+														</td>
+														<td>
+                                                            2
+														</td>
+														<td>
+                                                            {{ product.price }} .p
+                                                        </td>
+														<td>
+                                                            {% if products.discount %}
+															    {{ products.discount }}
+                                                            {% else %}
+                                                            Не назначена
+                                                            {% endif %}
+														</td>
+														<td>
+                                                            {% if products.description %}
+                                                                {{ product.description }}
+                                                            {% else %}
+                                                                Без описания
+                                                            {% endif %}
+                                                        </td>
+                                                        </td>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+{% endblock content %}

@@ -140,18 +140,20 @@ def edit_profile(request):
 def panel(request):
     shops=Shop.objects.values_list('customuser_id','name','slug').distinct()
     users=User.objects.values_list('id', flat=True).distinct()
-    if not request.user.is_superuser:
+    if request.user.is_authenticated:
         for u in users:
             for c,n,slug_p in shops:
-                if  request.user.id == u and u == c:
+                if  request.user.id ==c and u == c :
                     name_p= eval(slug_p)
                     products=name_p.objects.all()[:3][::-1]
                     count=name_p.objects.count()
                     return render(request, 'panel/index.html', {'products':products,'count':count})
-    if request.user.is_superuser:
-        return render(request, 'panel/index.html')
+                elif request.user.is_superuser :
+                    name_p = eval(slug_p)
+                    products=name_p.objects.all()
+                    return render(request, 'panel/index_superuser.html', {'products': products,'shops': shops, })
     else:
-        return redirect ('https://panel.coop-dostavka.ru/login')
+        return redirect ('/login')
 
 
 def posts(request):

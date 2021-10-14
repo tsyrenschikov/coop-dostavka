@@ -756,11 +756,37 @@ def customer_view(request):
 def customer_edit(request):
     return render(request, 'panel/customer_edit.html', {})
 
+
+# Акции
 def offer(request):
     offer=offers.objects.all()
     return render(request, 'panel/offers.html', {'offer' : offer })
 
-def offer_edit(request):
+def add_offer(request):
+    alert = {
+        'name': request.GET.get('name', ''),
+        'users':User.objects.filter(groups__name='manager').order_by('last_name'),
+        'areas': Area.objects.all().order_by('name'),
+    }
+    areas= Area.objects.all().order_by('name')
+    users = User.objects.filter(groups__name='manager').order_by('last_name')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        id = request.POST.get('aid')
+        status = request.POST.get('status')
+        pk = request.POST.get('id')
+        descriptions = request.POST.get('descriptions')
+        name_id = request.POST.get('name_id')
+        slug = request.POST.get('slug')
+        if Shop.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Название акции уже существует'
+            return render(request, 'panel/add_offer.html', alert)
+        else:
+            Shop.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions,name_id=name_id,slug=slug)
+            return render(request, 'panel/add_ok_offer.html')
+    return render(request, 'panel/add_offer.html',{'users':users,'areas':areas})
+
+def offer_edit(request,id):
     offer=offers.objects.all()
     return render(request, 'panel/offers_edit.html', {'offer' : offer })
 

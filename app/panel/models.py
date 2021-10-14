@@ -259,6 +259,9 @@ class zakaz(models.Model):
         return self.name
 
 class offers(models.Model):
+    customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
+    area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Акции')
     image = models.ImageField(upload_to='offers/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')

@@ -756,9 +756,11 @@ def customer_view(request):
 def customer_edit(request):
     return render(request, 'panel/customer_edit.html', {})
 
-def offers(request):
-    return render(request, 'panel/offers.html', {})
+def offer(request):
+    offer=offers.objects.all()
+    return render(request, 'panel/offers.html', {'offer' : offer })
 
-def offers_edit(request):
-    return render(request, 'panel/offers_edit.html', {})
+def offer_edit(request):
+    offer=offers.objects.all()
+    return render(request, 'panel/offers_edit.html', {'offer' : offer })
 

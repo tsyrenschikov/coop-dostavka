@@ -29,7 +29,7 @@
 											</div>
                                             <div class="form-group">
                                                 <label class="form-label">Территория</label>
-                                                    <select class="form-control selectpicker" name="area_name" value="{{ categories.subcat }}" multiple data-live-search="true">
+                                                    <select class="form-control" name="area_name" value="{{ categories.subcat }}">
                                                         {% for areas in areas %}
                                                             <option name="area_name">{{ areas.name }}</option>
                                                         {% endfor %}
@@ -71,9 +71,4 @@
                         </div>
                     </div>
                 </main>
-        <script>
-$(function () {
-    $('select').selectpicker();
-});
-</script>
 {% endblock content %}

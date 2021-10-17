@@ -756,29 +756,19 @@ def offer(request):
 
 #Добавить акцию
 def add_offer(request):
-    alert = {
-        'name': request.GET.get('name', ''),
-        'users':User.objects.filter(groups__name='manager').order_by('last_name'),
-        'areas' :Area.objects.all(),
-
-    }
     areas=Area.objects.all()
     users = User.objects.filter(groups__name='manager').order_by('last_name')
     offer=offers.objects.all()
 
     if request.method == 'POST':
         name = request.POST.get('name')
-        area_name = request.POST.getlist('area_name')
+        area_name = request.POST.get('area_name')
         discount = request.POST.get('discount')
         image = request.FILES["image"]
         status = request.POST.get('status')
         descriptions = request.POST.get('descriptions')
-        if offers.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Акция уже существует'
-            return render(request, 'panel/add_offer.html', alert)
-        else:
-            offers.objects.create(name=name,area_name=area_name,status=status,discount=discount,image=image,descriptions=descriptions)
-            return render(request, 'panel/add_ok_offer.html',{'offer':offer})
+        offers.objects.create(name=name,area_name=area_name,status=status,discount=discount,image=image,descriptions=descriptions)
+        return render(request, 'panel/add_ok_offer.html',{'offer':offer})
     return render(request, 'panel/add_offer.html',{'users':users,'areas':areas})
 
 #Редактировать акцию

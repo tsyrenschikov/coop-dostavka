@@ -61,9 +61,15 @@
                                                         <td>
                                                             {{ offer.area_name|cut:'['|cut:']'|cut:"'" }}
                                                         </td>
-														<td><span class="badge-item badge-status">Активный</span></td>
+														<td>
+                                                            {% if offer.status %}
+                                                                <span class="badge-item badge-status">Опубликовано</span>
+                                                            {% else %}
+                                                                <span class="badge-item badge-status">Не опубликовано</span>
+                                                            {% endif %}
+                                                        </td>
 														<td class="action-btns">
-															<a href="#" class="edit-btn"><i class="fas fa-edit"></i>Редактировать</a>
+															<a href="#" class="edit-btn"><i class="fas fa-edit"></i></a>
                                                             {% if user.is_superuser %}
                                                             <a href="/delete_offer/{{ offer.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +

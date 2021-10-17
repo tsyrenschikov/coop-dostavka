@@ -69,4 +69,5 @@ urlpatterns = [
     path('delete_ok_customer/<int:id>/', views.delete_ok_customer, name='delete_ok_customer'),
     path('offer/', views.offer, name='offer'),
     path('add_offer/', views.add_offer, name='add_offer'),
+    path('delete_offer/<int:id>/', views.delete_offer, name='delete_offer'),
 ]

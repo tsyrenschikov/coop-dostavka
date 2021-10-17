@@ -251,18 +251,18 @@ class zakaz(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Заках'
+        verbose_name = 'Заказ'
         verbose_name_plural = 'Заказ'
         index_together = (('id'),)
 
     def __str__(self):
         return self.name
 
+
 class offers(models.Model):
-    customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
-    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
-    area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Акции')
+    area_name = models.JSONField(default=list, null=True, blank=True, verbose_name='Территория')
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     image = models.ImageField(upload_to='offers/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
     status = models.BooleanField(default=True, verbose_name='Активный')

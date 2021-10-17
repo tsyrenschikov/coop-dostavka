@@ -759,28 +759,40 @@ def add_offer(request):
     alert = {
         'name': request.GET.get('name', ''),
         'users':User.objects.filter(groups__name='manager').order_by('last_name'),
-        'areas': Area.objects.all().order_by('name'),
+        'areas' :Area.objects.all(),
+
     }
-    areas= Area.objects.all().order_by('name')
+    areas=Area.objects.all()
     users = User.objects.filter(groups__name='manager').order_by('last_name')
+    offer=offers.objects.all()
+
     if request.method == 'POST':
         name = request.POST.get('name')
-        id = request.POST.get('aid')
+        area_name = request.POST.getlist('area_name')
+        discount = request.POST.get('discount')
+        image = request.FILES["image"]
         status = request.POST.get('status')
-        pk = request.POST.get('id')
         descriptions = request.POST.get('descriptions')
-        name_id = request.POST.get('name_id')
-        slug = request.POST.get('slug')
-        if offer.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Название акции уже существует'
+        if offers.objects.filter(name=request.POST['name']).exists():
+            alert['name'] = 'Акция уже существует'
             return render(request, 'panel/add_offer.html', alert)
         else:
-            offer.objects.create(name=name,area_id=id,customuser_id=pk,status=status,descriptions=descriptions,name_id=name_id,slug=slug)
-            return render(request, 'panel/add_ok_offer.html')
+            offers.objects.create(name=name,area_name=area_name,status=status,discount=discount,image=image,descriptions=descriptions)
+            return render(request, 'panel/add_ok_offer.html',{'offer':offer})
     return render(request, 'panel/add_offer.html',{'users':users,'areas':areas})
 
 #Редактировать акцию
 def offer_edit(request,id):
     offer=offers.objects.get(id=id)
     return render(request, 'panel/offers_edit.html', {'offer' : offer })
+
+#Удалить акции
+def delete_offer(request, id):
+    offer=''
+    try:
+        offer = offers.objects.get(id=id)
+        offer.delete()
+        return render(request, "panel/delete_ok_offer.html",{'offer':offer})
+    except offer.DoesNotExist:
+        return render(request ,'panel/edit_error_offer.html', {'offer' : offer})
 

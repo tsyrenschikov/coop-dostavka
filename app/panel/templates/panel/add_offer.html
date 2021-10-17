@@ -2,11 +2,15 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+{% endblock stylesheet %}
         <main>
                     <div class="container-fluid">
                         <h2 class="mt-30 page-title">Акции</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{%  url 'offer' %}">Продукты</a></li>
                             <li class="breadcrumb-item active">Акции</li>
                         </ol>
                         <div class="row">
@@ -16,52 +20,60 @@
 										<h4>Добавить акцию (Страница в доработке)</h4>
 									</div>
 									<div class="card-body-table">
+                                        <form method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
 												<label class="form-label">Название*</label>
-												<input type="text" class="form-control" placeholder="Название акции">
+												<input type="text" name="name" class="form-control" placeholder="Название акции" required="">
 											</div>
+                                            <div class="form-group">
+                                                <label class="form-label">Территория</label>
+                                                    <select class="form-control selectpicker" name="area_name" value="{{ categories.subcat }}" multiple data-live-search="true">
+                                                        {% for areas in areas %}
+                                                            <option name="area_name">{{ areas.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                        </div>
 											<div class="form-group">
 												<label class="form-label">Скидка*</label>
-												<input type="text" class="form-control" placeholder="0">
-											</div>
-											<div class="form-group">
-												<label class="form-label">Добавить продукт*</label>
-												<select class="form-control select" multiple>
-													<option value="1">Название продукта 1</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Status*</label>
-												<select id="status" name="status" class="form-control">
-													<option selected>Active</option>
-													<option value="1">Inactive</option>
-												</select>
+												<input type="text" name="discount" class="form-control" placeholder="0" required="">
 											</div>
 											<div class="form-group">
 												<label class="form-label">Баннер*</label>
 												<div class="input-group">
 													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-														<label class="custom-file-label" for="inputGroupFile04">Выбрать изображение</label>
+														<input type="file" value="{{ offer.image }}" name="image" id="file" required="" >
+														<label type="file"  for="file" ></label>
 													</div>
-												</div>
+                                                </div>
 											</div>
 											<div class="form-group">
 												<label class="form-label">Описание*</label>
 												<div class="card card-editor">
 													<div class="content-editor">
-														<textarea class="text-control" placeholder="Ввод описания"></textarea>
+														<textarea class="text-control" name="descriptions" placeholder="Ввод описания"></textarea>
 													</div>
 												</div>
 											</div>
+                                            <div class="form-group">
+												<label class="form-label">Статус*</label>
+												<select id="status" name="status" class="form-control">
+													<option selected value="True">Опубликовать</option>
+													<option value="False">Не опубликовывать</option>
+												</select>
+											</div>
 											<button class="save-btn hover-btn" type="submit">Добавить акцию</button>
-										</div> 
+                                        </form>
 									</div>
 								</div>
 							</div>
                         </div>
                     </div>
                 </main>
-
+        <script>
+$(function () {
+    $('select').selectpicker();
+});
+</script>
 {% endblock content %}

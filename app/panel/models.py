@@ -260,6 +260,7 @@ class zakaz(models.Model):
 
 
 class offers(models.Model):
+    area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Акции')
     area_name = models.JSONField(default=list, null=True, blank=True, verbose_name='Территория')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')

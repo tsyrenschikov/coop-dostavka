@@ -116,6 +116,12 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')
     discount = models.DecimalField(max_digits=10,decimal_places=2,null=True,verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -135,6 +141,12 @@ class rezh(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -155,6 +167,12 @@ class arti(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -174,6 +192,12 @@ class arti_p(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -194,6 +218,12 @@ class bogdan(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -213,6 +243,12 @@ class chetkarino(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -232,6 +268,12 @@ class shalinsk(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     subcat = models.JSONField(default=list, null=True, blank=True)
+    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')
+    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')
+    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')
+    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
+    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
+    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:

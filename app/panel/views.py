@@ -145,7 +145,7 @@ def panel(request):
             for c,n,slug_p in shops:
                 if  request.user.id ==c and u == c :
                     name_p= eval(slug_p)
-                    products=name_p.objects.all()[:3][::-1]
+                    products=name_p.objects.all().order_by('id')[:3][::-1]
                     count=name_p.objects.count()
                     return render(request, 'panel/index.html', {'products':products,'count':count})
                 elif request.user.is_superuser :
@@ -605,11 +605,19 @@ def add_product(request, **kwargs):
                         status = request.POST.get('status')
                         description = request.POST.get('description')
                         image = request.FILES["image"]
-                        if n.objects.filter(name=request.POST['name']).exists():
-                            alert['name'] = 'Наименование товара уже существует'
-                            return render(request, 'panel/add_product.html', alert)
-                        else:
-                            n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, description=description, image=image)
+                        if request.method == 'POST':
+                            width = request.POST.get('width')
+                            height = request.POST.get('height')
+                            length = request.POST.get('length')
+                            fabricator = request.POST.get('fabricator')
+                            material =request.POST.get('material')
+                            color = request.POST.get('color')
+                            if n.objects.filter(name=request.POST['name']).exists():
+                                alert['name'] = 'Наименование товара уже существует'
+                                return render(request, 'panel/add_product.html', alert)
+                            else:
+                                n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, description=description, image=image,width=width,height=height,
+                                                                                                                                                                                          length=length,fabricator=fabricator,material=material,color=color)
                             return render(request, 'panel/add_ok_product.html', {'products': products, 'subcategory': subcategory})
                     return render(request, 'panel/add_product.html', {'products': products, 'subcategory': subcategory})
 

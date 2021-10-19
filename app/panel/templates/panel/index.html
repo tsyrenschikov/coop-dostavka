@@ -68,11 +68,7 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
                                         <h4>Последние добавленные товары: <p style="color: red"> Кол-во всего ( {{ count }} )</p> </h4>
-                                        {% if not user.is_superuser %}
                                         <a href="{% url 'products' %}" class="view-btn hover-btn">Продукты (Товары)</a>
-                                        {% else %}
-                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Магазины</a>
-                                        {% endif %}
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">

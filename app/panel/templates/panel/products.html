@@ -35,7 +35,7 @@
                                                         <th>Цена</th>
                                                         <th>Цена со скидкой</th>
                                                         <th style="width:300px">Описание</th>
-                                                        <th style="width:150px">Товарная группа</th>
+                                                        <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа </th>
                                                         <th style="width:150px">Харак-ки</th>
                                                         <th>Статус</th>
 														<th>Действия</th>
@@ -67,10 +67,12 @@
                                                             {% endif %}
                                                         </td>
                                                         <td>
-                                                            {% if products.subcat != None %}
+                                                            {% if products.subcat != None and products.subcat != '0' %}
                                                                 {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                                            {% elif products.subsubcat != None and products.subsubcat != '0' %}
+                                                                {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
                                                             {% else %}
-                                                                Товарная группа не назначена
+                                                                Товарная группа или подгруппа не назначена
                                                             {% endif %}
                                                         </td>
                                                         <td>

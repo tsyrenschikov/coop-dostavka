@@ -35,10 +35,19 @@
                                             {% endif %}
 											<div class="form-group">
 												<label class="form-label">Товарная группа*</label>
-												<select id="categtory" name="subcat" class="form-control" required="">
-													<option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
+												<select id="categtory" name="subcat" class="form-control">
+													<option selected value="0">--Выбрать для продуктов--</option>
                                                     {% for subcategory in subcategory %}
                                                         <option name="subcat" >{{ subcategory.name }}</option>
+                                                    {% endfor %}
+												</select>
+											</div>
+                                            <div class="form-group">
+												<label class="form-label">Товарная подгруппа*</label>
+												<select id="categtory" name="subsubcat" class="form-control" >
+													<option selected value="0">--Выбрать для промышленных товаров--</option>
+                                                    {% for subsubcategory in subsubcategory %}
+                                                        <option name="subsubcat" >{{ subsubcategory.name }}</option>
                                                     {% endfor %}
 												</select>
 											</div>

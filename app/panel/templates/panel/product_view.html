@@ -59,8 +59,16 @@
 												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Товарная группа</span>
-                                                    {% if products.subcat != None %}
+                                                    {% if products.subcat != None and products.subcat != '0' %}
 													<span class="right-dt">{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</span>
+                                                    {% else %}
+                                                        <span class="right-dt">Не назначена</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Товарная подгруппа</span>
+                                                    {% if products.subsubcat != None and products.subsubcat != '0' and products.subsubcat == '[]' %}
+													<span class="right-dt">{{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}</span>
                                                     {% else %}
                                                         <span class="right-dt">Не назначена</span>
                                                     {% endif %}

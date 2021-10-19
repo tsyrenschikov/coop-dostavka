@@ -70,7 +70,7 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
                                         <h4>
-                                            Последние заказы
+                                            Кол-во товаров по организациям (в разработке)
                                         </h4>
                                         <a href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
 									</div>
@@ -80,42 +80,21 @@
 												<thead>
 													<tr>
 														<th>Название организации</th>
-														<th>Продукты</th>
-														<th >Цена</th>
-														<th>Скидка</th>
-														<th>Описание</th>
-                                                        <th>Статус</th>
+														<th>Кол-во товаров</th>
 													</tr>
 												</thead>
 												<tbody>
+                                                {% for id,s,slug in shops %}
                                                     <tr>
 														<td>
-                                                            1
+                                                            {{ s }}
 														</td>
 														<td>
-                                                            2
+                                                            {{ prod }}
 														</td>
-														<td>
-                                                            {{ product.price }} .p
-                                                        </td>
-														<td>
-                                                            {% if products.discount %}
-															    {{ products.discount }}
-                                                            {% else %}
-                                                            Не назначена
-                                                            {% endif %}
-														</td>
-														<td>
-                                                            {% if products.description %}
-                                                                {{ product.description }}
-                                                            {% else %}
-                                                                Без описания
-                                                            {% endif %}
-                                                        </td>
-                                                        </td>
-
-                                                        </td>
                                                     </tr>
+
+                                                    {% endfor %}
                                                 </tbody>
 											</table>
 										</div>

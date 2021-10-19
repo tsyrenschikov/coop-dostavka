@@ -143,15 +143,11 @@ def panel(request):
     if request.user.is_authenticated:
         for u in users:
             for c,n,slug_p in shops:
-                if  request.user.id ==c and u == c :
-                    name_p= eval(slug_p)
-                    products=name_p.objects.all().order_by('id')[:3][::-1]
+                name_p = eval(slug_p)
+                if  u == c :
+                    products = name_p.objects.all().order_by('id')[:3][::-1]
                     count=name_p.objects.count()
-                    return render(request, 'panel/index.html', {'products':products,'count':count})
-                elif request.user.is_superuser :
-                    name_p = eval(slug_p)
-                    products=name_p.objects.all()
-                    return render(request, 'panel/index_superuser.html', {'products': products,'shops': shops, })
+                    return render(request, 'panel/index.html', {'products':products,'shops':shops,'count':count})
     else:
         return redirect ('/login')
 

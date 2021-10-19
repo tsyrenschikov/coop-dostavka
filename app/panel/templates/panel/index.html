@@ -79,11 +79,12 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-														<th>Название</th>
-														<th>Изображение</th>
-														<th >Цена</th>
+														<th style="width:150px">Название</th>
+														<th style="width:150px">Изображение</th>
+														<th>Цена</th>
 														<th>Скидка</th>
-														<th>Описание</th>
+														<th style="width:300px">Описание</th>
+                                                        <th style="width:250px">Характеристики</th>
                                                         <th>Статус</th>
 													</tr>
 												</thead>
@@ -115,6 +116,18 @@
                                                                 Без описания
                                                             {% endif %}
                                                         </td>
+                                                        <td>
+                                                            {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
+                                                                {{ products.width }} x {{ products.height }} x {{ products.length }}
+                                                                </br>
+                                                                {{ products.fabricator }}
+                                                                </br>
+                                                                {{ products.material }}
+                                                                </br>
+                                                                {{ products.color }}
+                                                                {% else %}
+                                                                Нет
+                                                            {% endif %}
                                                         </td>
                                                         {% if products.status %}
                                                             <td><span class="badge-item badge-status">Опубликован</span></td>

@@ -34,15 +34,15 @@
                                                         <th style="width:100px">Изображение</th>
                                                         <th>Цена</th>
                                                         <th>Цена со скидкой</th>
-                                                        <th>Описание</th>
-                                                        <th>Товарная группа</th>
+                                                        <th style="width:300px">Описание</th>
+                                                        <th style="width:150px">Товарная группа</th>
+                                                        <th style="width:150px">Харак-ки</th>
                                                         <th>Статус</th>
 														<th>Действия</th>
 													</tr>
 												</thead>
 												<tbody>
                                                 {% for products in products %}
-                                                    <tr>
                                                         <td>
                                                             {{ products.name }}
                                                         </td>
@@ -71,6 +71,19 @@
                                                                 {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
                                                             {% else %}
                                                                 Товарная группа не назначена
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+                                                            {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
+                                                                {{ products.width }} x {{ products.height }} x {{ products.length }}
+                                                                </br>
+                                                                {{ products.fabricator }}
+                                                                </br>
+                                                                {{ products.material }}
+                                                                </br>
+                                                                {{ products.color }}
+                                                                {% else %}
+                                                                Нет
                                                             {% endif %}
                                                         </td>
                                                         {% if products.status %}

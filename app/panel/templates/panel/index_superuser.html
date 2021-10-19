@@ -70,31 +70,43 @@
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
                                         <h4>
-                                            Кол-во товаров по организациям (в разработке)
+                                            Кол-во товаров по организациям
                                         </h4>
                                         <a href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">
 											<table class="table ucp-table table-hover">
-												<thead>
-													<tr>
-														<th>Название организации</th>
-														<th>Кол-во товаров</th>
-													</tr>
-												</thead>
+
 												<tbody>
-                                                {% for id,s,slug in shops %}
                                                     <tr>
+                                                        {% for c,name,slug in shops %}
 														<td>
-                                                            {{ s }}
+                                                            {{ name }}
 														</td>
+                                                        {% endfor %}
 														<td>
-
-														</td>
                                                     </tr>
-
-                                                    {% endfor %}
+                                                    <tr>
+                                                        <td>
+                                                            {{ a }}
+                                                        </td>
+                                                        <td>
+                                                            {{ ap }}
+                                                        </td>
+                                                        <td>
+                                                            {{ b }}
+                                                        </td>
+                                                        <td>
+                                                            {{ r }}
+                                                        </td>
+                                                        <td>
+                                                            {{ c }}
+                                                        </td>
+                                                        <td>
+                                                            {{ s }}
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
 											</table>
 										</div>

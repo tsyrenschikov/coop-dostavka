@@ -68,8 +68,8 @@
 							<div class="col-xl-12 col-md-12">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-                                        <h4>Кол-во товаров по организациям</h4>
-                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
+                                        <h4>Последние добавленные товары: <p style="color: red"> Кол-во всего ( {{ count }} )</p> </h4>
+                                        <a href="{% url 'products' %}" class="view-btn hover-btn">Продукты (Товары)</a>
 									</div>
 									<div class="card-body-table">
 										<div class="table-responsive">
@@ -81,7 +81,7 @@
 													</tr>
 												</thead>
 												<tbody>
-                                                {% for key, value in products_count.items %}
+                                                {% for key, value in a.items %}
 													<tr>
 														<td>
 															{{ key }}
@@ -91,36 +91,6 @@
                                                         </td>
                                                     </tr>
                                                 {% endfor %}
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-                        <div class="col-xl-12 col-md-12">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-                                        <h4>Кол-во заказов по организациям</h4>
-                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Список заказов</a>
-									</div>
-									<div class="card-body-table">
-										<div class="table-responsive">
-											<table class="table ucp-table table-hover">
-												<thead>
-													<tr>
-														<th style="width:350px">Название</th>
-														<th style="width:350px">Кол-во заказов</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-
-														</td>
-                                                        <td>
-
-                                                        </td>
-                                                    </tr>
 												</tbody>
 											</table>
 										</div>

@@ -110,7 +110,8 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=200, db_index=True,verbose_name='Название продукта')
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
     description = models.TextField(blank=True,verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')

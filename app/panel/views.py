@@ -6,7 +6,7 @@ from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
-from django.db.models import Count
+from itertools import chain
 from panel.models import *
 
 
@@ -142,6 +142,7 @@ def panel(request):
     shops=Shop.objects.values_list('customuser_id','name','slug').distinct()
     users=User.objects.values_list('id', flat=True).distinct()
     if request.user.is_authenticated:
+        products_count={}
         for u in users:
             for c,n,slug_p in shops:
                 if  request.user.id ==c and u == c :
@@ -150,13 +151,10 @@ def panel(request):
                     count=name_p.objects.count()
                     return render(request, 'panel/index.html', {'products':products,'count':count})
                 elif request.user.is_superuser:
-                    r = rezh.objects.count()
-                    ap = arti_p.objects.count()
-                    a = arti.objects.count()
-                    b = bogdan.objects.count()
-                    c = chetkarino.objects.count()
-                    s = shalinsk.objects.count()
-                    return render(request, 'panel/index_superuser.html', {'r': r,'ap': ap,'a': a,'b': b,'c': c,'s': s,'shops': shops })
+                    for c, n, slug_p in shops:
+                        name_p = eval(slug_p)
+                        products_count.update({n: name_p.objects.count()})
+                    return render(request, 'panel/index_superuser.html', {'products_count': products_count})
     else:
         return redirect ('/login')
 

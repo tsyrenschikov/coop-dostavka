@@ -68,7 +68,7 @@
 							<div class="col-xl-12 col-md-12">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-                                        <h4>Кол-во товаров по организациям</h4>
+                                        <h4>Статистика по организациям</h4>
                                         <a href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
 									</div>
 									<div class="card-body-table">
@@ -76,8 +76,13 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
-														<th style="width:350px">Название</th>
-														<th style="width:350px">Кол-во товаров</th>
+														<th style="width:7em">Название</th>
+														<th style="width:7em">Кол-во товаров</th>
+                                                        <th style="width:7em">Кол-во заказов</th>
+                                                        <th style="width:7em">Рассмотрение</th>
+                                                        <th style="width:7em">Доставлено</th>
+                                                        <th style="width:7em">Отказ</th>
+                                                        <th style="width:7em">Доход</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -87,40 +92,23 @@
 															{{ key }}
 														</td>
                                                         <td>
-                                                            {{ value }}
+                                                            {{ value }} шт.
                                                         </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td></td>
                                                     </tr>
                                                 {% endfor %}
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-                        <div class="col-xl-12 col-md-12">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-                                        <h4>Кол-во заказов по организациям</h4>
-                                        <a href="{% url 'shops' %}" class="view-btn hover-btn">Список заказов</a>
-									</div>
-									<div class="card-body-table">
-										<div class="table-responsive">
-											<table class="table ucp-table table-hover">
-												<thead>
-													<tr>
-														<th style="width:350px">Название</th>
-														<th style="width:350px">Кол-во заказов</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-
-														</td>
-                                                        <td>
-
-                                                        </td>
-                                                    </tr>
 												</tbody>
 											</table>
 										</div>

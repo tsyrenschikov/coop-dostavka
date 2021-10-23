@@ -25,8 +25,11 @@
 												<img src="{% static 'file/shop/images/money.svg' %}" alt="">
 											</div>
 											<span class="rewrd-title">Баланс</span>
-											<h4 class="cashbk-price">1200 р.</h4>
-											<span class="date-reward">Пополнено : 8 Июня 2021</span>
+											<h4 class="cashbk-price">
+                                                {% if user.purse != None %}
+                                                {{ user.purse }} р.{% else %} 0 р.{% endif %}
+                                            </h4>
+											<!--<span class="date-reward">Пополнено : 8 Июня 2021</span>-->
 										</div>
 									</div>
 								</div>
@@ -37,8 +40,13 @@
 												<img class="rotate-img" src="{% static 'file/shop/images/business.svg' %}" alt="">
 											</div>
 											<span class="rewrd-title">Кешбэк</span>
-											<h4 class="cashbk-price">50 р.</h4>
-											<p>Эту сумму можно использовать для следующего заказа.</p>
+											<h4 class="cashbk-price">
+                                                {% if user.cashback != None %}
+                                                    {{ user.cashback }}р
+                                                {% else %}
+                                                    0
+                                                {% endif %}
+                                            </h4>
 										</div>
 									</div>
 								</div>
@@ -53,36 +61,32 @@
 													<thead class="thead-s">
 														<tr>
 															<th scope="col">Предложения</th>
-															<th scope="col">Код продукта</th>
-															<th scope="col">Дата начала</th>
+															<th scope="col">Название</th>
+															<th scope="col">Скидка</th>
 															<th scope="col">Статус</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>										
-															<td>15%</td>	
-															<td>Кетчуп</td>
-															<td>31 Июня 2021</td>
-															<td><b class="offer_active">Активный</b></td>
+                                                    {% for offer in offer %}
+														<tr>
+															<td>
+                                                                {{ offer.area_name }}
+                                                            </td>
+                                                            <td>
+                                                                {{ offer.name }}
+                                                            </td>
+															<td>
+                                                                {{ offer.discount }} .р
+                                                            </td>
+															<td>
+                                                                {% if offer.status %}
+                                                                <b class="offer_active">Активный</b>
+                                                                {% else %}
+                                                                <b class="offer_active">Завершен</b>
+                                                                {% endif %}
+                                                            </td>
 														</tr>
-														<tr>										
-															<td>10%</td>	
-															<td>Капуста</td>
-															<td>25 Июня 2021</td>
-															<td><b class="offer_active">Активный</b></td>
-														</tr>
-														<tr>										
-															<td>25%</td>	
-															<td>Мясо</td>
-															<td>20 Июня 2021</td>
-															<td><b class="offer_active">Активный</b></td>
-														</tr>
-														<tr>										
-															<td>5%</td>	
-															<td>Молоко</td>
-															<td>15 Июля 2021</td>
-															<td><b class="offer_active">Активный</b></td>
-														</tr>
+                                                        {% endfor %}
 													</tbody>				
 												</table>
 											</div>	

@@ -30,7 +30,13 @@
                     {% else %}
                     <p>Телефон не указан<a href="#"><i class="uil uil-edit"></i></a></p>
                     {% endif %}
-					<div class="earn-points"><img src="{% static 'file/shop/images/Dollar.svg' %}" alt="">Бонусы : <span>20</span></div>
+					<div class="earn-points"><img src="{% static 'file/shop/images/Dollar.svg' %}" alt="">Бонусы : <span>
+                        {% if user.bonus != None %}
+                        {{ user.bonus }}
+                        {% else %}
+                        0
+                        {% endif %}
+                    </span></div>
 				</div>
 			</div>
 		</div>

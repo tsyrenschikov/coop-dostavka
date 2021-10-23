@@ -316,7 +316,7 @@ class offers(models.Model):
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
     image = models.ImageField(upload_to='offers/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
-    status = models.BooleanField(default=True, verbose_name='Активный')
+    status = models.BooleanField(default=True, verbose_name='Статус')
 
     class Meta:
         ordering = ('name',)

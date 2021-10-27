@@ -47,10 +47,10 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Товарная подгруппа</label>
-                                                    <select id="categtory" name="subcat" class="form-control">
+                                                    <select id="categtory" name="subsubcat" class="form-control">
                                                     {% if products.subsubcat %}
                                                         <option selected></option>
-                                                        <option selected>{{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}</option>
+                                                        <option selected>{{ products.subsubcat }}</option>
                                                     {% else %}
                                                     <option selected></option>
                                                     {% endif %}

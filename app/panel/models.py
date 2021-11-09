@@ -293,21 +293,6 @@ class shalinsk(models.Model):
     def __str__(self):
         return self.name
 
-class zakaz(models.Model):
-    name=models.CharField(max_length=200, db_index=True, verbose_name='Название заказа')
-    data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
-    time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
-
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказ'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
 
 class offers(models.Model):
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
@@ -326,3 +311,19 @@ class offers(models.Model):
 
     def __str__(self):
         return self.name
+
+class orders(models.Model):
+    name=models.CharField(max_length=200, db_index=True, verbose_name='Название заказа')
+    data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
+    time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
+
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказ'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+

@@ -6,7 +6,6 @@ from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
-from itertools import chain
 from panel.models import *
 
 
@@ -724,8 +723,9 @@ def delete_shop(request,id):
         return render(request, 'panel/delete_error_shop.html', {})
 
 
-def orders(request):
-    return render(request, 'panel/orders.html', {})
+def order(request):
+    zakaz=orders.objects.all()
+    return render(request, 'panel/orders.html', {'zakaz':zakaz})
 
 def order_view(request):
     return render(request, 'panel/order_view.html', {})

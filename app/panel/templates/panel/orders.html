@@ -10,43 +10,15 @@
                             <li class="breadcrumb-item active">Заказы</li>
                         </ol>
                         <div class="row justify-content-between">
-							<div class="col-lg-3 col-md-4">
-								<div class="bulk-section mb-30">
-									<div class="input-group">
-										<select id="action" name="action" class="form-control">
-											<option selected>Массовые действия</option>
-											<option value="1">В ожидании</option>
-											<option value="2">Закрыть</option>
-											<option value="3">В процессе</option>
-											<option value="4">Укомплектован</option>
-											<option value="5">Удалить</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Применить</button>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="col-lg-5 col-md-6">
-								<div class="bulk-section mb-30">
+								<div class="bulk-section mt-30">
 									<div class="search-by-name-input">
-										<input type="text" class="form-control" placeholder="Поиск">
-									</div>
-									<div class="input-group">
-										<select id="categeory" name="categeory" class="form-control">
-											<option value="1">В ожидании</option>
-											<option value="2">Закрыто</option>
-											<option value="3">В процессе</option>
-											<option value="4">Укомплектован</option>
-										</select>
-										<div class="input-group-append">
-											<button class="status-btn hover-btn" type="submit">Поиск заказа</button>
-										</div>
+										<input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()" >
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-12">
-								<div class="card card-static-2 mb-30">
+								<div class="card card-static-2 mt-30 mb-30">
 									<div class="card-title-2">
 										<h4>Все заказы</h4>
 									</div>
@@ -82,68 +54,8 @@
 														</td>
 														<td>900 р.</td>
 														<td class="action-btns">
-															<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="3"></td>
-														<td>ORDER12346</td>
-														<td>
-															<a href="#" target="_blank">Название продукта</a>
-														</td>
-														<td>
-															<span class="delivery-time">13/06/2021</span>
-															<span class="delivery-time">2:00PM - 4.00PM</span>
-														</td>
-														<td>#623300, Свердловская область, пгт Арти, ул. Свободы, д.1</td>
-														 <td>
-															<span class="badge-item badge-status">В ожидании</span>
-														</td>
-														<td>1050 р.</td>
-														<td class="action-btns">
-															<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="2"></td>
-														<td>ORDER12347</td>
-														<td>
-															<a href="#" target="_blank">Название продукта</a>
-														</td>
-														<td>
-															<span class="delivery-time">13/6/2021</span>
-															<span class="delivery-time">5:00PM - 7.00PM</span>
-														</td>
-														<td>#623300, Свердловская область, пгт Арти, ул. Свободы, д.1</td>
-														<td>
-															<span class="badge-item badge-status">В ожидании</span>
-														</td>
-														<td>600 р.</td>
-														<td class="action-btns">
-															<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
-														</td>
-													</tr>
-													<tr>
-														<td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
-														<td>ORDER12348</td>
-														<td>
-															<a href="#" target="_blank">Название продукта</a>
-														</td>
-														<td>
-															<span class="delivery-time">12/06/2021</span>
-															<span class="delivery-time">01:00PM - 3.00PM</span>
-														</td>
-														<td>#623300, Свердловская область, пгт Арти, ул. Свободы, д.1</td>
-														<td>
-															<span class="badge-item badge-status">В ожидании</span>
-														</td>
-														<td>1200 р.</td>
-														<td class="action-btns">
-															<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>
+															<!--<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>-->
 														</td>
 													</tr>
 												</tbody>
@@ -155,5 +67,48 @@
                         </div>
                     </div>
                 </main>
+        <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
+    const getSort = ({ target }) => {
+        const order = (target.dataset.order = -(target.dataset.order || -1));
+        const index = [...target.parentNode.cells].indexOf(target);
+        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
+        const comparator = (index, order) => (a, b) => order * collator.compare(
+            a.children[index].innerHTML,
+            b.children[index].innerHTML
+        );
+
+        for(const tBody of target.closest('table').tBodies)
+            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+
+        for(const cell of target.parentNode.cells)
+            cell.classList.toggle('sorted', cell === target);
+    };
+
+    document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+
+});
+</script>
+<script>
+    function tableSearch() {
+    var phrase = document.getElementById('search-text');
+    var table = document.getElementById('info-table');
+    var regPhrase = new RegExp(phrase.value, 'i');
+    var flag = false;
+    for (var i = 1; i < table.rows.length; i++) {
+        flag = false;
+        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+            if (flag) break;
+        }
+        if (flag) {
+            table.rows[i].style.display = "";
+        } else {
+            table.rows[i].style.display = "none";
+        }
+
+    }
+}
+</script>
 {% endblock content %}

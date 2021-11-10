@@ -2,9 +2,6 @@ from django.shortcuts import render
 from panel.models import offers
 
 def dashboard(request):
-    return render(request, 'dashboard/dashboard_overview.html', {})
-
-def my_orders(request):
     return render(request, 'dashboard/dashboard_my_orders.html', {})
 
 def my_rewards(request):

@@ -24,19 +24,20 @@
 						</div>
 					</div>
 					<h4> {{ user.first_name }}</h4>
-					<h5>{{ user.email }}<a href="#"><i class="uil uil-edit"></i></a></h5>
-                    {% if phone %}
+					<h5>{{ user.email }}<i class="uil uil-edit"><button class="open-button" onclick="openForm()"></button></i></h5>
+                    {% if user.phone %}
 					<p>{{ user.phone }}<a href="#"><i class="uil uil-edit"></i></a></p>
                     {% else %}
                     <p>Телефон не указан<i class="uil uil-edit"></i></p>
                     {% endif %}
-					<div class="earn-points"><img src="{% static 'file/shop/images/Dollar.svg' %}" alt="">Бонусы : <span>
-                        {% if user.bonus != None %}
-                        {{ user.bonus }}
+					<div class="address-dt-all">
+                        {% if user.address != None %}
+                            <p>{{ user.address }}<a href="#"><i class="uil uil-edit"></i></a></p>
                         {% else %}
-                        0
+                            <p>Адрес доставки<a href="#"><i class="uil uil-edit"><button></button></i></a></p>
                         {% endif %}
-                    </span></div>
+                        </ul>
+                    </div>
 				</div>
 			</div>
 		</div>

@@ -18,23 +18,23 @@
 				<div class="user-dt">
 					<div class="user-img">
 						<img src="{% static 'file/shop/images/avatar/img-5.jpg' %}" alt="">
-						<div class="img-add">
+						<!--<div class="img-add">
 							<input type="file" id="file">
 							<label for="file"><i class="uil uil-camera-plus"></i></label>
-						</div>
+						</div>-->
 					</div>
 					<h4> {{ user.first_name }}</h4>
-					<h5>{{ user.email }}<i class="uil uil-edit"><button class="open-button" onclick="openForm()"></button></i></h5>
+                    <h5>{{ user.email }}</h5>
                     {% if user.phone %}
-					<p>{{ user.phone }}<a href="#"><i class="uil uil-edit"></i></a></p>
+                        <p>{{ user.phone }}</p>
                     {% else %}
-                    <p>Телефон не указан<i class="uil uil-edit"></i></p>
+                        <p>Телефон не указан</p>
                     {% endif %}
 					<div class="address-dt-all">
                         {% if user.address != None %}
-                            <p>{{ user.address }}<a href="#edit_address"><i class="uil uil-edit"></i></a></p>
+                            <p>{{ user.address }}</p>
                         {% else %}
-                            <p>Адрес доставки<a href="#edit_address"><i class="uil uil-edit"></i></a></p>
+                            <p>Адрес доставки</p>
                         {% endif %}
                         </ul>
                     </div>
@@ -42,9 +42,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div id="edit_address">
-    <div id="okno"><input type="text"  class="form-control" value="{{ user.address }}" placeholder="Адрес доставки">
-        <a href=""><button class="save-btn hover-btn" type="submit">Сохранить</button></a>
-    </div>
 </div>

@@ -29,7 +29,7 @@
 									<label class="control-label">Имя*</label>
 									<div class="ui search focus">
 										<div class="ui left icon input swdh11 swdh19">
-											<input type="text" class="form-control" id="subject" name="subject" placeholder="Ваше имя" maxlength="70" required>
+											<input type="text" class="form-control" id="subject" name="subject" value="{{ user.first_name }}" placeholder="Ваше имя" maxlength="70" required="">
 										</div>
 									</div>
 								</div>
@@ -37,7 +37,7 @@
 									<label class="control-label">Email Адрес*</label>
 									<div class="ui search focus">
 										<div class="ui left icon input swdh11 swdh19">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+											<input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" placeholder="Email" required="">
 										</div>
 									</div>
 								</div>

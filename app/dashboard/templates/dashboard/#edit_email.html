@@ -1,0 +1,18 @@
+<form method="post">
+    {% csrf_token %}
+    <div id="edit_email">
+        <div id="okno_email"><input type="text" name="edit_email" class="form-control" value="{{ user.email }}" placeholder="E-mail">
+            <a href=""><button class="save-btn hover-btn" type="submit">Сохранить</button></a>
+        </div>
+    </div>
+    <div id="edit_phone">
+        <div id="okno_phone"><input type="text" name="edit_phone" class="form-control" value="{{ user.phone }}" placeholder="Телефон">
+            <a href=""><button class="save-btn hover-btn" type="submit">Сохранить</button></a>
+        </div>
+    </div>
+    <div id="edit_address">
+        <div id="okno_address"><input type="text" name="edit_address" class="form-control" value="{{ user.address }}" placeholder="Адрес доставки">
+            <a href=""><button class="save-btn hover-btn" type="submit">Сохранить</button></a>
+        </div>
+    </div>
+</form>

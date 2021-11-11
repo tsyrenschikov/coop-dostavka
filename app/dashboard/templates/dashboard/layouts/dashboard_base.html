@@ -32,9 +32,9 @@
                     {% endif %}
 					<div class="address-dt-all">
                         {% if user.address != None %}
-                            <p>{{ user.address }}<a href="#"><i class="uil uil-edit"></i></a></p>
+                            <p>{{ user.address }}<a href="#edit_address"><i class="uil uil-edit"></i></a></p>
                         {% else %}
-                            <p>Адрес доставки<a href="#"><i class="uil uil-edit"><button></button></i></a></p>
+                            <p>Адрес доставки<a href="#edit_address"><i class="uil uil-edit"></i></a></p>
                         {% endif %}
                         </ul>
                     </div>
@@ -42,4 +42,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="edit_address">
+    <div id="okno"><input><a href=""> Ок</a>
+    </div>
 </div>

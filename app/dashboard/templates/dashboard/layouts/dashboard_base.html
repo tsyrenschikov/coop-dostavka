@@ -16,22 +16,15 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="user-dt">
-					<div class="user-img">
-						<img src="{% static 'file/shop/images/avatar/img-5.jpg' %}" alt="">
-						<!--<div class="img-add">
-							<input type="file" id="file">
-							<label for="file"><i class="uil uil-camera-plus"></i></label>
-						</div>-->
-					</div>
 					<h4> {{ user.first_name }}</h4>
                     <h5>{{ user.email }}</h5>
-                    {% if user.phone %}
+                    {% if user.phone and user.phone != '+7 (___) ___-__-__' %}
                         <p>{{ user.phone }}</p>
                     {% else %}
                         <p>Телефон не указан</p>
                     {% endif %}
 					<div class="address-dt-all">
-                        {% if user.address != None %}
+                        {% if user.address != None and user.address %}
                             <p>{{ user.address }}</p>
                         {% else %}
                             <p>Адрес доставки</p>

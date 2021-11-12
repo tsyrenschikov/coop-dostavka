@@ -19,42 +19,43 @@
 																</div>
 															</div>
 															<div class="col-lg-12 col-md-12">
+                                                            <form method="post">
+                                                                {% csrf_token %}
 																<div class="pdpt-bg">
 																	<div class="address-body">
 																		<div class="address-item">
-                                                                        <form method="post" enctype="multipart/form-data">
-                                                                            {% csrf_token %}
 																			<div class="news-content-right pd-20">
                                                                                 <div class="form-group">
                                                                                     <label class="form-label">Имя</label>
-                                                                                    <input type="text" class="form-control_user" name="name" value="{{ user.first_name }}" placeholder="Изменить
-                                                                                    имя">
+                                                                                    <input type="text"  name="first_name" class="form-control_user" value="{{ users.first_name }}"
+                                                                                           placeholder="Изменить имя">
                                                                                 </div>
                                                                                 <div class="form-group inputs">
                                                                                     <label class="form-label">Смена пароля</label>
-                                                                                    <input type="password" class="form-control_user password"  placeholder="Введите пароль" name="password">
+                                                                                    <input type="password" name="password" class="form-control_user password"  placeholder="Введите пароль">
                                                                                     <label><input type="checkbox" class="showPassword">Показать пароль</label>
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <label class="form-label">Номер телефона</label>
-                                                                                    <input id="phone" type="tel" class="form-control_user" name="edit_phone" value="{{ user.phone}}" pattern="+7\
+                                                                                    <input id="phone" type="tel" name="edit_phone" class="form-control_user"  value="{{ users.phone}}" pattern="+7\
                                                                                     ([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <label class="form-label">Адрес доставки</label>
-                                                                                    <input type="text" class="form-control_user" name="edit_address" value="{{ user.address }}" >
+                                                                                    <input type="text" name="edit_address" class="form-control_user" {% if users.address != None and user.address %}
+                                                                                           value="{{ users.address }}" {% else %} placeholder="Адрес доставки" {% endif %}>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label class="form-label">Email*</label>
-                                                                                    <input type="email" class="form-control_user" name="edit_email" value="{{ user.email }}" pattern="" >
+                                                                                    <label class="form-label">E-mail*</label>
+                                                                                    <input type="email" name="edit_email" class="form-control_user" value="{{ users.email }}" required="" >
                                                                                 </div>
-                                                                                <button class="save-btn hover-btn" type="submit">Сохранить</button>
+                                                                                <button class="save-btn hover-btn" type="submit" value="Submit">Сохранить</button>
                                                                             </div>
-                                                                        </form>
 																		</div>
                                                                     </div>
 																</div>
-															</div>
+                                                            </form>
+                                                        </div>
 														</div>
 													</div>
 												</div>

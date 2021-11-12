@@ -10,6 +10,7 @@ def edit_profile(request,id):
         user= User.objects.get(id=id)
         user_id = int([i for i in str(request.path).split('/') if i][-1])
         if request.method=="POST":
+            user.name=request.POST.get("name")
             user.edit_email=request.POST.get("edit_email")
             user.edit_phone = request.POST.get("edit_phone")
             user.edit_address = request.POST.get("edit_address")

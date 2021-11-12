@@ -632,6 +632,48 @@ i.icon1 {
     margin-right: 15px;
 }
 
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #2b2f4c;
+    margin-bottom: 10px;
+}
+
+.save-btn {
+    background: #f55d2c;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.menu-save-btn {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #efefef;
+}
+
+.hover-btn:hover {
+	text-decoration: none !important;
+	background: #f55d2c;
+	color: #fff !important;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+	background-image: -webkit-linear-gradient(left, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+    background-image: linear-gradient(to right, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+}
+
 .menu.dropdown_account {
     margin-top: 10px !important;
     border-top: 1px solid #fff !important;
@@ -5869,8 +5911,22 @@ button, input, optgroup, select, textarea {
 textarea {
     border: 1px solid #efefef !important;
 }
+.form-control_user {
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
-.form-control {
+.form-control_user {
     color: #2b2f4c !important;
 	font-weight: 400 !important;
     height: calc(1.5em + 1.75rem + 2px) !important;

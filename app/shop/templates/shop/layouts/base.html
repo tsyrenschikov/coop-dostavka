@@ -335,10 +335,10 @@
 										</span>
 									</a>
 								</div>
-								<a href="{% url 'dashboard' %}" class="item channel_item"><i class="uil uil-box icon__1"></i>Мои заказы</a>
-                                <a href="{% url 'my_wallet' %}" class="item channel_item"><i class="uil uil-usd-circle icon__1"></i>Мой кошелек</a>
-								<a href="{% url 'my_wishlist' %}" class="item channel_item"><i class="uil uil-heart icon__1"></i>Избранные продукты</a>
-								<a href="{% url 'faq' %}" class="item channel_item"><i class="uil uil-info-circle icon__1"></i>Помощь</a>
+								<a href="{% url 'dashboard' %}" class="item channel_item"><i class="uil uil-box icon__1"></i>Заказы</a>
+                                <a href="{% url 'my_wallet' %}" class="item channel_item"><i class="uil uil-usd-circle icon__1"></i>Кошелек</a>
+								<a href="{% url 'my_wishlist' %}" class="item channel_item"><i class="uil uil-heart icon__1"></i>Избранные</a>
+								<a href="/dashboard/edit_profile/{{ user.id }}" class="user-item {% if user.id == users_id %}active{% endif %}"><i class="uil uil-user"></i>Профиль</a>
 								<a href="{% url 'logout' %}" class="item channel_item"><i class="uil uil-lock-alt icon__1"></i>Выход</a>
 							</div>
 							{% else %}

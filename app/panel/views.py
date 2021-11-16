@@ -727,6 +727,17 @@ def order(request):
     zakaz=orders.objects.all()
     return render(request, 'panel/orders.html', {'zakaz':zakaz})
 
+def add_order(request):
+    users=User.objects.all()
+    local=Locations.objects.all()
+    category=Category.objects.all()
+    if request.method == 'POST':
+        name = request.POST.get('users_name')
+        status = request.POST.get('status')
+        Shop.objects.create(name=name,status=status)
+        return render(request, 'panel/add_ok_order.html')
+    return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
+
 def order_view(request):
     return render(request, 'panel/order_view.html', {})
 

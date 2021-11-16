@@ -28,8 +28,6 @@ def edit_profile(request,id):
 
 
 def dashboard(request):
-    def edit_email(request,id):
-        return render(request, 'dashboard/dashboard_my_orders.html', {})
     return render(request, 'dashboard/dashboard_my_orders.html', {})
 
 def my_rewards(request):

@@ -1,0 +1,78 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% load static %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+{% endblock stylesheet %}
+{% block content %}
+
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Сформировать заказ</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item"><a href="{%  url 'order' %}">Заказы</a></li>
+                            <li class="breadcrumb-item active">Добавить заказ</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-5 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-title-2">
+										<h4>Добавить заказ</h4>
+									</div>
+									<div class="card-body-table">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <div class="news-content-right pd-20">
+                                            <div class="form-group">
+                                                <label class="form-label">Пользователь*</label>
+                                                <select class="form-control selectpicker" name="user_name" data-live-search="true">
+                                                    {% for users in users %}
+                                                        <option name="user_name">{{ users.first_name }} : {{ users.email }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                </div>
+                                                <div class="form-group">
+                                                <label class="form-label">Населенный пункт</label>
+                                                    <select class="form-control selectpicker" multiple data-live-search="true">
+                                                        {% for local in local %}
+                                                            <option>{{ local.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <div class="form-group"></div>
+                                                <div class="form-group">
+                                                <label class="form-label">Категории товара</label>
+                                                    <select class="form-control selectpicker" multiple data-live-search="true">
+                                                        {% for category in category %}
+                                                            <option >{{ category.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div id="variants">
+                                                <div class="form-group">
+                                                    <label class="form-label">Статус*</label>
+                                                    <select id="status" name="status" class="form-control">
+                                                        <option value="form" selected>Формирование</option>
+                                                        <option value="shipped">Отгружен</option>
+                                                        <option value="delivery">Доставка</option>
+                                                    </select>
+                                                </div>
+                                                    <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </form>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </main>
+
+<script>
+$(function () {
+    $('select').selectpicker();
+});
+</script>
+{% endblock content %}

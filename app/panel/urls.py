@@ -60,6 +60,7 @@ urlpatterns = [
     path('delete_product/<int:id>/', views.delete_product, name='delete_product'),
     path('add_product/', views.add_product, name='add_product'),
     path('order/', views.order, name='order'),
+    path('add_order/', views.add_order, name='add_order'),
     path('order_view/', views.order_view, name='order_view'),
     path('order_edit/', views.order_edit, name='order_edit'),
     path('customers/', views.customers, name='customers'),

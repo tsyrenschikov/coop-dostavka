@@ -747,6 +747,15 @@ def order_view(request):
 def order_edit(request):
     return render(request, 'panel/order_edit.html', {})
 
+def delete_order(request, id):
+    zakaz = ''
+    try:
+        zakaz = orders.objects.get(id=id)
+        zakaz.delete()
+        return render(request, "panel/delete_ok_order.html", {'zakaz':zakaz})
+    except zakaz.DoesNotExist:
+        return render(request ,'panel/edit_error_order.html', {})
+
 #Клиенты
 def customers(request):
     users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))

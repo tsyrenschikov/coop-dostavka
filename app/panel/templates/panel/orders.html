@@ -56,8 +56,12 @@
 														</td>
 														<td>{{ zakaz.summa }} р.</td>
 														<td class="action-btns">
-															<!--<a href="{% url 'order_view' %}" class="views-btn"><i class="fas fa-eye"></i></a>
-															<a href="{% url 'order_edit' %}" class="edit-btn"><i class="fas fa-edit"></i></a>-->
+															<a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
+															<a href="/order_edit/{{ zakaz.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
+                                                        <a href="/delete_order/{{ zakaz.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
+                                                             '(ДЕЙСТВИЕ НЕ ' +
+															 'ОБРАТИМО)')"><i class="fas
+															fa-trash-alt"></i></a>
 														</td>
                                                         {% endfor %}
 													</tr>

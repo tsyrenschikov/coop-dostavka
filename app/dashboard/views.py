@@ -28,7 +28,11 @@ def edit_profile(request,id):
 
 
 def dashboard(request):
-    return render(request, 'dashboard/dashboard_my_orders.html', {})
+    zakaz=orders.objects.values('id','name_id', 'address_name_id__name','address_name_id__delivery_price','address_name_id__delivery_price_min','address_name_id__days','sum_order','total_order',
+                                'address')
+    local=Locations.objects.values('name')
+    users=User.objects.all()
+    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz':zakaz, 'users':users, 'local':local})
 
 def my_rewards(request):
     return render(request, 'dashboard/dashboard_my_rewards.html', {})

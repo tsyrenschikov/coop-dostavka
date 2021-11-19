@@ -731,10 +731,13 @@ def add_order(request):
     users=User.objects.all()
     local=Locations.objects.all()
     category=Category.objects.all()
+
     if request.method == 'POST':
-        name = request.POST.get('users_name')
+        name_id = request.POST.get('name_id')
+        address = request.POST.get('address')
+        address_name_id=request.POST.get('local')
         status = request.POST.get('status')
-        Shop.objects.create(name=name,status=status)
+        orders.objects.create(name_id=name_id,status=status,address=address,address_name_id=address_name_id)
         return render(request, 'panel/add_ok_order.html')
     return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
 

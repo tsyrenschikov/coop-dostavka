@@ -339,11 +339,13 @@ class offers(models.Model):
         return self.name
 
 class orders(models.Model):
-    name=models.CharField(max_length=200, db_index=True, verbose_name='Название заказа')
-    address = models.TextField(max_length=300,null=True,verbose_name='Адрес доставки')
+    name=ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
+    address_name=ForeignKey('Locations', null=True, blank=True, on_delete=CASCADE, verbose_name='Населенный пункт')
+    address = models.TextField(max_length=300,null=True,verbose_name='Улица и дом')
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
     time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
-    delivery_p=models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
+    sum_order = models.PositiveIntegerField(null=True, verbose_name='Сумма заказа')
+    total_order = models.PositiveIntegerField(null=True, verbose_name='Общая сумма заказа')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
 
 

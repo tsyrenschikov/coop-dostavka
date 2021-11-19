@@ -27,20 +27,12 @@
                                             <div class="news-content-right pd-20">
                                             <div class="form-group">
                                                 <label class="form-label">Пользователь*</label>
-                                                <select class="form-control selectpicker" name="user_name" data-live-search="true">
+                                                <select class="form-control selectpicker" name="name_id" multiple data-live-search="true">
                                                     {% for users in users %}
-                                                        <option name="user_name">{{ users.first_name }} : {{ users.email }}</option>
+                                                        <option name="name_id" value="{{ users.id }}">{{ users.email }}</option>
                                                     {% endfor %}
                                                 </select>
                                                 </div>
-                                                <div class="form-group">
-                                                <label class="form-label">Населенный пункт</label>
-                                                    <select class="form-control selectpicker" multiple data-live-search="true">
-                                                        {% for local in local %}
-                                                            <option>{{ local.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                                    <div class="form-group"></div>
                                                 <div class="form-group">
                                                 <label class="form-label">Категории товара</label>
                                                     <select class="form-control selectpicker" multiple data-live-search="true">
@@ -49,15 +41,27 @@
                                                         {% endfor %}
                                                     </select>
                                                 </div>
-                                                <div id="variants">
+                                            <div class="form-group">
+                                                <label class="form-label">Населенный пункт</label>
+                                                    <select class="form-control selectpicker" name="local" multiple data-live-search="true">
+                                                        {% for local in local %}
+                                                            <option name="local" value="{{ local.id }}">{{ local.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <div class="form-group"></div>
                                                 <div class="form-group">
+                                                    <label class="form-label">Улица, дом, квартира</label>
+                                                    <input type="text" id="input" name="address" class="form-control" value="{{ orders.address }}" placeholder="Адрес доставки" required="">
+                                                </div>
+                                                <div id="variants">
+                                                <!--<div class="form-group">
                                                     <label class="form-label">Статус*</label>
                                                     <select id="status" name="status" class="form-control">
                                                         <option value="form" selected>Формирование</option>
                                                         <option value="shipped">Отгружен</option>
                                                         <option value="delivery">Доставка</option>
                                                     </select>
-                                                </div>
+                                                </div>-->
                                                     <button class="save-btn hover-btn" type="submit">Добавить</button>
                                                 </div>
                                             </div>

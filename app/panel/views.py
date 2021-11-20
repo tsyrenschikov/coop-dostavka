@@ -196,6 +196,7 @@ def edit_location(request,id):
     except local.DoesNotExist:
         return render(request ,'panel/edit_error_location.html', {'local' : local,'days':days})
 
+
 #Населенный пункт добавить
 def add_location(request):
     alert = {
@@ -744,7 +745,16 @@ def add_order(request):
 def order_view(request):
     return render(request, 'panel/order_view.html', {})
 
-def order_edit(request):
+def order_edit(request,id):
+    try:
+        zakaz=orders.objects.get(id=id)
+        if request.method == "POST":
+            zakaz.name = request.POST.get("name")
+            zakaz.address=request.POST.get('address')
+            zakaz.save()
+    except orders.DoesNotExist:
+        return render(request, 'panel/order_edit.html', {'zakaz': zakaz})
+
     return render(request, 'panel/order_edit.html', {})
 
 def delete_order(request, id):

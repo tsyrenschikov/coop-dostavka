@@ -36,14 +36,10 @@
                                                 <input type="text" name="delivery_price_min" class="form-control" value="{{ local.delivery_price_min }}" placeholder="0 р.">
 											</div>
                                             <div class="form-group">
-                                                <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
-                                                <input type="text" name="delivery_price_min" class="form-control" value="{{ local.delivery_price_min }}" placeholder="0 р.">
-											</div>
-                                            <div class="form-group">
                                             <label class="form-label">Дни недели поставки</label>
                                         </div>
                                             <div class="ui">
-                                                <select name="day"  class="multiple selection dropdown" multiple>
+                                                <select id="people" name="day"  class="multiple selection dropdown" multiple>
                                                     {% if local.days %}
                                                         <option value="{{ days.name }}">
                                                             {{ local.days|cut:"["|cut:"]" }}</option>
@@ -67,4 +63,29 @@
         <script src='https://fomantic-ui.com/dist/semantic.min.js'></script>
         <script  src="{% static 'file/panel/js/script_selectcalendar.js' %}"></script>
     {% endblock js %}
+    <script type="text/javascript">
+    $(function(){
+        $('#people').multiSelect();
+        $('#ice-cream').multiSelect();
+        $('#line-wrap-example').multiSelect({
+            positionMenuWithin: $('.position-menu-within')
+        });
+        $('#categories').multiSelect({
+            noneText: 'All categories',
+            presets: [
+                {
+                    name: 'All categories',
+                    all: true
+                },
+                {
+                    name: 'My categories',
+                    options: ['a', 'c']
+                }
+            ]
+        });
+        $('#modal-example').multiSelect({
+            'modalHTML': '<div class="multi-select-modal">'
+        });
+    });
+    </script>
 {% endblock content %}

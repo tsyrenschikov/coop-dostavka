@@ -179,6 +179,7 @@ def locations(request):
 #Населенный пункт редактировать
 def edit_location(request,id):
     try:
+
         local = Locations.objects.get(id = id)
         days = Days.objects.values('name','id').order_by('id')
         if request.method == "POST":

@@ -40,11 +40,14 @@
                                                 <label class="form-label">Дни недели поставки</label>
                                             </div>
                                             <div class="col-lg-5 col-sm-5 col-xs-12">
-                                                <select name="from" id="multiselect" class="form-control" size="8" multiple="multiple">
-                                                    {% for days in days %}
-                                                        <option value="{{ days.name }}">{{ days.name }}</option>
-                                                    {% endfor %}
-                                                </select>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">Доступные дни</div>
+                                                    <select name="from" id="multiselect" class="form-control" size="8" multiple="multiple">
+                                                        {% for days in days %}
+                                                            <option value="{{ days.name }}">{{ days.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="multiselect-controls col-lg-2 col-sm-2 col-xs-12">
@@ -52,14 +55,17 @@
                                                 <button type="button" id="multiselect_leftSelected" class="btn btn-block">Удалить<i class="glyphicon glyphicon-chevron-left"></i></button>
                                             </div>
                                             <div class="col-lg-5 col-sm-5 col-xs-12">
-                                                <select name="day" id="multiselect_to" class="form-control" size="8" multiple="multiple">
-                                                    {% for l in local.days %}
-                                                    <option>{{ l|cut:'['|cut:']'|cut:"'" }}</option>
-                                                    {% endfor %}
-                                                </select>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">Выбранные дни</div>
+                                                    <select name="day" id="multiselect_to" class="form-control" size="8" multiple="multiple">
+                                                        {% for l in local.days %}
+                                                            <option>{{ l|cut:'['|cut:']'|cut:"'" }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <button class="save-btn hover-btn" type="submit">Сохранить</button>
-                                        </div>
+                                                <button class="save-btn hover-btn" type="submit">Сохранить</button>
+                                            </div>
                                         </form>
 									</div>
 								</div>

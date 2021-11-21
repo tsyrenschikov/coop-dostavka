@@ -3,12 +3,12 @@
 {% block content %}
     {% load static %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
+   <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
 {% endblock stylesheet %}
         <main>
                     <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Клиенты</h2>
+                        <h2 class="mt-30 page-title">Товарная группа</h2>
                         <ol class="breadcrumb mb-30">
                             <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
                             <li class="breadcrumb-item"><a href="{% url 'subcategory' %}">Товарная группа</a></li>
@@ -41,9 +41,9 @@
                                             <div class="form-group">
                                                 <label class="form-label">Товарная подгруппа</label>
                                                     <select class="form-control selectpicker" name="subsubcat" multiple data-live-search="true">
-                                                    {% for subsubcategory in subsubcategory %}
-                                                            <option name="subsubcat" value="{{ subsubcategory.name }}">{{ subsubcategory.name }}</option>
-                                                    {% endfor %}
+                                                        {% for subsubcat in subsubcategory %}
+                                                            <option name="subsubcat">{{ subsubcat }}</option>
+                                                        {% endfor %}
                                                     </select>
                                         </div>
                                             <div class="form-group">

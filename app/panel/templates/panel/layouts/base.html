@@ -22,7 +22,6 @@
 	<link href="{% static 'file/panel/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 {% block stylesheet %}{% endblock stylesheet %}
-{% block js %}{% endblock js %}
 
 
 </head>
@@ -41,7 +40,7 @@
 		{% include 'panel/layouts/footer.html' %}
 			</div>
 		</div>
-{% include 'panel/include/scripts.html' %}
+{% include 'panel/include/scripts.html' %}{% block js %}{% endblock js %}
     </body>
 {% else %}
         <body class="bg-sign">

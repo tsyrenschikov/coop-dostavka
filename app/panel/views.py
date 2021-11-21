@@ -450,7 +450,7 @@ def edit_subcategory(request,id):
         else:
             return render(request,'panel/edit_subcategory.html',{'subcategory':subcategory,'subsubcategory':subsubcategory})
     except SubCategory.DoesNotExist:
-        return render(request, 'panel/edit_subcategory.html',{})
+        return render(request, 'panel/edit_subcategory.html',{'subcategory':subcategory,'subsubcategory':subsubcategory})
 
 
 #Успешное удаление подкатегории

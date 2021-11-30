@@ -4,6 +4,10 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+    <!-- Календарь-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.min.css" />
+    <link rel="stylesheet" href="{% static 'file/panel/calendar/css/zebra_datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'file/panel/calendar/css/example/examples.css' %}">
 {% endblock stylesheet %}
 {% block content %}
 
@@ -53,6 +57,10 @@
                                                     <label class="form-label">Улица, дом, квартира</label>
                                                     <input type="text" id="input" name="address" class="form-control" value="{{ orders.address }}" placeholder="Адрес доставки" required="">
                                                 </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Дата доставки</label>
+                                                <input id="datepicker-custom-classes" type="text" class="form-control" data-zdp_readonly_element="false" placeholder="Установите дату">
+                                            </div>
                                                 <div id="variants">
                                                 <!--<div class="form-group">
                                                     <label class="form-label">Статус*</label>
@@ -73,6 +81,7 @@
                         </div>
                     </div>
                 </main>
+
 
   <script>
     $(function () {

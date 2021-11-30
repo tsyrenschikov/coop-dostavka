@@ -16,12 +16,12 @@ body {
 }
 
 .Zebra_DatePicker .dp_daypicker .myclass {
-    background: #E8E8E8 url('close.png') no-repeat center center;
+    background: #E8E8E8 url('/static/file/panel/calendar/css/close.png') no-repeat center center;
     text-indent: -9999px;
 }
 
 .bootstrap .Zebra_DatePicker .dp_daypicker td.myclass_disabled {
-    background: #FFF url('close.png' ) no-repeat center center;
+    background: #FFF url('/static/file/panel/calendar/css/close.png' ) no-repeat center center;
     text-indent: -9999px;
 }
 

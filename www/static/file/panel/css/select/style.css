@@ -1,0 +1,19 @@
+@charset "UTF-8";
+body {
+  padding: 15px;
+}
+
+button {
+  min-width: 40px;
+}
+
+select {
+  min-width: 150px;
+}
+
+/*(≥768px = small devices breakpoint)*/
+@media (max-width: 767px) {
+  .multiselect-controls {
+    padding: 15px;
+  }
+}

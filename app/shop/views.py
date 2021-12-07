@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django import template
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
+from panel.models import *
 
 
 register = template.Library()
@@ -14,8 +15,9 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
+    locations=Locations.objects.all()
     categories = Category.objects.order_by('number')
-    return render(request, 'shop/index.html', {'users':users, 'categories' : categories})
+    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'locations':locations})
 
 
 def product(request):

@@ -290,16 +290,33 @@
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 					<a href="/"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 				</div>
+                <div class="select_location">
+                    <div class="ui inline dropdown loc-title">
+                        <div class="text">
+                            <i class="uil uil-location-point"></i>
+
+                        </div>
+                        <i class="uil uil-angle-down icon__14"></i>
+                        <div class="menu dropdown_loc">
+                            {% for location in locations %}
+                            <div class="item channel_item">
+                                <i class="uil uil-location-point"></i>
+                                {{ location.name }}
+							</div>
+                            {% endfor %}
+						</div>
+					</div>
+				</div>
 				<div class="search120">
 					<div class="ui search">
 					  <div class="ui left icon input swdh10">
 						<input class="prompt srch10" type="text" placeholder="Поиск..">
-						<i class='uil uil-location-point icon icon1'></i>
+						<i class='uil uil-search-alt icon icon1'></i>
 					  </div>
 					</div>
 				</div>
                 <div class="search120">
-                <p style="color: red">Сайт в режиме разработки</p>
+                <p style="color: red">Режим разработки</p>
                 </div>
 				<div class="header_right">
 					<ul>

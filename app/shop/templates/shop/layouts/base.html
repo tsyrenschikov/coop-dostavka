@@ -21,6 +21,8 @@
     <link href="{% static 'file/shop/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'file/shop/css/responsive.css' %}" rel="stylesheet">
     <link href="{% static 'file/shop/css/night-mode.css' %}" rel="stylesheet">
+    <link href="{% static 'file/shop/css/search.css' %}" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link href="{% static 'file/panel/css/styles.css' %}" rel="stylesheet">
 
 	<!-- reCAPTCHA API -->
@@ -211,15 +213,14 @@
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 					<a href="/"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 				</div>
-				<div class="search120">
-					<div class="ui search">
-					  <div class="ui left icon input swdh10">
-                          <input class="prompt srch10" type="text" placeholder="Выберите адрес доставки"  name="country" id="autocomplete" value="{{ locations }}"/>
-                          <i class='uil icon uil-location-point'></i>
-
-					  </div>
-				</div>
-				</div>
+				<div class="nav-search">
+                    <div class="search-input">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Выберите адрес доставки" id="search-input" />
+                        <div class="search-dropdown" id="hits-container"></div>
+                        <i class="close-search material-icons">close</i>
+                    </div>
+                </div>
                 <div class="search120">
                 <p style="color: red">Режим разработки</p>
                 </div>

@@ -13,6 +13,8 @@
     <script src="{% static 'file/shop/js/user_password.js' %}"></script>
 
 <!-- Search-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js'></script>
 <script>
     $(function() {
     $('#search-input').on('focus', function() {
@@ -69,8 +71,8 @@
         hitsPerPage: 10,
         debug: true,
         templates: {
-          item: '<a href="{{href}}" target="_blank">ыывzxzxzx</a>',
-          empty: '<div id="no-results-message"> <p>По вашему запросу ничего не найдено</p></div>'
+          item: '<a href="{{href}}" target="_blank"><div class="hit"><div class="hit-content"><h2 class="hit-title">assds</h2><br><small>{{lvl0}} </small><p class="hit-description"></p></div></div></a>',
+          empty: '<div id="no-results-message"> <p>We didn`t find any results for the search <em>"{{query}}"</em>.</p></div>'
         }
       })
     );
@@ -85,6 +87,7 @@ function toTitleCase(str) {
     });
 }
 </script>
+
 <!-- END Search -->
 	<script>
     //global grecaptcha

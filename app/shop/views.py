@@ -15,9 +15,9 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    locations=Locations.objects.all()
+    local=Locations.objects.all()
     categories = Category.objects.order_by('number')
-    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'locations':locations})
+    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local})
 
 
 def product(request):

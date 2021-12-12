@@ -233,8 +233,8 @@ class artiobschepit(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Шалинск'
-        verbose_name_plural = 'Шалинск'
+        verbose_name = 'Арти Общепит'
+        verbose_name_plural = 'Арти Общепит'
         index_together = (('id'),)
 
     def __str__(self):

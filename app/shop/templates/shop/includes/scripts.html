@@ -13,79 +13,90 @@
     <script src="{% static 'file/shop/js/user_password.js' %}"></script>
 
 <!-- Search-->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js'></script>
+<script type="text/javascript" src="{% static 'file/shop/js/search/jquery-1.8.2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'file/shop/js/search/jquery.mockjax.js' %}"></script>
+<script type="text/javascript" src="{% static 'file/shop/js/search/jquery.autocomplete.js' %}"></script>
+<script type="text/javascript" src="{% static 'file/shop/js/search/countries.js' %}"></script>
+
 <script>
-    $(function() {
-    $('#search-input').on('focus', function() {
-      $('.nav-search').addClass('active');
-    })
+    /*jslint  browser: true, white: true, plusplus: true */
+/*global $, countries */
+    {% for l in local %}
+$(function () {
+    'use strict';
 
-    $('#search-input').on('keyup', function() {
-      $('#hits-container').scrollTop(0);
-    })
+    var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
 
-    $('.close-search').on('click', function(evt) {
-      evt.preventDefault();
-      $('#search-input').val('');
-       $('.nav-search').removeClass('active');
-     })
+    // Setup jQuery ajax mock:
+    $.mockjax({
+        url: '*',
+        responseTime: 2000,
+        response: function (settings) {
+            var query = settings.data.query,
+                queryLowerCase = query.toLowerCase(),
+                re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi'),
+                suggestions = $.grep(countriesArray, function (country) {
+                     // return country.value.toLowerCase().indexOf(queryLowerCase) === 0;
+                    return re.test(country.value);
+                }),
+                response = {
+                    query: query,
+                    suggestions: suggestions
+                };
 
-   $('#search-input').on('blur', function(evt) {
-     if(!evt.isDefaultPrevented) {
-       console.log("blur");
-      $('.nav-search').removeClass('active');
-     }
-    })
-
-
-
-    let search = instantsearch({
-      appId: 'TCEAIJWSQQ',
-      apiKey: '0a339ae0728b5cb0c3e80fd18141c8cd',
-      indexName: 'bt_support_articles',
-      searchParameters: {replaceSynonymsInHighlight: false},
-      searchFunction: function(helper) {
-         var searchResults = $('.search-results');
-         if (helper.state.query === '') {
-           searchResults.hide();
-           return;
-         }
-         helper.search();
-         searchResults.show();
-       }
-    });
-
-        // add a searchBox widget
-    search.addWidget(
-      instantsearch.widgets.searchBox({
-        container: '#search-input',
-        placeholder: 'Search for libraries in France...'
-      })
-    );
-
-    // add a hits widget
-    search.addWidget(
-      instantsearch.widgets.hits({
-        container: '#hits-container',
-        hitsPerPage: 10,
-        debug: true,
-        templates: {
-          item: '<a href="{{href}}" target="_blank"><div class="hit"><div class="hit-content"><h2 class="hit-title">assds</h2><br><small>{{lvl0}} </small><p class="hit-description"></p></div></div></a>',
-          empty: '<div id="no-results-message"> <p>We didn`t find any results for the search <em>"{{query}}"</em>.</p></div>'
+            this.responseText = JSON.stringify(response);
         }
-      })
-    );
-
-    // start
-    search.start();
-});
-
-function toTitleCase(str) {
-    return str.replace(/(?:^|\s)\w/g, function(match) {
-        return match.toUpperCase();
     });
-}
+
+    // Initialize ajax autocomplete:
+    $('#autocomplete-ajax').autocomplete({
+        // serviceUrl: '/autosuggest/service/url',
+        lookup: countriesArray,
+        lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
+            var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
+            return re.test(suggestion.value);
+        },
+        onSelect: function(suggestion) {
+            $('#selction-ajax').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        },
+        onHint: function (hint) {
+            $('#autocomplete-ajax-x').val(hint);
+        },
+        onInvalidateSelection: function() {
+            $('#selction-ajax').html('You selected: none');
+        }
+    });
+
+    var nhlTeams = ['{{ l.name }}'];
+    var nbaTeams = [''];
+    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '' }}; });
+    var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
+    var teams = nhl.concat(nba);
+
+    // Initialize autocomplete with local lookup:
+    $('#autocomplete').devbridgeAutocomplete({
+        lookup: teams,
+        minChars: 1,
+        onSelect: function (suggestion) {
+            $('#selection').html('You selected: ' + suggestion.value + ', ' );
+        },
+        showNoSuggestionNotice: true,
+        noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
+        groupBy: 'category'
+    });
+
+    // Initialize autocomplete with custom appendTo:
+    $('#autocomplete-custom-append').autocomplete({
+        lookup: countriesArray,
+        appendTo: '#suggestions-container'
+    });
+
+    // Initialize autocomplete with custom appendTo:
+    $('#autocomplete-dynamic').autocomplete({
+        lookup: countriesArray
+    });
+});
+    {% endfor %}
 </script>
 
 <!-- END Search -->

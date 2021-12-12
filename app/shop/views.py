@@ -19,6 +19,12 @@ def shop(request):
     categories = Category.objects.order_by('number')
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local})
 
+def arti(request):
+    return render(request, 'arti/index.html', {})
+
+def artiobschepit(request):
+
+    return render(request, 'arti/artiobschepit/index.html', {})
 
 def product(request):
     return render(request, 'shop/product.html', {})

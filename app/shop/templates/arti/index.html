@@ -6,6 +6,7 @@
     <!-- Style CSS -->
 <link  href="{% static 'file/shop/css/arti/stylesheet.css' %}" rel="stylesheet">
 <link  href="{% static 'file/shop/css/arti/mmenu.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/arti/icons.css' %}" rel="stylesheet">
 <link  href="{% static 'file/shop/css/arti/style.css' %}" id="colors" rel="stylesheet">
 
 <!-- Google Font -->
@@ -16,78 +17,7 @@
 {% block content %}
   	<!-- Body Start -->
 		<div class="wrapper">
-		<!-- Offers Start -->
-		<div class="main-banner-slider">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="owl-carousel offers-banner owl-theme">
-							<div class="item">
-								<div class="offer-item">
-									<div class="offer-item-img">
-										<div class="gambo-overlay"></div>
-										<img src="{% static 'file/shop/images/banners/offer-2.jpg' %}" alt="">
-									</div>
-									<div class="offer-text-dt">
-										<div class="offer-top-text-banner">
-											<div class="top-text-1">Воды, соки, напитки</div>
-											<span>Напитки</span>
-										</div>
-										<a href="#" class="Offer-shop-btn hover-btn">Купить сейчас</a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="offer-item">
-									<div class="offer-item-img">
-										<div class="gambo-overlay"></div>
-										<img src="{% static 'file/shop/images/banners/offer-3.jpg' %}" alt="">
-									</div>
-									<div class="offer-text-dt">
-										<div class="offer-top-text-banner">
-											<div class="top-text-1">Яйца</div>
-											<span>Яйца</span>
-										</div>
-										<a href="#" class="Offer-shop-btn hover-btn">Купить сейчас</a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="offer-item">
-									<div class="offer-item-img">
-										<div class="gambo-overlay"></div>
-										<img src="{% static 'file/shop/images/banners/offer-4.jpg' %}" alt="">
-									</div>
-									<div class="offer-text-dt">
-										<div class="offer-top-text-banner">
-											<div class="top-text-1">Фрукты и овощи</div>
-											<span>Свежие овощи и фрукты</span>
-										</div>
-										<a href="#" class="Offer-shop-btn hover-btn">Купить сейчас</a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="offer-item">
-									<div class="offer-item-img">
-										<div class="gambo-overlay"></div>
-										<img src="{% static 'file/shop/images/banners/offer-5.jpg' %}" alt="">
-									</div>
-									<div class="offer-text-dt">
-										<div class="offer-top-text-banner">
-											<div class="top-text-1">Бакалея</div>
-											<span>Орехи</span>
-										</div>
-										<a href="#" class="Offer-shop-btn hover-btn">Купить сейчас</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Offers End -->
+
 
       <div class="container">
           <div class="row">
@@ -101,11 +31,17 @@
                       <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
                           <h4>Магазин</h4>
                       </a>
+                      <a href="{% url 'artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Chef-Hat"></i>
+                          <h4>Ресторан</h4>
+                      </a>
+                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                          <h4>Напитки и еда</h4>
+                      </a>
                       <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
                           <h4>Мебель</h4>
                       </a>
-                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Chef-Hat"></i>
-                          <h4>Ресторан</h4>
+                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Old-Cassette"></i>
+                          <h4>Электроника</h4>
                       </a>
                   </div>
               </div>

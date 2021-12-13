@@ -15,177 +15,92 @@
 {% endblock stylesheets %}
 
 {% block content %}
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="utf-preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
   	<!-- Body Start -->
 		<div class="wrapper">
-
-
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <h3 class="headline_part centered margin-top-75"></h3>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="container_categories_box margin-top-5 margin-bottom-30">
-                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
-                          <h4>Магазин</h4>
-                      </a>
-                      <a href="{% url 'artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Chef-Hat"></i>
-                          <h4>Ресторан</h4>
-                      </a>
-                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
-                          <h4>Напитки и еда</h4>
-                      </a>
-                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
-                          <h4>Мебель</h4>
-                      </a>
-                      <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Old-Cassette"></i>
-                          <h4>Электроника</h4>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-
-		<!-- Featured Products Start -->
-		<div class="section145">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2>Популярные товары</h2>
-							</div>
-							<a href="#" class="see-more-btn">Весь список</a>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel featured-slider owl-theme">
-							<div class="item">
-								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-2.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p>В наличии</p>
-										<h4>Молоко</h4>
-										<div class="product-price">59 р.<span>65 р.</span></div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-21.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p><span>В наличии </span></p>
-										<h4>Телятина без кости</h4>
-										<div class="product-price">740 р.<span>750 р.</span></div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-3.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p>В наличии</p>
-										<h4>Кетчуп</h4>
-										<div class="product-price">50 р.<span>80 р.</span></div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-4.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p>В наличии</p>
-										<h4>Филе курицы</h4>
-										<div class="product-price">150 р.<span>200 р.</span></div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-5.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p><span>В наличии</span></p>
-										<h4>Капуста морская</h4>
-										<div class="product-price">90 р.<span>100 р.</span></div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Featured Products End -->
-	</div>
-	<!-- Body End -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="headline_part centered margin-top-75"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container_categories_box margin-top-5 margin-bottom-30">
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
+                          <h4>Продукты питания</h4>
+                            </a>
+                            <a href="{% url 'artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Chef-Hat"></i>
+                                <h4>Ресторан</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                                <h4>Напитки и еда</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
+                                <h4>Мебель</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Old-Cassette"></i>
+                                <h4>Электроника</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured Products Start -->
+            <div class="section145">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-title-tt">
+                                <div class="main-title-left">
+                                    <h2>Популярные товары</h2>
+                                </div>
+                                <a href="#" class="see-more-btn">Весь список</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="owl-carousel featured-slider owl-theme">
+                                <div class="item">
+                                    <div class="product-item">
+                                        <a href="{% url 'product' %}" class="product-img">
+                                            <img src="{% static 'file/shop/images/product/img-5.jpg' %}" alt="">
+                                            <div class="product-absolute-options">
+                                                <span class="like-icon" title="wishlist"></span>
+                                            </div>
+                                        </a>
+                                        <div class="product-text-dt">
+                                            <p><span>В наличии</span></p>
+                                            <h4>Капуста морская</h4>
+                                            <div class="product-price">90 р.<span>100 р.</span></div>
+                                            <div class="qty-cart">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" value="-" class="minus minus-btn">
+                                                    <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                                                    <input type="button" value="+" class="plus plus-btn">
+                                                </div>
+                                                <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured Products End -->
+        </div>
+    <!-- Body End -->
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

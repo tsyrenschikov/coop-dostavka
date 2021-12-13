@@ -79,6 +79,102 @@ time, mark, audio, video; {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+/* Preloader*/
+/*background-image: linear-gradient(to right, rgba(91, 230, 132, 0.93), rgba(245, 195, 44, 0.75));*/
+.preloader {
+	background: radial-gradient(circle, rgba(91, 230, 132, 0.93), #f3f3f3);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+}
+.utf-preloader {
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 90px;
+	text-align: center;
+	z-index: 9999;
+}
+.utf-preloader span {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background: #ff2222;
+	-webkit-animation: ball-pulse-sync .6s 0s infinite ease-in-out;
+	animation: ball-pulse-sync .6s 0s infinite ease-in-out;
+}
+.utf-preloader span:nth-child(1) {
+	-webkit-animation:ball-pulse-sync .6s -.14s infinite ease-in-out;
+	animation:ball-pulse-sync .6s -.14s infinite ease-in-out
+}
+.utf-preloader span:nth-child(2) {
+	-webkit-animation:ball-pulse-sync .6s -70ms infinite ease-in-out;
+	animation:ball-pulse-sync .6s -70ms infinite ease-in-out
+}
+@-webkit-keyframes ball-pulse-sync {
+	33% {
+		-webkit-transform:translateY(10px);
+		transform:translateY(10px)
+ }
+	66% {
+		-webkit-transform:translateY(-10px);
+		transform:translateY(-10px)
+	}
+	100% {
+		-webkit-transform:translateY(0);
+		transform:translateY(0)
+	}
+}
+@keyframes ball-pulse-sync {
+	33% {
+		-webkit-transform:translateY(10px);
+		transform:translateY(10px)
+	}
+	66% {
+		-webkit-transform:translateY(-10px);
+		transform:translateY(-10px)
+	}
+	100% {
+		-webkit-transform:translateY(0);
+		transform:translateY(0)
+	}
+}
+.mfp-close, .mfp-arrow, .mfp-preloader, .mfp-counter {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+.mfp-preloader {
+	color: #aaa;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	text-align: center;
+	margin-top: -0.8em;
+	left: 8px;
+	right: 8px;
+	z-index: 504;
+}
+.mfp-preloader a {
+	color: #cccccc;
+}
+.mfp-preloader a:hover {
+	color: #fff;
+}
+.mfp-s-ready .mfp-preloader {
+	display: none;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {

@@ -22,7 +22,6 @@
 <script>
     /*jslint  browser: true, white: true, plusplus: true */
 /*global $, countries */
-    {% for l in local %}
 $(function () {
     'use strict';
 
@@ -67,8 +66,7 @@ $(function () {
             $('#selction-ajax').html('You selected: none');
         }
     });
-
-    var nhlTeams = ['{{ l.name }}'];
+    var nhlTeams = ['{{ i }}','{{ nam }}'];
     var nbaTeams = [''];
     var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '' }}; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
@@ -80,6 +78,8 @@ $(function () {
         minChars: 1,
         onSelect: function (suggestion) {
             $('#selection').html('You selected: ' + suggestion.value + ', ' );
+            window.location.href = 'https://coop-dostavka.ru/arti',
+            window.location(window.location.href);
         },
         showNoSuggestionNotice: true,
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
@@ -97,7 +97,6 @@ $(function () {
         lookup: countriesArray
     });
 });
-    {% endfor %}
 </script>
 
 <!-- END Search -->

@@ -15,11 +15,14 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    local=Locations.objects.all()
+    local=Locations.objects.values_list('id', 'name').distinct()
     categories = Category.objects.order_by('number')
-    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local})
+    for id,n in local:
+        i=id;nam=n
+    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'i':i, 'nam':nam})
 
 def arti(request):
+
     return render(request, 'arti/index.html', {})
 
 def artiobschepit(request):

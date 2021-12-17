@@ -593,7 +593,7 @@ i.icon1 {
 
 .ui.swdh10 {
     font-size: 14px !important;
-    width: 100%;
+    width: 80%;
 }
 
 .ui[class*="left icon"].swdh10.input>input {

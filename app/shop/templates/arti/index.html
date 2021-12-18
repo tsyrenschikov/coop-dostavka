@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="main-title-tt">
                                 <div class="main-title-left">
-                                    <h2></h2>
+                                    <h2>Последние товары</h2>
                                 </div>
                                 <a href="#" class="see-more-btn">Весь список</a>
                             </div>
@@ -63,29 +63,31 @@
                             <div class="owl-carousel featured-slider owl-theme">
                                 {% for product in product %}
                                     {% if product.status %}
-                                <div class="item">
-                                    <div class="product-item">
-                                        <a href="{% url 'product' %}" class="product-img">
-                                            <img src="{% static 'file/shop/images/product/img-5.jpg' %}" alt="">
-                                            <div class="product-absolute-options">
-                                                <span class="like-icon" title="wishlist"></span>
-                                            </div>
-                                        </a>
-                                        <div class="product-text-dt">
-                                            <p><span>В наличии</span></p>
-                                            <h5>{{ product.name}}</h5>
-                                            <div class="product-price">{{ product.price }} р.</div>
-                                            <div class="qty-cart">
-                                                <div class="quantity buttons_added">
-                                                    <input type="button" value="-" class="minus minus-btn">
-                                                    <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-                                                    <input type="button" value="+" class="plus plus-btn">
+                                        <div class="item">
+                                            <div class="product-item">
+                                                <a href="{% url 'product' %}" class="product-img">
+                                                    {% if product.image %}
+                                                        <img src="{{ product.image.url }}" width="250" height="180" alt="">
+                                                    {% endif %}
+                                                    <div class="product-absolute-options">
+                                                        <span class="like-icon" title="wishlist"></span>
+                                                    </div>
+                                                </a>
+                                                <div class="product-text-dt">
+                                                    <p><span>В наличии</span></p>
+                                                    <h5>{{ product.name}}</h5>
+                                                    <div class="product-price">{{ product.price }} р.</div>
+                                                    <div class="qty-cart">
+                                                        <div class="quantity buttons_added">
+                                                            <input type="button" value="-" class="minus minus-btn">
+                                                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                                                            <input type="button" value="+" class="plus plus-btn">
+                                                        </div>
+                                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+                                                    </div>
                                                 </div>
-                                                <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
                                     {% endif %}
                                 {% endfor %}
                             </div>

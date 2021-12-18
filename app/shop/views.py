@@ -1,3 +1,4 @@
+import random
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.shortcuts import render
@@ -22,7 +23,7 @@ def shop_arti(request):
     for slug in shop:
         if slug==object_id:
             name=eval(slug)
-            product=name.objects.all()
+            product=name.objects.all().order_by('?')[:20]
             return render(request, 'arti/index.html', {'product':product})
 
 def shop_artiobschepit(request):

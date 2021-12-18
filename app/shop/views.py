@@ -26,9 +26,22 @@ def shop_arti(request):
             product=name.objects.all().order_by('?')[:20]
             return render(request, 'arti/index.html', {'product':product})
 
+def shop_arti_product(request, id):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    object_id = str([i for i in str(request.path).split('/') if i][-1])
+    for slug in shop:
+        if slug == object_id:
+            name = eval(slug)
+            product = name.objects.get(id=id)
+            return render(request, 'shop/arti/product.html', {'product':product})
+        else:
+            return render(request, 'shop/arti/product.html', {})
+
 def shop_artiobschepit(request):
-
-    return render(request, 'arti/artiobschepit/index.html', {})
-
-def product(request):
-    return render(request, 'shop/product.html', {})
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    object_id = str([i for i in str(request.path).split('/') if i][-1])
+    for slug in shop:
+        if slug == object_id:
+            name = eval(slug)
+            product = name.objects.all().order_by('?')[:20]
+            return render(request, 'arti/artiobschepit/index.html', {'product':product})

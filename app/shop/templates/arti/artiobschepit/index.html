@@ -5,42 +5,39 @@
 {% block content %}
 	{% load static %}
   	<!-- Body Start -->
-
 		<div class="wrapper">
-
-
-		<!-- Categories Start -->
-		<div class="section145">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2>Категории</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel cate-slider owl-theme">
-                            {% for subcat in subcat %}
-                                {% if categories.status %}
-							<div class="item">
-								<a href="#" class="category-item">
-                                    {% if subcat.image %}
-									<div class="cate-img">
-										<img src="{{ subcat.image.url }}" alt="">
-									</div>
+            <!-- Categories Start -->
+            <div class="section145">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-title-tt">
+                                <div class="main-title-left">
+                                    <h2>Категории</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="owl-carousel cate-slider owl-theme">
+                                {% for subcat in subcat %}
+                                    {% if categories.status %}
+                                        <div class="item">
+                                            <a href="#" class="category-item">
+                                                {% if subcat.image %}
+                                                    <div class="cate-img">
+                                                        <img src="{{ subcat.image.url }}" alt="">
+                                                    </div>
+                                                {% endif %}
+                                                <h4>{{ subcat.name }}</h4>
+                                            </a>
+                                        </div>
                                     {% endif %}
-									<h4>{{ subcat.name }}</h4>
-								</a>
-							</div>
-                                {% endif %}
-                            {% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		<!-- Categories End -->
 
 		<!-- Featured Products Start -->
@@ -50,25 +47,29 @@
 					<div class="col-md-12">
 						<div class="main-title-tt">
 							<div class="main-title-left">
-								<h2>Популярные товары</h2>
+								<h2></h2>
 							</div>
 							<a href="#" class="see-more-btn">Весь список</a>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="owl-carousel featured-slider owl-theme">
-							<div class="item">
+                            {% for product in product %}
+                            {% if product.status %}
+                            <div class="item">
 								<div class="product-item">
-									<a href="{% url 'product' %}" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-5.jpg' %}" alt="">
+									<a href="#" class="product-img">
+										{% if product.image %}
+                                            <img src="{{ product.image.url }}" width="250" height="180" alt="">
+                                        {% endif %}
 										<div class="product-absolute-options">
 											<span class="like-icon" title="wishlist"></span>
 										</div>
 									</a>
 									<div class="product-text-dt">
 										<p><span>В наличии</span></p>
-										<h4>Капуста морская</h4>
-										<div class="product-price">90 р.<span>100 р.</span></div>
+										<h5>{{ product.name}}</h5>
+										<div class="product-price">{{ product.price }} р.</div>
 										<div class="qty-cart">
 											<div class="quantity buttons_added">
 												<input type="button" value="-" class="minus minus-btn">
@@ -80,6 +81,8 @@
 									</div>
 								</div>
 							</div>
+                            {% endif %}
+                                {% endfor %}
 						</div>
 					</div>
 				</div>

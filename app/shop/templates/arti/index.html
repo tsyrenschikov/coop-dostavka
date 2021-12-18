@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="main-title-tt">
                                 <div class="main-title-left">
-                                    <h2>Последние товары</h2>
+                                    <h2></h2>
                                 </div>
                                 <a href="#" class="see-more-btn">Весь список</a>
                             </div>
@@ -65,7 +65,7 @@
                                     {% if product.status %}
                                         <div class="item">
                                             <div class="product-item">
-                                                <a href="{% url 'product' %}" class="product-img">
+                                                <a href="/arti/product/{{ product.id }}" class="product-img">
                                                     {% if product.image %}
                                                         <img src="{{ product.image.url }}" width="250" height="180" alt="">
                                                     {% endif %}

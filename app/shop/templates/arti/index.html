@@ -54,13 +54,15 @@
                         <div class="col-md-12">
                             <div class="main-title-tt">
                                 <div class="main-title-left">
-                                    <h2>Популярные товары</h2>
+                                    <h2></h2>
                                 </div>
                                 <a href="#" class="see-more-btn">Весь список</a>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="owl-carousel featured-slider owl-theme">
+                                {% for product in product %}
+                                    {% if product.status %}
                                 <div class="item">
                                     <div class="product-item">
                                         <a href="{% url 'product' %}" class="product-img">
@@ -71,8 +73,8 @@
                                         </a>
                                         <div class="product-text-dt">
                                             <p><span>В наличии</span></p>
-                                            <h4>Капуста морская</h4>
-                                            <div class="product-price">90 р.<span>100 р.</span></div>
+                                            <h5>{{ product.name}}</h5>
+                                            <div class="product-price">{{ product.price }} р.</div>
                                             <div class="qty-cart">
                                                 <div class="quantity buttons_added">
                                                     <input type="button" value="-" class="minus minus-btn">
@@ -84,6 +86,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

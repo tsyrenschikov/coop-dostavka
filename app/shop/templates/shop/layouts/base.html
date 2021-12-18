@@ -68,54 +68,43 @@
 <!-- Preloader End -->
 
 <!-- Category Model Start-->
-<div class="modal header-cate-model main-gambo-model modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
-    <div class="modal-content category-model-content">
-        <div class="category-area-inner">
-            <div class="modal-header">
-                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
-                    <i class="uil uil-multiply"></i>
-                </button>
-            </div>
+<div class="main-gambo-model modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Выберите свой город</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="autocomplete">
+          <input id="cityOutput" placeholder="Поиск города"/>
         </div>
-        <div class="category-model-content">
-            <div class="cate-header">
-                <h4>Выберите свой город</h4>
+        <ul class="top-cities">
+          <li><a href="#">Арти</a></li>
+          <li><a href="#">Богданович</a></li>
+        </ul>
+        <div class="modal-list">
+          <div class="cities">
+            <div class="city_list">
+              <ul class="main-item">
+                <li>А
+                  <ul class="sub-item">
+                    <li><a href="#">Абакан</a></li>
+                    <li><a href="#">Альметьевск</a></li>
+                    <li><a href="#">Ангарск</a></li>
+                    <li><a href="#">Арзамас</a></li>
+                    <li><a href="#">Армавир </a></li>
+                    <li><a href="#">Артём</a></li>
+                    <li><a href="#">Архангельск</a></li>
+                    <li><a href="#">Астрахань</a></li>
+                    <li><a href="#">Ачинск</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
-            <div class="modal-body">
-                <div class="autocomplete">
-                    <input id="cityOutput" placeholder="Поиск города"/>
-                </div>
-                <ul class="top-cities category-by-cat">
-                    <li><a href="#">Арти</a></li>
-                    <li><a href="#">Богданович</a></li>
-                    <li><a href="#">Зайково</a></li>
-                    <li><a href="#">Покровск</a></li>
-                    <li><a href="#">Реж</a></li>
-                </ul>
-                <div class="modal-list">
-                    <div class="cities">
-                        <div class="city_list">
-                            <ul class="main-item">
-                                <li>А
-                                    <ul class="sub-item">
-                                        <li><a href="#">Абакан</a></li>
-                                        <li><a href="#">Альметьевск</a></li>
-                                        <li><a href="#">Ангарск</a></li>
-                                        <li><a href="#">Арзамас</a></li>
-                                        <li><a href="#">Армавир </a></li>
-                                        <li><a href="#">Артём</a></li>
-                                        <li><a href="#">Архангельск</a></li>
-                                        <li><a href="#">Астрахань</a></li>
-                                        <li><a href="#">Ачинск</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -384,9 +373,7 @@
 					<a href="#" class="cart__btn hover-btn pull-bs-canvas-left"
 					   title="Cart"><i class="uil uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins><i class="uil uil-angle-down"></i></a>
 				</div>
-				<div class="search__icon order-1">
-					<a href="#" class="search__btn hover-btn" data-toggle="modal" data-target="#search_model" title="Search"><i class="uil uil-search"></i></a>
-				</div>
+
 			</div>
 		</div>
 	</header>

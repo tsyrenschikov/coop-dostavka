@@ -2,10 +2,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.shortcuts import render
 from django import template
-from django.apps import apps
-Category = apps.get_model('panel', 'Category')
 from panel.models import *
-
 
 register = template.Library()
 
@@ -19,11 +16,16 @@ def shop(request):
     categories = Category.objects.order_by('number')
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local})
 
-def arti(request):
+def shop_arti(request):
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    object_id = str([i for i in str(request.path).split('/') if i][-1])
+    for slug in shop:
+        if slug==object_id:
+            name=eval(slug)
+            product=name.objects.all()
+            return render(request, 'arti/index.html', {'product':product})
 
-    return render(request, 'arti/index.html', {})
-
-def artiobschepit(request):
+def shop_artiobschepit(request):
 
     return render(request, 'arti/artiobschepit/index.html', {})
 

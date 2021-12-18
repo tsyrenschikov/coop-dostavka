@@ -22,6 +22,7 @@
     <link href="{% static 'file/shop/css/responsive.css' %}" rel="stylesheet">
     <link href="{% static 'file/shop/css/night-mode.css' %}" rel="stylesheet">
     <link href="{% static 'file/shop/css/search.css' %}" rel="stylesheet">
+    <link href="{% static 'file/shop/css/select_city/city.css' %}" rel="stylesheet">
     <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link href="{% static 'file/panel/css/styles.css' %}" rel="stylesheet">
 
@@ -65,33 +66,59 @@
       </div>
   </div>
 <!-- Preloader End -->
+
 <!-- Category Model Start-->
-	<div id="category_model" class="header-cate-model main-gambo-model modal fade" tabindex="-1" role="dialog" aria-modal="false">
-        <div class="modal-dialog category-area" role="document">
-            <div class="category-area-inner">
-                <div class="modal-header">
-                    <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
-						<i class="uil uil-multiply"></i>
-                    </button>
+<div class="modal header-cate-model main-gambo-model modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content category-model-content">
+        <div class="category-area-inner">
+            <div class="modal-header">
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <i class="uil uil-multiply"></i>
+                </button>
+            </div>
+        </div>
+        <div class="category-model-content">
+            <div class="cate-header">
+                <h4>Выберите свой город</h4>
+            </div>
+            <div class="modal-body">
+                <div class="autocomplete">
+                    <input id="cityOutput" placeholder="Поиск города"/>
                 </div>
-                <div class="category-model-content modal-content">
-					<div class="cate-header">
-						<h4>Выбрать свой город</h4>
-					</div>
-                    <ul class="category-by-cat">
-						<li>
-							<a href="#" class="single-cat-item">
-								<div class="icon">
-									<img src="{{ categories.image.url }}"  alt="">
-                                </div>
-								<div class="text"> {{ categories.name}} </div>
-							</a>
-						</li>
-                    </ul>
+                <ul class="top-cities category-by-cat">
+                    <li><a href="#">Арти</a></li>
+                    <li><a href="#">Богданович</a></li>
+                    <li><a href="#">Зайково</a></li>
+                    <li><a href="#">Покровск</a></li>
+                    <li><a href="#">Реж</a></li>
+                </ul>
+                <div class="modal-list">
+                    <div class="cities">
+                        <div class="city_list">
+                            <ul class="main-item">
+                                <li>А
+                                    <ul class="sub-item">
+                                        <li><a href="#">Абакан</a></li>
+                                        <li><a href="#">Альметьевск</a></li>
+                                        <li><a href="#">Ангарск</a></li>
+                                        <li><a href="#">Арзамас</a></li>
+                                        <li><a href="#">Армавир </a></li>
+                                        <li><a href="#">Артём</a></li>
+                                        <li><a href="#">Архангельск</a></li>
+                                        <li><a href="#">Астрахань</a></li>
+                                        <li><a href="#">Ачинск</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+  </div>
+</div>
 	<!-- Category Model End-->
 
 	<!-- Cart Sidebar Offset Start-->
@@ -219,7 +246,8 @@
                 <div class="select_location">
 					<div class="ui inline dropdown loc-title">
 						<div class="text">
-                            <a href="#" class="btn1" data-toggle="modal" data-target="#category_model" title="Categories"><i class="uil uil-location-point"></i>Екатеринбург</a>
+                            <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
+                                <i class="uil uil-location-point"></i>Екатеринбург</a>
 						</div>
                     </div>
                 </div>

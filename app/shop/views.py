@@ -38,6 +38,11 @@ def shop_arti_product(request, id):
     product=arti.objects.get(id=id)
     return render(request, 'arti/product.html', {'product':product})
 
+def shop_arti_career(reguest):
+    users = User.objects.all()
+    categories = Category.objects.order_by('number')
+    return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories})
+
 def shop_artiobschepit(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     object_id = str([i for i in str(request.path).split('/') if i][-1])

@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
+from panel.models import *
 
 def grid(request):
     users = User.objects.all()

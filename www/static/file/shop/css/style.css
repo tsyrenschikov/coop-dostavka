@@ -2736,6 +2736,7 @@ img.download-btn {
     margin: 0px;
     text-align: center;
 	cursor: pointer;
+	margin-top: 50px;
 }
 
 #sync2 .item {
@@ -2924,7 +2925,6 @@ img.download-btn {
 }
 
 .mrp-price {
-    text-decoration: line-through;
 	font-weight: 500;
 }
 

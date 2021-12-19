@@ -1,4 +1,3 @@
-import random
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.shortcuts import render
@@ -26,16 +25,18 @@ def shop_arti(request):
             product=name.objects.all().order_by('?')[:20]
             return render(request, 'arti/index.html', {'product':product})
 
-def shop_arti_product(request, id):
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    object_id = str([i for i in str(request.path).split('/') if i][-1])
+def shop_arti_grid(request):
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    object_id = str([i for i in str(request.path).split('/') if i][-2])
     for slug in shop:
-        if slug == object_id:
-            name = eval(slug)
-            product = name.objects.get(id=id)
-            return render(request, 'shop/arti/product.html', {'product':product})
-        else:
-            return render(request, 'shop/arti/product.html', {})
+        if slug==object_id:
+            name=eval(slug)
+            product=name.objects.all().order_by('id')[::-1][:20]
+            return render(request, 'arti/grid.html', {'product':product})
+
+def shop_arti_product(request, id):
+    product=arti.objects.get(id=id)
+    return render(request, 'arti/product.html', {'product':product})
 
 def shop_artiobschepit(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()

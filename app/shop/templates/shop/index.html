@@ -1,9 +1,18 @@
 {% extends 'shop/layouts/base.html' %}
-
+{% load static %}
 {% block title %}shop{% endblock %}
+{% block stylesheets %}
+    <!-- Style CSS -->
+<link  href="{% static 'file/shop/css/home/stylesheet.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/home/mmenu.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/home/icons.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/home/style.css' %}" id="colors" rel="stylesheet">
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
+{% endblock stylesheets %}
 {% block content %}
-	{% load static %}
 
   	<!-- Body Start -->
 		<div class="wrapper">
@@ -117,7 +126,28 @@
 		<!-- Featured Products Start -->
 		<div class="section145">
 			<div class="container">
-				<div class="row">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container_categories_box margin-top-5 margin-bottom-30">
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
+                          <h4>Продукты питания</h4>
+                            </a>
+                            <a href="{% url 'artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Chef-Hat"></i>
+                                <h4>Ресторан</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                                <h4>Напитки и еда</h4>
+                            </a>
+                            <a href="{% url 'arti' %}" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
+                                <h4>Мебель</h4>
+                            </a>
+                            <a href="{% url 'arti' %}" class="utf_category_small_box_part"> <i class="im im-icon-Old-Cassette"></i>
+                                <h4>Электроника</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
 					<div class="col-md-12">
 						<div class="main-title-tt">
 							<div class="main-title-left">
@@ -128,18 +158,16 @@
 					</div>
 					<div class="col-md-12">
 						<div class="owl-carousel featured-slider owl-theme">
+                            {% for s in s %}
 							<div class="item">
 								<div class="product-item">
 									<a href="#" class="product-img">
-										<img src="{% static 'file/shop/images/product/img-2.jpg' %}" alt="">
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
+										<img src="{{ s.image.url }}" width="150" height="150" alt="">
 									</a>
 									<div class="product-text-dt">
 										<p>В наличии</p>
-										<h4>Молоко</h4>
-										<div class="product-price">59 р.</div>
+										<h4>{{ s.name }}</h4>
+										<div class="product-price">{{ s.price }} р.</div>
 										<div class="qty-cart">
 											<div class="quantity buttons_added">
 												<input type="button" value="-" class="minus minus-btn">
@@ -151,6 +179,7 @@
 									</div>
 								</div>
 							</div>
+                            {% endfor %}
 						</div>
 					</div>
 				</div>

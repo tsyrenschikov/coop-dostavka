@@ -14,7 +14,11 @@ def shop(request):
     users = User.objects.all()
     local=Locations.objects.values('name')
     categories = Category.objects.order_by('number')
-    return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local})
+    shop=Shop.objects.values_list('slug', flat=True).distinct()
+    for i in shop:
+        name=eval(i)
+        s=name.objects.all().order_by('id')[::-1][:10]
+        return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local,'s':s})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()
@@ -34,6 +38,12 @@ def shop_arti_grid(request):
             product=name.objects.all().order_by('id')[::-1][:20]
             return render(request, 'arti/grid.html', {'product':product})
 
+#View products
+def shop_arti_products(request):
+    products= arti.objects.all()
+    return render(request, 'arti/products.html', {'products':products})
+
+#View product
 def shop_arti_product(request, id):
     product=arti.objects.get(id=id)
     return render(request, 'arti/product.html', {'product':product})

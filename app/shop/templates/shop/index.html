@@ -94,77 +94,31 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2>Категории</h2>
-							</div>
-						</div>
 					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel cate-slider owl-theme">
-                            {% for categories in categories %}
-                                {% if categories.status %}
-							<div class="item">
-								<a href="#" class="category-item">
+                <div class="product-list-view">
+                    <div class="row">
+                        {% for categories in categories %}
+                        {% if categories.status %}
+                        <div class="col-lg-31 col-md-61">
+							<div class="product-item mb-30" data-toggle="modal" data-target="#exampleModalCenter">
+                                <a href="#" class="product-img">
                                     {% if categories.image %}
-									<div class="cate-img">
-										<img src="{{ categories.image.url }}" alt="">
-									</div>
+									<img src="{{ categories.image.url }}" height="110vh" alt="">
                                     {% endif %}
-									<h4>{{ categories.name }}</h4>
+                                <h4>{{ categories.name }}</h4>
 								</a>
+								<div class="product-text-dt">
+								</div>
 							</div>
-                                {% endif %}
-                            {% endfor %}
 						</div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Categories End -->
-
-		<!-- Featured Products Start -->
-		<div class="section145">
-			<div class="container">
-                <div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2></h2>
-							</div>
-							<a href="#" class="see-more-btn">Весь список</a>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel featured-slider owl-theme">
-                            {% for s in s %}
-							<div class="item">
-								<div class="product-item">
-									<a href="#" class="product-img">
-										<img src="{{ s.image.url }}" width="150" height="150" alt="">
-									</a>
-									<div class="product-text-dt">
-										<p>В наличии</p>
-										<h4>{{ s.name }}</h4>
-										<div class="product-price">{{ s.price }} р.</div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-                            {% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Featured Products End -->
 	</div>
 	<!-- Body End -->
 {% include 'shop/layouts/footer.html' %}

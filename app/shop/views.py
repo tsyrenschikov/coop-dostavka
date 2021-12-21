@@ -46,7 +46,14 @@ def shop_arti_products(request):
 #View product
 def shop_arti_product(request, id):
     product=arti.objects.get(id=id)
-    return render(request, 'arti/product.html', {'product':product})
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    id1 = str([i for i in str(request.path).split('/') if i][-1])
+    id2 = str([i for i in str(request.path).split('/') if i][-2])
+    id3 = str([i for i in str(request.path).split('/') if i][-3])
+    for slug in shop:
+        if slug == id1 or slug == id2 or slug == id3:
+            shop_name = slug
+            return render(request, 'shop/product.html', {'product':product,'shop_name':shop_name})
 
 def shop_arti_career(reguest):
     users = User.objects.all()

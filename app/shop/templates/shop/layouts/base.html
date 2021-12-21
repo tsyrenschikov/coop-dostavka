@@ -67,159 +67,10 @@
   </div>
 <!-- Preloader End -->
 
-<!-- Category Model Start-->
-<div class="main-gambo-model modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4>Выберите свой город</h4>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-      <div class="modal-body">
-        <div class="autocomplete">
-          <input id="cityOutput" placeholder="Поиск города"/>
-        </div>
-        <ul class="top-cities">
-          <li><a href="#">Арти</a></li>
-          <li><a href="#">Богданович</a></li>
-        </ul>
-        <div class="modal-list">
-          <div class="cities">
-            <div class="city_list">
-              <ul class="main-item">
-                <li>А
-                  <ul class="sub-item">
-                    <li><a href="#">Абакан</a></li>
-                    <li><a href="#">Альметьевск</a></li>
-                    <li><a href="#">Ангарск</a></li>
-                    <li><a href="#">Арзамас</a></li>
-                    <li><a href="#">Армавир </a></li>
-                    <li><a href="#">Артём</a></li>
-                    <li><a href="#">Архангельск</a></li>
-                    <li><a href="#">Астрахань</a></li>
-                    <li><a href="#">Ачинск</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-	<!-- Category Model End-->
+  {% include 'shop/includes/select_city.html' %}
+  {% include 'shop/includes/auth_cart.html' %}
+  {% include 'shop/includes/cart.html' %}
 
-	<!-- Cart Sidebar Offset Start-->
-	<div class="bs-canvas bs-canvas-left position-fixed bg-cart h-100">
-		<div class="bs-canvas-header side-cart-header p-3 ">
-            <i сlass="uil uil-shopping-cart-alt"></i>
-			<div class="d-inline-block  main-cart-title uil uil-shopping-cart-alt">Корзина<span> 350 р. </span></div>
-			<button type="button" class="bs-canvas-close close" aria-label="Close"><i class="uil uil-multiply"></i></button>
-		</div>
-		<div class="bs-canvas-body">
-			<div class="cart-top-total">
-				<div class="cart-total-dil">
-					<h4>Супермаркет</h4>
-					<span>340 руб.</span>
-				</div>
-				<div class="cart-total-dil pt-2">
-					<h4>Расходы на доставку</h4>
-					<span>100 руб.</span>
-				</div>
-			</div>
-			<div class="side-cart-items">
-				<div class="cart-item">
-					<div class="cart-product-img">
-						<img src="{% static 'file/shop/images/product/img-1.jpg' %}" alt="">
-						<div class="offer-badge">6% OFF</div>
-					</div>
-					<div class="cart-text">
-						<h4>Список продуктов</h4>
-						<div class="cart-radio">
-							<ul class="kggrm-now">
-								<li>
-									<input type="radio" id="a1" name="cart1">
-									<label for="a1">0.50kg</label>
-								</li>
-								<li>
-									<input type="radio" id="a2" name="cart1">
-									<label for="a2">1kg</label>
-								</li>
-								<li>
-									<input type="radio" id="a3" name="cart1">
-									<label for="a3">2kg</label>
-								</li>
-								<li>
-									<input type="radio" id="a4" name="cart1">
-									<label for="a4">3kg</label>
-								</li>
-							</ul>
-						</div>
-						<div class="qty-group">
-							<div class="quantity buttons_added">
-								<input type="button" value="-" class="minus minus-btn">
-								<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-								<input type="button" value="+" class="plus plus-btn">
-							</div>
-							<div class="cart-item-price">100 руб. <span>150 руб.</span></div>
-						</div>
-
-						<button type="button" class="cart-close-btn"><i class="uil uil-multiply"></i></button>
-					</div>
-				</div>
-				<div class="cart-item">
-					<div class="cart-product-img">
-						<img src="{% static 'file/shop/images/product/img-2.jpg' %}" alt="">
-						<div class="offer-badge">6% OFF</div>
-					</div>
-					<div class="cart-text">
-						<h4>Product Title Here</h4>
-						<div class="cart-radio">
-							<ul class="kggrm-now">
-								<li>
-									<input type="radio" id="a5" name="cart2">
-									<label for="a5">0.50</label>
-								</li>
-								<li>
-									<input type="radio" id="a6" name="cart2">
-									<label for="a6">1kg</label>
-								</li>
-								<li>
-									<input type="radio" id="a7" name="cart2">
-									<label for="a7">2kg</label>
-								</li>
-							</ul>
-						</div>
-						<div class="qty-group">
-							<div class="quantity buttons_added">
-								<input type="button" value="-" class="minus minus-btn">
-								<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-								<input type="button" value="+" class="plus plus-btn">
-							</div>
-							<div class="cart-item-price">$24 <span>$30</span></div>
-						</div>
-						<button type="button" class="cart-close-btn"><i class="uil uil-multiply"></i></button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="bs-canvas-footer">
-			<div class="cart-total-dil saving-total ">
-				<h4>Общая экономия</h4>
-				<span>110 р.</span>
-			</div>
-			<div class="main-total-cart">
-				<h2>Общая сумма</h2>
-				<span>350 р.</span>
-			</div>
-			<div class="checkout-cart">
-				<a href="#" class="promo-code">Использовать бонусы</a>
-				<a href="#" class="cart-checkout-btn hover-btn">Оплатить</a>
-			</div>
-		</div>
-	</div>
-	<!-- Cart Sidebar Offsetl End-->
 
   <!-- Header Start -->
 	<header class="header clearfix">
@@ -358,11 +209,15 @@
                     </div>
 				</nav>
 				<div class="catey__icon">
-					<a href="#" class="cate__btn" data-toggle="modal" data-target="" onclick="openNav()"  title="Categories"><i class="uil uil-apps"></i></a>
+					<a href="#" class="cate__btn" data-toggle="modal" data-target="#category_model" onclick="openNav()"  title="Categories"><i class="uil uil-apps"></i></a>
 				</div>
 				<div class="header_cart order-1">
-					<a href="#" class="cart__btn hover-btn {% if user.is_authenticated %}pull-bs-canvas-left{% endif %}"
-					   title="Cart"><i class="uil uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins><i class="uil uil-angle-down"></i></a>
+                    {% if user.is_authenticated %}
+                        <a href="#" class="cart__btn hover-btn pull-bs-canvas-left" title="Cart"><i class="uil uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins></a>
+                    {% else %}
+                        <a href="#" class="cart__btn hover-btn" data-toggle="modal" data-target="#category_model" title="Cart"><i class="uil
+                        uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins></a>
+                    {% endif %}
 				</div>
             </div>
 		</div>

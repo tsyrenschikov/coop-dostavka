@@ -65,10 +65,12 @@
 												<li><button class="order-btn hover-btn">Купить сейчас</button></li>
 											</ul>
                                             {% else %}
-                                            <ul class="ordr-crt-share">
-												<li><button class="add-cart-btn hover-btn" data-toggle="modal" data-target="#category_model"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-												<li><button class="order-btn hover-btn" data-toggle="modal" data-target="#category_model">Купить сейчас</button></li>
-											</ul>
+                                                <form action="{% url 'login'%}">
+                                                <ul class="ordr-crt-share">
+                                                    <li><button class="add-cart-btn hover-btn" ><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
+                                                    <li><button class="order-btn hover-btn">Купить сейчас</button></li>
+                                                </ul>
+                                                </form>
                                             {% endif %}
 										</div>
 									</div>

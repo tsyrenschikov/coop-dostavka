@@ -1,4 +1,5 @@
- <!-- Category Model1 Start-->
+{% load static %}
+<!-- Category Model1 Start-->
 	<div id="category_model" class="header-cate-model main-gambo-model modal fade" tabindex="-1" role="dialog" aria-modal="false">
         <div class="modal-dialog category-area" role="document">
             <div class="category-area-inner">
@@ -9,13 +10,13 @@
                 </div>
                 <div class="category-model-content modal-content">
 					<div class="cate-header">
-						<h4>Select Category</h4>
+						<h4>Вам необходимо авторизоваться</h4>
 					</div>
                     <ul class="category-by-cat">
 						<li>
 							<a href="#" class="single-cat-item">
 								<div class="icon">
-									<img src="images/category/icon-1.svg" alt="">
+									<img src="{% static 'file/shop/images/category/icon-1.svg' %}" alt="">
 								</div>
 								<div class="text"> Fruits and Vegetables </div>
 							</a>

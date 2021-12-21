@@ -36,7 +36,7 @@ def shop_arti_grid(request):
         if slug==object_id:
             name=eval(slug)
             product=name.objects.all().order_by('id')[::-1][:20]
-            return render(request, 'arti/grid.html', {'product':product})
+            return render(request, 'shop/grid.html', {'product':product})
 
 #View products
 def shop_arti_products(request):

@@ -64,7 +64,7 @@ $(function () {
     var nhlTeams = ['{% for id,name in local %}','{{ id }}','{{ name }}','{% endfor %}'];
     var nbaTeams = [''];
 
-    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '' }}; });
+    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
     var teams = nhl.concat(nba);
 
@@ -74,7 +74,7 @@ $(function () {
         minChars: 1,
         onSelect: function (suggestion) {
             $('#selection').html('Вы выбрали: ' + suggestion.value + ', ' );
-            window.location.href = 'https://coop-dostavka.ru/arti',
+            window.location.href = 'https://coop-dostavka.ru/arti/',
             window.location(window.location.href);
         },
         showNoSuggestionNotice: true,

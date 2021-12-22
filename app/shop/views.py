@@ -12,13 +12,12 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    local=Locations.objects.values_list('name', flat=True).distinct()
+    local=Locations.objects.values_list('id', 'name').distinct()
     categories = Category.objects.order_by('number')
-    shop=Shop.objects.values_list('slug', flat=True).distinct()
-    for i in shop:
-        name=eval(i)
-        s=name.objects.all().order_by('id')[::-1][:10]
-        return render(request, 'shop/index.html', {'users':users, 'categories' : categories, 'local':local,'s':s})
+    for id, n in local:
+        i=id
+        nam=n
+        return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local,'i':i, 'nam':nam})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

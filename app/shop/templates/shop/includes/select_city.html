@@ -3,16 +3,15 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4>Выберите свой город</h4>
+        <h4>Населенный пункт доставки</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
         <div class="autocomplete">
-          <input id="cityOutput" placeholder="Поиск города"/>
+           <input type="text" name="country" id="autocomplete"/>
         </div>
+          <div id="selection"></div>
         <ul class="top-cities">
-          <li><a href="{% url 'arti' %}">Арти</a></li>
-          <li><a href="#">Богданович</a></li>
         </ul>
         <div class="modal-list">
         </div>

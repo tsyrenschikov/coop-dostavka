@@ -38,7 +38,7 @@
 #exampleModalCenter2 .modal-body {
   padding: 20px 50px;
   max-height: 500px;
-  overflow-y: auto;
+  overflow-y: revert;
 }
 #exampleModalCenter .modal-body .autocomplete,
 #exampleModalCenter2 .modal-body .autocomplete {

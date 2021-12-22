@@ -12,7 +12,7 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    local=Locations.objects.values('name')
+    local=Locations.objects.values_list('name', flat=True).distinct()
     categories = Category.objects.order_by('number')
     shop=Shop.objects.values_list('slug', flat=True).distinct()
     for i in shop:

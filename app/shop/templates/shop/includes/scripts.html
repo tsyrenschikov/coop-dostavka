@@ -18,10 +18,12 @@
     (function($){
   $(".top-cities li a, .sub-item li a").click(function(e){
     e.preventDefault();
-    $("#cityOutput").val($(this).text().toString());
+    $("#cityOutput").val($(this).text().toString())
+      window.location.href = 'https://coop-dostavka.ru/arti',
+        window.location(window.location.href);
   });
 
-  var cities = ["Москва","Санкт-Петербург","Казань","Нижний Новгород","Новосибирск","Абакан","Альметьевск","Ангарск","Арзамас","Армавир","Артём","Архангельск","Астрахань","Ачинск"];
+  var cities = ["Арти","Ачинск","Алинск","Богданович"];
 
 function autocomplete(inp, arr) {
   var currentFocus;

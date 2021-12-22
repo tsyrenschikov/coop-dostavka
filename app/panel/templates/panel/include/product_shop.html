@@ -17,7 +17,6 @@
 												<thead>
 													<tr>
 														<th>Имя</th>
-                                                        <th style="width:100px">Изображение</th>
                                                         <th style="width:100px">Цена</th>
                                                         <th style="width:100px">Цена со скидкой</th>
                                                         <th style="width:300px">Описание</th>
@@ -32,17 +31,6 @@
                                                         <td>
                                                             {{ products.name }}
                                                         </td>
-                                                        {% if products.image %}
-                                                            <td>
-                                                                <div class="cate-img">
-                                                                    <img src="{{ products.image.url }}" width="80" height="40" alt="">
-                                                                </div>
-                                                            </td>
-                                                        {% else %}
-                                                            <td>
-                                                                <div class="cate-img">Нет изображения</div>
-                                                            </td>
-                                                        {% endif %}
                                                         <td>{{ products.price }} .р</td>
                                                         <td>{{ products.discount }} .р</td>
                                                         <td>

@@ -34,12 +34,15 @@ def shop_arti(request):
 def shop_arti_grid(request):
     local = Locations.objects.values_list('id', 'name').distinct()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
-    object_id = str([i for i in str(request.path).split('/') if i][-2])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
     for slug in shop:
-        if slug==object_id:
-            name=eval(slug)
-            product=name.objects.all().order_by('id')[::-1][:20]
-            return render(request, 'shop/grid.html', {'product':product,'local':local})
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                product=name_slug.objects.all().order_by('id')[::-1][:20]
+                return render(request, 'shop/grid.html', {'product':product,'local':local,'name':name})
 
 #View products
 def shop_arti_products(request):
@@ -52,13 +55,14 @@ def shop_arti_product(request, id):
     local = Locations.objects.values_list('id', 'name').distinct()
     product=arti.objects.get(id=id)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    id1 = str([i for i in str(request.path).split('/') if i][-1])
-    id2 = str([i for i in str(request.path).split('/') if i][-2])
-    id3 = str([i for i in str(request.path).split('/') if i][-3])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
     for slug in shop:
-        if slug == id1 or slug == id2 or slug == id3:
-            shop_name = slug
-            return render(request, 'shop/product.html', {'product':product,'shop_name':shop_name,'local':local})
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                shop_name = slug
+                return render(request, 'shop/product.html', {'product':product,'shop_name':shop_name,'local':local,'name':name})
 
 def shop_arti_career(reguest):
     local = Locations.objects.values_list('id', 'name').distinct()

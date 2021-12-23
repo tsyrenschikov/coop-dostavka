@@ -85,18 +85,10 @@
 					<div class="ui inline dropdown loc-title">
 						<div class="text">
                             <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
-                                <i class="uil uil-location-point"></i>Екатеринбург</a>
+                                <i class="uil uil-location-point"></i>Выбор населенного пункта</a>
 						</div>
                     </div>
                 </div>
-                <div class="search120">
-					<div class="ui search">
-					  <div class="ui left icon input swdh10">
-						<input class="prompt srch10" type="text" placeholder="Поиск продуктов..">
-						<i class='uil uil-search-alt icon icon1'></i>
-					  </div>
-					</div>
-				</div>
                 <div class="search120">
                 <p style="color: red">Режим разработки</p>
                 </div>
@@ -194,10 +186,8 @@
 						<div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
 							<ul class="navbar-nav main_nav align-self-stretch">
 								<li class="nav-item"><a href="/" class="{% if request.path == '/' %}active{% endif %} nav-link " title="Home">Главная</a></li>
-								<li
-										class="nav-item">
-                                    <a href="{% url 'grid' %}" class="{% if request.path == '/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
-								<li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Карьера</a></li>
+								<li class="nav-item">
+                                <li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Карьера</a></li>
 								<li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
                                     связь</a></li>
 

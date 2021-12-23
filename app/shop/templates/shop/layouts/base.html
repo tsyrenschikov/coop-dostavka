@@ -81,14 +81,15 @@
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 					<a href="/"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
 				</div>
-                <div class="select_location">
-					<div class="ui inline dropdown loc-title">
-						<div class="text">
-                            <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
-                                <i class="uil uil-location-point"></i>Выбор населенного пункта</a>
-						</div>
-                    </div>
-                </div>
+                <div class="search120">
+					<div class="ui search">
+					  <div class="ui left icon input swdh10 autocomplete">
+                          <input type="text" class="prompt srch10"   placeholder="Выберите адрес доставки"  name="country" id="autocomplete"/>
+                          <i class='uil icon uil-location-point'></i>
+                      </div>
+                        <div id="selection"></div>
+				</div>
+				</div>
                 <div class="search120">
                 <p style="color: red">Режим разработки</p>
                 </div>

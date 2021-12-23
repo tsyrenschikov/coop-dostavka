@@ -557,7 +557,7 @@ input[type=text] {
 .search120 {
     float: left;
     margin-left: 34px;
-	width: 25%;
+	width: 30%;
 }
 
 .main_logo img {
@@ -599,9 +599,10 @@ i.icon1 {
 .ui[class*="left icon"].swdh10.input>input {
     padding-left:3.2em!important;
     padding-right: 1em!important;
-	font-size: 14px;
+	font-size: 16px;
     font-weight: 500;
 	border: 0 !important;
+	height: 70px;
 }
 
 .ui.search .prompt {

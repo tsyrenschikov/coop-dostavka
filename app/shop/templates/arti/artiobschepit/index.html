@@ -1,35 +1,83 @@
-{% extends 'shop/layouts/base.html' %}
+{% extends 'shop/layouts/base_arti.html' %}
+{% load static %}
 
-{% block title %}shop{% endblock %}
+{% block title %}arti{% endblock %}
+{% block stylesheets %}
+    <!-- Style CSS -->
+<link  href="{% static 'file/shop/css/arti/stylesheet.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/arti/mmenu.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/arti/icons.css' %}" rel="stylesheet">
+<link  href="{% static 'file/shop/css/arti/style.css' %}" id="colors" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
+{% endblock stylesheets %}
 
 {% block content %}
-	{% load static %}
+
+
   	<!-- Body Start -->
 		<div class="wrapper">
-            <!-- Categories Start -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="headline_part centered margin-top-75"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container_categories_box margin-top-5 margin-bottom-30">
+                            <a href="{% url 'shop_arti_products' %}" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
+                                <h4>Продукты питания и <br>бытовая химия для дома</h4>
+                            </a>
+                            <a href="{% url 'shop_artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                                <h4>Готовая еда <br>(продукция собственного производства)</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
+                                <h4>Промышленные товары</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured Products Start -->
             <div class="section145">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="main-title-tt">
                                 <div class="main-title-left">
-                                    <h2>Категории</h2>
+                                    <h2></h2>
                                 </div>
+                                <a href="#" class="see-more-btn">Весь список</a>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="owl-carousel cate-slider owl-theme">
-                                {% for subcat in subcat %}
-                                    {% if categories.status %}
+                            <div class="owl-carousel featured-slider owl-theme">
+                                {% for product in product %}
+                                    {% if product.status %}
                                         <div class="item">
-                                            <a href="#" class="category-item">
-                                                {% if subcat.image %}
-                                                    <div class="cate-img">
-                                                        <img src="{{ subcat.image.url }}" alt="">
+                                            <div class="product-item">
+                                                <a href="/arti/product/{{ product.id }}" class="product-img">
+                                                    {% if product.image %}
+                                                        <img src="{{ product.image.url }}" width="250" height="180" alt="">
+                                                    {% endif %}
+                                                </a>
+                                                <div class="product-text-dt">
+                                                    <p><span>В наличии</span></p>
+                                                    <h5>{{ product.name}}</h5>
+                                                    <div class="product-price">{{ product.price }} р.</div>
+                                                    <div class="qty-cart">
+                                                        <div class="quantity buttons_added">
+                                                            <input type="button" value="-" class="minus minus-btn">
+                                                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                                                            <input type="button" value="+" class="plus plus-btn">
+                                                        </div>
+                                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
                                                     </div>
-                                                {% endif %}
-                                                <h4>{{ subcat.name }}</h4>
-                                            </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -38,59 +86,9 @@
                     </div>
                 </div>
             </div>
-		<!-- Categories End -->
-
-		<!-- Featured Products Start -->
-		<div class="section145">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2></h2>
-							</div>
-							<a href="#" class="see-more-btn">Весь список</a>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel featured-slider owl-theme">
-                            {% for product in product %}
-                            {% if product.status %}
-                            <div class="item">
-								<div class="product-item">
-									<a href="#" class="product-img">
-										{% if product.image %}
-                                            <img src="{{ product.image.url }}" width="250" height="180" alt="">
-                                        {% endif %}
-										<div class="product-absolute-options">
-											<span class="like-icon" title="wishlist"></span>
-										</div>
-									</a>
-									<div class="product-text-dt">
-										<p><span>В наличии</span></p>
-										<h5>{{ product.name}}</h5>
-										<div class="product-price">{{ product.price }} р.</div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-                            {% endif %}
-                                {% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Featured Products End -->
-	</div>
-	<!-- Body End -->
+            <!-- Featured Products End -->
+        </div>
+    <!-- Body End -->
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

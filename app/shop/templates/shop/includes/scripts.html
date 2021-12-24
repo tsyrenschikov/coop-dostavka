@@ -65,7 +65,7 @@ $(function () {
     var nhlTeams = ['{% for id,name in local %}','{{ id }}','{{ name }}','{% endfor %}'];
     var nbaTeams = [''];
 
-    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '' } }; });
+    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '{{ name }}' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
     var teams = nhl.concat(nba);
 

@@ -31,7 +31,7 @@
                             <a href="{% url 'shop_arti_products' %}" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
                                 <h4>Продукты питания и <br>бытовая химия для дома</h4>
                             </a>
-                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                            <a href="{% url 'shop_artiobschepit' %}" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
                                 <h4>Готовая еда <br>(продукция собственного производства)</h4>
                             </a>
                             <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
@@ -63,9 +63,6 @@
                                                     {% if product.image %}
                                                         <img src="{{ product.image.url }}" width="250" height="180" alt="">
                                                     {% endif %}
-                                                    <div class="product-absolute-options">
-                                                        <span class="like-icon" title="wishlist"></span>
-                                                    </div>
                                                 </a>
                                                 <div class="product-text-dt">
                                                     <p><span>В наличии</span></p>

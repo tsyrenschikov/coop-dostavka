@@ -21,7 +21,7 @@ def shop(request):
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas=Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for slug in shop:
         for name_a, slug_a in areas:
@@ -32,7 +32,7 @@ def shop_arti(request):
                 return render(request, 'arti/index.html', {'product':product,'local':local,'name':name})
 
 def shop_arti_grid(request):
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -46,13 +46,13 @@ def shop_arti_grid(request):
 
 #View products
 def shop_arti_products(request):
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     products= arti.objects.all().order_by('?')[:20]
     return render(request, 'arti/products.html', {'products':products,'local':local})
 
 #View product
 def shop_arti_product(request, id):
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     product=arti.objects.get(id=id)
     products=arti.objects.all().order_by('?')[:10]
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -66,13 +66,13 @@ def shop_arti_product(request, id):
                 return render(request, 'shop/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
 
 def shop_arti_career(reguest):
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local})
 
 def shop_artiobschepit(request):
-    local = Locations.objects.values_list('id', 'name').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])

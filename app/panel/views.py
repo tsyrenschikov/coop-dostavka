@@ -182,42 +182,48 @@ def edit_location(request,id):
 
         local = Locations.objects.get(id = id)
         days = Days.objects.values('name','id').order_by('id')
+        shops=Shop.objects.values('name','slug').order_by('name')
         if request.method == "POST":
             local.name = request.POST.get("name")
             local.delivery_price = request.POST.get("delivery_price")
             local.delivery_price_min = request.POST.get("delivery_price_min")
+            local.slug=request.POST.get("slug")
             local.save()
         if request.method == 'POST':
             local = Locations.objects.get(id = id)
             local.days = request.POST.getlist('day')
             local.save(update_fields=['days'])
-            return render(request, "panel/edit_ok_location.html", {'local': local,'days':days})
+            return render(request, "panel/edit_ok_location.html", {'local': local,'days':days,'shops':shops})
         else:
-            return render(request, "panel/edit_location.html", {"local": local,'days':days})
+            return render(request, "panel/edit_location.html", {"local": local,'days':days,'shops':shops})
     except local.DoesNotExist:
-        return render(request ,'panel/edit_error_location.html', {'local' : local,'days':days})
+        return render(request ,'panel/edit_error_location.html', {'local' : local,'days':days,'shops':shops})
 
 
 #Населенный пункт добавить
 def add_location(request):
     alert = {
         "name": request.GET.get('name', ''),
+        "local" : Locations.objects.all(),
+        "shops" : Shop.objects.all(),
     }
     local = Locations.objects.all()
+    shops=Shop.objects.all()
     if request.method == 'POST':
         name = request.POST.get('name')
         delivery_price = request.POST.get('delivery_price')
         delivery_price_min = request.POST.get('delivery_price_min')
         days=request.POST.getlist('day')
+        slug=request.POST.get('slug')
 
 
         if Locations.objects.filter(name=request.POST['name']).exists():
             alert['name'] = "Название населенного пункта уже существует"
             return render(request, 'panel/add_location.html', alert)
         else:
-            Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,days=days)
-            return render(request, 'panel/add_ok_location.html', {'local': local})
-    return render(request, 'panel/add_location.html', {'local':local})
+            Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,days=days,slug=slug)
+            return render(request, 'panel/add_ok_location.html', {'local': local,'shops':shops})
+    return render(request, 'panel/add_location.html', {'local':local,'shops':shops})
 
 #Успешное добавления территории
 def add_ok_location(request):

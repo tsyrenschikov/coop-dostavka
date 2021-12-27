@@ -17,13 +17,14 @@
 							<div class="col-lg-5 col-md-6">
 								<div class="card card-static-2 mb-30">
 									<div class="card-title-2">
-										<h4>Добавить населенный пункт</h4>
+										<h4>Добавить населенный пункт</h4></br>
 									</div>
 									<div class="card-body-table">
                                         <form method="post">
                                         {% csrf_token %}
 										<div class="news-content-right pd-20">
 											<div class="form-group">
+                                                <p style="color: darkgreen;font-size:0.9em">Чтобы добавить населенный пункт убедитесь, что вы создали магазин * </p>
 												<label class="form-label">Название населенного пункта*</label>
 												<input type="text" name="name" class="form-control" placeholder="Название населенного пункта" required="">
 											</div>
@@ -33,15 +34,13 @@
                                             {{ name }}
                                             </div>
                                             {% endif %}
+                                            <label class="form-label">Магазин доставки*</label>
                                             <div class="form-group">
-                                                <label class="form-label">Выбрать ссылку на сайт*</label>
-                                                 <div class="ui">
-                                                <select name="day"   class="multiple selection dropdown">
-                                                    <option></option>
-
-                                                    <option value="">1</option>
+                                                <select  name="slug" value="{{ shop.slug }}" class="form-control">
+                                                    {% for shop in shops %}
+                                                        <option value="{{ shop.slug }}">{{ shop.name }}</option>
+                                                    {% endfor %}
                                                 </select>
-                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Плата за доставку*</label>

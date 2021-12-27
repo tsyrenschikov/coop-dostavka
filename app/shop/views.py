@@ -137,3 +137,70 @@ def shop_pokrovskoe_career(reguest):
     categories = Category.objects.order_by('number')
     return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local})
 
+
+# Shop rezh
+def shop_rezh(request):
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    areas=Area.objects.values_list('name', 'slug').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug==address_str and slug==slug_a:
+                name=name_a
+                name_slug=eval(slug)
+                product=name_slug.objects.all().order_by('?')[:20]
+                return render(request, 'rezh/index.html', {'product':product,'local':local,'name':name})
+
+def shop_rezh(request):
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    areas=Area.objects.values_list('name', 'slug').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug==address_str and slug==slug_a:
+                name=name_a
+                name_slug=eval(slug)
+                product=name_slug.objects.all().order_by('?')[:20]
+                return render(request, 'rezh/index.html', {'product':product,'local':local,'name':name})
+
+def shop_rezh_grid(request):
+    local=Locations.objects.values_list('name','slug').distinct()
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                product=name_slug.objects.all().order_by('id')[::-1][:20]
+                return render(request, 'rezh/grid.html', {'product':product,'local':local,'name':name})
+
+#View products
+def shop_rezh_products(request):
+    local=Locations.objects.values_list('name','slug').distinct()
+    products= arti.objects.all().order_by('?')[:20]
+    return render(request, 'rezh/products.html', {'products':products,'local':local})
+
+#View product
+def shop_rezh_product(request, id):
+    local=Locations.objects.values_list('name','slug').distinct()
+    product=rezh.objects.get(id=id)
+    products=rezh.objects.all().order_by('?')[:10]
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                shop_name = slug
+                return render(request, 'rezh/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
+
+def shop_rezh_career(reguest):
+    local=Locations.objects.values_list('name','slug').distinct()
+    users = User.objects.all()
+    categories = Category.objects.order_by('number')
+    return render(reguest, 'rezh/career.html', {'users':users, 'categories' : categories,'local':local})

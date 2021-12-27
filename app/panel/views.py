@@ -210,6 +210,7 @@ def add_location(request):
         delivery_price_min = request.POST.get('delivery_price_min')
         days=request.POST.getlist('day')
 
+
         if Locations.objects.filter(name=request.POST['name']).exists():
             alert['name'] = "Название населенного пункта уже существует"
             return render(request, 'panel/add_location.html', alert)

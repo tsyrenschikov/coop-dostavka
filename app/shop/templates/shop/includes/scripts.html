@@ -22,50 +22,10 @@ $(function () {
 
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
 
-    // Setup jQuery ajax mock:
-    $.mockjax({
-        url: '*',
-        responseTime: 2000,
-        response: function (settings) {
-            var query = settings.data.query,
-                queryLowerCase = query.toLowerCase(),
-                re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi'),
-                suggestions = $.grep(countriesArray, function (country) {
-                     // return country.value.toLowerCase().indexOf(queryLowerCase) === 0;
-                    return re.test(country.value);
-                }),
-                response = {
-                    query: query,
-                    suggestions: suggestions
-                };
-
-            this.responseText = JSON.stringify(response);
-        }
-    });
-
-    // Initialize ajax autocomplete:
-    $('#autocomplete-ajax').autocomplete({
-        // serviceUrl: '/autosuggest/service/url',
-        lookup: countriesArray,
-        lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
-            var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
-            return re.test(suggestion.value);
-        },
-        onSelect: function(suggestion) {
-            $('#selction-ajax').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
-        },
-        onHint: function (hint) {
-            $('#autocomplete-ajax-x').val(hint);
-        },
-        onInvalidateSelection: function() {
-            $('#selction-ajax').html('You selected: none');
-        }
-    });
-
-    var nhlTeams = ['{% for id,name in local %}','{{ id }}','{{ name }}','{% endfor %}'];
+    var nhlTeams = ['{% for name,slug in local %}','{{ name }}','{{ slug }}','{% endfor %}'];
     var nbaTeams = [''];
 
-    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: '{{ name }}' } }; });
+    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
     var teams = nhl.concat(nba);
 
@@ -74,9 +34,15 @@ $(function () {
         lookup: teams,
         minChars: 1,
         onSelect: function (suggestion) {
-            $('#selection').html('Вы выбрали: ' + suggestion.value + ', ' );
-            window.location.href = 'https://coop-dostavka.ru/arti/',
-            window.location(window.location.href);
+            $('#selection').html('Вы выбрали: ' + suggestion.value );
+            let city_local;
+            city_local= suggestion.value;
+            for (var j = 0; j < nhlTeams.length; j++) {
+                if (city_local === nhlTeams[j]) {
+                    window.location.href = 'https://coop-dostavka.ru/' + nhlTeams[j+1],
+                    window.location(window.location.href);
+                    }
+                }
         },
         showNoSuggestionNotice: true,
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',

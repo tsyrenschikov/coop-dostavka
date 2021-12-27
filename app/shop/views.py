@@ -14,10 +14,9 @@ def manager(user, group_name):
 
 def shop(request):
     users = User.objects.all()
-    local=Locations.objects.values_list('id', 'name').distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
     categories = Category.objects.order_by('number')
-    return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local,'areas':areas})
+    return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

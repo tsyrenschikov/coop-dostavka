@@ -31,4 +31,7 @@ urlpatterns = [
     path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),
     path('zajkovskoe/grid/', views.shop_zajkov_grid, name='shop_zajkov_grid'),
     path('zajkovskoe/career/', views.shop_zajkov_career, name='shop_zajkov_career'),
+
+    # Shop bogdan
+    path('bogdan/', views.shop_bogdan, name='bogdan'),
     ]

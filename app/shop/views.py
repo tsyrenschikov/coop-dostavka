@@ -208,15 +208,23 @@ def shop_rezh_career(reguest):
 # Shop zajkovskoe
 def shop_zajkov(request):
     product = zajkovskoe.objects.all().order_by('id')[:20]
-    return render(request, 'zajkovskoe/index.html', {'product': product})
+    address=str([i for i in str(request.path).split('/') if i][0])
+    areas=Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    for name_a, slug in areas:
+        if address==slug:
+            name=name_a
+            return render(request, 'zajkovskoe/index.html', {'product': product,'name':name,'local':local,'address':address})
 
 def shop_zajkov(request):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     product=zajkovskoe.objects.all().order_by('?')[:20]
     return render(request, 'zajkovskoe/index.html', {'product':product})
 
 def shop_zajkov_grid(request):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     product = zajkovskoe.objects.all().order_by('id')[::-1][:20]
-    return render(request, 'zajkovskoe/grid.html', {'product':product})
+    return render(request, 'zajkovskoe/grid.html', {'product':product,'local':local})
 
 #View products
 def shop_zajkov_products(request):
@@ -226,12 +234,27 @@ def shop_zajkov_products(request):
 
 #View product
 def shop_zajkov_product(request, id):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     product=zajkovskoe.objects.get(id=id)
     products=zajkovskoe.objects.all().order_by('?')[:10]
-    return render(request, 'zajkovskoe/product.html', {'product':product,'products':products})
+    return render(request, 'zajkovskoe/product.html', {'product':product,'products':products,'local':local})
 
 def shop_zajkov_career(reguest):
     local=Locations.objects.values_list('name','slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'zajkovskoe/career.html', {'users':users, 'categories' : categories,'local':local})
+
+# Shop bogdan
+def shop_bogdan(request):
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
+    areas=Area.objects.values_list('name', 'slug').distinct()
+    local=Locations.objects.values_list('name','slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug==address_str and slug==slug_a:
+                name=name_a
+                name_slug=eval(slug)
+                product=name_slug.objects.all().order_by('?')[:20]
+                return render(request, 'bogdan/index.html', {'product':product,'local':local,'name':name})

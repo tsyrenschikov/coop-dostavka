@@ -21,7 +21,14 @@ urlpatterns = [
     # Shop rezh
     path('rezh/', views.shop_rezh, name='rezh'),
     path('rezh/products/', views.shop_rezh_products, name='shop_rezh_products'),
-    path('rezh/product/<int:id>/', views.shop_rezh_product, name='shop_arti_product'),
+    path('rezh/product/<int:id>/', views.shop_rezh_product, name='shop_rezh_product'),
     path('rezh/grid/', views.shop_rezh_grid, name='shop_rezh_grid'),
     path('rezh/career/', views.shop_rezh_career, name='shop_rezh_career'),
+
+    # Shop zajkovskoe
+    path('zajkovskoe/', views.shop_zajkov, name='zajkovskoe'),
+    path('zajkovskoe/products/', views.shop_zajkov_products, name='shop_zajkov_products'),
+    path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),
+    path('zajkovskoe/grid/', views.shop_zajkov_grid, name='shop_zajkov_grid'),
+    path('zajkovskoe/career/', views.shop_zajkov_career, name='shop_zajkov_career'),
     ]

@@ -181,7 +181,7 @@ def shop_rezh_grid(request):
 #View products
 def shop_rezh_products(request):
     local=Locations.objects.values_list('name','slug').distinct()
-    products= arti.objects.all().order_by('?')[:20]
+    products= rezh.objects.all().order_by('?')[:20]
     return render(request, 'rezh/products.html', {'products':products,'local':local})
 
 #View product
@@ -204,3 +204,34 @@ def shop_rezh_career(reguest):
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'rezh/career.html', {'users':users, 'categories' : categories,'local':local})
+
+# Shop zajkovskoe
+def shop_zajkov(request):
+    product = zajkovskoe.objects.all().order_by('id')[:20]
+    return render(request, 'zajkovskoe/index.html', {'product': product})
+
+def shop_zajkov(request):
+    product=zajkovskoe.objects.all().order_by('?')[:20]
+    return render(request, 'zajkovskoe/index.html', {'product':product})
+
+def shop_zajkov_grid(request):
+    product = zajkovskoe.objects.all().order_by('id')[::-1][:20]
+    return render(request, 'zajkovskoe/grid.html', {'product':product})
+
+#View products
+def shop_zajkov_products(request):
+    local=Locations.objects.values_list('name','slug').distinct()
+    products= zajkovskoe.objects.all().order_by('?')[:20]
+    return render(request, 'zajkovskoe/products.html', {'products':products,'local':local})
+
+#View product
+def shop_zajkov_product(request, id):
+    product=zajkovskoe.objects.get(id=id)
+    products=zajkovskoe.objects.all().order_by('?')[:10]
+    return render(request, 'zajkovskoe/product.html', {'product':product,'products':products})
+
+def shop_zajkov_career(reguest):
+    local=Locations.objects.values_list('name','slug').distinct()
+    users = User.objects.all()
+    categories = Category.objects.order_by('number')
+    return render(reguest, 'zajkovskoe/career.html', {'users':users, 'categories' : categories,'local':local})

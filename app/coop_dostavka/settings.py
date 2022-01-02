@@ -33,6 +33,7 @@ ROOT_HOSTCONF = 'coop_dostavka.hosts'
 PARENT_HOST = 'coop-dostavka.ru'
 DEFAULT_HOST = 'www'
 
+CART_SESSION_ID = 'cart'
 
 # Application definition
 
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'django_hosts',
     'copyright',
+    'cart',
 ]
 
 SITE_ID=1

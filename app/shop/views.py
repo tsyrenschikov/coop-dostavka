@@ -46,9 +46,17 @@ def shop_arti_grid(request):
 
 #View products
 def shop_arti_products(request):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
     local=Locations.objects.values_list('name','slug').distinct()
-    products= arti.objects.all().order_by('?')[:20]
-    return render(request, 'arti/products.html', {'products':products,'local':local})
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                products= name_slug.objects.all().order_by('?')[:20]
+                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local})
 
 #View product
 def shop_arti_product(request, id):

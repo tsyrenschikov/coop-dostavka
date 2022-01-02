@@ -68,6 +68,7 @@
 <!-- Preloader End -->
 
   {% include 'shop/includes/select_city.html' %}
+  {% include 'shop/includes/cart.html' %}
 
 
   <!-- Header Start -->
@@ -199,7 +200,7 @@
                     {% if user.is_authenticated %}
                         <a href="#" class="cart__btn hover-btn pull-bs-canvas-left" title="Cart"><i class="uil uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins></a>
                     {% else %}
-                        <a href="#" class="cart__btn hover-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="uil
+                        <a href="{% url 'login' %}" class="cart__btn hover-btn"><i class="uil
                         uil-shopping-cart-alt"></i><span>Корзина</span><ins>0</ins></a>
                     {% endif %}
 				</div>

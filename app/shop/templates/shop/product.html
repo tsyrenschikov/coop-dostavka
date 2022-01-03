@@ -59,19 +59,14 @@
 													</div>
 												</li>
 											</ul>
-                                            {% if user.is_authenticated %}
 											<ul class="ordr-crt-share">
+                                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                    {{ cart_product_form }}
+                                                        {% csrf_token %}
 												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-												<li><button class="order-btn hover-btn">Купить сейчас</button></li>
-											</ul>
-                                            {% else %}
-                                                <form action="{% url 'login'%}">
-                                                <ul class="ordr-crt-share">
-                                                    <li><button class="add-cart-btn hover-btn" ><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
                                                     <li><button class="order-btn hover-btn">Купить сейчас</button></li>
-                                                </ul>
                                                 </form>
-                                            {% endif %}
+                                            </ul>
 										</div>
 									</div>
 								</div>

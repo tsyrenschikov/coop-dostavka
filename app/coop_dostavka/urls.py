@@ -25,6 +25,7 @@ urls.handler502 = views.error_502
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shop.urls')),
+    path('cart/', include(('cart.urls','cart'), namespace='cart')),
     path('dashboard/', include('dashboard.urls')),
     path('accounts/', include('accounts.urls')),
     path('grid/', include('grid.urls')),

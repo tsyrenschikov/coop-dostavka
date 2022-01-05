@@ -1,0 +1,82 @@
+{% extends 'shop/layouts/base_arti.html' %}
+{% load thumbnail %}
+
+{% block title %}product{% endblock %}
+
+{% block content %}
+	{% load static %}
+
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/{{ shop_name }}/artiobschepit/">Главная </a></li>
+								<li class="breadcrumb-item"><a href="/{{ shop_name }}/artiobschepit/{{ grid }}">Новое поступление</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Описание продукта</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="product-dt-view">
+							<div class="row">
+								<div class="col-lg-4 col-md-4">
+									<div id="sync1"  class="owl-theme">
+                                        {% if product.image %}
+										<div class="item">
+											{% thumbnail product.image "250x250" crop="center" as im %}
+                                                <img src="{{ im.url }}"alt="">
+                                            {% endthumbnail %}
+										</div>
+                                        {% endif %}
+									</div>
+								</div>
+								<div class="col-lg-8 col-md-8">
+									<div class="product-dt-right">
+										<h2>{{ product.name }}</h2>
+										<div class="no-stock">
+											<p class="pd-no">Продукт No.<span>{{ product.id }}</span></p>
+										</div>
+										<p class="pp-descp">{{ product.description }}</p>
+										<div class="product-group-dt">
+											<ul>
+												<li><div class="main-price color-discount">Цена</div></li>
+                                                <li><div class="main-price mrp-price">{{ product.price }} р</div></li>
+											</ul>
+											<ul class="gty-wish-share">
+												<li>
+													<div class="qty-product">
+														<div class="quantity buttons_added">
+															<input type="button" value="-" class="minus minus-btn">
+															<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+															<input type="button" value="+" class="plus plus-btn">
+														</div>
+													</div>
+												</li>
+											</ul>
+											<ul class="ordr-crt-share">
+												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
+                                                    <li><button class="order-btn hover-btn">Купить сейчас</button></li>
+                                            </ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+{% include 'shop/includes/featured_artiobschepit.html' %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

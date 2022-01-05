@@ -1,4 +1,5 @@
 {% extends 'shop/layouts/base_rezh.html' %}
+{% load thumbnail %}
 
 {% block title %}product{% endblock %}
 
@@ -82,49 +83,7 @@
 			</div>
 		</div>
     </div>
-
-		<!-- Featured Products Start -->
-		<div class="section145">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2>Популярные продукты</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel featured-slider owl-theme">
-                            {% for products in products %}
-							<div class="item">
-								<div class="product-item">
-                                    <a href="/rezh/product/{{ products.id }}" class="product-img">
-									<img src="{{ products.image.url }}" height="1%" alt="">
-								</a>
-									<div class="product-text-dt">
-										<h4>{{ products.name }}</h4>
-										<div class="product-price">{{ products.price }} р.</div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-                            {% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Featured Products End -->
-
-
+{% include 'shop/includes/featured_rezh.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

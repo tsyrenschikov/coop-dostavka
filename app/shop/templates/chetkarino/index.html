@@ -1,5 +1,6 @@
 {% extends 'shop/layouts/base_chetkarino.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}chetkarino{% endblock %}
 {% block stylesheets %}
@@ -45,13 +46,13 @@
                                         <div class="item">
                                             <div class="product-item">
                                                 <a href="/chetkarino/product/{{ product.id }}" class="product-img">
-                                                    {% if product.image %}
-                                                        <img src="{{ product.image.url }}" width="250" height="180" alt="">
-                                                    {% endif %}
+                                                    {% thumbnail product.image "300x300" crop="center" as im %}
+                                                        <img src="{{ im.url }}"alt="">
+                                                     {% endthumbnail %}
                                                 </a>
                                                 <div class="product-text-dt">
                                                     <p><span>В наличии</span></p>
-                                                    <h5>{{ product.name}}</h5>
+                                                     <h5 class="cuttedText">{{ product.name}}</h5>
                                                     <div class="product-price">{{ product.price }} р.</div>
                                                     <div class="qty-cart">
                                                         <div class="quantity buttons_added">

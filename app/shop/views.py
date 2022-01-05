@@ -1,27 +1,16 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
-from django.shortcuts import render
 from django import template
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
-from cart.forms import *
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 
 register = template.Library()
 
 @register.filter(name='manager')
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
-
-def product_detail(request, id, slug):
-    product = get_object_or_404(Product,
-                                id=id,
-                                slug=slug,
-                                available=True)
-    cart_product_form = CartAddProductForm()
-    return render(request, 'cart/detail.html', {'product': product,
-                                                        'cart_product_form': cart_product_form})
 
 def shop(request):
     users = User.objects.all()

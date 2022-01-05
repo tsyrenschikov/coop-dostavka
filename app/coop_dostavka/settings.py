@@ -33,7 +33,6 @@ ROOT_HOSTCONF = 'coop_dostavka.hosts'
 PARENT_HOST = 'coop-dostavka.ru'
 DEFAULT_HOST = 'www'
 
-CART_SESSION_ID = 'cart'
 
 # Application definition
 
@@ -52,17 +51,17 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'panel.apps.PanelConfig',
     'accounts.apps.AccountsConfig',
+    'sorl.thumbnail',
     'django_hosts',
     'copyright',
-    'cart',
 ]
 
 SITE_ID=1
 
 COPY_START_YEAR = 2021
 
-
 AUTH_USER_MODEL = 'accounts.CustomUser'
+THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [1.5, 2]
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',

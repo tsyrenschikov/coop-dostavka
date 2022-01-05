@@ -60,12 +60,8 @@
 												</li>
 											</ul>
 											<ul class="ordr-crt-share">
-                                                <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                                    {{ cart_product_form }}
-                                                        {% csrf_token %}
 												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
                                                     <li><button class="order-btn hover-btn">Купить сейчас</button></li>
-                                                </form>
                                             </ul>
 										</div>
 									</div>

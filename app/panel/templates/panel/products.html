@@ -2,6 +2,7 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% load thumbnail %}
         <main>
                     <div class="container-fluid">
                         <h2 class="mt-30 page-title">Продукты</h2>
@@ -49,7 +50,9 @@
                                                         {% if products.image %}
                                                             <td>
                                                                 <div class="cate-img">
-                                                                    <img src="{{ products.image.url  }}" width="80" height="40" alt="">
+                                                                    {% thumbnail products.image '80x80' crop='center' as im %}
+                                                                        <img src="{{ im.url  }}" alt="">
+                                                                    {% endthumbnail %}
                                                                 </div>
                                                             </td>
                                                         {% else %}

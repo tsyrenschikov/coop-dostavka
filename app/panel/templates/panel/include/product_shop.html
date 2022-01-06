@@ -1,4 +1,4 @@
-
+{% load thumbnail %}
 							<div class="col-lg-5 col-md-6">
 								<div class="bulk-section mt-30">
 									<div class="search-by-name-input">
@@ -17,6 +17,7 @@
 												<thead>
 													<tr>
 														<th>Имя</th>
+                                                        <th>Изображение</th>
                                                         <th style="width:100px">Цена</th>
                                                         <th style="width:100px">Цена со скидкой</th>
                                                         <th style="width:300px">Описание</th>
@@ -30,6 +31,11 @@
                                                     <tr>
                                                         <td>
                                                             {{ products.name }}
+                                                        </td>
+                                                        <td>
+                                                            {% thumbnail products.image '80x80' crop='center' as im %}
+                                                            <img src="{{ im.url }}">
+                                                            {% endthumbnail %}
                                                         </td>
                                                         <td>{{ products.price }} .р</td>
                                                         <td>{{ products.discount }} .р</td>

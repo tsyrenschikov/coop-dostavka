@@ -2,6 +2,7 @@
 {% block title %}Менеджер{% endblock %}
 {% block content %}
     {% load static %}
+    {% load thumbnail %}
 
                 <main>
                     <div class="container-fluid">
@@ -91,9 +92,9 @@
 															{{ products.name}}
 														</td>
 														<td>
-                                                            {% if products.image %}
-                                                                <img src="{{ products.image.url  }}" width="60" height="55" alt="">
-                                                            {% endif %}
+                                                            {% thumbnail products.image '60x60' crop='center' as im %}
+                                                                <img src="{{ im.url  }}" alt="">
+                                                            {% endthumbnail %}
 														</td>
 														<td>
                                                             {{ products.price }} .p

@@ -4,12 +4,8 @@
 
 {% block title %}chetkarino{% endblock %}
 {% block stylesheets %}
-    <!-- Style CSS -->
-<link  href="{% static 'file/shop/css/arti/stylesheet.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/mmenu.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/icons.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/style.css' %}" id="colors" rel="stylesheet">
-
+        <!-- Style CSS -->
+{% include 'shop/includes/style.html' %}
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">

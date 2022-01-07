@@ -1,14 +1,11 @@
 {% extends 'shop/layouts/base_zajkovskoe.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}zajkovskoe{% endblock %}
 {% block stylesheets %}
-    <!-- Style CSS -->
-<link  href="{% static 'file/shop/css/arti/stylesheet.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/mmenu.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/icons.css' %}" rel="stylesheet">
-<link  href="{% static 'file/shop/css/arti/style.css' %}" id="colors" rel="stylesheet">
-
+        <!-- Style CSS -->
+{% include 'shop/includes/style.html' %}
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
@@ -53,7 +50,7 @@
                                                 </a>
                                                 <div class="product-text-dt">
                                                     <p><span>В наличии</span></p>
-                                                    <h5>{{ product.name}}</h5>
+                                                    <h5 class="cuttedText">{{ product.name}}</h5>
                                                     <div class="product-price">{{ product.price }} р.</div>
                                                     <div class="qty-cart">
                                                         <div class="quantity buttons_added">

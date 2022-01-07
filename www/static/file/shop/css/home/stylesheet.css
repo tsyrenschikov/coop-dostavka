@@ -206,7 +206,7 @@
 }
 @media (min-width: 1240px) {
 .utf_category_small_box_part {
-	width:calc(100% * (1/5) - 20px);
+	width:calc(100% * (1/3) - 20px);
 }
 }
 

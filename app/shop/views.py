@@ -56,7 +56,7 @@ def shop_arti_products(request):
                 name = name_a
                 name_slug = eval(slug)
                 products= name_slug.objects.all().order_by('?')[:20]
-                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local})
+                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local })
 
 #View product
 def shop_arti_product(request, id):

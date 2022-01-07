@@ -4,6 +4,7 @@
 
 {% block content %}
 	{% load static %}
+    {% load thumbnail %}
 
 	<div class="wrapper">
 		<div class="gambo-Breadcrumb">
@@ -59,19 +60,12 @@
 													</div>
 												</li>
 											</ul>
-                                            {% if user.is_authenticated %}
-											<ul class="ordr-crt-share">
-												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-												<li><button class="order-btn hover-btn">Купить сейчас</button></li>
-											</ul>
-                                            {% else %}
-                                                <form action="{% url 'login'%}">
-                                                <ul class="ordr-crt-share">
-                                                    <li><button class="add-cart-btn hover-btn" ><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-                                                    <li><button class="order-btn hover-btn">Купить сейчас</button></li>
-                                                </ul>
-                                                </form>
-                                            {% endif %}
+                                            <ul class="ordr-crt-share">
+												<li>
+                                                    <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
+                                                    <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
+                                                </li>
+                                            </ul>
 										</div>
 									</div>
 								</div>
@@ -100,10 +94,12 @@
 							<div class="item">
 								<div class="product-item">
                                     <a href="/zajkovskoe/product/{{ products.id }}" class="product-img">
-									<img src="{{ products.image.url }}" height="1%" alt="">
+									{% thumbnail products.image "300x300" crop="center" as im %}
+                                        <img src="{{ im.url }}"alt="">
+                                    {% endthumbnail %}
 								</a>
 									<div class="product-text-dt">
-										<h4>{{ products.name }}</h4>
+										<h4 class="cuttedText">{{ product.name}}</h4>
 										<div class="product-price">{{ products.price }} р.</div>
 										<div class="qty-cart">
 											<div class="quantity buttons_added">
@@ -124,7 +120,7 @@
 		</div>
 		<!-- Featured Products End -->
 
-
+{% include 'shop/includes/cart_modal.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

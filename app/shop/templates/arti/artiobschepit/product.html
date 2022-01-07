@@ -63,7 +63,10 @@
 												</li>
 											</ul>
 											<ul class="ordr-crt-share">
-												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
+												<li>
+                                                    <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
+                                                    <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
+                                                </li>
                                                     <li><button class="order-btn hover-btn">Купить сейчас</button></li>
                                             </ul>
 										</div>
@@ -76,6 +79,7 @@
 			</div>
 		</div>
     </div>
+{% include 'shop/includes/cart_modal.html' %}
 {% include 'shop/includes/featured_artiobschepit.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}

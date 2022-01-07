@@ -42,7 +42,7 @@ def shop_arti_grid(request):
                 name = name_a
                 name_slug = eval(slug)
                 product=name_slug.objects.all().order_by('id')[::-1][:20]
-                return render(request, 'shop/grid.html', {'product':product,'local':local,'name':name})
+                return render(request, 'arti/grid.html', {'product':product,'local':local,'name':name})
 
 #View products
 def shop_arti_products(request):
@@ -71,7 +71,7 @@ def shop_arti_product(request, id):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 shop_name = slug
-                return render(request, 'shop/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
+                return render(request, 'arti/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
 
 def shop_arti_career(reguest):
     local=Locations.objects.values_list('name','slug').distinct()

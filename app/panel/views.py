@@ -146,9 +146,10 @@ def panel(request):
             for c,n,slug_p in shops:
                 if  request.user.id ==c and u == c :
                     name_p= eval(slug_p)
+                    name_u=n
                     products=name_p.objects.all().order_by('id')[::-1][:3]
                     count=name_p.objects.count()
-                    return render(request, 'panel/index.html', {'products':products,'count':count})
+                    return render(request, 'panel/index.html', {'products':products,'count':count,'name_u':name_u})
                 elif request.user.is_superuser:
                     for c, n, slug_p in shops:
                         name_p = eval(slug_p)

@@ -51,20 +51,11 @@
 												<li><div class="main-price color-discount">Цена</div></li>
                                                 <li><div class="main-price mrp-price">{{ product.price }} р</div></li>
 											</ul>
-											<ul class="gty-wish-share">
-												<li>
-													<div class="qty-product">
-														<div class="quantity buttons_added">
-															<input type="button" value="-" class="minus minus-btn">
-															<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-															<input type="button" value="+" class="plus plus-btn">
-														</div>
-													</div>
-												</li>
-											</ul>
 											<ul class="ordr-crt-share">
-												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-                                                    <li><button class="order-btn hover-btn">Купить сейчас</button></li>
+												<li>
+                                                    <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
+                                                    <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
+                                                </li>
                                             </ul>
 										</div>
 									</div>
@@ -76,6 +67,7 @@
 			</div>
 		</div>
     </div>
+{% include 'shop/includes/cart_modal.html' %}
 {% include 'shop/includes/featured_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}

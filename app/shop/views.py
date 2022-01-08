@@ -12,6 +12,9 @@ register = template.Library()
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
 
+def cart(request):
+    return render(request, 'shop/cart.html', {})
+
 def shop(request):
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
@@ -55,7 +58,7 @@ def shop_arti_products(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products= name_slug.objects.all().order_by('?')[:20]
+                products= name_slug.objects.all().order_by('name')
                 return render(request, 'arti/products.html', {'products':products,'name':name,'local':local })
 
 #View product

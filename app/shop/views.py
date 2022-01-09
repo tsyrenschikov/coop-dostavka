@@ -21,6 +21,19 @@ def shop(request):
     categories = Category.objects.order_by('number')
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
 
+#Shop Arti
+
+def cart_arti(request):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                return render(request, 'arti/cart.html', {'local':local,'name':name})
+
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas=Area.objects.values_list('name', 'slug').distinct()

@@ -8,20 +8,6 @@
 
 	<!-- Body Start -->
 	<div class="wrapper">
-		<div class="gambo-Breadcrumb">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="{% url 'arti' %}">Главная</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Новое поступление</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="all-product-grid">
 			<div class="container">
 				<div class="row">
@@ -46,12 +32,10 @@
 									<h4 class="cuttedText">{{  product.name }}</h4>
 									<div class="product-price">{{ product.price }} .р</div>
 									<div class="qty-cart">
-										<div class="quantity buttons_added">
-											<input type="button" value="-" class="minus minus-btn">
-											<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-											<input type="button" value="+" class="plus plus-btn">
-										</div>
-										<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+										<div class="qty-cart">
+                                            <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
+                                                <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                        </div>
 									</div>
 								</div>
 							</div>
@@ -64,7 +48,7 @@
 		</div>
 	</div>
 	<!-- Body End -->
-{% include 'shop/includes/cart_modal.html' %}
+{% include 'shop/includes/cart_modal_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}s

@@ -40,11 +40,10 @@
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
                                                     <select class="form-control">
-                                                        <option selected>--Выберите населенный пункт--</option>
-                                                        <option id="mydelivery" value="1">Пример 1</option>
-                                                        <option id="mydelivery" value="2">Пример 2</option>
-                                                        <option id="mydelivery" value="3">Пример 3</option>
-                                                        <option id="mydelivery" value="4">Пример 4</option>
+                                                        <option selecte>--Выберите населенный пункт--</option>
+                                                        {% for delivery in delivery %}
+                                                            <option id="mydelivery" value="5">{{ delivery }}</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                             </div>

@@ -101,7 +101,7 @@ var shoppingCart = (function() {
   obj.totalDelivery = function() {
     var totalDelivery = 0;
     for(var item in cart) {
-      totalDelivery = document.getElementById("mydelivery").value;
+      totalDelivery  = (document.getElementById('mydelivery').value);
     }
     return totalDelivery;
   }

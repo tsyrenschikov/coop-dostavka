@@ -21,7 +21,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Имя*</label>
-                                                    <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" placeholder="Введите имя" required="">
+                                                    <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" placeholder="Имя" required="">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -40,23 +40,25 @@
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
                                                     <select class="form-control">
-                                                        {% for local in delivery %}
-                                                            <option id="mydelivery" value="4">{{ local }}</option>
-                                                        {% endfor %}
+                                                        <option selected>--Выберите населенный пункт--</option>
+                                                        <option id="mydelivery" value="1">Пример 1</option>
+                                                        <option id="mydelivery" value="2">Пример 2</option>
+                                                        <option id="mydelivery" value="3">Пример 3</option>
+                                                        <option id="mydelivery" value="4">Пример 4</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Улица, дом, кв*</label>
-                                                    <input type="text" class="form-control" name="address" value="" placeholder="Укажите улицу, дом и кв" required="">
+                                                    <input type="text" class="form-control" name="address" value="" placeholder="улица, дом и кв" required="">
                                                 </div>
                                             </div>
                                             <div class="modal-body">
                                                 <table class="show-cart table">
                                                 </table>
                                                 <div><h5>Доставка: <span class="total-delivery" name="delivery"></span> р.</h5></div>
-                                            </br>
+                                                </br>
                                                 <div><h5>Общая стоимость: <span class="total-cart" name="total_order"></span> р.</h5></div>
                                             </div>
                                             <div class="col-lg-12">

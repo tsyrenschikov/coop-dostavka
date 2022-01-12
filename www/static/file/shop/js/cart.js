@@ -44,7 +44,7 @@ var shoppingCart = (function() {
         return;
       }
     }
-    var item = new Item(name, price, count,delivery);
+    var item = new Item(name, price, count);
     cart.push(item);
     saveCart();
   }
@@ -138,6 +138,7 @@ var shoppingCart = (function() {
   // removeItemFromCartAll : Function
   // clearCart : Function
   // countCart : Function
+  // Total delivery : Function
   // totalCart : Function
   // listCart : Function
   // saveCart : Function
@@ -181,9 +182,9 @@ function displayCart() {
       +  "</tr>";
   }
   $('.show-cart').html(output);
-  $('.total-delivery').html(shoppingCart.totalDelivery());
   $('.total-cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
+  $('.total-delivery').html(shoppingCart.totalDelivery());
 }
 
 // Delete item button

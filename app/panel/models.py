@@ -393,8 +393,8 @@ class offers(models.Model):
 
 class orders(models.Model):
     name=ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
-    address_name=ForeignKey('Locations', null=True, blank=True, on_delete=CASCADE, verbose_name='Населенный пункт')
-    address = models.TextField(max_length=300,null=True,verbose_name='Улица и дом')
+    address_city=ForeignKey('Locations', null=True, blank=True, on_delete=CASCADE, verbose_name='Населенный пункт')
+    address_street = models.TextField(max_length=300,null=True,verbose_name='Улица и дом')
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
     time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
     sum_order = models.PositiveIntegerField(null=True, verbose_name='Сумма заказа')

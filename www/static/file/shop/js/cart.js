@@ -9,10 +9,11 @@ var shoppingCart = (function() {
   cart = [];
 
   // Constructor
-  function Item(name, price, count) {
+  function Item(name, price, count,delivery) {
     this.name = name;
     this.price = price;
     this.count = count;
+    this.delivery = delivery;
   }
 
   // Save cart
@@ -43,7 +44,7 @@ var shoppingCart = (function() {
         return;
       }
     }
-    var item = new Item(name, price, count);
+    var item = new Item(name, price, count,delivery);
     cart.push(item);
     saveCart();
   }
@@ -94,6 +95,15 @@ var shoppingCart = (function() {
       totalCount += cart[item].count;
     }
     return totalCount;
+  }
+
+   // Total delivery
+  obj.totalDelivery = function() {
+    var totalDelivery = 0;
+    for(var item in cart) {
+      totalDelivery = document.getElementById("mydelivery").value;
+    }
+    return totalDelivery;
   }
 
   // Total cart
@@ -171,6 +181,7 @@ function displayCart() {
       +  "</tr>";
   }
   $('.show-cart').html(output);
+  $('.total-delivery').html(shoppingCart.totalDelivery());
   $('.total-cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
 }

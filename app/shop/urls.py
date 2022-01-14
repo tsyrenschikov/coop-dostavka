@@ -30,6 +30,7 @@ urlpatterns = [
     path('rezh/career/', views.shop_rezh_career, name='shop_rezh_career'),
 
     # Shop zajkovskoe
+    path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
     path('zajkovskoe/', views.shop_zajkov, name='zajkovskoe'),
     path('zajkovskoe/products/', views.shop_zajkov_products, name='shop_zajkov_products'),
     path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),

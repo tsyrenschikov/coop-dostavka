@@ -246,6 +246,19 @@ def shop_rezh_career(reguest):
     return render(reguest, 'rezh/career.html', {'users':users, 'categories' : categories,'local':local})
 
 # Shop zajkovskoe
+
+def cart_zajkovskoe(request):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    delivery = [i for i, slug in local if slug == address_str]
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                return render(request, 'zajkovskoe/cart.html', {'local':local,'name':name,'delivery':delivery})
+
 def shop_zajkov(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()

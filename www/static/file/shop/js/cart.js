@@ -9,7 +9,7 @@ var shoppingCart = (function() {
   cart = [];
 
   // Constructor
-  function Item(name, price, count,delivery) {
+  function Item(name, price, count, delivery) {
     this.name = name;
     this.price = price;
     this.count = count;
@@ -21,10 +21,11 @@ var shoppingCart = (function() {
     sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
   }
 
-    // Load cart
+  // Load cart
   function loadCart() {
     cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
   }
+
   if (sessionStorage.getItem("shoppingCart") != null) {
     loadCart();
   }
@@ -36,10 +37,10 @@ var shoppingCart = (function() {
   var obj = {};
 
   // Add to cart
-  obj.addItemToCart = function(name, price, count) {
-    for(var item in cart) {
-      if(cart[item].name === name) {
-        cart[item].count ++;
+  obj.addItemToCart = function (name, price, count) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
+        cart[item].count++;
         saveCart();
         return;
       }
@@ -49,8 +50,8 @@ var shoppingCart = (function() {
     saveCart();
   }
   // Set count from item
-  obj.setCountForItem = function(name, count) {
-    for(var i in cart) {
+  obj.setCountForItem = function (name, count) {
+    for (var i in cart) {
       if (cart[i].name === name) {
         cart[i].count = count;
         break;
@@ -58,23 +59,23 @@ var shoppingCart = (function() {
     }
   };
   // Remove item from cart
-  obj.removeItemFromCart = function(name) {
-      for(var item in cart) {
-        if(cart[item].name === name) {
-          cart[item].count --;
-          if(cart[item].count === 0) {
-            cart.splice(item, 1);
-          }
-          break;
+  obj.removeItemFromCart = function (name) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
+        cart[item].count--;
+        if (cart[item].count === 0) {
+          cart.splice(item, 1);
         }
+        break;
+      }
     }
     saveCart();
   }
 
   // Remove all items from cart
-  obj.removeItemFromCartAll = function(name) {
-    for(var item in cart) {
-      if(cart[item].name === name) {
+  obj.removeItemFromCartAll = function (name) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
         cart.splice(item, 1);
         break;
       }
@@ -83,15 +84,15 @@ var shoppingCart = (function() {
   }
 
   // Clear cart
-  obj.clearCart = function() {
+  obj.clearCart = function () {
     cart = [];
     saveCart();
   }
 
   // Count cart
-  obj.totalCount = function() {
+  obj.totalCount = function () {
     var totalCount = 0;
-    for(var item in cart) {
+    for (var item in cart) {
       totalCount += cart[item].count;
     }
     return totalCount;
@@ -99,29 +100,30 @@ var shoppingCart = (function() {
 
    // Total delivery
   obj.totalDelivery = function() {
-    var totalDelivery = 0;
-    for(var item in cart) {
-      totalDelivery  = (document.getElementById('mydelivery').value);
+    var totalDelivery=0;
+    for (var i in cart) {
+      //totalDelivery += cart[i].price * cart[i].count;
+      totalDelivery = $("#city option:selected").value();
     }
-    return totalDelivery;
+    return Number(totalDelivery.toFixed(2));
   }
 
   // Total cart
-  obj.totalCart = function() {
+  obj.totalCart = function () {
     var totalCart = 0;
-    for(var item in cart) {
+    for (var item in cart) {
       totalCart += cart[item].price * cart[item].count;
     }
     return Number(totalCart.toFixed(2));
   }
 
   // List cart
-  obj.listCart = function() {
+  obj.listCart = function () {
     var cartCopy = [];
-    for(i in cart) {
+    for (i in cart) {
       item = cart[i];
       itemCopy = {};
-      for(p in item) {
+      for (p in item) {
         itemCopy[p] = item[p];
 
       }
@@ -138,8 +140,8 @@ var shoppingCart = (function() {
   // removeItemFromCartAll : Function
   // clearCart : Function
   // countCart : Function
-  // Total delivery : Function
   // totalCart : Function
+  //totalDelivery : Function
   // listCart : Function
   // saveCart : Function
   // loadCart : Function

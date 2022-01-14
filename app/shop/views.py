@@ -28,11 +28,11 @@ def cart_arti(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
+    delivery = [i for i, slug in local if slug == address_str]
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
                 name = name_a
-                delivery=[i for i,slug in local if slug == address_str]
                 return render(request, 'arti/cart.html', {'local':local,'name':name,'delivery':delivery})
 
 def shop_arti(request):

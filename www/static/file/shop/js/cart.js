@@ -9,11 +9,10 @@ var shoppingCart = (function() {
   cart = [];
 
   // Constructor
-  function Item(name, price, count, delivery) {
+  function Item(name, price, count,) {
     this.name = name;
     this.price = price;
     this.count = count;
-    this.delivery = delivery;
   }
 
   // Save cart
@@ -45,7 +44,7 @@ var shoppingCart = (function() {
         return;
       }
     }
-    var item = new Item(name, price, count);
+    var item = new Item(name, price, count,);
     cart.push(item);
     saveCart();
   }
@@ -98,16 +97,6 @@ var shoppingCart = (function() {
     return totalCount;
   }
 
-   // Total delivery
-  obj.totalDelivery = function() {
-    var totalDelivery=0;
-    for (var i in cart) {
-      //totalDelivery += cart[i].price * cart[i].count;
-      totalDelivery = $("#city option:selected").value();
-    }
-    return Number(totalDelivery.toFixed(2));
-  }
-
   // Total cart
   obj.totalCart = function () {
     var totalCart = 0;
@@ -115,6 +104,12 @@ var shoppingCart = (function() {
       totalCart += cart[item].price * cart[item].count;
     }
     return Number(totalCart.toFixed(2));
+  }
+
+  // Total delivery
+  obj.totalDelivery = function() {
+    var totalDelivery = $('#select option:selected').val();
+    return Number(totalDelivery);
   }
 
   // List cart

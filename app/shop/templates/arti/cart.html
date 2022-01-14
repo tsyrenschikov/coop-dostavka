@@ -39,12 +39,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
-                                                    <select class="form-control" id="city" >
+                                                    <select class="form-control" id="select">
                                                         <option selected value="0">--Выберите населенный пункт--</option>
                                                         {% for delivery in delivery %}
                                                             <option value="455">{{ delivery }}</option>
                                                         {% endfor %}
                                                     </select>
+                                                <div></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -72,12 +73,6 @@
                 </div>
             </div>
     </div>
-    <script>
-$('#js-button').click(function(){
-	var value = $('#city option:selected').text();
-	$('#js-result').html('Результат: ' + value);
-});
-</script>
 {% include 'shop/includes/cart_modal_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}

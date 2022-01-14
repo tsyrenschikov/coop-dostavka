@@ -12,6 +12,7 @@
     <script src="{% static 'file/shop/js/script_tel.js' %}"></script>
     <script src="{% static 'file/shop/js/user_password.js' %}"></script>
     <script src="{% static 'file/shop/js/jquery_custom.js' %}"></script>
+
 <!--Cart-->
 <script src="{% static 'file/shop/js/cart.js' %}"></script>
 
@@ -25,6 +26,18 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+<script>
+$( "select" )
+  .change(function() {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).val() + " ";
+    });
+    $( "span1" ).text( str );
+  })
+  .trigger( "change" );
+</script>
 
 <!-- Start search-->
 <script>

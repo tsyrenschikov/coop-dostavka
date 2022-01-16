@@ -106,10 +106,29 @@ var shoppingCart = (function() {
     return Number(totalCart.toFixed(2));
   }
 
-  // Total delivery
-  obj.totalDelivery = function() {
-    var totalDelivery = $('#select option:selected').val();
-    return Number(totalDelivery);
+
+   // Delivery
+  $( "select" )
+  .change(function() {
+    var str = "";
+    delivery="";
+    $( "select option:selected" ).each(function() {
+        str += $( this ).val() + " ";
+    });
+    delivery_e=Number(str)
+    $( "delivery" ).text( delivery_e );
+  })
+  .trigger( "change" );
+
+
+  // Total cart Delivery
+  obj.totalCartDelivery = function () {
+    var totalCartDelivery = 0;
+    var delivery = 0;
+    for (var item in cart) {
+      totalCartDelivery += cart[item].price * cart[item].count;
+    }
+    return Number(totalCartDelivery);
   }
 
   // List cart
@@ -181,7 +200,8 @@ function displayCart() {
   $('.show-cart').html(output);
   $('.total-cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
-  $('.total-delivery').html(shoppingCart.totalDelivery());
+  $('.delivery').html(shoppingCart.Delivery());
+  $('.total-cart-delivery').html(shoppingCart.totalCartDelivery());
 }
 
 // Delete item button

@@ -39,7 +39,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
-                                                    <select class="form-control" id="select">
+                                                    <select class="form-control item" required="" >
                                                         <option selected value="0">--Выберите населенный пункт--</option>
                                                         {% for delivery in delivery %}
                                                             <option value="455">{{ delivery }}</option>
@@ -59,9 +59,9 @@
                                                 </table>
                                                 <div><h5>Стоимость товаров: <span class="total-cart" name="total_order"></span> р.</h5></div>
                                                 </br>
-                                                <div><h5>Доставка: <span_delivery class="total-delivery" name="delivery"></span_delivery> р.</h5></div>
+                                                <div><h5>Доставка: <delivery name="delivery"></delivery> р.</h5></div>
                                                 </br>
-                                                <div><h5>Общая стоимость корзины: <span class="total-cart" name="total_order"></span> р.</h5></div>
+                                                <div><h5>Общая стоимость корзины: <span class="total-cart-delivery"></span> р.</h5></div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <input class="save-btn hover-btn clear-cart" type="submit" value="Отправить">

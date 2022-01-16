@@ -121,14 +121,23 @@ var shoppingCart = (function() {
   .trigger( "change" );
 
 
-  // Total cart Delivery
-  obj.totalCartDelivery = function () {
-    var totalCartDelivery = 0;
-    var delivery = 0;
-    for (var item in cart) {
-      totalCartDelivery += cart[item].price * cart[item].count;
+  // Total + Delivery
+  obj.totalDelivery = function () {
+    $("select")
+        .change(function () {
+          var str = "";
+          delivery = "";
+          $("select option:selected").each(function () {
+            str += $(this).val() + " ";
+          });
+          var totaldelivery = 0;
+          for (var item in cart) {
+            totaldelivery += cart[item].price * cart[item].count;
     }
-    return Number(totalCartDelivery);
+          delivery = Number(str)
+          $("total-delivery").text(delivery+totaldelivery);
+        })
+        .trigger("change");
   }
 
   // List cart
@@ -200,8 +209,7 @@ function displayCart() {
   $('.show-cart').html(output);
   $('.total-cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
-  $('.delivery').html(shoppingCart.Delivery());
-  $('.total-cart-delivery').html(shoppingCart.totalCartDelivery());
+  $('.total-delivery').html(shoppingCart.totalDelivery());
 }
 
 // Delete item button

@@ -2,7 +2,7 @@
 
 {% block title %}Оформление заказа{% endblock %}
 {% block content %}
-    <div class="wrapper">
+    <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="container">
 		<div class="all-product-grid">
             <div class="contact-title-1">
@@ -41,8 +41,10 @@
                                                     <label class="form-label">Населенный пункт*</label>
                                                     <select class="form-control item" required="" >
                                                         <option selected value="0">--Выберите населенный пункт--</option>
-                                                        {% for delivery in delivery %}
-                                                            <option value="455">{{ delivery }}</option>
+                                                        {% for name,slug, dp,dpm in local_d %}
+                                                            {% if slug == address_str %}
+                                                                <option value="{{ dp }}">{{ name }}</option>
+                                                            {% endif %}
                                                         {% endfor %}
                                                     </select>
                                                 <div></div>
@@ -63,9 +65,14 @@
                                                 </br>
                                                 <div><h5>Общая стоимость корзины: <total-delivery name="total-delivery"></total-delivery> р.</h5></div>
                                             </div>
-                                            <div class="col-lg-12">
-                                                <input class="save-btn hover-btn clear-cart" type="submit" value="Отправить">
+                                        <div class="col-lg-12">
+                                            <div class="example-block">
+                                                <input type="checkbox" required="" name="check" id="personaldata">
+                                                <label for="personaldata" data-toggle="modal" data-target="#">Я прочитал и согласен с<a href="#"> условиями доставки</a></label>
+                                            </br>
+                                                <input  class="save-btn hover-btn" type="submit" id="submit" value="Подтвердить заказ" disabled>
                                             </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </form>

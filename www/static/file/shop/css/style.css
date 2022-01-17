@@ -6893,3 +6893,17 @@ textarea {
     font-weight: 400;
     text-align: center;
 }
+
+.green-button {
+	background: #0bd264;
+	border: 2px solid #fff;
+	padding: 5px 10px 3px;
+	font-size: 1.1rem;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 10px auto;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}

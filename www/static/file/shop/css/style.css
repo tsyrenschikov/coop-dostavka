@@ -83,6 +83,23 @@ time, mark, audio, video; {
 .plic {
     text-indent: 1.5em; /* Отступ первой строки */
     text-align: justify; /* Выравнивание по ширине */
+	color: #000033;
+	font-family: "Times New Roman";
+	font-size: 16px;
+   }
+.list {
+    text-align: justify; /* Выравнивание по ширине */
+	color: #000033;
+	font-family: "Times New Roman";
+	font-size: 16px;
+   }
+.plic-list {
+    text-indent: 2em; /* Отступ первой строки */
+    text-align: justify; /* Выравнивание по ширине */
+	color: #000033;
+	font-family: "Times New Roman";
+	font-size: 16px;
+	list-style-type:disc;
    }
 
 /* Preloader*/

@@ -1169,9 +1169,9 @@ i.icon1 {
 
 /* --- Category Mode --- */
 
-.cate-header1 {
+.cate-header {
     background: #2b2f4c;
-    color: #fff;
+    color: #ffffff;
     padding: 15px 20px;
 }
 
@@ -1179,6 +1179,8 @@ i.icon1 {
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
+	color: #ffffff;
+	text-align: center;
 }
 
 .category-by-cat {
@@ -6892,18 +6894,4 @@ textarea {
 	font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-align: center;
-}
-
-.green-button {
-	background: #0bd264;
-	border: 2px solid #fff;
-	padding: 5px 10px 3px;
-	font-size: 1.1rem;
-	color: #fff;
-	text-transform: uppercase;
-	margin: 10px auto;
-}
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-	-webkit-appearance: button;
-	cursor: pointer;
 }

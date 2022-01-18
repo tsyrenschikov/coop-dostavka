@@ -135,7 +135,7 @@ var shoppingCart = (function() {
             totaldelivery += cart[item].price * cart[item].count;
     }
           delivery = Number(str)
-          $("total-delivery").text(delivery+totaldelivery);
+          $("total-delivery").text(delivery+Number(totaldelivery.toFixed(1)));
         })
         .trigger("change");
   }

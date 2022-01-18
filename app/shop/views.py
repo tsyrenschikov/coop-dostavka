@@ -24,6 +24,7 @@ def shop(request):
 #Shop Arti
 
 def cart_arti(request):
+    shop=Shop.objects.all()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min').distinct()
@@ -32,7 +33,7 @@ def cart_arti(request):
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
                 name = name_a
-                return render(request, 'arti/cart.html', {'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+                return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

@@ -24,7 +24,7 @@ def shop(request):
 #Shop Arti
 
 def cart_arti(request):
-    shop=Shop.objects.all()
+    shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min').distinct()

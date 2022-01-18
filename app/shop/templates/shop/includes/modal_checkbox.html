@@ -9,9 +9,13 @@
                 </div>
                 <div class="category-model-content modal-content">
                     <div class="cate-header">
-                        <h4>Публичная оферта {{ name }}</h4>
+                        {% for name,ogrn,uraddress,times,days,slug in shop %}
+                            {% if slug == address_str %}
+                           <h4>Публичная оферта "{{ name }}" </h4>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body scrollbox">
                         <p>{% include 'shop/includes/pagelic.html' %}</p>
                     </div>
                     <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">

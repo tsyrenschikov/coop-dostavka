@@ -80,6 +80,11 @@ time, mark, audio, video; {
 	vertical-align: baseline;
 }
 
+.plic {
+    text-indent: 1.5em; /* Отступ первой строки */
+    text-align: justify; /* Выравнивание по ширине */
+   }
+
 /* Preloader*/
 /*background-image: linear-gradient(to right, rgba(91, 230, 132, 0.93), rgba(245, 195, 44, 0.75));*/
 .preloader {

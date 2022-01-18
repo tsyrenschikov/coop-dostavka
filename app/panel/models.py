@@ -51,7 +51,12 @@ class Area(models.Model):
 class Shop(models.Model):
     customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+' ,verbose_name='Пользователь')
     area = ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
-    name = models.CharField(max_length=200, db_index=True, verbose_name='Название магазина')
+    name = models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название магазина')
+    ogrn = models.CharField(max_length=200, db_index=True,null=True, verbose_name='ОГРН')
+    phone = models.CharField(max_length=30,null=True,verbose_name='Номер телефона')
+    days = models.JSONField(default=list, null=True, blank=True, verbose_name='Дни доставки')
+    times = models.JSONField(default=list, null=True, blank=True, verbose_name='Время доставки')
+    uraddress = models.CharField(max_length=200, db_index=True,null=True, verbose_name='Юридический адрес магазина')
     status = models.BooleanField(default=True, verbose_name='Статус активный')
     name_id = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Краткое название')
     slug = models.SlugField(max_length=200, null=True, db_index=True)

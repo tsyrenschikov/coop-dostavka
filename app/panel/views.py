@@ -679,7 +679,7 @@ def shops(request):
 def shop_view(request, id):
     object_id = int([i for i in str(request.path).split('/') if i][-1])#Взять из строки число
     users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
-                                'customuser__org', 'area_id', 'area__name').get(id=id)
+                                'customuser__org', 'area_id', 'area__name','ogrn','uraddress','times','days').get(id=id)
     id = Shop.objects.values_list('id','slug').distinct()
     for i, slug in id:
         if i==object_id:

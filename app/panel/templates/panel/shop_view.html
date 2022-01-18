@@ -93,6 +93,32 @@
                                                     <span class="right-dt" style="color: green">Не назначена</span>
                                                     {% endif %}
 												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">ОГРН</span>
+                                                    {% if users.ogrn %}
+													<span class="right-dt">{{ users.ogrn }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Не назначен</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Юридический адрес</span>
+                                                    {% if users.uraddress %}
+													<span class="right-dt">{{ users.uraddress }}</span>
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Не назначен</span>
+                                                    {% endif %}
+												</div>
+                                                <div class="shopowner-dt-list">
+													<span class="left-dt">Часы работы</span>
+                                                    {% if users.times %}
+                                                        {% for time in users.times %}
+													        <span class="right-dt">{{ time }}</span>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                    <span class="right-dt" style="color: green">Не назначен</span>
+                                                    {% endif %}
+												</div>
 												<div class="shopowner-dt-list">
 													<span class="left-dt">Статус</span>
                                                     {% if users.status %}

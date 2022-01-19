@@ -1,5 +1,5 @@
 {% extends 'shop/layouts/base_arti.html' %}
-
+{% load static %}
 {% block title %}Оформление заказа{% endblock %}
 {% block content %}
     <div class="wrapper" xmlns="http://www.w3.org/1999/html">
@@ -13,6 +13,11 @@
                                 <div class="main-cart-title"></div>
                                 <h2 style="text-align: center">Оформить заказ</h2>
                             </div>
+                            <div class="modal-body total">
+                                <table class="show-cart table">
+                                </table>
+                                <div><h5>Стоимость товаров: <span class="total-cart" id="total-cart" name="total-cart"></span> р.</h5></div>
+                            </div>
                             <div class="card-body-table">
                                 <form method="post">
                                     {% csrf_token %}
@@ -21,13 +26,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Имя*</label>
-                                                    <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" placeholder="Имя" required="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group mb-3">
-                                                    <label class="form-label">Email*</label>
-                                                    <input type="email" class="form-control" name="email" value="{{ user.email }}" placeholder="Email" required="">
+                                                    <input type="text" class="form-control" name="name" placeholder="Имя" required="">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -39,11 +38,11 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
-                                                    <select class="form-control item" required="" >
+                                                    <select class="form-control item" required="" name="address_city" >
                                                         <option selected value="0">--Выберите населенный пункт--</option>
                                                         {% for name,slug, dp,dpm in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option value="{{ dp }}">{{ name }}</option>
+                                                                <option value="{{ dp }}" name="address_city">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>
@@ -53,17 +52,21 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Улица, дом, кв*</label>
-                                                    <input type="text" class="form-control" name="address" value="" placeholder="улица, дом и кв" required="">
+                                                    <input type="text" class="form-control" name="address_street" value="" placeholder="Улица, Дом и Кв" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Комментарий</label>
+                                                    <textarea type="text" class="form-control" name="commit"></textarea>
                                                 </div>
                                             </div>
                                             <div class="modal-body total">
-                                                <table class="show-cart table">
-                                                </table>
-                                                <div><h5>Стоимость товаров: <span class="total-cart" id="total-cart" name="total-cart"></span> р.</h5></div>
+                                                <div><h5>Стоимость товаров: <span class="total-cart" id="total-cart" value="" name="total_cart"></span> р.</h5></div>
                                                 </br>
                                                 <div><h5>Доставка: <delivery id="delivery" name="delivery"></delivery> р.</h5></div>
                                                 </br>
-                                                <div><h5>Общая стоимость корзины: <total-delivery name="total-delivery"></total-delivery> р.</h5></div>
+                                                <div><h5>Общая стоимость: <total-delivery name="total_delivery"></total-delivery> р.</h5></div>
                                             </div>
                                         <div class="col-lg-12">
                                             <div class="example-block">

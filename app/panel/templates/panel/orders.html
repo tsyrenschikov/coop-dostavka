@@ -32,8 +32,11 @@
 													<tr>
 														<th style="width:130px">ID Заказа</th>
 														<th>Покупатель</th>
+                                                        <th>Телефон</th>
 														<th style="width:200px">Дата доставки</th>
 														<th style="width:300px">Адрес доставки</th>
+                                                        <th style="width:300px">Сумма корзины</th>
+                                                        <th style="width:300px">Доставка</th>
 														<th style="width:130px">Общая сумма</th>
                                                         <th style="width:130px">Статус</th>
 														<th style="width:100px">Действия</th>
@@ -44,14 +47,19 @@
 													<tr>
                                                         <td>{{ zakaz.id }}</td>
 														<td>
-															<a href="#" target="_blank">{{ zakaz.name }}</a>
+															{{ zakaz.name }}
+														</td>
+                                                        <td>
+															{{ zakaz.phone }}
 														</td>
 														<td>
 															<span class="delivery-time">{{ zakaz.date }}</span>
 															<span class="delivery-time">{{ zakaz.time }}</span>
 														</td>
-														<td>#{{ zakaz.address }} {{ zakaz.address_name }}</td>
-														<td>{{ zakaz.total_order }} р.</td>
+														<td>#{{ zakaz.address_city }} {{ zakaz.address_street }}</td>
+                                                        <td>{{ zakaz.total_cart }} р.</td>
+                                                        <td>{{ zakaz.delivery }} р.</td>
+														<td>{{ zakaz.total_delivery }} р.</td>
                                                         <td>
 															<span class="badge-item badge-status">В ожидании</span>
 														</td>

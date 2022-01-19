@@ -16,10 +16,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-          <form action="{% url 'cart_arti' %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-primary">Оформить заказ</button>
-          </form>
+              <button type="submit" class="btn btn-primary"><a href="{% url 'cart_arti' %}">Оформить заказ</a></button>
       </div>
     </div>
   </div>

@@ -397,13 +397,17 @@ class offers(models.Model):
         return self.name
 
 class orders(models.Model):
-    name=ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
-    address_city=ForeignKey('Locations', null=True, blank=True, on_delete=CASCADE, verbose_name='Населенный пункт')
+    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Пользователь')
+    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
+    address_city=models.CharField(max_length=30, null=True, verbose_name='Населенный пункт')
     address_street = models.TextField(max_length=300,null=True,verbose_name='Улица и дом')
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
+    commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')
     time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
-    sum_order = models.PositiveIntegerField(null=True, verbose_name='Сумма заказа')
-    total_order = models.PositiveIntegerField(null=True, verbose_name='Общая сумма заказа')
+    sum_order = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Сумма заказа')
+    total_cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
+    delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')
+    total_delivery =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата')
 

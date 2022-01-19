@@ -33,6 +33,18 @@ def cart_arti(request):
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
                 name = name_a
+                if request.method == 'POST':
+                    name = request.POST.get('first_name')
+                    phone = request.POST.get('phone')
+                    address_city = request.POST.get('address_city')
+                    address_street = request.POST.get('address_street')
+                    commit = request.POST.get('commit')
+                    total_cart= request.POST.get('total-cart')
+                    delivery = request.POST.get('delivery')
+                    total_delivery= request.POST.get('total_delivery')
+                    orders.objects.create(name=name,phone=phone,address_city=address_city,address_street=address_street,
+                                          commit=commit,total_cart=total_cart,delivery=delivery,total_delivery=total_delivery)
+                    return render(request, 'arti/cart_ok.html')
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def shop_arti(request):

@@ -113,9 +113,15 @@ var shoppingCart = (function() {
     var str = "";
     delivery="";
     $( "select option:selected" ).each(function() {
-        str += $( this ).val() + " ";
+        //str += $( this ).val() + " ";
+      str += $(this).attr('price_city');
     });
-    delivery_e=Number(str)
+    if (str > 0) {
+      delivery_e = Number(str)
+    }
+    else{
+      delivery_e = Number(0)
+    }
     $( "delivery" ).text( delivery_e );
   })
   .trigger( "change" );
@@ -128,7 +134,7 @@ var shoppingCart = (function() {
           var str = "";
           delivery = "";
           $("select option:selected").each(function () {
-            str += $(this).val() + " ";
+            str += $(this).attr('price_city');
           });
           var totaldelivery = 0;
           for (var item in cart) {

@@ -38,11 +38,11 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
-                                                    <select class="form-control item" required="" name="address_city" >
-                                                        <option selected value="0">--Выберите населенный пункт--</option>
+                                                    <select class="form-control item" name="address_city">
+                                                        <option selected  price_city="0">--Выберите населенный пункт--</option>
                                                         {% for name,slug, dp,dpm in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option value="{{ dp }}" name="address_city">{{ name }}</option>
+                                                                <option  price_city="{{ dp }}" value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>

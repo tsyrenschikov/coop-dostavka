@@ -34,7 +34,7 @@ def cart_arti(request):
             if s == address_str and s == slug_a:
                 name = name_a
                 if request.method == 'POST':
-                    name = request.POST.get('first_name')
+                    name = request.POST.get('name')
                     phone = request.POST.get('phone')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')

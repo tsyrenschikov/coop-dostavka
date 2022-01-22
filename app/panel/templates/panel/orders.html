@@ -35,6 +35,7 @@
                                                         <th>Телефон</th>
 														<th style="width:200px">Дата доставки</th>
 														<th style="width:300px">Адрес доставки</th>
+                                                        <th style="width: 300px">Состав корзины</th>
                                                         <th style="width:300px">Сумма корзины</th>
                                                         <th style="width:300px">Доставка</th>
 														<th style="width:130px">Общая сумма</th>
@@ -57,9 +58,10 @@
 															<span class="delivery-time">{{ zakaz.time }}</span>
 														</td>
 														<td>#{{ zakaz.address_city }} {{ zakaz.address_street }}</td>
-                                                        <td>{{ zakaz.total_cart }} р.</td>
+                                                        <td>{{ zakaz.products }}</td>
+                                                        <td>{{ zakaz.cart }} р.</td>
                                                         <td>{{ zakaz.delivery }} р.</td>
-														<td>{{ zakaz.total_delivery }} р.</td>
+														<td>{{ zakaz.total_price }} р.</td>
                                                         <td>
 															<span class="badge-item badge-status">В ожидании</span>
 														</td>

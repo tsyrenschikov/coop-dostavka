@@ -122,7 +122,7 @@ var shoppingCart = (function() {
     else{
       delivery_e = Number(0)
     }
-    $("delivery").attr({
+    $("#delivery").attr({
       'value': delivery_e,
     })
     $( "delivery" ).text( delivery_e );
@@ -130,7 +130,7 @@ var shoppingCart = (function() {
   .trigger( "change" );
 
 
-  // Total + Delivery
+  // Cart + Total + Delivery
   obj.totalDelivery = function () {
     $("select")
         .change(function () {
@@ -144,10 +144,12 @@ var shoppingCart = (function() {
             totaldelivery += cart[item].price * cart[item].count;
     }
           delivery = Number(str)
-          $("total").attr({
+          $("#total").attr({
             'value': delivery+Number(totaldelivery.toFixed(1)),
           });
-
+          $('#cart').attr({
+            'value':totaldelivery,
+          })
           $("total").text(delivery+Number(totaldelivery.toFixed(1)));
 
         })

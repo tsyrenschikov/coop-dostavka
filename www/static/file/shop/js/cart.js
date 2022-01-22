@@ -122,6 +122,9 @@ var shoppingCart = (function() {
     else{
       delivery_e = Number(0)
     }
+    $("delivery").attr({
+      'value': delivery_e,
+    })
     $( "delivery" ).text( delivery_e );
   })
   .trigger( "change" );
@@ -141,7 +144,12 @@ var shoppingCart = (function() {
             totaldelivery += cart[item].price * cart[item].count;
     }
           delivery = Number(str)
-          $("total-delivery").text(delivery+Number(totaldelivery.toFixed(1)));
+          $("total").attr({
+            'value': delivery+Number(totaldelivery.toFixed(1)),
+          });
+
+          $("total").text(delivery+Number(totaldelivery.toFixed(1)));
+
         })
         .trigger("change");
   }
@@ -213,9 +221,9 @@ function displayCart() {
       +  "</tr>";
   }
   $('.show-cart').html(output);
-  $('.total-cart').html(shoppingCart.totalCart());
+  $('.cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
-  $('.total-delivery').html(shoppingCart.totalDelivery());
+  $('.total').html(shoppingCart.totalDelivery());
 }
 
 // Delete item button

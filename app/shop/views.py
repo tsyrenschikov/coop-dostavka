@@ -39,11 +39,11 @@ def cart_arti(request):
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
                     commit = request.POST.get('commit')
-                    total_cart= request.POST.get('total-cart')
-                    delivery = request.POST.get('delivery')
-                    total_delivery= request.POST.get('total_delivery')
+                    cart= request.POST.get('cart')
+                    delivery = request.POST.get('deliv')
+                    total_price= request.POST.get('total_price')
                     orders.objects.create(name=name,phone=phone,address_city=address_city,address_street=address_street,
-                                          commit=commit,total_cart=total_cart,delivery=delivery,total_delivery=total_delivery)
+                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price)
                     return render(request, 'arti/cart_ok.html')
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 

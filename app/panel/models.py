@@ -404,10 +404,9 @@ class orders(models.Model):
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
     commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')
     time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
-    sum_order = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Сумма заказа')
-    total_cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
+    cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
     delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')
-    total_delivery =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
+    total_price =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата')
 

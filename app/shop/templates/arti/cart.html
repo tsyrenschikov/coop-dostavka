@@ -13,14 +13,14 @@
                                 <div class="main-cart-title"></div>
                                 <h2 style="text-align: center">Оформить заказ</h2>
                             </div>
+                            <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
                             <div class="modal-body total">
                                 <table class="show-cart table">
                                 </table>
                                 <div><h5>Стоимость товаров: <span type="text" class="cart"></span> р.</h5></div>
                             </div>
                             <div class="card-body-table">
-                                <form method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
                                     <div class="news-content-right pd-20">
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -91,14 +91,15 @@
                                                 <input type="checkbox" required="" name="check" id="personaldata">
                                                 <label for="personaldata" data-toggle="modal" data-target="#category_model">Я прочитал и согласен с <span style="color: blue">условиями
                                                     доставки</span></label>
+                                                <input type="hidden" value="{{ address_str }}" name="slug">
                                             </br>
                                                 <input  class="save-btn hover-btn" type="submit" id="submit" value="Подтвердить заказ" disabled>
                                             </div>
                                     </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

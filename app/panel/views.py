@@ -735,7 +735,8 @@ def delete_shop(request,id):
 
 def order(request):
     zakaz=orders.objects.all()
-    return render(request, 'panel/orders.html', {'zakaz':zakaz})
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    return render(request, 'panel/orders.html', {'zakaz':zakaz,'areas':areas})
 
 def add_order(request):
     users=User.objects.all()

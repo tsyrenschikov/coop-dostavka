@@ -30,7 +30,7 @@
 											<table id="info-table" class="table ucp-table table-hover table_sort">
 												<thead>
 													<tr>
-														<th style="width:130px">ID Заказа</th>
+														<th style="width:130px">ID</th>
 														<th>Покупатель</th>
                                                         <th>Телефон</th>
 														<th style="width:200px">Дата доставки</th>
@@ -57,7 +57,14 @@
 															<span class="delivery-time">{{ zakaz.date }}</span>
 															<span class="delivery-time">{{ zakaz.time }}</span>
 														</td>
-														<td>#{{ zakaz.address_city }} {{ zakaz.address_street }}</td>
+														<td>{{ address_str }}
+                                                            {% for name, slug in areas %}
+                                                                {% if zakaz.slug == slug %}
+                                                                    #{{ name }},<br>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
+                                                        </td>
                                                         <td>{{ zakaz.products }}</td>
                                                         <td>{{ zakaz.cart }} р.</td>
                                                         <td>{{ zakaz.delivery }} р.</td>

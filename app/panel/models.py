@@ -410,6 +410,7 @@ class orders(models.Model):
     products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
 
 
     class Meta:

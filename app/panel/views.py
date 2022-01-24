@@ -150,12 +150,14 @@ def panel(request):
                     name_u=n
                     products=name_p.objects.all().order_by('id')[::-1][:3]
                     count=name_p.objects.count()
-                    return render(request, 'panel/index.html', {'products':products,'count':count,'name_u':name_u})
+                    count_order = orders.objects.count()
+                    return render(request, 'panel/index.html', {'products':products,'count':count,'count_order':count_order,'name_u':name_u})
                 elif request.user.is_superuser:
                     for c, n, slug_p in shops:
                         name_p = eval(slug_p)
                         products_count.update({n: name_p.objects.count()})
-                    return render(request, 'panel/index_superuser.html', {'products_count': products_count})
+                        count_order = orders.objects.count()
+                    return render(request, 'panel/index_superuser.html', {'products_count': products_count,'count_order':count_order})
     else:
         return redirect ('/login')
 

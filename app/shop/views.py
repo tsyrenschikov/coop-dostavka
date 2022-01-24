@@ -37,6 +37,7 @@ def cart_arti(request):
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
                     products = request.POST.getlist('products')
+                    count = request.POST.getlist('count')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
                     commit = request.POST.get('commit')
@@ -44,7 +45,7 @@ def cart_arti(request):
                     delivery = request.POST.get('deliv')
                     total_price= request.POST.get('total_price')
                     slug = request.POST.get('slug')
-                    orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,
+                    orders.objects.create(name=name,phone=phone,products=products,count=count,address_city=address_city,address_street=address_street,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug)
                     return render(request, 'arti/cart_ok.html')
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})

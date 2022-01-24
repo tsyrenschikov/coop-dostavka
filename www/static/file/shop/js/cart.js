@@ -212,10 +212,11 @@ function displayCart() {
   var output = "";
   for(var i in cartArray) {
     output += "<tr>"
-      + "<td value='' name='products'>" + cartArray[i].name + "</td>"
+      + "<td>" + cartArray[i].name + "</td>"
       + "<td>" + cartArray[i].price +" р.</td>"
       + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>-</button>"
-      + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
+      + "<input type='hidden' name='products' name='products' value='" + cartArray[i].name + "'>"
+      + "<input type='number' class='item-count form-control' name='products' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
       + "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>+</button></div></td>"
       + "<td><button class='delete-item btn btn-danger' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>X</button></td>"
       + " = "

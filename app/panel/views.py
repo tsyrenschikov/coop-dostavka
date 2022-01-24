@@ -6,6 +6,7 @@ from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
+from itertools import chain
 from panel.models import *
 
 
@@ -736,7 +737,11 @@ def delete_shop(request,id):
 def order(request):
     zakaz=orders.objects.all()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    return render(request, 'panel/orders.html', {'zakaz':zakaz,'areas':areas})
+    list_cart = orders.objects.values_list('products').distinct()
+    for i in range(2):
+        list_cart = list(chain(*list_cart))
+    list_c = [list_cart[i] + ' : ' + list_cart[i + 1] + 'шт'+' ' for i in range(0, len(list_cart), 2)]
+    return render(request, 'panel/orders.html', {'zakaz':zakaz,'list_c':list_c,'areas':areas})
 
 def add_order(request):
     users=User.objects.all()

@@ -40,6 +40,7 @@
                                                         <th style="width:300px">Доставка</th>
 														<th style="width:130px">Общая сумма</th>
                                                         <th style="width:130px">Статус</th>
+                                                        <th style="width: 130px">Комментарий</th>
 														<th style="width:100px">Действия</th>
 													</tr>
 												</thead>
@@ -65,13 +66,16 @@
                                                             {% endfor %}
                                                         {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
                                                         </td>
-                                                        <td>{{ zakaz.products }}</td>
+                                                        <td>
+                                                            {{ list_c|cut:"["|cut:"'"|cut:"]" }}<br>
+                                                        </td>
                                                         <td>{{ zakaz.cart }} р.</td>
                                                         <td>{{ zakaz.delivery }} р.</td>
 														<td>{{ zakaz.total_price }} р.</td>
                                                         <td>
 															<span class="badge-item badge-status">В ожидании</span>
 														</td>
+                                                        <td style="color: green">{{ zakaz.commit }}</td>
 														<td class="action-btns">
 															<a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
 															<a href="/order_edit/{{ zakaz.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>

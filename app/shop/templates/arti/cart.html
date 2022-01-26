@@ -42,7 +42,7 @@
                                                         <option selected  price_city="0">--Выберите населенный пункт--</option>
                                                         {% for name,slug, dp,dpm in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option  price_city="{{ dp }}" value="{{ name }}">{{ name }}</option>
+                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>

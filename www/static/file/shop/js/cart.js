@@ -108,50 +108,62 @@ var shoppingCart = (function() {
 
 
    // Delivery
-  $( "select" )
-  .change(function() {
-    var str = "";
-    delivery="";
-    $( "select option:selected" ).each(function() {
-        //str += $( this ).val() + " ";
-      str += $(this).attr('price_city');
-    });
-    if (str > 0) {
-      delivery_e = Number(str)
-    }
-    else{
-      delivery_e = Number(0)
-    }
-    $("#delivery").attr({
-      'value': delivery_e,
-    })
-    $( "delivery" ).text( delivery_e );
-  })
-  .trigger( "change" );
-
+obj.Delivery = function () {
+  $("select")
+      .change(function () {
+        var str = "";
+        var delivery = "";
+        var price_min = "";
+        $("select option:selected").each(function () {
+          //str += $( this ).val() + " ";
+          str += $(this).attr('price_city');
+          price_min += $(this).attr('price_min');
+        });
+        var totaldelivery = 0;
+        for (var item in cart) {
+          totaldelivery += cart[item].price * cart[item].count;
+        }
+        if ((totaldelivery.toFixed(1)) < price_min) {
+          delivery_e = Number(str)
+          $("delivery").text(delivery_e);
+          $("#delivery").attr({'value': delivery_e,})
+        } else {
+          delivery_e = Number(0)
+          $("delivery").text(delivery_e);
+          $("#delivery").attr({'value': delivery_e,})
+        }
+      })
+      .trigger("change");
+}
 
   // Cart + Total + Delivery
   obj.totalDelivery = function () {
     $("select")
         .change(function () {
           var str = "";
-          delivery = "";
+          var delivery = "";
+          var price_min = "";
           $("select option:selected").each(function () {
             str += $(this).attr('price_city');
+            price_min+=$(this).attr('price_min');
           });
           var totaldelivery = 0;
           for (var item in cart) {
             totaldelivery += cart[item].price * cart[item].count;
-    }
-          delivery = Number(str)
-          $("#total").attr({
-            'value': delivery+Number(totaldelivery.toFixed(1)),
-          });
-          $('#cart').attr({
-            'value':totaldelivery,
-          })
-          $("total").text(delivery+Number(totaldelivery.toFixed(1)));
-
+          }
+          if (Number(totaldelivery.toFixed(1)) < price_min) {
+            delivery = Number(str)
+            $("#total").attr({
+              'value': delivery + Number(totaldelivery.toFixed(1)),
+            });
+            $('#cart').attr({
+              'value': totaldelivery,
+            })
+            $("total").text(delivery+Number(totaldelivery.toFixed(1)));
+          }
+          else{
+            $("total").text(Number(totaldelivery.toFixed(1)));
+          }
         })
         .trigger("change");
   }
@@ -226,6 +238,7 @@ function displayCart() {
   $('.show-cart').html(output);
   $('.cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
+  $('.delivery').html(shoppingCart.Delivery());
   $('.total').html(shoppingCart.totalDelivery());
 }
 

@@ -125,16 +125,17 @@ obj.Delivery = function () {
         }
         if ((totaldelivery.toFixed(1)) < price_min) {
           delivery_e = Number(str)
-          $("delivery").text(delivery_e);
+          $("delivery").text(delivery_e + '.р');
           $("#delivery").attr({'value': delivery_e,})
         } else {
           delivery_e = Number(0)
-          $("delivery").text(delivery_e);
+          $("delivery").text('бесплатно');
           $("#delivery").attr({'value': delivery_e,})
         }
       })
       .trigger("change");
 }
+
 
   // Cart + Total + Delivery
   obj.totalDelivery = function () {
@@ -162,6 +163,12 @@ obj.Delivery = function () {
             $("total").text(delivery+Number(totaldelivery.toFixed(1)));
           }
           else{
+             $("#total").attr({
+               'value': Number(totaldelivery.toFixed(1)),
+             })
+             $('#cart').attr({
+              'value': totaldelivery,
+            })
             $("total").text(Number(totaldelivery.toFixed(1)));
           }
         })
@@ -240,6 +247,7 @@ function displayCart() {
   $('.total-count').html(shoppingCart.totalCount());
   $('.delivery').html(shoppingCart.Delivery());
   $('.total').html(shoppingCart.totalDelivery());
+  $('.amount').html(shoppingCart.Amount());
 }
 
 // Delete item button

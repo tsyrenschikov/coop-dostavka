@@ -70,10 +70,20 @@
                                                             {{ list_c|cut:"["|cut:"'"|cut:"]" }}<br>
                                                         </td>
                                                         <td>{{ zakaz.cart }} р.</td>
-                                                        <td>{{ zakaz.delivery }} р.</td>
+                                                        <td>
+                                                            {% if zakaz.delivery == 0.00 %}
+                                                                <span class="badge-item badge-status">Бесплатно</span>
+                                                            {% else %}
+                                                                {{ zakaz.delivery }} р.
+                                                            {% endif %}
+                                                        </td>
 														<td>{{ zakaz.total_price }} р.</td>
                                                         <td>
-															<span class="badge-item badge-status">В ожидании</span>
+                                                        {% if zakaz.status != None %}
+															{{ zakaz.status }}
+                                                        {% else %}
+                                                            <span class="badge-item badge-status">В ожидании</span>
+                                                        {% endif %}
 														</td>
                                                         <td style="color: green">{{ zakaz.commit }}</td>
 														<td class="action-btns">

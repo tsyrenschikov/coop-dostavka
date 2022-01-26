@@ -410,7 +410,7 @@ class orders(models.Model):
     products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
     count = models.JSONField(default=list, null=True, blank=True, verbose_name='Кол-во продукта')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
-    cal= models.TextField(max_length=300,null=True,verbose_name='Дата')
+    cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
 
 

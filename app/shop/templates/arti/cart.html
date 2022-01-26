@@ -1,25 +1,8 @@
 {% extends 'shop/layouts/base_arti.html' %}
 {% load static %}
 {% block title %}Оформление заказа{% endblock %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.min.css" />
-    <!-- Календарь-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.min.css" />
-    <link rel="stylesheet" href="{% static 'file/panel/calendar/css/zebra_datepicker.min.css' %}">
-    <link rel="stylesheet" href="{% static 'file/panel/calendar/css/example/examples.css' %}">
-{% endblock stylesheet %}
- <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/zebra_pin@2.0.0/dist/zebra_pin.min.js"></script>
-    <script src="{% static 'file/panel/calendar/js/zebra_datepicker.min.js' %}"></script>
-    <script src="{% static 'file/panel/calendar/js/calendar.js' %}"></script>
-
 {% block content %}
+    {% include 'shop/includes/calendar/cart_css.html' %}
     <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="container">
 		<div class="all-product-grid">
@@ -58,9 +41,9 @@
                                                     <label class="form-label">Населенный пункт*</label>
                                                     <select class="form-control item" name="address_city">
                                                         <option selected  price_city="0">--Выберите населенный пункт--</option>
-                                                        {% for name,slug, dp,dpm in local_d %}
+                                                        {% for name,slug, dp,dpm,days in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" value="{{ name }}">{{ name }}</option>
+                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days }}" value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>
@@ -76,7 +59,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Дата доставки</label>
-                                                    <input id="datepicker-custom-classes" name="cal" type="text" class="form-control" data-zdp_readonly_element="false" placeholder="Установите дату">
+                                                    <input id="datepicker-custom-classes" name="cal" type="text" class="form-control" data-zdp_readonly_element="false" placeholder="Выберите доступную дату">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -133,4 +116,5 @@
 {% include 'shop/includes/cart_modal_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
+{% include 'shop/includes/calendar/cart_js.html' %}
 {% endblock content %}

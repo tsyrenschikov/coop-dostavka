@@ -123,14 +123,21 @@ obj.Delivery = function () {
         for (var item in cart) {
           totaldelivery += cart[item].price * cart[item].count;
         }
-        if ((totaldelivery.toFixed(1)) < price_min) {
+        if (Number(totaldelivery.toFixed(1)) < Number(price_min)) {
           delivery_e = Number(str)
           $("delivery").text(delivery_e + '.р');
           $("#delivery").attr({'value': delivery_e,})
-        } else {
-          delivery_e = Number(0)
+        }
+        else
+        {
+          if (str == 0){
+            $("delivery").text(0+ " .р");
+          }
+          else{
+            delivery_e = Number(0)
           $("delivery").text('бесплатно');
           $("#delivery").attr({'value': delivery_e,})
+          }
         }
       })
       .trigger("change");

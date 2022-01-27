@@ -2,8 +2,23 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
+
+DAYS_OF_WEEK = (
+    (0, 'Monday'),
+    (1, 'Tuesday'),
+    (2, 'Wednesday'),
+    (3, 'Thursday'),
+    (4, 'Friday'),
+    (5, 'Saturday'),
+    (6, 'Sunday'),
+)
+
+
+
 class Days(models.Model):
     name = models.CharField(max_length=200, db_index=True,verbose_name='День недели')
+    daysdict = models.CharField(max_length=1,null=True, choices=DAYS_OF_WEEK)
+
 
     class Meta:
         ordering = ['name']

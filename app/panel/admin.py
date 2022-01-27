@@ -33,3 +33,4 @@ admin.site.register(Days, DaysAdmin)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price']
 admin.site.register(Product, ProductAdmin)
+

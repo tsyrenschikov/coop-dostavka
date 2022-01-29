@@ -56,17 +56,14 @@
                                             <label class="form-label">Дни недели поставки</label>
                                         </div>
                                             <div class="ui">
-                                                <select name="day"   class="multiple selection dropdown">
-                                                    <option></option>
-                                                    <option value="Понедельник">Понедельник</option>
-                                                    <option value="Вторник">Вторник</option>
-                                                    <option value="Среда">Среда</option>
-                                                    <option value="Четверг">Четверг</option>
-                                                    <option value="Пятница">Пятница</option>
-                                                    <option value="Суббота">Суббота</option>
-                                                    <option value="Воскресенье">Воскресенье</option>
+                                                <select name="day" class="multiple selection dropdown days">
+                                                <option></option>
+                                                    {% for name, daysdict in day %}
+                                                        <option id="days_num"  value="{{ name }}" days_n="{{ daysdict }}">{{ name }}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
+                                        <input id="days" type="hidden" value="" name="days_numb">
                                             <button class="save-btn hover-btn" type="submit">Добавить</button>
 										</div>
                                         </form>

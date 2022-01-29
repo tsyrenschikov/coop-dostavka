@@ -178,6 +178,7 @@ def post_tags(request):
 #Населенный пункт
 def locations(request):
     local= Locations.objects.all()
+    day = Days.objects.values_list('name', 'daysdict').distinct()
     return render(request, 'panel/locations.html', {'local':local})
 
 #Населенный пункт редактировать
@@ -213,11 +214,13 @@ def add_location(request):
     }
     local = Locations.objects.all()
     shops=Shop.objects.all()
+    day=Days.objects.values_list('name','daysdict').distinct()
     if request.method == 'POST':
         name = request.POST.get('name')
         delivery_price = request.POST.get('delivery_price')
         delivery_price_min = request.POST.get('delivery_price_min')
         days=request.POST.getlist('day')
+        days_numb=request.POST.getlist('days_numb')
         slug=request.POST.get('slug')
 
 
@@ -225,9 +228,9 @@ def add_location(request):
             alert['name'] = "Название населенного пункта уже существует"
             return render(request, 'panel/add_location.html', alert)
         else:
-            Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,days=days,slug=slug)
-            return render(request, 'panel/add_ok_location.html', {'local': local,'shops':shops})
-    return render(request, 'panel/add_location.html', {'local':local,'shops':shops})
+            Locations.objects.create(name=name,delivery_price=delivery_price,delivery_price_min=delivery_price_min,days=days,days_numb=days_numb,slug=slug)
+            return render(request, 'panel/add_ok_location.html', {'local': local,'shops':shops, 'day':day})
+    return render(request, 'panel/add_location.html', {'local':local,'shops':shops, 'day':day})
 
 #Успешное добавления территории
 def add_ok_location(request):

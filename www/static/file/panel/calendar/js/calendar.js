@@ -19,7 +19,7 @@ obj.Calendar = function () {
                     $('#datepicker').Zebra_DatePicker({
                             direction: true,
                             disabled_dates: ['* * * 0-6'],
-                            enabled_dates: ['* * * 1,5'],
+                            enabled_dates: ['* * * 2,1,3'],
                     });
         }
         else

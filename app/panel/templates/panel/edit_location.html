@@ -1,7 +1,7 @@
 {% extends 'panel/layouts/base.html' %}
 {% load static %}
     {% block stylesheet %}
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+        <link rel='stylesheet' href="{% static 'file/panel/css/bootstrap.min.css' %}">
         <link rel='stylesheet' href="{% static 'file/panel/css/select/style.css' %}">
     {% endblock stylesheet %}
 {% block js %}
@@ -78,12 +78,12 @@
                                                     <div class="panel-heading">Выбранные дни</div>
                                                     <select name="day" id="multiselect_to" class="form-control" size="8" multiple="multiple">
                                                         {% for l in local.days %}
-                                                            <option daysdict="{{ l }}">{{ l|cut:'['|cut:']'|cut:"'" }}</option>
+                                                            <option dayselect="{{ l }}"> {{ l|cut:'['|cut:']'|cut:"'" }} </option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
                                             </div>
-                                            <input id="days" type="hidden" value="" name="days_numb">
+                                            <input id="daysel" type="hidden" value="" name="days_numb">
                                                 <button class="save-btn hover-btn" type="submit">Сохранить</button>
                                             </div>
                                         </form>

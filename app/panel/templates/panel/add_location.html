@@ -56,17 +56,13 @@
                                             <label class="form-label">Дни недели поставки</label>
                                         </div>
                                             <div class="ui">
-                                                <select  name="day" class="multiple selection dropdown days_list">
-                                                    <option id="days_num" value="Воскресенье" days_n="0">Воскресенье</option>
-                                                    <option id="days_num" value="Понедельник" days_n="1">Понедельник</option>
-                                                    <option id="days_num" value="Вторник" days_n="2">Вторник</option>
-                                                    <option id="days_num" value="Среда" days_n="3">Среда</option>
-                                                    <option id="days_num" value="Четверг" days_n="4">Четверг</option>
-                                                    <option id="days_num" value="Пятница" days_n="5">Пятница</option>
-                                                    <option id="days_num" value="Суббота" days_n="6">Суббота</option>
+                                                <select name="day" class="multiple selection dropdown days">
+                                                    {% for name, daysdict in day %}
+                                                        <option  value="{{ name }}" daysdict="{{ daysdict }}">{{ name }}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
-                                        <input id="days"  value="" name="days_numb">
+                                        <input id="days" type="hidden" value="" name="days_numb">
                                             <button class="save-btn hover-btn" type="submit">Добавить</button>
 										</div>
                                         </form>

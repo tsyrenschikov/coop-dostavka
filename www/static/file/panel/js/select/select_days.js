@@ -6,12 +6,13 @@ var selectDays = (function() {
 obj.Days = function () {
   $("select")
       .change(function () {
-        var days_num=0;
+        var days_n=[];
         $("select option:selected").each(function () {
-            days_num +=$("#days_num").attr('days_n') + " ";
+            d=$(this).attr('daysdict')
+            days_n.push(d);
         });
-         $("#days").attr({
-             "value": days_num,
+        $("#days").attr({
+             'value': days_n,
          });
 
         //$.each(days, function() {
@@ -24,5 +25,4 @@ obj.Days = function () {
 
   return obj;
 })();
-
 $('.days_list').html(selectDays.Days());

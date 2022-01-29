@@ -1,20 +1,22 @@
 var selectDays = (function() {
 
-  Days = [];
   var obj = {};
 
   // Days
 obj.Days = function () {
   $("select")
       .change(function () {
-        var days = "";
+        var days_num=0;
         $("select option:selected").each(function () {
-            days += $("#days_num").attr('days_n')
+            days_num +=$("#days_num").attr('days_n') + " ";
         });
-        $("#days").append({value: days,})
+         $("#days").attr({
+             "value": days_num,
+         });
+
         //$.each(days, function() {
-           // $('#days').attr({'value': days,})
-       // });
+            //$('#days').attr({'value': days,})
+        //});
       })
   .trigger("change");
 }
@@ -23,4 +25,4 @@ obj.Days = function () {
   return obj;
 })();
 
- $('.days').html(selectDays.Days());
+$('.days_list').html(selectDays.Days());

@@ -178,7 +178,6 @@ def post_tags(request):
 #Населенный пункт
 def locations(request):
     local= Locations.objects.all()
-    day = Days.objects.values_list('name', 'daysdict').distinct()
     return render(request, 'panel/locations.html', {'local':local})
 
 #Населенный пункт редактировать
@@ -186,8 +185,8 @@ def edit_location(request,id):
     try:
 
         local = Locations.objects.get(id = id)
-        days = Days.objects.values('name','id').order_by('id')
-        shops=Shop.objects.values('name','slug').order_by('name')
+        days = Days.objects.values('id','name','daysdict').order_by('id')
+        shops=Shop.objects.values_list('name','slug').distinct().order_by('name')
         if request.method == "POST":
             local.name = request.POST.get("name")
             local.delivery_price = request.POST.get("delivery_price")
@@ -197,7 +196,8 @@ def edit_location(request,id):
         if request.method == 'POST':
             local = Locations.objects.get(id = id)
             local.days = request.POST.getlist('day')
-            local.save(update_fields=['days'])
+            local.days_numb = request.POST.getlist('days_numb')
+            local.save(update_fields=['days','days_numb'])
             return render(request, "panel/edit_ok_location.html", {'local': local,'days':days,'shops':shops})
         else:
             return render(request, "panel/edit_location.html", {"local": local,'days':days,'shops':shops})

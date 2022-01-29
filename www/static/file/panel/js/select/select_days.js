@@ -23,6 +23,7 @@ obj.Days = function () {
 }
 
 
+
   return obj;
 })();
 $('.days_list').html(selectDays.Days());

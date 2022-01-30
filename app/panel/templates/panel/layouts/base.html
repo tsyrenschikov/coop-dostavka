@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{% static 'file/panel/select/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'file/panel/select/css/site.css' %}">
 
+    <!-- Add locations Day -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://phpcoder.tech/multiselect/js/jquery.multiselect.js"></script>
+
 <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -23,7 +27,6 @@
 	<link href="{% static 'file/panel/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'file/panel/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 {% block stylesheet %}{% endblock stylesheet %}
-
 
 </head>
 {% if not user.is_authenticated %}

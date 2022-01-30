@@ -27,9 +27,9 @@ def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
-    local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days').distinct()
+    local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
-    for n,s,dp,dpm,days in local_d:
+    for n,s,dp,dpm,days_numb in local_d:
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
                 name = name_a

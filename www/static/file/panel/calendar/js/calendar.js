@@ -16,10 +16,16 @@ obj.Calendar = function () {
                 for (var i = 0; i < inputs.length; i++) {
                     inputs[i].value = '';
                 }
+                var date = ["* * *"];
+                var list = date.concat(days);
+                var d=list.join()
+                d=d.replace(/,/d," ")
+                //document.body.innerHTML = d;
+                console.log([d]);
                     $('#datepicker').Zebra_DatePicker({
                             direction: true,
                             disabled_dates: ['* * * 0-6'],
-                            enabled_dates: ['* * * 2,1,3'],
+                            enabled_dates: [d],
                     });
         }
         else
@@ -32,11 +38,6 @@ obj.Calendar = function () {
                 $('#datepicker').Zebra_DatePicker({
                     direction: true,
                 });
-          }
-          else{
-            delivery_e = Number(0)
-          $("delivery").text('бесплатно');
-          $("#delivery").attr({'value': delivery_e,})
           }
         }
       })

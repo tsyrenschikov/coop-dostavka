@@ -41,9 +41,10 @@
                                                     <label class="form-label">Населенный пункт*</label>
                                                     <select class="form-control" name="address_city">
                                                         <option selected="selected" id="selection" price_city="0" days="0">--Выберите населенный пункт--</option>
-                                                        {% for name,slug, dp,dpm,days in local_d %}
+                                                        {% for name,slug, dp,dpm,days_numb in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days }}" value="{{ name }}">{{ name }}</option>
+                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
+                                                                         value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>

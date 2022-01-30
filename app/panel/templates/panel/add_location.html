@@ -1,7 +1,7 @@
 {% extends 'panel/layouts/base.html' %}
 {% load static %}
     {% block stylesheet %}
-        <link rel='stylesheet' href="{% static 'file/panel/css/semantic_select.css' %}">
+        <link rel="stylesheet" href="https://phpcoder.tech/multiselect/css/jquery.multiselect.css">
     {% endblock stylesheet %}
 {% block title %}panel{% endblock %}
 {% block content %}
@@ -56,9 +56,9 @@
                                             <label class="form-label">Дни недели поставки</label>
                                         </div>
                                             <div class="ui">
-                                                <select  name="day" class="multiple selection dropdown">
+                                                <select multiple id="languageSelect" name="day" class="days_list" >
                                                     {% for name, daysdict in day %}
-                                                        <option  value="{{ name }}" daysdict="{{ daysdict }}">{{ name }}</option>
+                                                        <option daysdict="{{ daysdict }}" value="{{ name }}">{{ name }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
@@ -73,8 +73,8 @@
                     </div>
                 </main>
 {% block js %}
-        <script src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'></script>
-        <script src='https://fomantic-ui.com/dist/semantic.min.js'></script>
-        <script  src="{% static 'file/panel/js/script_selectcalendar.js' %}"></script>
-    {% endblock js %}
+    <!-- Add Days -->
+    <script  src="{% static 'file/panel/js/select/select_add_days.js' %}"></script>
+    <script  src="{% static 'file/panel/js/select/select_days.js' %}"></script>
+{% endblock js %}
 {% endblock content %}

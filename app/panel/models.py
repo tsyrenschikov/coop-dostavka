@@ -424,7 +424,6 @@ class orders(models.Model):
     delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')
     total_price =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
     products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
-    count = models.JSONField(default=list, null=True, blank=True, verbose_name='Кол-во продукта')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')

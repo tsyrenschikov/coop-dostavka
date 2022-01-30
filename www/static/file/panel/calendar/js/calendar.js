@@ -21,7 +21,7 @@ obj.Calendar = function () {
                 var d=list.join()
                 d=d.replace(/,/d," ")
                 //document.body.innerHTML = d;
-                console.log([d]);
+                //console.log([d]);
                     $('#datepicker').Zebra_DatePicker({
                             direction: true,
                             disabled_dates: ['* * * 0-6'],

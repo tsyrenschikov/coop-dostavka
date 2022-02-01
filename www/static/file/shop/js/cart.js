@@ -111,32 +111,34 @@ var shoppingCart = (function() {
 obj.Delivery = function () {
   $("select")
       .change(function () {
-        var str = "";
+        var price_city = "";
         var delivery = "";
         var price_min = "";
         $("select option:selected").each(function () {
           //str += $( this ).val() + " ";
-          str += $(this).attr('price_city');
+          price_city += $(this).attr('price_city');
           price_min += $(this).attr('price_min');
         });
         var totaldelivery = 0;
         for (var item in cart) {
           totaldelivery += cart[item].price * cart[item].count;
         }
-        if (Number(totaldelivery.toFixed(1)) < Number(price_min)) {
-          delivery_e = Number(str)
+        if (Number(totaldelivery.toFixed(1)) < Number(price_min) || price_min == 0)
+        {
+          delivery_e = Number(price_city)
           $("delivery").text(delivery_e + '.р');
           $("#delivery").attr({'value': delivery_e,})
         }
         else
         {
-          if (str == 0){
+          if (price_city == 0){
             $("delivery").text(0+ " .р");
           }
-          else{
-            delivery_e = Number(0)
-          $("delivery").text('бесплатно');
-          $("#delivery").attr({'value': delivery_e,})
+          if (Number(totaldelivery.toFixed(1)) > Number(price_min))
+          {
+            delivery_e = 0;
+            $("delivery").text('бесплатно');
+            $("#delivery").attr({'value': delivery_e,})
           }
         }
       })
@@ -159,7 +161,7 @@ obj.Delivery = function () {
           for (var item in cart) {
             totaldelivery += cart[item].price * cart[item].count;
           }
-          if (Number(totaldelivery.toFixed(1)) < price_min) {
+          if (Number(totaldelivery.toFixed(1)) < price_min || price_min == 0) {
             delivery = Number(str)
             $("#total").attr({
               'value': delivery + Number(totaldelivery.toFixed(1)),

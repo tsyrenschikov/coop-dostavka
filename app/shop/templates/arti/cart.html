@@ -3,6 +3,10 @@
 {% block title %}Оформление заказа{% endblock %}
 {% block content %}
     {% include 'shop/includes/calendar/cart_css.html' %}
+    {% block stylesheet %}
+        <!--Select Accordion -->
+
+    {% endblock stylesheet %}
     <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="container">
 		<div class="all-product-grid">
@@ -43,7 +47,7 @@
                                                         <option selected="selected" id="selection" price_city="0" days="0">--Выберите населенный пункт--</option>
                                                         {% for name,slug, dp,dpm,days_numb in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option  price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
+                                                                <option price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
                                                                          value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}

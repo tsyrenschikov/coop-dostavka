@@ -427,6 +427,7 @@ class orders(models.Model):
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
+    email=models.EmailField(null=True,verbose_name='E-mail')
 
 
     class Meta:

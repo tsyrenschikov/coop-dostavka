@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+.accordions-list {
+  font-family: "Raleway";
+  width: 100%;
+  margin: 20px auto;
+  border: 1px solid rgba(144, 104, 190, 0.5);
+  color: #312c32;
+}
+.accordions-list .accordion-single {
+  position: relative;
+}
+.accordions-list .accordion-single::after {
+  position: absolute;
+  content: "";
+  background-color: rgba(144, 104, 190, 0.5);
+  bottom: 0;
+  left: 10px;
+  width: 96%;
+  height: 1px;
+}
+.accordions-list .accordion-single:last-child::after {
+  height: 0;
+}
+.accordions-list .accordion-single.open .icon-open span {
+  transform: scale(0);
+  transition: transform 0.1s ease;
+}
+.accordions-list .accordion-single.open .icon-close span {
+  transform: scale(1);
+  transition: transform 0.4s 0.1s ease;
+}
+.accordions-list .accordion-single.no-details .accordion-single-details,
+.accordions-list .accordion-single.no-details .accordion-icon {
+  display: none;
+}
+.accordions-list .accordion-single.no-details .accordion-single-brief {
+  cursor: default;
+}
+.accordions-list .accordion-single-brief {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  min-height: 20px;
+}
+.accordions-list .accordion-single-brief p {
+  padding-right: 50px;
+}
+.accordions-list .accordion-single-details {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  font-size: 16px;
+}
+.accordions-list .accordion-single-details p {
+  padding: 10px 50px 0 10px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.accordions-list .accordion-icon span {
+  position: absolute;
+  display: block;
+  background: #000;
+}
+.accordions-list .icon-open span {
+  background-color: red;
+  transform: scale(1);
+  transition: transform 0.4s 0.1s ease;
+}
+.accordions-list .icon-open span:nth-child(1) {
+  right: 16px;
+  top: calc(50% - 1px);
+  width: 16px;
+  height: 2px;
+}
+.accordions-list .icon-open span:nth-child(2) {
+  right: 23px;
+  top: calc(50% - 8px);
+  width: 2px;
+  height: 16px;
+}
+.accordions-list .icon-close span {
+  background-color: yellowgreen;
+  transform: scale(0);
+  transition: transform 0.1s ease;
+}
+.accordions-list .icon-close span:nth-child(1) {
+  right: 16px;
+  top: calc(50% - 1px);
+  width: 16px;
+  height: 2px;
+}

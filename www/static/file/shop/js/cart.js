@@ -114,6 +114,7 @@ obj.Delivery = function () {
         var price_city = "";
         var delivery = "";
         var price_min = "";
+        moddelivery = "";
         $("select option:selected").each(function () {
           //str += $( this ).val() + " ";
           price_city += $(this).attr('price_city');
@@ -128,17 +129,21 @@ obj.Delivery = function () {
           delivery_e = Number(price_city)
           $("delivery").text(delivery_e + '.р');
           $("#delivery").attr({'value': delivery_e,})
+          moddelivery = Number(price_min) - Number(totaldelivery.toFixed(1))
+          $('mod').text('До бесплатной доставки осталось : '+ moddelivery + ' р.')
         }
         else
         {
           if (price_city == 0){
             $("delivery").text(0+ " .р");
+            $("#delivery").attr({'value': delivery_e,})
           }
           if (Number(totaldelivery.toFixed(1)) > Number(price_min))
           {
             delivery_e = 0;
             $("delivery").text('бесплатно');
             $("#delivery").attr({'value': delivery_e,})
+            $('mod').text('')
           }
         }
       })

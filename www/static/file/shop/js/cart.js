@@ -128,9 +128,10 @@ obj.Delivery = function () {
         {
           delivery_e = Number(price_city)
           $("delivery").text(delivery_e + '.р');
-          $("#delivery").attr({'value': delivery_e,})
-          moddelivery = Number(price_min) - Number(totaldelivery.toFixed(1))
-          $('mod').text('До бесплатной доставки осталось : '+ moddelivery + ' р.')
+          $("#delivery").attr({'value': delivery_e,});
+          moddelivery = Number(price_min) - Number(totaldelivery.toFixed(1));
+          moddelivery=moddelivery.toFixed(1);
+          $('mod').text('До бесплатной доставки осталось : '+ moddelivery + ' р.');
         }
         else
         {
@@ -143,8 +144,8 @@ obj.Delivery = function () {
           {
             delivery_e = 0;
             $("delivery").text('бесплатно');
-            $("#delivery").attr({'value': delivery_e,})
-            $('mod').text('')
+            $("#delivery").attr({'value': delivery_e,});
+            $('mod').text('');
           }
         }
       })

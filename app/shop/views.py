@@ -37,7 +37,6 @@ def cart_arti(request):
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
                     products = request.POST.getlist('products')
-                    count = request.POST.getlist('count')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
                     cal = request.POST.get('cal')
@@ -47,8 +46,11 @@ def cart_arti(request):
                     total_price= request.POST.get('total_price')
                     slug = request.POST.get('slug')
                     email = request.POST.get('email')
-                    orders.objects.create(name=name,phone=phone,products=products,count=count,address_city=address_city,address_street=address_street,cal=cal,
-                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email)
+                    replace =request.POST.get('replace')
+                    payment = request.POST.get('payment')
+                    money = request.POST.get('money')
+                    orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
+                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     return render(request, 'arti/cart_ok.html')
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 

@@ -428,6 +428,9 @@ class orders(models.Model):
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
     email=models.EmailField(null=True,verbose_name='E-mail')
+    replace = models.CharField(max_length=100, null=True, verbose_name='Замена товара')
+    payment = models.CharField(max_length=30, null=True, verbose_name='Оплата')
+    money = models.CharField(max_length=30, null=True, verbose_name='Сумма для сдачи')
 
 
     class Meta:

@@ -137,6 +137,7 @@ obj.Delivery = function () {
           if (price_city == 0){
             $("delivery").text(0+ " .р");
             $("#delivery").attr({'value': delivery_e,})
+            $('mod').text('')
           }
           if (Number(totaldelivery.toFixed(1)) > Number(price_min))
           {

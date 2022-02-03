@@ -75,6 +75,14 @@ $(function () {
             'value':localStorage.location,
         });
     }
+    else {
+        $(window).load(function () {
+            if (window.location.href.indexOf('reload') == -1) {
+                window.location.replace('https://coop-dostavka.ru/' + '?reload');
+            }
+        });
+    }
+
     // Initialize autocomplete with custom appendTo:
     $('#autocomplete-custom-append').autocomplete({
         lookup: countriesArray,

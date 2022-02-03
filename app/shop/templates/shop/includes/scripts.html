@@ -53,21 +53,28 @@ $(function () {
         lookup: teams,
         minChars: 1,
         onSelect: function (suggestion) {
-            $('#selection').html('Вы выбрали: ' + suggestion.value );
-            let city_local;
-            city_local= suggestion.value;
+            $('#selection').html('Вы выбрали: ' + suggestion.value);
+            var city_local;
+            var field = suggestion.value;
+            localStorage.location = field;
+            var city_local= suggestion.value;
             for (var j = 0; j < nhlTeams.length; j++) {
                 if (city_local === nhlTeams[j]) {
                     window.location.href = 'https://coop-dostavka.ru/' + nhlTeams[j+1],
                     window.location(window.location.href);
+                };
                     }
-                }
         },
         showNoSuggestionNotice: true,
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
         groupBy: 'category'
     });
-
+    if (localStorage.location){
+        $('#local-name').text(localStorage.location);
+        $('#select_local').attr({
+            'value':localStorage.location,
+        });
+    }
     // Initialize autocomplete with custom appendTo:
     $('#autocomplete-custom-append').autocomplete({
         lookup: countriesArray,
@@ -91,6 +98,9 @@ $(function () {
 
 <!--Phone-->
     <script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
+
+<!--Location-->
+    <script src="{% static 'file/shop/js/search_city/location.js' %}"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZV7WLHDFF"></script>

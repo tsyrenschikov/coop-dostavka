@@ -55,7 +55,7 @@ def cart_arti(request):
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def cart_ok(request):
-    return render(request, 'shop/cart_ok.html',{})
+    return render(request, 'arti/cart_ok.html',{})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

@@ -187,6 +187,14 @@ obj.Delivery = function () {
             })
             $("total").text(Number(totaldelivery.toFixed(1)));
           }
+
+          var obj = {
+            firstName: "Bob",
+            lastName: "Jeff",
+            age: 13
+          }
+          localStorage.setItem("itemname", JSON.stringify(obj));
+          var item = JSON.parse(localStorage.getItem("itemname"));
         })
         .trigger("change");
   }

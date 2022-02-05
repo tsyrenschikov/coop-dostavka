@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.shop, name='index'),
     # Shop cart
     path('cart/', views.cart, name='cart'),
+    path('arti/cart_ok/',views.cart_ok, name='cart_ok'),
     # Shop arti
     path('arti/', views.shop_arti, name='arti'),
     path('arti/cart/', views.cart_arti, name='cart_arti'),
@@ -47,7 +48,5 @@ urlpatterns = [
 
     # Shop bogdan
     path('bogdan/', views.shop_bogdan, name='bogdan'),
-
-    path('cart_ok/',views.cart_ok, name='cart_ok'),
 
     ]

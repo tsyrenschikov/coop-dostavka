@@ -48,4 +48,6 @@ urlpatterns = [
     # Shop bogdan
     path('bogdan/', views.shop_bogdan, name='bogdan'),
 
+    path('cart_ok/',views.cart_ok, name='cart_ok'),
+
     ]

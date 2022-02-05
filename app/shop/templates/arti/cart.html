@@ -46,11 +46,12 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Населенный пункт*</label>
-                                                    <select class="form-control" name="address_city">
+                                                    <select id="select-days" value="" class="form-control" name="address_city">
                                                         {% for name,slug, dp,dpm,days_numb in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option selected="{{ name }}" price_city="{{ dp }}" price_min="{{ dpm }}" days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
-                                                                         value="{{ name }}">{{ name }}</option>
+                                                                <option price_city="{{ dp }}" price_min="{{ dpm }}"
+                                                                        days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
+                                                                        value="{{ name }}">{{ name }}</option>
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select>
@@ -73,7 +74,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">E-mail</label>
-                                                    <input name="email" type="email" class="form-control"  placeholder="Ваш E-mail (не обязательно)" required="">
+                                                    <input name="email" type="email" class="form-control"  placeholder="Ваш E-mail (не обязательно)">
                                             </div>
                                             </div>
                                         <div class="col-lg-6">

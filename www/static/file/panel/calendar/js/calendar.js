@@ -1,3 +1,8 @@
+var local1 = localStorage.location;
+        $("#select-days").attr({
+            'value':local1,
+            'selected': true,
+        });
 var shoppingCalendar = (function() {
 
   Calendar = [];
@@ -18,10 +23,11 @@ obj.Calendar = function () {
                 }
                 var date = ["* * *"];
                 var list = date.concat(days);
-                var d=list.join()
-                d=d.replace(/,/d," ")
+                var d=list.join();
+                d=d.replace(/,/d," ");
                 //document.body.innerHTML = d;
                 //console.log([d]);
+
                     $('#datepicker').Zebra_DatePicker({
                             direction: true,
                             disabled_dates: ['* * * 0-6'],

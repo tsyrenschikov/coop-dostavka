@@ -57,8 +57,9 @@ def cart_arti(request):
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def cart_ok(request,ord):
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     order=orders.objects.get(id=ord)
-    return render(request,'arti/cart_ok.html',{'order':order})
+    return render(request,'arti/cart_ok.html',{'order':order,'shops':shops})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

@@ -49,7 +49,7 @@
                                                     <select id="select-days" value="" class="form-control" name="address_city">
                                                         {% for name,slug, dp,dpm,days_numb in local_d %}
                                                             {% if slug == address_str %}
-                                                                <option price_city="{{ dp }}" price_min="{{ dpm }}"
+                                                                <option slug="{{ slug }}" price_city="{{ dp }}" price_min="{{ dpm }}"
                                                                         days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
                                                                         value="{{ name }}">{{ name }}</option>
                                                             {% endif %}

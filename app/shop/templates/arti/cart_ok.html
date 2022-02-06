@@ -29,6 +29,7 @@
                         {% endif %}
                         {% endfor %}
                     </div>
+                <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
                     <div class="form-group mt-1">
                         <label class="control-label-cart">Статус заказа : {% if order.status == null %}<span style=" color: orangered" >В ожидании</span>{% endif %}</label>
                     </div>
@@ -41,4 +42,7 @@
 {% include 'shop/includes/cart_modal_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
+    {% block script %}
+<script src="{% static 'file/shop/js/removecart.js' %}"></script>
+        {% endblock %}
 {% endblock content %}

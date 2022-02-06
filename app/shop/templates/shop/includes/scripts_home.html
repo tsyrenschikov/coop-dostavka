@@ -69,19 +69,6 @@ $(function () {
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
         groupBy: 'category'
     });
-    if (localStorage.location){
-        $('#local-name').text(localStorage.location);
-        $('#select_local').attr({
-            'value':localStorage.location,
-        });
-    }
-    else {
-       $(window).load(function () {
-            if (window.location.href.indexOf('shop') == -1){
-                 window.location.replace('https://coop-dostavka.ru/');
-            }
-        });
-    }
 
 
     // Initialize autocomplete with custom appendTo:
@@ -102,11 +89,6 @@ $(function () {
 <script type="text/javascript" src="{% static 'file/shop/js/search_city/countries.js' %}"></script>
 <!-- END Search -->
 
-<!--Accordion-->
-<script type="text/javascript" src="{% static 'file/shop/js/accordion.js' %}"></script>
-
-<!--Phone-->
-    <script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
 
 <!--Location-->
     <script src="{% static 'file/shop/js/search_city/location.js' %}"></script>
@@ -120,4 +102,3 @@ $(function () {
 
   gtag('config', 'G-DZV7WLHDFF');
 </script>
-{% block script %}{% endblock %}

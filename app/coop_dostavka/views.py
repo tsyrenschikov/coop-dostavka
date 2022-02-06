@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
+from panel.models import *
 
 
 def dashboard(reguest):
@@ -25,9 +26,10 @@ def offers(reguest):
     return render(reguest, 'shop/offers.html', {'users':users, 'categories' : categories})
 
 def career(reguest):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
-    return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories})
+    return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories,'local':local})
 
 def demo(reguest):
     return render(reguest, 'contact/demo.html')

@@ -69,19 +69,21 @@ $(function () {
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
         groupBy: 'category'
     });
+    var url = window.location.href;
+                console.log(url);
     if (localStorage.location){
         $('#local-name').text(localStorage.location);
         $('#select_local').attr({
             'value':localStorage.location,
         });
     }
-    else {
-        $(window).load(function () {
-            if (window.location.href.indexOf('shop') == -1){
-                 window.location.replace('https://coop-dostavka.ru/#');
-            }
-        });
-    }
+    //else {
+       // $(window).load(function () {
+            //if (window.location.href.indexOf('shop') == -1){
+                 //window.location.replace('https://coop-dostavka.ru/');
+            //}
+        //});
+    //}
 
     // Initialize autocomplete with custom appendTo:
     $('#autocomplete-custom-append').autocomplete({

@@ -7,9 +7,11 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
+from panel.models import *
 
 
 def contact(request):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     request.method == 'POST'
@@ -43,12 +45,13 @@ def contact(request):
             else:
                 # loading contacts.html if no requests
                 return render(request, 'contact/contact.html')
-    return render(request, "contact/contact.html", {"recaptcha_site_key": settings.GOOGLE_RECAPTCHA_SITE_KEY,'users':users, 'categories' : categories})
+    return render(request, "contact/contact.html", {"recaptcha_site_key": settings.GOOGLE_RECAPTCHA_SITE_KEY,'users':users, 'categories' : categories,'local':local})
 
 
 def thanks(request):
+    local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()
     categories = Category.objects.all()
-    return render(request, 'contact/thanks.html', {'users':users, 'categories' : categories})
+    return render(request, 'contact/thanks.html', {'users':users, 'categories' : categories,'local':local})
 
 

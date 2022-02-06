@@ -3271,6 +3271,12 @@ label.control-label {
     color: #2b2f4c;
 }
 
+label.control-label-cart {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b2f4c;
+}
+
 .chck-btn {
     height: 33px;
     display: inline-block;
@@ -6573,6 +6579,16 @@ textarea {
     margin-left: 20%;
 	margin-top: 34px;
     margin-right: 20%;
+	margin-bottom: 14px;
+}
+
+.contact-form-cart {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 30px 30px;
+    margin-left: 25%;
+	margin-top: 34px;
+    margin-right: 25%;
 	margin-bottom: 14px;
 }
 

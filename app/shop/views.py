@@ -5,6 +5,7 @@ from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 register = template.Library()
 
@@ -49,13 +50,15 @@ def cart_arti(request):
                     replace =request.POST.get('replace')
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
-                    orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
+                    order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
-                    return redirect( 'cart_ok')
+                    ord=order.id
+                    return redirect(cart_ok ,ord)
                 return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
-def cart_ok(request):
-    return render(request, 'arti/cart_ok.html',{})
+def cart_ok(request,ord):
+    order=orders.objects.get(id=ord)
+    return render(request,'arti/cart_ok.html',{'order':order})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

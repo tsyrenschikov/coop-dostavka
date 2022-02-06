@@ -6,10 +6,10 @@ urlpatterns = [
     path('', views.shop, name='index'),
     # Shop cart
     path('cart/', views.cart, name='cart'),
-    path('arti/cart_ok/',views.cart_ok, name='cart_ok'),
     # Shop arti
     path('arti/', views.shop_arti, name='arti'),
     path('arti/cart/', views.cart_arti, name='cart_arti'),
+    path('arti/cart_ok/<int:ord>/', views.cart_ok, name='cart_ok'),
     path('arti/products/', views.shop_arti_products, name='shop_arti_products'),
     path('arti/product/<int:id>/', views.shop_arti_product, name='shop_arti_product'),
     path('arti/grid/', views.shop_arti_grid, name='shop_arti_grid'),

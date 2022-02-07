@@ -74,9 +74,28 @@
                         <a href="#" class="opts_account1">
                             <img  src="{% static 'file/shop/images/avatar/search1.png' %}" alt="">
                             <span class="user__name">Отследить заказ</span>
-                            <i class="uil uil-angle-down"></i>
                         </a>
-                        </li>
+                        <div class="menu right dropdown_account dropdown_account_rl">
+								<div class="rl-account">
+                                    <form method="post">
+                                        {% csrf_token %}
+									<div class="rl-account-step">
+										<input hidden="hidden" type="text" class="item">
+                                        <input type="text" class="form-control" placeholder="Имя">
+									</div>
+                                    <div class="rl-account-step">
+										<input hidden="hidden" type="text" class="item">
+                                        <input id="phone1" type="text" class="form-control" placeholder="Номер телефона">
+									</div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <button type="submit" class="btn btn-success sign-in-btn">
+                                                <i aria-hidden="true"></i>Поиск заказа
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+							</div>
+						</li>
                         <li class="ui dropdown">
                             {%  if 'manager' in groups %}
                                 <head>

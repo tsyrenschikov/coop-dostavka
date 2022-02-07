@@ -5,7 +5,6 @@ from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.shortcuts import render, redirect
-from django.urls import reverse
 
 register = template.Library()
 
@@ -61,6 +60,9 @@ def cart_ok(request,ord):
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
     return render(request,'arti/cart_ok.html', {'order':order,'shops':shops})
+
+def search_order(request):
+    return render(request, 'shop/search_order.html')
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

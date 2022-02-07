@@ -54,6 +54,7 @@ $(function () {
         minChars: 1,
         onSelect: function (suggestion) {
             $('#selection').html('Вы выбрали: ' + suggestion.value);
+            $("#remove").trigger("click");
             var city_local;
             var field = suggestion.value;
             localStorage.location = field;

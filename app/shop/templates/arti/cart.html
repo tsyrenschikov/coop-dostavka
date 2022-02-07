@@ -107,6 +107,16 @@
                                                         <total></total>.р
                                                     </h5>
                                                 </div>
+                                                <br>
+                                                <div>
+                                                    <h5>
+                                                        {% for name,slug in shops %}
+                                                            {% if slug == address_str %}
+                                                                Магазин : {{ name }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </h5>
+                                                </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="example-block">

@@ -26,6 +26,7 @@ def shop(request):
 
 def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
@@ -54,10 +55,10 @@ def cart_arti(request):
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
                     return redirect(cart_ok ,ord)
-                return render(request, 'arti/cart.html', {'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+                return render(request, 'arti/cart.html', {'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def cart_ok(request,ord):
-    shops = Shop.objects.values_list('name', 'slug').distinct()
+    shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
     return render(request,'arti/cart_ok.html', {'order':order,'shops':shops})
 

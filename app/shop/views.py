@@ -19,7 +19,18 @@ def shop(request):
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
     categories = Category.objects.order_by('number')
+    if request.method == 'POST':
+        name=request.POST.get('name_order')
+        phone=request.POST.get('phone_order')
+        phone_s=phone;name_s=name
+        if orders.objects.get(phone=phone_s) == orders.objects.get(name=name_s):
+            i = orders.objects.values_list('id')
+            return redirect(search_order, i)
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
+
+def search_order(request,i):
+    client=orders.objects.get(id=i)
+    return render(request, 'shop/search_order.html',{'client':client})
 
 #Shop Arti
 
@@ -60,9 +71,6 @@ def cart_ok(request,ord):
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
     return render(request,'arti/cart_ok.html', {'order':order,'shops':shops})
-
-def search_order(request):
-    return render(request, 'shop/search_order.html')
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

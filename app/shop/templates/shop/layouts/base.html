@@ -69,13 +69,15 @@
 								<div class="rl-account">
                                     <form method="post">
                                         {% csrf_token %}
+                                    <div class="rl-account-step">
+									</div>
 									<div class="rl-account-step">
 										<input hidden="hidden" type="text" class="item">
-                                        <input type="text" class="form-control" placeholder="Имя">
+                                        <input type="text" class="form-control" name="name_order" placeholder="Имя" required="">
 									</div>
                                     <div class="rl-account-step">
 										<input hidden="hidden" type="text" class="item">
-                                        <input id="phone" type="text" class="form-control" placeholder="Номер телефона">
+                                        <input id="phone" type="text" class="form-control" name="phone_order" placeholder="Номер телефона" required="">
 									</div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <button type="submit" class="btn btn-success sign-in-btn">

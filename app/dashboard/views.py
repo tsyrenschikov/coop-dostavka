@@ -31,10 +31,8 @@ def edit_profile(request,id):
 
 def dashboard(request):
     local = Locations.objects.values_list('name', 'slug').distinct()
-    zakaz=orders.objects.values('id','name_id','address_city_id__delivery_price','address_city_id__delivery_price_min','address_city_id__days','sum_order','total_order',
-                                'address_street', 'address_city_id__name')
     users=User.objects.all()
-    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz':zakaz, 'users':users, 'local':local})
+    return render(request, 'dashboard/dashboard_my_orders.html', {'users':users, 'local':local})
 
 def my_rewards(request):
     local = Locations.objects.values_list('name', 'slug').distinct()

@@ -79,6 +79,9 @@
 								<div class="rl-account">
                                     <form method="post">
                                         {% csrf_token %}
+                                    <div class="rl-account-step">
+										<input hidden="hidden" type="text" class="item">
+									</div>
 									<div class="rl-account-step">
 										<input hidden="hidden" type="text" class="item">
                                         <input type="text" class="form-control" placeholder="Имя">

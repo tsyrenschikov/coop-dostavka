@@ -24,7 +24,6 @@ def shop(request):
     }
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
-    sh=Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')

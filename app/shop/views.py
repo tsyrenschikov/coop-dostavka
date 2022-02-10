@@ -16,21 +16,28 @@ def cart(request):
     return render(request, 'shop/cart.html', {})
 
 def shop(request):
+    alert = {
+        "name": request.GET.get('name', ''),
+        "phone": request.GET.get('phone', ''),
+        "local": Locations.objects.values_list('name', 'slug').distinct()
+    }
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
-        name=request.POST.get('name_order')
-        phone=request.POST.get('phone_order')
-        phone_s=phone;name_s=name
-        if orders.objects.get(phone=phone_s) == orders.objects.get(name=name_s):
-            i = orders.objects.values_list('id')
-            return redirect(search_order, i)
+        name=request.POST.get('name')
+        phone=request.POST.get('phone')
+        if orders.objects.filter(name=request.POST['name']).exists() == False:
+            alert['name'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'shop/search_order.html', alert)
+        if orders.objects.filter(phone=request.POST['phone']).exists() ==False:
+            alert['phone'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'shop/search_order.html', alert)
+        else:
+            client = orders.objects.filter(name=name,phone=phone)
+            return render(request, 'shop/search_order.html', {'client':client})
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
 
-def search_order(request,i):
-    client=orders.objects.get(id=i)
-    return render(request, 'shop/search_order.html',{'client':client})
 
 #Shop Arti
 

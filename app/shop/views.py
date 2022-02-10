@@ -19,10 +19,12 @@ def shop(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct()
+        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
     }
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
+    sh=Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -35,7 +37,7 @@ def shop(request):
             return render(request, 'shop/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name,phone=phone)
-            return render(request, 'shop/search_order.html', {'client':client})
+            return render(request, 'shop/search_order.html', {'client':client,'local':local})
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
 
 

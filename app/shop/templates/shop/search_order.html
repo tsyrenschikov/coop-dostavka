@@ -23,9 +23,29 @@
                 </div>
                 {% if client %}
                     <div class="contact-form-cart">
-                        {% for i in client %}
-                            {{ i.id }}
-                        {% endfor %}
+                    <div class="card-body-table">
+                        <div class="table-responsive">
+                            <table class="table ucp-table1 table-hover table_sort">
+                                <thead>
+                                <tr>
+                                    <th>Номер заказа</th>
+                                    <th>Дата доставки</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                {% for i in client %}
+                                    <tr>
+                                        <td>{{ i.id }}</td>
+                                        <td>{{ i.cal }}</td>
+                                        <td>
+                                            {% if i.status == null %}<span style=" color: orangered" >В ожидании</span>{% endif %}
+                                            {% if i.status  %}<span style=" color: yellow" >Доставлен</span>{% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 {% else %}
                     <div class="contact-form-cart">

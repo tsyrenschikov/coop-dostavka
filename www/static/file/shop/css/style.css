@@ -4598,6 +4598,13 @@ table.table.ucp-table {
 	font-weight: 500;
 }
 
+.ucp-table1 thead tr th {
+    color: #ffffff;
+	font-size: 14px;
+    background-color: #28a745;
+	font-weight: 500;
+}
+
 .ucp-table tfoot {
     font-weight: 400;
     padding: 14px !important;

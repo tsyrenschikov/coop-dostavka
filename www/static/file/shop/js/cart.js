@@ -124,6 +124,10 @@ obj.Delivery = function () {
         for (var item in cart) {
           totaldelivery += cart[item].price * cart[item].count;
         }
+        $(document).ready(function() { if (Number(totaldelivery.toFixed(1)) > 0) {
+          $("#cartphoto").attr('hidden',true);
+        }
+        else{$("#cartphoto").attr('hidden',false);}});
         if (Number(totaldelivery.toFixed(1)) < Number(price_min) || price_min == 0)
         {
           delivery_e = Number(price_city)

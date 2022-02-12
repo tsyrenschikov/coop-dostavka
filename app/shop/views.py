@@ -41,6 +41,28 @@ def shop(request):
 
 
 #Shop Arti
+def searcharti(request):
+    alert = {
+        "name": request.GET.get('name', ''),
+        "phone": request.GET.get('phone', ''),
+        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+    }
+    local=Locations.objects.values_list('name','slug').distinct()
+    categories = Category.objects.order_by('number')
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        phone=request.POST.get('phone')
+        if orders.objects.filter(name=request.POST['name']).exists() == False:
+            alert['name'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'arti/search_order.html', alert)
+        if orders.objects.filter(phone=request.POST['phone']).exists() ==False:
+            alert['phone'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'arti/search_order.html', alert)
+        else:
+            client = orders.objects.filter(name=name,phone=phone)
+            return render(request, 'arti/search_order.html', {'client':client,'local':local})
+    return render(request, 'arti/index.html', {'categories': categories, 'local': local})
 
 def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
@@ -75,6 +97,7 @@ def cart_arti(request):
                     return redirect(cart_ok ,ord)
 
                 return render(request, 'arti/cart.html', {'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+
 
 def cart_ok(request,ord):
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()

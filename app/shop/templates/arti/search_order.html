@@ -1,4 +1,4 @@
-{% extends 'shop/layouts/base.html' %}
+{% extends 'shop/layouts/base_arti.html' %}
 {% load static %}
 {% block title %}Поиск заказа{% endblock %}
 {% block content %}
@@ -42,7 +42,6 @@
                                             {% if i.status == 'false' %}<span class="bullet" style="background-color: rgb(254, 208, 48);" ></span><span>Сформирован</span>{% endif %}
                                             {% if i.status == 'true' %}<span class="bullet" style="background-color: rgb(2, 178, 144);"></span><span>Доставка</span>{% endif %}
                                         </td>
-                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -63,7 +62,7 @@
                                 <input type="text" name="name" class="form-control" placeholder="Имя" required="">
                             </div>
                             <div class="rl-account-step">
-                                <input id="phone1" type="text" name="phone" class="form-control" placeholder="Номер телефона" required="">
+                                <input id="phone" type="text" name="phone" class="form-control" placeholder="Номер телефона" required="">
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <button type="submit" class="btn btn-success sign-in-btn">

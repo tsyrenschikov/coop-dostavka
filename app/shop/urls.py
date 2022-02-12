@@ -24,6 +24,10 @@ urlpatterns = [
     path('pokrovskoe/grid/', views.shop_pokrovskoe_grid, name='shop_pokrovskoe_grid'),
     path('pokrovskoe/career/', views.shop_pokrovskoe_career, name='shop_pokrovskoe_career'),
 
+# Shop bogdan
+    path('bogdan/', views.shop_bogdan, name='bogdan'),
+
+
     # Shop rezh
     path('rezh/', views.shop_rezh, name='rezh'),
     path('rezh/products/', views.shop_rezh_products, name='shop_rezh_products'),
@@ -46,8 +50,4 @@ urlpatterns = [
     path('chetkarino/product/<int:id>/', views.shop_chetkarino_product, name='shop_chetkarino_product'),
     path('chetkarino/grid/', views.shop_chetkarino_grid, name='shop_chetkarino_grid'),
     path('chetkarino/career/', views.shop_chetkarino_career, name='shop_chetkarino_career'),
-
-    # Shop bogdan
-    path('bogdan/', views.shop_bogdan, name='bogdan'),
-
     ]

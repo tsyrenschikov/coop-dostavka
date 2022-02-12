@@ -38,8 +38,9 @@
                                         <td>{{ i.id }}</td>
                                         <td>{{ i.cal }}</td>
                                         <td>
-                                            {% if i.status == null %}<span style=" color: orangered" >В ожидании</span>{% endif %}
-                                            {% if i.status  %}<span style=" color: yellow" >Доставлен</span>{% endif %}
+                                            {% if i.status == null %}<span class="bullet" style="background-color: rgb(166, 177, 189);" ></span><span>В ожидании</span>{% endif %}
+                                            {% if i.status == false %}<span class="bullet" style="background-color: rgb(254, 208, 48);" ></span><span>Сформирован</span>{% endif %}
+                                            {% if i.status == true %}<span class="bullet" style="background-color: rgb(2, 178, 144);"></span><span>Доставка</span>{% endif %}
                                         </td>
                                     </tr>
                                 {% endfor %}

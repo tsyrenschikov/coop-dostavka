@@ -73,6 +73,7 @@ def cart_arti(request):
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
                     return redirect(cart_ok ,ord)
+
                 return render(request, 'arti/cart.html', {'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 def cart_ok(request,ord):

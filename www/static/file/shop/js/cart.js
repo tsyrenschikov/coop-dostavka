@@ -103,6 +103,18 @@ var shoppingCart = (function() {
     for (var item in cart) {
       totalCart += cart[item].price * cart[item].count;
     }
+    $(document).ready(function() {
+          if (Number(totalCart.toFixed(1)) > 0) {
+            $("#countcart").attr('hidden',false);
+            $("#cartmodal").attr('hidden',true);
+            $('carttext').text('Товары в корзине')
+          }
+          else{
+            $("#countcart").attr('hidden',true);
+            $("#cartmodal").attr('hidden',false)
+            $('carttext').text('Ваша корзина пустая')
+        }
+        });
     return Number(totalCart.toFixed(2));
   }
 
@@ -124,10 +136,16 @@ obj.Delivery = function () {
         for (var item in cart) {
           totaldelivery += cart[item].price * cart[item].count;
         }
-        $(document).ready(function() { if (Number(totaldelivery.toFixed(1)) > 0) {
-          $("#cartphoto").attr('hidden',true);
-        }
-        else{$("#cartphoto").attr('hidden',false);}});
+        $(document).ready(function() {
+          if (Number(totaldelivery.toFixed(1)) > 0) {
+            $('#cartphoto').attr('hidden',true);
+            $('oform').text('Оформить заказ')
+          }
+          else {
+            $('#cartphoto').attr('hidden',false);
+            $('oform').text('Ваша корзина пустая')
+          }
+        });
         if (Number(totaldelivery.toFixed(1)) < Number(price_min) || price_min == 0)
         {
           delivery_e = Number(price_city)

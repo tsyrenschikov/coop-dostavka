@@ -47,9 +47,11 @@ def searcharti(request):
         "phone": request.GET.get('phone', ''),
         "local": Locations.objects.values_list('name', 'slug').distinct(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+        "address_str" : str([i for i in str(request.path).split('/') if i][0]),
     }
     local=Locations.objects.values_list('name','slug').distinct()
     categories = Category.objects.order_by('number')
+    address_str = str([i for i in str(request.path).split('/') if i][0])
     if request.method == 'POST':
         name=request.POST.get('name')
         phone=request.POST.get('phone')
@@ -61,8 +63,8 @@ def searcharti(request):
             return render(request, 'arti/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name,phone=phone)
-            return render(request, 'arti/search_order.html', {'client':client,'local':local})
-    return render(request, 'arti/index.html', {'categories': categories, 'local': local})
+            return render(request, 'arti/search_order.html', {'client':client,'local':local,'address_str':address_str})
+    return render(request, 'arti/index.html', {'categories': categories, 'local': local,'address_str':address_str})
 
 def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
@@ -100,9 +102,10 @@ def cart_arti(request):
 
 
 def cart_ok(request,ord):
+    address_str = str([i for i in str(request.path).split('/') if i][0])
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
-    return render(request,'arti/cart_ok.html', {'order':order,'shops':shops})
+    return render(request,'arti/cart_ok.html', {'order':order,'shops':shops,'address_str':address_str})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()
@@ -115,7 +118,7 @@ def shop_arti(request):
                 name=name_a
                 name_slug=eval(slug)
                 product=name_slug.objects.all().order_by('?')[:20]
-                return render(request, 'arti/index.html', {'product':product,'local':local,'name':name})
+                return render(request, 'arti/index.html', {'product':product,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()
@@ -128,7 +131,7 @@ def shop_arti_grid(request):
                 name = name_a
                 name_slug = eval(slug)
                 product=name_slug.objects.all().order_by('id')[::-1][:20]
-                return render(request, 'arti/grid.html', {'product':product,'local':local,'name':name})
+                return render(request, 'arti/grid.html', {'product':product,'local':local,'name':name,'address_str':address_str})
 
 #View products
 def shop_arti_products(request):
@@ -142,7 +145,7 @@ def shop_arti_products(request):
                 name = name_a
                 name_slug = eval(slug)
                 products= name_slug.objects.all().order_by('name')
-                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local })
+                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local,'address_str':address_str})
 
 #View product
 def shop_arti_product(request, id):
@@ -157,13 +160,14 @@ def shop_arti_product(request, id):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 shop_name = slug
-                return render(request, 'arti/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
+                return render(request, 'arti/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_career(reguest):
     local=Locations.objects.values_list('name','slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
-    return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local})
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local,'address_str':address_str})
 
 # Shop artiobschepit
 def shop_artiobschepit(request):
@@ -176,7 +180,7 @@ def shop_artiobschepit(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 product=artiobschepit.objects.all().order_by('?')[:20]
-                return render(request, 'arti/artiobschepit/index.html', {'product':product,'local':local,'name':name})
+                return render(request, 'arti/artiobschepit/index.html', {'product':product,'local':local,'name':name,'address_str':address_str})
 
 def shop_artiobschepit_product(request,id):
     local=Locations.objects.values_list('name','slug').distinct()
@@ -190,7 +194,7 @@ def shop_artiobschepit_product(request,id):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 shop_name = slug
-                return render(request, 'arti/artiobschepit/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
+                return render(request, 'arti/artiobschepit/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name,'address_str':address_str})
 
 # Shop pokrovskoe
 def shop_pokrovskoe(request):
@@ -204,7 +208,7 @@ def shop_pokrovskoe(request):
                 name = name_a
                 name_slug = eval(slug)
                 product = name_slug.objects.all().order_by('?')[:20]
-                return render(request, 'pokrovskoe/index.html', {'product': product, 'local': local, 'name': name})
+                return render(request, 'pokrovskoe/index.html', {'product': product, 'local': local, 'name': name,'address_str':address_str})
 
 def shop_pokrovskoe_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()

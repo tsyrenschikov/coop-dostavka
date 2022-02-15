@@ -227,7 +227,7 @@ html.hc-nav-yscroll {
 
 .hc-offcanvas-nav li.nav-close a,
 .hc-offcanvas-nav li.nav-back a {
-	background: #2c5d8f;
+	background:  rgba(245, 195, 44, 0.75);
 	border-top: 1px solid #295887;
 	border-bottom: 1px solid #295887
 }
@@ -290,8 +290,8 @@ html.hc-nav-yscroll {
 	height: 8px;
 	margin-left: -2px;
 	box-sizing: border-box;
-	border-top: 2px solid #fff;
-	border-left: 2px solid #fff;
+	border-top: 2px solid #000;
+	border-left: 2px solid #000;
 	transform-origin: center
 }
 
@@ -543,10 +543,10 @@ main .button.active {
 }
 
 .hc-offcanvas-nav a {
-	font-size: 16px
+	font-size: 14px
 }
 
-.hc-offcanvas-nav li.cryptocurrency>a::before {
+.hc-offcanvas-nav li.menu-category>a::before {
 	font-family: 'Material Icons';
 	font-weight: normal;
 	font-style: normal;
@@ -569,214 +569,6 @@ main .button.active {
 	margin-right: 15px;
 	font-size: 19px;
 	vertical-align: top;
-	content: 'local_atm'
-}
 
-.hc-offcanvas-nav li.devices>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'devices'
-}
-
-.hc-offcanvas-nav li.mobile>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'phone_android'
-}
-
-.hc-offcanvas-nav li.television>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'desktop_windows'
-}
-
-.hc-offcanvas-nav li.camera>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'camera_alt'
-}
-
-.hc-offcanvas-nav li.magazines>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'import_contacts'
-}
-
-.hc-offcanvas-nav li.store>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'store'
-}
-
-.hc-offcanvas-nav li.collections>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'collections'
-}
-
-.hc-offcanvas-nav li.credits>a::before {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
-	display: inline-block;
-	width: 19px;
-	height: 19px;
-	margin-right: 15px;
-	font-size: 19px;
-	vertical-align: top;
-	content: 'credit_card'
 }
 

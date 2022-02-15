@@ -52,8 +52,8 @@
                     customToggle: null,
                     insertClose: !0,
                     insertBack: !0,
-                    labelClose: "Close",
-                    labelBack: "Back"
+                    labelClose: "Закрыть",
+                    labelBack: "Назад"
                 }, e),
                 w = B(S.getElementsByTagName("html")[0]),
                 O = (B(S), B(S.body)),

@@ -7001,3 +7001,67 @@ textarea {
   display: inline-block;
   margin-right: 6px;
 }
+
+.shop_toolbar_wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid #ddd;
+	padding: 8px 10px;
+	margin: 0 0 30px;
+	background-color: #ffffff;
+}
+
+.shop_toolbar_btn > button {
+	margin-right: 10px;
+	border: 0;
+	background: inherit;
+}
+
+.shop_toolbar_btn > button.btn-grid-3 {
+	background: url('/static/file/shop/images/icon/bkg_grid.png') no-repeat scroll center center;
+	width: 20px;
+	height: 20px;
+}
+
+.shop_toolbar_btn > button.btn-grid-3.active {
+	background: url('/static/file/shop/images/icon/bkg_grid_hover.png') no-repeat scroll center center !important;
+}
+
+.shop_toolbar_btn > button.btn-grid-4 {
+	background: url('/static/file/shop/images/icon/bkg_grid4.png') no-repeat scroll center center;
+	width: 26px;
+	height: 22px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.shop_toolbar_btn > button.btn-grid-4 {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.shop_toolbar_btn > button.btn-grid-4 {
+		display: none;
+	}
+}
+
+.shop_toolbar_btn > button.btn-grid-4.active {
+	background: url('/static/file/shop/images/icon/bkg_grid4_hover.png') no-repeat scroll center center !important;
+}
+
+.shop_toolbar_btn > button.btn-list {
+	background: url('/static/file/shop/images/icon/bkg_list.png') no-repeat scroll center center;
+	width: 20px;
+	height: 20px;
+}
+
+.shop_toolbar_btn > button.btn-list.active {
+	background: url('/static/file/shop/images/icon/bkg_list_hover.png') no-repeat scroll center center !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .niceselect_option {
+    margin-bottom: 16px;
+  }
+}

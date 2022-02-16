@@ -34,6 +34,7 @@
 					</div>
 				</div>
 				<div class="product-list-view">
+                {% include 'shop/includes/toolbar_start.html' %}
 					<div class="row">
                         {% for product in product %}
 						<div class="col-lg-3 col-md-6">
@@ -55,6 +56,7 @@
 						</div>
                         {% endfor %}
                     </div>
+                {% include 'shop/includes/toolbar_end.html' %}
                 </div>
             </div>
         </div>

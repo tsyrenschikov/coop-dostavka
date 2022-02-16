@@ -130,7 +130,7 @@ def shop_arti_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product=name_slug.objects.all().order_by('id')[::-1][:20]
+                product=name_slug.objects.all().order_by('id')[::-1][:40]
                 return render(request, 'arti/grid.html', {'product':product,'local':local,'name':name,'address_str':address_str})
 
 #View products

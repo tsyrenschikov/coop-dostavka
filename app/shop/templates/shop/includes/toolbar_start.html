@@ -1,24 +1,24 @@
 <!--shop toolbar start-->
 <div class="shop_toolbar_wrapper">
-    <div class="shop_toolbar_btn">
+    <div class="search_container mobail_s_none">
+        <form action="#">
+            <div class="search_box">
+                <input placeholder="Поиск товара" type="text">
+                <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+            </div>
+        </form>
+    </div>
+    <!--<div class="shop_toolbar_btn">
 
         <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"></button>
 
         <button data-role="grid_4" type="button" class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
 
         <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
-    </div>
-    {% include 'shop/includes/toolbar_end.html' %}
-    <!--<div class=" niceselect_option">
-        <form class="select_option" action="#">
-            <select name="orderby" id="short">
-                <option value="6">Сортировать по алфавиту</option>
-                <option value="5">Сортировать по цене</option>
-            </select>
-        </form>
     </div>-->
+    {% include 'shop/includes/toolbar_end.html' %}
     <div class="page_amount">
-        <p-coutn>Показано {{ page_obj.number }}  из {{ page_obj.paginator.num_pages }} </p-coutn>
+        <p-coutn>Показано {{ page_obj.number }} из {{ page_obj.paginator.num_pages }} </p-coutn>
     </div>
 </div>
 <!--shop toolbar end-->

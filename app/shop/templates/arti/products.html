@@ -21,7 +21,7 @@
 				<div class="product-list-view">
                 {%  include 'shop/includes/toolbar_start.html' %}
 					<div class="row">
-                        {% for product in products %}
+                        {% for product in page_obj %}
 						<div class="col-lg-3 col-md-6">
 							<div class="product-item mb-30">
                                 <a href="/arti/product/{{ product.id }}" class="product-img">

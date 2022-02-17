@@ -4,6 +4,7 @@ from django import template
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 register = template.Library()
@@ -130,8 +131,11 @@ def shop_arti_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product=name_slug.objects.all().order_by('id')[::-1][:40]
-                return render(request, 'arti/grid.html', {'product':product,'local':local,'name':name,'address_str':address_str})
+                product=name_slug.objects.all().order_by('id')[::-1][:48]
+                paginator = Paginator(product,20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'arti/grid.html', {'product':product,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
 
 #View products
 def shop_arti_products(request):
@@ -145,7 +149,10 @@ def shop_arti_products(request):
                 name = name_a
                 name_slug = eval(slug)
                 products= name_slug.objects.all().order_by('name')
-                return render(request, 'arti/products.html', {'products':products,'name':name,'local':local,'address_str':address_str})
+                paginator = Paginator(products, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'arti/products.html', {'products':products,'page_obj':page_obj,'name':name,'local':local,'address_str':address_str})
 
 #View product
 def shop_arti_product(request, id):

@@ -8,6 +8,7 @@
 
         <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
     </div>
+    {% include 'shop/includes/toolbar_end.html' %}
     <!--<div class=" niceselect_option">
         <form class="select_option" action="#">
             <select name="orderby" id="short">
@@ -15,9 +16,9 @@
                 <option value="5">Сортировать по цене</option>
             </select>
         </form>
-    </div>
-    <div class="page_amount">
-        <p>Результат</p>
     </div>-->
+    <div class="page_amount">
+        <p-coutn>Показано {{ page_obj.number }}  из {{ page_obj.paginator.num_pages }} </p-coutn>
+    </div>
 </div>
 <!--shop toolbar end-->

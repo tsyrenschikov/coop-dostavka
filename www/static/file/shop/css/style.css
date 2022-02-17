@@ -7075,12 +7075,28 @@ textarea {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border: 1px solid #e5e5e5;
+	/*border: 1px solid #e5e5e5;*/
 	padding: 8px 10px;
 	margin: 0 0 40px;
 	margin-bottom: 40px;
 	background-color: #ffffff;
 }
+
+.shop_toolbar_load.t_bottom {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.shop_toolbar_load {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 10px;
+	margin: 0 0 40px;
+	margin-bottom: 40px;
+}
+
+
 .pagination {
   display: flex;
   padding-left: 0;
@@ -7133,4 +7149,27 @@ textarea {
   animation-iteration-count: infinite;
 }
 
-/*--
+
+
+@media only screen and (max-width: 767px) {
+  .page_amount {
+    margin-bottom: 12px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .page_amount p {
+    padding-left: 0;
+    margin-left: 0;
+    border-left: 0;
+  }
+}
+.p-count{
+line-height: 24px;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+visibility: visible;
+font-family: "Work Sans", sans-serif;
+color: #222222;
+letter-spacing: 0.02em;
+}

@@ -1,12 +1,22 @@
-
+<!--<div class="shop_toolbar_load t_bottom">
+    <a href="#" id="load" class="btn btn-primary1">Загрузить еще</a>
+</div>-->
 <div class="shop_toolbar t_bottom">
     <div class="pagination">
         <ul>
-            <li class="current">1</li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li class="next"><a href="#"> > </a></li>
-            <li><a href="#"> >> </a></li>
+            {% if page_obj.has_previous %}
+                <li class="next"><a href="?page=1"> << </a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+            {% endif %}
+
+            <li class="current">{{ page_obj.number }}</li>
+
+            {% if page_obj.has_next %}
+                 <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+            {% endif %}
         </ul>
     </div>
 </div>

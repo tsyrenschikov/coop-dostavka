@@ -6923,7 +6923,7 @@ textarea {
 
 .cuttedText {
   display: block;
-  width: 192.8px;
+  width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

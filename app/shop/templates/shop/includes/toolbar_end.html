@@ -5,17 +5,17 @@
     <div class="pagination">
         <ul>
             {% if page_obj.has_previous %}
-                <li class="next"><a href="?page=1"> << </a></li>
-                <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                <li id="hidescrollpage1" class="next"><a href="?page=1"> << </a></li>
+                <li id="hidescrollprevpage"><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
                 <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
             {% endif %}
 
             <li class="current">{{ page_obj.number }}</li>
 
             {% if page_obj.has_next %}
-                 <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
-                <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                 <li ><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                <li id="hidescrollnextpage"><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                <li class="next" id="hidescrollnav"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
             {% endif %}
         </ul>
     </div>

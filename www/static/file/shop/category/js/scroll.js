@@ -1,16 +1,23 @@
-
-$(function() {
-    var a=Array.from($(".cuttedText")).length;
-    $("count_product").text(a);
-});
-
-$(document).ready(function(){
-    $("contentload").slice(0, 1).show(); // select the first ten
-    $("#load").click(function (e) {
-        e.preventDefault();
-        $("contentload:hidden").slice(0, 1).show(); // select next 10 hidden divs and show them
-        if ($("contentload:hidden").length == 0) { // check if any hidden divs still exist
-            $("#load").hide();
+$(function () {
+    $(window).on('load resize', function () {
+        var width = $(window).width();
+        if (width <=761){
+            $('#hidescrollcart').hide('Корзина');
+            $('#hidescrollbutton').hide();
+            $('#hidescrollpage1').hide();
+            $('#hidescrollshow').hide();
+            $('#hidescrollnav').hide();
+            $('#hidescrollnextpage').hide();
+            $('#hidescrollprevpage').hide();
+        }
+        else{
+            $('#hidescrollcart').show('Корзина');
+            $('#hidescrollbutton').show();
+            $('#hidescrollpage1').show();
+            $('#hidescrollshow').show();
+            $('#hidescrollnav').show();
+            $('#hidescrollnextpage').show();
+            $('#hidescrollprevpage').show();
         }
     });
 });

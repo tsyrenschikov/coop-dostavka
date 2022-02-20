@@ -152,7 +152,9 @@ def shop_arti_products(request):
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'arti/products.html', {'products':products,'page_obj':page_obj,'name':name,'local':local,'address_str':address_str})
+                list1=name_slug.objects.values_list('subcat').order_by('name')
+                list_products=list(set(list1))
+                return render(request, 'arti/products.html', {'products':products,'list_products':list_products,'page_obj':page_obj,'name':name,'local':local,'address_str':address_str})
 
 #View product
 def shop_arti_product(request, id):

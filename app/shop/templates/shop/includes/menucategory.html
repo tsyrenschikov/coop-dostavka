@@ -2,10 +2,20 @@
 <header>
     <div class="cf">
         <nav id="main-nav">
-            {% for list in list_products %}
+            {% for list,sub in list_products %}
             <ul class="second-nav">
                 <li class="menu-category">
                     <a>{{ list|cut:"("|cut:")"|cut:"'"|cut:"," }}</a>
+                    {% if sub %}
+                    <ul>
+                        <li>
+                            <a href="#"><{{ sub }}></a>
+                            <ul>
+                                <li><a href="#">2.2.3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
                 </li>
             </ul>
             {% endfor %}

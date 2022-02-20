@@ -54,17 +54,21 @@ $(function () {
         minChars: 1,
         onSelect: function (suggestion) {
             $('#selection').html('Вы выбрали: ' + suggestion.value);
-            $("#remove").trigger("click");
             var city_local;
+            var location_slug=$('#location_slug').val();
+
             var field = suggestion.value;
             localStorage.location = field;
             var city_local= suggestion.value;
             for (var j = 0; j < nhlTeams.length; j++) {
                 if (city_local === nhlTeams[j]) {
+                    if (location_slug != nhlTeams[j+1]){
+                        $("#remove").trigger("click");
+                    };
                     window.location.href = 'https://coop-dostavka.ru/' + nhlTeams[j+1],
                     window.location(window.location.href);
                 };
-                    }
+            }
         },
         showNoSuggestionNotice: true,
         noSuggestionNotice: 'В населенный пункт доставка не осуществляется',

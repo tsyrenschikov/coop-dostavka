@@ -148,6 +148,7 @@ def shop_arti_products(request):
     local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
+    list_category=[]
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
@@ -155,16 +156,21 @@ def shop_arti_products(request):
                 products= name_slug.objects.all().order_by('name')
                 category_shop = Category.objects.values('name', 'subcat')
                 category_product=name_slug.objects.values_list('subcat','subsubcat').order_by('name')
-                p = list(set([i['subcat'] for i in category_product]))
-                s = category_shop.values('subcat')
+                for category in category_shop:
+                    for i in category['subcat']:
+                        for sub, subsub in category_product:
+                            if sub == i:
+                                list_category.append(category['name'])
+                                product_sort = name_slug.objects.filter(subcat=sub)
+                list_category = set(sorted(list_category))
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/products.html',
-                              {'p':p,'s':s,'category_shop':category_shop,'products':products,
-                               'category_product':category_product,'page_obj':page_obj,'name':name,'local':local,'address_str':address_str})
+                              {'product_sort': product_sort, 'list_category': list_category, 'category_shop': category_shop, 'products': products,
+                               'category_product': category_product, 'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
-def sort_list(request,subcat):
+def sort_list(request,product_sort):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -176,11 +182,10 @@ def sort_list(request,subcat):
                 name_slug = eval(slug)
                 cat_list = name_slug.objects.values_list('subcat','subcat').order_by('name')
                 cat_list = sorted(set(cat_list))
-                products = name_slug.objects.filter(subcat='Фрукты')
-                paginator = Paginator(products, 20)
+                paginator = Paginator(product_sort, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'shop/list.html', {'products':products,'cat_list': cat_list, 'page_obj': page_obj, 'name': name, 'local': local,
+                return render(request, 'shop/list.html', {'cat_list': cat_list, 'page_obj': page_obj, 'name': name, 'local': local,
                                                               'address_str': address_str})
 
 #View product
@@ -196,11 +201,11 @@ def shop_arti_product(request, id):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 shop_name = slug
-                slug_name=eval(slug)
+                slug_name = eval(slug)
                 list1 = slug_name.objects.values_list('subcat', 'subsubcat').distinct()
                 list_category = sorted(list(set(list1)))
-                return render(request, 'arti/product.html', {'product':product,'list_category':list_category,'products':products,'shop_name':shop_name,'local':local,'name':name,
-                'address_str':address_str})
+                return render(request, 'arti/product.html', {'product': product, 'list_category': list_category, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                             'address_str': address_str})
 
 def shop_arti_career(reguest):
     local=Locations.objects.values_list('name','slug').distinct()

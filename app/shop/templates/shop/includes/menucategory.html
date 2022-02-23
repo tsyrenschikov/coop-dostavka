@@ -1,18 +1,16 @@
 {% load static %}
 <header>
     <div class="cf">
-        <nav id="main-nav">{{ category_product }}
-            {% for category in category_shop %}
+        <nav id="main-nav">
+            {% for category in list_category %}
                 <ul class="second-nav">
                     <li class="menu-category">
-                        <a href="#">{{ category.name }}</a>
-                        <ul>
+                        <a href="{% url 'shop_arti_products' %}">{{ category }}</a>
+                        <!--<ul>
                             <li>
-                                {% for subsubcat in category.subcat %}
-                                    <a href="#">{{ subsubcat }}</a>
-                                {% endfor %}
+                                    <a href="#"></a>
                             </li>
-                        </ul>
+                        </ul>-->
                     </li>
                 </ul>
             {% endfor %}

@@ -148,7 +148,7 @@ def shop_arti_products(request):
     local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
-    list_category_product={}
+    list_category_product = {}
     list_category = []
     for slug in shop:
         for name_a, slug_a in areas:
@@ -156,13 +156,12 @@ def shop_arti_products(request):
                 name = name_a; name_slug = eval(slug)
                 products= name_slug.objects.all().order_by('name')
                 category_shop = Category.objects.values('name', 'subcat')
-                category_product=name_slug.objects.values_list('subcat','subsubcat').order_by('name')
+                category_product=name_slug.objects.values_list('subcat','name','subsubcat').order_by('name')
                 for category in category_shop:
                     for i in category['subcat']:
-                        for sub, subsub in category_product:
+                        for sub,name,subsub in category_product:
                             if sub == i:
-                                list_category.append(category['name'])
-                                list_category_product.update({category['name']:category['subcat']})
+                                list_category_product.update({category['name']: 1})
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)

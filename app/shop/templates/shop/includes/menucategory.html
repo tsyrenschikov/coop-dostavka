@@ -6,13 +6,11 @@
                 <ul class="second-nav">
                     <li class="menu-category">
                         <a href="#">{{ key }}</a>
-                        {% for val in value %}
                         <ul>
                             <li>
-                                <a href="#">{{ val }}</a>
+                                <a href="#">{{ value }}</a>
                             </li>
                         </ul>
-                            {% endfor %}
                     </li>
                 </ul>
             {% endfor %}

@@ -5,6 +5,7 @@ from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.core.paginator import Paginator
+from itertools import groupby
 from django.shortcuts import render, redirect
 
 register = template.Library()
@@ -143,12 +144,12 @@ def shop_arti_grid(request):
 
 #View products
 def shop_arti_products(request):
-    list_category=[]
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
-    list_category=[]
+    list_category_product={}
+    list_category = []
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
@@ -161,13 +162,12 @@ def shop_arti_products(request):
                         for sub, subsub in category_product:
                             if sub == i:
                                 list_category.append(category['name'])
-                                product_sort = name_slug.objects.filter(subcat=sub)
-                list_category = set(sorted(list_category))
+                                list_category_product.update({category['name']:category['subcat']})
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/products.html',
-                              {'product_sort': product_sort, 'list_category': list_category, 'category_shop': category_shop, 'products': products,
+                              {'list_category_product': list_category_product, 'products': products,
                                'category_product': category_product, 'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 def sort_list(request,product_sort):

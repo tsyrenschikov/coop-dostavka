@@ -120,9 +120,17 @@ def shop_arti(request):
                 name=name_a
                 name_slug=eval(slug)
                 product=name_slug.objects.all().order_by('?')[:20]
-                list1 = name_slug.objects.values_list('subcat', 'subsubcat').order_by('name')
-                list_category = sorted(list(set(list1)))
-                return render(request, 'arti/index.html', {'product':product,'list_category':list_category,'local':local,'name':name,'address_str':address_str})
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                return render(request, 'arti/index.html', {'product':product,' category_product': category_product,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()
@@ -135,12 +143,20 @@ def shop_arti_grid(request):
                 name = name_a
                 name_slug = eval(slug)
                 product=name_slug.objects.all().order_by('id')[::-1][:48]
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
                 paginator = Paginator(product,20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                list1 = name_slug.objects.values_list('subcat', 'subsubcat').order_by('name')
-                list_category = sorted(list(set(list1)))
-                return render(request, 'arti/grid.html', {'product':product,'list_category':list_category,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
+                return render(request, 'arti/grid.html', {'product':product,'category_product':category_product,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
 
 #View products
 def shop_arti_products(request):
@@ -203,9 +219,17 @@ def shop_arti_product(request, id):
                 name = name_a
                 shop_name = slug
                 slug_name = eval(slug)
-                list1 = slug_name.objects.values_list('subcat', 'subsubcat').distinct()
-                list_category = sorted(list(set(list1)))
-                return render(request, 'arti/product.html', {'product': product, 'list_category': list_category, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                return render(request, 'arti/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
 
 def shop_arti_career(reguest):

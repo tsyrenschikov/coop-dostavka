@@ -17,6 +17,7 @@ def manager(user, group_name):
 def cart(request):
     return render(request, 'shop/cart.html', {})
 
+
 def shop(request):
     alert = {
         "name": request.GET.get('name', ''),

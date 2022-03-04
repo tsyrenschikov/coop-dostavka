@@ -24,6 +24,7 @@ def shop(request):
         "phone": request.GET.get('phone', ''),
         "local": Locations.objects.values_list('name', 'slug').distinct(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+        "categories" : Category.objects.order_by('number'),
     }
     users = User.objects.all()
     local=Locations.objects.values_list('name','slug').distinct()
@@ -115,15 +116,16 @@ def shop_arti(request):
     areas=Area.objects.values_list('name', 'slug').distinct()
     local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
-    category_shop = Category.objects.values('name', 'subcat').order_by('number')
-    category_product = {category['name']: category['subcat'] for category in category_shop}
+    categories = Category.objects.order_by('number')
+    category = Category.objects.values('name', 'subcat').order_by('number')
+    category_product = {category['name']: category['subcat'] for category in category}
     for slug in shop:
         for name_a, slug_a in areas:
             if slug==address_str and slug==slug_a:
                 name=name_a
                 name_slug=eval(slug)
                 product=name_slug.objects.all().order_by('?')[:20]
-                return render(request, 'arti/index.html', {'product':product,'category_product':category_product,'local':local,'name':name,'address_str':address_str})
+                return render(request, 'arti/index.html', {'product':product,'category_product':category_product,'categories':categories,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()

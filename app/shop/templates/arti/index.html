@@ -39,44 +39,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Featured Products Start -->
-            <div class="section145">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main-title-tt">
-                                <div class="main-title-left">
-                                    <h2></h2>
-                                </div>
-                                <a href="#" class="see-more-btn">Весь список</a>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="owl-carousel featured-slider owl-theme">
-                                {% for product in product %}
-                                    {% if product.status %}
-                                        <div class="item">
-                                            <div class="product-item">
-                                                <a href="/arti/product/{{ product.id }}" class="product-img">
-                                                     {% thumbnail product.image "300x300" crop="center" as im %}
-                                                        <img src="{{ im.url }}"alt="">
-                                                     {% endthumbnail %}
-                                                </a>
-                                                <div class="product-text-dt">
-                                                    <p><span>В наличии</span></p>
-                                                    <h5 class="cuttedText">{{ product.name}}</h5>
-                                                    <div class="product-price">{{ product.price }} р.</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Featured Products End -->
+            {% include 'shop/includes/category.html' %}
         </div>
     <!-- Body End -->
 {% include 'shop/includes/cart_modal_arti.html' %}

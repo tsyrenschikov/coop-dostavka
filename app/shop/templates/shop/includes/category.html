@@ -8,7 +8,18 @@
             <div class="product-list-view">
                 <div class="row">
                     {% for categories in categories %}
-                        {% if categories.status %}
+                        {% if categories.status and address_str  %}
+                            <div class="col-lg-31 col-md-61">
+                                <div class="product-item mb-30">
+                                    <a href="#" class="product-img">
+                                        {% if categories.image %}
+                                            <img src="{{ categories.image.url }}" height="110vh" alt="">
+                                        {% endif %}
+                                        <h6 class="catalog-categor__name">{{ categories.name }}</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            {% else %}
                             <div class="col-lg-31 col-md-61">
                                 <div class="product-item mb-30" data-toggle="modal" data-target="#exampleModalCenter">
                                     <a href="#" class="product-img">

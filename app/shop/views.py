@@ -115,15 +115,14 @@ def shop_arti(request):
     areas=Area.objects.values_list('name', 'slug').distinct()
     local=Locations.objects.values_list('name','slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
+    category_shop = Category.objects.values('name', 'subcat').order_by('number')
+    category_product = {category['name']: category['subcat'] for category in category_shop}
     for slug in shop:
         for name_a, slug_a in areas:
             if slug==address_str and slug==slug_a:
                 name=name_a
                 name_slug=eval(slug)
                 product=name_slug.objects.all().order_by('?')[:20]
-                category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                list_category_product = {category['name']: [] for category in category_shop}
-                category_product = dict(sorted(list_category_product.items()))
                 return render(request, 'arti/index.html', {'product':product,'category_product':category_product,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_grid(request):
@@ -178,8 +177,8 @@ def shop_arti_products(request):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/products.html',
-                              {'category_product': category_product, 'list_p': list_p, 'products': products,
-                               'category_product': category_product, 'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
+                              {'category_product': category_product,'products': products,
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 def sort_list(request,product_sort):
     shop = Shop.objects.values_list('slug', flat=True).distinct()

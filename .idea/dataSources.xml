@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="coop-dostavka.ru" uuid="03b299a0-1f54-4aae-b27a-0afa342c643c">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://10.19.4.1/c39682_coop_dostavka_ru</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
+  <component name="dataSourceStorageLocal" created-in="PY-213.6777.50">
+    <data-source name="coop-dostavka.ru" uuid="03b299a0-1f54-4aae-b27a-0afa342c643c">
+      <database-info product="PostgreSQL" version="10.3 (Debian 10.3-1.pgdg90+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="10.3" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>c39682_coop_dostavka_ru</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>ce9a8ae0-da7d-4945-9763-df6bf7ddb7ab</ssh-config-id>
+      </ssh-properties>
     </data-source>
   </component>
 </project>

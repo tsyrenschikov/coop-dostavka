@@ -133,7 +133,7 @@ def shop_arti_grid(request):
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
-                name = name_a#Привет
+                name = name_a
                 name_slug = eval(slug)
                 product=name_slug.objects.all().order_by('id')[::-1][:48]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')

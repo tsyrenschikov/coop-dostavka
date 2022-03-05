@@ -82,6 +82,17 @@ def cart_arti(request):
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
                 name = name_a
+                name_slug=eval(s)
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -102,16 +113,6 @@ def cart_arti(request):
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
                     return redirect(cart_ok ,ord)
-                    category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                    category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                    list_category_product = {category['name']: [] for category in category_shop}
-                    list_p = list(set([i for i, j, k in category_product]))
-                    for category in category_shop:
-                        for n in category['subcat']:
-                            for i in list_p:
-                                if i in n:
-                                    list_category_product[category['name']].append(i)
-                    category_product = dict(sorted(list_category_product.items()))
 
                 return render(request, 'arti/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 

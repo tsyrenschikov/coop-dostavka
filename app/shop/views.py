@@ -77,6 +77,7 @@ def cart_arti(request):
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
+    category_product={}
     for n,s,dp,dpm,days_numb in local_d:
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
@@ -101,14 +102,25 @@ def cart_arti(request):
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
                     return redirect(cart_ok ,ord)
+                    category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                    category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                    list_category_product = {category['name']: [] for category in category_shop}
+                    list_p = list(set([i for i, j, k in category_product]))
+                    for category in category_shop:
+                        for n in category['subcat']:
+                            for i in list_p:
+                                if i in n:
+                                    list_category_product[category['name']].append(i)
+                    category_product = dict(sorted(list_category_product.items()))
 
-                return render(request, 'arti/cart.html', {'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+                return render(request, 'arti/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 
 def cart_ok(request,ord):
     address_str = str([i for i in str(request.path).split('/') if i][0])
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
+
     return render(request,'arti/cart_ok.html', {'order':order,'shops':shops,'address_str':address_str})
 
 def shop_arti(request):
@@ -243,13 +255,6 @@ def shop_arti_product(request, id):
                 category_product = dict(sorted(list_category_product.items()))
                 return render(request, 'arti/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
-
-def shop_arti_career(reguest):
-    local=Locations.objects.values_list('name','slug').distinct()
-    users = User.objects.all()
-    categories = Category.objects.order_by('number')
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local,'address_str':address_str})
 
 # Shop artiobschepit
 def shop_artiobschepit(request):

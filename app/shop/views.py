@@ -200,11 +200,21 @@ def sort_list(request,list):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = set([i for i, j, k in category_product])
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
                 products = name_slug.objects.filter(subcat=list)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'shop/list.html', {'products':products,'page_obj': page_obj, 'name': name, 'local': local,
+                return render(request, 'shop/list.html', {'category_product':category_product,'products':products,'page_obj': page_obj, 'name': name, 'local': local,
                                                               'address_str': address_str})
 
 #View product

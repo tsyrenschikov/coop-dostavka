@@ -190,7 +190,7 @@ def shop_arti_products(request):
                               {'category_product': category_product,'products': products,
                                'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
-def sort_list(request,product_sort):
+def sort_list(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -200,19 +200,16 @@ def sort_list(request,product_sort):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                cat_list = name_slug.objects.values_list('subcat','subcat').order_by('name')
-                cat_list = sorted(set(cat_list))
-                paginator = Paginator(product_sort, 20)
+                products = name_slug.objects.filter(subcat=list)
+                paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'shop/list.html', {'cat_list': cat_list, 'page_obj': page_obj, 'name': name, 'local': local,
+                return render(request, 'shop/list.html', {'products':products,'page_obj': page_obj, 'name': name, 'local': local,
                                                               'address_str': address_str})
 
 #View product
 def shop_arti_product(request, id):
     local=Locations.objects.values_list('name','slug').distinct()
-    product=arti.objects.get(id=id)
-    products=arti.objects.all().order_by('?')[:10]
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -222,6 +219,8 @@ def shop_arti_product(request, id):
                 name = name_a
                 shop_name = slug
                 slug_name = eval(slug)
+                product = slug_name.objects.get(id=id)
+                products = slug_name.objects.all().order_by('?')[:10]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
                 category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}

@@ -44,7 +44,7 @@ def shop(request):
     return render(request, 'shop/index.html', {'users':users, 'categories' : categories,'local':local})
 
 
-#Shop Arti
+#Shop SearchArti
 def searcharti(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -152,9 +152,9 @@ def shop_arti(request):
                 name=name_a
                 name_slug=eval(slug)
                 product=name_slug.objects.all().order_by('?')[:20]
-                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_shop = Category.objects.values('name', 'subcat','image').order_by('number')
                 category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                list_category_product = {category['name']: [] for category in category_shop}
+                list_category_product = {category['name']: []  for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
                     for n in category['subcat']:

@@ -763,8 +763,9 @@ def add_order(request):
         return render(request, 'panel/add_ok_order.html')
     return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
 
-def order_view(request):
-    return render(request, 'panel/order_view.html', {})
+def order_view(request,id):
+    zakaz = orders.objects.get(id=id)
+    return render(request, 'panel/order_view.html', {'zakaz':zakaz})
 
 def order_edit(request,id):
     try:

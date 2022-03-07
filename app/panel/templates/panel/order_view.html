@@ -21,7 +21,11 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="ordr-date">
-                                        <b>Дата заказа :</b> {{ zakaz.data}} </br> {{ zakaz.time }}
+                                        <b>Дата заказа :</b> {{ zakaz.data}}  </br>Время {{ zakaz.time }}
+                                    </br>
+                                        <b>Дата доставки :</b> {{ zakaz.data }}
+                                    </br>
+                                        <b>Покупатель: </b> {{ zakaz.name }}  </br>Телефон {{ zakaz.phone }} </br> {% if zakaz.email %} E-mail: {{ zakaz.email }}{% endif %}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-6">
@@ -74,7 +78,7 @@
                                             Итого
                                         </div>
                                         <div class="order-total-right-text">
-                                            2400 р.
+                                            {{ zakaz.cart }} р.
                                         </div>
                                     </div>
                                     <div class="order-total-dt">
@@ -89,14 +93,21 @@
                                         <div class="order-total-left-text fsz-18">
                                             Общая сумма
                                         </div>
-                                        <div class="order-total-right-text fsz-18">
-                                            2700 р.
+                                        <div id="total_price" class="order-total-right-text fsz-18" value="{{ zakaz.total_price }}">
+                                            {{ zakaz.total_price }} р.
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-7"></div>
                                 <div class="col-lg-5">
                                     <div class="select-status">
+                                        <label for="status">Оплата покупателем</label>
+                                        <div class="status-active">
+                                            {{ zakaz.payment }} {% if zakaz.money %} <div class="order-total-right-text" id="nal" value="{{ zakaz.money }}"> Наличными: {{ zakaz.money }} р.  Сдача:
+                                            <total_change></total_change>
+                                            р.</div>{% endif %}
+                                        </div>
+                                    </br>
                                         <label for="status">Статус*</label>
                                         <div class="status-active">
                                             В ожидании
@@ -110,5 +121,4 @@
             </div>
         </div>
     </main>
-
 {% endblock content %}

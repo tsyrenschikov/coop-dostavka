@@ -765,6 +765,7 @@ def add_order(request):
 
 def order_view(request,id):
     zakaz = orders.objects.get(id=id)
+
     return render(request, 'panel/order_view.html', {'zakaz':zakaz})
 
 def order_edit(request,id):

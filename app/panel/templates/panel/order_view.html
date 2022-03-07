@@ -46,25 +46,32 @@
                                                 <table class="table ucp-table table-hover">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width:130px">Номер</th>
+                                                        <th>Номер</th>
                                                         <th>Название</th>
-                                                        <th style="width:150px" class="text-center">Цена</th>
                                                         <th style="width:150px" class="text-center">Кол-во</th>
+                                                        <th style="width:150px" class="text-center">Цена</th>
                                                         <th style="width:100px" class="text-center">Общие</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    {% for products in zakaz.products %}
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            {{ products }}
-                                                        </td>
-                                                        <td class="text-center">1200 р.</td>
-                                                        <td class="text-center">1</td>
-                                                        <td class="text-center">1200 р.</td>
-                                                    </tr>
-                                                    {% endfor %}
+                                                        {% for p in product %}
+                                                            {% if p.id == address %}
+                                                                {% for c in p.products %}
+                                                                <tr>
+                                                                {% if forloop.counter0|divisibleby:2 %}
+                                                                    <td>{{ forloop.counter }}</td>
+                                                                    <td>
+                                                                        {{ c }}
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                    </td>
+                                                                <td class="text-center">1200 р.</td>
+                                                                <td class="text-center">1200 р.</td>
+                                                                {% endif %}
+                                                                </tr>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        {% endfor %}
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -124,7 +131,11 @@
                                     </br>
                                         <label for="status">Статус*</label>
                                         <div class="status-active">
+                                            {% if zakaz.status == True %}
+                                            Доставлено
+                                            {% else %}
                                             В ожидании
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

@@ -58,7 +58,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <a href="#" target="_blank">{{ products }}</a>
+                                                            {{ products }}
                                                         </td>
                                                         <td class="text-center">1200 р.</td>
                                                         <td class="text-center">1</td>
@@ -98,7 +98,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7"></div>
+                                <div class="col-lg-7">
+                                    <div class="order-total-left-text">
+                                        Способ замены товара
+                                    </div>
+                                    {{ zakaz.replace }}
+                                    </br></br>
+                                    <div class="order-total-left-text">
+                                        Комментарий к заказу
+                                    </div>
+                                    {% if zakaz.commit %}
+                                            {{ zakaz.commit }}
+                                    {% else %}
+                                            Отсутствует
+                                    {% endif %}
+                                </div>
                                 <div class="col-lg-5">
                                     <div class="select-status">
                                         <label for="status">Оплата покупателем</label>

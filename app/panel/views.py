@@ -772,9 +772,11 @@ def order_view(request,id):
         if prod['id'] == address:
             for i in prod['products']:
                 list_product.append(i)
-    product_list=list_product[::2]
-    count_list = list_product[1::2]
-    zakaz_dict = dict(zip(product_list, count_list))
+    product_list = list_product[0::3]
+    count_list = list_product[1::3]
+    price_list = list_product[2::3]
+    zakaz_list = list(zip(count_list, price_list))
+    zakaz_dict = dict(zip(product_list, zakaz_list))
     return render(request, 'panel/order_view.html', {'zakaz':zakaz,'zakaz_dict':zakaz_dict,'address':address,'product':product})
 
 def order_edit(request,id):

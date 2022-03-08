@@ -61,10 +61,10 @@
                                                             {{ key }}
                                                         </td>
                                                         <td class="text-center">
-                                                        {{ value }}
+                                                        {{ value.0 }}
                                                         </td>
-                                                        <td class="text-center">1200 р.</td>
-                                                        <td class="text-center">1200 р.</td>
+                                                        <td class="text-center">{{ value.1 }} р.</td>
+                                                        <td class="text-center"> р.</td>
                                                     </tr>
                                                     {% endfor %}
                                                     </tbody>

@@ -3,4 +3,5 @@ $(document).ready(function() {
     var money=$("#nal").attr("value");
     var change=money-total;
     $("total_change").text(change);
+
 });

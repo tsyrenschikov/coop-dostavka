@@ -54,24 +54,19 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {% for p in product %}
-                                                            {% if p.id == address %}
-                                                                {% for c in p.products %}
-                                                                <tr>
-                                                                {% if forloop.counter0|divisibleby:2 %}
-                                                                    <td>{{ forloop.counter }}</td>
-                                                                    <td>
-                                                                        {{ c }}
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    </td>
-                                                                <td class="text-center">1200 р.</td>
-                                                                <td class="text-center">1200 р.</td>
-                                                                {% endif %}
-                                                                </tr>
-                                                                {% endfor %}
-                                                            {% endif %}
-                                                        {% endfor %}
+                                                    {% for key, value in zakaz_dict.items %}
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>
+                                                            {{ key }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                        {{ value }}
+                                                        </td>
+                                                        <td class="text-center">1200 р.</td>
+                                                        <td class="text-center">1200 р.</td>
+                                                    </tr>
+                                                    {% endfor %}
                                                     </tbody>
                                                 </table>
                                             </div>

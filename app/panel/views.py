@@ -767,7 +767,15 @@ def order_view(request,id):
     product=orders.objects.values('id','products').order_by('id')
     address = int([i for i in str(request.path).split('/') if i][-1])
     zakaz = orders.objects.get(id=id)
-    return render(request, 'panel/order_view.html', {'zakaz':zakaz,'address':address,'product':product})
+    list_product=[]
+    for prod in product:
+        if prod['id'] == address:
+            for i in prod['products']:
+                list_product.append(i)
+    product_list=list_product[::2]
+    count_list = list_product[1::2]
+    zakaz_dict = dict(zip(product_list, count_list))
+    return render(request, 'panel/order_view.html', {'zakaz':zakaz,'zakaz_dict':zakaz_dict,'address':address,'product':product})
 
 def order_edit(request,id):
     try:

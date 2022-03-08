@@ -35,7 +35,6 @@
                                                         <th>Телефон</th>
 														<th style="width:200px">Дата доставки</th>
 														<th style="width:300px">Адрес доставки</th>
-                                                        <th style="width: 300px">Состав корзины</th>
                                                         <th style="width:300px">Сумма корзины</th>
                                                         <th style="width:300px">Доставка</th>
 														<th style="width:130px">Общая сумма</th>
@@ -65,9 +64,6 @@
                                                                 {% endif %}
                                                             {% endfor %}
                                                         {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
-                                                        </td>
-                                                        <td>
-                                                            {{ list_c|cut:"["|cut:"'"|cut:"]" }}<br>
                                                         </td>
                                                         <td>{{ zakaz.cart }} р.</td>
                                                         <td>

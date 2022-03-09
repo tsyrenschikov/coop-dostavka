@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="card-body-table">
                                             <div class="table-responsive">
-                                                <table class="table ucp-table table-hover">
+                                                <table id="table" class="table ucp-table table-hover">
                                                     <thead>
                                                     <tr>
                                                         <th>Номер</th>
@@ -60,9 +60,9 @@
                                                         <td>
                                                             {{ key }}
                                                         </td>
-                                                        <td id="count_p" class="text-center" value="{{ value.0 }}">{{ value.0 }}</td>
-                                                        <td id="price_p" class="text-center" value="{{ value.1 }}">{{ value.1 }} р.</td>
-                                                        <td class="text-center"><total_price></total_price> р.</td>
+                                                        <td id="count_p" value="{{ value.0 }}" class="text-center">{{ value.0 }}</td>
+                                                        <td id="price_p" data-value="{{ value.1 }}" class="text-center">{{ value.1 }} р.</td>
+                                                        <td class="text-center"> <sum_p></sum_p> р.</td>
                                                     </tr>
                                                     {% endfor %}
                                                     </tbody>

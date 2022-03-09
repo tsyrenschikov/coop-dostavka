@@ -4,11 +4,10 @@ $(document).ready(function() {
     var change=money-total;
     $("total_change").text(change);
 
-
-    for (var i in ) {
-        var count_product = $("#count_p").attr("value");
-        var price_product = $("#price_p").attr("value");
-        var price = count_product * price_product;
-        $("total_price").text(price);
+    var sum = 0;
+    (function () {
+        sum += $('#count_p').attr('value') * $('#price_p').attr('data-value');
     });
+    $('sum_p').text(sum);
+    console.log(sum);
 });

@@ -4,10 +4,9 @@ $(document).ready(function() {
     var change=money-total;
     $("total_change").text(change);
 
-    var sum = 0;
-    (function () {
-        sum += $('#count_p').attr('value') * $('#price_p').attr('data-value');
-    });
-    $('sum_p').text(sum);
-    console.log(sum);
+        var summ = 0;
+        $('table').each(function () {
+            summ += (parseInt( $(this).find('#price_p').text())) * (parseInt($(this).find('#count_p').text()));
+        });
+        $('sum_p').text(summ);
 });

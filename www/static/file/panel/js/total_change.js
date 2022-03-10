@@ -1,12 +1,22 @@
 $(document).ready(function() {
-    var total=$("#total_price").attr("value");
-    var money=$("#nal").attr("value");
-    var change=money-total;
+    var total = $("#total_price").attr("value");
+    var money = $("#nal").attr("value");
+    var change = money - total;
     $("total_change").text(change);
-
-        var summ = 0;
-        $('table').each(function () {
-            summ += (parseInt( $(this).find('#price_p').text())) * (parseInt($(this).find('#count_p').text()));
-        });
-        $('sum_p').text(summ);
 });
+var table = document.getElementById('mytable'),
+    rows = table.getElementsByTagName('tr'),
+    i, j, cells, customerId,count, price,summ;
+
+
+for (i = 0, j = rows.length; i < j; ++i) {
+    cells = rows[i].getElementsByTagName('td');
+    if (!cells.length) {
+        continue;
+    }
+    count=cells[2].innerHTML;
+    price=cells[3].innerHTML;
+    summ=parseFloat(count) * parseFloat(price);
+    document.getElementById('summ_cart').innerHTML= +summ;
+    console.log(count,price, summ)
+}

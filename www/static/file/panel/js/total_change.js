@@ -8,6 +8,5 @@ $('#mytable tr').each(function() {
     var count = $(this).find("td").eq(2).html();
     var price = $(this).find("td").eq(3).html();
     var  sum =((parseFloat(count)) * (parseFloat(price)));
-    $(this).find('td').eq(4).text(sum);
-     console.log(price,sum)
+    $(this).find('td').eq(4).text(sum+' '+ 'р.');
 });

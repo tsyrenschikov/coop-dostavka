@@ -4,19 +4,10 @@ $(document).ready(function() {
     var change = money - total;
     $("total_change").text(change);
 });
-var table = document.getElementById('mytable'),
-    rows = table.getElementsByTagName('tr'),
-    i, j, cells, customerId,count, price,summ;
-
-
-for (i = 0, j = rows.length; i < j; ++i) {
-    cells = rows[i].getElementsByTagName('td');
-    if (!cells.length) {
-        continue;
-    }
-    count=cells[2].innerHTML;
-    price=cells[3].innerHTML;
-    summ=parseFloat(count) * parseFloat(price);
-    document.getElementById('summ_cart').innerHTML= +summ;
-    console.log(count,price, summ)
-}
+$('#mytable tr').each(function() {
+    var count = $(this).find("td").eq(2).html();
+    var price = $(this).find("td").eq(3).html();
+    var  sum =((parseFloat(count)) * (parseFloat(price)));
+    $(this).find('td').eq(4).text(sum);
+     console.log(price,sum)
+});

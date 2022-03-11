@@ -134,11 +134,29 @@ def cart_arti(request):
 
 
 def cart_ok(request,ord):
-    address_str = str([i for i in str(request.path).split('/') if i][0])
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
-
-    return render(request,'arti/cart_ok.html', {'order':order,'shops':shops,'address_str':address_str})
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    categories = Category.objects.order_by('number')
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+    return render(request,'arti/cart_ok.html', {'local':local,'name':name,'category_product':category_product,'categories':categories,'order':order,'shops':shops,'address_str':address_str})
 
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

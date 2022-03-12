@@ -5,7 +5,7 @@ from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.core.paginator import Paginator
-from itertools import groupby
+import copy
 from django.shortcuts import render, redirect
 
 register = template.Library()
@@ -169,18 +169,23 @@ def shop_arti(request):
             if slug==address_str and slug==slug_a:
                 name=name_a
                 name_slug=eval(slug)
-                products=name_slug.objects.all().order_by('?')[:20]
                 category_shop = Category.objects.values('name', 'subcat','image').order_by('number')
                 category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                list_category_product = {category['name']: [] for category in category_shop}
+                dict_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
+
+                dict_catprod = copy.deepcopy(category_shop)
+                for i in dict_catprod:
+                    i['subcat'].clear()
+
+
                 for category in category_shop:
                     for n in category['subcat']:
                         for i in list_p:
                             if i in n:
-                                list_category_product[category['name']].append(i)
-                category_product = dict(sorted(list_category_product.items()))
-                return render(request, 'arti/index.html', {'products':products,'category_product':category_product,'categories':categories,'local':local,'name':name,'address_str':address_str})
+                                dict_category_product[category['name']].append(i)
+                category_product = dict(sorted(dict_category_product.items()))
+                return render(request, 'arti/index.html', {'dict_catprod':dict_catprod,'category_product':category_product,'categories':categories,'local':local,'name':name,'address_str':address_str})
 
 def shop_arti_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()

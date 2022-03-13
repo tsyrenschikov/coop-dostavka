@@ -1,0 +1,21 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Заказы</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item active">Заказы</li>
+            </ol>
+            <div class="row justify-content-between">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mt-30 mb-30">
+                        <h4 style="text-align: center; color: red">В вашем магазине нет заказов</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

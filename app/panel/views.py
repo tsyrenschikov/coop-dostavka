@@ -740,9 +740,25 @@ def delete_shop(request,id):
 
 
 def order(request):
-    zakaz=orders.objects.all()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    return render(request, 'panel/orders.html', {'zakaz':zakaz,'areas':areas})
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+    users = User.objects.values_list('id', flat=True).distinct()
+    order_slug = orders.objects.values_list('slug', flat=True).distinct()
+    if request.user.is_authenticated:
+        for u in users:
+            for c, n, slug_p in shops:
+                for os in order_slug:
+                    if request.user.id == c and u == c and os == slug_p:
+                        zakaz = orders.objects.all()
+                        areas = Area.objects.values_list('name', 'slug').distinct()
+                        return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
+                    elif request.user.is_superuser:
+                        zakaz = orders.objects.all()
+                        return render(request, 'panel/orders.html', {'zakaz': zakaz})
+                    elif not request.user.id == c and u == c and os == slug_p:
+                        return render(request, 'panel/orders_no.html', {})
+    else:
+        return redirect ('/login')
+
 
 def add_order(request):
     users=User.objects.all()
@@ -760,29 +776,20 @@ def add_order(request):
     return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
 
 def order_view(request,id):
-    users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    slug = orders.objects.values('slug')
-    for u in users:
-        if request.user.id == u:
-            for s, slug in shops:
-                if u == s:
-                    name = eval(slug)
-                    if name == slug:
-                        product = orders.objects.values('id', 'products').order_by('id')
-                        address = int([i for i in str(request.path).split('/') if i][-1])
-                        zakaz = orders.objects.get(id=id)
-                        list_product = []
-                        for prod in product:
-                            if prod['id'] == address:
-                                for i in prod['products']:
-                                    list_product.append(i)
-                                    product_list = list_product[0::3]
-                                    count_list = list_product[1::3]
-                                    price_list = list_product[2::3]
-                                    zakaz_list = list(zip(count_list, price_list))
-                                    zakaz_dict = dict(zip(product_list, zakaz_list))
-    return render(request, 'panel/order_view.html', {'zakaz':zakaz,'zakaz_dict':zakaz_dict,'address':address,'product':product})
+    product = orders.objects.values('id', 'products').order_by('id')
+    address = int([i for i in str(request.path).split('/') if i][-1])
+    zakaz = orders.objects.get(id=id)
+    list_product = []
+    for prod in product:
+        if prod['id'] == address:
+            for i in prod['products']:
+                list_product.append(i)
+    product_list = list_product[0::3]
+    count_list = list_product[1::3]
+    price_list = list_product[2::3]
+    zakaz_list = list(zip(count_list, price_list))
+    zakaz_dict = dict(zip(product_list, zakaz_list))
+    return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
 
 def order_edit(request,id):
     try:

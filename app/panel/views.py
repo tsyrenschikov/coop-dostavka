@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model
+from django.db.models import Count
+
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -141,23 +143,30 @@ def edit_profile(request):
 def panel(request):
     shops=Shop.objects.values_list('customuser_id','name','slug').distinct()
     users=User.objects.values_list('id', flat=True).distinct()
+    slug_order=orders.objects.values_list('slug', flat=True).distinct()
     if request.user.is_authenticated:
         products_count={}
         for u in users:
             for c,n,slug_p in shops:
-                if  request.user.id ==c and u == c :
-                    name_p= eval(slug_p)
-                    name_u=n
-                    products=name_p.objects.all().order_by('id')[::-1][:3]
-                    count=name_p.objects.count()
-                    count_order = orders.objects.count()
-                    return render(request, 'panel/index.html', {'products':products,'count':count,'count_order':count_order,'name_u':name_u})
-                elif request.user.is_superuser:
-                    for c, n, slug_p in shops:
+                for os in slug_order:
+                    if request.user.id == c and u == c and slug_p == os:
                         name_p = eval(slug_p)
-                        products_count.update({n: name_p.objects.count()})
-                        count_order = orders.objects.count()
-                    return render(request, 'panel/index_superuser.html', {'products_count': products_count,'count_order':count_order})
+                        name_u = n
+                        products = name_p.objects.all().order_by('id')[::-1][:3]
+                        count = name_p.objects.count()
+                        count_order = orders.objects.filter(slug=os).count()
+                        return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order, 'name_u': name_u})
+                    elif request.user.is_superuser:
+                        for c, n, slug_p in shops:
+                            name_p = eval(slug_p)
+                            products_count.update({n: name_p.objects.count()})
+                            count_order = orders.objects.count()
+                        return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order})
+                    elif not request.user.id == c and u == c and slug_p == os:
+                        name_p = eval(slug_p)
+                        name_u = n
+                        products = name_p.objects.all().order_by('id')[::-1][:3]
+                        return render(request, 'panel/index.html', {'products': products,'name_u': name_u})
     else:
         return redirect ('/login')
 

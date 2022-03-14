@@ -1,27 +1,12 @@
 {% extends 'shop/layouts/base_zajkovskoe.html' %}
+{% load thumbnail %}
 
 {% block title %}product{% endblock %}
 
 {% block content %}
 	{% load static %}
-    {% load thumbnail %}
 
 	<div class="wrapper">
-		<div class="gambo-Breadcrumb">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="{% url 'zajkovskoe' %}">Главная </a></li>
-								<li class="breadcrumb-item"><a href="{% url 'zajkovskoe' %}/grid">Новое поступление</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Описание продукта</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
         <div class="all-product-grid">
 			<div class="container">
 				<div class="row">
@@ -32,7 +17,9 @@
 									<div id="sync1"  class="owl-theme">
                                         {% if product.image %}
 										<div class="item">
-											<img src="{{ product.image.url }}" width="250" height="250" alt="">
+											{% thumbnail product.image "250x250" crop="center" as im %}
+                                                <img src="{{ im.url }}"alt="">
+                                            {% endthumbnail %}
 										</div>
                                         {% endif %}
 									</div>
@@ -49,18 +36,7 @@
 												<li><div class="main-price color-discount">Цена</div></li>
                                                 <li><div class="main-price mrp-price">{{ product.price }} р</div></li>
 											</ul>
-											<ul class="gty-wish-share">
-												<li>
-													<div class="qty-product">
-														<div class="quantity buttons_added">
-															<input type="button" value="-" class="minus minus-btn">
-															<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-															<input type="button" value="+" class="plus plus-btn">
-														</div>
-													</div>
-												</li>
-											</ul>
-                                            <ul class="ordr-crt-share">
+											<ul class="ordr-crt-share">
 												<li>
                                                     <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
                                                     <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
@@ -76,51 +52,8 @@
 			</div>
 		</div>
     </div>
-
-		<!-- Featured Products Start -->
-		<div class="section145">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="main-title-tt">
-							<div class="main-title-left">
-								<h2>Популярные продукты</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="owl-carousel featured-slider owl-theme">
-                            {% for products in products %}
-							<div class="item">
-								<div class="product-item">
-                                    <a href="/zajkovskoe/product/{{ products.id }}" class="product-img">
-									{% thumbnail products.image "300x300" crop="center" as im %}
-                                        <img src="{{ im.url }}"alt="">
-                                    {% endthumbnail %}
-								</a>
-									<div class="product-text-dt">
-										<h4 class="cuttedText">{{ product.name}}</h4>
-										<div class="product-price">{{ products.price }} р.</div>
-										<div class="qty-cart">
-											<div class="quantity buttons_added">
-												<input type="button" value="-" class="minus minus-btn">
-												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-												<input type="button" value="+" class="plus plus-btn">
-											</div>
-											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-										</div>
-									</div>
-								</div>
-							</div>
-                            {% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Featured Products End -->
-
 {% include 'shop/includes/cart_modal_zajkovskoe.html' %}
+{% include 'shop/includes/featured_arti.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

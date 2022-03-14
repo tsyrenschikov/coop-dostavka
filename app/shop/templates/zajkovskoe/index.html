@@ -2,78 +2,33 @@
 {% load static %}
 {% load thumbnail %}
 
-{% block title %}zajkovskoe{% endblock %}
+{% block title %}arti{% endblock %}
 {% block stylesheets %}
-        <!-- Style CSS -->
-{% include 'shop/includes/style.html' %}
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
+    <!-- Style CSS -->
+    {% include 'shop/includes/style.html' %}
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
 {% endblock stylesheets %}
 
 {% block content %}
 
 
-  	<!-- Body Start -->
-		<div class="wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="headline_part centered margin-top-75"></h3>
-                    </div>
-                </div>
-                <div class="row">
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="headline_part centered margin-top-75"></h3>
                 </div>
             </div>
-            <!-- Featured Products Start -->
-            <div class="section145">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main-title-tt">
-                                <div class="main-title-left">
-                                    <h2></h2>
-                                </div>
-                                <a href="#" class="see-more-btn">Весь список</a>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="owl-carousel featured-slider owl-theme">
-                                {% for product in product %}
-                                    {% if product.status %}
-                                        <div class="item">
-                                            <div class="product-item">
-                                                <a href="/zajkovskoe/product/{{ product.id }}" class="product-img">
-                                                    {% if product.image %}
-                                                        <img src="{{ product.image.url }}" width="250" height="180" alt="">
-                                                    {% endif %}
-                                                </a>
-                                                <div class="product-text-dt">
-                                                    <p><span>В наличии</span></p>
-                                                    <h5 class="cuttedText">{{ product.name}}</h5>
-                                                    <div class="product-price">{{ product.price }} р.</div>
-                                                    <div class="qty-cart">
-                                                        <div class="quantity buttons_added">
-                                                            <input type="button" value="-" class="minus minus-btn">
-                                                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-                                                            <input type="button" value="+" class="plus plus-btn">
-                                                        </div>
-                                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Featured Products End -->
+            {% include 'shop/includes/featured_zajkovskoe.html' %}
+            {% include 'shop/includes/new_zajkovskoe.html' %}
         </div>
+    </div>
     <!-- Body End -->
-{% include 'shop/includes/cart_modal_zajkovskoe.html' %}
-{% include 'shop/layouts/footer.html' %}
-{% include 'shop/includes/scripts.html' %}
+    {% include 'shop/includes/cart_modal_zajkovskoe.html' %}
+    {% include 'shop/layouts/footer.html' %}
+    {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

@@ -1,26 +1,13 @@
 {% extends 'shop/layouts/base_zajkovskoe.html' %}
+{% load thumbnail %}
 
-{% block title %}grid{% endblock %}
+{% block title %}Продукты питания{% endblock %}
 
 {% block content %}
 	{% load static %}
 
 	<!-- Body Start -->
 	<div class="wrapper">
-		<div class="gambo-Breadcrumb">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="{% url 'zajkovskoe' %}">Главная</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Новое поступление</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="all-product-grid">
 			<div class="container">
 				<div class="row">
@@ -31,30 +18,32 @@
 						</div>
 					</div>
 				</div>
-				<div class="product-list-view">
-					<div class="row">
-                        {% for product in products %}
-						<div class="col-lg-3 col-md-6">
+				<div class="product-list-view">{{ list_category_product }}
+                {%  include 'shop/includes/toolbar_start.html' %}
+					<div id="product-list" class="row shop_wrapper">
+                        {% for product in page_obj %}
+						<div class="col-lg-33 col-md-6">
 							<div class="product-item mb-30">
                                 <a href="/zajkovskoe/product/{{ product.id }}" class="product-img">
-									<img src="{{ product.image.url }}" width="150" height="150" alt="">
+									{% thumbnail product.image "250x250" crop="center" as im %}
+                                        <img src="{{ im.url }}"alt="">
+                                    {% endthumbnail %}
 								</a>
 								<div class="product-text-dt">
-									<h4>{{  product.name }}</h4>
+									<h4 class="cuttedText">{{  product.name }}</h4>
 									<div class="product-price">{{ product.price }} .р</div>
 									<div class="qty-cart">
-										<div class="quantity buttons_added">
-											<input type="button" value="-" class="minus minus-btn">
-											<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-											<input type="button" value="+" class="plus plus-btn">
-										</div>
-										<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+										<div class="qty-cart">
+                                            <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
+                                                <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                        </div>
 									</div>
 								</div>
 							</div>
 						</div>
                         {% endfor %}
                     </div>
+                {%  include 'shop/includes/toolbar_end.html' %}
                 </div>
             </div>
         </div>

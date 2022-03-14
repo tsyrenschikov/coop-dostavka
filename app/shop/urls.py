@@ -15,8 +15,11 @@ urlpatterns = [
     path('arti/products/', views.shop_arti_products, name='shop_arti_products'),
     path('arti/product/<int:id>/', views.shop_arti_product, name='shop_arti_product'),
     path('arti/grid/', views.shop_arti_grid, name='shop_arti_grid'),
+
+    # Shop artiobschepit
     path('arti/artiobschepit/', views.shop_artiobschepit, name='shop_artiobschepit'),
     path('arti/artiobschepit/product/<int:id>/', views.shop_artiobschepit_product, name='shop_artiobschepit_product'),
+
     # Shop pokrovskoe
     path('pokrovskoe/', views.shop_pokrovskoe, name='pokrovskoe'),
     path('pokrovskoe/products/', views.shop_pokrovskoe_products, name='shop_pokrovskoe_products'),
@@ -36,8 +39,8 @@ urlpatterns = [
     path('rezh/career/', views.shop_rezh_career, name='shop_rezh_career'),
 
     # Shop zajkovskoe
-    path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
     path('zajkovskoe/', views.shop_zajkov, name='zajkovskoe'),
+    path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
     path('zajkovskoe/products/', views.shop_zajkov_products, name='shop_zajkov_products'),
     path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),
     path('zajkovskoe/grid/', views.shop_zajkov_grid, name='shop_zajkov_grid'),

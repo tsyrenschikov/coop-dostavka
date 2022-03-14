@@ -18,13 +18,18 @@
     <!-- Stylesheets -->
     {% include 'shop/includes/style.html' %}
 
+	<!-- reCAPTCHA API -->
+  	<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
 
-   <!-- Vendor Stylesheets -->
-    {% include 'shop/includes/vendor_stylesheets.html' %}
+    <!-- Vendor Stylesheets -->
+      {% include 'shop/includes/vendor_stylesheets.html' %}
 
-  	<!-- reCAPTCHA API -->
-  <!-- Yandex.Metrika counter -->
+      <!-- reCAPTCHA API -->
+      <!-- Yandex.Metrika counter -->
+
+
     {% include 'shop/includes/recaptcha_metric.html' %}
+
 
   </head>
   <body>
@@ -47,6 +52,7 @@
 			<div class="top-header">
 				<div class="res_main_logo">
 					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                    <input id="location_slug" hidden="hidden" value="{{ address_str }}">
 				</div>
 				<div class="main_logo" id="logo">
 					<a href="{% url 'zajkovskoe' %}"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
@@ -56,18 +62,15 @@
 					<div class="ui inline dropdown loc-title">
 						<div class="text">
                             <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
-                                <i class="uil uil-location-point"></i>{{ name }}</a>
+                                <input  id="select_local" type="hidden" value="">
+                                <i id="local-name" class="uil uil-location-point local-name"></i></a>
 						</div>
                     </div>
                 </div>
-
-                <div class="search120">
-                <p style="color: red">Режим разработки</p>
-                </div>
 				<div class="header_right">
 					<ul>
-                    {% include 'shop/includes/search_order.html' %}
-						<li class="ui dropdown">
+						{% include 'shop/includes/search_order.html' %}
+                        <li class="ui dropdown">
                             {%  if 'manager' in groups %}
                                 <head>
                                     <meta http-equiv="refresh" content="0; https://panel.coop-dostavka.ru" />
@@ -121,38 +124,9 @@
 				</div>
 			</div>
 		</div>
-
-
-
-    <!--Всплывающие меню категорий-->
-        <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="{% static 'file/shop/images/logo.png' %}" height="40" width="70" style="vertical-align:middle;margin:12px
-            10vh"></a>
-            <ul >
-                    {% for categories in categories %}
-                            {% if categories.status %}
-                                <li>
-                                    <a href="#" class="single-cat-items">
-                                        <div class="icon">
-                                            {% if categories.image %}
-                                            <img src="{{ categories.image.url }}" width="40" height="40"  alt="">
-                                                {% endif %}
-                                        </div>
-                                        <div class="text"> {{ categories.name}} </div>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-            </ul>
-        </div>
         <div class="sub-header-group">
-			<div class="sub-header">
-				<div class="ui dropdown">
-                    <div id="main">
-					<a href="#" class="category_drop hover-btn cd-dropdown-trigger" data-toggle="offcanvas" data-target="" title="Categories" onclick="openNav()"><i class="uil uil-apps"></i><span
-                            class="cate__icon" onclick="openNav()" >Категории</span></a>
-                    </div>
-                </div>
+            <div class="sub-header">
+            {% include 'shop/includes/menucategory.html' %}
 				<nav class="navbar navbar-expand-lg navbar-light py-3">
 					<div class="container-fluid">
 						<button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>
@@ -161,8 +135,7 @@
 								<li class="nav-item"><a href="{% url 'zajkovskoe' %}" class="{% if request.path == '/zajkovskoe/' %}active{% endif %} nav-link " title="Home">Главная</a></li>
 								<li
 										class="nav-item">
-                                    <a href="{% url 'shop_zajkov_grid' %}" class="{% if request.path == '/zajkov/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое
-                                        поступление</a></li>
+                                    <a href="{% url 'shop_zajkovskoe_grid' %}" class="{% if request.path == '/zajkovskoe/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
 								<li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
                                     связь</a></li>
 
@@ -171,12 +144,9 @@
 						</div>
                     </div>
 				</nav>
-				<div class="catey__icon">
-					<a href="#" class="cate__btn" data-toggle="modal" data-target="#category_model" onclick="openNav()"  title="Categories"><i class="uil uil-apps"></i></a>
-				</div>
 				<div class="header_cart order-1">
                     <button type="button" class="cart__btn hover-btn" title="Cart"  data-toggle="modal" data-target="#cart">
-                        <i class="uil uil-shopping-cart-alt"></i>Корзина(<span class="total-count"></span>)
+                        <i class="uil uil-shopping-cart-alt"></i><span id="hidescrollcart">Корзина</span><ins class="total-count"></ins>
                     </button>
 				</div>
 

@@ -16,6 +16,16 @@ urlpatterns = [
     path('arti/product/<int:id>/', views.shop_arti_product, name='shop_arti_product'),
     path('arti/grid/', views.shop_arti_grid, name='shop_arti_grid'),
 
+    # Shop zajkovskoe
+    path('zajkovskoe/', views.shop_zajkov, name='zajkovskoe'),
+    path('zajkovskoe/sort_list/<str:list>/', views.zajkovskoe_sort_list, name='zajkovskoe_sort_list'),
+    path('zajkovskoe/searcharti/', views.searchzajkovskoe, name='searchzajkovskoe'),
+    path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
+    path('zajkovskoe/cart_ok/<int:ord>/', views.zajkovskoe_cart_ok, name='zajkovskoe_cart_ok'),
+    path('zajkovskoe/products/', views.shop_zajkov_products, name='shop_zajkov_products'),
+    path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),
+    path('zajkovskoe/grid/', views.shop_zajkov_grid, name='shop_zajkov_grid'),
+
     # Shop artiobschepit
     path('arti/artiobschepit/', views.shop_artiobschepit, name='shop_artiobschepit'),
     path('arti/artiobschepit/product/<int:id>/', views.shop_artiobschepit_product, name='shop_artiobschepit_product'),
@@ -37,14 +47,6 @@ urlpatterns = [
     path('rezh/product/<int:id>/', views.shop_rezh_product, name='shop_rezh_product'),
     path('rezh/grid/', views.shop_rezh_grid, name='shop_rezh_grid'),
     path('rezh/career/', views.shop_rezh_career, name='shop_rezh_career'),
-
-    # Shop zajkovskoe
-    path('zajkovskoe/', views.shop_zajkov, name='zajkovskoe'),
-    path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
-    path('zajkovskoe/products/', views.shop_zajkov_products, name='shop_zajkov_products'),
-    path('zajkovskoe/product/<int:id>/', views.shop_zajkov_product, name='shop_zajkov_product'),
-    path('zajkovskoe/grid/', views.shop_zajkov_grid, name='shop_zajkov_grid'),
-    path('zajkovskoe/career/', views.shop_zajkov_career, name='shop_zajkov_career'),
 
 
     # Shop chetkarino

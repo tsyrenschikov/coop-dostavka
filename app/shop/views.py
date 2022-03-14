@@ -527,7 +527,7 @@ def cart_zajkovskoe(request):
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
-                    return redirect(cart_ok ,ord)
+                    return redirect(cart_ok_zajkovskoe ,ord)
 
                 return render(request, 'zajkovskoe/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 

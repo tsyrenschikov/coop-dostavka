@@ -9,6 +9,7 @@
 	<!-- Body Start -->
 	<div class="wrapper">
 		<div class="all-product-grid">
+        {% include 'shop/includes/search_product.html' %}
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -18,7 +19,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="product-list-view">{{ list_category_product }}
+            <div class="shop_area shop_reverse mt-70 mb-70">
+				<div class="product-list-view">
                 {%  include 'shop/includes/toolbar_start.html' %}
 					<div id="product-list" class="row shop_wrapper">
                         {% for product in page_obj %}

@@ -3952,7 +3952,7 @@ label.control-label-cart {
 }
 
 .widget_list.widget_categories > ul > li > a:hover {
-    color: #40A944;
+    color: #40A944!important;
 }
 
 .widget_list.widget_categories > ul > li:last-child > a {
@@ -3996,7 +3996,7 @@ label.control-label-cart {
 }
 
 .widget_list.widget_categories > ul > li ul li a:hover {
-    color: #40A944;
+    color: #40A944!important;
 }
 
 .widget_list:last-child {
@@ -4058,7 +4058,7 @@ label.control-label-cart {
 }
 
 .widget_list > ul > li > a:hover {
-    color: #40A944;
+    color: #40A944 !important;
 }
 
 .widget_list > ul > li > a span {

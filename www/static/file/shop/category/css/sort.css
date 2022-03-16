@@ -2881,6 +2881,7 @@
     transition: 0.3s;
     background: #40A944;
     color: #fff;
+    border-radius: 2px;
 }
 .search_box button:hover {
   background: #222222;
@@ -2894,15 +2895,16 @@
     right: 0;
     font-size: 16px;
     line-height: 38px;
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 0 0 0;
   }
 }
 .search_container form {
   display: flex;
-  border-radius: 30px;
+  border-radius: 3px;
   border: 1px solid #ededed;
   background: #fff;
   width: 100%;
+    margin-bottom: 30px;
 }
 @media only screen and (max-width: 767px) {
   .search_box button {

@@ -224,7 +224,8 @@ def shop_arti_products(request):
                 products = name_slug.objects.all().order_by('name')
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
                 category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                list_category_product = {category['name']: [] for category in category_shop}
+                list_category_product = {category['name']: []  for category in category_shop }
+                count_sidebar=len(list_category_product)
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
                     for n in category['subcat']:
@@ -237,7 +238,7 @@ def shop_arti_products(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/products.html',
                               {'category_product': category_product,'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar':count_sidebar})
 
 def sort_list(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()

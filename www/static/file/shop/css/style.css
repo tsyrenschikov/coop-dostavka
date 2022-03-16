@@ -3941,7 +3941,7 @@ label.control-label-cart {
 
 .widget_list {
     margin-bottom: 33px;
-	border: 1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .widget_list.widget_categories > ul > li > a {
@@ -4004,10 +4004,10 @@ label.control-label-cart {
 }
 
 .widget_list.widget_filter form button {
-	margin:0 0 10px 10px;
+    margin: 0 0 10px 10px;
     height: 30px;
     line-height: 30px;
-    padding:0 20px;
+    padding: 0 20px;
     text-transform: capitalize;
     color: #ffffff;
     background: #222222;
@@ -4183,6 +4183,127 @@ label.control-label-cart {
     width: 0;
     float: left;
 }
+
+.ui-slider-horizontal .ui-slider-range {
+    background: #40A944;
+    height: 2px;
+}
+
+.ui-slider-horizontal {
+    height: 2px;
+    background: #dbdbdb;
+    border: none;
+    width: 92%;
+    margin: 0 auto;
+    margin-bottom: 22px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #fff;
+    width: 15px;
+    height: 15px;
+    top: -7px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #40A944;
+}
+
+.widget_list.widget_filter {
+    overflow: hidden;
+}
+
+.widget_list.widget_filter form {
+    padding-top: 10px;
+}
+
+.widget_list.widget_filter form input {
+    background: none;
+    border: none;
+    font-size: 12px;
+    float: right;
+    text-align: right;
+    line-height: 31px;
+    width: 60px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .widget_list.widget_filter form input {
+        width: 65px;
+    }
+}
+
+.widget_list.widget_filter form button {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #222222;
+    border: 0;
+    border-radius: 30px;
+    float: left;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.widget_list.widget_filter form button:hover {
+    background: #40A944;
+}
+
+/*--
+    - Input Placeholder
+-----------------------------------------*/
+input:-moz-placeholder, textarea:-moz-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/*--
+    Scroll Up
+-----------------------------------------*/
+#scrollUp {
+    background: #40A944 none repeat scroll 0 0;
+    bottom: 85px;
+    color: #ffffff;
+    cursor: pointer;
+    display: none;
+    font-size: 20px;
+    height: 45px;
+    line-height: 39px;
+    position: fixed;
+    right: 12px;
+    text-align: center;
+    width: 45px;
+    z-index: 9999;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+#scrollUp:hover i {
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+/*--
 
 .img-add [type="file"] + label {
     cursor: pointer;

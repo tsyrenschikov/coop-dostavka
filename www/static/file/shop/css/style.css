@@ -4303,6 +4303,34 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     animation-iteration-count: infinite;
 }
 
+/*--Addcart-*/
+.overlay {
+    background: transparent url(images/overlay.png) repeat top left;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+}
+
+.box {
+    position: fixed;
+    top: -200px;
+    left: 40%;
+    right: 40%;
+    background-color: #fff;
+    color: #7F7F7F;
+    padding: 20px;
+    border: 2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index: 101;
+}
+
 /*--
 
 .img-add [type="file"] + label {

@@ -254,7 +254,10 @@ $('.add-to-cart').click(function(event) {
   var name = $(this).data('name');
   var price = Number($(this).data('price'));
   shoppingCart.addItemToCart(name, price, 1);
-  displayCart();
+  $('#box').fadeIn('fast',function() {
+    $('#box').animate({'top': '170px'}, 800).delay(2500).slideUp(400)
+  });
+  displayCart()
 });
 
 // Clear items

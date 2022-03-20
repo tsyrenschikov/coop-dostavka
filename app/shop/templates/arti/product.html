@@ -39,7 +39,7 @@
 											<ul class="ordr-crt-share">
 												<li>
                                                     <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
-                                                    <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
+                                                    <i class="uil uil-shopping-cart-alt "></i>Добавить в корзину</button>
                                                 </li>
                                             </ul>
 										</div>
@@ -52,6 +52,7 @@
 			</div>
 		</div>
     </div>
+    {% include 'shop/includes/animation_add_cart.html' %}
 {% include 'shop/includes/cart_modal_arti.html' %}
 {% include 'shop/includes/featured_arti.html' %}
 {% include 'shop/layouts/footer.html' %}

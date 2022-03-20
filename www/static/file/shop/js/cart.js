@@ -249,19 +249,15 @@ obj.Delivery = function () {
 // Triggers / Events
 // *****************************************
 // Add item
-let onclickcart =0;
+
 $('.add-to-cart').click(function(event) {
   event.preventDefault();
   var name = $(this).data('name');
   var price = Number($(this).data('price'));
   shoppingCart.addItemToCart(name, price, 1);
-  $elem.on('click', () => {
-     ++numOfClicks;
-  $elem.toggleClass('odd-click', numOfClicks % 2 !== 0);
-});
-  $('#box').fadeIn('fast',function() {
+  $('#box').fadeIn('fast',function(){
     $('#box').animate({'top': '170px'}, 800).delay(2000).slideUp(400)
-  });
+});
   displayCart()
 });
 

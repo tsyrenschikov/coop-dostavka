@@ -99,13 +99,13 @@ def searchproduct(request):
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
-            results = address.objects.filter(Q(name__icontains=query_name))
+            results = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
             paginator = Paginator(results, 50)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
-            return render(request, 'shop/list.html', {'results': results, 'page_obj':page_obj, 'local':local})
+            return render(request, 'arti/search_list.html', {'results': results, 'page_obj':page_obj, 'local':local})
         else:
-            return render(request, 'shop/list.html', {})
+            return render(request, 'arti/search_list.html',alert)
 
 def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')

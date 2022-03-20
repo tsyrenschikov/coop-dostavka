@@ -9,6 +9,7 @@ urlpatterns = [
     # Shop arti
     path('arti/', views.shop_arti, name='arti'),
     path('arti/sort_list/<str:list>/', views.sort_list, name='sort_list'),
+    path('arti/searchproduct/', views.searchproduct, name='searchproduct'),
     path('arti/searcharti/', views.searcharti, name='searcharti'),
     path('arti/cart/', views.cart_arti, name='cart_arti'),
     path('arti/cart_ok/<int:ord>/', views.cart_ok, name='cart_ok'),

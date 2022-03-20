@@ -5,6 +5,7 @@ from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.core.paginator import Paginator
+from django.db.models import Q
 import copy
 from django.shortcuts import render, redirect
 
@@ -86,6 +87,25 @@ def searcharti(request):
             client = orders.objects.filter(name=name,phone=phone)
             return render(request, 'arti/search_order.html', {'category_product':category_product,'client':client,'local':local,'address_str':address_str})
     return render(request, 'arti/index.html', {'category_product':category_product,'categories': categories, 'local': local,'address_str':address_str})
+
+def searchproduct(request):
+    alert = {
+        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "address_str": str([i for i in str(request.path).split('/') if i][0]),
+    }
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address=eval(address_str)
+    if request.method == "POST":
+        query_name = request.POST.get('name')
+        if query_name:
+            results = address.objects.filter(Q(name__icontains=query_name))
+            paginator = Paginator(results, 50)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            return render(request, 'shop/list.html', {'results': results, 'page_obj':page_obj, 'local':local})
+        else:
+            return render(request, 'shop/list.html', {})
 
 def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')

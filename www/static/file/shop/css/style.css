@@ -3905,6 +3905,15 @@ label.control-label-cart {
     max-width: 80% !important;
 }
 
+.sticky {
+  position: fixed;
+  z-index: 101;
+}
+.stop {
+  position: relative;
+  z-index: 101;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .sidebar_widget .widget_list {
         margin-bottom: 57px;

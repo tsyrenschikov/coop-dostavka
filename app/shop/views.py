@@ -100,10 +100,7 @@ def searchproduct(request):
         query_name = request.POST.get('name')
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            paginator = Paginator(products, 1000)
-            page_number = request.GET.get('page')
-            page_obj = paginator.get_page(page_number)
-            return render(request, 'arti/search_list.html', {'products': products, 'page_obj':page_obj, 'local':local})
+            return render(request, 'arti/search_list.html', {'products': products, 'local':local})
     else:
         return render(request, 'arti/search_list.html', alert)
 

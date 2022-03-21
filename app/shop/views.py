@@ -89,18 +89,38 @@ def searcharti(request):
     return render(request, 'arti/index.html', {'category_product':category_product,'categories': categories, 'local': local,'address_str':address_str})
 
 def searchproduct(request):
-    alert = {
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-    }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     address=eval(address_str)
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+    alert = {
+        "name": request.GET.get('name', ''),
+        "phone": request.GET.get('phone', ''),
+        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+        "address_str" : str([i for i in str(request.path).split('/') if i][0]),
+        "category_product" : dict(sorted(list_category_product.items())),
+    }
+    local = Locations.objects.values_list('name', 'slug').distinct()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'arti/search_list.html', {'products': products, 'local':local})
+            return render(request, 'arti/search_list.html', {'products': products, 'local':local,'category_product':category_product,'local':local,'address_str':address_str})
     else:
         return render(request, 'arti/search_list.html', alert)
 

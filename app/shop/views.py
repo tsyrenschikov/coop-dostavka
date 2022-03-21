@@ -121,6 +121,7 @@ def searchproduct(request):
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
             return render(request, 'arti/search_list.html', {'products': products, 'local':local,'category_product':category_product,'local':local,'address_str':address_str})
+
     else:
         return render(request, 'arti/search_list.html', alert)
 

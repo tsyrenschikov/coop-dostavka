@@ -34,7 +34,7 @@
             <div class="widget_list widget_filter">
                 <h3><i class="uil uil-money-withdraw"></i>Цена</h3>
                 <form action="#">
-                    <input type="range" name="pieces" id="inputPieces" multiple value="100" min="5" max="2500" unit=" р.">
+                    <input type="range" name="rub" id="inputRub" multiple value="100" min="5" max="2500" unit=" р.">
                     </br>
                     <button type="submit">Фильтр</button>
                 </form>
@@ -44,7 +44,7 @@
 </div>
 <script>
     // Example to subscribe to range changes
-    document.getElementById('inputPieces').addEventListener('rangechange', function (e) {
+    document.getElementById('inputRub').addEventListener('rangechange', function (e) {
         document.getElementById('displaySelectedRange').innerText = e.detail.join(' - ');
     }, true);
 </script>

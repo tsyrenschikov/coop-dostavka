@@ -1,7 +1,7 @@
 $(function () {
     $(window).on('load resize', function () {
         var width = $(window).width();
-        if (width <=761){
+        if (width > 0  && width <= 996){
             $('#hidenscrolb').hide();
             $('#hidescrollcart').hide('Корзина');
             $('#hidescrollbutton').hide();
@@ -10,6 +10,7 @@ $(function () {
             $('#hidescrollnav').hide();
             $('#hidescrollnextpage').hide();
             $('#hidescrollprevpage').hide();
+            $('#aside1').hide();
         }
         else{
             $('#hidescrollcart').show('Корзина');
@@ -20,6 +21,7 @@ $(function () {
             $('#hidescrollnav').show();
             $('#hidescrollnextpage').show();
             $('#hidescrollprevpage').show();
+            $('#aside1').show();
         }
     });
 });

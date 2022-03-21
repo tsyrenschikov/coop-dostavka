@@ -1,3 +1,4 @@
+{% load static %}
 <!--sidebar widget start-->
 <div class="col-lg-3 col-md-12">
 
@@ -30,8 +31,27 @@
                     </br>
                 </ul>
             </div>
+            <div class="widget_list widget_filter">
+                <h3><i class="uil uil-money-withdraw"></i>Цена</h3>
+                <form action="#">
+                    <input type="range" name="pieces" id="inputPieces" multiple value="100" min="5" max="2500" unit=" р.">
+                    </br>
+                    <button type="submit">Фильтр</button>
+                </form>
+            </div>
         </div>
     </aside>
 </div>
+<script>
+    // Example to subscribe to range changes
+    document.getElementById('inputPieces').addEventListener('rangechange', function (e) {
+        document.getElementById('displaySelectedRange').innerText = e.detail.join(' - ');
+    }, true);
+</script>
+
+<script src="{% static 'file/shop/js/om-javascript-range-slider.js' %}"></script>
+<script>
+    OmRangeSlider.init({inputValueStyle: OmRangeSliderInputValueStyles.PHP_ARRAY});
+</script>
 
 <!--sidebar widget end-->

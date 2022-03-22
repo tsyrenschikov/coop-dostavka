@@ -12,6 +12,7 @@ $(function () {
             $('#hidescrollprevpage').hide();
             $('#aside1').hide();
             $('#container_hide').removeClass('container_products').addClass('container');
+            $('#hidesearchtop').show()
         }
         else{
             $('#hidescrollcart').show('Корзина');
@@ -24,6 +25,7 @@ $(function () {
             $('#hidescrollprevpage').show();
             $('#aside1').show();
             $('#container_hide').removeClass('container').addClass('container_products');
+            $('#hidesearchtop').hide()
         }
     });
 });

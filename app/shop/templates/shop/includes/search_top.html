@@ -1,4 +1,5 @@
-<aside hidden>
+<div class="container">
+<aside id="hidesearchtop">
 <div class="search_container mobail_s_none">
     <form method="post" action="{% url 'searchproduct' %}">
         {% csrf_token %}
@@ -9,3 +10,4 @@
     </form>
 </div>
 </aside>
+</div>

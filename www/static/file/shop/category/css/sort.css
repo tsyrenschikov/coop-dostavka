@@ -2812,13 +2812,13 @@
     content: "\eb8a";
 }
 
+
 .search_box {
   position: relative;
   width: 100%;
 }
 @media only screen and (max-width: 479px) {
   .search_box {
-    border: 1px solid #ededed;
     border-radius: 13px;
   }
 }

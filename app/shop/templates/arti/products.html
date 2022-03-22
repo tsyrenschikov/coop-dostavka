@@ -7,8 +7,10 @@
     {% load static %}
 
     <!-- Body Start -->
+
     <div class="wrapper">
         <div class="all-product-grid">
+        {% include 'shop/includes/search_top.html' %}
             <div id="container_hide" class="container_products">
                 {% include 'shop/includes/search_product.html' %}
                 <article id="article">

@@ -148,9 +148,9 @@ function OmRangeSlider(inputElement, inputValueStyle) {
             case OmRangeSliderInputValueStyles.PHP_ARRAY:
                 inputValueEnd = document.createElement('input');
                 inputValueEnd.hidden = true;
-                inputValueEnd.name = input.name + '[]';
+                inputValueEnd.name = input.name;
                 input.parentNode.insertBefore(inputValueEnd, input.nextSibling);
-                input.name = input.name + '[]';
+                input.name = input.name ;
                 break;
             case OmRangeSliderInputValueStyles.ASP_ARRAY:
                 inputValueEnd = document.createElement('input');

@@ -17,6 +17,11 @@ urlpatterns = [
     path('arti/product/<int:id>/', views.shop_arti_product, name='shop_arti_product'),
     path('arti/grid/', views.shop_arti_grid, name='shop_arti_grid'),
 
+# Shop artiobschepit
+    path('arti/artiobschepit/', views.shop_artiobschepit, name='artiobschepit'),
+    path('arti/artiobschepit/product/<int:id>/', views.shop_artiobschepit_product, name='artiobschepit_product'),
+    path('arti/artiobschepit/grid/', views.shop_artiobschepit_grid, name='shop_artiobschepit_grid'),
+
     # Shop zajkovskoe
     path('zajkovskoe/', views.shop_zajkovskoe, name='zajkovskoe'),
     path('zajkovskoe/sort_list/<str:list>/', views.sort_list_zajkovskoe, name='sort_list_zajkovskoe'),
@@ -27,9 +32,6 @@ urlpatterns = [
     path('zajkovskoe/product/<int:id>/', views.shop_zajkovskoe_product, name='shop_zajkov_product'),
     path('zajkovskoe/grid/', views.shop_zajkovskoe_grid, name='shop_zajkovskoe_grid'),
 
-    # Shop artiobschepit
-    path('arti/artiobschepit/', views.shop_artiobschepit, name='shop_artiobschepit'),
-    path('arti/artiobschepit/product/<int:id>/', views.shop_artiobschepit_product, name='shop_artiobschepit_product'),
 
     # Shop pokrovskoe
     path('pokrovskoe/', views.shop_pokrovskoe, name='pokrovskoe'),
@@ -37,6 +39,11 @@ urlpatterns = [
     path('pokrovskoe/product/<int:id>/', views.shop_pokrovskoe_product, name='shop_pokrovskoe_product'),
     path('pokrovskoe/grid/', views.shop_pokrovskoe_grid, name='shop_pokrovskoe_grid'),
     path('pokrovskoe/career/', views.shop_pokrovskoe_career, name='shop_pokrovskoe_career'),
+    path('pokrovskoe/sort_list/<str:list>/', views.sort_list_pokrovskoe, name='sort_list_pokrovskoe'),
+    path('pokrovskoe/searchproduct/', views.searchproduct, name='searchproduct_pokrovskoe'),
+    path('pokrovskoe/searcharti/', views.searcharti, name='searchpokrovskoe'),
+    path('pokrovskoe/cart/', views.cart_arti, name='cart_pokrovskoe'),
+    path('pokrovskoe/cart_ok/<int:ord>/', views.cart_ok, name='cart_ok'),
 
 # Shop bogdan
     path('bogdan/', views.shop_bogdan, name='bogdan'),

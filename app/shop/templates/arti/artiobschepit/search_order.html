@@ -1,0 +1,83 @@
+{% extends 'shop/layouts/base_artiobschepit.html' %}
+{% load static %}
+{% block title %}Поиск заказа{% endblock %}
+{% block content %}
+<div class="wrapper">
+        <div class="container">
+            <div class="all-product-grid">
+                <div class="contact-title-1">
+                    <div class="card-title-2">
+                        <div class="main-cart-title"></div>
+                        {% if client %}
+                            <h2 style="text-align: center">Ваши заказы</h2>
+                        {% else %}
+                            <h2 style="text-align: center">Поиск заказа</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="all-product-grid">
+            <div class="contact-title-1">
+                <div class="col-lg-6 col-md-6">
+                </div>
+                {% if client %}
+                    <div class="contact-form-cart">
+                    <div class="card-body-table">
+                        <div class="table-responsive">
+                            <table class="table ucp-table1 table-hover table_sort">
+                                <thead>
+                                <tr>
+                                    <th>Номер заказа</th>
+                                    <th>Дата доставки</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                {% for i in client %}
+                                    <tr>
+                                        <td>{{ i.id }}</td>
+                                        <td>{{ i.cal }}</td>
+                                        <td>
+                                            {% if i.status == null %}<span class="bullet" style="background-color: rgb(166, 177, 189);" ></span><span>В ожидании</span>{% endif %}
+                                            {% if i.status == 'false' %}<span class="bullet" style="background-color: rgb(254, 208, 48);" ></span><span>Сформирован</span>{% endif %}
+                                            {% if i.status == 'true' %}<span class="bullet" style="background-color: rgb(2, 178, 144);"></span><span>Доставка</span>{% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="contact-form-cart">
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ name }}
+                            {{ phone }}
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="rl-account-step">
+                                <input hidden="hidden" type="text" class="item">
+                                <input type="text" name="name" class="form-control" placeholder="Имя" required="">
+                            </div>
+                            <div class="rl-account-step">
+                                <input id="phone" type="text" name="phone" class="form-control" placeholder="Номер телефона" required="">
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <button type="submit" class="btn btn-success sign-in-btn">
+                                    <i aria-hidden="true"></i>Поиск заказа
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'shop/includes/modal_checkbox.html' %}
+{% include 'shop/includes/cart_modal_artiobschepit.html' %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

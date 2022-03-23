@@ -335,16 +335,59 @@ def shop_arti_product(request, id):
 
 # Shop artiobschepit
 def shop_artiobschepit(request):
-    local=Locations.objects.values_list('name','slug').distinct()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    add = str([i for i in str(request.path).split('/') if i][1])
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    categories = Category.objects.order_by('number')
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if (slug == address_str or slug == add) and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                products = name_slug.objects.all().order_by('?')[:20]
+                new_products = name_slug.objects.all().order_by('id')[::-1][:20]
+                category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                dict_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                dict_category_product[category['name']].append(i)
+                category_product = dict(sorted(dict_category_product.items()))
+                return render(request, 'arti/artiobschepit/products.html', {'add':add,'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local,
+                'name': name,
+                                                           'address_str': address_str})
+
+def shop_artiobschepit_grid(request):
+    local=Locations.objects.values_list('name','slug').distinct()
+    shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
                 name = name_a
-                product=artiobschepit.objects.all().order_by('?')[:20]
-                return render(request, 'arti/artiobschepit/index.html', {'product':product,'local':local,'name':name,'address_str':address_str})
+                name_slug = eval(slug)
+                product=name_slug.objects.all().order_by('id')[::-1][:48]
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                paginator = Paginator(product,20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'arti/artiobschepit/grid.html', {'product':product,'category_product':category_product,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
+
 
 def shop_artiobschepit_product(request,id):
     local=Locations.objects.values_list('name','slug').distinct()
@@ -363,16 +406,59 @@ def shop_artiobschepit_product(request,id):
 # Shop pokrovskoe
 def shop_pokrovskoe(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
+    areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('?')[:20]
-                return render(request, 'pokrovskoe/index.html', {'product': product, 'local': local, 'name': name,'address_str':address_str})
+                products = name_slug.objects.all().order_by('name')
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                count_sidebar = len(list_category_product)
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                paginator = Paginator(products, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'pokrovskoe/products.html',
+                              {'category_product': category_product, 'products': products,
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
+
+def sort_list_pokrovskoe(request,list):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = set([i for i, j, k in category_product])
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                products = name_slug.objects.filter(subcat=list)
+                paginator = Paginator(products, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'shop/list_pokrovskoe.html', {'category_product':category_product,'products':products,'page_obj': page_obj, 'name': name, 'local': local,
+                                                              'address_str': address_str})
 
 def shop_pokrovskoe_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()
@@ -395,9 +481,7 @@ def shop_pokrovskoe_products(request):
 
 #View product
 def shop_pokrovskoe_product(request, id):
-    local=Locations.objects.values_list('name','slug').distinct()
-    product=pokrovskoe.objects.get(id=id)
-    products=pokrovskoe.objects.all().order_by('?')[:10]
+    local = Locations.objects.values_list('name', 'slug').distinct()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -406,8 +490,21 @@ def shop_pokrovskoe_product(request, id):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 shop_name = slug
-                return render(request, 'pokrovskoe/product.html', {'product':product,'products':products,'shop_name':shop_name,'local':local,'name':name})
-
+                slug_name = eval(slug)
+                product = slug_name.objects.get(id=id)
+                products = slug_name.objects.all().order_by('?')[:10]
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                return render(request, 'pokrovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                             'address_str': address_str})
 def shop_pokrovskoe_career(reguest):
     local=Locations.objects.values_list('name','slug').distinct()
     users = User.objects.all()

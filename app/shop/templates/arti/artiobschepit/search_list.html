@@ -1,7 +1,7 @@
-﻿{% extends 'shop/layouts/base_artiobschepit.html' %}
+{% extends 'shop/layouts/base_artiobschepit.html' %}
 {% load thumbnail %}
 
-{% block title %}grid{% endblock %}
+{% block title %}Продукты питания{% endblock %}
 
 {% block content %}
     {% load static %}
@@ -14,18 +14,16 @@
                     <div class="col-lg-12">
                         <div class="product-top-dt">
                             <div class="product-left-title">
-                                <h2>Новое поступление</h2>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="product-list-view">
-                    {% include 'shop/includes/toolbar_start.html' %}
                     <div id="product-list" class="row shop_wrapper">
-                        {% for product in page_obj %}
+                        {% for product in products %}
                             <div class="col-lg-33 col-md-6">
                                 <div class="product-item mb-30">
-                                    <a href="/{{ adrress_str }}/product/{{ product.id }}" class="product-img">
+                                    <a href="/{{ adress_str }}/product/{{ product.id }}" class="product-img">
                                         {% thumbnail product.image "250x250" crop="center" as im %}
                                             <img src="{{ im.url }}" alt="">
                                         {% endthumbnail %}
@@ -34,21 +32,24 @@
                                         <h4 class="cuttedText">{{ product.name }}</h4>
                                         <div class="product-price">{{ product.price }} .р</div>
                                         <div class="qty-cart">
+                                            <div class="qty-cart">
                                             <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
                                                 <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
-                    {% include 'shop/includes/toolbar_end.html' %}
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    {% include 'shop/includes/animation_add_cart.html' %}
     <!-- Body End -->
     {% include 'shop/includes/cart_modal_artiobschepit.html' %}
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts.html' %}
-{% endblock content %}
+{% endblock content %}s

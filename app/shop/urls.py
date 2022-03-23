@@ -35,13 +35,12 @@ urlpatterns = [
 
     # Shop pokrovskoe
     path('pokrovskoe/', views.shop_pokrovskoe, name='pokrovskoe'),
-    path('pokrovskoe/products/', views.shop_pokrovskoe_products, name='shop_pokrovskoe_products'),
     path('pokrovskoe/product/<int:id>/', views.shop_pokrovskoe_product, name='shop_pokrovskoe_product'),
     path('pokrovskoe/grid/', views.shop_pokrovskoe_grid, name='shop_pokrovskoe_grid'),
     path('pokrovskoe/career/', views.shop_pokrovskoe_career, name='shop_pokrovskoe_career'),
     path('pokrovskoe/sort_list/<str:list>/', views.sort_list_pokrovskoe, name='sort_list_pokrovskoe'),
-    path('pokrovskoe/searchproduct/', views.searchproduct, name='searchproduct_pokrovskoe'),
-    path('pokrovskoe/searcharti/', views.searcharti, name='searchpokrovskoe'),
+    path('pokrovskoe/searchproduct_pokrovskoe/', views.searchproduct, name='searchproduct_pokrovskoe'),
+    path('pokrovskoe/searchpokrovskoe/', views.searcharti, name='searchpokrovskoe'),
     path('pokrovskoe/cart/', views.cart_arti, name='cart_pokrovskoe'),
     path('pokrovskoe/cart_ok/<int:ord>/', views.cart_ok, name='cart_ok'),
 

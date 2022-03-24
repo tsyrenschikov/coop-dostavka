@@ -343,7 +343,7 @@ def shop_artiobschepit(request):
     categories = Category.objects.order_by('number')
     for slug in shop:
         for name_a, slug_a in areas:
-            if (slug == address_str or slug == add) and slug == slug_a:
+            if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
                 products = name_slug.objects.all().order_by('?')[:20]

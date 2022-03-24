@@ -13,6 +13,8 @@ $(function () {
             $('#aside1').hide();
             $('#container_hide').removeClass('container_products').addClass('container');
             $('#hidesearchtop').show()
+            $('#hidefooter').hide()
+            $('#hidenavmenu').show()
         }
         else{
             $('#hidescrollcart').show('Корзина');
@@ -26,6 +28,8 @@ $(function () {
             $('#aside1').show();
             $('#container_hide').removeClass('container').addClass('container_products');
             $('#hidesearchtop').hide()
+            $('#hidefooter').show()
+            $('#hidenavmenu').hide()
         }
     });
 });

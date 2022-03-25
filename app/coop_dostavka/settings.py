@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_hosts',
     'copyright',
+    'django_user_agents',
 ]
 
 SITE_ID=1
@@ -73,7 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
-
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 

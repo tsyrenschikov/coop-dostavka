@@ -9,6 +9,7 @@
     <!-- Body Start -->
     <div class="wrapper">
         <div class="all-product-grid">
+        {% include 'shop/includes/search_top.html' %}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -24,7 +25,7 @@
                     <div id="product-list" class="row shop_wrapper">
                         {% for product in page_obj %}
                             <div class="col-lg-33 col-md-6">
-                                <div class="product-item mb-30">
+                                <div class="product-item1 mb-30">
                                     <a href="/arti/product/{{ product.id }}" class="product-img">
                                         {% thumbnail product.image "250x250" crop="center" as im %}
                                             <img src="{{ im.url }}" alt="">

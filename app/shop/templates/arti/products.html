@@ -1,5 +1,6 @@
 {% extends 'shop/layouts/base_arti.html' %}
 {% load thumbnail %}
+{% load user_agents %}
 
 {% block title %}Продукты питания{% endblock %}
 
@@ -17,27 +18,51 @@
                     <div class="products-list-view">
                         {% include 'shop/includes/toolbar_start.html' %}
                         <div id="product-list" class="row shop_wrapper">
-                            {% for product in page_obj %}
-                                {% if product.status %}
-                                    <div class="col-lg-33 col-md-6">
-                                        <div class="product-item1 mb-30">
-                                            <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
-                                                {% thumbnail product.image "250x250" crop="center" as im %}
-                                                    <img src="{{ im.url }}" alt="">
-                                                {% endthumbnail %}
-                                            </a>
-                                            <div class="product-text-dt">
-                                                <h4 class="cuttedText">{{ product.name }}</h4>
-                                                <div class="product-price">{{ product.price }} .р</div>
-                                                <div class="qty-cart ">
+                            {% if request.user_agent.is_mobile %}
+                                {% for product in products %}
+                                    {% if product.status %}
+                                        <div class="col-lg-33 col-md-6">
+                                            <div class="product-item1 mb-30">
+                                                <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
+                                                    {% thumbnail product.image "250x250" crop="center" as im %}
+                                                        <img src="{{ im.url }}" alt="">
+                                                    {% endthumbnail %}
+                                                </a>
+                                                <div class="product-text-dt">
+                                                    <h4 class="cuttedText">{{ product.name }}</h4>
+                                                    <div class="product-price">{{ product.price }} .р</div>
+                                                    <div class="qty-cart ">
                                             <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
                                                 <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {% for product in page_obj %}
+                                    {% if product.status %}
+                                        <div class="col-lg-33 col-md-6">
+                                            <div class="product-item1 mb-30">
+                                                <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
+                                                    {% thumbnail product.image "250x250" crop="center" as im %}
+                                                        <img src="{{ im.url }}" alt="">
+                                                    {% endthumbnail %}
+                                                </a>
+                                                <div class="product-text-dt">
+                                                    <h4 class="cuttedText">{{ product.name }}</h4>
+                                                    <div class="product-price">{{ product.price }} .р</div>
+                                                    <div class="qty-cart ">
+                                            <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
+                                                <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
                         {% include 'shop/includes/toolbar_end.html' %}
                     </div>

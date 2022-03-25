@@ -377,6 +377,11 @@ input[type=checkbox], input[type=radio] {
     background-color: #f55d2c;
 }
 
+.badge-panel-status {
+    color: #fff;
+    background-color: green;
+}
+
 .badge-item {
     display: inline-block;
     padding: .55em .5em;

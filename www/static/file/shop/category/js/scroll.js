@@ -3,7 +3,6 @@ $(function () {
         var width = $(window).width();
         if (width > 0  && width <= 996){
             $('#hidenscrolb').hide();
-            $('#hidescrollcart').hide('Корзина');
             $('#hidescrollbutton').hide();
             $('#hidescrollpage1').hide();
             $('#hidescrollshow').hide();
@@ -12,14 +11,15 @@ $(function () {
             $('#hidescrollprevpage').hide();
             $('#aside1').hide();
             $('#container_hide').removeClass('container_products').addClass('container');
-            $('#hidesearchtop').show()
-            $('#hidefooter').hide()
-            $('#hidenavmenu').show()
-            $('#toolbarhide').hide()
-            $('#toolbarendhide').hide()
+            $('#hidesearchtop').show();
+            $('.footer').hide();
+            $('#hidenavmenu').show();
+            $('.shop_toolbar').hide();
+            $('.shop_toolbar_wrapper').hide();
+            $('.cf').hide();
+            $('.header_cart').hide();
         }
         else{
-            $('#hidescrollcart').show('Корзина');
             $('#hidenscrolb').show();
             $('#hidescrollbutton').show();
             $('#hidescrollpage1').show();
@@ -29,11 +29,13 @@ $(function () {
             $('#hidescrollprevpage').show();
             $('#aside1').show();
             $('#container_hide').removeClass('container').addClass('container_products');
-            $('#hidesearchtop').hide()
-            $('#hidefooter').show()
-            $('#hidenavmenu').hide()
-            $('#toolbarhide').show()
-            $('#toolbarendhide').show()
+            $('#hidesearchtop').hide();
+            $('.footer').show();
+            $('#hidenavmenu').hide();
+            $('.shop_toolbar').show();
+            $('.shop_toolbar_wrapper').show();
+            $('.cf').show();
+            $('.header_cart').show();
         }
     });
 });

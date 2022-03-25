@@ -285,7 +285,7 @@ def shop_arti_products(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().order_by('name')[:100]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
                 category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
                 list_category_product = {category['name']: []  for category in category_shop }

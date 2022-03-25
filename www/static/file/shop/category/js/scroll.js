@@ -15,6 +15,8 @@ $(function () {
             $('#hidesearchtop').show()
             $('#hidefooter').hide()
             $('#hidenavmenu').show()
+            $('#toolbarhide').hide()
+            $('#toolbarendhide').hide()
         }
         else{
             $('#hidescrollcart').show('Корзина');
@@ -30,6 +32,8 @@ $(function () {
             $('#hidesearchtop').hide()
             $('#hidefooter').show()
             $('#hidenavmenu').hide()
+            $('#toolbarhide').show()
+            $('#toolbarendhide').show()
         }
     });
 });

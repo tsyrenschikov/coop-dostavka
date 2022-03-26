@@ -15,6 +15,7 @@
 								<a href="{%  url 'add_area' %}" class="add-btn hover-btn">Добавить территорию</a>
                                 {% endif %}
 							</div>
+                        {{ areas_user }}
 								<div class="col-lg-5 col-md-6">
 								        <div class="bulk-section mt-30">
 									        <div class="search-by-name-input">
@@ -44,6 +45,7 @@
 													</tr>
 												</thead>
 												<tbody>
+                                                {% if 'super_manager' in groups %}
                                                 {% for areas in areas %}
 													<tr>
 														<td>{{ areas.name}}</td>
@@ -63,16 +65,15 @@
                                                             <td><span class="badge-item badge-status">Не активный</span></td>
                                                             {% endif %}
 														<td class="action-btns">
-															{% if 'super_manager' in groups %}
 															<a href="/edit_area/{{ areas.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
                                                             <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                                            {% endif %}
 														</td>
 													</tr>
                                                 {% endfor %}
+                                                {% endif %}
 												</tbody>
 											</table>
 										</div>

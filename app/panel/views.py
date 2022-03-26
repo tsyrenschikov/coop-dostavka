@@ -257,8 +257,17 @@ def delete_ok_location(request):
 
 #Список территорий продаж
 def areas(request):
-    areas=Area.objects.values('name','status','id','local_city','category_city')
-    return render(request, 'panel/areas.html', {'areas':areas})
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+    users = User.objects.values_list('id', flat=True).distinct()
+    if request.user.is_authenticated:
+        for user_ in users:
+            for user_c,name,slug in shops:
+                if request.user.id ==user_c and user_ == user_c:
+                    areas_user = Area.objects.values('name','status','slug','local_city','category_city')
+                    return render(request, 'panel/areas.html', {'areas_user':areas_user})
+                elif request.user.is_superuser:
+                    areas = Area.objects.all()
+                    return render(request, 'panel/areas.html', {'areas': areas})
 
 #Добавить территорию
 def add_area(request, **kwargs):

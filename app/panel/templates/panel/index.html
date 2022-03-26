@@ -80,6 +80,7 @@
 											<table class="table ucp-table table-hover">
 												<thead>
 													<tr>
+                                                        <th>ID</th>
 														<th style="width:150px">Название</th>
 														<th style="width:150px">Изображение</th>
 														<th>Цена</th>
@@ -92,6 +93,7 @@
 												<tbody>
                                                 {% for products in products %}
 													<tr>
+                                                        <td>{{ products.id }}</td>
 														<td>
 															{{ products.name}}
 														</td>

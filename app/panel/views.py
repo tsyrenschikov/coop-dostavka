@@ -152,7 +152,7 @@ def panel(request):
                     if request.user.id == c and u == c and slug_p == os:
                         name_p = eval(slug_p)
                         name_u = n
-                        products = name_p.objects.all().order_by('id')[::-1][:3]
+                        products = name_p.objects.all().order_by('id')[::-1][:10]
                         count = name_p.objects.count()
                         count_order = orders.objects.filter(slug=os).count()
                         return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order, 'name_u': name_u})
@@ -162,11 +162,6 @@ def panel(request):
                             products_count.update({n: name_p.objects.count()})
                             count_order = orders.objects.count()
                         return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order})
-                    elif not request.user.id == c and u == c and slug_p == os:
-                        name_p = eval(slug_p)
-                        name_u = n
-                        products = name_p.objects.all().order_by('id')[::-1][:3]
-                        return render(request, 'panel/index.html', {'products': products,'name_u': name_u})
     else:
         return redirect ('/login')
 

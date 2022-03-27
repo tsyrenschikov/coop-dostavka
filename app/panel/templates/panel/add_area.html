@@ -40,15 +40,15 @@
                                                         {{ area }}
                                                     </div>
                                                 {% endif %}
-                                                <div class="form-group">
-                                                <label class="form-label">Населенный пункт</label>
-                                                    <select class="form-control selectpicker" name="local_city" value="{{ local.name }}" multiple data-live-search="true">
-                                                        {% for local in local %}
-                                                            <option name="local_city">{{ local.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                                    <div class="form-group"></div>
-                                                <div class="form-group">
+                                                <label class="form-label">Менеджер магазина*</label>
+                                                        <div class="form-group">
+                                                            <select  name="id" value="{{ users.pk }}" class="form-control">
+                                                                <!--<option selected>--Выбрать менеджера--</option>-->
+                                                                {% for users in users %}
+                                                                    <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
                                                 <label class="form-label">Категории товара</label>
                                                     <select class="form-control selectpicker" name="category_city" value="{{ category_city.name }}" multiple data-live-search="true">
                                                         {% for category in category %}

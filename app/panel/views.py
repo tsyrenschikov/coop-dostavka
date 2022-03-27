@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model
+from django.db.models import Count
+
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -6,6 +8,7 @@ from django_hosts.resolvers import reverse
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
+from itertools import chain
 from panel.models import *
 
 
@@ -256,14 +259,14 @@ def delete_ok_location(request):
 def areas(request):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     users = User.objects.values_list('id', flat=True).distinct()
-    areas = Area.objects.all()
     if request.user.is_authenticated:
         for user_ in users:
             for user_c,name,slug in shops:
-                if request.user.id == user_c and user_ == user_c:
-                    name_slug=eval(slug)
-                    return render(request, 'panel/areas.html', {'areas':areas,'users':users,'name_slug':name_slug})
+                if request.user.id ==user_c and user_ == user_c:
+                    areas_user = Area.objects.values('name','status','slug','local_city','category_city')
+                    return render(request, 'panel/areas.html', {'areas_user':areas_user})
                 elif request.user.is_superuser:
+                    areas = Area.objects.all()
                     return render(request, 'panel/areas.html', {'areas': areas})
 
 #Добавить территорию

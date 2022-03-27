@@ -968,6 +968,13 @@ body {
 	color: #f55d2c;
 }
 
+.form-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #2b2f4c;
+    margin-bottom: 10px;
+}
+
 .lgn_input {
 	padding: 0 1rem 0 3rem !important;
 }

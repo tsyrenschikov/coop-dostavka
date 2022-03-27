@@ -1,0 +1,15 @@
+asgiref==3.5.0
+copyright==1.0.1.0
+Django==4.0.3
+django-hosts==5.1
+django-modeltranslation==0.17.5
+django-taggit==2.1.0
+django-translator==1.0.15
+django-user-agents==0.4.0
+pkg_resources==0.0.0
+psycopg2==2.9.3
+six==1.16.0
+sorl-thumbnail==12.8.0
+sqlparse==0.4.2
+ua-parser==0.10.0
+user-agents==2.2.0

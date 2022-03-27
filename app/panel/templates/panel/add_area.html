@@ -1,82 +1,71 @@
-{% extends 'panel/layouts/base.html' %}
-{% block title %}panel{% endblock %}
-{% load static %}
-{% block stylesheet %}
-{% endblock stylesheet %}
-{% block content %}
+    {% extends 'panel/layouts/base.html' %}
+    {% block title %}panel{% endblock %}
+    {% load static %}
+    {% block content %}
 
         <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Территория продаж</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{%  url 'areas' %}">Территория обслуживания</a></li>
-                            <li class="breadcrumb-item active">Добавить территорию</li>
-                        </ol>
-                        <div class="row">
-							<div class="col-lg-5 col-md-6">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-										<h4>Добавить территорию обслуживания</h4>
-									</div>
-									<div class="card-body-table">
-                                        <form method="post">
-                                            {% csrf_token %}
-                                            <div class="news-content-right pd-20">
-                                                <div class="form-group">
-                                                    <label class="form-label">Имя*</label>
-                                                    <input type="text" id="input" name="name" class="form-control" placeholder="Имя территории" required="">
-                                                </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Slug(ссылка на сайт)*</label>
-                                                <p style="color: green">(Поле заполняется автоматически)</p>
-                                                <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" readonly="readonly" required="">
+            <div class="container-fluid">
+                <h2 class="mt-30 page-title">Территория продаж</h2>
+                <ol class="breadcrumb mb-30">
+                    <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'areas' %}">Территория обслуживания</a></li>
+                    <li class="breadcrumb-item active">Добавить территорию</li>
+                </ol>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="card card-static-2 mb-30">
+                            <div class="card-title-2">
+                                <h4>Добавить территорию обслуживания</h4>
+                            </div>
+                            <div class="card-body-table">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="news-content-right pd-20">
+                                        <div class="form-group">
+                                            <label class="form-label">Имя*</label>
+                                            <input type="text" id="input" name="name" class="form-control" placeholder="Имя территории" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Slug(ссылка на сайт)*</label>
+                                            <p style="color: green">(Поле заполняется автоматически)</p>
+                                            <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" readonly="readonly" required="">
+                                        </div>
+                                        {% if area %}
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                {{ area }}
                                             </div>
-                                                {% if area %}
-                                                    <div class="alert alert-danger alert-dismissible">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        {{ area }}
-                                                    </div>
-                                                {% endif %}
-                                                <label class="form-label">Менеджер магазина*</label>
-                                                        <div class="form-group">
-                                                            <select  name="id" value="{{ users.pk }}" class="form-control">
-                                                                <!--<option selected>--Выбрать менеджера--</option>-->
-                                                                {% for users in users %}
-                                                                    <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </div>
-                                                <label class="form-label">Категории товара</label>
-                                                    <select class="form-control selectpicker" name="category_city" value="{{ category_city.name }}" multiple data-live-search="true">
-                                                        {% for category in category %}
-                                                            <option name="category_city">{{ category.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
-                                                <div id="variants">
-                                                <div class="form-group">
-                                                    <label class="form-label">Статус*</label>
-                                                    <select id="status" name="status" class="form-control">
-                                                        <option value="True" selected>Активный</option>
-                                                        <option value="False">Не активный</option>
-                                                    </select>
-                                                </div>
-                                                    <button class="save-btn hover-btn" type="submit">Добавить</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </form>
-									</div>
-								</div>
-							</div>
+                                        {% endif %}
+                                        <label class="form-label">Менеджер магазина*</label>
+                                        <div class="form-group">
+                                            <select name="id" value="{{ users.pk }}" class="form-control">
+                                                <!--<option selected>--Выбрать менеджера--</option>-->
+                                                {% for users in users %}
+                                                    <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <label class="form-label">Категории товара</label>
+                                        <div class="side-by-side clearfix">
+                                            <select name="category_city" value="{{ category_city.name }}" data-placeholder="Выбрать категорию товара" class="chosen-select" multiple tabindex="4">
+                                                {% for category in category %}
+                                                    <option name="category_city">{{ category.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <label class="form-label">Статус*</label>
+                                        <select name="status" class="form-control">
+                                            <option value="True" selected>Активный</option>
+                                            <option value="False">Не активный</option>
+                                        </select>
+                                        <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </main>
-
-<script>
-$(function () {
-    $('select').selectpicker();
-});
-</script>
-{% endblock content %}
+                </div>
+            </div>
+        </main>
+    {% endblock content %}

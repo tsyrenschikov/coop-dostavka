@@ -2,129 +2,130 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Территория обслуживания</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item active">Территория обслуживания</li>
-                        </ol>
-                        <div class="row justify-content-between">
-							<div class="col-lg-12">
-                                {% if 'super_manager' in groups %}
-								<a href="{%  url 'add_area' %}" class="add-btn hover-btn">Добавить территорию</a>
-                                {% endif %}
-							</div>
-                        {{ areas_user }}
-								<div class="col-lg-5 col-md-6">
-								        <div class="bulk-section mt-30">
-									        <div class="search-by-name-input">
-										        <input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()">
-                                            </div>
-								        </div>
-                                </div>
-							<div class="col-lg-12 col-md-12">
-								<div class="card card-static-2 mt-30 mb-30">
-									<div class="card-title-2">
-										<h4>Список территорий обслуживания</h4>
-									</div>
-									<div class="card-body-table">
-										<div class="table-responsive">
-											<table id="info-table" class="table ucp-table table-hover table_sort">
-												<thead>
-													<tr>
-														<th>Имя</th>
-														<th>Населенные пункты</th>
-                                                        <th>Категории товара</th>
-														<th>Статус</th>
-														<th>
-                                                            {% if 'super_manager' in groups %}
-                                                            Действия
-                                                        </th>
-                                                        {% endif %}
-													</tr>
-												</thead>
-												<tbody>
-                                                {% if 'super_manager' in groups %}
-                                                {% for areas in areas %}
-													<tr>
-														<td>{{ areas.name}}</td>
-                                                            {% if areas.local_city %}
-														<td>{{ areas.local_city|cut:"["|cut:"'"|cut:"]" }} </td>
-                                                            {% else %}
-                                                            <td>Не указано</td>
-                                                            {% endif %}
-                                                            {% if areas.category_city %}
-                                                        <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
-                                                            {% else %}
-                                                        <td>Категории не указаны</td>
-                                                            {% endif %}
-                                                            {% if areas.status %}
-														<td><span class="badge-item badge-status">Активный</span></td>
-                                                            {% else %}
-                                                            <td><span class="badge-item badge-status">Не активный</span></td>
-                                                            {% endif %}
-														<td class="action-btns">
-															<a href="/edit_area/{{ areas.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
-                                                            <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Территория обслуживания</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item active">Территория обслуживания</li>
+            </ol>
+            <div class="row justify-content-between">
+                <div class="col-lg-12">
+                    {% if 'super_manager' in groups %}
+                        <a href="{% url 'add_area' %}" class="add-btn hover-btn">Добавить территорию</a>
+                    {% endif %}
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="bulk-section mt-30">
+                        <div class="search-by-name-input">
+                            <input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mt-30 mb-30">
+                        <div class="card-title-2">
+                            <h4>Список территорий обслуживания</h4>{{ name_s }}
+                        </div>
+                        <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table id="info-table" class="table ucp-table table-hover table_sort">
+                                    <thead>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <th>Населенные пункты</th>
+                                        <th>Категории товара</th>
+                                        <th>Статус</th>
+                                        <th>
+                                            {% if 'super_manager' in groups %}
+                                                Действия
+                                                </th>
+                                            {% endif %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for areas in areas %}
+                                        <tr>
+                                            <td>{{ areas.name }}</td>
+                                            {% if areas.local_city %}
+                                                <td>{{ areas.local_city|cut:"["|cut:"'"|cut:"]" }} </td>
+                                            {% else %}
+                                                <td>Не указано</td>
+                                            {% endif %}
+                                            {% if areas.category_city %}
+                                                <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
+                                            {% else %}
+                                                <td>Категории не указаны</td>
+                                            {% endif %}
+                                            {% if areas.status %}
+                                                <td><span class="badge-item badge-status">Активный</span></td>
+                                            {% else %}
+                                                <td><span class="badge-item badge-status">Не активный</span></td>
+                                            {% endif %}
+                                            <td class="action-btns">
+                                                {% if areas.customuser_id == user.id or 'super_manager' in groups %}
+                                                    <a href="/edit_area/{{ areas.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
+                                                    {% if 'super_manager' in groups %}
+                                                    <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-														</td>
-													</tr>
-                                                {% endfor %}
+                                                        {% endif %}
                                                 {% endif %}
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </main>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-    const getSort = ({ target }) => {
-        const order = (target.dataset.order = -(target.dataset.order || -1));
-        const index = [...target.parentNode.cells].indexOf(target);
-        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
-        const comparator = (index, order) => (a, b) => order * collator.compare(
-            a.children[index].innerHTML,
-            b.children[index].innerHTML
-        );
+            const getSort = ({target}) => {
+                const order = (target.dataset.order = -(target.dataset.order || -1));
+                const index = [...target.parentNode.cells].indexOf(target);
+                const collator = new Intl.Collator(['en', 'ru'], {numeric: true});
+                const comparator = (index, order) => (a, b) => order * collator.compare(
+                    a.children[index].innerHTML,
+                    b.children[index].innerHTML
+                );
 
-        for(const tBody of target.closest('table').tBodies)
-            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+                for (const tBody of target.closest('table').tBodies)
+                    tBody.append(...[...tBody.rows].sort(comparator(index, order)));
 
-        for(const cell of target.parentNode.cells)
-            cell.classList.toggle('sorted', cell === target);
-    };
+                for (const cell of target.parentNode.cells)
+                    cell.classList.toggle('sorted', cell === target);
+            };
 
-    document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+            document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
 
-});
-</script>
-<script>
-    function tableSearch() {
-    var phrase = document.getElementById('search-text');
-    var table = document.getElementById('info-table');
-    var regPhrase = new RegExp(phrase.value, 'i');
-    var flag = false;
-    for (var i = 1; i < table.rows.length; i++) {
-        flag = false;
-        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
-            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
-            if (flag) break;
+        });
+    </script>
+    <script>
+        function tableSearch() {
+            var phrase = document.getElementById('search-text');
+            var table = document.getElementById('info-table');
+            var regPhrase = new RegExp(phrase.value, 'i');
+            var flag = false;
+            for (var i = 1; i < table.rows.length; i++) {
+                flag = false;
+                for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+                    flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+                    if (flag) break;
+                }
+                if (flag) {
+                    table.rows[i].style.display = "";
+                } else {
+                    table.rows[i].style.display = "none";
+                }
+
+            }
         }
-        if (flag) {
-            table.rows[i].style.display = "";
-        } else {
-            table.rows[i].style.display = "none";
-        }
-
-    }
-}
-</script>
+    </script>
 {% endblock content %}

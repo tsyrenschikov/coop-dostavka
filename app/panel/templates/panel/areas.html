@@ -45,35 +45,35 @@
                                     </thead>
                                     <tbody>
                                     {% for areas in areas %}
-                                        <tr>
-                                            <td>{{ areas.name }}</td>
-                                            {% if areas.local_city %}
-                                                <td>{{ areas.local_city|cut:"["|cut:"'"|cut:"]" }} </td>
-                                            {% else %}
-                                                <td>Не указано</td>
-                                            {% endif %}
-                                            {% if areas.category_city %}
-                                                <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
-                                            {% else %}
-                                                <td>Категории не указаны</td>
-                                            {% endif %}
-                                            {% if areas.status %}
-                                                <td><span class="badge-item badge-status">Активный</span></td>
-                                            {% else %}
-                                                <td><span class="badge-item badge-status">Не активный</span></td>
-                                            {% endif %}
-                                            <td class="action-btns">
-                                                {% if areas.customuser_id == user.id or 'super_manager' in groups %}
+                                        {% if areas.customuser_id == user.id or 'super_manager' in groups %}
+                                            <tr>
+                                                <td>{{ areas.name }}</td>
+                                                {% if areas.local_city %}
+                                                    <td>{{ areas.local_city|cut:"["|cut:"'"|cut:"]" }} </td>
+                                                {% else %}
+                                                    <td>Не указано</td>
+                                                {% endif %}
+                                                {% if areas.category_city %}
+                                                    <td>{{ areas.category_city|cut:"["|cut:"'"|cut:"]" }}</td>
+                                                {% else %}
+                                                    <td>Категории не указаны</td>
+                                                {% endif %}
+                                                {% if areas.status %}
+                                                    <td><span class="badge-item badge-status">Активный</span></td>
+                                                {% else %}
+                                                    <td><span class="badge-item badge-status">Не активный</span></td>
+                                                {% endif %}
+                                                <td class="action-btns">
                                                     <a href="/edit_area/{{ areas.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
                                                     {% if 'super_manager' in groups %}
-                                                    <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
+                                                        <a href="/delete_area/{{ areas.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                                        {% endif %}
-                                                {% endif %}
-                                            </td>
-                                        </tr>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
                                     {% endfor %}
                                     </tbody>
                                 </table>

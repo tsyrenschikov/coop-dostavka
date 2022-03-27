@@ -83,7 +83,6 @@
                                         <td style="color: green">{{ zakaz.commit }}</td>
                                         <td class="action-btns">
                                             <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
-                                            <a href="/order_edit/{{ zakaz.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
                                             {% if 'super_manager' in groups %}
                                                 <a href="/delete_order/{{ zakaz.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +

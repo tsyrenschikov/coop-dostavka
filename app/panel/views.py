@@ -793,16 +793,31 @@ def order_view(request,id):
     return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
 
 def order_edit(request,id):
+
     try:
+        product = orders.objects.values('id', 'products').order_by('id')
+        address = int([i for i in str(request.path).split('/') if i][-1])
         zakaz=orders.objects.get(id=id)
+        list_product = []
+        for prod in product:
+            if prod['id'] == address:
+                for i in prod['products']:
+                    list_product.append(i)
+        product_list = list_product[0::3]
+        count_list = list_product[1::3]
+        price_list = list_product[2::3]
+        zakaz_list = list(zip(count_list, price_list))
+        zakaz_dict = dict(zip(product_list, zakaz_list))
         if request.method == "POST":
             zakaz.name = request.POST.get("name")
             zakaz.address=request.POST.get('address')
             zakaz.save()
+            return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
+        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
     except orders.DoesNotExist:
-        return render(request, 'panel/order_edit.html', {'zakaz': zakaz})
+        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
 
-    return render(request, 'panel/order_edit.html', {})
+    return render(request, 'panel/order_view.html', {})
 
 def delete_order(request, id):
     zakaz = ''

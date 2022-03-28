@@ -31,7 +31,7 @@
                                         <b>Покупатель: </b> {{ zakaz.name }}  </br>
                                         <b>Телефон: </b>
                                         <label for="inp" class="inp">
-                                            <input type="text" id="inp" placeholder="&nbsp;">
+                                            <input type="text" id="phone" placeholder="&nbsp;">
                                             <span class="label">{{ zakaz.phone }}</span>
                                             <span class="focus-bg"></span>
                                         </label>
@@ -46,7 +46,12 @@
                                         <b>Адрес доставки :</b><br>
                                         #Свердловская область,<br>
                                         {{ zakaz.address_city }},<br>
-                                        ул. {{ zakaz.address_street }}<br>
+                                        Улица: <label for="inp" class="inp">
+                                            <input type="text" id="inp" placeholder="&nbsp;">
+                                            <span class="label">{{ zakaz.address_street }}</span>
+                                            <span class="focus-bg"></span>
+                                        </label>
+                                        <br>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

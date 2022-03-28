@@ -6,7 +6,7 @@
   position: relative;
   margin: auto;
   width: 30%;
-  max-width: 280px;
+  max-width: 195px;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -62,7 +62,7 @@
 }
 .inp input:not(:placeholder-shown) + .label {
   color: rgba(0, 0, 0, 0.5);
-  transform: translate3d(0, -12px, 0) scale(0.75);
+  transform: translate3d(0, -16px, 0) scale(0.75);
 }
 .inp input:focus {
   background: #fff;
@@ -71,7 +71,7 @@
 }
 .inp input:focus + .label {
   color: green;
-  transform: translate3d(0, -12px, 0) scale(0.75);
+  transform: translate3d(0, -16px, 0) scale(0.75);
 }
 .inp input:focus + .label + .focus-bg {
   transform: scaleX(1);

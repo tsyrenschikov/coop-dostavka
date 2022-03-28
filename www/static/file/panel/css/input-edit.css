@@ -13,18 +13,18 @@ body {
 .inp {
   position: relative;
   margin: auto;
-  width: 100%;
-  max-width: 280px;
+  width: 30%;
+  max-width: 120px;
   border-radius: 3px;
   overflow: hidden;
 }
 .inp .label {
   position: absolute;
-  top: 20px;
+  top: 16px;
   left: 12px;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 500;
+  font-size: 12px;
+  color: #000;
+  font-weight: 400;
   transform-origin: 0 0;
   transform: translate3d(0, 0, 0);
   transition: all 0.2s ease;
@@ -36,7 +36,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.05);
+  background: #fff;
   z-index: -1;
   transform: scaleX(0);
   transform-origin: left;
@@ -48,17 +48,16 @@ body {
   width: 100%;
   border: 0;
   font-family: inherit;
-  padding: 16px 12px 0 12px;
-  height: 56px;
+  padding: 13px 12px 0 12px;
   font-size: 16px;
   font-weight: 400;
   background: #fff;
-  box-shadow: #FFFFFF;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   color: #000;
   transition: all 0.15s ease;
 }
 .inp input:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: #fff;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 .inp input:not(:-moz-placeholder-shown) + .label {
@@ -74,7 +73,7 @@ body {
   transform: translate3d(0, -12px, 0) scale(0.75);
 }
 .inp input:focus {
-  background: rgba(0, 0, 0, 0.05);
+  background: #fff;
   outline: none;
   box-shadow: inset 0 -2px 0 green;
 }

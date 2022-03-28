@@ -37,7 +37,9 @@
                                         </label>
                                         </br>
                                         {% if zakaz.email %}
-                                            E-mail: {{ zakaz.email }}
+                                            <b>E-mail:</b> {{ zakaz.email }}
+                                        {% else %}
+                                            <b>E-mail:</b> не указан
                                         {% endif %}
                                     </div>
                                 </div>
@@ -47,10 +49,10 @@
                                         #Свердловская область,<br>
                                         {{ zakaz.address_city }},<br>
                                         Улица: <label for="inp" class="inp">
-                                            <input type="text" id="inp" placeholder="&nbsp;">
-                                            <span class="label">{{ zakaz.address_street }}</span>
-                                            <span class="focus-bg"></span>
-                                        </label>
+                                        <input type="text" id="inp" placeholder="&nbsp;">
+                                        <span class="label">{{ zakaz.address_street }}</span>
+                                        <span class="focus-bg"></span>
+                                    </label>
                                         <br>
                                     </div>
                                 </div>
@@ -103,9 +105,13 @@
                                         <div class="order-total-left-text">
                                             Стоимость доставки
                                         </div>
-                                        <div class="order-total-right-text">
-                                            {{ zakaz.delivery }} р.
-                                        </div>
+                                        {% if zakaz.delivery == 0.00 %}
+                                            <div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
+                                        {% else %}
+                                            <div class="order-total-right-text">
+                                                {{ zakaz.delivery }} р.
+                                            </div>
+                                        {% endif %}
                                     </div>
                                     <div class="order-total-dt">
                                         <div class="order-total-left-text fsz-18">

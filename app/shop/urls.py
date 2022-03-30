@@ -20,6 +20,7 @@ urlpatterns = [
 # Shop artiobschepit
     path('arti/artiobschepit/', views.shop_artiobschepit, name='shop_artiobschepit'),
     path('arti/artiobschepit/product/<int:id>/', views.shop_artiobschepit_product, name='shop_artiobschepit_product'),
+    path('arti/artiobschepit/sort_list_artiobschepit/<str:list>/', views.sort_list_artiobschepit, name='sort_list_artiobschepit'),
     path('arti/artiobschepit/grid/', views.shop_artiobschepit_grid, name='shop_artiobschepit_grid'),
     path('arti/artiobschepit/cart/', views.cart_artiobschepit, name='cart_artiobschepit'),
     path('arti/artiobschepit/cart_ok/<int:ord>/', views.cart_artiobschepit_ok, name='cart_artiobschepit_ok'),

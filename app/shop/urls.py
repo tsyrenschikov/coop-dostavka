@@ -44,8 +44,8 @@ urlpatterns = [
     path('pokrovskoe/sort_list/<str:list>/', views.sort_list_pokrovskoe, name='sort_list_pokrovskoe'),
     path('pokrovskoe/searchproduct_pokrovskoe/', views.searchproduct, name='searchproduct_pokrovskoe'),
     path('pokrovskoe/searchpokrovskoe/', views.searcharti, name='searchpokrovskoe'),
-    path('pokrovskoe/cart/', views.cart_arti, name='cart_pokrovskoe'),
-    path('pokrovskoe/cart_ok/<int:ord>/', views.cart_ok, name='cart_ok'),
+    path('pokrovskoe/cart_pokrovskoe/', views.cart_pokrovskoe, name='cart_pokrovskoe'),
+    path('pokrovskoe/cart_ok_pokrovskoe/<int:ord>/', views.cart_ok_pokrovskoe, name='cart_ok_pokrovskoe'),
 
 # Shop bogdan
     path('bogdan/', views.shop_bogdan, name='bogdan'),

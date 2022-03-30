@@ -112,7 +112,7 @@
                                                 <br>
                                                 <div>
                                                     <h5>
-                                                        {% for name,slug in shops %}
+                                                        {% for name,org,uraddress,times,days,slug in shop %}
                                                             {% if slug == address_str %}
                                                                 Магазин : {{ name }}
                                                             {% endif %}

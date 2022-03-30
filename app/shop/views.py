@@ -671,6 +671,76 @@ def shop_pokrovskoe_career(reguest):
     return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local})
 
 
+def cart_pokrovskoe(request):
+    shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for n,s,dp,dpm,days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name = name_a
+                name_slug=eval(s)
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                if request.method == 'POST':
+                    name = request.POST.get('name')
+                    phone = request.POST.get('phone')
+                    products = request.POST.getlist('products')
+                    address_city = request.POST.get('address_city')
+                    address_street = request.POST.get('address_street')
+                    cal = request.POST.get('cal')
+                    commit = request.POST.get('commit')
+                    cart= request.POST.get('cart')
+                    delivery = request.POST.get('deliv')
+                    total_price= request.POST.get('total_price')
+                    slug = request.POST.get('slug')
+                    email = request.POST.get('email')
+                    replace =request.POST.get('replace')
+                    payment = request.POST.get('payment')
+                    money = request.POST.get('money')
+                    order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
+                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
+                    ord=order.id
+                    return redirect(cart_ok ,ord)
+
+                return render(request, 'pokrovskoe/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+
+
+def cart_ok_pokrovskoe(request,ord):
+    shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
+    order=orders.objects.get(id=ord)
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    categories = Category.objects.order_by('number')
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                list_category_product = {category['name']: [] for category in category_shop}
+                list_p = list(set([i for i, j, k in category_product]))
+                for category in category_shop:
+                    for n in category['subcat']:
+                        for i in list_p:
+                            if i in n:
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+    return render(request,'pokrovskoe/cart_ok.html', {'local':local,'name':name,'category_product':category_product,'categories':categories,'order':order,'shops':shops,'address_str':address_str})
+
 # Shop rezh
 def shop_rezh(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()

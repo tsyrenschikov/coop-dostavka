@@ -25,6 +25,15 @@ urlpatterns = [
     path('arti/artiobschepit/cart/', views.cart_artiobschepit, name='cart_artiobschepit'),
     path('arti/artiobschepit/cart_ok/<int:ord>/', views.cart_artiobschepit_ok, name='cart_artiobschepit_ok'),
 
+# Shop arti_p
+    #path('arti/arti_p/', views.shop_arti_p, name='shop_arti_p'),
+    #path('arti/arti_p/product/<int:id>/', views.shop_arti_p_product, name='shop_arti_p_product'),
+    #path('arti/arti_p/sort_list_artiobschepit/<str:list>/', views.sort_list_arti_p, name='sort_list_arti_p'),
+    #path('arti/arti_p/grid/', views.shop_arti_p_grid, name='shop_arti_p_grid'),
+    #path('arti/arti_p/cart/', views.cart_arti_p, name='cart_arti_p'),
+    #path('arti/arti_p/cart_ok/<int:ord>/', views.cart_arti_p_ok, name='cart_arti_p_ok'),
+
+
     # Shop zajkovskoe
     path('zajkovskoe/', views.shop_zajkovskoe, name='zajkovskoe'),
     path('zajkovskoe/sort_list/<str:list>/', views.sort_list_zajkovskoe, name='sort_list_zajkovskoe'),

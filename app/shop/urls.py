@@ -57,7 +57,15 @@ urlpatterns = [
     path('pokrovskoe/cart_ok_pokrovskoe/<int:ord>/', views.cart_ok_pokrovskoe, name='cart_ok_pokrovskoe'),
 
 # Shop bogdan
-    path('bogdan/', views.shop_bogdan, name='bogdan'),
+    path('bogdan/', views.shop_bogdan, name='shop_bogdan'),
+    path('bogdan/product/<int:id>/', views.shop_bogdan_product, name='shop_bogdan_product'),
+    path('bogdan/grid/', views.shop_bogdan_grid, name='shop_bogdan_grid'),
+    path('bogdan/career/', views.shop_bogdan_career, name='shop_bogdan_career'),
+    path('bogdan/sort_list/<str:list>/', views.sort_list_bogdan, name='sort_list_bogdan'),
+    path('bogdan/searchproduct_bogdan/', views.searchproduct_bogdan, name='searchproduct_bogdan'),
+    path('bogdan/searchbogdan/', views.searchbogdan, name='searchbogdan'),
+    path('bogdan/cart_bogdan/', views.cart_bogdan, name='cart_bogdan'),
+    path('bogdan/cart_ok_bogdan/<int:ord>/', views.cart_ok_bogdan, name='cart_ok_bogdan'),
 
 
     # Shop rezh

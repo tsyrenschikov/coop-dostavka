@@ -7,21 +7,6 @@
 	{% load static %}
 
 	<div class="wrapper">
-		<div class="gambo-Breadcrumb">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="/{{ shop_name }}">Главная </a></li>
-								<li class="breadcrumb-item"><a href="/bogdan/grid">Новое поступление</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Описание продукта</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
         <div class="all-product-grid">
 			<div class="container">
 				<div class="row">
@@ -54,7 +39,7 @@
 											<ul class="ordr-crt-share">
 												<li>
                                                     <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
-                                                    <i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button>
+                                                    <i class="uil uil-shopping-cart-alt "></i>Добавить в корзину</button>
                                                 </li>
                                             </ul>
 										</div>
@@ -67,8 +52,9 @@
 			</div>
 		</div>
     </div>
-{% include 'shop/includes/cart_modal_arti.html' %}
-{% include 'shop/includes/featured_arti.html' %}
+    {% include 'shop/includes/animation_add_cart.html' %}
+{% include 'shop/includes/cart_modal_bogdan.html' %}
+{% include 'shop/includes/featured_bogdan.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

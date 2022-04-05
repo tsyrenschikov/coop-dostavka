@@ -81,9 +81,13 @@ urlpatterns = [
 
 
     # Shop chetkarino
-    path('chetkarino/', views.shop_chetkarino, name='chetkarino'),
-    path('chetkarino/products/', views.shop_chetkarino_products, name='shop_chetkarino_products'),
+    path('chetkarino/', views.shop_chetkarino, name='shop_chetkarino'),
     path('chetkarino/product/<int:id>/', views.shop_chetkarino_product, name='shop_chetkarino_product'),
-    path('chetkarino/grid/', views.shop_chetkarino_grid, name='shop_chetkarino_grid'),
+    path('chetkarino/grid/', views.shop_chetkarino_grid, name='shop_rezh_grid'),
     path('chetkarino/career/', views.shop_chetkarino_career, name='shop_chetkarino_career'),
+    path('chetkarino/sort_list/<str:list>/', views.sort_list_chetkarino, name='sort_list_chetkarino'),
+    path('chetkarino/searchproduct_chetkarino/', views.searchproduct_chetkarino, name='searchproduct_chetkarino'),
+    path('chetkarino/searchchetkarino/', views.searchchetkarino, name='searchchetkarino'),
+    path('chetkarino/cart_chetkarino/', views.cart_chetkarino, name='cart_chetkarino'),
+    path('chetkarino/cart_ok_chetkarino/<int:ord>/', views.cart_ok_chetkarino, name='cart_ok_chetkarino'),
     ]

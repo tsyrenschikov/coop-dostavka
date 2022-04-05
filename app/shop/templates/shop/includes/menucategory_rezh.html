@@ -1,0 +1,24 @@
+{% load static %}
+<header>
+    <div class="cf">
+        <nav id="main-nav">
+            {% for name,sub in category_product.items %}
+                {% if sub %}
+                    <ul class="second-nav">
+                        <li class="menu-category">
+                            <a href="#">{{ name }}</a>
+                            <ul>
+                                {% for sub in sub %}
+                                    <li>
+                                        <a href="/{{ address_str }}/sort_list/{{ sub }}">{{ sub }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </nav>
+        <a class="category_drop hover-btn  toggle"><i class="uil uil-apps"></i><span class="cate__icon">Категории</span></a>
+    </div>
+</header>

@@ -1,0 +1,147 @@
+{% extends 'shop/layouts/base_rezh.html' %}
+{% load static %}
+{% block title %}Оформление заказа{% endblock %}
+{% block content %}
+    {% include 'shop/includes/calendar/cart_css.html' %}
+    {% block stylesheet %}
+        <!--Select Accordion -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel="stylesheet" href="{% static 'file/shop/css/anim_select.css' %}">
+    {% endblock stylesheet %}
+    <div class="wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+		<div class="all-product-grid">
+            <div class="contact-title-1">
+                    <div class="col-lg-6 col-md-6">
+                    </div>
+                        <div class="card card-static-2 mb-30">
+                            <div class="card-title-2">
+                                <div class="main-cart-title"></div>
+                                <h2 style="text-align: center"><oform></oform></h2>
+                                <h2 id="cartphoto" style="text-align: center">
+                                    <img src="{% static 'file/shop/images/cart/cart.webp' %}" width="170"></h2>
+                            </div>
+                            <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                            <div class="modal-body total">
+                                <table class="show-cart table">
+                                </table>
+                                <div><h5>Стоимость товаров: <span type="text" class="cart"></span> р.</h5></div>
+                                <br>
+                                <mod style="color: green"></mod>
+                            </div>
+                            <div class="card-body-table">
+                                    <div class="news-content-right pd-20">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class=" form-group mb-3 ">
+                                                    <label class="form-label">Имя*</label>
+                                                    <input type="text" class="form-control" name="name" placeholder="Имя" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Телефон*</label>
+                                                    <input type="text" id="phone"  class="form-control" name="phone" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Населенный пункт*</label>
+                                                    <select id="select-days" value="" class="form-control" name="address_city">
+                                                        {% for name,slug, dp,dpm,days_numb in local_d %}
+                                                            {% if slug == address_str %}
+                                                                <option slug="{{ slug }}" price_city="{{ dp }}" price_min="{{ dpm }}"
+                                                                        days="{{ days_numb|cut:'"'|cut:'['|cut:']'|cut:"'" }}"
+                                                                        value="{{ name }}">{{ name }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                <div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Улица, дом, кв*</label>
+                                                    <input type="text" class="form-control" name="address_street" value="" placeholder="Улица, Дом и Кв" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Дата доставки</label>
+                                                    <input id="datepicker" name="cal" type="text" class="form-control calendar" data-zdp_readonly_element="false"
+                                                           placeholder="Выберите доступную дату" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">E-mail</label>
+                                                    <input name="email" type="email" class="form-control"  placeholder="Ваш E-mail (не обязательно)">
+                                            </div>
+                                            </div>
+                                        <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    {% include 'shop/includes/accordion.html' %}
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-body total">
+                                                <div>
+                                                    <h5>
+                                                        Стоимость товаров:
+                                                        <input type="hidden" id="cart" value="" name="cart">
+                                                        <span class="cart"></span> р.
+                                                    </h5>
+                                                </div>
+                                                </br>
+                                                <div>
+                                                    <h5>
+                                                        Доставка:
+                                                        <input id="delivery" type="hidden" value="" name="deliv">
+                                                        <delivery></delivery><br>
+                                                    </h5>
+                                                </div>
+                                                </br>
+                                                <div>
+                                                    <h5>
+                                                        Общая стоимость:
+                                                        <input  id="total" type="hidden" value="" name="total_price">
+                                                        <total></total>.р
+                                                    </h5>
+                                                </div>
+                                                <br>
+                                                <div>
+                                                    <h5>
+                                                        {% for name,slug in shops %}
+                                                            {% if slug == address_str %}
+                                                                Магазин : {{ name }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="example-block">
+                                                    <input type="checkbox" required="" name="check" id="checkbox">
+                                                    <label for="personaldata" data-toggle="modal" data-target="#category_model">Я прочитал и согласен с <span style="color: blue">условиями
+                                                    доставки</span></label>
+                                                    <input type="hidden" value="{{ address_str }}" name="slug">
+                                                    </br>
+                                                    <input id="btn" class="save-btn" type="submit" value="Подтвердить заказ" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% include 'shop/includes/modal_checkbox.html' %}
+{% include 'shop/includes/cart_modal_rezh.html' %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% include 'shop/includes/calendar/cart_js.html' %}
+{% endblock content %}

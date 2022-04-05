@@ -4,7 +4,7 @@
 
 {% block title %}rezh{% endblock %}
 {% block stylesheets %}
-        <!-- Style CSS -->
+    <!-- Style CSS -->
 {% include 'shop/includes/style.html' %}
 
 <!-- Google Font -->
@@ -24,56 +24,26 @@
                     </div>
                 </div>
                 <div class="row">
-                </div>
-            </div>
-            <!-- Featured Products Start -->
-            <div class="section145">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main-title-tt">
-                                <div class="main-title-left">
-                                    <h2></h2>
-                                </div>
-                                <a href="#" class="see-more-btn">Весь список</a>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="owl-carousel featured-slider owl-theme">
-                                {% for product in product %}
-                                    {% if product.status %}
-                                        <div class="item">
-                                            <div class="product-item">
-                                                <a href="/rezh/product/{{ product.id }}" class="product-img">
-                                                    {% thumbnail product.image "300x300" crop="center" as im %}
-                                                        <img src="{{ im.url }}"alt="">
-                                                     {% endthumbnail %}
-                                                </a>
-                                                <div class="product-text-dt">
-                                                    <p><span>В наличии</span></p>
-                                                     <h5 class="cuttedText">{{ product.name}}</h5>
-                                                    <div class="product-price">{{ product.price }} р.</div>
-                                                    <div class="qty-cart">
-                                                        <div class="quantity buttons_added">
-                                                            <input type="button" value="-" class="minus minus-btn">
-                                                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-                                                            <input type="button" value="+" class="plus plus-btn">
-                                                        </div>
-                                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                    <div class="col-md-12">
+                        <div class="container_categories_box margin-top-5 margin-bottom-30">
+                            <a href="{% url 'shop_rezh_products' %}" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
+                                <h4>Продукты питания и <br>бытовая химия для дома</h4>
+                            </a>
+                            <a href="{% url 'shop_rezh' %}" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                                <h4>Готовая еда <br>(продукция собственного производства)</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
+                                <h4>Промышленные товары</h4>
+                            </a>
                         </div>
                     </div>
                 </div>
+                {% include 'shop/includes/featured_rezh.html' %}
+                {% include 'shop/includes/new_rezh.html' %}
             </div>
-            <!-- Featured Products End -->
         </div>
     <!-- Body End -->
+{% include 'shop/includes/cart_modal_rezh.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

@@ -69,11 +69,15 @@ urlpatterns = [
 
 
     # Shop rezh
-    path('rezh/', views.shop_rezh, name='rezh'),
-    path('rezh/products/', views.shop_rezh_products, name='shop_rezh_products'),
+    path('rezh/', views.shop_rezh, name='shop_rezh'),
     path('rezh/product/<int:id>/', views.shop_rezh_product, name='shop_rezh_product'),
     path('rezh/grid/', views.shop_rezh_grid, name='shop_rezh_grid'),
     path('rezh/career/', views.shop_rezh_career, name='shop_rezh_career'),
+    path('rezh/sort_list/<str:list>/', views.sort_list_rezh, name='sort_list_rezh'),
+    path('rezh/searchproduct_bogdan/', views.searchproduct_rezh, name='searchproduct_rezh'),
+    path('rezh/searchrezh/', views.searchrezh, name='searchrezh'),
+    path('rezh/cart_rezh/', views.cart_rezh, name='cart_rezh'),
+    path('rezh/cart_ok_rezh/<int:ord>/', views.cart_ok_rezh, name='cart_ok_rezh'),
 
 
     # Shop chetkarino

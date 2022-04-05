@@ -7,21 +7,6 @@
 	{% load static %}
 
 	<div class="wrapper">
-		<div class="gambo-Breadcrumb">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="/{{ shop_name }}">Главная </a></li>
-								<li class="breadcrumb-item"><a href="/{{ shop_name }}/grid">Новое поступление</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Описание продукта</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
         <div class="all-product-grid">
 			<div class="container">
 				<div class="row">
@@ -32,7 +17,9 @@
 									<div id="sync1"  class="owl-theme">
                                         {% if product.image %}
 										<div class="item">
-											<img src="{{ product.image.url }}" width="250" height="250" alt="">
+											{% thumbnail product.image "300x300" crop="center" as im %}
+                                                <img src="{{ im.url }}"alt="">
+                                            {% endthumbnail %}
 										</div>
                                         {% endif %}
 									</div>
@@ -49,30 +36,12 @@
 												<li><div class="main-price color-discount">Цена</div></li>
                                                 <li><div class="main-price mrp-price">{{ product.price }} р</div></li>
 											</ul>
-											<ul class="gty-wish-share">
-												<li>
-													<div class="qty-product">
-														<div class="quantity buttons_added">
-															<input type="button" value="-" class="minus minus-btn">
-															<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
-															<input type="button" value="+" class="plus plus-btn">
-														</div>
-													</div>
-												</li>
-											</ul>
-                                            {% if user.is_authenticated %}
 											<ul class="ordr-crt-share">
-												<li><button class="add-cart-btn hover-btn"><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-												<li><button class="order-btn hover-btn">Купить сейчас</button></li>
-											</ul>
-                                            {% else %}
-                                                <form action="{% url 'login'%}">
-                                                <ul class="ordr-crt-share">
-                                                    <li><button class="add-cart-btn hover-btn" ><i class="uil uil-shopping-cart-alt"></i>Добавить в корзину</button></li>
-                                                    <li><button class="order-btn hover-btn">Купить сейчас</button></li>
-                                                </ul>
-                                                </form>
-                                            {% endif %}
+												<li>
+                                                    <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
+                                                    <i class="uil uil-shopping-cart-alt "></i>Добавить в корзину</button>
+                                                </li>
+                                            </ul>
 										</div>
 									</div>
 								</div>
@@ -83,6 +52,8 @@
 			</div>
 		</div>
     </div>
+    {% include 'shop/includes/animation_add_cart.html' %}
+{% include 'shop/includes/cart_modal_rezh.html' %}
 {% include 'shop/includes/featured_rezh.html' %}
 {% include 'shop/layouts/footer.html' %}
 {% include 'shop/includes/scripts.html' %}

@@ -711,7 +711,7 @@ def cart_pokrovskoe(request):
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
-                    return redirect(cart_ok ,ord)
+                    return redirect(cart_ok_pokrovskoe ,ord)
 
                 return render(request, 'pokrovskoe/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
@@ -934,7 +934,7 @@ def cart_rezh(request):
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
-                    return redirect(cart_ok ,ord)
+                    return redirect(cart_ok_rezh ,ord)
 
                 return render(request, 'rezh/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
@@ -1452,7 +1452,7 @@ def cart_bogdan(request):
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
-                    return redirect(cart_ok ,ord)
+                    return redirect(cart_ok_bogdan ,ord)
 
                 return render(request, 'bogdan/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
@@ -1717,7 +1717,7 @@ def cart_chetkarino(request):
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
                     ord=order.id
-                    return redirect(cart_ok ,ord)
+                    return redirect(cart_ok_chetkarino ,ord)
 
                 return render(request, 'chetkarino/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 

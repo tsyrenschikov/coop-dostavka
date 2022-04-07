@@ -3,161 +3,178 @@
 {% block content %}
     {% load static %}
     {% load thumbnail %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Продукты</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item active">Продукты</li>
-                        </ol>
-                        <div class="row justify-content-between">
-							<div class="col-lg-12">
-								<a href="{%  url 'add_product' %}" class="add-btn hover-btn">Добавить продукт</a>
-							</div>
-							<div class="col-lg-5 col-md-6">
-								<div class="bulk-section mt-30">
-									<div class="search-by-name-input">
-										<input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()" >
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12">
-								<div class="card card-static-2 mt-30 mb-30">
-									<div class="card-title-2">
-										<h4>Список продуктов</h4>
-									</div>
-									<div class="card-body-table">
-										<div class="table-responsive">
-											<table id="info-table" class="table ucp-table table-hover table_sort">
-												<thead>
-													<tr>
-														<th>Имя</th>
-                                                        <th style="width:100px">Изображение</th>
-                                                        <th>Цена</th>
-                                                        <th>Цена со скидкой</th>
-                                                        <th style="width:300px">Описание</th>
-                                                        <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа </th>
-                                                        <th style="width:150px">Харак-ки</th>
-                                                        <th>Статус</th>
-														<th>Действия</th>
-													</tr>
-												</thead>
-												<tbody>
-                                                {% for products in products %}
-                                                        <td>
-                                                            {{ products.name }}
-                                                        </td>
-                                                        {% if products.image %}
-                                                            <td>
-                                                                <div class="cate-img">
-                                                                    {% thumbnail products.image '80x80' crop='center' as im %}
-                                                                        <img src="{{ im.url  }}" alt="">
-                                                                    {% endthumbnail %}
-                                                                </div>
-                                                            </td>
-                                                        {% else %}
-                                                            <td>
-                                                                <div class="cate-img">Нет изображения</div>
-                                                            </td>
-                                                        {% endif %}
-                                                        <td>{{ products.price }} .р</td>
-                                                        <td>{{ products.discount }} .р</td>
-                                                        <td>
-                                                            {% if products.description %}
-                                                                {{ products.description }}
-                                                            {% else %}
-                                                                Без описания
-                                                            {% endif %}
-                                                        </td>
-                                                        <td>
-                                                            {% if products.subcat != None and products.subcat != '0' %}
-                                                                {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
-                                                            {% elif products.subsubcat != None and products.subsubcat != '0' %}
-                                                                {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
-                                                            {% else %}
-                                                                Товарная группа или подгруппа не назначена
-                                                            {% endif %}
-                                                        </td>
-                                                        <td>
-                                                            {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
-                                                                {{ products.width }} x {{ products.height }} x {{ products.length }}
-                                                                </br>
-                                                                {{ products.fabricator }}
-                                                                </br>
-                                                                {{ products.material }}
-                                                                </br>
-                                                                {{ products.color }}
-                                                                {% else %}
-                                                                Нет
-                                                            {% endif %}
-                                                        </td>
-                                                        {% if products.status %}
-                                                            <td><span class="badge-item badge-panel-status">Опубликован</span></td>
-                                                        {% else %}
-                                                            <td><span class="badge-item badge-status">Не опубликован</span></td>
-                                                        {% endif %}
-                                                        </td>
-                                                        <td class="action-btns">
-                                                            <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                                            <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
-                                                            <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар??? (ДЕЙСТВИЕ НЕ' +
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Продукты</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item active">Продукты</li>
+            </ol>
+            <div class="row justify-content-between">
+                <div class="col-lg-12">
+                    <a href="{% url 'add_product' %}" class="add-btn hover-btn">Добавить продукт</a>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="bulk-section mt-30">
+                        <div class="search-by-name-input">
+                            <input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="bulk-section mt-30">
+                        <div class="input-group">
+                            <select id="categeory" name="categeory" class="form-control">
+                                <option selected>Опубликовано</option>
+                                <option value="1">Не опубликовано</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="status-btn hover-btn" type="submit">Применить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mt-30 mb-30">
+                        <div class="card-title-2">
+                            <h4>Список продуктов</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table id="info-table" class="table ucp-table table-hover table_sort">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                        <th>Имя</th>
+                                        <th style="width:100px">Изображение</th>
+                                        <th>Цена</th>
+                                        <th>Цена со скидкой</th>
+                                        <th style="width:300px">Описание</th>
+                                        <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
+                                        <th style="width:150px">Харак-ки</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for products in products %}
+                                        <td>
+                                            <input type="checkbox" class="check-item" name="">
+                                        </td>
+                                        <td>
+                                            {{ products.name }}
+                                        </td>
+                                        {% if products.image %}
+                                            <td>
+                                                <div class="cate-img">
+                                                    {% thumbnail products.image '80x80' crop='center' as im %}
+                                                        <img src="{{ im.url }}" alt="">
+                                                    {% endthumbnail %}
+                                                </div>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <div class="cate-img">Нет изображения</div>
+                                            </td>
+                                        {% endif %}
+                                        <td>{{ products.price }} .р</td>
+                                        <td>{{ products.discount }} .р</td>
+                                        <td>
+                                            {% if products.description %}
+                                                {{ products.description }}
+                                            {% else %}
+                                                Без описания
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if products.subcat != None and products.subcat != '0' %}
+                                                {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                            {% elif products.subsubcat != None and products.subsubcat != '0' %}
+                                                {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
+                                            {% else %}
+                                                Товарная группа или подгруппа не назначена
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
+                                                {{ products.width }} x {{ products.height }} x {{ products.length }}
+                                                </br>
+                                                {{ products.fabricator }}
+                                                </br>
+                                                {{ products.material }}
+                                                </br>
+                                                {{ products.color }}
+                                            {% else %}
+                                                Нет
+                                            {% endif %}
+                                        </td>
+                                        {% if products.status %}
+                                            <td><span class="badge-item badge-panel-status">Опубликован</span></td>
+                                        {% else %}
+                                            <td><span class="badge-item badge-status">Не опубликован</span></td>
+                                        {% endif %}
+                                        </td>
+                                        <td class="action-btns">
+                                            <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
+                                            <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
+                                            <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар??? (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-										</div>
-									</div>
-								</div>
-							</div>
+                                        </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </main>
-        <script>
-    document.addEventListener('DOMContentLoaded', () => {
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-    const getSort = ({ target }) => {
-        const order = (target.dataset.order = -(target.dataset.order || -1));
-        const index = [...target.parentNode.cells].indexOf(target);
-        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
-        const comparator = (index, order) => (a, b) => order * collator.compare(
-            a.children[index].innerHTML,
-            b.children[index].innerHTML
-        );
+            const getSort = ({target}) => {
+                const order = (target.dataset.order = -(target.dataset.order || -1));
+                const index = [...target.parentNode.cells].indexOf(target);
+                const collator = new Intl.Collator(['en', 'ru'], {numeric: true});
+                const comparator = (index, order) => (a, b) => order * collator.compare(
+                    a.children[index].innerHTML,
+                    b.children[index].innerHTML
+                );
 
-        for(const tBody of target.closest('table').tBodies)
-            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+                for (const tBody of target.closest('table').tBodies)
+                    tBody.append(...[...tBody.rows].sort(comparator(index, order)));
 
-        for(const cell of target.parentNode.cells)
-            cell.classList.toggle('sorted', cell === target);
-    };
+                for (const cell of target.parentNode.cells)
+                    cell.classList.toggle('sorted', cell === target);
+            };
 
-    document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+            document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
 
-});
-</script>
-<script>
-    function tableSearch() {
-    var phrase = document.getElementById('search-text');
-    var table = document.getElementById('info-table');
-    var regPhrase = new RegExp(phrase.value, 'i');
-    var flag = false;
-    for (var i = 1; i < table.rows.length; i++) {
-        flag = false;
-        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
-            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
-            if (flag) break;
+        });
+    </script>
+    <script>
+        function tableSearch() {
+            var phrase = document.getElementById('search-text');
+            var table = document.getElementById('info-table');
+            var regPhrase = new RegExp(phrase.value, 'i');
+            var flag = false;
+            for (var i = 1; i < table.rows.length; i++) {
+                flag = false;
+                for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+                    flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+                    if (flag) break;
+                }
+                if (flag) {
+                    table.rows[i].style.display = "";
+                } else {
+                    table.rows[i].style.display = "none";
+                }
+
+            }
         }
-        if (flag) {
-            table.rows[i].style.display = "";
-        } else {
-            table.rows[i].style.display = "none";
-        }
-
-    }
-}
-</script>
+    </script>
 {% endblock content %}

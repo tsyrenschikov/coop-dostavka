@@ -44,7 +44,7 @@
                                 <table id="info-table" class="table ucp-table table-hover table_sort">
                                     <thead>
                                     <tr>
-                                        <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                        <th style="width:60px"><input type="checkbox" class="check-all" name="check"></th>
                                         <th>Имя</th>
                                         <th style="width:100px">Изображение</th>
                                         <th>Цена</th>
@@ -59,7 +59,7 @@
                                     <tbody>
                                     {% for products in products %}
                                         <td>
-                                            <input type="checkbox" class="check-item" name="">
+                                            <input type="checkbox" class="check-item" name="check">
                                         </td>
                                         <td>
                                             {{ products.name }}

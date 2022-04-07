@@ -3,6 +3,7 @@ User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
+from django.db.models import F
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
@@ -549,6 +550,9 @@ def products(request):
                     if s==m:
                         name=eval(slug)
                         products = name.objects.all()
+                        #if request.method == 'POST':
+                            #check = request.POST.get("check")
+                            #products = name.objects.all().update(status=F())
                         return render(request, 'panel/products.html', {'products': products})
     return render(request, 'panel/error_products.html')
 

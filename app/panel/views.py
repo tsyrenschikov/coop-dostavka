@@ -550,9 +550,9 @@ def products(request):
                     if s==m:
                         name=eval(slug)
                         products = name.objects.all()
-                        #if request.method == 'POST':
-                            #check = request.POST.get("check")
-                            #products = name.objects.all().update(status=F())
+                        if request.method == 'POST':
+                            check = request.POST.get("check")
+                            products = name.objects.filter(status=check).update(status=F(check))
                         return render(request, 'panel/products.html', {'products': products})
     return render(request, 'panel/error_products.html')
 

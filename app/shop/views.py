@@ -1123,30 +1123,33 @@ def cart_ok_zajkovskoe(request,ord):
     return render(request,'zajkovskoe/cart_ok.html', {'local':local,'name':name,'category_product':category_product,'categories':categories,'order':order,'shops':shops,'address_str':address_str})
 
 def shop_zajkovskoe(request):
-    shop= Shop.objects.values_list('slug', flat=True).distinct()
-    areas=Area.objects.values_list('name', 'slug').distinct()
-    local=Locations.objects.values_list('name','slug').distinct()
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
-    categories = Category.objects.order_by('number')
+    areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
         for name_a, slug_a in areas:
-            if slug==address_str and slug==slug_a:
-                name=name_a
-                name_slug=eval(slug)
-                products = name_slug.objects.all().order_by('?')[:20]
-                new_products = name_slug.objects.all().order_by('id')[::-1][:20]
-                category_shop = Category.objects.values('name', 'subcat','image').order_by('number')
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                products = name_slug.objects.all().order_by('name')
+                category_shop = Category.objects.values('name', 'subcat').order_by('number')
                 category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                dict_category_product = {category['name']: [] for category in category_shop}
+                list_category_product = {category['name']: [] for category in category_shop}
+                count_sidebar = len(list_category_product)
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
                     for n in category['subcat']:
                         for i in list_p:
                             if i in n:
-                                dict_category_product[category['name']].append(i)
-                category_product = dict(sorted(dict_category_product.items()))
-                return render(request, 'zajkovskoe/index.html', {'products':products,'new_products':new_products,'category_product':category_product,'categories':categories,'local':local,'name':name,
-                                                           'address_str':address_str})
+                                list_category_product[category['name']].append(i)
+                category_product = dict(sorted(list_category_product.items()))
+                paginator = Paginator(products, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'zajkovskoe/products.html',
+                              {'category_product': category_product, 'products': products,
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
 
 def shop_zajkovskoe_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()

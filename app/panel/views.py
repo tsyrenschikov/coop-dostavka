@@ -542,19 +542,23 @@ def delete_ok_subsubcategory(request):
 def products(request):
     users = User.objects.values_list('id', flat=True).distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-    shops=Shop.objects.values_list('customuser_id','slug' ).distinct()
-    for u in users:
-        for m in manager:
-            if u == m and request.user.id == u:
-                for s,slug in shops:
-                    if s==m:
-                        name=eval(slug)
-                        products = name.objects.all()
-                        if request.method == 'POST':
-                            check = request.POST.get("check")
-                            products = name.objects.filter(status=check).update(status=F(check))
-                        return render(request, 'panel/products.html', {'products': products})
-    return render(request, 'panel/error_products.html')
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    products = ''
+    try:
+        for u in users:
+            for m in manager:
+                if u == m and request.user.id == u:
+                    for s, slug in shops:
+                        if s == m:
+                            name = eval(slug)
+                            products = name.objects.all()
+                            if request.method == 'POST':
+                                check = request.POST.get("check")
+                                name.objects.update(status=check)
+                                return render(request, 'panel/products.html', {'products': products})
+                            return render(request, 'panel/products.html', {'products': products})
+    except products.DoesNotExist:
+        return render(request, 'panel/products.html', {'products': products})
 
 
 #Просмотр продукта

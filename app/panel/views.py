@@ -555,7 +555,6 @@ def products(request):
                             name.objects.update(status=check)
                             return render(request, 'panel/products.html', {'products': products})
                         return render(request, 'panel/products.html', {'products': products})
-    return render(request, 'panel/error_products.html')
 
 
 

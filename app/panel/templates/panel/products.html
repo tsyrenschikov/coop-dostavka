@@ -42,7 +42,27 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="card card-static-2 mt-30 mb-30">
                             <div class="card-title-2">
-                                <h4>Список продуктов</h4>
+                                <div class="paginator"><h4>Список продуктов </h4></div>
+                                <input hidden id="back_page" value="{{ request.path }}?page={{ page_obj.number }}">
+                                <paginator></paginator>
+                                <div class="paginator">
+                                    <ul>
+                                        {% if page_obj.has_previous %}
+                                            <li class="next"><a href="?page=1"> << </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                        {% endif %}
+
+                                        <li class="current">{{ page_obj.number }}</li>
+
+                                        {% if page_obj.has_next %}
+                                            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                            <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                            <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <paginator></paginator>
                             </div>
                             <div class="card-body-table">
                                 <div class="table-responsive">
@@ -63,12 +83,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for products in products %}
+                                        {% for products in page_obj %}
                                             <td>
                                                 <input type="checkbox" class="check-item" name="check">
                                             </td>
                                             <td>
-                                            {{ products.id }}
+                                                {{ products.id }}
                                             </td>
                                             <td>
                                                 {{ products.name }}
@@ -125,8 +145,10 @@
                                             </td>
                                             <td class="action-btns">
                                                 <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                                <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas fa-edit"></i></a>
-                                                <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар??? (ДЕЙСТВИЕ НЕ' +
+                                                <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas
+                                                fa-edit"></i></a>
+                                                <a href="/delete_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
+                                                 ' (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
@@ -187,4 +209,5 @@
             }
         }
     </script>
+
 {% endblock content %}

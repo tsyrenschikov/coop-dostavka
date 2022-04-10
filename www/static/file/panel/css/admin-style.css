@@ -324,13 +324,42 @@ input[type=checkbox], input[type=radio] {
 
 .card-title-2 {
 	display: flex;
-	align-items: center;
+	/*align-items: center;*/
 	width: 100%;
     margin-bottom: 0 !important;
 	border-bottom: 0;
-    padding: 15px 20px;
+    padding: 15px 10px 1px 20px;
+}
+.card-title-2 paginator {
+    flex-grow: 1;
+      padding:10px;
+    }
+
+.paginator {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
 }
 
+.paginator ul li.current {
+    background: red;
+    color: #ffffff;
+}
+
+.paginator ul li:first-child {
+    margin-left: 0;
+}
+
+.paginator ul li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #f1f1f1;
+    border-radius: 3px;
+    margin-left: 3px;
+}
 .card-title-2 h4 {
     font-size: 16px;
     font-weight: 500;

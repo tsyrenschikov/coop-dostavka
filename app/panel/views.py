@@ -4,6 +4,7 @@ from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
 from django.db.models import F
+from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import  make_password
 from django.contrib.auth.models import Group
@@ -550,11 +551,16 @@ def products(request):
                     if s==m:
                         name=eval(slug)
                         products = name.objects.all()
+                        paginator = Paginator(products, 50)
+                        page_number = request.GET.get('page')
+                        page_obj = paginator.get_page(page_number)
                         if request.method == 'POST':
                             check = request.POST.get("check")
                             name.objects.update(status=check)
-                            return render(request, 'panel/products.html', {'products': products})
-                        return render(request, 'panel/products.html', {'products': products})
+                            return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
+                        else:
+                            return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
+                        return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
 
 
 

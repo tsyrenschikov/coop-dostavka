@@ -1,7 +1,11 @@
 $(this).change(function(e) {
     var myArray = [];
     $("input:checkbox:checked").each(function() {
-        myArray.push(this.value);
+        check=$(this).val()
+        myArray.push(check);
     });
-    console.log( myArray);
+    $("#check").attr({
+        'value':myArray,
+    })
+    console.log(myArray);
 });

@@ -21,19 +21,19 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-5 col-md-6">
-                    <form method="post">
+                    <form method="post" action="" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="bulk-section mt-30">
                             <div class="input-group">
-                                <select  name="check" class="form-control">
+                                <select name="checkbool" class="form-control">
                                     <option selected value="True">Опубликовано</option>
                                     <option value="False">Не опубликовано</option>
                                 </select>
                                 <div class="input-group-append">
                                     <button class="status-btn hover-btn" type="submit">Применить</button>
                                 </div>
+                                <input hidden id="check"  name="check_">
                             </div>
                         </div>
                     </form>

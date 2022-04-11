@@ -544,6 +544,7 @@ def products(request):
     users = User.objects.values_list('id', flat=True).distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops=Shop.objects.values_list('customuser_id','slug' ).distinct()
+    q_check = []
     for u in users:
         for m in manager:
             if u == m and request.user.id == u:
@@ -555,9 +556,12 @@ def products(request):
                         page_number = request.GET.get('page')
                         page_obj = paginator.get_page(page_number)
                         if request.method == 'POST':
-                            check = request.POST.get("check")
-                            name.objects.update(status=check)
-                            return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
+                            check_ = request.POST.getlist("check_")
+                            checkbool = request.POST.get("checkbool")
+                            items_map = map(int, check_)
+                            items = list(items_map)
+                            name.objects.filter(pk__in=items).update(status=checkbool)
+                            return render(request, 'panel/products.html', {'items':items,'page_obj':page_obj,'products': products})
                         else:
                             return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
                         return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})

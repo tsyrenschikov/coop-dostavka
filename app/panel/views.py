@@ -558,8 +558,7 @@ def products(request):
                         if request.method == 'POST':
                             check_ = request.POST.getlist("check_")
                             checkbool = request.POST.get("checkbool")
-                            check=check_.split(",")
-                            items = list(map(int, check))
+                            items = list(map(int, check_))
                             name.objects.filter(pk__in=items).update(status=checkbool)
                             return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
                         else:

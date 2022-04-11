@@ -17,7 +17,7 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="bulk-section mt-30">
                         <div class="search-by-name-input">
-                            <input type="text" class="form-control" placeholder="Поиск в таблице" id="search-text" onkeyup="tableSearch()">
+                            <input type="text" class="form-control" placeholder="Поиск по странице" id="search-text" onkeyup="tableSearch()">
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,6 @@
                                     <thead>
                                     <tr>
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
-                                        <th>ID</th>
                                         <th>Имя</th>
                                         <th style="width:100px">Изображение</th>
                                         <th style="width: 100px">Цена</th>
@@ -85,9 +84,6 @@
                                     {% for products in page_obj %}
                                         <td>
                                             <input type="checkbox" class="check-item" value="{{ products.id }}">
-                                        </td>
-                                        <td>
-                                            {{ products.id }}
                                         </td>
                                         <td>
                                             {{ products.name }}

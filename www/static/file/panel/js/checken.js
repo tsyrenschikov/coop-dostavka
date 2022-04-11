@@ -1,7 +1,7 @@
-$( document ).ready(function() {
-    var checked = [];
-    $('input:checkbox:checked').each(function () {
-        checked.push($(this).val());
+$(this).change(function(e) {
+    var myArray = [];
+    $("input:checkbox:checked").each(function() {
+        myArray.push(this.value);
     });
-    console.log(checked)
+    console.log( myArray);
 });

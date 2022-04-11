@@ -43,7 +43,6 @@
                         <div class="card card-static-2 mt-30 mb-30">
                             <div class="card-title-2">
                                 <div class="paginator"><h4>Список продуктов </h4></div>
-                                <input hidden id="back_page" value="{{ request.path }}?page={{ page_obj.number }}">
                                 <paginator></paginator>
                                 <div class="paginator">
                                     <ul>
@@ -145,9 +144,9 @@
                                             </td>
                                             <td class="action-btns">
                                                 <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                                <a href="/edit_product/{{ products.id }}" class="edit-btn" title="Редактировать"><i class="fas
+                                                <a href="/edit_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="edit-btn" title="Редактировать"><i class="fas
                                                 fa-edit"></i></a>
-                                                <a href="/delete_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
+                                                <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
                                                  ' (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas

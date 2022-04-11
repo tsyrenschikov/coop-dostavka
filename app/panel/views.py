@@ -612,8 +612,8 @@ def edit_product(request, id):
                             if request.FILES:
                                 products.image = request.FILES["image"]
                                 products.save()
-                                return render(request, 'panel/edit_ok_product.html', {'products': products})
-                            return render(request, 'panel/edit_ok_product.html', {'products': products})
+                                return redirect(request.GET['next'], {'products': products})
+                            return redirect(request.GET['next'], {'products': products})
                         else:
                             return render(request, 'panel/edit_product.html', {'products': products,'subcategory':subcategory,'subsubcategory':subsubcategory})
     except User.DoesNotExist:

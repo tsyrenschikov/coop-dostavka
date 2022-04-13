@@ -563,16 +563,10 @@ def products(request):
                                     item.pop(0)
                             items = list(map(int, item))
                             name.objects.filter(pk__in=items).update(status=checkbool)
+                            #if checkbool== False:
+                                #name.objects.filter(pk__in=items).delete()
+                                #return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
                             return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
-                        if request.method == 'POST':
-                            check_ = request.POST.getlist('check_')
-                            item = [i.split(',') for i in check_][0]
-                            for i in item:
-                                if i == 'on':
-                                    item.pop(0)
-                            items = list(map(int, item))
-                            name.objects.filter(pk__in=items).delete()
-                            return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
                         else:
                             return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
                         return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})

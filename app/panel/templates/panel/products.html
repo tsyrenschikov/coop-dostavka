@@ -10,162 +10,163 @@
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
                 <li class="breadcrumb-item active">Продукты</li>
             </ol>
-            <div class="row justify-content-between">
-                <div class="pagination">
-                    <div class="col-lg-12">
-                        <a href="{% url 'add_product' %}" class="add-btn hover-btn">Добавить продукт</a>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row justify-content-between">
+                    <div class="pagination">
+                        <div class="col-lg-12">
+                            <a href="{% url 'add_product' %}" class="add-btn hover-btn">Добавить продукт</a>
+                        </div>
                     </div>
-                </div>
-                <div class="pagination">
-                    <div class="col-lg-12">
-                        <a href="#" class="add-btn hover-btn">Удалить выбранное</a>
-                    </div>
-                </div>
-            </div>
-        <div class="row justify-content-between">
-            <div class="col-lg-5 col-md-6">
-                <div class="bulk-section mt-30">
-                    <div class="search-by-name-input">
-                        <input type="text" class="form-control" placeholder="Поиск на странице" id="search-text" onkeyup="tableSearch()">
-                    </div>
-                </div>
-            </div>
+                    <!--<div class="pagination">
+                        <div class="col-lg-12">
+                            <button class="status-btn hover-btn" type="submit" onclick="return confirm('Удалить товар???' + ' (ДЕЙСТВИЕ НЕ' + ' ' + 'ОБРАТИМО)')">Удалить выбранное</button>
+                        </div>
 
-            <div class="col-lg-5 col-md-6">
-                <form method="post" action="" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="bulk-section mt-30">
-                        <div class="input-group">
-                            <select name="checkbool" class="form-control">
-                                <option selected value="True">Опубликовано</option>
-                                <option value="False">Не опубликовано</option>
-                            </select>
-                            <div class="input-group-append">
-                                <button class="status-btn hover-btn" type="submit">Применить</button>
+                    </div>-->
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="bulk-section mt-30">
+                            <div class="search-by-name-input">
+                                <input type="text" class="form-control" placeholder="Поиск на странице" id="search-text" onkeyup="tableSearch()">
                             </div>
-                            <input hidden id="check" name="check_">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="col-lg-12 col-md-12">
-                <div class="card card-static-2 mt-30 mb-30">
-                    <div class="card-title-2">
-                        <div class="paginator"><h4>Список продуктов </h4></div>
-                        <paginator></paginator>
-                        <div class="paginator">
-                            <ul>
-                                {% if page_obj.has_previous %}
-                                    <li class="next"><a href="?page=1"> << </a></li>
-                                    <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
-                                    <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
-                                {% endif %}
 
-                                <li class="current">{{ page_obj.number }}</li>
-
-                                {% if page_obj.has_next %}
-                                    <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                                    <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
-                                    <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
-                                {% endif %}
-                            </ul>
+                    <div class="col-lg-5 col-md-6">
+                        <div class="bulk-section mt-30">
+                            <div class="input-group">
+                                <select name="checkbool" class="form-control">
+                                    <option selected value="True">Опубликовано</option>
+                                    <option value="False">Не опубликовано</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="status-btn hover-btn" type="submit">Применить</button>
+                                </div>
+                                <input hidden id="check" name="check_">
+                            </div>
                         </div>
-                        <paginator></paginator>
                     </div>
-                    <div class="card-body-table">
-                        <div class="table-responsive">
-                            <table id="info-table" class="table ucp-table table-hover table_sort">
-                                <thead>
-                                <tr>
-                                    <th style="width:60px"><input type="checkbox" class="check-all"></th>
-                                    <th>Имя</th>
-                                    <th style="width:100px">Изображение</th>
-                                    <th style="width: 100px">Цена</th>
-                                    <th style="width: 100px">Цена со скидкой</th>
-                                    <th style="width:300px">Описание</th>
-                                    <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
-                                    <th style="width:150px">Харак-ки</th>
-                                    <th>Статус</th>
-                                    <th>Действия</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for products in page_obj %}
-                                    <td>
-                                        <input type="checkbox" class="check-item" value="{{ products.id }}">
-                                    </td>
-                                    <td>
-                                        {{ products.name }}
-                                    </td>
-                                    {% if products.image %}
-                                        <td>
-                                            <div class="cate-img">
-                                                {% thumbnail products.image '80x80' crop='center' as im %}
-                                                    <img src="{{ im.url }}" alt="">
-                                                {% endthumbnail %}
-                                            </div>
-                                        </td>
-                                    {% else %}
-                                        <td>
-                                            <div class="cate-img">Нет изображения</div>
-                                        </td>
-                                    {% endif %}
-                                    <td>{{ products.price }} .р</td>
-                                    <td>{{ products.discount }} .р</td>
-                                    <td>
-                                        {% if products.description %}
-                                            {{ products.description }}
-                                        {% else %}
-                                            Без описания
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card card-static-2 mt-30 mb-30">
+                            <div class="card-title-2">
+                                <div class="paginator"><h4>Список продуктов </h4></div>
+                                <paginator></paginator>
+                                <div class="paginator">
+                                    <ul>
+                                        {% if page_obj.has_previous %}
+                                            <li class="next"><a href="?page=1"> << </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
                                         {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if products.subcat != None and products.subcat != '0' %}
-                                            {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
-                                        {% elif products.subsubcat != None and products.subsubcat != '0' %}
-                                            {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
-                                        {% else %}
-                                            Товарная группа или подгруппа не назначена
+
+                                        <li class="current">{{ page_obj.number }}</li>
+
+                                        {% if page_obj.has_next %}
+                                            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                            <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                            <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
                                         {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
-                                            {{ products.width }} x {{ products.height }} x {{ products.length }}
-                                            </br>
-                                            {{ products.fabricator }}
-                                            </br>
-                                            {{ products.material }}
-                                            </br>
-                                            {{ products.color }}
-                                        {% else %}
-                                            Нет
-                                        {% endif %}
-                                    </td>
-                                    {% if products.status %}
-                                        <td><span class="badge-item badge-panel-status">Опубликован</span></td>
-                                    {% else %}
-                                        <td><span class="badge-item badge-status">Не опубликован</span></td>
-                                    {% endif %}
-                                    </td>
-                                    <td class="action-btns">
-                                        <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                        <a href="/edit_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="edit-btn" title="Редактировать"><i class="fas
+                                    </ul>
+                                </div>
+                                <paginator></paginator>
+                            </div>
+                            <div class="card-body-table">
+                                <div class="table-responsive">
+                                    <table id="info-table" class="table ucp-table table-hover table_sort">
+                                        <thead>
+                                        <tr>
+                                            <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                            <th>Имя</th>
+                                            <th style="width:100px">Изображение</th>
+                                            <th style="width: 100px">Цена</th>
+                                            <th style="width: 100px">Цена со скидкой</th>
+                                            <th style="width:300px">Описание</th>
+                                            <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
+                                            <th style="width:150px">Харак-ки</th>
+                                            <th>Статус</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for products in page_obj %}
+                                            <td>
+                                                <input type="checkbox" class="check-item" value="{{ products.id }}">
+                                            </td>
+                                            <td>
+                                                {{ products.name }}
+                                            </td>
+                                            {% if products.image %}
+                                                <td>
+                                                    <div class="cate-img">
+                                                        {% thumbnail products.image '80x80' crop='center' as im %}
+                                                            <img src="{{ im.url }}" alt="">
+                                                        {% endthumbnail %}
+                                                    </div>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    <div class="cate-img">Нет изображения</div>
+                                                </td>
+                                            {% endif %}
+                                            <td>{{ products.price }} .р</td>
+                                            <td>{{ products.discount }} .р</td>
+                                            <td>
+                                                {% if products.description %}
+                                                    {{ products.description }}
+                                                {% else %}
+                                                    Без описания
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if products.subcat != None and products.subcat != '0' %}
+                                                    {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                                {% elif products.subsubcat != None and products.subsubcat != '0' %}
+                                                    {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
+                                                {% else %}
+                                                    Товарная группа или подгруппа не назначена
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
+                                                    {{ products.width }} x {{ products.height }} x {{ products.length }}
+                                                    </br>
+                                                    {{ products.fabricator }}
+                                                    </br>
+                                                    {{ products.material }}
+                                                    </br>
+                                                    {{ products.color }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </td>
+                                            {% if products.status %}
+                                                <td><span class="badge-item badge-panel-status">Опубликован</span></td>
+                                            {% else %}
+                                                <td><span class="badge-item badge-status">Не опубликован</span></td>
+                                            {% endif %}
+                                            </td>
+                                            <td class="action-btns">
+                                                <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
+                                                <a href="/edit_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="edit-btn" title="Редактировать"><i class="fas
                                                 fa-edit"></i></a>
-                                        <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
+                                                <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
                                                  ' (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                    </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                                            </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </form>
         </div>
     </main>
     <script>

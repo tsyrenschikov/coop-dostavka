@@ -544,7 +544,6 @@ def products(request):
     users = User.objects.values_list('id', flat=True).distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops=Shop.objects.values_list('customuser_id','slug' ).distinct()
-    q_check = []
     for u in users:
         for m in manager:
             if u == m and request.user.id == u:
@@ -558,7 +557,11 @@ def products(request):
                         if request.method == 'POST':
                             check_ = request.POST.getlist("check_")
                             checkbool = request.POST.get("checkbool")
-                            items = list(map(int, check_))
+                            item=[i.split(',') for i in check_][0]
+                            for i in item:
+                                if i=='on':
+                                    item.pop(0)
+                            items = list(map(int, item))
                             name.objects.filter(pk__in=items).update(status=checkbool)
                             return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
                         else:

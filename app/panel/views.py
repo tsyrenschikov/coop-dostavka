@@ -3,7 +3,7 @@ User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
-from django.db.models import F
+from django.db.models import Q
 from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import  make_password
@@ -557,16 +557,21 @@ def products(request):
                         if request.method == 'POST':
                             check_ = request.POST.getlist("check_")
                             checkbool = request.POST.get("checkbool")
-                            item=[i.split(',') for i in check_][0]
-                            for i in item:
-                                if i=='on':
-                                    item.pop(0)
-                            items = list(map(int, item))
-                            name.objects.filter(pk__in=items).update(status=checkbool)
-                            #if checkbool== False:
-                                #name.objects.filter(pk__in=items).delete()
-                                #return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
+                            query_name = request.POST.get('name')
+                            if query_name:
+                                products = name.objects.filter(Q(name__icontains=query_name)).order_by('name')
+                                paginator = Paginator(products, 50)
+                                page_number = request.GET.get('page')
+                                page_obj = paginator.get_page(page_number)
+                                return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
+                            else:
+                                item=[i.split(',') for i in check_][0]
+                                for i in item:
+                                    if i=='on':
+                                        item.pop(0)
+                                items = list(map(int, item))
+                                name.objects.filter(pk__in=items).update(status=checkbool)
+                                return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
                         else:
                             return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
                         return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})

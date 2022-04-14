@@ -64,7 +64,7 @@ abbr[data-original-title] {
           text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
+    -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
 }
 
@@ -1016,4 +1016,91 @@ th.sorted[data-order="-1"]::after {
 
 th.sorted[data-order="1"]::after {
 	content: "▲"
+}
+.search {
+  display:table;
+  height:100%;
+  float:left;
+  position:relative;
+}
+.search input {
+  vertical-align:middle;
+  display:table-cell;
+  background-color:transparent;
+  border:0;
+  border-bottom: 1px solid #ffffff;
+  color:#000000;
+  font-size:inherit;
+  font-family:inherit;
+  font-size:16px;
+  z-index:99;
+  position:relative;
+}
+button.search-submit {
+  display:table;
+  height:100%;
+  float:left;
+  left:20%;
+  position:relative;
+  background:transparent;
+  border:0;
+  color:#fff;
+  cursor:pointer;
+  z-index:99;
+}
+button.search-submit i {
+  font-size:14px;
+  font-weight:300;
+  transform:rotate(70deg);
+  margin-left:5px;
+}
+
+/* // Custom autocomplete UI Jquery // */
+ul.ui-autocomplete {
+  background-color: #2b2f4c;
+  color:#bfc9f6;
+  border:0;
+  border-left: 1px solid #8690b8;
+  width:235px;
+  position:absolute !important;
+  top:0 !important;
+  z-index:98;
+  padding: 10px 40px;
+  left:-10px!important;
+  margin:0;
+  overflow:hidden;
+}
+ul.ui-autocomplete li.ui-menu-item {
+  margin:0px 33px 0px 0px;
+  list-style:none;
+  background-color: #2b2f4c;
+  border:0;
+  padding:6px 8px;
+  font-size:15px;
+  overflow:hidden;
+  text-transform:lowercase;
+}
+ul.ui-autocomplete li.ui-menu-item a {
+    color:#bfc9f6;
+}
+ul.ui-autocomplete li.ui-menu-item strong {
+    font-weight:inherit
+}
+ul.ui-autocomplete li.ui-menu-item:first-child {
+   margin-top:50px;
+}
+ul.ui-autocomplete li.ui-menu-item:last-child {
+   margin-bottom:25px;
+}
+ul.ui-autocomplete li.ui-menu-item strong {
+  color:#fff;
+}
+ul.ui-autocomplete li.ui-menu-item:hover , ul.ui-autocomplete li.ui-menu-item:focus{
+   background-color: #2b2f4c;
+}
+ul.ui-autocomplete li.ui-menu-item.ui-state-focus {
+  background-color: #2b2f4c;
+}
+.ui-helper-hidden-accessible {
+  display:none;
 }

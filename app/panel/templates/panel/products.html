@@ -28,8 +28,11 @@
                 <div class="row justify-content-between">
                     <div class="col-lg-5 col-md-6">
                         <div class="bulk-section mt-30">
-                            <div class="search-by-name-input">
-                                <input type="text" class="form-control" placeholder="Поиск на странице" id="search-text" onkeyup="tableSearch()">
+                            <div class="search search-by-name-input">
+                                <input autocomplete="off" class="" value="" placeholder="Поиск товара"  id="search_field" type="text" name="name">
+                            </div>
+                            <div class="input-group-append">
+                                <button class="status-btn hover-btn" type="submit" id="search-submit">Поиск</button>
                             </div>
                         </div>
                     </div>
@@ -51,7 +54,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="card card-static-2 mt-30 mb-30">
                             <div class="card-title-2">
-                                <div class="paginator"><h4>Список продуктов </h4></div>
+                                <div class="paginator"><h4>Список продуктов</h4></div>
                                 <paginator></paginator>
                                 <div class="paginator">
                                     <ul>
@@ -192,26 +195,6 @@
 
         });
     </script>
-    <script>
-        function tableSearch() {
-            var phrase = document.getElementById('search-text');
-            var table = document.getElementById('info-table');
-            var regPhrase = new RegExp(phrase.value, 'i');
-            var flag = false;
-            for (var i = 1; i < table.rows.length; i++) {
-                flag = false;
-                for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
-                    flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
-                    if (flag) break;
-                }
-                if (flag) {
-                    table.rows[i].style.display = "";
-                } else {
-                    table.rows[i].style.display = "none";
-                }
 
-            }
-        }
-    </script>
 
 {% endblock content %}

@@ -54,4 +54,30 @@
   <script src="{% static 'file/panel/js/docsupport/init.js' %}" type="text/javascript" charset="utf-8"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
+<!-- Search product -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+<script>
+var list = [{% for product in products %}"{{ product.name }}",{% endfor %}];
+
+$( "#search_field" ).autocomplete({
+     source: function(request, response) {
+         var results = $.ui.autocomplete.filter(list, request.term);
+         response(results.slice(0, 4));
+    },
+      appendTo: ".search",
+      autoFocus: false,
+      minLength: 1,
+});
+
+
+$.ui.autocomplete.prototype._renderItem = function (ul, item) {
+    item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+    return $("<li></li>")
+            .data("item.autocomplete", item)
+            .append("<a>" + item.label + "</a>")
+            .appendTo(ul);
+};
+</script>
 {% block javascripts %}{% endblock javascripts %}

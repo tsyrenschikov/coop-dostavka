@@ -559,8 +559,9 @@ def products(request):
                             checkbool = request.POST.get("checkbool")
                             query_name = request.POST.get('name')
                             if query_name:
-                                products = name.objects.filter(Q(name__icontains=query_name)).order_by('name')
-                                paginator = Paginator(products, 50)
+                                product = name.objects.filter(Q(name__icontains=query_name)).order_by('name')
+                                products = name.objects.all()
+                                paginator = Paginator(product, 50)
                                 page_number = request.GET.get('page')
                                 page_obj = paginator.get_page(page_number)
                                 return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})

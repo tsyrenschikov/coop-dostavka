@@ -11,6 +11,4 @@ $(this).change(function (e) {
     $("#check").attr({
         'value': myArray,
     });
-
-    console.log(myArray);
 });

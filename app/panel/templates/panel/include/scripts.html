@@ -59,12 +59,12 @@
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
 <script>
-var list = [{% for product in products %}"{{ product.name }}",{% endfor %}];
+var list = [{% for product in products %}"{{ product.name|cut:'&' }}",{% endfor %}];
 
 $( "#search_field" ).autocomplete({
      source: function(request, response) {
          var results = $.ui.autocomplete.filter(list, request.term);
-         response(results.slice(0, 4));
+         response(results.slice(0, 7));
     },
       appendTo: ".search",
       autoFocus: false,

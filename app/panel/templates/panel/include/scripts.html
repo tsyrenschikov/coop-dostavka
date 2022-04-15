@@ -59,7 +59,9 @@
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
 <script>
-var list = [{% for product in products %}"{{ product.name|cut:'&' }}",{% endfor %}];
+var list = [{% for product in products %}"{{ product }}",{% endfor %}];
+list= str.split('&quot;').join('');
+
 
 $( "#search_field" ).autocomplete({
      source: function(request, response) {
@@ -71,9 +73,9 @@ $( "#search_field" ).autocomplete({
       minLength: 1,
 });
 
-
 $.ui.autocomplete.prototype._renderItem = function (ul, item) {
-    item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+    item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"),
+        "<strong>$1</strong>");
     return $("<li></li>")
             .data("item.autocomplete", item)
             .append("<a>" + item.label + "</a>")

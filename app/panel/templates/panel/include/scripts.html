@@ -61,7 +61,6 @@
 {% if address == 'products' %}
 <script>
     var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];
-    console.log(list_product)
     var list=[]
         $.each(list_product, function (index, value) {
         val=value.replace(/(&quot;)/g, '"');

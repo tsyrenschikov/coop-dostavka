@@ -59,34 +59,34 @@
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
 {% if address == 'products' %}
-<script>
-    var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];
-    var list=[]
+    <script>
+        var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];
+        var list = []
         $.each(list_product, function (index, value) {
-        val=value.replace(/(&quot;)/g, '"');
-        list.push(val)
+            val = value.replace(/(&quot;)/g, '"');
+            list.push(val)
 
-    });
+        });
 
 
-    $("#search_field").autocomplete({
-        source: function (request, response) {
-            var results = $.ui.autocomplete.filter(list, request.term);
-            response(results.slice(0, 7));
-        },
-        appendTo: ".search",
-        autoFocus: false,
-        minLength: 1,
-    });
+        $("#search_field").autocomplete({
+            source: function (request, response) {
+                var results = $.ui.autocomplete.filter(list, request.term);
+                response(results.slice(0, 7));
+            },
+            appendTo: ".search",
+            autoFocus: false,
+            minLength: 1,
+        });
 
-    $.ui.autocomplete.prototype._renderItem = function (ul, item) {
-        item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"),
-            "<strong>$1</strong>");
-        return $("<li></li>")
-            .data("item.autocomplete", item)
-            .append("<a>" + item.label + "</a>")
-            .appendTo(ul);
-    };
-</script>
+        $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+            item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"),
+                "<strong>$1</strong>");
+            return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+        };
+    </script>
 {% endif %}
 {% block javascripts %}{% endblock javascripts %}

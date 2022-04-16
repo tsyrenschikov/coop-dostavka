@@ -560,7 +560,6 @@ def products(request):
                             query_name = request.POST.get('name')
                             if query_name:
                                 product = name.objects.filter(Q(name__icontains=query_name)).order_by('name')
-                                products = name.objects.all()
                                 paginator = Paginator(product, 50)
                                 page_number = request.GET.get('page')
                                 page_obj = paginator.get_page(page_number)

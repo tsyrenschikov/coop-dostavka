@@ -59,8 +59,11 @@
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
 <script>
-var list = [{% for product in products %}"{{ product }}",{% endfor %}];
-list= str.split('&quot;').join('');
+var list = [{% for product in products %}'{{ product.name }}',{% endfor %}];
+$.each(function (list){
+    list=list.replace(/([&quot;])/g, '')
+    console.log(list)
+});
 
 
 $( "#search_field" ).autocomplete({

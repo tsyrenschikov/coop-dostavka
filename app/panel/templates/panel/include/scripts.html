@@ -58,15 +58,16 @@
 <!-- Search product -->
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
+{% if address == 'products' %}
 <script>
     var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];
+    console.log(list_product)
     var list=[]
         $.each(list_product, function (index, value) {
         val=value.replace(/(&quot;)/g, '"');
         list.push(val)
 
     });
-    console.log(list)
 
 
     $("#search_field").autocomplete({
@@ -88,4 +89,5 @@
             .appendTo(ul);
     };
 </script>
+{% endif %}
 {% block javascripts %}{% endblock javascripts %}

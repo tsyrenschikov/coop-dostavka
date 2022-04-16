@@ -544,6 +544,7 @@ def products(request):
     users = User.objects.values_list('id', flat=True).distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops=Shop.objects.values_list('customuser_id','slug' ).distinct()
+    address = str([i for i in str(request.path).split('/') if i][0])
     for u in users:
         for m in manager:
             if u == m and request.user.id == u:
@@ -563,7 +564,7 @@ def products(request):
                                 paginator = Paginator(product, 50)
                                 page_number = request.GET.get('page')
                                 page_obj = paginator.get_page(page_number)
-                                return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
+                                return render(request, 'panel/products.html', {'address':address,'page_obj': page_obj, 'products': products})
                             else:
                                 item=[i.split(',') for i in check_][0]
                                 for i in item:
@@ -571,10 +572,10 @@ def products(request):
                                         item.pop(0)
                                 items = list(map(int, item))
                                 name.objects.filter(pk__in=items).update(status=checkbool)
-                                return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
+                                return render(request, 'panel/products.html', {'address':address,'page_obj':page_obj,'products': products})
                         else:
-                            return render(request, 'panel/products.html', {'page_obj': page_obj, 'products': products})
-                        return render(request, 'panel/products.html', {'page_obj':page_obj,'products': products})
+                            return render(request, 'panel/products.html', {'address':address,'page_obj': page_obj, 'products': products})
+                        return render(request, 'panel/products.html', {'address':address,'page_obj':page_obj,'products': products})
 
 
 

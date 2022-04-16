@@ -36,6 +36,7 @@
                             </div>
                         </div>
                     </div>
+                    <input hidden id="list_product" value="[{% for product in products %}'{{ product.name }}',{% endfor %}]">
                     <div class="col-lg-5 col-md-6">
                         <div class="bulk-section mt-30">
                             <div class="input-group">

@@ -8,7 +8,7 @@
             <h2 class="mt-30 page-title">Продукты</h2>
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                <li class="breadcrumb-item active">Продукты</li>
+                <li class="breadcrumb-item active"><a href="{% url 'products' %}">Продукты</a></li>
             </ol>
             <form method="post" action="" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -98,7 +98,7 @@
                                                 <input type="checkbox" class="check-item" value="{{ products.id }}">
                                             </td>
                                             <td>
-                                                {{ products.name }}
+                                                <a style="color: #000" href="/product_view/{{ products.id }}">{{ products.name }}</a>
                                             </td>
                                             {% if products.image %}
                                                 <td>

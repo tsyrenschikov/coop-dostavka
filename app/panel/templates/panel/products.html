@@ -8,7 +8,7 @@
             <h2 class="mt-30 page-title">Продукты</h2>
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                <li class="breadcrumb-item active"><a href="{% url 'products' %}">Продукты</a></li>
+                <li class="breadcrumb-item active">Продукты</li>
             </ol>
             <form method="post" action="" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -98,7 +98,7 @@
                                                 <input type="checkbox" class="check-item" value="{{ products.id }}">
                                             </td>
                                             <td>
-                                                <a style="color: #000" href="/product_view/{{ products.id }}">{{ products.name }}</a>
+                                                <a style="color: rgb(32,79,150)" href="/product_view/{{ products.id }}">{{ products.name }}</a>
                                             </td>
                                             {% if products.image %}
                                                 <td>
@@ -165,6 +165,31 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card card-static-2 mt-30 mb-30">
+                            <div class="card-title-2">
+                                <paginator></paginator>
+                                <div class="paginator">
+                                    <ul>
+                                        {% if page_obj.has_previous %}
+                                            <li class="next"><a href="?page=1"> << </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                        {% endif %}
+
+                                        <li class="current">{{ page_obj.number }}</li>
+
+                                        {% if page_obj.has_next %}
+                                            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                            <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                            <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <paginator></paginator>
                             </div>
                         </div>
                     </div>

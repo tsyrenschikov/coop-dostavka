@@ -155,6 +155,12 @@ def panel(request):
                         count = name_p.objects.count()
                         count_order = orders.objects.filter(slug=os).count()
                         return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order, 'name_u': name_u})
+                    elif request.user.id == c and u == c:
+                        name_p = eval(slug_p)
+                        name_u = n
+                        products = name_p.objects.all().order_by('id')[::-1][:10]
+                        count = name_p.objects.count()
+                        return render(request, 'panel/index.html', {'products': products,'count': count,'name_u': name_u})
                     elif request.user.is_superuser:
                         for c, n, slug_p in shops:
                             name_p = eval(slug_p)
@@ -780,7 +786,7 @@ def order(request):
             for c, n, slug_p in shops:
                 for os in order_slug:
                     if request.user.id == c and u == c and os == slug_p:
-                        zakaz = orders.objects.all()
+                        zakaz = orders.objects.filter(slug=os)
                         areas = Area.objects.values_list('name', 'slug').distinct()
                         return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
                     elif request.user.is_superuser:

@@ -565,7 +565,7 @@ def products(request):
                                     paginator = Paginator(product, 50)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products.html', {'address':address,'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products_search.html', {'address':address,'page_obj': page_obj, 'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':

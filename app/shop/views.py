@@ -1726,8 +1726,8 @@ def cart_bogdan(request):
 
 
 def cart_ok_bogdan(request,ord):
-    shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
-    order=orders.objects.get(id=ord)
+    shops = Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
+    order = orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
@@ -1748,7 +1748,8 @@ def cart_ok_bogdan(request,ord):
                             if i in n:
                                 list_category_product[category['name']].append(i)
                 category_product = dict(sorted(list_category_product.items()))
-    return render(request,'bogdan/cart_ok.html', {'local':local,'name':name,'category_product':category_product,'categories':categories,'order':order,'shops':shops,'address_str':address_str})
+    return render(request, 'bogdan/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+
 
 def searchbogdan(request):
     areas = Area.objects.values_list('name', 'slug').distinct()

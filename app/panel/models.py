@@ -425,6 +425,7 @@ class orders(models.Model):
     total_price =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
     products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
+    data_status=models.CharField(max_length=200, null=True, db_index=True, verbose_name='Время обновления статуса')
     cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
     email=models.EmailField(null=True,verbose_name='E-mail')

@@ -771,7 +771,6 @@ def delete_shop(request,id):
 def order(request):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     users = User.objects.values_list('id', flat=True).distinct()
-    order_slug = orders.objects.values_list('slug', flat=True).distinct()
     if request.user.is_authenticated:
         for u in users:
             for c, n, slug_p in shops:

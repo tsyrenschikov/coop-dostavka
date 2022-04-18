@@ -789,11 +789,12 @@ def order(request):
                         zakaz = orders.objects.filter(slug=os)
                         areas = Area.objects.values_list('name', 'slug').distinct()
                         return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
-                    elif request.user.is_superuser:
+                    elif request.user.id == c and u == c:
+                        areas = Area.objects.values_list('name', 'slug').distinct()
+                        return render(request, 'panel/orders.html', {'areas': areas})
+                    if request.user.is_superuser:
                         zakaz = orders.objects.all()
                         return render(request, 'panel/orders.html', {'zakaz': zakaz})
-                    elif not request.user.id == c and u == c and os == slug_p:
-                        return render(request, 'panel/orders_no.html', {})
     else:
         return redirect ('/login')
 

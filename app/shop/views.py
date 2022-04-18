@@ -2055,5 +2055,5 @@ def searchchetkarino(request):
             return render(request, 'chetkarino/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name,phone=phone)
-            return render(request, 'bogdan/search_order.html', {'category_product':category_product,'client':client,'local':local,'address_str':address_str})
+            return render(request, 'chetkarino/search_order.html', {'category_product':category_product,'client':client,'local':local,'address_str':address_str})
     return render(request, 'chetkarino/index.html', {'category_product':category_product,'categories': categories, 'local': local,'address_str':address_str})

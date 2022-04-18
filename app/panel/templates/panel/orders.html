@@ -46,62 +46,60 @@
                                         <th style="width:100px">Действия</th>
                                     </tr>
                                     </thead>
-                                    {% if zakaz %}
-                                        <tbody>
-                                        {% for zakaz in zakaz %}
-
-                                            <tr>
-                                            <td>{{ zakaz.id }}</td>
-                                            <td>
-                                                {{ zakaz.name }}
-                                            </td>
-                                            <td>
-                                                {{ zakaz.phone }}
-                                            </td>
-                                            <td>
-                                                <span class="delivery-time">{{ zakaz.data }}</span>
-                                            </td>
-                                            <td>{{ address_str }}
-                                                {% for name, slug in areas %}
-                                                    {% if zakaz.slug == slug %}
-                                                        #{{ name }},<br>
-                                                    {% endif %}
-                                                {% endfor %}
-                                                {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
-                                            </td>
-                                            <td>{{ zakaz.cart }} р.</td>
-                                            <td>
-                                                {% if zakaz.delivery == 0.00 %}
-                                                    <span class="badge-item badge-status">Бесплатно</span>
-                                                {% else %}
-                                                    {{ zakaz.delivery }} р.
+                                    <tbody>
+                                    {% for zakaz in zakaz %}
+                                        <tr>
+                                        <td>{{ zakaz.id }}</td>
+                                        <td>
+                                            {{ zakaz.name }}
+                                        </td>
+                                        <td>
+                                            {{ zakaz.phone }}
+                                        </td>
+                                        <td>
+                                            <span class="delivery-time">{{ zakaz.data }}</span>
+                                        </td>
+                                        <td>{{ address_str }}
+                                            {% for name, slug in areas %}
+                                                {% if zakaz.slug == slug %}
+                                                    #{{ name }},<br>
                                                 {% endif %}
-                                            </td>
-                                            <td>{{ zakaz.total_price }} р.</td>
-                                            <td>
-                                                {% if zakaz.status != None %}
-                                                    {{ zakaz.status }}
-                                                {% else %}
-                                                    <span class="badge-item badge-status">В ожидании</span>
-                                                {% endif %}
-                                            </td>
-                                            <td style="color: green">{{ zakaz.commit }}</td>
-                                            <td class="action-btns">
-                                                <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
-                                                {% if 'super_manager' in groups %}
-                                                    <a href="/delete_order/{{ zakaz.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
+                                            {% endfor %}
+                                            {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
+                                        </td>
+                                        <td>{{ zakaz.cart }} р.</td>
+                                        <td>
+                                            {% if zakaz.delivery == 0.00 %}
+                                                <span class="badge-item badge-status">Бесплатно</span>
+                                            {% else %}
+                                                {{ zakaz.delivery }} р.
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ zakaz.total_price }} р.</td>
+                                        <td>
+                                            {% if zakaz.status != None %}
+                                                {{ zakaz.status }}
+                                            {% else %}
+                                                <span class="badge-item badge-status">В ожидании</span>
+                                            {% endif %}
+                                        </td>
+                                        <td style="color: green">{{ zakaz.commit }}</td>
+                                        <td class="action-btns">
+                                            <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
+                                            {% if 'super_manager' in groups %}
+                                                <a href="/delete_order/{{ zakaz.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                                {% endif %}
-                                            </td>
-                                        {% endfor %}
-                                        </tr>
-                                        </tbody>
-                                    {% else %}
-                                        <p style="color: red">В вашем магазине заказы отсутствуют</p>
-                                    {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+                                    </tr>
+                                    </tbody>
                                 </table>
+                            {% if not zakaz %}
+                                    <p style="color: red; text-align: center">В вашем магазине заказы отсутствуют</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

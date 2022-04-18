@@ -26,13 +26,12 @@ urlpatterns = [
     path('arti/artiobschepit/cart_ok/<int:ord>/', views.cart_artiobschepit_ok, name='cart_artiobschepit_ok'),
 
 # Shop artiprom
-    path('arti/artiprom/', views.shop_artiprom, name='shop_artiprom'),
-    path('arti/artiprom/product/<int:id>/', views.shop_artiprom_product, name='shop_artiprom_product'),
-    path('arti/artiprom/products/', views.shop_artiprom_products, name='shop_artiprom_products'),
-    path('arti/artiprom/sort_list_artiobschepit/<str:list>/', views.sort_list_artiprpom, name='sort_list_artiprom'),
-    path('arti/artiprom/grid/', views.shop_artiprom_grid, name='shop_artiprom_grid'),
-    path('arti/artiprom/cart/', views.cart_artiprom, name='cart_artiprom'),
-    path('arti/artiprom/cart_ok/<int:ord>/', views.cart_artiprom_ok, name='cart_artiprom_ok'),
+    path('arti/arti_p/', views.shop_arti_p, name='shop_arti_p'),
+    path('arti/arti_p/product/<int:id>/', views.shop_arti_p_product, name='shop_arti_p_product'),
+    path('arti/arti_p/sort_list_arti_p/<str:list>/', views.sort_list_arti_p, name='sort_list_arti_p'),
+    path('arti/arti_p/grid/', views.shop_arti_p_grid, name='shop_arti_p_grid'),
+    path('arti/arti_p/cart/', views.cart_arti_p, name='cart_arti_p'),
+    path('arti/arti_p/cart_ok/<int:ord>/', views.cart_arti_p_ok, name='cart_arti_p_ok'),
 
 
     # Shop zajkovskoe

@@ -335,10 +335,10 @@ def shop_arti_product(request, id):
                                                              'address_str': address_str})
 
 #Shop Artiprom
-def searchartiprom(request):
+def searcharti_p(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     for n, s, dp, dpm, days_numb in local_d:
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
@@ -380,7 +380,7 @@ def searchartiprom(request):
 def searchproduct(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     address=eval(address_str)
     for n, s, dp, dpm, days_numb in local_d:
         for name_a, slug_a in areas:
@@ -409,19 +409,19 @@ def searchproduct(request):
         query_name = request.POST.get('name')
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'artiprom/search_list.html', {'products': products, 'local':local,'category_product':category_product,'local':local,'address_str':address_str})
+            return render(request, 'arti/artiprom/search_list.html', {'products': products, 'local':local,'category_product':category_product,'local':local,'address_str':address_str})
 
     else:
-        return render(request, 'artiprom/search_list.html', alert)
+        return render(request, 'arti/artiprom/search_list.html', alert)
 
 
-def cart_artiprom(request):
+def cart_arti_p(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     for n,s,dp,dpm,days_numb in local_d:
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
@@ -461,13 +461,13 @@ def cart_artiprom(request):
                 return render(request, 'artiprom/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 
-def cart_artiprom_ok(request,ord):
+def cart_arti_p_ok(request,ord):
     shops = Shop.objects.values_list('name','phone','times','uraddress', 'slug').distinct()
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     categories = Category.objects.order_by('number')
     for slug in shop:
         for name_a, slug_a in areas:
@@ -486,38 +486,12 @@ def cart_artiprom_ok(request,ord):
                 category_product = dict(sorted(list_category_product.items()))
     return render(request,'artiprom/cart_ok.html', {'local':local,'name':name,'category_product':category_product,'categories':categories,'order':order,'shops':shops,'address_str':address_str})
 
-def shop_artiprom(request):
-    shop= Shop.objects.values_list('slug', flat=True).distinct()
-    areas=Area.objects.values_list('name', 'slug').distinct()
-    local=Locations.objects.values_list('name','slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    categories = Category.objects.order_by('number')
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug==address_str and slug==slug_a:
-                name=name_a
-                name_slug=eval(slug)
-                products = name_slug.objects.all().order_by('?')[:20]
-                new_products = name_slug.objects.all().order_by('id')[::-1][:20]
-                category_shop = Category.objects.values('name', 'subcat','image').order_by('number')
-                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
-                dict_category_product = {category['name']: [] for category in category_shop}
-                list_p = list(set([i for i, j, k in category_product]))
-                for category in category_shop:
-                    for n in category['subcat']:
-                        for i in list_p:
-                            if i in n:
-                                dict_category_product[category['name']].append(i)
-                category_product = dict(sorted(dict_category_product.items()))
-                return render(request, 'arti/artiprom/index.html', {'products':products,'new_products':new_products,'category_product':category_product,'categories':categories,'local':local,
-                                                                   'name':name,
-                                                           'address_str':address_str})
 
-def shop_artiprom_grid(request):
+def shop_arti_p_grid(request):
     local=Locations.objects.values_list('name','slug').distinct()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     for slug in shop:
         for name_a, slug_a in areas:
             if slug == address_str and slug == slug_a:
@@ -537,13 +511,13 @@ def shop_artiprom_grid(request):
                 paginator = Paginator(product,20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'artiprom/grid.html', {'product':product,'category_product':category_product,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
+                return render(request, 'arti/artiprom/grid.html', {'product':product,'category_product':category_product,'page_obj':page_obj,'local':local,'name':name,'address_str':address_str})
 
 #View products
-def shop_artiprom_products(request):
+def shop_arti_p(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local=Locations.objects.values_list('name','slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address_str = str([i for i in str(request.path).split('/') if i][1])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
         for name_a, slug_a in areas:
@@ -567,9 +541,9 @@ def shop_artiprom_products(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/artiprom/products.html',
                               {'category_product': category_product,'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar':count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address': address,'address_str': address_str, 'count_sidebar':count_sidebar})
 
-def sort_list_artiprpom(request,list):
+def sort_list_arti_p(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local = Locations.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -597,7 +571,7 @@ def sort_list_artiprpom(request,list):
                                                               'address_str': address_str})
 
 #View product
-def shop_artiprom_product(request, id):
+def shop_arti_p_product(request, id):
     local=Locations.objects.values_list('name','slug').distinct()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
@@ -620,7 +594,8 @@ def shop_artiprom_product(request, id):
                             if i in n:
                                 list_category_product[category['name']].append(i)
                 category_product = dict(sorted(list_category_product.items()))
-                return render(request, 'arti/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                return render(request, 'arti/artiprom/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
+                                                                     'name': name,
                                                              'address_str': address_str})
 
 

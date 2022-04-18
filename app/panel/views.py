@@ -140,31 +140,22 @@ def edit_profile(request):
 
 #Главна страница панели управления
 def panel(request):
+    users = User.objects.values_list('id', flat=True).distinct()
     shops=Shop.objects.values_list('customuser_id','name','slug').distinct()
-    users=User.objects.values_list('id', flat=True).distinct()
-    slug_order=orders.objects.values_list('slug', flat=True).distinct()
     if request.user.is_authenticated:
         products_count={}
-        for u in users:
-            for c,n,slug_p in shops:
-                for os in slug_order:
-                    if request.user.id == c and u == c and slug_p == os:
-                        name_p = eval(slug_p)
-                        name_u = n
+        for user in users:
+            for custom_id,name_shop,slug_shop in shops:
+                    if request.user.id == user and user == custom_id:
+                        name_p = eval(slug_shop)
                         products = name_p.objects.all().order_by('id')[::-1][:10]
                         count = name_p.objects.count()
-                        count_order = orders.objects.filter(slug=os).count()
-                        return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order, 'name_u': name_u})
-                    elif request.user.id == c and u == c:
-                        name_p = eval(slug_p)
-                        name_u = n
-                        products = name_p.objects.all().order_by('id')[::-1][:10]
-                        count = name_p.objects.count()
-                        return render(request, 'panel/index.html', {'products': products,'count': count,'name_u': name_u})
+                        count_order = orders.objects.filter(slug=slug_shop).count()
+                        return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order})
                     elif request.user.is_superuser:
-                        for c, n, slug_p in shops:
-                            name_p = eval(slug_p)
-                            products_count.update({n: name_p.objects.count()})
+                        for custom_id, name, slug_p in shops:
+                            name_shop = eval(slug_p)
+                            products_count.update({name: name_shop.objects.count()})
                             count_order = orders.objects.count()
                         return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order})
     else:
@@ -784,14 +775,10 @@ def order(request):
     if request.user.is_authenticated:
         for u in users:
             for c, n, slug_p in shops:
-                for os in order_slug:
-                    if request.user.id == c and u == c and os == slug_p:
-                        zakaz = orders.objects.filter(slug=os)
+                    if request.user.id == c and u == c:
+                        zakaz = orders.objects.filter(slug=slug_p)
                         areas = Area.objects.values_list('name', 'slug').distinct()
                         return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
-                    elif request.user.id == c and u == c:
-                        areas = Area.objects.values_list('name', 'slug').distinct()
-                        return render(request, 'panel/orders.html', {'areas': areas})
                     if request.user.is_superuser:
                         zakaz = orders.objects.all()
                         return render(request, 'panel/orders.html', {'zakaz': zakaz})

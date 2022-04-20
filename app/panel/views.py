@@ -814,6 +814,10 @@ def order_view(request,id):
     price_list = list_product[2::3]
     zakaz_list = list(zip(count_list, price_list))
     zakaz_dict = dict(zip(product_list, zakaz_list))
+    if request.method == 'POST':
+        phone = request.POST.get('phone')
+        street = request.POST.get('street')
+        status = request.POST.get('status')
     return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
 
 def order_edit(request,id):

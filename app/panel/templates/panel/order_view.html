@@ -16,154 +16,161 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card card-static-2 mb-30">
-                        <div class="card-title-2">
-                            <h2 class="title1458">Детализация заказа</h2>
-                            <span class="order-id">Заказ #{{ zakaz.id }}</span>
-                        </div>
-                        <div class="invoice-content">
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="ordr-date">
-                                        <b>Дата заказа :</b> {{ zakaz.data }}  </br>Время {{ zakaz.time }}
-                                        </br>
-                                        <b>Дата доставки :</b> {{ zakaz.data }}
-                                        </br>
-                                        <b>Покупатель: </b> {{ zakaz.name }}  </br>
-                                        <b>Телефон: </b>
-                                        <label for="inp" class="inp">
-                                            <input type="text" id="phone" placeholder="&nbsp;">
-                                            <span class="label">{{ zakaz.phone }}</span>
+                        <form method="post">
+                            <div class="card-title-2">
+                                <h2 class="title1458">Детализация заказа</h2>
+                                <span class="order-id">Заказ #{{ zakaz.id }}</span>
+                            </div>
+                            <div class="invoice-content">
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-6">
+                                        <div class="ordr-date">
+                                            <b>Дата заказа :</b> {{ zakaz.data }}  </br>Время {{ zakaz.time }}
+                                            </br>
+                                            <b>Дата доставки :</b> {{ zakaz.data }}
+                                            </br>
+                                            <b>Покупатель: </b> {{ zakaz.name }}  </br>
+                                            <b>Телефон: </b>
+                                            <label for="inp" class="inp">
+                                                <input name="phone" type="text" id="phone" placeholder="&nbsp;">
+                                                <span class="label">{{ zakaz.phone }}</span>
+                                                <span class="focus-bg"></span>
+                                            </label>
+                                            </br>
+                                            {% if zakaz.email %}
+                                                <b>E-mail:</b> {{ zakaz.email }}
+                                            {% else %}
+                                                <b>E-mail:</b> не указан
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6">
+                                        <div class="ordr-date right-text">
+                                            <b>Адрес доставки :</b><br>
+                                            #Свердловская область,<br>
+                                            {{ zakaz.address_city }},<br>
+                                            Улица: <label for="inp" class="inp">
+                                            <input name="street" type="text" id="inp" placeholder="&nbsp;">
+                                            <span class="label">{{ zakaz.address_street }}</span>
                                             <span class="focus-bg"></span>
                                         </label>
-                                        </br>
-                                        {% if zakaz.email %}
-                                            <b>E-mail:</b> {{ zakaz.email }}
-                                        {% else %}
-                                            <b>E-mail:</b> не указан
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="ordr-date right-text">
-                                        <b>Адрес доставки :</b><br>
-                                        #Свердловская область,<br>
-                                        {{ zakaz.address_city }},<br>
-                                        Улица: <label for="inp" class="inp">
-                                        <input type="text" id="inp" placeholder="&nbsp;">
-                                        <span class="label">{{ zakaz.address_street }}</span>
-                                        <span class="focus-bg"></span>
-                                    </label>
-                                        <br>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="card card-static-2 mb-30 mt-30">
-                                        <div class="card-title-2">
-                                            <h4>Товары в заказе</h4>
+                                            <br>
                                         </div>
-                                        <div class="card-body-table">
-                                            <div class="table-responsive">
-                                                <table id="mytable" class="table ucp-table table-hover">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Номер</th>
-                                                        <th>Название</th>
-                                                        <th style="width:150px" class="text-center">Кол-во</th>
-                                                        <th style="width:150px" class="text-center">Цена за 1 ед.</th>
-                                                        <th style="width:100px" class="text-center">Общая</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for key, value in zakaz_dict.items %}
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="card card-static-2 mb-30 mt-30">
+                                            <div class="card-title-2">
+                                                <h4>Товары в заказе</h4>
+                                            </div>
+                                            <div class="card-body-table">
+                                                <div class="table-responsive">
+                                                    <table id="mytable" class="table ucp-table table-hover">
+                                                        <thead>
                                                         <tr>
-                                                            <td>{{ forloop.counter }}</td>
-                                                            <td>
-                                                                {{ key }}
-                                                            </td>
-                                                            <td value="{{ value.0 }}" class="text-center c">{{ value.0 }}</td>
-                                                            <td value="{{ value.1 }}" class="text-center p">{{ value.1 }} р.</td>
-                                                            <td></td>
+                                                            <th>Номер</th>
+                                                            <th>Название</th>
+                                                            <th style="width:150px" class="text-center">Кол-во</th>
+                                                            <th style="width:150px" class="text-center">Цена за 1 ед.</th>
+                                                            <th style="width:100px" class="text-center">Общая</th>
                                                         </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for key, value in zakaz_dict.items %}
+                                                            <tr>
+                                                                <td>{{ forloop.counter }}</td>
+                                                                <td>
+                                                                    {{ key }}
+                                                                </td>
+                                                                <td value="{{ value.0 }}" class="text-center c">{{ value.0 }}</td>
+                                                                <label for="inp" class="inp">
+                                                <input name="phone" type="text" id="phone" placeholder="&nbsp;">
+                                                <span class="label">2222</span>
+                                                <span class="focus-bg"></span>
+                                            </label>
+                                                                <td value="{{ value.1 }}" class="text-center p">{{ value.1 }} р.</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-7"></div>
-                                <div class="col-lg-5">
-                                    <div class="order-total-dt">
-                                        <div class="order-total-left-text">
-                                            Итого
-                                        </div>
-                                        <div class="order-total-right-text">
-                                            {{ zakaz.cart }} р.
-                                        </div>
-                                    </div>
-                                    <div class="order-total-dt">
-                                        <div class="order-total-left-text">
-                                            Стоимость доставки
-                                        </div>
-                                        {% if zakaz.delivery == 0.00 %}
-                                            <div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
-                                        {% else %}
+                                    <div class="col-lg-7"></div>
+                                    <div class="col-lg-5">
+                                        <div class="order-total-dt">
+                                            <div class="order-total-left-text">
+                                                Итого
+                                            </div>
                                             <div class="order-total-right-text">
-                                                {{ zakaz.delivery }} р.
+                                                {{ zakaz.cart }} р.
                                             </div>
+                                        </div>
+                                        <div class="order-total-dt">
+                                            <div class="order-total-left-text">
+                                                Стоимость доставки
+                                            </div>
+                                            {% if zakaz.delivery == 0.00 %}
+                                                <div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
+                                            {% else %}
+                                                <div class="order-total-right-text">
+                                                    {{ zakaz.delivery }} р.
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="order-total-dt">
+                                            <div class="order-total-left-text fsz-18">
+                                                Общая сумма
+                                            </div>
+                                            <div id="total_price" class="order-total-right-text fsz-18" value="{{ zakaz.total_price }}">
+                                                {{ zakaz.total_price }} р.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="order-total-left-text">
+                                            Способ замены товара
+                                        </div>
+                                        {{ zakaz.replace }}
+                                        </br></br>
+                                        <div class="order-total-left-text">
+                                            Комментарий к заказу
+                                        </div>
+                                        {% if zakaz.commit %}
+                                            {{ zakaz.commit }}
+                                        {% else %}
+                                            Отсутствует
                                         {% endif %}
                                     </div>
-                                    <div class="order-total-dt">
-                                        <div class="order-total-left-text fsz-18">
-                                            Общая сумма
-                                        </div>
-                                        <div id="total_price" class="order-total-right-text fsz-18" value="{{ zakaz.total_price }}">
-                                            {{ zakaz.total_price }} р.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="order-total-left-text">
-                                        Способ замены товара
-                                    </div>
-                                    {{ zakaz.replace }}
-                                    </br></br>
-                                    <div class="order-total-left-text">
-                                        Комментарий к заказу
-                                    </div>
-                                    {% if zakaz.commit %}
-                                        {{ zakaz.commit }}
-                                    {% else %}
-                                        Отсутствует
-                                    {% endif %}
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="select-status">
-                                        <label for="status">Оплата покупателем</label>
-                                        <div class="status-active">
-                                            {{ zakaz.payment }} {% if zakaz.money %}
-                                            <div class="order-total-right-text" id="nal" value="{{ zakaz.money }}"> Наличными: {{ zakaz.money }} р. Сдача:
-                                                <total_change></total_change>
-                                                р.
-                                            </div>{% endif %}
-                                        </div>
-                                        </br>
-                                        <label for="status">Статус*</label>
-                                        <div class="input-group">
-                                            <select id="status" name="status" class="custom-select">
-                                                <option selected>В ожидании</option>
-                                                <option value="1">В процессе</option>
-                                                <option value="2">Закрыть</option>
-                                                <option value="3">Готов</option>
-                                            </select>
-                                            <div class="input-group-append">
-                                                <button class="status-btn hover-btn" type="submit">Отправить</button>
+                                    <div class="col-lg-5">
+                                        <div class="select-status">
+                                            <label for="status">Оплата покупателем</label>
+                                            <div class="status-active">
+                                                {{ zakaz.payment }} {% if zakaz.money %}
+                                                <div class="order-total-right-text" id="nal" value="{{ zakaz.money }}"> Наличными: {{ zakaz.money }} р. Сдача:
+                                                    <total_change></total_change>
+                                                    р.
+                                                </div>{% endif %}
+                                            </div>
+                                            </br>
+                                            <label for="status">Статус*</label>
+                                            <div class="input-group">
+                                                <select id="status" name="status" class="custom-select">
+                                                    <option selected>В ожидании</option>
+                                                    <option value="1">В процессе сборки</option>
+                                                    <option value="2">Доставка</option>
+                                                    <option value="3">Закрыт</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button class="status-btn hover-btn" type="submit">Применить</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                     </div>
                     <div class="pagination">
                         <div class="col-lg-12">
-                            <a href="{% url 'products' %}" class="status-btn hover-btn" type="submit" >Весь список продуктов</a>
+                            <a href="{% url 'products' %}" class="status-btn hover-btn" type="submit">Весь список продуктов</a>
                         </div>
                     </div>
                 </div>
@@ -52,147 +52,153 @@
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="card card-static-2 mt-30 mb-30">
-                            <div class="card-title-2">
-                                <div class="paginator"><h4>Список продуктов</h4></div>
-                                <paginator></paginator>
-                                <div class="paginator">
-                                    <ul>
-                                        {% if page_obj.has_previous %}
-                                            <li class="next"><a href="?page=1"> << </a></li>
-                                            <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
-                                            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
-                                        {% endif %}
+                            {% if page_obj %}
+                                <div class="card-title-2">
+                                    <div class="paginator"><h4>Список продуктов</h4></div>
+                                    <paginator></paginator>
+                                    <div class="paginator">
+                                        <ul>
+                                            {% if page_obj.has_previous %}
+                                                <li class="next"><a href="?page=1"> << </a></li>
+                                                <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                                <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                            {% endif %}
 
-                                        <li class="current">{{ page_obj.number }}</li>
+                                            <li class="current">{{ page_obj.number }}</li>
 
-                                        {% if page_obj.has_next %}
-                                            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                                            <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
-                                            <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
-                                        {% endif %}
-                                    </ul>
+                                            {% if page_obj.has_next %}
+                                                <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                                <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                                <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                    <paginator></paginator>
                                 </div>
-                                <paginator></paginator>
-                            </div>
-                            <div class="card-body-table">
-                                <div class="table-responsive">
-                                    <table id="info-table" class="table ucp-table table-hover table_sort">
-                                        <thead>
-                                        <tr>
-                                            <th style="width:60px"><input type="checkbox" class="check-all"></th>
-                                            <th>Имя</th>
-                                            <th style="width:100px">Изображение</th>
-                                            <th style="width: 100px">Цена</th>
-                                            <th style="width: 100px">Цена со скидкой</th>
-                                            <th style="width:300px">Описание</th>
-                                            <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
-                                            <th style="width:150px">Харак-ки</th>
-                                            <th>Статус</th>
-                                            <th>Действия</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for products in page_obj %}
-                                            <td>
-                                                <input type="checkbox" class="check-item" value="{{ products.id }}">
-                                            </td>
-                                            <td>
-                                                <a style="color: rgb(32,79,150)" href="/product_view/{{ products.id }}">{{ products.name }}</a>
-                                            </td>
-                                            {% if products.image %}
+                                <div class="card-body-table">
+                                    <div class="table-responsive">
+                                        <table id="info-table" class="table ucp-table table-hover table_sort">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                                <th>Имя</th>
+                                                <th style="width:100px">Изображение</th>
+                                                <th style="width: 100px">Цена</th>
+                                                <th style="width: 100px">Цена со скидкой</th>
+                                                <th style="width:300px">Описание</th>
+                                                <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
+                                                <th style="width:150px">Харак-ки</th>
+                                                <th>Статус</th>
+                                                <th>Действия</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for products in page_obj %}
                                                 <td>
-                                                    <div class="cate-img">
-                                                        {% thumbnail products.image '80x80' crop='center' as im %}
-                                                            <img src="{{ im.url }}" alt="">
-                                                        {% endthumbnail %}
-                                                    </div>
+                                                    <input type="checkbox" class="check-item" value="{{ products.id }}">
                                                 </td>
-                                            {% else %}
                                                 <td>
-                                                    <div class="cate-img">Нет изображения</div>
+                                                    <a style="color: rgb(32,79,150)" href="/product_view/{{ products.id }}">{{ products.name }}</a>
                                                 </td>
-                                            {% endif %}
-                                            <td>{{ products.price }} .р</td>
-                                            <td>{{ products.discount }} .р</td>
-                                            <td>
-                                                {% if products.description %}
-                                                    {{ products.description }}
+                                                {% if products.image %}
+                                                    <td>
+                                                        <div class="cate-img">
+                                                            {% thumbnail products.image '80x80' crop='center' as im %}
+                                                                <img src="{{ im.url }}" alt="">
+                                                            {% endthumbnail %}
+                                                        </div>
+                                                    </td>
                                                 {% else %}
-                                                    Без описания
+                                                    <td>
+                                                        <div class="cate-img">Нет изображения</div>
+                                                    </td>
                                                 {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if products.subcat != None and products.subcat != '0' %}
-                                                    {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
-                                                {% elif products.subsubcat != None and products.subsubcat != '0' %}
-                                                    {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
+                                                <td>{{ products.price }} .р</td>
+                                                <td>{{ products.discount }} .р</td>
+                                                <td>
+                                                    {% if products.description %}
+                                                        {{ products.description }}
+                                                    {% else %}
+                                                        Без описания
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if products.subcat != None and products.subcat != '0' %}
+                                                        {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
+                                                    {% elif products.subsubcat != None and products.subsubcat != '0' %}
+                                                        {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
+                                                    {% else %}
+                                                        Товарная группа или подгруппа не назначена
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
+                                                        {{ products.width }} x {{ products.height }} x {{ products.length }}
+                                                        </br>
+                                                        {{ products.fabricator }}
+                                                        </br>
+                                                        {{ products.material }}
+                                                        </br>
+                                                        {{ products.color }}
+                                                    {% else %}
+                                                        Нет
+                                                    {% endif %}
+                                                </td>
+                                                {% if products.status %}
+                                                    <td><span class="badge-item badge-panel-status">Опубликован</span></td>
                                                 {% else %}
-                                                    Товарная группа или подгруппа не назначена
+                                                    <td><span class="badge-item badge-status">Не опубликован</span></td>
                                                 {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
-                                                    {{ products.width }} x {{ products.height }} x {{ products.length }}
-                                                    </br>
-                                                    {{ products.fabricator }}
-                                                    </br>
-                                                    {{ products.material }}
-                                                    </br>
-                                                    {{ products.color }}
-                                                {% else %}
-                                                    Нет
-                                                {% endif %}
-                                            </td>
-                                            {% if products.status %}
-                                                <td><span class="badge-item badge-panel-status">Опубликован</span></td>
-                                            {% else %}
-                                                <td><span class="badge-item badge-status">Не опубликован</span></td>
-                                            {% endif %}
-                                            </td>
-                                            <td class="action-btns">
-                                                <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
-                                                <a href="/edit_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="edit-btn" title="Редактировать"><i class="fas
+                                                </td>
+                                                <td class="action-btns">
+                                                    <a href="/product_view/{{ products.id }}" class="view-shop-btn" title="Просмотр"><i class="fas fa-eye"></i></a>
+                                                    <a href="/edit_product/{{ products.id }}?next={{ request.path }}?page={{ page_obj.number }}" class="edit-btn" title="Редактировать"><i class="fas
                                                 fa-edit"></i></a>
-                                                <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
+                                                    <a href="/delete_product/{{ products.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить товар???' +
                                                  ' (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +
 															 'ОБРАТИМО)')"><i class="fas
 															fa-trash-alt"></i></a>
-                                            </td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
+                                                </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card card-static-2 mt-30 mb-30">
-                            <div class="card-title-2">
-                                <div class="paginator"></div>
-                                <paginator></paginator>
-                                <div class="paginator">
-                                    <ul>
-                                        {% if page_obj.has_previous %}
-                                            <li class="next"><a href="?page=1"> << </a></li>
-                                            <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
-                                            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
-                                        {% endif %}
-
-                                        <li class="current">{{ page_obj.number }}</li>
-
-                                        {% if page_obj.has_next %}
-                                            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                                            <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
-                                            <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
-                                        {% endif %}
-                                    </ul>
                                 </div>
-                                <paginator></paginator>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                <div class="card card-static-2 mt-30 mb-30">
+                                    <div class="card-title-2">
+                                        <div class="paginator"></div>
+                                        <paginator></paginator>
+                                        <div class="paginator">
+                                            <ul>
+                                                {% if page_obj.has_previous %}
+                                                    <li class="next"><a href="?page=1"> << </a></li>
+                                                    <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                                    <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                                {% endif %}
+
+                                                <li class="current">{{ page_obj.number }}</li>
+
+                                                {% if page_obj.has_next %}
+                                                    <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                                    <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                                    <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                        <paginator></paginator>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <center>
+                                <img src="{% static 'file/panel/images/avatar/mouse.webp' %}" width="360" height="400"  >
+                                </center>
+                            {% endif %}
                             </div>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>

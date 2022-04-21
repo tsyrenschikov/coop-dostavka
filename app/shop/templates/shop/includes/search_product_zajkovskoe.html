@@ -21,7 +21,7 @@
                             <li class="widget_sub_categories sub_categories{{ forloop.counter }}"><a style="color: #000000; font-size: 14px" href="javascript:void(0)">{{ name }}</a>
                                 <ul class="widget_dropdown_categories dropdown_categories{{ forloop.counter }}">
                                     {% for sub in sub %}
-                                        <li><a href="{{ address }}/sort_list_zajkovskoe/{{ sub }}">{{ sub }}</a></li>
+                                        <li><a href="/{{ address_str }}/sort_list/{{ sub }}">{{ sub }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>

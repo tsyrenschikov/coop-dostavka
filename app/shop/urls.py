@@ -40,7 +40,6 @@ urlpatterns = [
     path('zajkovskoe/searchzajkovskoe/', views.searchzajkovskoe, name='searchzajkovskoe'),
     path('zajkovskoe/cart/', views.cart_zajkovskoe, name='cart_zajkovskoe'),
     path('zajkovskoe/cart_ok_zajkovskoe/<int:ord>/', views.cart_ok_zajkovskoe, name='cart_ok_zajkovskoe_'),
-    path('zajkovskoe/products/', views.shop_zajkovskoe_products, name='shop_zajkov_products'),
     path('zajkovskoe/product/<int:id>/', views.shop_zajkovskoe_product, name='shop_zajkov_product'),
     path('zajkovskoe/grid/', views.shop_zajkovskoe_grid, name='shop_zajkovskoe_grid'),
 

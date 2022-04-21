@@ -541,7 +541,7 @@ def shop_arti_p(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/artiprom/products.html',
                               {'category_product': category_product,'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address': address,'address_str': address_str, 'count_sidebar':count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local,'address_str': address_str, 'count_sidebar':count_sidebar})
 
 def sort_list_arti_p(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -1283,7 +1283,7 @@ def searchzajkovskoe(request):
             if s == address_str and s == slug_a:
                 name_slug = eval(s)
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
@@ -1329,7 +1329,7 @@ def cart_zajkovskoe(request):
                 name = name_a
                 name_slug=eval(s)
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
@@ -1376,7 +1376,7 @@ def cart_ok_zajkovskoe(request,ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
-                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
@@ -1428,7 +1428,7 @@ def shop_zajkovskoe_grid(request):
                 name_slug = eval(slug)
                 product=name_slug.objects.all().order_by('id')[::-1][:48]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:
@@ -1485,7 +1485,7 @@ def shop_zajkovskoe_product(request, id):
                 product = slug_name.objects.get(id=id)
                 products = slug_name.objects.all().order_by('?')[:10]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
-                category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').order_by('name')
+                category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}
                 list_p = list(set([i for i, j, k in category_product]))
                 for category in category_shop:

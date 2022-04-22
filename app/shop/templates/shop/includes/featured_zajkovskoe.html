@@ -15,19 +15,21 @@
             <div class="col-md-12">
                 <div class="owl-carousel featured-slider owl-theme">
                     {% for products in products %}
-                        <div class="item">
-                            <div class="product-item">
-                                <a href="/zajkovskoe/product/{{ products.id }}" class="product-img">
-                                    {% thumbnail products.image "300x300" crop="center" as im %}
-                                        <img src="{{ im.url }}" alt="">
-                                    {% endthumbnail %}
-                                </a>
-                                <div class="product-text-dt">
-                                    <h4 class="cuttedText">{{ products.name }}</h4>
-                                    <div class="product-price">{{ products.price }} р.</div>
+                        {% if products.status %}
+                            <div class="item">
+                                <div class="product-item">
+                                    <a href="/zajkovskoe/product/{{ products.id }}" class="product-img">
+                                        {% thumbnail products.image "300x300" crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="">
+                                        {% endthumbnail %}
+                                    </a>
+                                    <div class="product-text-dt">
+                                        <h4 class="cuttedText">{{ products.name }}</h4>
+                                        <div class="product-price">{{ products.price }} р.</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

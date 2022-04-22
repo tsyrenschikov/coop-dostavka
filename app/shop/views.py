@@ -1520,7 +1520,7 @@ def shop_zajkovskoe_product(request, id):
                 shop_name = slug
                 slug_name = eval(slug)
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.filter(status='True').order_by('?')[:10]
                 category_shop = Category.objects.values('name', 'subcat').order_by('number')
                 category_product = slug_name.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
                 list_category_product = {category['name']: [] for category in category_shop}

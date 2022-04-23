@@ -8,6 +8,7 @@
     <orderEntry type="module" module-name="pythonProject" />
     <orderEntry type="module" module-name="Project" />
     <orderEntry type="module" module-name="polinome" />
+    <orderEntry type="module" module-name="polinome" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

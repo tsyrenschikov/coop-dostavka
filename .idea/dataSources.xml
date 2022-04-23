@@ -11,6 +11,13 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="polinome" uuid="a327ea6c-4fe4-4a65-b9b0-bf453d42977f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://10.19.4.1/c25867_polinome_ru</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
   <component name="dataSourceStorageLocal" created-in="PY-213.6777.50">
     <data-source name="coop-dostavka.ru" uuid="03b299a0-1f54-4aae-b27a-0afa342c643c">

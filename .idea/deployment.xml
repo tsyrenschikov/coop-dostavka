@@ -10,6 +10,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="polinome">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="D:/polinome" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="tsyrenschikov">
         <serverdata>
           <mappings>

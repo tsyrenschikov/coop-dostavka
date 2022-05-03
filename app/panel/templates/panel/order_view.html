@@ -73,8 +73,8 @@
                                                             <th style="width:150px" class="text-center">Кол-во</th>
                                                             <th style="width:150px" class="text-center">Цена за 1 ед.</th>
                                                             <th style="width:100px" class="text-center">Общая</th>
-                                                            <th style="width: 5px">Ред.</th>
-                                                            <th style="width: 5px">Удал.</th>
+                                                            <th style="width: 5px" class="text-center">Ред.</th>
+                                                            <th style="width: 5px" class="text-center">Удал.</th>
                                                         </tr>
 
                                                         </thead>
@@ -85,9 +85,9 @@
                                                                 <td>{{ key }}</td>
                                                                 <td class="data text-center">{{ value.0 }}</td>
                                                                 <td class="text-center">{{ value.1 }} р.</td>
-                                                                <td></td>
-                                                                <td class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></td>
-                                                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                                                <td class="text-center"></td>
+                                                                <td class="edit text-center"><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                                                                <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>
                                                             </tr>
                                                         {% endfor %}
                                                         </tbody>
@@ -103,7 +103,8 @@
                                                 Итого
                                             </div>
                                             <div class="order-total-right-text">
-                                                {{ zakaz.cart }} р.
+                                                <input id="total_cart" type="hidden" value="{{ zakaz.cart }}">
+                                                р.
                                             </div>
                                         </div>
                                         <div class="order-total-dt">

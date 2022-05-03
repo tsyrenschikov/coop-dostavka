@@ -4,3 +4,4 @@ $(document).ready(function () {
     var change = money - total;
     $("total_change").text(change);
 });
+

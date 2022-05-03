@@ -1,11 +1,22 @@
 var isEditing = false,
-    tempDataValue = "";
+    tempDataValue = "",
+    cart = 0,
+    items = [];
 
 $('#mytable tr').each(function () {
-    count = $(this).find("td").eq(2).html();
-    price = $(this).find("td").eq(3).html();
-    sum = ((parseFloat(count)) * (parseFloat(price)));
+    var count = $(this).find("td").eq(2).html(),
+        price = $(this).find("td").eq(3).html(),
+        sum = ((parseFloat(count)) * (parseFloat(price)));
+    items.push(sum);
     $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+
+
+    $(document).ready(function () {
+        var total = $("#total_price").attr("value"),
+            money = $("#nal").attr("value"),
+            change = money - total;
+        $("total_change").text(change);
+    });
 
 
 // Handles live/dynamic element events, i.e. for newly created edit buttons
@@ -66,11 +77,17 @@ $('#mytable tr').each(function () {
             count = $(this).find("td").eq(2).html();
             price = $(this).find("td").eq(3).html();
             sum = ((parseFloat(count)) * (parseFloat(price)));
+            items.push(sum);
             $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         });
     });
 });
-
+items.splice(0,1);
+$.each(items,function(index,value){
+    cart+=value;
+});
+$('cart').text(cart);
+console.log(cart)
 
 // Handles live/dynamic element events, i.e. for newly created trash buttons
 $(document).on('click', '.trash', function () {

@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="order-total-right-text">
                                                 <input id="total_cart" type="hidden" value="{{ zakaz.cart }}">
-                                                р.
+                                                <cart style="font-size: 18px;font-weight: 700"></cart> р.
                                             </div>
                                         </div>
                                         <div class="order-total-dt">
@@ -177,8 +177,6 @@
         </div>
     </main>
     {% block js %}
-    <!--Расчет Сдачи-->
-        <script src="{% static 'file/panel/js/order/total_change.js' %}"></script>
     <!--Редактировать поля заказа-->
         <script src="{% static 'file/panel/js/order/editorder.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder1.js' %}"></script>

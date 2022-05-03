@@ -82,11 +82,9 @@
                                                         {% for key, value in zakaz_dict.items %}
                                                             <tr>
                                                                 <td>{{ forloop.counter }}</td>
-                                                                <td>
-                                                                    {{ key }}
-                                                                </td>
-                                                                <td value="{{ value.0 }}" class="data text-center c">{{ value.0 }}</td>
-                                                                <td value="{{ value.1 }}" class="text-center p">{{ value.1 }} р.</td>
+                                                                <td>{{ key }}</td>
+                                                                <td class="data text-center">{{ value.0 }}</td>
+                                                                <td class="text-center">{{ value.1 }} р.</td>
                                                                 <td></td>
                                                                 <td class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></td>
                                                                 <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>

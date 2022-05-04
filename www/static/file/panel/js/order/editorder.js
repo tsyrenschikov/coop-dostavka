@@ -1,14 +1,17 @@
 var isEditing = false,
     tempDataValue = "",
     cart = 0,
+    counter = -1,
     items = [];
-
+//$(this).find("td").eq(0).text(index+1);
 $('#mytable tr').each(function () {
     var count = $(this).find("td").eq(2).html(),
         price = $(this).find("td").eq(3).html(),
         sum = ((parseFloat(count)) * (parseFloat(price)));
     items.push(sum);
     $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+    counter += 1;
+    $(this).find('td').eq(0).text(counter)
 });
 items.splice(0, 1);
 $.each(items, function (index, value) {
@@ -71,9 +74,9 @@ $(document).on('click', '.edit', function () {
         tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
 
     }
-    items.length=0;
-    items=[];
-    cart=0;
+    items.length = 0;
+    items = [];
+    cart = 0;
     $('#mytable tr').each(function () {
         var count = $(this).find("td").eq(2).html(),
             price = $(this).find("td").eq(3).html(),
@@ -105,6 +108,24 @@ $(document).on('click', '.trash', function () {
 
     // Remove selected row from table
     $(this).closest('tr').remove();
+    items.length = 0;
+    items = [];
+    counter = -1,
+        cart = 0;
+    $('#mytable tr').each(function () {
+        var count = $(this).find("td").eq(2).html(),
+            price = $(this).find("td").eq(3).html(),
+            sum = ((parseFloat(count)) * (parseFloat(price)));
+        items.push(sum);
+        $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+        counter += 1;
+        $(this).find('td').eq(0).text(counter)
+    });
+    items.splice(0, 1);
+    $.each(items, function (index, value) {
+        cart += value;
+    });
+    $('cart').text(cart.toFixed(2));
 });
 
 $(document).ready(function () {

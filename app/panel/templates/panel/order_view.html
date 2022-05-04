@@ -104,20 +104,23 @@
                                             </div>
                                             <div class="order-total-right-text">
                                                 <input id="total_cart" type="hidden" value="{{ zakaz.cart }}">
-                                                <cart style="font-size: 18px;font-weight: 700"></cart> р.
+                                                <cart style="font-size: 18px;font-weight: 700"></cart>
+                                                р.
                                             </div>
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text">
                                                 Стоимость доставки
                                             </div>
-                                            {% if zakaz.delivery == 0.00 %}
+                                            <input type="hidden" value="{{ zakaz.delivery }}">
+                                            <div id="delivery"></div>
+                                            <!--{% if zakaz.delivery == 0.00 %}
                                                 <div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
                                             {% else %}
                                                 <div class="order-total-right-text">
                                                     {{ zakaz.delivery }} р.
                                                 </div>
-                                            {% endif %}
+                                            {% endif %}-->
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text fsz-18">
@@ -177,7 +180,7 @@
         </div>
     </main>
     {% block js %}
-    <!--Редактировать поля заказа-->
+        <!--Редактировать поля заказа-->
         <script src="{% static 'file/panel/js/order/editorder.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder1.js' %}"></script>
     {% endblock %}

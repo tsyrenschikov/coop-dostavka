@@ -85,7 +85,7 @@ items.splice(0, 1);
 $.each(items, function (index, value) {
     cart += value;
 });
-$('cart').text(cart);
+$('cart').text(cart.toFixed(2));
 
 // Handles live/dynamic element events, i.e. for newly created trash buttons
 $(document).on('click', '.trash', function () {

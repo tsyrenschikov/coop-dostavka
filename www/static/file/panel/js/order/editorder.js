@@ -19,20 +19,6 @@ $.each(items, function (index, value) {
 });
 $('cart').text(cart.toFixed(2));
 
-$(document).ready(function (){
-    var
-    delivery=$('#zakaz_delivery').val();
-    if(delivery == 0){
-        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
-    }
-    else{
-        $('#delivery').removeClass('badge-item  order-total-right-text');
-        $('#delivery').addClass('order-total-right-text');
-    }
-    console.log(delivery)
-
-});
-
 // Handles live/dynamic element events, i.e. for newly created edit buttons
 $(document).on('click', '.edit', function () {
     var parentRow = $(this).closest('tr'),
@@ -143,7 +129,18 @@ $(document).on('click', '.trash', function () {
 });
 
 $(document).ready(function () {
-    var total = $("#total_price").attr("value"),
+    var
+        delivery = $('#zakaz_delivery').val();
+    if (delivery == 0) {
+        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+    } else {
+        $('#delivery').removeClass('badge-item  order-total-right-text');
+        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery + ' ' + 'р');
+    }
+
+
+    var
+        total = $("#total_price").attr("value"),
         money = $("#nal").attr("value"),
         change = money - total;
     $("total_change").text(change);

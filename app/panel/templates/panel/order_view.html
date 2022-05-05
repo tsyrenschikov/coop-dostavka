@@ -112,15 +112,13 @@
                                             <div class="order-total-left-text">
                                                 Стоимость доставки
                                             </div>
-                                            <input type="hidden" value="{{ zakaz.delivery }}">
+                                            <input id="zakaz_delivery" type="hidden" value="{{ zakaz.delivery }}">
                                             <div id="delivery"></div>
-                                            <!--{% if zakaz.delivery == 0.00 %}
-                                                <div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
-                                            {% else %}
+                                            <!--<div style="background-color: green; color: #fff" class="badge-item  order-total-right-text">Бесплатно</div>
+
                                                 <div class="order-total-right-text">
-                                                    {{ zakaz.delivery }} р.
-                                                </div>
-                                            {% endif %}-->
+                                                     р.
+                                                </div>-->
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text fsz-18">

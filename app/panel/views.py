@@ -801,6 +801,7 @@ def add_order(request):
     return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
 
 def order_view(request,id):
+    local=Locations.objects.values_list('name','delivery_price','delivery_price_min','slug').distinct()
     product = orders.objects.values('id', 'products').order_by('id')
     address = int([i for i in str(request.path).split('/') if i][-1])
     zakaz = orders.objects.get(id=id)
@@ -818,7 +819,7 @@ def order_view(request,id):
         phone = request.POST.get('phone')
         street = request.POST.get('street')
         status = request.POST.get('status')
-    return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
+    return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product,'local':local})
 
 def order_edit(request,id):
 

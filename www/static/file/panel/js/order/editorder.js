@@ -3,7 +3,7 @@ var isEditing = false,
     cart = 0,
     counter = -1,
     items = [];
-//$(this).find("td").eq(0).text(index+1);
+
 $('#mytable tr').each(function () {
     var count = $(this).find("td").eq(2).html(),
         price = $(this).find("td").eq(3).html(),
@@ -18,6 +18,20 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2));
+
+$(document).ready(function (){
+    var
+    delivery=$('#zakaz_delivery').val();
+    if(delivery == 0){
+        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+    }
+    else{
+        $('#delivery').removeClass('badge-item  order-total-right-text');
+        $('#delivery').addClass('order-total-right-text');
+    }
+    console.log(delivery)
+
+});
 
 // Handles live/dynamic element events, i.e. for newly created edit buttons
 $(document).on('click', '.edit', function () {

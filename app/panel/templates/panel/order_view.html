@@ -49,6 +49,7 @@
                                             <b>Адрес доставки :</b><br>
                                             #Свердловская область,<br>
                                             {{ zakaz.address_city }},<br>
+                                            <input type="hidden" value="{% for local in local %}{{ local }}{% endfor %}">
                                             Улица: <label for="inp" class="inp">
                                             <input name="street" type="text" id="inp" placeholder="&nbsp;">
                                             <span class="label">{{ zakaz.address_street }}</span>
@@ -156,6 +157,7 @@
                                                     <option value="1">В процессе сборки</option>
                                                     <option value="2">Доставка</option>
                                                     <option value="3">Закрыт</option>
+                                                    <option value="4">Отменен</option>
                                                 </select>
                                                 <div class="input-group-append">
                                                     <button class="status-btn hover-btn" type="submit">Применить</button>

@@ -801,7 +801,8 @@ def add_order(request):
     return render(request, 'panel/add_order.html', {'users':users,'category':category, 'local':local})
 
 def order_view(request,id):
-    local=Locations.objects.values_list('name','delivery_price','delivery_price_min','slug').distinct()
+    users = User.objects.values_list('id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     product = orders.objects.values('id', 'products').order_by('id')
     address = int([i for i in str(request.path).split('/') if i][-1])
     zakaz = orders.objects.get(id=id)
@@ -810,6 +811,11 @@ def order_view(request,id):
         if prod['id'] == address:
             for i in prod['products']:
                 list_product.append(i)
+    if request.user.is_authenticated:
+        for u in users:
+            for c, n, slug_p in shops:
+                    if request.user.id == c and u == c:
+                        local = Locations.objects.values_list('name', 'delivery_price','delivery_price_min').filter(slug=slug_p).distinct()
     product_list = list_product[0::3]
     count_list = list_product[1::3]
     price_list = list_product[2::3]

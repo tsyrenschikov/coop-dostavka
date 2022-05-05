@@ -49,7 +49,10 @@
                                             <b>Адрес доставки :</b><br>
                                             #Свердловская область,<br>
                                             {{ zakaz.address_city }},<br>
-                                            <input type="hidden" value="{% for local in local %}{{ local }}{% endfor %}">
+                                            <input type="hidden" id="city" value="{{ zakaz.address_city }}">
+
+                                                <input type="hidden" id="local_delivery" value="[{% for local in local %}, {{ local }}{% endfor %}]">
+
                                             Улица: <label for="inp" class="inp">
                                             <input name="street" type="text" id="inp" placeholder="&nbsp;">
                                             <span class="label">{{ zakaz.address_street }}</span>

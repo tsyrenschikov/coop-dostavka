@@ -815,7 +815,7 @@ def order_view(request,id):
         for u in users:
             for c, n, slug_p in shops:
                     if request.user.id == c and u == c:
-                        local = Locations.objects.values_list('name', 'delivery_price','delivery_price_min').filter(slug=slug_p).distinct()
+                        local = Locations.objects.values('name', 'delivery_price','delivery_price_min').filter(slug=slug_p)
     product_list = list_product[0::3]
     count_list = list_product[1::3]
     price_list = list_product[2::3]

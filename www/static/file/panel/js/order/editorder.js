@@ -130,7 +130,13 @@ $(document).on('click', '.trash', function () {
 
 $(document).ready(function () {
     var
+        city = $('#city').val(),
+        loc = $('#local_delivery').val(),
         delivery = $('#zakaz_delivery').val();
+    $.each(loc, function (index, value) {
+            console.log(value);
+    });
+
     if (delivery == 0) {
         $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
     } else {

@@ -131,10 +131,13 @@ $(document).on('click', '.trash', function () {
 $(document).ready(function () {
     var
         city = $('#city').val(),
-        loc = $('#local_delivery').val(),
+        loc = $('#local_delivery').attr('value'),
         delivery = $('#zakaz_delivery').val();
-    $.each(loc, function (index, value) {
+    console.log(loc)
+    $.each(loc, function (key, data) {
+        $.each(data, function (index, value) {
             console.log(value);
+        });
     });
 
     if (delivery == 0) {

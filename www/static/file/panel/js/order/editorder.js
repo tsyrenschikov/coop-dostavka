@@ -131,7 +131,7 @@ $(document).on('click', '.trash', function () {
 $(document).ready(function () {
     var
         city = $('#city').val(),
-        loc = $('#local_delivery').attr('value'),
+        loc = $('#local_delivery').val(),
         delivery = $('#zakaz_delivery').val();
     console.log(loc)
     $.each(loc, function (key, data) {

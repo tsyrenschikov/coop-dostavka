@@ -133,8 +133,9 @@ $(document).ready(function () {
         city = $('#city').val(),
         loc = $('#local_delivery').val(),
         delivery = $('#zakaz_delivery').val();
-    console.log(loc)
+        console.log(loc)
     $.each(loc, function (key, data) {
+        console.log(key)
         $.each(data, function (index, value) {
             console.log(value);
         });

@@ -2,7 +2,29 @@ var isEditing = false,
     tempDataValue = "",
     cart = 0,
     counter = -1,
+    loc = $('#local_delivery').val(),
     items = [];
+console.log(loc)
+$(document).ready(function () {
+    var
+        city = $('#city').val(),
+
+        delivery = $('#zakaz_delivery').val();
+
+    if (delivery == 0) {
+        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+    } else {
+        $('#delivery').removeClass('badge-item  order-total-right-text');
+        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery + ' ' + 'р');
+    }
+
+
+    var
+        total = $("#total_price").attr("value"),
+        money = $("#nal").attr("value"),
+        change = money - total;
+    $("total_change").text(change);
+});
 
 $('#mytable tr').each(function () {
     var count = $(this).find("td").eq(2).html(),
@@ -126,32 +148,4 @@ $(document).on('click', '.trash', function () {
         cart += value;
     });
     $('cart').text(cart.toFixed(2));
-});
-
-$(document).ready(function () {
-    var
-        city = $('#city').val(),
-        loc = $('#local_delivery').val(),
-        delivery = $('#zakaz_delivery').val();
-        console.log(loc)
-    $.each(loc, function (key, data) {
-        console.log(key)
-        $.each(data, function (index, value) {
-            console.log(value);
-        });
-    });
-
-    if (delivery == 0) {
-        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
-    } else {
-        $('#delivery').removeClass('badge-item  order-total-right-text');
-        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery + ' ' + 'р');
-    }
-
-
-    var
-        total = $("#total_price").attr("value"),
-        money = $("#nal").attr("value"),
-        change = money - total;
-    $("total_change").text(change);
 });

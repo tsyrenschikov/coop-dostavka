@@ -49,10 +49,12 @@
                                             <b>Адрес доставки :</b><br>
                                             #Свердловская область,<br>
                                             {{ zakaz.address_city }},<br>
-                                            <input type="hidden" id="city" value="{{ zakaz.address_city }}">
-
-                                                <input type="hidden" id="local_delivery" value="[{% for local in local %},{{ local }}{% endfor %}]">
-
+                                            {% for local in local %}
+                                                {% if zakaz.address_city == local.name %}
+                                                    <input type="hidden" id="delivery_price" value="{{ local.delivery_price }}">
+                                                    <input type="hidden" id="delivery_price_min" value="{{ local.delivery_price_min }}">
+                                                {% endif %}
+                                            {% endfor %}
                                             Улица: <label for="inp" class="inp">
                                             <input name="street" type="text" id="inp" placeholder="&nbsp;">
                                             <span class="label">{{ zakaz.address_street }}</span>
@@ -116,15 +118,13 @@
                                             <div class="order-total-left-text">
                                                 Стоимость доставки
                                             </div>
-                                            <input id="zakaz_delivery" type="hidden" value="{{ zakaz.delivery }}">
                                             <div id="delivery"></div>
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text fsz-18">
                                                 Общая сумма
                                             </div>
-                                            <div id="total_price" class="order-total-right-text fsz-18">
-                                            </div>
+                                            <div id="total_price" class="order-total-right-text fsz-18"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-7">

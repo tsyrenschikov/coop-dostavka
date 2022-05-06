@@ -2,32 +2,14 @@ var isEditing = false,
     tempDataValue = "",
     cart = 0,
     counter = -1,
-    loc = $('#local_delivery').val(),
+    delivery = 0,
+    total_price = 0,
+    total_money = 0,
     items = [];
-console.log(loc)
-$(document).ready(function () {
-    var
-        city = $('#city').val(),
-
-        delivery = $('#zakaz_delivery').val();
-
-    if (delivery == 0) {
-        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
-    } else {
-        $('#delivery').removeClass('badge-item  order-total-right-text');
-        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery + ' ' + 'р');
-    }
-
-
-    var
-        total = $("#total_price").attr("value"),
-        money = $("#nal").attr("value"),
-        change = money - total;
-    $("total_change").text(change);
-});
 
 $('#mytable tr').each(function () {
-    var count = $(this).find("td").eq(2).html(),
+    var
+        count = $(this).find("td").eq(2).html(),
         price = $(this).find("td").eq(3).html(),
         sum = ((parseFloat(count)) * (parseFloat(price)));
     items.push(sum);
@@ -40,6 +22,24 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2));
+
+$(document).ready(function () {
+    var
+        money = $('#nal').val(),
+        delivery_price = $('#delivery_price').val(),
+        delivery_price_min = $('#delivery_price_min').val();
+
+    if (cart >= delivery_price_min) {
+        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+        total_price = cart.toFixed(2);
+        $('#total_price').text(total_price + ' ' + 'р.');
+    } else {
+        $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
+        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
+        total_price = Number(cart.toFixed(2)) + Number(delivery_price);
+        $('#total_price').text(total_price + ' ' + 'р.');
+    }
+});
 
 // Handles live/dynamic element events, i.e. for newly created edit buttons
 $(document).on('click', '.edit', function () {
@@ -111,6 +111,22 @@ $(document).on('click', '.edit', function () {
         cart += value;
     });
     $('cart').text(cart.toFixed(2));
+    $(document).ready(function () {
+        var
+            delivery_price = $('#delivery_price').val(),
+            delivery_price_min = $('#delivery_price_min').val();
+
+        if (cart >= delivery_price_min) {
+            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+            total_price = cart.toFixed(2)
+            $('#total_price').text(total_price + ' ' + 'р.');
+        } else {
+            $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
+            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
+            total_price = Number(cart.toFixed(2)) + Number(delivery_price);
+            $('#total_price').text(total_price + ' ' + 'р.');
+        }
+    });
 });
 
 // Handles live/dynamic element events, i.e. for newly created trash buttons
@@ -148,4 +164,21 @@ $(document).on('click', '.trash', function () {
         cart += value;
     });
     $('cart').text(cart.toFixed(2));
+    $(document).ready(function () {
+        var
+            delivery_price = $('#delivery_price').val(),
+            delivery_price_min = $('#delivery_price_min').val();
+        if (cart >= delivery_price_min) {
+            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+            total_price = cart.toFixed(2)
+            $('#total_price').text(total_price + ' ' + 'р.');
+
+        } else {
+            $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
+            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р.');
+            total_price = Number(cart.toFixed(2)) + Number(delivery_price);
+            $('#total_price').text(total_price + ' ' + 'р.');
+
+        }
+    });
 });

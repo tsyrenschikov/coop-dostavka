@@ -49,7 +49,7 @@
                                     <tbody>
                                     {% for zakaz in zakaz %}
                                         <tr>
-                                        <td>{{ zakaz.id }}</td>
+                                        <td><a href="/order_view/{{ zakaz.id }}">{{ zakaz.id }}</a></td>
                                         <td>
                                             {{ zakaz.name }}
                                         </td>

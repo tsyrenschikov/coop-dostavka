@@ -172,9 +172,10 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
-$('.new-row').on('click', function () {
+$('.new-row').on('click', function(e) {
     var tableBody = $(this).closest('tbody'),
-        trNew = '<tr>' +
+        trNew =
+            '<tr>' +
             '<td></td>' +
             '<td class="name"><input type="text" name="name" value=""></td>' +
             '<td class="data"><input type="text" name="data" value=""></td>' +

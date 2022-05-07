@@ -68,8 +68,8 @@ $(document).on('click', '.edit', function () {
             // Save new values as static html
             var
                 tdDataValue = dataInput.prop('value');
-            tdDataInput.empty();
-            tdDataInput.html(tdDataValue);
+                tdDataInput.empty();
+                tdDataInput.html(tdDataValue);
 
         } else {
             // Restore previous html values
@@ -172,7 +172,7 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
-$('.new-row').on('click', function(e) {
+$('.new-row').on('click', function (e) {
     var tableBody = $(this).closest('tbody'),
         trNew =
             '<tr>' +

@@ -101,49 +101,10 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <button class="btn btn-info pull-right" data-toggle="modal" data-target="#addModal">Добавить товар</button>
                                         <div class="alert alert-warning fade in myAlert" ng-if="alertMassege"><a class="close" href="#" data-dismiss="alert" ng-click="clickedAlert()">×</a>
                                             <h4>{{ alertMassege }}</h4>
-                                        </div>
-                                    </div>
-                                    <!-- Add Modal-->
-                                    <div class="modal fade" id="addModal" role="dialog">
-                                        <div class="modal-dialog">
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button class="close" type="button" data-dismiss="modal">×</button>
-                                                    <h4 class="modal-title">Add New</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container">
-                                                        <form class="form-horizontal">
-                                                            <div class="form-group">
-                                                                <label class="control-label col-sm-2" for="Name">Name</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" type="text" placeholder="Enter Name" ng-model="newUser.name"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label col-sm-2" for="full name">Full Name</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" type="text" placeholder="Enter Full Name" ng-model="newUser.fullname"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label col-sm-2" for="email">Full Name</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" type="email" placeholder="Enter Email" ng-model="newUser.email"/>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-success" type="button" ng-click="saveUser()" data-dismiss="modal">Save</button>
-                                                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-7"></div>

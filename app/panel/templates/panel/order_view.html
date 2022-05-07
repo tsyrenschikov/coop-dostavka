@@ -147,7 +147,8 @@
                                             <label for="status">Оплата покупателем</label>
                                             <div class="status-active">
                                                 {{ zakaz.payment }} {% if zakaz.money %}
-                                                <div class="order-total-right-text" id="nal" value="{{ zakaz.money }}"> Наличными: {{ zakaz.money }} р. Сдача:
+                                                <input type="hidden" id="nal" value="{{ zakaz.money }}">
+                                                <div class="order-total-right-text" value="{{ zakaz.money }}"> Наличными: {{ zakaz.money }} р. Сдача:
                                                     <total_change></total_change>
                                                     р.
                                                 </div>{% endif %}

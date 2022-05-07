@@ -1,9 +1,9 @@
 var isEditing = false,
     tempDataValue = "",
     cart = 0,
-    money_nal = 0,
     counter = -1,
     delivery = 0,
+    money_nal =0,
     total_price = 0,
     items = [];
 
@@ -22,24 +22,26 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2));
-money_nal = $('#nal').val();
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
 function nal(money) {
     var
+        nal = $('#nal').val(),
         delivery_price = $('#delivery_price').val(),
         delivery_price_min = $('#delivery_price_min').val();
-        console.log(nal)
     if (cart >= delivery_price_min) {
         $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
         total_price = cart.toFixed(2);
+        money_nal = Number(nal)-Number(total_price);
         $('#total_price').text(total_price + ' ' + 'р.');
-        $('total_change').text(nal);
+        $('total_change').text(money_nal);
     } else {
         $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
         $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
         total_price = Number(cart.toFixed(2)) + Number(delivery_price);
+        money_nal = (Number(nal) - Number(total_price));
         $('#total_price').text(total_price + ' ' + 'р.');
+        $('total_change').text(money_nal);
     }
 };
 

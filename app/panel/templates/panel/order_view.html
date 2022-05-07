@@ -17,6 +17,7 @@
                 <div class="col-xl-12 col-md-12">
                     <div class="card card-static-2 mb-30">
                         <form method="post">
+                            {% csrf_token %}
                             <div class="card-title-2">
                                 <h2 class="title1458">Детализация заказа</h2>
                                 <span class="order-id">Заказ #{{ zakaz.id }}</span>
@@ -101,10 +102,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <button class="btn btn-info pull-right" data-toggle="modal" data-target="#addModal">Добавить товар</button>
-                                        <div class="alert alert-warning fade in myAlert" ng-if="alertMassege"><a class="close" href="#" data-dismiss="alert" ng-click="clickedAlert()">×</a>
-                                            <h4>{{ alertMassege }}</h4>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-info pull-right" data-toggle="modal" data-target="#category_model">Добавить товар</button>
+                                        </div>
+                                        <div class="alert">
+                                            <h4></h4>
                                         </div>
                                     </div>
                                     <div class="col-lg-7"></div>

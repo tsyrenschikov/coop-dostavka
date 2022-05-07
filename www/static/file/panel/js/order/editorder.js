@@ -15,9 +15,11 @@ $('#mytable tr').each(function () {
     items.push(sum);
     $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
     counter += 1;
-    $(this).find('td').eq(0).text(counter)
+    $(this).find('td.c').eq(0).text(counter)
 });
 items.splice(0, 1);
+var lastElementIndex = items.length - 1;
+items.splice(lastElementIndex, 1);
 $.each(items, function (index, value) {
     cart += value;
 });
@@ -116,6 +118,8 @@ $(document).on('click', '.edit', function () {
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
     });
     items.splice(0, 1);
+    var lastElementIndex = items.length - 1;
+    items.splice(lastElementIndex, 1);
     $.each(items, function (index, value) {
         cart += value;
     });
@@ -153,9 +157,11 @@ $(document).on('click', '.trash', function () {
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         counter += 1;
-        $(this).find('td').eq(0).text(counter)
+        $(this).find('td.c').eq(0).text(counter)
     });
     items.splice(0, 1);
+    var lastElementIndex = items.length - 1;
+    items.splice(lastElementIndex, 1);
     $.each(items, function (index, value) {
         cart += value;
     });
@@ -166,3 +172,40 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
+$('.new-row').on('click', function () {
+    var tableBody = $(this).closest('tbody'),
+        trNew = '<tr>' +
+            '<td></td>' +
+            '<td class="name"><input type="text" name="name" value=""></td>' +
+            '<td class="data"><input type="text" name="data" value=""></td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
+            '<td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
+            '</tr>';
+
+    if (isEditing) {
+        var nameInput = tableBody.find('input[name="name"]'),
+            dataInput = tableBody.find('input[name="data"]'),
+            tdNameInput = nameInput.closest('td'),
+            tdDataInput = dataInput.closest('td'),
+            currentEdit = tdNameInput.parent().find('td.edit');
+
+        // Get current input values for newly created input cases
+        var newNameInput = nameInput.prop('value'),
+            newDataInput = dataInput.prop('value');
+
+        // Restore previous html values
+        tdNameInput.empty();
+        tdDataInput.empty();
+
+        tdNameInput.html(newNameInput);
+        tdDataInput.html(newDataInput);
+
+        // Display static row
+        currentEdit.html('Edit');
+    }
+
+    isEditing = true;
+    tableBody.find('tr:last').before(trNew);
+});

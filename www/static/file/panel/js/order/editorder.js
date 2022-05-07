@@ -3,7 +3,7 @@ var isEditing = false,
     cart = 0,
     counter = -1,
     delivery = 0,
-    money_nal =0,
+    money_nal = 0,
     total_price = 0,
     items = [];
 
@@ -32,7 +32,7 @@ function nal(money) {
     if (cart >= delivery_price_min) {
         $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
         total_price = cart.toFixed(2);
-        money_nal = Number(nal)-Number(total_price);
+        money_nal = Number(nal) - Number(total_price);
         $('#total_price').text(total_price + ' ' + 'р.');
         $('total_change').text(money_nal);
     } else {
@@ -166,32 +166,44 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
-$('.new-row').on('click', function() {
-	var tableBody = $(this).closest('tbody'),
-		trNew = '<tr><td class="name"><input type="text" name="name" value=""></td><td class="data"><input type="text" name="data" value=""></td><td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td><td class="trash"><i class="fa fa-ban" aria-hidden="true"></i></td></tr>';
+$('.new-row').on('click', function () {
+    var tableBody = $(this).closest('tbody'),
+        trNew = '<tr>' +
+                    '<td class="name">' +
+                        '<input type="text" name="name" value="">' +
+                    '</td>' +
+                    '<td class="data">' +
+                        '<input type="text" name="data" value="">' +
+                    '</td>' +
+                    '<td class="edit">' +
+                        '<i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
+                    '<td class="trash">' +
+                        '<i class="fa fa-ban" aria-hidden="true"></i>' +
+                    '</td>' +
+                '</tr>';
 
-	if (isEditing) {
-		var nameInput = tableBody.find('input[name="name"]'),
-			dataInput = tableBody.find('input[name="data"]'),
-			tdNameInput = nameInput.closest('td'),
-			tdDataInput = dataInput.closest('td'),
-			currentEdit = tdNameInput.parent().find('td.edit');
+    if (isEditing) {
+        var nameInput = tableBody.find('input[name="name"]'),
+            dataInput = tableBody.find('input[name="data"]'),
+            tdNameInput = nameInput.closest('td'),
+            tdDataInput = dataInput.closest('td'),
+            currentEdit = tdNameInput.parent().find('td.edit');
 
-		// Get current input values for newly created input cases
-		var newNameInput = nameInput.prop('value'),
-			newDataInput = dataInput.prop('value');
+        // Get current input values for newly created input cases
+        var newNameInput = nameInput.prop('value'),
+            newDataInput = dataInput.prop('value');
 
-		// Restore previous html values
-		tdNameInput.empty();
-		tdDataInput.empty();
+        // Restore previous html values
+        tdNameInput.empty();
+        tdDataInput.empty();
 
-		tdNameInput.html(newNameInput);
-		tdDataInput.html(newDataInput);
+        tdNameInput.html(newNameInput);
+        tdDataInput.html(newDataInput);
 
-		// Display static row
-		currentEdit.html('Edit');
-	}
+        // Display static row
+        currentEdit.html('Edit');
+    }
 
-	isEditing = true;
-	tableBody.find('tr:last').before(trNew);
+    isEditing = true;
+    tableBody.find('tr:last').before(trNew);
 });

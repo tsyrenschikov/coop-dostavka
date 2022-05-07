@@ -805,13 +805,14 @@ def order_view(request,id):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     product = orders.objects.values('id', 'products').order_by('id')
     address = int([i for i in str(request.path).split('/') if i][-1])
+    local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min')
     zakaz = orders.objects.get(id=id)
     list_product = []
     for prod in product:
         if prod['id'] == address:
             for i in prod['products']:
                 list_product.append(i)
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_superuser:
         for u in users:
             for c, n, slug_p in shops:
                     if request.user.id == c and u == c:

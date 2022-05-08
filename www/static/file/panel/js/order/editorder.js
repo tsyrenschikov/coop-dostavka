@@ -184,6 +184,7 @@ $('.new-row').on('click', function (e) {
             '<td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
             '<td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
             '</tr>';
+    console.log(tableBody)
 
     if (isEditing) {
         var nameInput = tableBody.find('input[name="name"]'),

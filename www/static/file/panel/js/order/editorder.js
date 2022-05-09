@@ -32,37 +32,39 @@ function nal(money) {
         nal = $('#nal').val(),
         delivery_price = $('#delivery_price').val(),
         delivery_price_min = $('#delivery_price_min').val();
-    if (cart >= delivery_price_min) {
-        $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
-        total_price = cart.toFixed(2);
-        money_nal = Number(nal) - Number(total_price);
-        $('#total_price').text(total_price + ' ' + 'р.');
-        if (cart > nal) {
-            money_nal = Number(total_price) - Number(nal);
-            $('total_change_text').text('Клиент должен' + ':' + ' ');
-            $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
-        } else {
-            $('total_change_text').text('');
-            $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
-        }
+    if (isNaN(cart)) {
+        $('#total_price').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+        $('total_change').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+        $('cart').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+        $('#delivery').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
     } else {
-        $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
-        $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
-        total_price = Number(cart.toFixed(2)) + Number(delivery_price);
-        money_nal = (Number(nal) - Number(total_price));
-        $('#total_price').text(total_price + ' ' + 'р.');
-        if (cart > nal) {
-            money_nal = Number(total_price) - Number(nal);
-            $('total_change_text').text('Клиент должен' + ':' + ' ');
-            $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
+        if (cart >= delivery_price_min) {
+            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+            total_price = cart.toFixed(2);
+            money_nal = Number(nal) - Number(total_price);
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.');
+            if (cart > nal) {
+                money_nal = Number(total_price) - Number(nal);
+                $('total_change_text').text('Доплата клиента' + ':' + ' ');
+                $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
+            } else {
+                $('total_change_text').text('');
+                $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            }
         } else {
-            $('total_change_text').text('');
-            $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
-        }
-        if (isNaN(cart)) {
-            $('#total_price').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
-            $('total_change').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
-            $('cart').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+            $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
+            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
+            total_price = Number(cart.toFixed(2)) + Number(delivery_price);
+            money_nal = (Number(nal) - Number(total_price));
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.');
+            if (cart > nal) {
+                money_nal = Number(total_price) - Number(nal);
+                $('total_change_text').text('Доплата клиента' + ':' + ' ');
+                $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
+            } else {
+                $('total_change_text').text('');
+                $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            }
         }
     }
 };
@@ -150,6 +152,9 @@ $(document).on('click', '.edit', function () {
             sum = ((parseFloat(count)) * (parseFloat(price)));
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+        if (isNaN(sum)) {
+            $(this).find('td').eq(4).text('Сохраните');
+        }
     });
     items.splice(0, 1);
     var lastElementIndex = items.length - 1;
@@ -157,7 +162,7 @@ $(document).on('click', '.edit', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
-    $('cart').text(cart.toFixed(2) + 'р.');
+    $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $(document).ready(function () {
         nal();
     });
@@ -199,7 +204,7 @@ $(document).on('click', '.trash', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
-    $('cart').text(cart.toFixed(2) + 'р.');
+    $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $(document).ready(function () {
         nal();
     });
@@ -269,7 +274,7 @@ $(document).ready(function () {
         $.each(items, function (index, value) {
             cart += value;
         });
-        $('cart').text(cart.toFixed(2) + 'р.');
+        $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
         $(document).ready(function () {
             nal();
         });

@@ -23,7 +23,7 @@ items.splice(lastElementIndex, 1);
 $.each(items, function (index, value) {
     cart += value;
 });
-$('cart').text(cart.toFixed(2));
+$('cart').text(cart.toFixed(2) + 'р.');
 console.log(cart)
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
@@ -39,9 +39,9 @@ function nal(money) {
         $('#total_price').text(total_price + ' ' + 'р.');
 
         if (cart > nal) {
-            money_nal=Number(total_price)-Number(nal);
-            $('total_change_text').text('Клиент должен' + ':' + ' ' );
-            $('total_change').css({'background-color': 'green', 'color': '#ffffff'}).text( money_nal.toFixed(2) + ' ' + 'р.');
+            money_nal = Number(total_price) - Number(nal);
+            $('total_change_text').text('Клиент должен' + ':' + ' ');
+            $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
         } else {
             $('total_change_text').text('');
             $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
@@ -54,12 +54,17 @@ function nal(money) {
         $('#total_price').text(total_price + ' ' + 'р.');
 
         if (cart > nal) {
-            money_nal=Number(total_price)-Number(nal);
-            $('total_change_text').text('Клиент должен' + ':' + ' ' );
-            $('total_change').css({'background-color': 'green', 'color': '#ffffff'}).text( money_nal.toFixed(2) + ' ' + 'р.');
+            money_nal = Number(total_price) - Number(nal);
+            $('total_change_text').text('Клиент должен' + ':' + ' ');
+            $('total_change').css({'background-color': 'red', 'color': '#ffffff'}).text(money_nal.toFixed(2) + ' ' + 'р.');
         } else {
             $('total_change_text').text('');
             $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+        }
+        if (isNaN()) {
+            $('#total_price').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+            $('total_change').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+            $('cart').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
         }
     }
 };
@@ -154,7 +159,7 @@ $(document).on('click', '.edit', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
-    $('cart').text(cart.toFixed(2));
+    $('cart').text(cart.toFixed(2) + 'р.');
     $(document).ready(function () {
         nal();
     });
@@ -196,7 +201,7 @@ $(document).on('click', '.trash', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
-    $('cart').text(cart.toFixed(2));
+    $('cart').text(cart.toFixed(2) + 'р.');
     $(document).ready(function () {
         nal();
     });
@@ -266,7 +271,7 @@ $(document).ready(function () {
         $.each(items, function (index, value) {
             cart += value;
         });
-        $('cart').text(cart.toFixed(2));
+        $('cart').text(cart.toFixed(2) + 'р.');
         $(document).ready(function () {
             nal();
         });

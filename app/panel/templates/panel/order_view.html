@@ -98,7 +98,10 @@
                                                             </tr>
                                                         {% endfor %}
                                                         <tr class="add-row">
-                                                            <td colspan="7" class="new-row"><i class="fa fa-plus btn btn-info" aria-hidden="false"></i> Добавить позицию</td>
+                                                            <td colspan="7" class="new-row">
+                                                                <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>
+                                                                Добавить позицию
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -183,6 +186,7 @@
     </main>
     {% block js %}
         <!--Редактировать поля заказа-->
+        <script src="{% static 'file/panel/js/order/add_row.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder1.js' %}"></script>
     {% endblock %}

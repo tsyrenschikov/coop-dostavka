@@ -172,42 +172,39 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
-$('.new-row').on('click', function (e) {
-    var tableBody = $(this).closest('tbody'),
-        trNew =
-            '<tr>' +
-            '<td></td>' +
-            '<td class="name"><input type="text" name="name" value=""></td>' +
-            '<td class="data"><input type="text" name="data" value=""></td>' +
-            '<td></td>' +
-            '<td></td>' +
-            '<td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
-            '<td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
-            '</tr>';
-    console.log(tableBody)
+$(document).ready(function() {
+    $('.new-row').off().on('click', function () {
+        var tableBody = $(this).closest('tbody'),
+            trNew =
+                '<tr>' +
+                '<td class="c"></td>' +
+                '<td class="name"></td>' +
+                '<td class="data"><input type="text" name="data" value=""></td>' +
+                '<td></td>' +
+                '<td></td>' +
+                '<td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
+                '<td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
+                '</tr>';
 
-    if (isEditing) {
-        var nameInput = tableBody.find('input[name="name"]'),
-            dataInput = tableBody.find('input[name="data"]'),
-            tdNameInput = nameInput.closest('td'),
-            tdDataInput = dataInput.closest('td'),
-            currentEdit = tdNameInput.parent().find('td.edit');
+        if (isEditing) {
+            var
+                dataInput = tableBody.find('input[name="data"]'),
+                tdDataInput = dataInput.closest('td'),
+                currentEdit = tdDataInput.parent().find('td.edit');
 
-        // Get current input values for newly created input cases
-        var newNameInput = nameInput.prop('value'),
-            newDataInput = dataInput.prop('value');
+            // Get current input values for newly created input cases
+            var
+                newDataInput = dataInput.prop('value');
 
-        // Restore previous html values
-        tdNameInput.empty();
-        tdDataInput.empty();
+            // Restore previous html values
+            tdDataInput.empty();
+            tdDataInput.html(newDataInput);
 
-        tdNameInput.html(newNameInput);
-        tdDataInput.html(newDataInput);
+            // Display static row
+            currentEdit.html('Edit');
+        }
 
-        // Display static row
-        currentEdit.html('Edit');
-    }
-
-    isEditing = true;
-    tableBody.find('tr:last').before(trNew);
+        isEditing = false;
+        tableBody.find('tr:last').before(trNew);
+    });
 });

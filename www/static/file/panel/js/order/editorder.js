@@ -24,6 +24,7 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2));
+console.log(cart)
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
 function nal(money) {
@@ -37,11 +38,11 @@ function nal(money) {
         money_nal = Number(nal) - Number(total_price);
         $('#total_price').text(total_price + ' ' + 'р.');
 
-        if (total_price > nal) {
+        if (cart > nal) {
             money_nal=Number(total_price)-Number(nal);
             $('total_change').text('Клиент должен' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         } else {
-            $('total_change').text('Сдача' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change').text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         }
     } else {
         $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
@@ -50,11 +51,11 @@ function nal(money) {
         money_nal = (Number(nal) - Number(total_price));
         $('#total_price').text(total_price + ' ' + 'р.');
 
-        if (total_price > nal) {
+        if (cart > nal) {
             money_nal=Number(total_price)-Number(nal);
             $('total_change').text('Клиент должен' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         } else {
-            $('total_change').text('Сдача' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change').text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         }
     }
 };

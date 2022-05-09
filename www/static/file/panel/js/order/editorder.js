@@ -56,28 +56,34 @@ $(document).ready(function () {
 $(document).on('click', '.edit', function () {
     var parentRow = $(this).closest('tr'),
         tableBody = parentRow.closest('tbody'),
-        tdName = parentRow.closest(('tbody')),
-        tdData = parentRow.children('td.data');
+        tdName = parentRow.closest(('td.name')),
+        tdData = parentRow.children('td.data'),
+        tdPrice = parentRow.children('td.price');
 
     if (isEditing) {
         var
             nameInput = tableBody.find('input[name="name"]'),
             dataInput = tableBody.find('input[name="data"]'),
+            priceInput = tableBody.find('input[name="price"]'),
             tdNameInput = nameInput.closest('td'),
             tdDataInput = dataInput.closest('td'),
+            tdPriceInput = priceInput.closest('td'),
             currentEdit = tdDataInput.parent().find('td.edit');
 
         if ($(this).is(currentEdit)) {
             // Save new values as static html
             var
                 tdNameValue = nameInput.prop('value'),
-                tdDataValue = dataInput.prop('value');
+                tdDataValue = dataInput.prop('value'),
+                tdPriceValue = priceInput.prop('value');
 
             tdNameInput.empty();
             tdDataInput.empty();
+            tdPriceInput.empty();
 
             tdNameInput.html(tdNameValue);
             tdDataInput.html(tdDataValue);
+            tdPriceInput.html(tdPriceValue);
 
         } else {
             // Restore previous html values
@@ -216,7 +222,7 @@ $(document).ready(function () {
 
             tdNameInput.html(newNameInput);
             tdDataInput.html(newDataInput);
-            tdPriceInput.htm(newPriceInput);
+            tdPriceInput.html(newPriceInput);
 
             // Показать статическую строку
             currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');

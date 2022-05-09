@@ -3,7 +3,9 @@
 {% block content %}
     {% load static %}
     {% block stylesheet %}
+        <!--Панель заказа-->
         <link href="{% static 'file/panel/css/input-edit.css' %}" rel="stylesheet">
+        <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
     {% endblock stylesheet %}
     <main>
         <div class="container-fluid">
@@ -116,7 +118,6 @@
                                                 Итого
                                             </div>
                                             <div class="order-total-right-text">
-                                                <input id="total_cart" type="hidden" value="{{ zakaz.cart }}">
                                                 <cart style="font-size: 18px;font-weight: 700"></cart>
                                                 р.
                                             </div>
@@ -185,9 +186,13 @@
         </div>
     </main>
     {% block js %}
-        <!--Редактировать поля заказа-->
+        <!--Редактировать поля заказа и добавить поле заказа-->
         <script src="{% static 'file/panel/js/order/add_row.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder.js' %}"></script>
         <script src="{% static 'file/panel/js/order/editorder1.js' %}"></script>
+        <!--Выбор продукта в добавленном поле заказа-->
+        <script src="{% static 'file/panel/js/order/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'file/panel/js/order/chosen.jquery.min.js' %}"></script>
+        <script src="{% static 'file/panel/js/order/chosen.js' %}"></script>
     {% endblock %}
 {% endblock content %}

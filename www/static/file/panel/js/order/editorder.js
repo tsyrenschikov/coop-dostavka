@@ -36,14 +36,25 @@ function nal(money) {
         total_price = cart.toFixed(2);
         money_nal = Number(nal) - Number(total_price);
         $('#total_price').text(total_price + ' ' + 'р.');
-        $('total_change').text(money_nal);
+
+        if (money_nal > nal) {
+            $('total_change').text('проверка');
+        } else {
+            $('total_change').text(money_nal.toFixed(2));
+        }
     } else {
         $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
         $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
         total_price = Number(cart.toFixed(2)) + Number(delivery_price);
         money_nal = (Number(nal) - Number(total_price));
         $('#total_price').text(total_price + ' ' + 'р.');
-        $('total_change').text(money_nal);
+        $('total_change').text(money_nal.toFixed(2));
+
+        if (money_nal > nal) {
+            $('total_change').text('проверка');
+        } else {
+            $('total_change').text(money_nal.toFixed(2));
+        }
     }
 };
 

@@ -61,7 +61,7 @@ function nal(money) {
             $('total_change_text').text('');
             $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         }
-        if (isNaN()) {
+        if (isNaN(cart)) {
             $('#total_price').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
             $('total_change').addClass('badge-item  order-total-right-text').text('Товар редактируется!');
             $('cart').addClass('badge-item  order-total-right-text').text('Товар редактируется!');

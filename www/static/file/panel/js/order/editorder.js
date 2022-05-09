@@ -56,20 +56,28 @@ $(document).ready(function () {
 $(document).on('click', '.edit', function () {
     var parentRow = $(this).closest('tr'),
         tableBody = parentRow.closest('tbody'),
+        tdName = parentRow.closest(('tbody')),
         tdData = parentRow.children('td.data');
 
     if (isEditing) {
         var
+            nameInput = tableBody.find('input[name="name"]'),
             dataInput = tableBody.find('input[name="data"]'),
+            tdNameInput = nameInput.closest('td'),
             tdDataInput = dataInput.closest('td'),
             currentEdit = tdDataInput.parent().find('td.edit');
 
         if ($(this).is(currentEdit)) {
             // Save new values as static html
             var
+                tdNameValue = nameInput.prop('value'),
                 tdDataValue = dataInput.prop('value');
-                tdDataInput.empty();
-                tdDataInput.html(tdDataValue);
+
+            tdNameInput.empty();
+            tdDataInput.empty();
+
+            tdNameInput.html(tdNameValue);
+            tdDataInput.html(tdDataValue);
 
         } else {
             // Restore previous html values
@@ -172,39 +180,72 @@ $(document).on('click', '.trash', function () {
 });
 
 //Добавить строку товара
-$(document).ready(function() {
+$(document).ready(function () {
     $('.new-row').off().on('click', function () {
         var tableBody = $(this).closest('tbody'),
             trNew =
                 '<tr>' +
                 '<td class="c"></td>' +
-                '<td class="name"></td>' +
-                '<td class="data"><input type="text" name="data" value=""></td>' +
-                '<td></td>' +
-                '<td></td>' +
-                '<td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
-                '<td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
+                '<td class="name"><input type="text" name="name" value=""></td>' +
+                '<td class="data text-center"><input type="text" name="data" value=""></td>' +
+                '<td class="price text-center"><input type="text" name="price" value=""></td>' +
+                '<td class="text-center"></td>' +
+                '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
+                '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
 
         if (isEditing) {
-            var
+            var nameInput = tableBody.find('input[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),
+                priceInput = tableBody.find('input[name="price"]'),
+                tdNameInput = nameInput.closest('td'),
                 tdDataInput = dataInput.closest('td'),
+                tdPriceInput = priceInput.closest('td'),
                 currentEdit = tdDataInput.parent().find('td.edit');
 
-            // Get current input values for newly created input cases
+            // Получить текущие входные значения для вновь созданных входных вариантов
             var
-                newDataInput = dataInput.prop('value');
+                newNameInput = nameInput.prop('value'),
+                newDataInput = dataInput.prop('value'),
+                newPriceInput = priceInput.prop('value');
 
-            // Restore previous html values
+            // Восстановить предыдущие значения html
+            tdNameInput.empty();
             tdDataInput.empty();
-            tdDataInput.html(newDataInput);
+            tdPriceInput.empty();
 
-            // Display static row
-            currentEdit.html('Edit');
+            tdNameInput.html(newNameInput);
+            tdDataInput.html(newDataInput);
+            tdPriceInput.htm(newPriceInput);
+
+            // Показать статическую строку
+            currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         }
 
-        isEditing = false;
+        isEditing = true;
         tableBody.find('tr:last').before(trNew);
+        items.length = 0;
+        items = [];
+        counter = -1,
+            cart = 0;
+        $('#mytable tr').each(function () {
+            var count = $(this).find("td").eq(2).html(),
+                price = $(this).find("td").eq(3).html(),
+                sum = ((parseFloat(count)) * (parseFloat(price)));
+            items.push(sum);
+            $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+            counter += 1;
+            $(this).find('td.c').eq(0).text(counter)
+        });
+        items.splice(0, 1);
+        var lastElementIndex = items.length - 1;
+        items.splice(lastElementIndex, 1);
+        $.each(items, function (index, value) {
+            cart += value;
+        });
+        $('cart').text(cart.toFixed(2));
+        $(document).ready(function () {
+            nal();
+        });
     });
 });

@@ -37,7 +37,6 @@ function nal(money) {
         total_price = cart.toFixed(2);
         money_nal = Number(nal) - Number(total_price);
         $('#total_price').text(total_price + ' ' + 'р.');
-
         if (cart > nal) {
             money_nal = Number(total_price) - Number(nal);
             $('total_change_text').text('Клиент должен' + ':' + ' ');
@@ -52,7 +51,6 @@ function nal(money) {
         total_price = Number(cart.toFixed(2)) + Number(delivery_price);
         money_nal = (Number(nal) - Number(total_price));
         $('#total_price').text(total_price + ' ' + 'р.');
-
         if (cart > nal) {
             money_nal = Number(total_price) - Number(nal);
             $('total_change_text').text('Клиент должен' + ':' + ' ');

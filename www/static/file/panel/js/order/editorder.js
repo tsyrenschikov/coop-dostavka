@@ -40,9 +40,11 @@ function nal(money) {
 
         if (cart > nal) {
             money_nal=Number(total_price)-Number(nal);
-            $('total_change').text('Клиент должен' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change_text').text('Клиент должен' + ':' + ' ' );
+            $('total_change').css({'background-color': 'green', 'color': '#ffffff'}).text( money_nal.toFixed(2) + ' ' + 'р.');
         } else {
-            $('total_change').text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change_text').text('');
+            $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         }
     } else {
         $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
@@ -53,9 +55,11 @@ function nal(money) {
 
         if (cart > nal) {
             money_nal=Number(total_price)-Number(nal);
-            $('total_change').text('Клиент должен' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change_text').text('Клиент должен' + ':' + ' ' );
+            $('total_change').css({'background-color': 'green', 'color': '#ffffff'}).text( money_nal.toFixed(2) + ' ' + 'р.');
         } else {
-            $('total_change').text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
+            $('total_change_text').text('');
+            $('total_change').css({'background-color': '#f9f9f9', 'color': '#2b2f4c'}).text('Сдача клиенту' + ':' + ' ' + money_nal.toFixed(2) + ' ' + 'р.');
         }
     }
 };

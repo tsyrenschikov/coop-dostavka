@@ -33,10 +33,10 @@ function nal(money) {
         delivery_price = $('#delivery_price').val(),
         delivery_price_min = $('#delivery_price_min').val();
     if (isNaN(cart)) {
-        $('#total_price').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
-        $('total_change').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
-        $('cart').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
-        $('#delivery').css({'background-color': '#17a2b8', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Товар редактируется!');
+        $('#total_price').text('заказ редактируется!');
+        $('total_change').text('заказ редактируется!');
+        $('cart').text('заказ редактируется!');
+        $('#delivery').text('заказ редактируется!');
     } else {
         if (cart >= delivery_price_min) {
             $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
@@ -217,14 +217,18 @@ $(document).ready(function () {
             trNew =
                 '<tr>' +
                 '<td class="c"></td>' +
-                '<td class="name"><input type="text" name="name" value=""></td>' +
+                '<td class="name">' +
+                '<select required class="form-control chosen deselect" data-placeholder="Выберите опубликованный продукт" name="names" id="names">\n' +
+                '          <option value="" disabled selected hidden></option>\n' +
+                '          <option value="1">1</option>\n' +
+                '          <option value="2">2</option>\n' +
+                '        </select></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +
                 '<td class="price text-center"><input type="text" name="price" value=""></td>' +
                 '<td class="text-center"></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
-
         if (isEditing) {
             var nameInput = tableBody.find('input[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),

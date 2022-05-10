@@ -99,13 +99,13 @@
                                                                 <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>
                                                             </tr>
                                                         {% endfor %}
-                                                        <input type="button" id="btnAdd" value="Add New Row"></button>
-                                                        <!--<tr class="add-row">
+                                                        <!--<input type="button" id="btnAdd" value="Добавить позицию"class="fa fa-plus btn btn-info" aria-hidden="false">-->
+                                                        <tr class="add-row">
                                                             <td colspan="7" class="new-row">
                                                                 <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>
                                                                 Добавить позицию
                                                             </td>
-                                                        </tr>-->
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -193,6 +193,5 @@
         <!--Выбор продукта в добавленном поле заказа-->
         <script src="{% static 'file/panel/js/order/jquery-ui.min.js' %}"></script>
         <script src="{% static 'file/panel/js/order/chosen.jquery.min.js' %}"></script>
-        <script src="{% static 'file/panel/js/order/chosen.js' %}"></script>
     {% endblock %}
 {% endblock content %}

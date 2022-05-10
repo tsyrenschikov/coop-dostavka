@@ -209,41 +209,44 @@ $(document).on('click', '.trash', function () {
         nal();
     });
 });
-$(document).ready(function () {
-    $("#btnAdd").off().on("click", function () {
-        var $tableBody = $('#mytable').find("tbody"),
-            $trLast = $tableBody.find("tr:last"),
-            $trNew = $trLast.clone();
-        $trLast.after($trNew);
-        items.length = 0;
-        items = [];
-        counter = -1,
-            cart = 0;
-        $('#mytable tr').each(function () {
-            var count = $(this).find("td").eq(2).html(),
-                price = $(this).find("td").eq(3).html(),
-                sum = ((parseFloat(count)) * (parseFloat(price)));
-            items.push(sum);
-            $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
-            counter += 1;
-            $(this).find('td.c').eq(0).text(counter)
-        });
-        items.splice(0, 1);
-        var lastElementIndex = items.length - 1;
-        items.splice(lastElementIndex, 1);
-        $.each(items, function (index, value) {
-            cart += value;
-        });
-        $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-        $(document).ready(function () {
-            nal();
-        });
-    });
+//Эксперимент
+//$(document).ready(function () {
+//$("#btnAdd").off().on("click", function () {
+//var $tableBody = $('#mytable').find("tbody"),
+//$trLast = $tableBody.find("tr:last"),
+//$trNew = $trLast.clone();
+//$trLast.after($trNew);
+//items.length = 0;
+//items = [];
+//counter = -1,
+//    cart = 0;
+//$('#mytable tr').each(function () {
+//    var count = $(this).find("td").eq(2).html(),
+//        price = $(this).find("td").eq(3).html(),
+//        sum = ((parseFloat(count)) * (parseFloat(price)));
+//     items.push(sum);
+//    $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
+//    counter += 1;
+//    $(this).find('td.c').eq(0).text(counter)
+// });
+//items.splice(0, 1);
+//var lastElementIndex = items.length - 1;
+//items.splice(lastElementIndex, 1);
+//$.each(items, function (index, value) {
+//    cart += value;
+//});
+//$('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
+//$(document).ready(function () {
+//     nal();
+//});
+//});
 
-});
+//});
+
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
+
         var tableBody = $(this).closest('tbody'),
             trNew =
                 '<tr>' +
@@ -312,6 +315,10 @@ $(document).ready(function () {
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
         $(document).ready(function () {
             nal();
+        });
+        $(".chosen").chosen({
+            allow_single_deselect: true,
+            no_results_text: "Нет результатов для: "
         });
     });
 });

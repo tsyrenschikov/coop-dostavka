@@ -252,7 +252,7 @@ $(document).ready(function () {
                 '<tr>' +
                 '<td class="c"></td>' +
                 '<td class="name">' +
-                '<select required class="form-control chosen deselect" data-placeholder="Выберите опубликованный продукт" name="names" id="names">\n' +
+                '<select required  class="form-control chosen deselect" data-placeholder="Выберите опубликованный продукт" name="names" id="names">\n' +
                 '          <option value="" disabled selected hidden></option>\n' +
                 '          <option value="1">1</option>\n' +
                 '          <option value="2">2</option>\n' +
@@ -293,6 +293,10 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
+         $(".chosen").chosen({
+            allow_single_deselect: true,
+            no_results_text: "Нет результатов для: "
+        });
         items.length = 0;
         items = [];
         counter = -1,
@@ -315,10 +319,6 @@ $(document).ready(function () {
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
         $(document).ready(function () {
             nal();
-        });
-        $(".chosen").chosen({
-            allow_single_deselect: true,
-            no_results_text: "Нет результатов для: "
         });
     });
 });

@@ -209,7 +209,12 @@ $(document).on('click', '.trash', function () {
         nal();
     });
 });
-
+$("#btnAdd").on("click", function() {
+  var $tableBody = $('#mytable').find("tbody"),
+    $trLast = $tableBody.find("tr:last"),
+    $trNew = $trLast.clone();
+  $trLast.after($trNew);
+});
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {

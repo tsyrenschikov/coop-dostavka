@@ -251,12 +251,17 @@ $(document).ready(function () {
             trNew =
                 '<tr>' +
                 '<td class="c"></td>' +
-                '<td class="name">' +
-                '<select required  class="form-control chosen deselect" data-placeholder="Выберите опубликованный продукт" name="names" id="names">\n' +
-                '          <option value="" disabled selected hidden></option>\n' +
-                '          <option value="1">1</option>\n' +
-                '          <option value="2">2</option>\n' +
-                '        </select></td>' +
+                '<td class="name"><div class="form-group">\n' +
+                '        <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect" name="names" id="names">\n' +
+                '          <option value></option>\n' +
+                '          <option value="Sara Smith">Бананы</option>\n' +
+                '          <option value="Robert Blockh">Рыба</option>\n' +
+                '          <option value="Laura Smith">Огурцы</option>\n' +
+                '          <option value="Rene Yamison">Помидоры</option>\n' +
+                '          <option value="Clara Stuarth">Колбаса</option>\n' +
+                '          <option value="Ami Ashton">Капуста</option>\n' +
+                '        </select>\n' +
+                '      </div></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +
                 '<td class="price text-center"><input type="text" name="price" value=""></td>' +
                 '<td class="text-center"></td>' +
@@ -296,7 +301,7 @@ $(document).ready(function () {
          $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
-        });
+        }).css({"width":"400px","z-index":99999});
         items.length = 0;
         items = [];
         counter = -1,

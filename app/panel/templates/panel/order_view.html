@@ -20,9 +20,9 @@
                     <div class="card card-static-2 mb-30">
                         <form method="post">
                             {% csrf_token %}
-                            <div class="card-title-2">
+                            <div class="card-title-2">{{ products }}
                                 <h2 class="title1458">Детализация заказа</h2>
-                                <span class="order-id">Заказ #{{ zakaz.id }}</span>
+                                <span class="order-id">Заказ{{ local }} #{{ zakaz.id }}</span>
                             </div>
                             <div class="invoice-content">
                                 <div class="row">

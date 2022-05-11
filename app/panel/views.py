@@ -812,48 +812,22 @@ def order_view(request,id):
         if prod['id'] == address:
             for i in prod['products']:
                 list_product.append(i)
-    if request.user.is_authenticated and request.user.is_superuser:
-        for u in users:
-            for c, n, slug_p in shops:
-                    if request.user.id == c and u == c:
-                        local = Locations.objects.values('name','delivery_price','delivery_price_min').filter(slug=slug_p)
     product_list = list_product[0::3]
     count_list = list_product[1::3]
     price_list = list_product[2::3]
     zakaz_list = list(zip(count_list, price_list))
     zakaz_dict = dict(zip(product_list, zakaz_list))
-    if request.method == 'POST':
-        phone = request.POST.get('phone')
-        street = request.POST.get('street')
-        status = request.POST.get('status')
-    return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product,'local':local})
 
-def order_edit(request,id):
-
-    try:
-        product = orders.objects.values('id', 'products').order_by('id')
-        address = int([i for i in str(request.path).split('/') if i][-1])
-        zakaz=orders.objects.get(id=id)
-        list_product = []
-        for prod in product:
-            if prod['id'] == address:
-                for i in prod['products']:
-                    list_product.append(i)
-        product_list = list_product[0::3]
-        count_list = list_product[1::3]
-        price_list = list_product[2::3]
-        zakaz_list = list(zip(count_list, price_list))
-        zakaz_dict = dict(zip(product_list, zakaz_list))
-        if request.method == "POST":
-            zakaz.name = request.POST.get("name")
-            zakaz.address=request.POST.get('address')
-            zakaz.save()
-            return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
-        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
-    except orders.DoesNotExist:
-        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product})
-
-    return render(request, 'panel/order_view.html', {})
+    if request.user.is_authenticated or request.user.is_superuser:
+        for u in users:
+            for c, n, slug_p in shops:
+                    if request.user.id == c and u == c:
+                        name=eval(slug_p)
+                        local = Locations.objects.values('name','delivery_price','delivery_price_min').filter(slug=slug_p)
+                        shop_p=name.objects.values('name','price').filter(status=True)
+                        return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+    else:
+        return redirect('/login')
 
 def delete_order(request, id):
     zakaz = ''

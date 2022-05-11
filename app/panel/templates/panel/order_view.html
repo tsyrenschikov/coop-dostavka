@@ -22,7 +22,7 @@
                             {% csrf_token %}
                             <div class="card-title-2">{{ products }}
                                 <h2 class="title1458">Детализация заказа</h2>
-                                <span class="order-id">Заказ{{ local }} #{{ zakaz.id }}</span>
+                                <span class="order-id">Заказ #{{ zakaz.id }}</span>
                             </div>
                             <div class="invoice-content">
                                 <div class="row">
@@ -111,6 +111,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                {% for p in shop_p %}
+                                    <input type="hidden" class="products" id="products" name="products[{{ p.name }} {{ p.price }}]" value="{{ p.name }} {{ p.price }}">
+                                {% endfor %}
                                     <div class="col-lg-7"></div>
                                     <div class="col-lg-5">
                                         <div class="order-total-dt">

@@ -5,6 +5,7 @@ var isEditing = false,
     delivery = 0,
     money_nal = 0,
     total_price = 0,
+    products = [],
     items = [];
 
 $('#mytable tr').each(function () {
@@ -24,7 +25,6 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2) + 'р.');
-console.log(cart)
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
 function nal(money) {
@@ -213,8 +213,12 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-
-        var tableBody = $(this).closest('tbody'),
+        $('input.products').each(function () {
+            products.push($(this).val());
+        });
+        console.log(products)
+        var
+            tableBody = $(this).closest('tbody'),
             trNew =
                 '<tr>' +
                 '<td class="c"></td>' +
@@ -262,7 +266,7 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
-         $(".chosen").chosen({
+        $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });

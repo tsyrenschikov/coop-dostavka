@@ -112,7 +112,8 @@
                                         </div>
                                     </div>
                                 {% for p in shop_p %}
-                                    <input type="hidden" class="products" id="products" name="products[{{ p.name }} {{ p.price }}]" value="{{ p.name }} {{ p.price }}">
+                                    <input type="hidden" class="products" value="{{ p.name }}">
+                                    <input type="hidden" class="products" value="{{ p.price }}">
                                 {% endfor %}
                                     <div class="col-lg-7"></div>
                                     <div class="col-lg-5">

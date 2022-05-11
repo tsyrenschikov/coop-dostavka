@@ -209,39 +209,6 @@ $(document).on('click', '.trash', function () {
         nal();
     });
 });
-//Эксперимент
-//$(document).ready(function () {
-//$("#btnAdd").off().on("click", function () {
-//var $tableBody = $('#mytable').find("tbody"),
-//$trLast = $tableBody.find("tr:last"),
-//$trNew = $trLast.clone();
-//$trLast.after($trNew);
-//items.length = 0;
-//items = [];
-//counter = -1,
-//    cart = 0;
-//$('#mytable tr').each(function () {
-//    var count = $(this).find("td").eq(2).html(),
-//        price = $(this).find("td").eq(3).html(),
-//        sum = ((parseFloat(count)) * (parseFloat(price)));
-//     items.push(sum);
-//    $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
-//    counter += 1;
-//    $(this).find('td.c').eq(0).text(counter)
-// });
-//items.splice(0, 1);
-//var lastElementIndex = items.length - 1;
-//items.splice(lastElementIndex, 1);
-//$.each(items, function (index, value) {
-//    cart += value;
-//});
-//$('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-//$(document).ready(function () {
-//     nal();
-//});
-//});
-
-//});
 
 //Добавить строку товара
 $(document).ready(function () {
@@ -257,9 +224,6 @@ $(document).ready(function () {
                 '          <option value="Sara Smith">Бананы</option>\n' +
                 '          <option value="Robert Blockh">Рыба</option>\n' +
                 '          <option value="Laura Smith">Огурцы</option>\n' +
-                '          <option value="Rene Yamison">Помидоры</option>\n' +
-                '          <option value="Clara Stuarth">Колбаса</option>\n' +
-                '          <option value="Ami Ashton">Капуста</option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +

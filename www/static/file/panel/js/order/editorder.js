@@ -216,7 +216,6 @@ $(document).ready(function () {
         $('input.products').each(function () {
             products.push($(this).val());
         });
-        console.log(products)
         var
             tableBody = $(this).closest('tbody'),
             trNew =

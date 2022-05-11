@@ -252,7 +252,7 @@ $(document).ready(function () {
                 '<tr>' +
                 '<td class="c"></td>' +
                 '<td class="name"><div class="form-group">\n' +
-                '        <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect" name="names" id="names">\n' +
+                '        <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
                 '          <option value></option>\n' +
                 '          <option value="Sara Smith">Бананы</option>\n' +
                 '          <option value="Robert Blockh">Рыба</option>\n' +
@@ -301,7 +301,7 @@ $(document).ready(function () {
          $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
-        }).css({"width":"400px","z-index":99999});
+        });
         items.length = 0;
         items = [];
         counter = -1,

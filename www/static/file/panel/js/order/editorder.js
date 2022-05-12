@@ -209,32 +209,15 @@ $(document).on('click', '.trash', function () {
         nal();
     });
 });
+var add_product=$('#add_product').attr({'hidden': true});
 
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-        $('input.products').each(function () {
-            products.push($(this).val());
-        });
+            var trNew = $('#add_product').attr({'hidden': false});
+
         var
-            tableBody = $(this).closest('tbody'),
-            trNew =
-                '<tr>' +
-                '<td class="c"></td>' +
-                '<td class="name"><div class="form-group">\n' +
-                '        <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
-                '          <option value></option>\n' +
-                '          <option value="Sara Smith">Бананы</option>\n' +
-                '          <option value="Robert Blockh">Рыба</option>\n' +
-                '          <option value="Laura Smith">Огурцы</option>\n' +
-                '        </select>\n' +
-                '      </div></td>' +
-                '<td class="data text-center"><input type="text" name="data" value=""></td>' +
-                '<td class="price text-center"><input type="text" name="price" value=""></td>' +
-                '<td class="text-center"></td>' +
-                '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
-                '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
-                '</tr>';
+            tableBody = $(this).closest('tbody');
         if (isEditing) {
             var nameInput = tableBody.find('input[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),

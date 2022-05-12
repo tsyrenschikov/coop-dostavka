@@ -99,22 +99,38 @@
                                                                 <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>
                                                             </tr>
                                                         {% endfor %}
-                                                            <tr class="add-row">
-                                                                <td colspan="7" class="new-row">
-                                                                    <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>
-                                                                    Добавить позицию
-                                                                </td>
-                                                            </tr>
+
+                                                        <tr id="add_product">
+                                                            <td class="c"></td>
+                                                            <td class="name">
+                                                                <div class="form-group">
+                                                                    <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">
+                                                                        <option value></option>
+                                                                        {% for p in shop_p %}
+                                                                        <option value="{{ p.name }}">{{ p.name }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td class="data text-center"><input type="text" name="data" value=""></td>
+                                                            <td class="price text-center"><input type="text" name="price" value=""></td>
+                                                            <td class="text-center"></td>
+                                                            <td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>
+                                                            <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+
+                                                        <tr class="add-row">
+                                                            <td colspan="7" class="new-row">
+                                                                <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>
+                                                                Добавить позицию
+                                                            </td>
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                {% for p in shop_p %}
-                                    <input type="hidden" class="products" value="{{ p.name }}">
-                                    <input type="hidden" class="products" value="{{ p.price }}">
-                                {% endfor %}
                                     <div class="col-lg-7"></div>
                                     <div class="col-lg-5">
                                         <div class="order-total-dt">

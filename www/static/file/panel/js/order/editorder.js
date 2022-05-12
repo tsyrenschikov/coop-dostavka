@@ -209,7 +209,6 @@ $(document).on('click', '.trash', function () {
         nal();
     });
 });
-var add_product=$('#add_product').hide();
 
 //Добавить строку товара
 $(document).ready(function () {

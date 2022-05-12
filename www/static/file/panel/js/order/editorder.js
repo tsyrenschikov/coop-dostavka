@@ -227,7 +227,7 @@ $(document).ready(function () {
                 '        </select>\n' +
                 '      </div></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +
-                '<td class="price text-center"><input id="selectprice" type="text" name="price" value=""></td>' +
+                '<td class="price text-center"><input id="selectprice" type="text" name="price" value="" disabled></td>' +
                 '<td class="text-center"></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -265,14 +265,9 @@ $(document).ready(function () {
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
         $.each(products, function (index, value) {
-            if(index % 2 ==0 && index !=0){
-           $('#select').append('<option value="' + value + '">' + value  + '</option>');
-           };
-            if(index %2 !=0 && index ==0){
-                $('#selectprice').attr({
-               'value':value,
-           });
-            };
+            if (index % 2 == 0) {
+                $('#select').append('<option data-value="'+ products[index+1] +'" value="' + value + '">' + value + '</option>');
+            }
         });
         $(".chosen").chosen({
             allow_single_deselect: true,

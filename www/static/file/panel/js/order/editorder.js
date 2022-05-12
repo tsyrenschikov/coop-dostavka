@@ -265,10 +265,14 @@ $(document).ready(function () {
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
         $.each(products, function (index, value) {
+            if(index % 2 ==0 && index !=0){
            $('#select').append('<option value="' + value + '">' + value  + '</option>');
-           $('#selectprice').attr({
+           };
+            if(index %2 !=0 && index ==0){
+                $('#selectprice').attr({
                'value':value,
            });
+            };
         });
         $(".chosen").chosen({
             allow_single_deselect: true,

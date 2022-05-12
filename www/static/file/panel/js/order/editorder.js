@@ -214,10 +214,8 @@ var add_product=$('#add_product').attr({'hidden': true});
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-            var trNew = $('#add_product').attr({'hidden': false});
-
-        var
-            tableBody = $(this).closest('tbody');
+           var trNew = $('#add_product').attr({'hidden': false}),
+               tableBody = $(this).closest('tbody');
         if (isEditing) {
             var nameInput = tableBody.find('input[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),

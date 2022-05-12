@@ -105,9 +105,8 @@
                                                             <td class="name">
                                                                 <div class="form-group">
                                                                     <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">
-                                                                        <option value></option>
                                                                         {% for p in shop_p %}
-                                                                        <option value="{{ p.name }}">{{ p.name }}</option>
+                                                                            <option value="{{ p.name }}">{{ p.name }}</option>
                                                                         {% endfor %}
                                                                     </select>
                                                                 </div>

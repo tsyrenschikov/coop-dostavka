@@ -213,7 +213,7 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-         $('input.products').each(function () {
+        $('input.products').each(function () {
             products.push($(this).val());
         });
         var
@@ -222,9 +222,8 @@ $(document).ready(function () {
                 '<tr>' +
                 '<td class="c"></td>' +
                 '<td class="name"><div class="form-group">\n' +
-                '        <select data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
+                '        <select id="select" data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
                 '          <option value></option>\n' +
-                '          <option value="Sara Smith">Бананы</option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +
@@ -233,6 +232,8 @@ $(document).ready(function () {
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
+
+
         if (isEditing) {
             var nameInput = tableBody.find('input[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),
@@ -263,6 +264,9 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
+        $.each(products, function (index, value) {
+           $('#select').append('<option value="' + value + '">' + value + '</option>');
+        });
         $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "

@@ -6,7 +6,7 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
-    str = '',
+    val=0,
     items = [];
 
 $('#mytable tr').each(function () {
@@ -153,7 +153,7 @@ $(document).on('click', '.edit', function () {
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {
-            $(this).find('td').eq(4).text('Сохраните');
+            $(this).find('td').eq(4).text('Отредактировать');
         }
     });
     items.splice(0, 1);
@@ -230,8 +230,8 @@ $(document).ready(function () {
                 '        </select>\n' +
                 '      </div></td>' +
                 '<td class="data text-center"><input type="text" name="data" value=""></td>' +
-                '<td class="price text-center"><input id="selectprice" type="text" name="price" value="" disabled></td>' +
-                '<td class="text-center"></td>' +
+                '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
+                '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
@@ -277,11 +277,11 @@ $(document).ready(function () {
             no_results_text: "Нет результатов для: "
         });
         $('select').change(function () {
-            var $option = $(this).find('option:selected');
-            var value = $option.attr('data');
+            var option = $(this).find('option:selected');
+            val = option.attr('data');
             $('#selectprice').attr({
-                'value':value,
-            })
+                'value': val + ' ' +'р.',
+            });
         });
 
         items.length = 0;

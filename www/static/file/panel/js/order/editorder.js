@@ -6,6 +6,7 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
+    str = '',
     items = [];
 
 $('#mytable tr').each(function () {
@@ -116,8 +117,6 @@ $(document).on('click', '.edit', function () {
             tdDataInput.html(tempDataValue);
 
         }
-
-
         // Display static row
         currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         isEditing = false;
@@ -144,7 +143,6 @@ $(document).on('click', '.edit', function () {
         tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
 
     }
-
     items.length = 0;
     items = [];
     cart = 0;
@@ -215,12 +213,6 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-        $("select option:selected").each(function () {
-            var setPrice = ($(this).attr('data-value'));
-            $('#selectprice').attr({
-                'value': setPrice,
-            });
-        });
         products.length = 0;
         products = [];
         $('#select').empty();
@@ -275,21 +267,23 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
-        $("select option:selected").each(function () {
-            var setPrice = ($(this).attr('data-value'));
-            $('#selectprice').attr({
-                'value': setPrice,
-            });
-        });
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
-                $('select').append('<option data-value="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');
+                $('select').append('<option data="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');
             }
         });
         $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });
+        $('select').change(function () {
+            var $option = $(this).find('option:selected');
+            var value = $option.attr('data');
+            $('#selectprice').attr({
+                'value':value,
+            })
+        });
+
         items.length = 0;
         items = [];
         counter = -1,
@@ -303,6 +297,7 @@ $(document).ready(function () {
             counter += 1;
             $(this).find('td.c').eq(0).text(counter)
         });
+
         items.splice(0, 1);
         var lastElementIndex = items.length - 1;
         items.splice(lastElementIndex, 1);
@@ -310,6 +305,7 @@ $(document).ready(function () {
             cart += value;
         });
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
+
         $(document).ready(function () {
             nal();
         });

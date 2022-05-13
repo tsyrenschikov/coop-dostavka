@@ -121,6 +121,7 @@ $(document).on('click', '.edit', function () {
         // Display static row
         currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         isEditing = false;
+
     } else {
         // Display editable input row
         isEditing = true;
@@ -143,6 +144,7 @@ $(document).on('click', '.edit', function () {
         tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
 
     }
+
     items.length = 0;
     items = [];
     cart = 0;
@@ -213,8 +215,12 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
-        var sel = $('select option:selected').text();
-        console.log(sel)
+        $("select option:selected").each(function () {
+            var setPrice = ($(this).attr('data-value'));
+            $('#selectprice').attr({
+                'value': setPrice,
+            });
+        });
         products.length = 0;
         products = [];
         $('#select').empty();
@@ -269,6 +275,12 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
+        $("select option:selected").each(function () {
+            var setPrice = ($(this).attr('data-value'));
+            $('#selectprice').attr({
+                'value': setPrice,
+            });
+        });
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
                 $('select').append('<option data-value="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');

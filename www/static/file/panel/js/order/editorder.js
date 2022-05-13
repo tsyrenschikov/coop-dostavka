@@ -213,6 +213,11 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
+        var sel = $('select option:selected').text();
+        console.log(sel)
+        products.length = 0;
+        products = [];
+        $('#select').empty();
         $('input.products').each(function () {
             products.push($(this).val());
         });
@@ -266,7 +271,7 @@ $(document).ready(function () {
         tableBody.find('tr:last').before(trNew);
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
-                $('#select').append('<option data-value="'+ products[index+1] +'" value="' + value + '">' + value + '</option>');
+                $('select').append('<option data-value="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');
             }
         });
         $(".chosen").chosen({

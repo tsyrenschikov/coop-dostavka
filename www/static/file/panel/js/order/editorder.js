@@ -269,8 +269,6 @@ $(document).ready(function () {
                 $('#select').append('<option data-value="'+ products[index+1] +'" value="' + value + '">' + value + '</option>');
             }
         });
-        var sel=$('#select').find(":selected").attr('data-value');
-        console.log(sel)
         $(".chosen").chosen({
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "

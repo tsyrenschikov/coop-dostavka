@@ -6,7 +6,8 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
-    val=0,
+    dataprice=0,
+    textproduct = '',
     items = [];
 
 $('#mytable tr').each(function () {
@@ -238,7 +239,7 @@ $(document).ready(function () {
 
 
         if (isEditing) {
-            var nameInput = tableBody.find('input[name="name"]'),
+            var nameInput = tableBody.find('div'),
                 dataInput = tableBody.find('input[name="data"]'),
                 priceInput = tableBody.find('input[name="price"]'),
                 tdNameInput = nameInput.closest('td'),
@@ -278,10 +279,13 @@ $(document).ready(function () {
         });
         $('select').change(function () {
             var option = $(this).find('option:selected');
-            val = option.attr('data');
+            dataprice = option.attr('data');
+            textproduct = option.text()
+
             $('#selectprice').attr({
-                'value': val + ' ' +'р.',
+                'value': dataprice + ' ' +'р.',
             });
+            $(this).find('td.name').eq(1).text(textproduct);
         });
 
         items.length = 0;

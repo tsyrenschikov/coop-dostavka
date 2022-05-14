@@ -86,7 +86,7 @@ $(document).on('click', '.edit', function () {
 
     if (isEditing) {
         var
-            nameInput = tableBody.find('input[name="name"]'),
+            nameInput = tableBody.find('select[name="name"]'),
             dataInput = tableBody.find('input[name="data"]'),
             priceInput = tableBody.find('input[name="price"]'),
             tdNameInput = nameInput.closest('td'),
@@ -226,7 +226,7 @@ $(document).ready(function () {
                 '<tr>' +
                 '<td class="c"></td>' +
                 '<td class="name"><div class="form-group">\n' +
-                '        <select id="select" data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
+                '        <select name="name" id="select" data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
@@ -239,7 +239,8 @@ $(document).ready(function () {
 
 
         if (isEditing) {
-            var nameInput = tableBody.find('option[name="name"]'),
+            var
+                nameInput = tableBody.find('option[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),
                 priceInput = tableBody.find('input[name="price"]'),
                 tdNameInput = nameInput.closest('td'),

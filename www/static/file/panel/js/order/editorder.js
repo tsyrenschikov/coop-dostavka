@@ -312,7 +312,6 @@ $(document).ready(function () {
             $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
             if (isNaN(sum)) {
                 $(this).find('td').eq(4).text('');
-                console.log(1)
             }
             counter += 1;
             $(this).find('td.c').eq(0).text(counter)

@@ -101,6 +101,7 @@ $(document).on('click', '.edit', function () {
                 tdDataValue = dataInput.prop('value'),
                 tdPriceValue = priceInput.prop('value');
 
+
             tdNameInput.empty();
             tdDataInput.empty();
             tdPriceInput.empty();
@@ -130,6 +131,7 @@ $(document).on('click', '.edit', function () {
         // Display editable input row
         isEditing = true;
         $(this).html('<i class="fa fa-floppy-o" aria-hidden="true"></i>');
+
         var
             tdDataValue = tdData.html();
 
@@ -235,7 +237,7 @@ $(document).ready(function () {
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
-                '<td class="data text-center"><input type="text" name="data" value=""></td>' +
+                '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
@@ -276,11 +278,11 @@ $(document).ready(function () {
         tableBody.find('tr:last').before(trNew);
 
         //Удалить кнопку добавления нового поля
-        tableBody.find('tr.add-row').hide()
+        tableBody.find('tr.add-row').hide();
 
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
-                $('select').append($('<option name="name" value="'+ value.replace(/([="])/g, '') + '" data="' + products[index + 1] + '">' + value + '</option>'));
+                $('select').append($('<option name="name" value="' + value.replace(/([="])/g, '') + '" data="' + products[index + 1] + '">' + value + '</option>'));
             }
         });
         $(".chosen").chosen({
@@ -308,7 +310,7 @@ $(document).ready(function () {
                 sum = ((parseFloat(count)) * (parseFloat(price)));
             items.push(sum);
             $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
-            if(isNaN(sum)){
+            if (isNaN(sum)) {
                 $(this).find('td').eq(4).text('');
                 console.log(1)
             }

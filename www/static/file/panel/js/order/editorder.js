@@ -280,7 +280,7 @@ $(document).ready(function () {
 
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
-                $('select').append('<option name="name" data="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');
+                $('select').append($('<option name="name" value="'+ value.replace(/([="])/g, '') + '" data="' + products[index + 1] + '">' + value + '</option>'));
             }
         });
         $(".chosen").chosen({

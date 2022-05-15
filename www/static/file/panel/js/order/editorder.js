@@ -6,7 +6,7 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
-    dataprice=0,
+    dataprice = 0,
     textproduct = '',
     items = [];
 
@@ -122,11 +122,13 @@ $(document).on('click', '.edit', function () {
         currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         isEditing = false;
 
+        // Добавить позицию (надпись)
+
+
     } else {
         // Display editable input row
         isEditing = true;
         $(this).html('<i class="fa fa-floppy-o" aria-hidden="true"></i>');
-
         var
             tdDataValue = tdData.html();
 
@@ -236,11 +238,16 @@ $(document).ready(function () {
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
-
+            var
+                addrow=
+                    '<td colspan="7" class="new-row">\n' +
+                    '   <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>\n' +
+                    '       Добавить позицию\n' +
+                    '</td>';
 
         if (isEditing) {
             var
-                nameInput = tableBody.find('option[name="name"]'),
+                nameInput = tableBody.find('select:option[name="name"]'),
                 dataInput = tableBody.find('input[name="data"]'),
                 priceInput = tableBody.find('input[name="price"]'),
                 tdNameInput = nameInput.closest('td'),
@@ -267,8 +274,11 @@ $(document).ready(function () {
             currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         }
 
+
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
+        tableBody.find('tr:last').before(addrow);
+
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
                 $('select').append('<option name="name" data="' + products[index + 1] + '" value="' + value + '">' + value + '</option>');
@@ -278,16 +288,17 @@ $(document).ready(function () {
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });
-        $('select').change(function () {
-            var option = $(this).find('option:selected');
-            dataprice = option.attr('data');
-            textproduct = option.text()
+        textproduct = '',
+            $('select').change(function () {
+                var option = $(this).find('option:selected');
+                dataprice = option.attr('data');
+                textproduct = option.text()
 
-            $('#selectprice').attr({
-                'value': dataprice + ' ' +'р.',
+                $('#selectprice').attr({
+                    'value': dataprice + ' ' + 'р.',
+                });
+                $(this).find('td.name').eq(1).text(textproduct);
             });
-            $(this).find('td.name').eq(1).text(textproduct);
-        });
 
         items.length = 0;
         items = [];

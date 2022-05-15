@@ -184,12 +184,12 @@ $(document).on('click', '.trash', function () {
 
         if (thisEdit.is(thisEdit)) {
             isEditing = false;
+            tableBody.find('tr.add-row').show();
         }
     }
 
     // Remove selected row from table
     $(this).closest('tr').remove();
-
     items.length = 0;
     items = [];
     counter = -1,

@@ -109,6 +109,7 @@ $(document).on('click', '.edit', function () {
             tdDataInput.html(tdDataValue);
             tdPriceInput.html(tdPriceValue);
 
+
         } else {
             // Restore previous html values
 
@@ -122,8 +123,8 @@ $(document).on('click', '.edit', function () {
         currentEdit.html('<i class="fa fa-pencil" aria-hidden="true"></i>');
         isEditing = false;
 
-        // Добавить позицию (надпись)
-
+        //Добавить кнопку после редактирования нового поля
+        tableBody.find('tr.add-row').show();
 
     } else {
         // Display editable input row
@@ -188,6 +189,7 @@ $(document).on('click', '.trash', function () {
 
     // Remove selected row from table
     $(this).closest('tr').remove();
+
     items.length = 0;
     items = [];
     counter = -1,
@@ -222,6 +224,7 @@ $(document).ready(function () {
         $('input.products').each(function () {
             products.push($(this).val());
         });
+
         var
             tableBody = $(this).closest('tbody'),
             trNew =
@@ -238,12 +241,6 @@ $(document).ready(function () {
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
                 '</tr>';
-            var
-                addrow=
-                    '<td colspan="7" class="new-row">\n' +
-                    '   <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>\n' +
-                    '       Добавить позицию\n' +
-                    '</td>';
 
         if (isEditing) {
             var
@@ -277,7 +274,9 @@ $(document).ready(function () {
 
         isEditing = true;
         tableBody.find('tr:last').before(trNew);
-        tableBody.find('tr:last').before(addrow);
+
+        //Удалить кнопку добавления нового поля
+        tableBody.find('tr.add-row').hide()
 
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
@@ -299,7 +298,6 @@ $(document).ready(function () {
                 });
                 $(this).find('td.name').eq(1).text(textproduct);
             });
-
         items.length = 0;
         items = [];
         counter = -1,

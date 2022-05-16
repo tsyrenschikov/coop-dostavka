@@ -826,6 +826,15 @@ def order_view(request,id):
                     local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
                     shop_p = name.objects.values('name', 'price').filter(status=True)
                     if request.method == 'POST':
+                        phone = request.POST.get('phone')
+                        street = request.POST.get('street')
+                        name = request.POST.getlist('name')
+                        count = request.POST.getlist('count')
+                        price = request.POST.getlist('price')
+                        cart = request.POST.get('cart')
+                        delivery = request.POST.get('delivery')
+                        total_price = request.POST.get('total_price')
+
                         return redirect('order')
                     return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
 

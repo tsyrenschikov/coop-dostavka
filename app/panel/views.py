@@ -825,13 +825,20 @@ def order_view(request,id):
                     name = eval(slug_p)
                     local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
                     shop_p = name.objects.values('name', 'price').filter(status=True)
+                    if request.method == 'POST':
+                        return redirect('order')
                     return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+
                 elif request.user.is_superuser:
                     for prod in product:
                         if prod['id'] == address and slug_p == prod['slug']:
                             name=eval(slug_p)
                             local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
                             shop_p = name.objects.values('name', 'price').filter(status=True)
+                            if request.method == 'POST':
+                                name = request.POST.getlist('name')
+
+                                return redirect('order')
                             return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
     else:
         return redirect('/login')

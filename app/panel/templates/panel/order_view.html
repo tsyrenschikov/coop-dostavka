@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card card-static-2 mb-30">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="card-title-2">{{ products }}
                                 <h2 class="title1458">Детализация заказа</h2>
@@ -175,7 +175,7 @@
                                                     <option value="4">Отменен</option>
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button class="status-btn hover-btn" type="submit">Применить</button>
+                                                    <button class="status-btn hover-btn" type="submit">Сохранить заказ</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -35,11 +35,13 @@ function nal(money) {
         delivery_price = $('#delivery_price').val(),
         delivery_price_min = $('#delivery_price_min').val();
     if (isNaN(cart)) {
-        $('#total_price').text('заказ редактируется!');
-        $('total_change').text('заказ редактируется!');
-        $('cart').text('заказ редактируется!');
-        $('#delivery').text('заказ редактируется!');
+        $('#total_price').text('Отредактируйте поля');
+        $('total_change').text('Отредактируйте поля');
+        $('cart').text('Отредактируйте поля');
+        $('#delivery').text('Отредактируйте поля');
+        $('button').hide();
     } else {
+        $('button').show();
         if (cart >= delivery_price_min) {
             $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
             total_price = cart.toFixed(2);

@@ -826,6 +826,8 @@ def order_view(request,id):
                         local = Locations.objects.values('name','delivery_price','delivery_price_min').filter(slug=slug_p)
                         shop_p=name.objects.values('name','price').filter(status=True)
                         return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                    else:
+                        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
     else:
         return redirect('/login')
 

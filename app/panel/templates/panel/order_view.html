@@ -91,9 +91,9 @@
                                                         {% for key, value in zakaz_dict.items %}
                                                             <tr>
                                                                 <td class="c"></td>
-                                                                <td>{{ key }}</td>
-                                                                <td class="data text-center">{{ value.0 }}</td>
-                                                                <td class="text-center">{{ value.1 }} р.</td>
+                                                                <td name="name" value="{{ key }}">{{ key }}</td>
+                                                                <td name="count" value="{{ value.0 }}" class="data text-center">{{ value.0 }}</td>
+                                                                <td name="price" value="{{ value.1 }}" class="text-center">{{ value.1 }} р.</td>
                                                                 <td class="text-center"></td>
                                                                 <td class="edit text-center"><i class="fa fa-pencil" aria-hidden="true"></i></td>
                                                                 <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>
@@ -122,20 +122,20 @@
                                                 Итого
                                             </div>
                                             <div class="order-total-right-text">
-                                                <cart style="font-size: 18px;font-weight: 700"></cart>
+                                                <cart name="cart" style="font-size: 18px;font-weight: 700"></cart>
                                             </div>
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text">
                                                 Стоимость доставки
                                             </div>
-                                            <div id="delivery"></div>
+                                            <div name="delivery" id="delivery"></div>
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text fsz-18">
                                                 Общая сумма
                                             </div>
-                                            <div id="total_price" class="order-total-right-text fsz-18"></div>
+                                            <div name="total_price" id="total_price" class="order-total-right-text fsz-18"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-7">

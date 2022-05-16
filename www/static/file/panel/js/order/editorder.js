@@ -43,10 +43,10 @@ function nal(money) {
     } else {
         $('button').show();
         if (cart >= delivery_price_min) {
-            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно');
+            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно').attr({ 'value': 0, });
             total_price = cart.toFixed(2);
             money_nal = Number(nal) - Number(total_price);
-            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.');
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');
@@ -57,10 +57,10 @@ function nal(money) {
             }
         } else {
             $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
-            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р');
+            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р').attr({ 'value': delivery_price, });
             total_price = Number(cart.toFixed(2)) + Number(delivery_price);
             money_nal = (Number(nal) - Number(total_price));
-            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.');
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');

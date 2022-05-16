@@ -827,7 +827,9 @@ def order_view(request,id):
                         shop_p=name.objects.values('name','price').filter(status=True)
                         return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
                     else:
-                        return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                        for prod in product:
+                            if prod['id'] == address:
+                                return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
     else:
         return redirect('/login')
 

@@ -803,7 +803,7 @@ def add_order(request):
 def order_view(request,id):
     users = User.objects.values_list('id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
-    product = orders.objects.values('id', 'products').order_by('id')
+    product = orders.objects.values('id', 'products','slug').order_by('id')
     address = int([i for i in str(request.path).split('/') if i][-1])
     local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min')
     zakaz = orders.objects.get(id=id)
@@ -818,18 +818,21 @@ def order_view(request,id):
     zakaz_list = list(zip(count_list, price_list))
     zakaz_dict = dict(zip(product_list, zakaz_list))
 
-    if request.user.is_authenticated or request.user.is_superuser:
+    if request.user.is_authenticated:
         for u in users:
             for c, n, slug_p in shops:
-                    if request.user.id == c and u == c:
-                        name=eval(slug_p)
-                        local = Locations.objects.values('name','delivery_price','delivery_price_min').filter(slug=slug_p)
-                        shop_p=name.objects.values('name','price').filter(status=True)
-                        return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
-                    else:
-                        for prod in product:
-                            if prod['id'] == address:
-                                return render(request, 'panel/order_view.html', {'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                if request.user.id == c and u == c:
+                    name = eval(slug_p)
+                    local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
+                    shop_p = name.objects.values('name', 'price').filter(status=True)
+                    return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                elif request.user.is_superuser:
+                    for prod in product:
+                        if prod['id'] == address and slug_p == prod['slug']:
+                            name=eval(slug_p)
+                            local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
+                            shop_p = name.objects.values('name', 'price').filter(status=True)
+                            return render(request, 'panel/order_view.html', {'shop_p':shop_p,'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
     else:
         return redirect('/login')
 

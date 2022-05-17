@@ -842,67 +842,56 @@ def add_order(request):
 
 def order_view(request, id):
     try:
+        zakaz = orders.objects.get(id=id)
         users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
-    product = orders.objects.values('id', 'products', 'slug').order_by('id')
-    address = int([i for i in str(request.path).split('/') if i][-1])
-    zakaz = orders.objects.get(id=id)
-    list_product = []
-    for prod in product:
-        if prod['id'] == address:
-            for i in prod['products']:
-                list_product.append(i)
-    product_list = list_product[0::3]
-    count_list = list_product[1::3]
-    price_list = list_product[2::3]
-    zakaz_list = list(zip(count_list, price_list))
-    zakaz_dict = dict(zip(product_list, zakaz_list))
+        shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+        product = orders.objects.values('id', 'products', 'slug').order_by('id')
+        address = int([i for i in str(request.path).split('/') if i][-1])
+        list_product = []
+        for prod in product:
+            if prod['id'] == address:
+                for i in prod['products']:
+                    list_product.append(i)
+        product_list = list_product[0::3]
+        count_list = list_product[1::3]
+        price_list = list_product[2::3]
+        zakaz_list = list(zip(count_list, price_list))
+        zakaz_dict = dict(zip(product_list, zakaz_list))
 
-    if request.user.is_authenticated:
-        for u in users:
-            for c, n, slug_p in shops:
-                if request.user.id == c and u == c:
-                    name = eval(slug_p)
-                    local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
-                    shop_p = name.objects.values('name', 'price').filter(status=True)
-                    if request.method == 'POST':
-                        zakaz.phone = request.POST.get('phone')
-                        zakaz.street = request.POST.get('street')
-                        zakaz.objects.save()
-                        return redirect('order')
-                    # if request.method == 'POST':
-                    #    name = request.POST.getlist('name')
-                    #    count = request.POST.getlist('count')
-                    #    price = request.POST.getlist('price')
-                    #    cart = request.POST.get('cart')
-                    #    delivery = request.POST.get('delivery')
-                    #    total_price = request.POST.get('total_price')
+        if request.user.is_authenticated:
+            for u in users:
+                for c, n, slug_p in shops:
+                    if request.user.id == c and u == c:
+                        name = eval(slug_p)
+                        local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
+                        shop_p = name.objects.values('name', 'price').filter(status=True)
+                        if request.method == 'POST':
+                            zakaz.phone = request.POST.get('phone')
+                            zakaz.street = request.POST.get('street')
+                            zakaz.save()
+                            return redirect('order')
+                        # if request.method == 'POST':
+                        #    name = request.POST.getlist('name')
+                        #    count = request.POST.getlist('count')
+                        #    price = request.POST.getlist('price')
+                        #    cart = request.POST.get('cart')
+                        #    delivery = request.POST.get('delivery')
+                        #    total_price = request.POST.get('total_price')
 
-                    #    return redirect('order')
-                    return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                     #    return redirect('order')
+                        return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
 
-                elif request.user.is_superuser:
-                    for prod in product:
-                        if prod['id'] == address and slug_p == prod['slug']:
-                            name = eval(slug_p)
-                            local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
-                            shop_p = name.objects.values('name', 'price').filter(status=True)
-                            if request.method == 'POST':
-                                phone = request.POST.get('phone')
-                                street = request.POST.get('street')
-                                name = request.POST.getlist('name')
-                                count = request.POST.getlist('count')
-                                price = request.POST.getlist('price')
-                                cart = request.POST.get('cart')
-                                delivery = request.POST.get('delivery')
-                                total_price = request.POST.get('total_price')
-
-                                return redirect('order')
-                            return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
-    else:
-        return redirect('/login')
-    except User.DoesNotExist:
-    return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+                    elif request.user.is_superuser:
+                        for prod in product:
+                            if prod['id'] == address and slug_p == prod['slug']:
+                                name = eval(slug_p)
+                                local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
+                                shop_p = name.objects.values('name', 'price').filter(status=True)
+                                return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
+        else:
+            return redirect('/login')
+    except zakaz.DoesNotExist:
+        return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
 
 
 def delete_order(request, id):

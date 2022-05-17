@@ -284,6 +284,7 @@ $(document).ready(function () {
 
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
+                priceproduct=products[index+1];
                 $('#select').append($('<option name="name" value="' + value.replace(/([="])/g, '')+'" data="' + products[index + 1] + '">' + value + '  '+ ' : ' + products[index + 1]+' '+'р.'+ '</option>'));
             }
         });

@@ -4,7 +4,6 @@
     {% load static %}
     {% block stylesheet %}
         <!--Панель заказа-->
-        <link href="{% static 'file/panel/css/input-edit.css' %}" rel="stylesheet">
         <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
     {% endblock stylesheet %}
     <main>
@@ -34,11 +33,7 @@
                                             </br>
                                             <b>Покупатель: </b> {{ zakaz.name }}  </br>
                                             <b>Телефон: </b>
-                                            <label for="inp" class="inp">
-                                                <input name="phone" type="text" id="phone" placeholder="&nbsp;">
-                                                <span class="label" value="{{ zakaz.phone }}">{{ zakaz.phone }}</span>
-                                                <span class="focus-bg"></span>
-                                            </label>
+                                            {{ zakaz.phone }}
                                             </br>
                                             {% if zakaz.email %}
                                                 <b>E-mail:</b> {{ zakaz.email }}
@@ -58,12 +53,7 @@
                                                     <input type="hidden" id="delivery_price_min" value="{{ local.delivery_price_min }}">
                                                 {% endif %}
                                             {% endfor %}
-                                            Улица: <label for="inp" class="inp">
-                                            <input name="street" type="text" id="inp" placeholder="&nbsp;">
-                                            <span class="label">{{ zakaz.address_street }}</span>
-                                            <span class="focus-bg"></span>
-                                        </label>
-                                            <br>
+                                            Улица: {{ zakaz.address_street }}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -92,8 +82,11 @@
                                                             <tr>
                                                                 <td class="c"></td>
                                                                 <td name="name" value="{{ key }}">{{ key }}</td>
+                                                                <input type="hidden" name="products_list" value="{{ key }}">
                                                                 <td name="count" value="{{ value.0 }}" class="data text-center">{{ value.0 }}</td>
+                                                                <input type="hidden" name="products_list" value="{{ value.0 }}">
                                                                 <td name="price" value="{{ value.1 }}" class="text-center">{{ value.1 }} р.</td>
+                                                                <input type="hidden" name="products_list" value="{{ value.1 }}">
                                                                 <td class="text-center"></td>
                                                                 <td class="edit text-center"><i class="fa fa-pencil" aria-hidden="true"></i></td>
                                                                 <td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>

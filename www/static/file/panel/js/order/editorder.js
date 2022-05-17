@@ -295,7 +295,7 @@ $(document).ready(function () {
             $('select').change(function () {
                 var option = $(this).find('option:selected');
                 dataprice = option.attr('data');
-                textproduct = option.text()
+                textproduct = option.text();
 
                 $('#selectprice').attr({
                     'value': dataprice + ' ' + 'р.',

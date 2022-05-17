@@ -834,6 +834,7 @@ def order_view(request,id):
                         cart = request.POST.get('cart')
                         delivery = request.POST.get('delivery')
                         total_price = request.POST.get('total_price')
+                        #local.save(update_fields=['days', 'days_numb'])
 
                         return redirect('order')
                     return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})

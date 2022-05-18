@@ -6,6 +6,7 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
+    productname = '',
     dataprice = 0,
     textproduct = '',
     items = [];
@@ -234,13 +235,16 @@ $(document).ready(function () {
             trNew =
                 '<tr>' +
                 '<td class="c"></td>' +
-                '<td class="name"><div class="form-group">\n' +
+                '<td class="name" id="td_name_product"><div class="form-group">\n' +
                 '        <select name="name" id="select" data-placeholder="--Выберите опубликованный продукт--" class="form-control chosen deselect">\n' +
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
+                '<input class="products_list" type="hidden" name="products_list">\n' +
                 '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
+                '<input type="hidden" id="data_product" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
+                '<input type="hidden" id="price_product" name="products_lis">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -292,17 +296,21 @@ $(document).ready(function () {
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });
-        textproduct = '',
+        textproduct = '';
+        productname = '';
             $('select').change(function () {
                 var option = $(this).find('option:selected');
+                productname = option.attr('value');
                 dataprice = option.attr('data');
                 textproduct = option.text();
 
                 $('#selectprice').attr({
                     'value': dataprice + ' ' + 'р.',
                 });
+                //$("input[type=hidden][class=products_list][name=products_list]").val(productname);
                 $(this).find('td.name').eq(1).text(textproduct);
             });
+
         items.length = 0;
         items = [];
         counter = -1,
@@ -327,7 +335,6 @@ $(document).ready(function () {
             cart += value;
         });
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-
         $(document).ready(function () {
             nal();
         });

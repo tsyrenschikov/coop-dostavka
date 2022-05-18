@@ -28,6 +28,7 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2) + 'р.');
+$('#cartval').attr({'value':cart.toFixed(2)});
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
 function nal(money) {
@@ -45,9 +46,11 @@ function nal(money) {
         $('button').show();
         if (cart >= delivery_price_min) {
             $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно').attr({ 'value': 0, });
+            $('#deliverytotal').attr({'value' : 0, });
             total_price = cart.toFixed(2);
             money_nal = Number(nal) - Number(total_price);
             $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
+            $('#total_priceT').attr({'value' : total_price});
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');
@@ -59,9 +62,11 @@ function nal(money) {
         } else {
             $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
             $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р').attr({ 'value': delivery_price, });
+            $('#deliverytotal').attr({'value' : delivery_price, });
             total_price = Number(cart.toFixed(2)) + Number(delivery_price);
             money_nal = (Number(nal) - Number(total_price));
             $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
+            $('#total_priceT').attr({'value' : total_price});
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');
@@ -172,6 +177,7 @@ $(document).on('click', '.edit', function () {
         cart += value;
     });
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
+    $('#cartval').attr({'value':cart.toFixed(2)});
     $(document).ready(function () {
         nal();
     });
@@ -215,6 +221,7 @@ $(document).on('click', '.trash', function () {
         cart += value;
     });
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
+    $('#cartval').attr({'value':cart.toFixed(2)});
     $(document).ready(function () {
         nal();
     });
@@ -242,9 +249,9 @@ $(document).ready(function () {
                 '      </div></td>' +
                 '<input class="products_list" type="hidden" name="products_list">\n' +
                 '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
-                '<input type="hidden" id="data_product" name="products_list">\n' +
+                '<input type="hidden" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
-                '<input type="hidden" id="price_product" name="products_lis">\n' +
+                '<input type="hidden" name="products_lis">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -335,6 +342,7 @@ $(document).ready(function () {
             cart += value;
         });
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
+        $('#cartval').attr({'value':cart.toFixed(2)});
         $(document).ready(function () {
             nal();
         });

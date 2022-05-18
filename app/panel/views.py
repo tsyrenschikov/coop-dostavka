@@ -866,6 +866,11 @@ def order_view(request, id):
                         local = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
                         shop_p = name.objects.values('name', 'price').filter(status=True)
                         if request.method == 'POST':
+                            zakaz.cart = request.POST.get('cart')
+                            zakaz.delivery = request.POST.get('delivery')
+                            zakaz.total_price = request.POST.get('total_price')
+                            zakaz.save()
+                        if request.method == 'POST':
                             zakaz.products = request.POST.getlist('products_list')
                             zakaz.save(update_fields=['products'])
                             return redirect('order')

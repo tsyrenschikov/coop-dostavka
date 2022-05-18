@@ -6,9 +6,9 @@ var isEditing = false,
     money_nal = 0,
     total_price = 0,
     products = [],
-    productname = '',
     dataprice = 0,
     textproduct = '',
+    itemsname = [],
     items = [];
 
 $('#mytable tr').each(function () {
@@ -17,6 +17,7 @@ $('#mytable tr').each(function () {
         price = $(this).find("td").eq(3).html(),
         sum = ((parseFloat(count)) * (parseFloat(price)));
     items.push(sum);
+
     $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
     counter += 1;
     $(this).find('td.c').eq(0).text(counter)
@@ -28,7 +29,7 @@ $.each(items, function (index, value) {
     cart += value;
 });
 $('cart').text(cart.toFixed(2) + 'р.');
-$('#cartval').attr({'value':cart.toFixed(2)});
+$('#cartval').attr({'value': cart.toFixed(2)});
 
 //Функция расчета стоимости заказа, доставки, общей стоимости и сдачи
 function nal(money) {
@@ -45,12 +46,12 @@ function nal(money) {
     } else {
         $('button').show();
         if (cart >= delivery_price_min) {
-            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно').attr({ 'value': 0, });
-            $('#deliverytotal').attr({'value' : 0, });
+            $('#delivery').css({'background-color': 'green', 'color': '#ffffff'}).addClass('badge-item  order-total-right-text').text('Бесплатно').attr({'value': 0,});
+            $('#deliverytotal').attr({'value': 0,});
             total_price = cart.toFixed(2);
             money_nal = Number(nal) - Number(total_price);
-            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
-            $('#total_priceT').attr({'value' : total_price});
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({'value': total_price,});
+            $('#total_priceT').attr({'value': total_price});
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');
@@ -61,12 +62,12 @@ function nal(money) {
             }
         } else {
             $('#delivery').removeAttr('style').removeClass('badge-item  order-total-right-text');
-            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р').attr({ 'value': delivery_price, });
-            $('#deliverytotal').attr({'value' : delivery_price, });
+            $('#delivery').css({'font-size': '18px', 'font-weight': '700'}).addClass('order-total-right-text').text(delivery_price + ' ' + 'р').attr({'value': delivery_price,});
+            $('#deliverytotal').attr({'value': delivery_price,});
             total_price = Number(cart.toFixed(2)) + Number(delivery_price);
             money_nal = (Number(nal) - Number(total_price));
-            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({ 'value' : total_price, });
-            $('#total_priceT').attr({'value' : total_price});
+            $('#total_price').removeAttr('style').text(total_price + ' ' + 'р.').attr({'value': total_price,});
+            $('#total_priceT').attr({'value': total_price});
             if (cart > nal) {
                 money_nal = Number(total_price) - Number(nal);
                 $('total_change_text').text('Доплата клиента' + ':' + ' ');
@@ -157,13 +158,19 @@ $(document).on('click', '.edit', function () {
         tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
 
     }
+    itemsname = 0;
+    itemsname = [];
     items.length = 0;
     items = [];
     cart = 0;
     $('#mytable tr').each(function () {
-        var count = $(this).find("td").eq(2).html(),
+        var name = $(this).find("td").eq(1).html(),
+            count = $(this).find("td").eq(2).html(),
             price = $(this).find("td").eq(3).html(),
             sum = ((parseFloat(count)) * (parseFloat(price)));
+        itemsname.push(name);
+        var elem=itemsname.length - 2;
+        console.log(elem)
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {
@@ -173,11 +180,14 @@ $(document).on('click', '.edit', function () {
     items.splice(0, 1);
     var lastElementIndex = items.length - 1;
     items.splice(lastElementIndex, 1);
+
     $.each(items, function (index, value) {
         cart += value;
+        ind = index
     });
+
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-    $('#cartval').attr({'value':cart.toFixed(2)});
+    $('#cartval').attr({'value': cart.toFixed(2)});
     $(document).ready(function () {
         nal();
     });
@@ -220,8 +230,9 @@ $(document).on('click', '.trash', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
+
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-    $('#cartval').attr({'value':cart.toFixed(2)});
+    $('#cartval').attr({'value': cart.toFixed(2)});
     $(document).ready(function () {
         nal();
     });
@@ -247,11 +258,11 @@ $(document).ready(function () {
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
-                '<input class="products_list" type="hidden" name="products_list">\n' +
+                '<input class="name" type="hidden" name="products_list">\n' +
                 '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
-                '<input type="hidden" name="products_list">\n' +
+                '<input class="data" type="hidden" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
-                '<input type="hidden" name="products_lis">\n' +
+                '<input class="price" type="hidden" name="products_lis">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -295,8 +306,8 @@ $(document).ready(function () {
 
         $.each(products, function (index, value) {
             if (index % 2 == 0) {
-                priceproduct=products[index+1];
-                $('#select').append($('<option name="name" value="' + value.replace(/([="])/g, '')+'" data="' + products[index + 1] + '">' + value + '  '+ ' : ' + products[index + 1]+' '+'р.'+ '</option>'));
+                priceproduct = products[index + 1];
+                $('#select').append($('<option name="name" value="' + value.replace(/([="])/g, '') + '" data="' + products[index + 1] + '">' + value + '  ' + ' : ' + products[index + 1] + ' ' + 'р.' + '</option>'));
             }
         });
         $(".chosen").chosen({
@@ -304,26 +315,25 @@ $(document).ready(function () {
             no_results_text: "Нет результатов для: "
         });
         textproduct = '';
-        productname = '';
-            $('select').change(function () {
-                var option = $(this).find('option:selected');
-                productname = option.attr('value');
-                dataprice = option.attr('data');
-                textproduct = option.text();
+        productsname = '';
+        $('select').change(function () {
+            var option = $(this).find('option:selected');
+            productsname = option.attr('value');
+            dataprice = option.attr('data');
+            textproduct = option.text();
 
-                $('#selectprice').attr({
-                    'value': dataprice + ' ' + 'р.',
-                });
-                //$("input[type=hidden][class=products_list][name=products_list]").val(productname);
-                $(this).find('td.name').eq(1).text(textproduct);
+            $('#selectprice').attr({
+                'value': dataprice + ' ' + 'р.',
             });
+            $(this).find('td.name').eq(1).text(textproduct);
+        });
 
         items.length = 0;
-        items = [];
         counter = -1,
             cart = 0;
         $('#mytable tr').each(function () {
-            var count = $(this).find("td").eq(2).html(),
+            var
+                count = $(this).find("td").eq(2).html(),
                 price = $(this).find("td").eq(3).html(),
                 sum = ((parseFloat(count)) * (parseFloat(price)));
             items.push(sum);
@@ -341,8 +351,10 @@ $(document).ready(function () {
         $.each(items, function (index, value) {
             cart += value;
         });
+
+
         $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
-        $('#cartval').attr({'value':cart.toFixed(2)});
+        $('#cartval').attr({'value': cart.toFixed(2)});
         $(document).ready(function () {
             nal();
         });

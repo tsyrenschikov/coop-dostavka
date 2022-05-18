@@ -169,8 +169,7 @@ $(document).on('click', '.edit', function () {
             price = $(this).find("td").eq(3).html(),
             sum = ((parseFloat(count)) * (parseFloat(price)));
         itemsname.push(name);
-        var elem=itemsname.length - 2;
-        console.log(elem)
+        console.log(itemsname)
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {

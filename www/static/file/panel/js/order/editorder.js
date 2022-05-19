@@ -109,6 +109,7 @@ $(document).on('click', '.edit', function () {
                 tdDataValue = dataInput.prop('value'),
                 tdPriceValue = priceInput.prop('value');
 
+                //console.log(tdDataValue)
 
             tdNameInput.empty();
             tdDataInput.empty();
@@ -166,6 +167,7 @@ $(document).on('click', '.edit', function () {
             count = $(this).find("td").eq(2).html(),
             price = $(this).find("td").eq(3).html(),
             sum = ((parseFloat(count)) * (parseFloat(price)));
+
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {

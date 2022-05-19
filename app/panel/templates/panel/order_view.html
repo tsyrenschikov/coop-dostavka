@@ -104,7 +104,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                <appendname></appendname>
+                                    <appendname></appendname>
                                     {% for p in shop_p %}
                                         <input type="hidden" class="products" value="{{ p.name }}">
                                         <input type="hidden" class="products" value="{{ p.price }}">
@@ -125,7 +125,7 @@
                                                 Стоимость доставки
                                             </div>
                                             <div name="delivery" id="delivery"></div>
-                                            <input type="hidden" id="deliverytotal" name="delivery" >
+                                            <input type="hidden" id="deliverytotal" name="delivery">
                                         </div>
                                         <div class="order-total-dt">
                                             <div class="order-total-left-text fsz-18">
@@ -164,12 +164,27 @@
                                             </br>
                                             <label for="status">Статус*</label>
                                             <div class="input-group">
-                                                <select id="status" name="status" class="custom-select">
-                                                    <option selected>В ожидании</option>
-                                                    <option value="1">В процессе сборки</option>
+                                                <select id="status" name="status" class="custom-select" value="{{ zakaz.status }}">
+                                                    <option value="0">Ожидание</option>
+                                                    <option value="1">Сборка</option>
                                                     <option value="2">Доставка</option>
                                                     <option value="3">Закрыт</option>
                                                     <option value="4">Отменен</option>
+                                                        {% if zakaz.status == '0' %}
+                                                            <option selected value="{{ zakaz.status }}">Ожидание</option>
+                                                        {% endif %}
+                                                        {% if zakaz.status == '1' %}
+                                                            <option selected value="{{ zakaz.status }}">Сборка</option>
+                                                        {% endif %}
+                                                        {% if zakaz.status == '2' %}
+                                                            <option selected value="{{ zakaz.status }}">Доставка</option>
+                                                        {% endif %}
+                                                        {% if zakaz.status == '3' %}
+                                                            <option selected value="{{ zakaz.status }}">Закрыт</option>
+                                                        {% endif %}
+                                                        {% if zakaz.status == '4' %}
+                                                            <option selected value="{{ zakaz.status }}">Отменен</option>
+                                                        {% endif %}
                                                 </select>
                                                 <div class="input-group-append">
                                                     <button class="status-btn hover-btn" type="submit">Сохранить заказ</button>

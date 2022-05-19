@@ -869,6 +869,7 @@ def order_view(request, id):
                             zakaz.cart = request.POST.get('cart')
                             zakaz.delivery = request.POST.get('delivery')
                             zakaz.total_price = request.POST.get('total_price')
+                            zakaz.status = request.POST.get('status')
                             zakaz.save()
                         if request.method == 'POST':
                             zakaz.products = request.POST.getlist('products_list')
@@ -886,6 +887,7 @@ def order_view(request, id):
                                     zakaz.cart = request.POST.get('cart')
                                     zakaz.delivery = request.POST.get('delivery')
                                     zakaz.total_price = request.POST.get('total_price')
+                                    zakaz.status = request.POST.get('status')
                                     zakaz.save()
                                 if request.method == 'POST':
                                     zakaz.products = request.POST.getlist('products_list')

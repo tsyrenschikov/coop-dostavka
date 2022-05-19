@@ -406,6 +406,21 @@ input[type=checkbox], input[type=radio] {
     background-color: #f55d2c;
 }
 
+.badge-status-wait {
+    color: #fff;
+    background-color: #bb99ff;
+}
+
+.badge-status-delivery {
+    color: #000;
+    background-color: yellow;
+}
+
+.badge-status-ok {
+    color: #fff;
+    background-color: green;
+}
+
 .badge-panel-status {
     color: #fff;
     background-color: green;

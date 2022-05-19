@@ -38,8 +38,8 @@
                                         <th>Телефон</th>
                                         <th style="width:200px">Дата доставки</th>
                                         <th style="width:300px">Адрес доставки</th>
-                                        <th style="width:300px">Сумма корзины</th>
-                                        <th style="width:300px">Доставка</th>
+                                        <th style="width:150px">Сумма корзины</th>
+                                        <th style="width:150px">Доставка</th>
                                         <th style="width:130px">Общая сумма</th>
                                         <th style="width:130px">Статус</th>
                                         <th style="width: 130px">Комментарий</th>
@@ -49,7 +49,9 @@
                                     <tbody>
                                     {% for zakaz in zakaz %}
                                         <tr>
-                                        <td><a href="/order_view/{{ zakaz.id }}">{{ zakaz.id }}</a></td>
+                                        <td>
+                                            {{ zakaz.id }}
+                                        </td>
                                         <td>
                                             {{ zakaz.name }}
                                         </td>
@@ -78,13 +80,13 @@
                                         <td>{{ zakaz.total_price }} р.</td>
                                         <td>
                                             {% if zakaz.status == '0' %}
-                                                <span class="badge-item badge-status">Ожидание</span>
+                                                <span class="badge-item badge-status-wait">Ожидание</span>
                                             {% endif %}
                                             {% if zakaz.status == '1' %}
-                                                <span class="badge-item badge-status">Cборка</span>
+                                                <span class="badge-item badge-status-ok">Cборка</span>
                                             {% endif %}
                                             {% if zakaz.status == '2' %}
-                                                <span class="badge-item badge-status">Доставка</span>
+                                                <span class="badge-item badge-status-delivery">Доставка</span>
                                             {% endif %}
                                             {% if zakaz.status == '3' %}
                                                 <span class="badge-item badge-status">Закрыт</span>
@@ -96,7 +98,11 @@
                                         </td>
                                         <td style="color: green">{{ zakaz.commit }}</td>
                                         <td class="action-btns">
-                                            <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
+                                            {% if zakaz.status == '3' or zakaz.status == '4' %}
+
+                                            {% else %}
+                                                <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
+                                            {% endif %}
                                             {% if 'super_manager' in groups %}
                                                 <a href="/delete_order/{{ zakaz.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить категорию??? ' +
                                                              '(ДЕЙСТВИЕ НЕ ' +

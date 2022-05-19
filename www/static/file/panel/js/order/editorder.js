@@ -312,7 +312,11 @@ $(document).ready(function () {
             $('#selectprice').attr({
                 'value': dataprice + ' ' + 'р.',
             });
+            console.log(productsname)
             //Добавить значения в новой позиции для сохранения в базе
+            for(var i = 0; i < productsname.length; i ++){
+
+            }
             $('appendname').append('<input type=hidden name="products_list" value="'+ productsname +'">');
             $('appenddata').append('<input type="hidden" name="products_list" value="">');
             $('appendprice').append('<input type="hidden" name="products_list" value="'+ dataprice +'">');

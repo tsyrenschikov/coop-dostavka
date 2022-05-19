@@ -7,6 +7,7 @@ var isEditing = false,
     total_price = 0,
     products = [],
     dataprice = 0,
+    textproduct = '',
     items = [];
 
 $('#mytable tr').each(function () {
@@ -159,6 +160,7 @@ $(document).on('click', '.edit', function () {
     items.length = 0;
     items = [];
     cart = 0;
+
     $('#mytable tr').each(function () {
         var
             count = $(this).find("td").eq(2).html(),
@@ -170,6 +172,7 @@ $(document).on('click', '.edit', function () {
             $(this).find('td').eq(4).text('');
         }
     });
+
     items.splice(0, 1);
     var lastElementIndex = items.length - 1;
     items.splice(lastElementIndex, 1);
@@ -180,6 +183,9 @@ $(document).on('click', '.edit', function () {
 
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $('#cartval').attr({'value': cart.toFixed(2)});
+    var coun = counter -1,
+        valcount = $("#count"+ coun +"").text();
+     $('.appcount'+ coun +'').attr({'value' : valcount,});
     $(document).ready(function () {
         nal();
     });
@@ -216,6 +222,7 @@ $(document).on('click', '.trash', function () {
         counter += 1;
         $(this).find('td.c').eq(0).text(counter)
     });
+
     items.splice(0, 1);
     var lastElementIndex = items.length - 1;
     items.splice(lastElementIndex, 1);
@@ -233,6 +240,7 @@ $(document).on('click', '.trash', function () {
 //Добавить строку товара
 $(document).ready(function () {
     $('.new-row').off().on('click', function () {
+        var coun = counter;
         products.length = 0;
         products = [];
         $('#select').empty();
@@ -250,8 +258,11 @@ $(document).ready(function () {
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
-                '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
+                '<input class="appname'+ coun +'" type="hidden" name="products_list">\n' +
+                '<td class="data text-center" id="count'+ coun +'"><input id="inputreq" type="text" name="data" value=""></td>' +
+                '<input class="appcount'+ coun +'" type="hidden" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
+                '<input class="appprice'+ coun +'" type="hidden" name="products_list">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -303,23 +314,29 @@ $(document).ready(function () {
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });
+        textproduct = '';
         productsname = '';
         $('select').change(function () {
             var option = $(this).find('option:selected');
             productsname = option.attr('value');
             dataprice = option.attr('data');
+            textproduct = option.text();
 
             $('#selectprice').attr({
                 'value': dataprice + ' ' + 'р.',
             });
-            console.log(productsname)
-            //Добавить значения в новой позиции для сохранения в базе
-            for(var i = 0; i < productsname.length; i ++){
+            $(this).find('td.name').eq(1).text(textproduct);
 
-            }
-            $('appendname').append('<input type=hidden name="products_list" value="'+ productsname +'">');
-            $('appenddata').append('<input type="hidden" name="products_list" value="">');
-            $('appendprice').append('<input type="hidden" name="products_list" value="'+ dataprice +'">');
+            //Добавить значения в новой позиции для сохранения в базе
+            $.each(products, function (index, value) {
+                var coun = counter - 1;
+                if(productsname == value.replace(/([="])/g, '')){
+                    //Название выбранного продукта
+                    $('.appname'+ coun +'').attr({'value' : value.replace(/([="])/g, ''),});
+                    //Цена выбранного продукта
+                    $('.appprice'+ coun +'').attr({'value' : products[index + 1],});
+                }
+            });
         });
 
         items.length = 0;

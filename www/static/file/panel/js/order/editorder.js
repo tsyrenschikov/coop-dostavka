@@ -109,7 +109,6 @@ $(document).on('click', '.edit', function () {
                 tdDataValue = dataInput.prop('value'),
                 tdPriceValue = priceInput.prop('value');
 
-                //console.log(tdDataValue)
 
             tdNameInput.empty();
             tdDataInput.empty();
@@ -186,8 +185,12 @@ $(document).on('click', '.edit', function () {
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $('#cartval').attr({'value': cart.toFixed(2)});
     var coun = counter -1,
-        valcount = $("#count"+ coun +"").text();
+        valcount = $("#count"+ coun +"").text(),
+        fooloop = $("#forloop"+ coun +"").text();
+    console.log(fooloop)
      $('.appcount'+ coun +'').attr({'value' : valcount,});
+     $('.forloop'+ coun +'').removeAttr('value');
+     $('.forloop'+ coun +'').attr({'value' : fooloop,});
     $(document).ready(function () {
         nal();
     });

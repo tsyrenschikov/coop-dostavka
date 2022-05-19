@@ -83,8 +83,8 @@
                                                                 <td class="c"></td>
                                                                 <td name="name" value="{{ key }}">{{ key }}</td>
                                                                 <input type="hidden" name="products_list" value="{{ key }}">
-                                                                <td name="count" value="{{ value.0 }}" class="data text-center">{{ value.0 }}</td>
-                                                                <input type="hidden" name="products_list" value="{{ value.0 }}">
+                                                                <td name="count" id="forloop{{ forloop.counter }}" class="data text-center">{{ value.0 }}</td>
+                                                                <input type="hidden" class="forloop{{ forloop.counter }}" name="products_list" value="{{ value.0 }}">
                                                                 <td name="price" value="{{ value.1 }}" class="text-center">{{ value.1 }} р.</td>
                                                                 <input type="hidden" name="products_list" value="{{ value.1 }}">
                                                                 <td class="text-center"></td>

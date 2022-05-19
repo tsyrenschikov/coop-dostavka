@@ -7,8 +7,6 @@ var isEditing = false,
     total_price = 0,
     products = [],
     dataprice = 0,
-    textproduct = '',
-    itemsname = [],
     items = [];
 
 $('#mytable tr').each(function () {
@@ -158,18 +156,14 @@ $(document).on('click', '.edit', function () {
         tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
 
     }
-    itemsname = 0;
-    itemsname = [];
     items.length = 0;
     items = [];
     cart = 0;
     $('#mytable tr').each(function () {
-        var name = $(this).find("td").eq(1).html(),
+        var
             count = $(this).find("td").eq(2).html(),
             price = $(this).find("td").eq(3).html(),
             sum = ((parseFloat(count)) * (parseFloat(price)));
-        itemsname.push(name);
-        console.log(itemsname)
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {
@@ -182,7 +176,6 @@ $(document).on('click', '.edit', function () {
 
     $.each(items, function (index, value) {
         cart += value;
-        ind = index
     });
 
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
@@ -257,11 +250,8 @@ $(document).ready(function () {
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
-                '<input class="name" type="hidden" name="products_list">\n' +
                 '<td class="data text-center"><input id="inputreq" type="text" name="data" value=""></td>' +
-                '<input class="data" type="hidden" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
-                '<input class="price" type="hidden" name="products_lis">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -313,18 +303,19 @@ $(document).ready(function () {
             allow_single_deselect: true,
             no_results_text: "Нет результатов для: "
         });
-        textproduct = '';
         productsname = '';
         $('select').change(function () {
             var option = $(this).find('option:selected');
             productsname = option.attr('value');
             dataprice = option.attr('data');
-            textproduct = option.text();
 
             $('#selectprice').attr({
                 'value': dataprice + ' ' + 'р.',
             });
-            $(this).find('td.name').eq(1).text(textproduct);
+            //Добавить значения в новой позиции для сохранения в базе
+            $('appendname').append('<input type=hidden name="products_list" value="'+ productsname +'">');
+            $('appenddata').append('<input type="hidden" name="products_list" value="">');
+            $('appendprice').append('<input type="hidden" name="products_list" value="'+ dataprice +'">');
         });
 
         items.length = 0;

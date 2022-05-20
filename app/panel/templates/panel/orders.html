@@ -59,7 +59,7 @@
                                         <th style="width:130px">Общая сумма</th>
                                         <th style="width:130px">Статус</th>
                                         <th style="width: 130px">Комментарий</th>
-                                        {% if address == 3 or address == 4 %}
+                                        {% if address == 3 or address == 4 and not 'super_manager' in groups %}
                                             <th style="width:100px"></th>
                                         {% else %}
                                             <th style="width:100px">Действия</th>

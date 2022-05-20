@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item active">Заказы</li>
             </ol>
             <div class="row justify-content-between">
-            {% include 'panel/include/blocks.html' %}
+                {% include 'panel/include/blocks.html' %}
                 <div class="col-lg-5 col-md-6">
                     <div class="bulk-section mt-30">
                         <div class="search-by-name-input">
@@ -22,7 +22,25 @@
                     <div class="card card-static-2 mt-30 mb-30">
                         <div class="card-title-2">
                             <h4>Все заказы</h4>
-                            </br>
+                            <paginator></paginator>
+                            <div class="paginator">
+                                <ul>
+                                    {% if page_obj.has_previous %}
+                                        <li class="next"><a href="?page=1"> << </a></li>
+                                        <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                        <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                    {% endif %}
+
+                                    <li class="current">{{ page_obj.number }}</li>
+
+                                    {% if page_obj.has_next %}
+                                        <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                        <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                        <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <paginator></paginator>
                         </div>
                         <div class="card-title-2">
                         </div>
@@ -45,7 +63,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for zakaz in zakaz %}
+                                    {% for zakaz in page_obj %}
                                         <tr>
                                         <td>
                                             {% if  'super_manager' in groups %}
@@ -117,15 +135,15 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                {% if not zakaz and address == 0 %}
+                                {% if not page_obj and address == 0 %}
                                     <p style="color: red; text-align: center">Ожидаемых к формирования заказов нет</p>
-                                    {% elif not zakaz and address == 1 %}
+                                {% elif not page_obj and address == 1 %}
                                     <p style="color: red; text-align: center">Формируемых заказов нет</p>
-                                    {% elif not zakaz and address == 2 %}
+                                {% elif not page_obj and address == 2 %}
                                     <p style="color: red; text-align: center">Доставляемых заказов нет</p>
-                                    {% elif not zakaz and address == 3 %}
+                                {% elif not page_obj and address == 3 %}
                                     <p style="color: red; text-align: center">Закрытых заказов нет</p>
-                                    {% elif not zakaz and address == 4 %}
+                                {% elif not page_obj and address == 4 %}
                                     <p style="color: red; text-align: center">Отмененных заказов нет</p>
                                 {% endif %}
                             </div>

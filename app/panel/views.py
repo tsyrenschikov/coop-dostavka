@@ -162,9 +162,9 @@ def panel(request):
                     count_order1 = orders.objects.filter(slug=slug_shop).filter(status=1).count()
                     count_order2 = orders.objects.filter(slug=slug_shop).filter(status=2).count()
                     count_order3 = orders.objects.filter(slug=slug_shop).filter(status=3).count()
-                    count_order4= orders.objects.filter(slug=slug_shop).filter(status=4).count()
-                    return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order,'count_order1':count_order1,'count_order2':count_order2,'count_order3':count_order3,
-                                                                'count_order4':count_order4})
+                    count_order4 = orders.objects.filter(slug=slug_shop).filter(status=4).count()
+                    return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                                                'count_order4': count_order4})
                 elif request.user.is_superuser:
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
@@ -174,8 +174,9 @@ def panel(request):
                         count_order2 = orders.objects.filter(status=2).count()
                         count_order3 = orders.objects.filter(status=3).count()
                         count_order4 = orders.objects.filter(status=4).count()
-                    return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order,'count_order1':count_order1,'count_order2':count_order2,'count_order3':count_order3,
-                                                                'count_order4':count_order4})
+                    return render(request, 'panel/index_superuser.html',
+                                  {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                   'count_order4': count_order4})
     else:
         return redirect('/login')
 
@@ -817,7 +818,8 @@ def delete_shop(request, id):
         return render(request, 'panel/delete_error_shop.html', {})
 
 
-def order_total(request,statusord):
+# Список заказов с блоками
+def order_total(request, statusord):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     users = User.objects.values_list('id', flat=True).distinct()
     address = int([i for i in str(request.path).split('/') if i][-1])
@@ -832,9 +834,12 @@ def order_total(request,statusord):
                     count_order2 = orders.objects.filter(slug=slug_p).filter(status=2).count()
                     count_order3 = orders.objects.filter(slug=slug_p).filter(status=3).count()
                     count_order4 = orders.objects.filter(slug=slug_p).filter(status=4).count()
+                    paginator = Paginator(zakaz, 50)
+                    page_number = request.GET.get('page')
+                    page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4, 'zakaz': zakaz,
-                                   'areas': areas,'address':address})
+                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4,
+                                   'areas': areas, 'address': address})
                 if request.user.is_superuser:
                     zakaz = orders.objects.all().filter(status=statusord)
                     count_order = orders.objects.filter(status=0).count()
@@ -842,30 +847,45 @@ def order_total(request,statusord):
                     count_order2 = orders.objects.filter(status=2).count()
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
+                    paginator = Paginator(zakaz, 50)
+                    page_number = request.GET.get('page')
+                    page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4, 'zakaz': zakaz,'address':address})
+                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4,
+                                   'address': address})
     else:
         return redirect('/login')
 
+
+# Блок ожидания заказа
 def order(request):
-    statusord=0
-    return redirect(order_total,statusord)
+    statusord = 0
+    return redirect(order_total, statusord)
 
+
+# Блок формирования заказа
 def order_formation(request):
-    statusord=1
+    statusord = 1
     return redirect(order_total, statusord)
 
+
+# Блок доставки заказа
 def order_delivery(request):
-    statusord=2
+    statusord = 2
     return redirect(order_total, statusord)
 
+
+# Блок закрытых заказов
 def order_close(request):
-    statusord=3
+    statusord = 3
     return redirect(order_total, statusord)
 
+
+# Блок отмененных заказов
 def order_cancellation(request):
-    statusord=4
+    statusord = 4
     return redirect(order_total, statusord)
+
 
 def order_view(request, id):
     try:

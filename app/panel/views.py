@@ -169,8 +169,13 @@ def panel(request):
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
                         products_count.update({name: name_shop.objects.count()})
-                        count_order = orders.objects.count()
-                    return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order})
+                        count_order = orders.objects.filter(status=0).count()
+                        count_order1 = orders.objects.filter(status=1).count()
+                        count_order2 = orders.objects.filter(status=2).count()
+                        count_order3 = orders.objects.filter(status=3).count()
+                        count_order4 = orders.objects.filter(status=4).count()
+                    return render(request, 'panel/index_superuser.html', {'products_count': products_count, 'count_order': count_order,'count_order1':count_order1,'count_order2':count_order2,'count_order3':count_order3,
+                                                                'count_order4':count_order4})
     else:
         return redirect('/login')
 

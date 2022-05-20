@@ -81,18 +81,16 @@
                                         <td>
                                             {% if zakaz.status == '0' %}
                                                 <span class="badge-item badge-status-wait">Ожидание</span>
-                                            {% endif %}
-                                            {% if zakaz.status == '1' %}
+                                            {% elif zakaz.status == '1' %}
                                                 <span class="badge-item badge-status-ok">Cборка</span>
-                                            {% endif %}
-                                            {% if zakaz.status == '2' %}
+                                            {% elif zakaz.status == '2' %}
                                                 <span class="badge-item badge-status-delivery">Доставка</span>
-                                            {% endif %}
-                                            {% if zakaz.status == '3' %}
+                                            {% elif zakaz.status == '3' %}
                                                 <span class="badge-item badge-status">Закрыт</span>
-                                            {% endif %}
-                                            {% if zakaz.status == '4' %}
+                                            {% elif zakaz.status == '4' %}
                                                 <span class="badge-item badge-status">Отменен</span>
+                                            {% else %}
+                                                <span class="badge-item badge-status-wait">Ожидание</span>
                                             {% endif %}
 
                                         </td>

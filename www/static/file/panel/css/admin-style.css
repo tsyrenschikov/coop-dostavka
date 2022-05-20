@@ -406,6 +406,11 @@ input[type=checkbox], input[type=radio] {
     background-color: #f55d2c;
 }
 
+.badge-status-repeal {
+    color: #fff;
+    background-color: darkslategrey;
+}
+
 .badge-status-wait {
     color: #fff;
     background-color: #bb99ff;

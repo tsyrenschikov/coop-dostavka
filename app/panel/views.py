@@ -814,7 +814,7 @@ def order(request):
         for u in users:
             for c, n, slug_p in shops:
                 if request.user.id == c and u == c:
-                    zakaz = orders.objects.filter(slug=slug_p)
+                    zakaz = orders.objects.filter(slug=slug_p).order_by('id')
                     areas = Area.objects.values_list('name', 'slug').distinct()
                     return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
                 if request.user.is_superuser:

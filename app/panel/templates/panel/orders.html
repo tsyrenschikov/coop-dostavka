@@ -50,7 +50,13 @@
                                     {% for zakaz in zakaz %}
                                         <tr>
                                         <td>
-                                            {{ zakaz.id }}
+                                            {% if  'super_manager' in groups %}
+                                                <a href="/order_view/{{ zakaz.id }}" class="views-btn">{{ zakaz.id }}</a>
+                                            {% elif zakaz.status == '3' or zakaz.status == '4' %}
+                                                {{ zakaz.id }}
+                                            {% else %}
+                                                <a href="/order_view/{{ zakaz.id }}" class="views-btn">{{ zakaz.id }}</a>
+                                            {% endif %}
                                         </td>
                                         <td>
                                             {{ zakaz.name }}
@@ -88,7 +94,7 @@
                                             {% elif zakaz.status == '3' %}
                                                 <span class="badge-item badge-status">Закрыт</span>
                                             {% elif zakaz.status == '4' %}
-                                                <span class="badge-item badge-status">Отменен</span>
+                                                <span class="badge-item badge-status-repeal">Отменен</span>
                                             {% else %}
                                                 <span class="badge-item badge-status-wait">Ожидание</span>
                                             {% endif %}
@@ -96,8 +102,9 @@
                                         </td>
                                         <td style="color: green">{{ zakaz.commit }}</td>
                                         <td class="action-btns">
-                                            {% if zakaz.status == '3' or zakaz.status == '4' %}
-
+                                            {% if 'super_manager' in groups %}
+                                                <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
+                                            {% elif zakaz.status == '3' or zakaz.status == '4' %}
                                             {% else %}
                                                 <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>
                                             {% endif %}

@@ -817,38 +817,55 @@ def delete_shop(request, id):
         return render(request, 'panel/delete_error_shop.html', {})
 
 
-def order(request):
+def order_total(request,statusord):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     users = User.objects.values_list('id', flat=True).distinct()
+    address = int([i for i in str(request.path).split('/') if i][-1])
     if request.user.is_authenticated:
         for u in users:
             for c, n, slug_p in shops:
                 if request.user.id == c and u == c:
-                    zakaz = orders.objects.filter(slug=slug_p).order_by('id')
+                    zakaz = orders.objects.filter(slug=slug_p).filter(status=statusord).order_by('id')
                     areas = Area.objects.values_list('name', 'slug').distinct()
-                    return render(request, 'panel/orders.html', {'zakaz': zakaz, 'areas': areas})
+                    count_order = orders.objects.filter(slug=slug_p).filter(status=0).count()
+                    count_order1 = orders.objects.filter(slug=slug_p).filter(status=1).count()
+                    count_order2 = orders.objects.filter(slug=slug_p).filter(status=2).count()
+                    count_order3 = orders.objects.filter(slug=slug_p).filter(status=3).count()
+                    count_order4 = orders.objects.filter(slug=slug_p).filter(status=4).count()
+                    return render(request, 'panel/orders.html',
+                                  {'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4, 'zakaz': zakaz,
+                                   'areas': areas,'address':address})
                 if request.user.is_superuser:
-                    zakaz = orders.objects.all()
-                    return render(request, 'panel/orders.html', {'zakaz': zakaz})
+                    zakaz = orders.objects.all().filter(status=statusord)
+                    count_order = orders.objects.filter(status=0).count()
+                    count_order1 = orders.objects.filter(status=1).count()
+                    count_order2 = orders.objects.filter(status=2).count()
+                    count_order3 = orders.objects.filter(status=3).count()
+                    count_order4 = orders.objects.filter(status=4).count()
+                    return render(request, 'panel/orders.html',
+                                  {'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4, 'zakaz': zakaz,'address':address})
     else:
         return redirect('/login')
 
+def order(request):
+    statusord=0
+    return redirect(order_total,statusord)
 
-def add_order(request):
-    users = User.objects.all()
-    local = Locations.objects.all()
-    category = Category.objects.all()
+def order_formation(request):
+    statusord=1
+    return redirect(order_total, statusord)
 
-    if request.method == 'POST':
-        name_id = request.POST.get('name_id')
-        address = request.POST.get('address')
-        address_name_id = request.POST.get('local')
-        cal = request.POST.get('cal')
-        status = request.POST.get('status')
-        orders.objects.create(name_id=name_id, status=status, address=address, address_name_id=address_name_id, cal=cal)
-        return render(request, 'panel/add_ok_order.html')
-    return render(request, 'panel/add_order.html', {'users': users, 'category': category, 'local': local})
+def order_delivery(request):
+    statusord=2
+    return redirect(order_total, statusord)
 
+def order_close(request):
+    statusord=3
+    return redirect(order_total, statusord)
+
+def order_cancellation(request):
+    statusord=4
+    return redirect(order_total, statusord)
 
 def order_view(request, id):
     try:

@@ -158,8 +158,13 @@ def panel(request):
                     name_p = eval(slug_shop)
                     products = name_p.objects.all().order_by('id')[::-1][:10]
                     count = name_p.objects.count()
-                    count_order = orders.objects.filter(slug=slug_shop).count()
-                    return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order})
+                    count_order = orders.objects.filter(slug=slug_shop).filter(status=0).count()
+                    count_order1 = orders.objects.filter(slug=slug_shop).filter(status=1).count()
+                    count_order2 = orders.objects.filter(slug=slug_shop).filter(status=2).count()
+                    count_order3 = orders.objects.filter(slug=slug_shop).filter(status=3).count()
+                    count_order4= orders.objects.filter(slug=slug_shop).filter(status=4).count()
+                    return render(request, 'panel/index.html', {'products': products, 'count': count, 'count_order': count_order,'count_order1':count_order1,'count_order2':count_order2,'count_order3':count_order3,
+                                                                'count_order4':count_order4})
                 elif request.user.is_superuser:
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)

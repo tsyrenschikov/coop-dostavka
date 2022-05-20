@@ -88,13 +88,13 @@
                                             {% if zakaz.status == '0' %}
                                                 <span class="badge-item badge-status-wait">Ожидание</span>
                                             {% elif zakaz.status == '1' %}
-                                                <span class="badge-item badge-status-ok">Cборка</span>
+                                                <span class="badge-item badge-status-ok">Формирование</span>
                                             {% elif zakaz.status == '2' %}
                                                 <span class="badge-item badge-status-delivery">Доставка</span>
                                             {% elif zakaz.status == '3' %}
-                                                <span class="badge-item badge-status">Закрыт</span>
+                                                <span class="badge-item badge-status-otmena">Закрыт</span>
                                             {% elif zakaz.status == '4' %}
-                                                <span class="badge-item badge-status-repeal">Отменен</span>
+                                                <span class="badge-item badge-status">Отменен</span>
                                             {% else %}
                                                 <span class="badge-item badge-status-wait">Ожидание</span>
                                             {% endif %}

@@ -193,6 +193,11 @@
     border-color: #fc544b;
 }
 
+.dashboard-report-card.closes {
+    background-color: cadetblue;
+    border-color: cadetblue;
+}
+
 .dashboard-report-card.info {
     background-color: #45bbe0;
     border-color: #45bbe0;
@@ -406,14 +411,19 @@ input[type=checkbox], input[type=radio] {
     background-color: #f55d2c;
 }
 
+.badge-status-otmena {
+    color: #fff;
+    background-color: cadetblue;
+}
+
 .badge-status-repeal {
     color: #fff;
-    background-color: darkslategrey;
+    background-color: #f55d2c;
 }
 
 .badge-status-wait {
     color: #fff;
-    background-color: #bb99ff;
+    background-color: #8892d6;
 }
 
 .badge-status-delivery {
@@ -423,7 +433,7 @@ input[type=checkbox], input[type=radio] {
 
 .badge-status-ok {
     color: #fff;
-    background-color: green;
+    background-color: #45bbe0;
 }
 
 .badge-panel-status {

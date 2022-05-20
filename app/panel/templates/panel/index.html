@@ -15,9 +15,48 @@
                     <div class="card card-static-1 mb-30">
                         <div class="card-body">
                             <div class="card-title-2">
-                                <h4>////</h4>
+                                <h4>Отчет по магазину</h4>
                             </div>
-
+                        </div>
+                        <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table class="table ucp-table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:7em">Название</th>
+                                        <th style="width:7em">Кол-во товаров</th>
+                                        <th style="width:7em">Кол-во заказов</th>
+                                        <th style="width:7em">На рассмотрении</th>
+                                        <th style="width: 7em">Кол-во отказов</th>
+                                        <th style="width:7em">Доход</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for key, value in products_count.items %}
+                                        <tr>
+                                            <td>
+                                                {{ key }}
+                                            </td>
+                                            <td>
+                                                {{ value }} шт.
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

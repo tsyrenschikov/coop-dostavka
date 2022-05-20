@@ -59,7 +59,11 @@
                                         <th style="width:130px">Общая сумма</th>
                                         <th style="width:130px">Статус</th>
                                         <th style="width: 130px">Комментарий</th>
-                                        <th style="width:100px">Действия</th>
+                                        {% if address == 3 or address == 4 %}
+                                            <th style="width:100px"></th>
+                                        {% else %}
+                                            <th style="width:100px">Действия</th>
+                                        {% endif %}
                                     </tr>
                                     </thead>
                                     <tbody>

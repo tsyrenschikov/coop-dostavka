@@ -26,31 +26,27 @@
                                         <th style="width:7em">Название</th>
                                         <th style="width:7em">Кол-во товаров</th>
                                         <th style="width:7em">Кол-во заказов</th>
-                                        <th style="width:7em">На рассмотрении</th>
+                                        <th style="width:7em">Кол-во закрытых</th>
                                         <th style="width: 7em">Кол-во отказов</th>
-                                        <th style="width:7em">Доход</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for key, value in products_count.items %}
+                                    {% for key, value in products_count_user.items %}
                                         <tr>
                                             <td>
                                                 {{ key }}
                                             </td>
                                             <td>
-                                                {{ value }} шт.
+                                                {{ value.0 }} шт.
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.1 }}
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.2 }}
                                             </td>
                                             <td>
-                                                0
-                                            </td>
-                                            <td>
-                                                0
+                                                {{ value.3 }}
                                             </td>
                                         </tr>
                                     {% endfor %}

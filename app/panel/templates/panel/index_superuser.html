@@ -24,10 +24,12 @@
                                     <tr>
                                         <th style="width:7em">Название</th>
                                         <th style="width:7em">Кол-во товаров</th>
-                                        <th style="width:7em">Кол-во заказов</th>
-                                        <th style="width:7em">На рассмотрении</th>
-                                        <th style="width: 7em">Кол-во отказов</th>
-                                        <th style="width:7em">Доход</th>
+                                        <th style="width:5em">Кол-во заказов</th>
+                                        <th style="width:5em">В ожидании</th>
+                                        <th style="width:5em">Формируются</th>
+                                        <th style="width:5em">Доставка</th>
+                                        <th style="width:5em">Закрыто</th>
+                                        <th style="width:5em">Кол-во отказов</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -37,19 +39,25 @@
                                                 {{ key }}
                                             </td>
                                             <td>
-                                                {{ value }} шт.
+                                                {{ value.0 }} шт.
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.1 }}
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.2 }}
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.3 }}
                                             </td>
                                             <td>
-                                                0
+                                                {{ value.4 }}
+                                            </td>
+                                            <td>
+                                                {{ value.5 }}
+                                            </td>
+                                            <td>
+                                                {{ value.6 }}
                                             </td>
                                         </tr>
                                     {% endfor %}

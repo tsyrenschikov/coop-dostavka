@@ -1391,8 +1391,9 @@ def cart_zajkovskoe(request):
                     replace =request.POST.get('replace')
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
+                    status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
-                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money)
+                                          commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
                     ord=order.id
                     return redirect(cart_ok_zajkovskoe ,ord)
 

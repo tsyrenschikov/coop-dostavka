@@ -179,13 +179,14 @@ def panel(request):
                     count_order4 = orders.objects.filter(status=4).count()
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
+                        count_true = name_shop.objects.filter(status=True).count()
                         count_total = orders.objects.filter(slug=slug_p).count()
                         wait = orders.objects.filter(slug=slug_p).filter(status=0).count()
                         formation = orders.objects.filter(slug=slug_p).filter(status=1).count()
                         delivery = orders.objects.filter(slug=slug_p).filter(status=2).count()
                         close = orders.objects.filter(slug=slug_p).filter(status=3).count()
                         cancel = orders.objects.filter(slug=slug_p).filter(status=4).count()
-                        products_count.update({name: [name_shop.objects.count(),count_total, wait, formation,delivery,close,cancel]})
+                        products_count.update({name: [name_shop.objects.count(),count_true,count_total, wait, formation,delivery,close,cancel]})
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})

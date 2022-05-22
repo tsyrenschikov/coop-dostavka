@@ -210,9 +210,20 @@ def post_tags(request):
 
 # Населенный пункт
 def locations(request):
-    local = Locations.objects.all()
-    return render(request, 'panel/locations.html', {'local': local})
-
+    users = User.objects.values_list('id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+    supermanager = User.objects.filter(groups__name='manager')
+    if request.user.is_authenticated:
+        for user in users:
+            for custom_id, name_shop, slug_shop in shops:
+                if request.user.id == user and user == custom_id and user != supermanager:
+                    local = Locations.objects.filter(slug=slug_shop)
+                    return render(request, 'panel/locations.html', {'local': local})
+                elif request.user.is_superuser:
+                    local = Locations.objects.all()
+                    return render(request, 'panel/locations.html', {'local': local})
+    else:
+        return redirect('/login')
 
 # Населенный пункт редактировать
 def edit_location(request, id):

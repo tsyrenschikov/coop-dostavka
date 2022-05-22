@@ -25,6 +25,7 @@
                                     <tr>
                                         <th style="width:7em">Название</th>
                                         <th style="width:7em">Кол-во товаров</th>
+                                        <th style="width:7em">Кол-во опублик. товаров</th>
                                         <th style="width:7em">Кол-во заказов</th>
                                         <th style="width:7em">Кол-во закрытых</th>
                                         <th style="width: 7em">Кол-во отказов</th>
@@ -48,6 +49,9 @@
                                             <td>
                                                 {{ value.3 }}
                                             </td>
+                                        <td>
+                                                {{ value.4 }}
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -59,8 +63,9 @@
                 <div class="col-xl-12 col-md-12">
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
-                            <h4>Последние добавленные товары: <p style="color: red"> Кол-во всего ( {{ count }} )</p></h4>
-                            <a href="{% url 'products' %}" class="view-btn hover-btn">Продукты (Товары)</a>
+                            <h4>Последние добавленные товары</h4>
+                            <a style="margin-bottom: 10px" href="{% url 'products' %}" class="view-btn hover-btn">Список</a>
+                            </br>
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">

@@ -165,11 +165,12 @@ def panel(request):
                     count_order2 = orders.objects.filter(slug=slug_shop).filter(status=2).count()
                     count_order3 = orders.objects.filter(slug=slug_shop).filter(status=3).count()
                     count_order4 = orders.objects.filter(slug=slug_shop).filter(status=4).count()
-                    products_count_user.update({name_shop: [name_p.objects.count(),count_total,count_order3,count_order4]})
+                    count_true = name_p.objects.filter(status=True).count()
+                    products_count_user.update({name_shop: [name_p.objects.count(),count_true,count_total,count_order3,count_order4]})
                     return render(request, 'panel/index.html', {'products_count_user':products_count_user,'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1,
                                                                 'count_order2': count_order2,
                     'count_order3': count_order3,
-                                                                'count_order4': count_order4})
+                                                                'count_order4': count_order4, 'count_true':count_true})
                 elif request.user.is_superuser:
                     count_order = orders.objects.filter(status=0).count()
                     count_order1 = orders.objects.filter(status=1).count()

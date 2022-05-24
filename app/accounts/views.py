@@ -4,12 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-
-
-def reset_user(request):
-    pass
-    return render(request, "auth/resetpass.html")
-
 def signup(request):
 
     alert = {

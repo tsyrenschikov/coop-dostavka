@@ -19,7 +19,7 @@
 										<div class="form-title"><h6>Вход в личный кабинет</h6></div>
                                             {% if form.errors %}
                                                 <div class="alert alert-danger alert-dismissible">
-                                                <a href="{% url 'reset' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                <a href="{% url 'reset_password' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                 <p>email или пароль не найдены</p>
                                             </div>
                                             {% endif %}
@@ -45,7 +45,7 @@
                                             <span class="btn-inner--icon"><img src="{% static 'file/shop/images/google.svg'%}"></span></a>
                                         </div>-->
 								<div class="password-forgor">
-									<a href="{% url 'reset' %}">Забыли пароль?</a>
+									<a href="{% url 'reset_password' %}">Забыли пароль?</a>
 								</div>
 							</div>
                             <div class="signup-link">

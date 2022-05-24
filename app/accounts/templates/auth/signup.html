@@ -1,63 +1,62 @@
 ﻿{% extends 'shop/auth/layouts/base_login.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-{% load static %}
-{% load copyrighttags %}
-	<div class="sign-inup">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-5">
-					<div class="sign-form">
-						<div class="sign-inner">
-							<div class="sign-logo" id="logo">
-								<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
-								<a href="/"><img class="logo-inverse" src="{% static 'file/shopimages/dark-logo.svg' %}" alt=""></a>
-							</div>
-							<div class="form-dt">
-								<div class="form-inpts checout-address-step">
-									<form method="post" name="ValidationForm" id="form_id" onsubmit="javascript:return validate('form_id','email');">
+    {% load static %}
+    <div class="sign-inup">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="sign-form">
+                        <div class="sign-inner">
+                            <div class="sign-logo" id="logo">
+                                <a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                                <a href="/"><img class="logo-inverse" src="{% static 'file/shopimages/dark-logo.svg' %}" alt=""></a>
+                            </div>
+                            <div class="form-dt">
+                                <div class="form-inpts checout-address-step">
+                                    <form method="post" name="ValidationForm" id="form_id" onsubmit="javascript:return validate('form_id','email');">
                                         {% csrf_token %}
-										<div class="form-title"><h6>Регистрация</h6></div>
-										<div class="form-group pos_rel">
-											<input id="email" name="email" type="email" pattern="[^ @]*@[^ @]*" placeholder="Email" class="form-control lgn_input"  required="">
-											<i class="uil uil-envelope lgn_icon"></i>
-										</div>
+                                        <div class="form-title"><h6>Регистрация</h6></div>
+                                        <div class="form-group pos_rel">
+                                            <input id="email" name="email" type="email" pattern="[^ @]*@[^ @]*" placeholder="Email" class="form-control lgn_input" required="">
+                                            <i class="uil uil-envelope lgn_icon"></i>
+                                        </div>
                                         {% if email %}
                                             <div class="alert alert-danger alert-dismissible">
                                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            {{ email }}
+                                                {{ email }}
                                             </div>
                                         {% endif %}
-                                     <div class="form-group pos_rel">
-											<input id="first_name" name="first_name" type="text" placeholder="Ваше имя" class="form-control lgn_input" required="">
-											<i class="uil uil-user-circle lgn_icon"></i>
-										</div>
                                         <div class="form-group pos_rel">
-											<input id="password1" name="password" type="password" placeholder="Пароль" class="form-control lgn_input" minlength="6"
-       maxlength="8" size="8" required="">
-											<i class="uil uil-padlock lgn_icon"></i>
-										</div>
-										<div class="form-group pos_rel">
-											<input id="password2" name="password2" type="password" placeholder="Повторите пароль" class="form-control lgn_input" minlength="6"
-       maxlength="8" size="8" required="">
-											<i class="uil uil-padlock lgn_icon"></i>
-										</div>
-										<input class="login-btn hover-btn" type="submit"  value="Зарегистрироваться">
-									</form>
-								</div>
-								<div class="signup-link">
-									<p>У вас уже есть аккаунт? - <a href="{% url 'login' %}">Авторизация</a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-					{% include 'auth/include/footer.html' %}
-				</div>
-			</div>
-		</div>
-	</div>
-{% block javascripts %}
-    <script src="{% static 'file/shop/js/password.js' %}"></script>
-    <script src="{% static 'file/shop/js/email_valid.js' %}"></script>
-{% endblock javascripts %}
+                                            <input id="first_name" name="first_name" type="text" placeholder="Ваше имя" class="form-control lgn_input" required="">
+                                            <i class="uil uil-user-circle lgn_icon"></i>
+                                        </div>
+                                        <div class="form-group pos_rel">
+                                            <input id="password1" name="password" type="password" placeholder="Пароль" class="form-control lgn_input" minlength="6"
+                                                   maxlength="8" size="8" required="">
+                                            <i class="uil uil-padlock lgn_icon"></i>
+                                        </div>
+                                        <div class="form-group pos_rel">
+                                            <input id="password2" name="password2" type="password" placeholder="Повторите пароль" class="form-control lgn_input" minlength="6"
+                                                   maxlength="8" size="8" required="">
+                                            <i class="uil uil-padlock lgn_icon"></i>
+                                        </div>
+                                        <input class="login-btn hover-btn" type="submit" value="Зарегистрироваться">
+                                    </form>
+                                </div>
+                                <div class="signup-link">
+                                    <p>У вас уже есть аккаунт? - <a href="{% url 'login' %}">Авторизация</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% include 'auth/include/footer.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{% static 'file/shop/js/password.js' %}"></script>
+        <script src="{% static 'file/shop/js/email_valid.js' %}"></script>
+    {% endblock javascripts %}
 {% endblock content %}

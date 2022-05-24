@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect

@@ -3,45 +3,45 @@
 {% block title %}Вход{% endblock %}
 {% block content %}
     <body class="bg-sign">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header card-sign-header">
-										<h3 class="text-center font-weight-light my-4">Вход в панель управления КООП</h3>
-									</div>
-                                    <div class="card-body">
-                                        <form method="post">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header card-sign-header">
+                                    <h3 class="text-center font-weight-light my-4">Вход в панель управления КООП</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post">
                                         {% csrf_token %}
-                                            <div class="form-group">
-                                                {% if form.errors %}
-                                                    <div class="alert alert-danger alert-dismissible">
-                                                        <a href="{% url 'login' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <p>E-mail или пароль не найдены</p>
-                                                    </div>
-                                                {% endif %}
-												<label class="form-label" for="inputEmailAddress">E-mail*</label>
-												<input class="form-control py-3" id="username" name="username" type="text" placeholder="Введите e-mail" required="">
-											</div>
-                                            <div class="form-group">
-												<label class="form-label" for="inputPassword">Пароль*</label>
-												<input class="form-control py-3" id="inputPassword" name="password" type="password" placeholder="Введите пароль" required="">
-											</div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn btn-sign hover-btn" type="submit" >Вход</button>
-											</div>
-                                        </form>
-                                    </div>
+                                        <div class="form-group">
+                                            {% if form.errors %}
+                                                <div class="alert alert-danger alert-dismissible">
+                                                    <a href="{% url 'login' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    <p>E-mail или пароль не найдены</p>
+                                                </div>
+                                            {% endif %}
+                                            <label class="form-label" for="inputEmailAddress">E-mail*</label>
+                                            <input class="form-control py-3" id="username" name="username" type="text" placeholder="Введите e-mail" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="inputPassword">Пароль*</label>
+                                            <input class="form-control py-3" id="inputPassword" name="password" type="password" placeholder="Введите пароль" required="">
+                                        </div>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <button class="btn btn-sign hover-btn" type="submit">Вход</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
+                </div>
+            </main>
         </div>
+    </div>
     </body>
-</html>
+    </html>
 {% endblock content %}

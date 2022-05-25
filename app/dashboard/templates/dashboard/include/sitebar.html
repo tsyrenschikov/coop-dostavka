@@ -1,10 +1,12 @@
 {% load static %}
 <div class="col-lg-3 col-md-4">
-  <div class="left-side-tabs">
-      <a href="{% url 'dashboard' %}" class="user-item {% if request.path == '/dashboard/' %}active{% endif %}"><i class="uil uil-box"></i>Заказы</a>
-      <a href="{% url 'my_wallet' %}" class="user-item {% if request.path == '/dashboard/my_wallet/' %}active{% endif %}"><i class="uil uil-wallet"></i>Кошелек</a>
-      <a href="{% url 'my_wishlist' %}" class="user-item {% if request.path == '/dashboard/my_wishlist/' %}active{% endif %}"><i class="uil uil-heart"></i>Избранные</a>
-      <a href="/dashboard/edit_profile/{{ user.id }}" class="user-item {% if user.id == users_id %}active{% endif %}"><i class="uil uil-user"></i>Профиль</a>
-      <a href="{% url 'logout' %}" class="user-item"><i class="uil uil-exit"></i>Выход</a>
-  </div>
+    <div class="left-side-tabs">
+        <div class="dashboard-left-links">
+            <a href="{% url 'dashboard' %}" class="user-item {% if request.path == '/dashboard/' %}active{% endif %}"><i class="uil uil-box"></i>Заказы</a>
+            <a href="{% url 'my_wallet' %}" class="user-item {% if request.path == '/dashboard/my_wallet/' %}active{% endif %}"><i class="uil uil-wallet"></i>Кошелек</a>
+            <a href="{% url 'my_wishlist' %}" class="user-item {% if request.path == '/dashboard/my_wishlist/' %}active{% endif %}"><i class="uil uil-heart"></i>Избранные</a>
+            <a href="/dashboard/edit_profile/{{ user.id }}" class="user-item {% if user.id == users_id %}active{% endif %}"><i class="uil uil-user"></i>Профиль</a>
+            <a href="{% url 'logout' %}" class="user-item"><i class="uil uil-exit"></i>Выход</a>
+        </div>
+    </div>
 </div>

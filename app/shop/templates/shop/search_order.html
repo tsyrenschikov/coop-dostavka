@@ -38,9 +38,11 @@
                                         <td>{{ i.id }}</td>
                                         <td>{{ i.cal }}</td>
                                         <td>
-                                            {% if i.status == null %}<span class="bullet" style="background-color: rgb(166, 177, 189);" ></span><span>В ожидании</span>{% endif %}
-                                            {% if i.status == 'false' %}<span class="bullet" style="background-color: rgb(254, 208, 48);" ></span><span>Сформирован</span>{% endif %}
-                                            {% if i.status == 'true' %}<span class="bullet" style="background-color: rgb(2, 178, 144);"></span><span>Доставка</span>{% endif %}
+                                            {% if i.status == '0' %}<span class="bullet" style="background-color: #8892d6" ></span><span>В ожидании</span>{% endif %}
+                                            {% if i.status == '1' %}<span class="bullet" style="background-color: #45bbe0" ></span><span>Формирование</span>{% endif %}
+                                            {% if i.status == '2' %}<span class="bullet" style="background-color: #78c350"></span><span>Доставка</span>{% endif %}
+                                            {% if i.status == '3' %}<span class="bullet" style="background-color: cadetblue"></span><span>Закрыто</span>{% endif %}
+                                            {% if i.status == '4' %}<span class="bullet" style="background-color: #fc544b"></span><span>Отмена</span>{% endif %}
                                         </td>
                                         </td>
                                     </tr>

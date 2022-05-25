@@ -21,8 +21,6 @@ def signup(request):
                 alert['email'] = "Почтовый ящик уже используется"
             else:
                 User.objects.create_user(first_name=first_name, email=email, password=password1)
-                return redirect(reverse("dashboard"))
-
-
+                return redirect(reverse("login"))
 
     return render(request, 'auth/signup.html', alert)

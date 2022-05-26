@@ -32,6 +32,7 @@ def edit_profile(request,id):
 def dashboard(request):
     local = Locations.objects.values_list('name', 'slug').distinct()
     users=User.objects.all()
+    order = orders.objects.all()
 
     return render(request, 'dashboard/dashboard_my_orders.html', {'users':users, 'local':local})
 

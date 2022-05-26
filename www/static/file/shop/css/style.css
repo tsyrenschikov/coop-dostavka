@@ -4364,7 +4364,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     z-index: 101;
 }
 
-/*--
+/*--Dashboard--*/
 
 .img-add [type="file"] + label {
     cursor: pointer;

@@ -50,6 +50,15 @@
                                             </div>
                                             </li>
                                             </ul>
+
+                                            {% for k in shop %}
+                                                {% if val.address_city == k.name %}
+                                                    <input type="hidden" id="nal" value="{% if val.money %}{{ val.money }}{% else %}0{% endif %}">
+                                                    <input type="hidden" id="delivery_price" value="{{ k.delivery_price }}">
+                                                    <input type="hidden" id="delivery_price_min" value="{{ k.delivery_price_min }}">
+                                                {% endif %}
+                                            {% endfor %}
+
                                             <div class="total-dt">
                                                 <div class="total-checkout-group">
                                                     <div class="cart-total-dil">
@@ -61,30 +70,35 @@
                                                         {% if val.delivery == 0 %}
                                                             <span>Бесплатно</span>
                                                         {% else %}
-                                                            <span id="delivery"></span>
+                                                            <span id="delivery">{{ val.delivery }} р.</span>
                                                         {% endif %}
                                                     </div>
                                                 </div>
                                                 <div class="main-total-cart">
                                                     <h2>Общая стоимость заказа</h2>
-                                                    <span>{{ val.cart }} р.</span>
+                                                    <span>{{ val.total_price }} р.</span>
                                                 </div>
                                             </div>
                                             <div class="alert-offer">
                                                 <label for="status" style="font-weight: 600">Оплата</label>
                                                 <div class="status-active_order">
                                                     {{ val.payment }}
+                                                </div>
                                                     {% if val.money %}
                                                         <div class="order-total-right-text" value="{{ val.money }}"> Наличными: {{ val.money }} р.
                                                             <total_change_text></total_change_text>
                                                             <total_change></total_change>
                                                         </div>{% endif %}
-                                                </div>
                                             </div>
                                             <div class="call-bill">
+                                                {% for c in shops %}
                                                 <div class="delivery-man">
-                                                    Курьер - <a href="#"><i class="uil uil-phone"></i>Позвонить</a>
+                                                    Магазин : {{ c.name }} </br>
+                                                    Телефон : {{ c.phone }} </br>
+                                                    Время работы : {{ c.times|cut:"["|cut:"'"|cut:"]" }} </br>
+                                                    Юр.адрес : {{ c.uraddress }}
                                                 </div>
+                                                    {% endfor %}
                                                 <div class="order-bill-slip">
                                                     <div class="bill-btn5 hover-btn">View Bill</div>
                                                 </div>

@@ -37,8 +37,17 @@ def dashboard(request):
         for id,phone_u in users:
             for name,phone_ord in order:
                 if request.user.id == id or phone_u == phone_ord:
+                    list_product = []
                     ord = orders.objects.values().filter(phone=phone_ord)
-                    return render(request, 'dashboard/dashboard_my_orders.html', {'ord':ord,'users':users, 'local':local})
+                    for prod in ord:
+                        for i in prod['products']:
+                            list_product.append(i)
+                    product_list = list_product[0::3]
+                    count_list = list_product[1::3]
+                    price_list = list_product[2::3]
+                    zakaz_list = list(zip(count_list, price_list))
+                    zakaz_dict = dict(zip(product_list, zakaz_list))
+                    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict':zakaz_dict,'ord':ord,'users':users, 'local':local})
                 elif request.user.is_superuser:
                     return redirect('accounts/login/')
     else:

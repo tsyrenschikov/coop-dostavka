@@ -16,68 +16,76 @@
                                         <h4><i class="uil uil-box"></i>Заказы</h4>
                                     </div>
                                 </div>
-                                {% for val in ord %}
-                                    {{ val }}
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="pdpt-bg">
-                                                <div class="pdpt-title">
-                                                    <h6>Дата доставки {{ val.data }}</h6>
-                                                </div>
-                                                <div class="order-body10">
-                                                    <ul class="order-dtsll">
-                                                        <li>
-                                                            <div class="order-dt-img">
-                                                                <img src="images/groceries.svg" alt="">
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            {% for products in val.products %}
-                                                            <div class="order-dt47">
-                                                                <h4>{{ products }}</h4>
-                                                                <p>Delivered - Gambo</p>
-                                                                <div class="order-title">2 Items <span data-inverted="" data-tooltip="2kg broccoli, 1kg Apple" data-position="top center">?</span></div>
-                                                            </div>
-                                                                {% endfor %}
-                                                        </li>
-                                                    </ul>
-                                                    <div class="total-dt">
-                                                        <div class="total-checkout-group">
-                                                            <div class="cart-total-dil">
-                                                                <h4>Sub Total</h4>
-                                                                <span>$25</span>
-                                                            </div>
-                                                            <div class="cart-total-dil pt-3">
-                                                                <h4>Delivery Charges</h4>
-                                                                <span>Free</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main-total-cart">
-                                                            <h2>Total</h2>
-                                                            <span>$25</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="alert-offer">
-                                                        <img src="images/ribbon.svg" alt="">
-                                                        Cashback of $2 will be credit to Gambo Super Market wallet 6-12 hours of delivery.
-                                                    </div>
-                                                    <div class="call-bill">
-                                                        <div class="delivery-man">
-                                                            Delivery Boy - <a href="#"><i class="uil uil-phone"></i> Call Us</a>
-                                                        </div>
-                                                        <div class="order-bill-slip">
-                                                            <a href="#" class="bill-btn5 hover-btn">View Bill</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            {% for val in ord %}
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="pdpt-bg">
+                                        <div class="pdpt-title">
+                                            <h6>Дата доставки : {{ val.data }}</h6>
+                                        </div>
+
+                                        <div class="card-body-table">
+                                            <div class="table-responsive">
+                                                <table class="table ucp-table1 table-hover table_sort">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>№</th>
+                                                        <th>Название</th>
+                                                        <th>Кол-во</th>
+                                                        <th>Цена за ед.</th>
+                                                    </tr>
+                                                    </thead>
+                                                    {% for key,val in zakaz_dict.items %}
+                                                        <tr>
+                                                            <td>{{ forloop.counter }}</td>
+                                                            <td>{{ key }}</td>
+                                                            <td>{{ val.0 }} шт</td>
+                                                            <td>{{ val.1 }} р.</td>
+                                                        </tr>
+                                                {% endfor %}
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                {% endfor %}
+                                        </li>
+                                        </ul>
+                                        <div class="total-dt">
+                                            <div class="total-checkout-group">
+                                                <div class="cart-total-dil">
+                                                    <h4>Sub Total</h4>
+                                                    <span>$25</span>
+                                                </div>
+                                                <div class="cart-total-dil pt-3">
+                                                    <h4>Delivery Charges</h4>
+                                                    <span>Free</span>
+                                                </div>
+                                            </div>
+                                            <div class="main-total-cart">
+                                                <h2>Total</h2>
+                                                <span>$25</span>
+                                            </div>
+                                        </div>
+                                        <div class="alert-offer">
+                                            <img src="images/ribbon.svg" alt="">
+                                            Cashback of $2 will be credit to Gambo Super Market wallet 6-12 hours of delivery.
+                                        </div>
+                                        <div class="call-bill">
+                                            <div class="delivery-man">
+                                                Delivery Boy - <a href="#"><i class="uil uil-phone"></i> Call Us</a>
+                                            </div>
+                                            <div class="order-bill-slip">
+                                                <a href="#" class="bill-btn5 hover-btn">View Bill</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts.html' %}

@@ -42,16 +42,18 @@ def dashboard(request):
                     for prod in ord:
                         for i in prod['products']:
                             list_product.append(i)
+                        slug_p=prod['slug']
+                    shop = Locations.objects.values('name','delivery_price', 'delivery_price_min').filter(slug=slug_p)
                     product_list = list_product[0::3]
                     count_list = list_product[1::3]
                     price_list = list_product[2::3]
                     zakaz_list = list(zip(count_list, price_list))
                     zakaz_dict = dict(zip(product_list, zakaz_list))
-                    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict':zakaz_dict,'ord':ord,'users':users, 'local':local})
+                    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict':zakaz_dict,'ord':ord,'users':users, 'local':local,'shop':shop})
                 elif request.user.is_superuser:
-                    return redirect('accounts/login/')
+                    return redirect('/accounts/login/')
     else:
-        return redirect('accounts/login/')
+        return redirect('/accounts/login/')
 
 def my_rewards(request):
     local = Locations.objects.values_list('name', 'slug').distinct()

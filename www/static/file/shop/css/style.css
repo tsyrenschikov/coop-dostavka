@@ -4336,6 +4336,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     animation-iteration-count: infinite;
 }
 
+.status-active_order {
+    font-weight: 600;
+    font-size: 18px;
+    color: #f55d2c;
+}
+
 /*--Addcart-*/
 .overlay {
     background: transparent url(images/overlay.png) repeat top left;

@@ -36,7 +36,7 @@ def dashboard(request):
     if request.user.is_authenticated:
         for id,phone_u in users:
             for name,phone_ord in order:
-                if request.user.id == id or phone_u == phone_ord:
+                if request.user.id == id and phone_u == phone_ord:
                     list_product = []
                     ord = orders.objects.values().filter(phone=phone_ord)
                     for prod in ord:

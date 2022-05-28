@@ -2005,7 +2005,7 @@ def cart_chetkarino(request):
                     ord=order.id
                     return redirect(cart_ok_chetkarino ,ord)
 
-                return render(request, 'chetkarino/cart.html', {'category_product':category_product,'shop':shop,    'local':local,'local_d':local_d,'name':name,'address_str':address_str})
+                return render(request, 'chetkarino/cart.html', {'category_product':category_product,'shop':shop,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
 
 
 def cart_ok_chetkarino(request,ord):

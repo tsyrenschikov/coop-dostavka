@@ -77,8 +77,9 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group mb-3">
-                                                <label class="form-label">E-mail</label>
-                                                <input name="email" type="email" class="form-control" placeholder="Ваш E-mail (не обязательно)">
+                                                <div class="order-title"><label class="form-label">E-mail</label><span data-inverted="" data-tooltip="Указав
+                                                E-mail, вы сможете отследить заказ в личном кабинете" data-position="top center">?</span></div>
+                                                <input name="email" type="email" class="form-control" value="{% if user.is_authenticated %}{{ user }}{% endif %}" placeholder="Ваш E-mail">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

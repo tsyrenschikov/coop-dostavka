@@ -2,7 +2,7 @@
 <div class="col-lg-3 col-md-4">
     <div class="left-side-tabs">
         <div class="dashboard-left-links">
-            <a href="{% url 'dashboard' %}" class="user-item {% if request.path == '/dashboard/' %}active{% endif %}"><i class="uil uil-box"></i>Заказы</a>
+            <a href="{% url 'list_order_dashboard' %}" class="user-item {% if 'list_order_dashboard' in request.path %}active{% endif %}"><i class="uil uil-box"></i>Заказы</a>
             <a href="/dashboard/edit_profile/{{ user.id }}" class="user-item {% if user.id == users_id %}active{% endif %}"><i class="uil uil-user"></i>Профиль</a>
             <a href="{% url 'logout' %}" class="user-item"><i class="uil uil-exit"></i>Выход</a>
         </div>

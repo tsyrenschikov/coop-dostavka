@@ -28,8 +28,10 @@ def edit_profile(request,id):
     except User.DoesNotExist:
         return render(request, 'dashboard/edit_profile.html', {})
 
+def list_order_dashboard(request):
+    return render(request, 'dashboard/dashboard_my_order_list.html')
 
-def dashboard(request):
+def dashboard(request, id):
     local = Locations.objects.values_list('name', 'slug').distinct()
     users=User.objects.values_list('id', 'phone').distinct()
     order = orders.objects.values_list('name', 'phone').distinct()

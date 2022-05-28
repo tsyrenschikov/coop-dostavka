@@ -7137,6 +7137,17 @@ textarea {
     margin-bottom: 14px;
 }
 
+.contact-form-cart-order {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 30px 30px;
+    margin-left: 2%;
+    margin-top: 34px;
+    margin-right: 25%;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
 /* --- Product Request --- */
 
 .bootstrap-tagsinput .tag {

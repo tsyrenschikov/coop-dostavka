@@ -21,7 +21,7 @@
 										</span>
                 </a>
             </div>
-            <a href="{% url 'dashboard' %}" class="item channel_item"><i class="uil uil-box icon__1"></i>Заказы</a>
+            <a href="{% url 'list_order_dashboard' %}" class="item channel_item"><i class="uil uil-box icon__1"></i>Заказы</a>
             <a href="/dashboard/edit_profile/{{ user.id }}" class="item channel_item"><i class="uil uil-user icon__1"></i>Профиль</a>
             <a href="{% url 'logout' %}?next={{ request.path }}" class="item channel_item"><i class="uil uil-lock-alt icon__1"></i>Выход</a>
         </div>

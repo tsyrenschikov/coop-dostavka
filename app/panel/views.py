@@ -147,12 +147,12 @@ def edit_profile(request):
 
 # Главна страница панели управления
 def panel(request):
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', 'org').distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}
-        for user in users:
+        for user,org in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id:
                     name_p = eval(slug_shop)
@@ -189,9 +189,10 @@ def panel(request):
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
+                elif org == None:
+                        return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
-
 
 def posts(request):
     return render(request, 'panel/posts.html', {})

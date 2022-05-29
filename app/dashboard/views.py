@@ -29,12 +29,23 @@ def edit_profile(request,id):
         return render(request, 'dashboard/edit_profile.html', {})
 
 def list_order_dashboard(request):
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    users = User.objects.values_list('id','phone','email').distinct()
+    order = orders.objects.values_list('phone','email','slug').distinct()
+    if request.user.is_authenticated:
+        for ph, em, sl in order:
+            for id, phone,email in users:
+                if request.user.id == id and em == email and ph == phone:
+                    ord = orders.objects.values().filter(slug = sl).exclude(status = '3').exclude(status='4')
+                    return render(request, 'dashboard/dashboard_my_order_list.html', {'ord':ord, 'local':local})
+    else:
+        return redirect('/accounts/login/')
     return render(request, 'dashboard/dashboard_my_order_list.html')
 
 def dashboard(request, id):
     local = Locations.objects.values_list('name', 'slug').distinct()
     users=User.objects.values_list('id', 'phone').distinct()
-    order = orders.objects.values_list('name', 'phone').distinct()
+    order = orders.objects.get(id=id)
     if request.user.is_authenticated:
         for id,phone_u in users:
             for name,phone_ord in order:

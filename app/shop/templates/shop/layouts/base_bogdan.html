@@ -69,7 +69,9 @@
             </div>
             <div class="header_right">
                 <ul>
-                    {% include 'shop/includes/search_order_bogdan.html' %}
+                    {% if not user.is_authenticated %}
+                        {% include 'shop/includes/search_order_bogdan.html' %}
+                    {% endif %}
                     {% include 'shop/layouts/account.html' %}
                 </ul>
             </div>

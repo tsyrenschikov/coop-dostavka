@@ -4,7 +4,7 @@
 {% load hosts %}
 {% host_url 'contact' as panel_url %}
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
@@ -18,93 +18,96 @@
     <!-- Stylesheets -->
     {% include 'shop/includes/style.html' %}
 
-	<!-- reCAPTCHA API -->
-  	<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+    <!-- reCAPTCHA API -->
+    <script src='https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}'></script>
 
     <!-- Vendor Stylesheets -->
-      {% include 'shop/includes/vendor_stylesheets.html' %}
+    {% include 'shop/includes/vendor_stylesheets.html' %}
 
-      <!-- reCAPTCHA API -->
-      <!-- Yandex.Metrika counter -->
+    <!-- reCAPTCHA API -->
+    <!-- Yandex.Metrika counter -->
 
 
     {% include 'shop/includes/recaptcha_metric.html' %}
 
 
-  </head>
-  <body>
-  <!-- Preloader Start -->
-  <div class="preloader">
-      <div class="utf-preloader">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-  </div>
+</head>
+<body>
+<!-- Preloader Start -->
+<div class="preloader">
+    <div class="utf-preloader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 <!-- Preloader End -->
 
-  {% include 'shop/includes/select_city.html' %}
+{% include 'shop/includes/select_city.html' %}
 
-  <!-- Header Start -->
-	<header class="header clearfix">
-		<div class="top-header-group">
-			<div class="top-header">
-				<div class="res_main_logo">
-					<a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
-                    <input id="location_slug" hidden="hidden" value="{{ address_str }}">
-				</div>
-				<div class="main_logo" id="logo">
-					<a href="{% url 'zajkovskoe' %}"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
-					<a href="{% url 'zajkovskoe' %}"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
-				</div>
-                <div class="select_location">
-					<div class="ui inline dropdown loc-title">
-						<div class="text">
-                            <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
-                                <input  id="select_local" type="hidden" value="">
-                                <i id="local-name" class="uil uil-location-point local-name"></i></a>
-						</div>
+<!-- Header Start -->
+<header class="header clearfix">
+    <div class="top-header-group">
+        <div class="top-header">
+            <div class="res_main_logo">
+                <a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                <input id="location_slug" hidden="hidden" value="{{ address_str }}">
+            </div>
+            <div class="main_logo" id="logo">
+                <a href="{% url 'zajkovskoe' %}"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                <a href="{% url 'zajkovskoe' %}"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+            </div>
+            <div class="select_location">
+                <div class="ui inline dropdown loc-title">
+                    <div class="text">
+                        <a href="#" class="btn1" data-toggle="modal" data-target="#exampleModalCenter" title="Выбор города">
+                            <input id="select_local" type="hidden" value="">
+                            <i id="local-name" class="uil uil-location-point local-name"></i></a>
                     </div>
                 </div>
-				<div class="header_right">
-					<ul>
-						{% include 'shop/includes/search_order_zajkovskoe.html' %}
-                        {% include 'shop/layouts/account.html' %}
-					</ul>
-				</div>
-			</div>
-		</div>
-        <div class="sub-header-group">
-            <div class="sub-header">
+            </div>
+            <div class="header_right">
+                <ul>
+                    {% if not user.is_authenticated %}
+                        {% include 'shop/includes/search_order_zajkovskoe.html' %}
+                    {% endif %}
+                    {% include 'shop/layouts/account.html' %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sub-header-group">
+        <div class="sub-header">
             {% include 'shop/includes/menucategory.html' %}
-				<nav class="navbar navbar-expand-lg navbar-light py-3">
-					<div class="container-fluid">
-						<button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>
-						<div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
-							<ul class="navbar-nav main_nav align-self-stretch">
-								<li class="nav-item"><a href="{% url 'zajkovskoe' %}" class="{% if request.path == '/zajkovskoe/' %}active{% endif %} nav-link " title="Home">Главная</a></li>
-								<li
-										class="nav-item">
-                                    <a href="{% url 'shop_zajkovskoe_grid' %}" class="{% if request.path == '/zajkovskoe/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
-								<li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
-                                    связь</a></li>
+            <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <div class="container-fluid">
+                    <button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>
+                    <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
+                        <ul class="navbar-nav main_nav align-self-stretch">
+                            <li class="nav-item"><a href="{% url 'zajkovskoe' %}" class="{% if request.path == '/zajkovskoe/' %}active{% endif %} nav-link " title="Home">Главная</a></li>
+                            <li
+                                    class="nav-item">
+                                <a href="{% url 'shop_zajkovskoe_grid' %}" class="{% if request.path == '/zajkovskoe/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
+                            <li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
+                                связь</a></li>
 
-							</ul>
+                        </ul>
 
-						</div>
                     </div>
-				</nav>
-				<div class="header_cart order-1">
-                    <button type="button" class="cart__btn hover-btn" title="Cart"  data-toggle="modal" data-target="#cart">
-                        <i class="uil uil-shopping-cart-alt"></i><span id="hidescrollcart">Корзина</span><ins class="total-count"></ins>
-                    </button>
-				</div>
+                </div>
+            </nav>
+            <div class="header_cart order-1">
+                <button type="button" class="cart__btn hover-btn" title="Cart" data-toggle="modal" data-target="#cart">
+                    <i class="uil uil-shopping-cart-alt"></i><span id="hidescrollcart">Корзина</span>
+                    <ins class="total-count"></ins>
+                </button>
+            </div>
 
-			</div>
-		</div>
-	</header>
-	<!-- Header End -->
+        </div>
+    </div>
+</header>
+<!-- Header End -->
 {% block content %}{% endblock content %}
-  </body>
+</body>
 </html>

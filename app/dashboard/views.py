@@ -31,6 +31,7 @@ def edit_profile(request,id):
 def list_order_dashboard(request):
     local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.values_list('id','phone','email').distinct()
+    us = User.objects.values_list('id', flat=True).distinct()
     order = orders.objects.values_list('phone','email','slug').distinct()
     if request.user.is_authenticated:
         for ph, em, sl in order:
@@ -38,9 +39,12 @@ def list_order_dashboard(request):
                 if request.user.id == id and em == email and ph == phone:
                     ord = orders.objects.values().filter(slug = sl).exclude(status = '3').exclude(status='4')
                     return render(request, 'dashboard/dashboard_my_order_list.html', {'ord':ord, 'local':local})
+                else:
+                    return redirect('/accounts/login/')
+    if request.user.is_authenticated == us:
+        return redirect('https://panel.coop-dostavka.ru/login/')
     else:
-        return redirect('/accounts/login/')
-    return render(request, 'dashboard/dashboard_my_order_list.html')
+        return render(request, 'dashboard/dashboard_my_order_list.html')
 
 def dashboard(request, id):
     local = Locations.objects.values_list('name', 'slug').distinct()

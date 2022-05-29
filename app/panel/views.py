@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -147,12 +148,12 @@ def edit_profile(request):
 
 # Главна страница панели управления
 def panel(request):
-    users = User.objects.values_list('id', 'org').distinct()
+    users = User.objects.values_list('id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}
-        for user,org in users:
+        for user in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id:
                     name_p = eval(slug_shop)
@@ -165,11 +166,11 @@ def panel(request):
                     count_order3 = orders.objects.filter(slug=slug_shop).filter(status=3).count()
                     count_order4 = orders.objects.filter(slug=slug_shop).filter(status=4).count()
                     count_true = name_p.objects.filter(status=True).count()
-                    products_count_user.update({name_shop: [name_p.objects.count(),count_true,count_total,count_order3,count_order4]})
-                    return render(request, 'panel/index.html', {'products_count_user':products_count_user,'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1,
+                    products_count_user.update({name_shop: [name_p.objects.count(), count_true, count_total, count_order3, count_order4]})
+                    return render(request, 'panel/index.html', {'products_count_user': products_count_user, 'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1,
                                                                 'count_order2': count_order2,
-                    'count_order3': count_order3,
-                                                                'count_order4': count_order4, 'count_true':count_true})
+                                                                'count_order3': count_order3,
+                                                                'count_order4': count_order4, 'count_true': count_true})
                 elif request.user.is_superuser:
                     count_order = orders.objects.filter(status=0).count()
                     count_order1 = orders.objects.filter(status=1).count()
@@ -185,14 +186,14 @@ def panel(request):
                         delivery = orders.objects.filter(slug=slug_p).filter(status=2).count()
                         close = orders.objects.filter(slug=slug_p).filter(status=3).count()
                         cancel = orders.objects.filter(slug=slug_p).filter(status=4).count()
-                        products_count.update({name: [name_shop.objects.count(),count_true,count_total, wait, formation,delivery,close,cancel]})
+                        products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait, formation, delivery, close, cancel]})
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
-                elif org == None:
-                        return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
+    if request.user.is_authenticated != users:
+        return render(request, 'panel/error_auth.html')
 
 def posts(request):
     return render(request, 'panel/posts.html', {})
@@ -226,6 +227,7 @@ def locations(request):
                     return render(request, 'panel/locations.html', {'local': local})
     else:
         return redirect('/login')
+
 
 # Населенный пункт редактировать
 def edit_location(request, id):

@@ -6,7 +6,6 @@
         </head>
     {% endif %}
     {% if user.is_authenticated %}
-        <a href="{% url 'my_wishlist' %}" class="option_links" title="Wishlist"><i class='uil uil-heart icon_wishlist'></i><span class="noti_count1">3</span></a>
         <a href="#" class="opts_account">
             <img src="{% static 'file/shop/images/avatar/img_icon.jpg' %}" alt="">
             <span class="user__name">{{ user.first_name }}</span>

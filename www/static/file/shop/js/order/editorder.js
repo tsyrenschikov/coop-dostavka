@@ -1,9 +1,26 @@
 var
     counter = -1,
-    delivery = 0,
-    products = [],
     cart=0,
+    total_order = 0,
+    nal_order = 0,
     items = [];
+
+
+$(document).ready(function () {
+        var
+            nal=$('#nal').val(),
+            total_price=$('#total_price').val();
+        nal_order=parseFloat(nal);
+    if(nal_order > total_price){
+        total_order= Number(nal) - Number(total_price);
+        $('total_change').text('Сдача магазина'+': '+ total_order.toFixed(2) + ' '+ 'р.')
+    }
+    if(nal_order < total_price) {
+        total_order = Math.abs(Number(total_price) - Number(nal))
+        $('total_change').text('Ваша доплата'+': '+ total_order.toFixed(2) + ' '+ 'р.')
+    }
+    console.log(nal_order,total_price)
+});
 
 $('#mytable tr').each(function () {
     var

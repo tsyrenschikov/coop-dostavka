@@ -53,19 +53,22 @@ def dashboard_order(request, id):
     local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.values_list('id', 'phone', 'email').distinct()
     list_product = []
-    ord = orders.objects.get(id=id)
-    #for prod in ord:
-        #for i in prod['products']:
-            #list_product.append(i)
-        #slug_p = prod['slug']
+    ord = orders.objects.values().filter(id=id)
+    for prod in ord:
+        for i in prod['products']:
+            list_product.append(i)
+        slug_p = prod['slug']
     product_list = list_product[0::3]
     count_list = list_product[1::3]
     price_list = list_product[2::3]
     zakaz_list = list(zip(count_list, price_list))
     zakaz_dict = dict(zip(product_list, zakaz_list))
-    #\shops = Shop.objects.values().filter(slug=slug_p)
+    shops = Shop.objects.values().filter(slug=slug_p)
     shop = Locations.objects.values('name', 'delivery_price', 'delivery_price_min')
-    return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict': zakaz_dict, 'ord': ord, 'users': users, 'local': local, 'shop': shop})
+    if request.user.is_authenticated:
+        return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict': zakaz_dict, 'ord': ord, 'users': users, 'local': local, 'shop': shop,'shops':shops})
+    else:
+        return redirect('/')
 
 
 def my_rewards(request):

@@ -28,7 +28,7 @@
                                                     </thead>
                                                     {% for i in ord %}
                                                         <tr>
-                                                            <td><a href="/dashboard/{{ i.id }}">{{ i.id }}</a></td>
+                                                            <td><a href="/dashboard/dashboard_order/{{ i.id }}">{{ i.id }}</a></td>
                                                             <td>{{ i.cal }}</td>
                                                             <td>
                                                                 {% if i.status == '0' %}<span class="bullet" style="background-color: #8892d6"></span><span>В ожидании</span>{% endif %}

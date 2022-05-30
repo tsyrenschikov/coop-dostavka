@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 from django.shortcuts import render, redirect
 from panel.models import *
@@ -50,28 +49,24 @@ def list_order_dashboard(request):
         return redirect('/')
 
 
-def dashboard(request, id):
-    try:
-        local = Locations.objects.values_list('name', 'slug').distinct()
-        users = User.objects.values_list('id', 'phone', 'email').distinct()
-        order = orders.objects.get(id=id)
-        list_product = []
-        ord = orders.objects.values().filter(phone=phone_ord)
-        for prod in ord:
-            for i in prod['products']:
-                list_product.append(i)
-            slug_p = prod['slug']
-        product_list = list_product[0::3]
-        count_list = list_product[1::3]
-        price_list = list_product[2::3]
-        zakaz_list = list(zip(count_list, price_list))
-        zakaz_dict = dict(zip(product_list, zakaz_list))
-        shops = Shop.objects.values().filter(slug=slug_p)
-        shop = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
-        return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict': zakaz_dict, 'ord': ord, 'users': users, 'local': local, 'shop': shop, 'shops': shops})
-
-    except User.DoesNotExist:
-        return render(request, 'dashboard/dashboard_my_orders.html', {'zakaz_dict': zakaz_dict, 'ord': ord, 'users': users, 'local': local, 'shop': shop, 'shops': shops})
+def dashboard_order(request, id):
+    local = Locations.objects.values_list('name', 'slug').distinct()
+    users = User.objects.values_list('id', 'phone', 'email').distinct()
+    list_product = []
+    order = orders.objects.get(id=id)
+    ord = orders.objects.values()
+    for prod in ord:
+        for i in prod['products']:
+            list_product.append(i)
+        slug_p = prod['slug']
+    product_list = list_product[0::3]
+    count_list = list_product[1::3]
+    price_list = list_product[2::3]
+    zakaz_list = list(zip(count_list, price_list))
+    zakaz_dict = dict(zip(product_list, zakaz_list))
+    shops = Shop.objects.values().filter(slug=slug_p)
+    shop = Locations.objects.values('name', 'delivery_price', 'delivery_price_min').filter(slug=slug_p)
+    return render(request, 'dashboard/dashboard_my_orders.html', {'order':order,'zakaz_dict': zakaz_dict, 'ord': ord, 'users': users, 'local': local, 'shop': shop, 'shops': shops})
 
 
 def my_rewards(request):

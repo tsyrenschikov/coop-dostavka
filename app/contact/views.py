@@ -2,7 +2,8 @@ from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
 from django.shortcuts import render
 from django.contrib import messages
-import requests
+import json
+import urllib
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.apps import apps
@@ -21,25 +22,27 @@ def contact(request):
         email = request.POST.get('email')
         if subject and message and email:
 
-            ''' reCAPTCHA validation '''
+            ''' Begin reCAPTCHA validation '''
             recaptcha_response = request.POST.get('g-recaptcha-response')
-            data = {
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
                 'response': recaptcha_response
             }
-            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-            result = r.json()
-
-            print(result)
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            ''' End reCAPTCHA validation '''
 
             ''' if reCAPTCHA returns True '''
-            if result['success']:
+            if result['success']:# or not result['success']:
                 ''' Send email '''
                 try:
                     send_mail('Форма обратной связи', message, settings.EMAIL_HOST_USER, ['info@coop-dostavka.ru'],)
                 except BadHeaderError:
                     return render(request, 'contact/contact.html', {'recaptcha_site_key': settings.GOOGLE_RECAPTCHA_SITE_KEY})
-                return render(request, 'contact/thanks.html',{'users':users, 'categories' : categories})
+                return render(request, 'contact/thanks.html',{'users':users, 'categories' : categories,'local':local})
                 ''' if reCAPTCHA returns False '''
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             else:

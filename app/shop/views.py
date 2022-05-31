@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 User = get_user_model()
+from django.core.mail import send_mail
 from django import template
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
@@ -168,6 +170,13 @@ def cart_arti(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok ,ord)
 
@@ -457,6 +466,13 @@ def cart_arti_p(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok ,ord)
 
@@ -754,6 +770,13 @@ def cart_artiobschepit(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_artiobschepit_ok ,ord)
                 return render(request, 'arti/artiobschepit/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
@@ -979,6 +1002,13 @@ def cart_pokrovskoe(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok_pokrovskoe ,ord)
 
@@ -1203,6 +1233,13 @@ def cart_rezh(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok_rezh ,ord)
 
@@ -1365,6 +1402,7 @@ def cart_zajkovskoe(request):
     local = Locations.objects.values_list('name', 'slug').distinct()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
+    email_send=''
     for n,s,dp,dpm,days_numb in local_d:
         for name_a, slug_a in areas:
             if s == address_str and s == slug_a:
@@ -1399,6 +1437,13 @@ def cart_zajkovskoe(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man=i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send=i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ',  settings.EMAIL_HOST_USER,[(email_send)], fail_silently=False,html_message='shop/includes/send_email.html' )
                     ord=order.id
                     return redirect(cart_ok_zajkovskoe ,ord)
 
@@ -1735,6 +1780,13 @@ def cart_bogdan(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok_bogdan ,ord)
 
@@ -2002,6 +2054,13 @@ def cart_chetkarino(request):
                     status = request.POST.get('status')
                     order=orders.objects.create(name=name,phone=phone,products=products,address_city=address_city,address_street=address_street,cal=cal,
                                           commit=commit,cart=cart,delivery=delivery,total_price=total_price,slug=slug, email=email, replace=replace, payment=payment,money=money,status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
                     ord=order.id
                     return redirect(cart_ok_chetkarino ,ord)
 

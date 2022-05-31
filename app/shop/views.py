@@ -1,14 +1,14 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 User = get_user_model()
-from django.core.mail import send_mail
+from django.template.loader import get_template
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django import template
 from django.apps import apps
 Category = apps.get_model('panel', 'Category')
 from panel.models import *
 from django.core.paginator import Paginator
 from django.db.models import Q
-import copy
 from django.shortcuts import render, redirect
 
 register = template.Library()
@@ -16,7 +16,6 @@ register = template.Library()
 @register.filter(name='manager')
 def manager(user, group_name):
     return user.groups.filter(name=group_name).exists()
-
 
 def cart(request):
     return render(request, 'shop/cart.html', {})
@@ -1443,7 +1442,14 @@ def cart_zajkovskoe(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send=i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ',  settings.EMAIL_HOST_USER,[(email_send)], fail_silently=False,html_message='shop/includes/send_email.html' )
+                   # send_mail('Новый заказ', 'Ожидает новый заказ: ',  settings.EMAIL_HOST_USER,[(email_send)], fail_silently=False )
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER,(email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok_zajkovskoe ,ord)
 

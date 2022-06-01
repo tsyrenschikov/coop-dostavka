@@ -15,7 +15,7 @@
                             </div>
                             <div class="form-dt">
                                 <div class="form-inpts checout-address-step">
-                                    <form method="post">
+                                    <form method="post" id="form_id">
                                         {% csrf_token %}
                                         <div class="form-title"><h6>Восстановить пароль</h6></div>
                                         {% if email %}
@@ -28,6 +28,10 @@
                                             <input id="id_email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="Введите Email" class="form-control lgn_input" required="">
                                             <i class="uil uil-envelope lgn_icon"></i>
                                         </div>
+                                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                                        <text></text>
+                                        <div class="g-recaptcha" data-sitekey="6LdAOl0bAAAAAE419NeExrlRFkqU8rKOvWC8oMSg"></div>
+                                        <br>
                                         <button class="login-btn hover-btn" type="submit">Восстановить пароль</button>
                                     </form>
                                 </div>
@@ -42,4 +46,5 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'file/shop/login/checkbox.js' %}"></script>
 {% endblock content %}

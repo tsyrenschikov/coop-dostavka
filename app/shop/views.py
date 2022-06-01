@@ -175,7 +175,13 @@ def cart_arti(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok ,ord)
 
@@ -471,7 +477,13 @@ def cart_arti_p(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok ,ord)
 
@@ -775,7 +787,13 @@ def cart_artiobschepit(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_artiobschepit_ok ,ord)
                 return render(request, 'arti/artiobschepit/cart.html', {'category_product':category_product,'shop':shop,'shops':shops,'local':local,'local_d':local_d,'name':name,'address_str':address_str})
@@ -1007,7 +1025,13 @@ def cart_pokrovskoe(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok_pokrovskoe ,ord)
 
@@ -1238,7 +1262,13 @@ def cart_rezh(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok_rezh ,ord)
 
@@ -1792,7 +1822,13 @@ def cart_bogdan(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok_bogdan ,ord)
 
@@ -2066,7 +2102,13 @@ def cart_chetkarino(request):
                     email_manager = User.objects.values('email').filter(id=id_man)
                     for i in email_manager:
                         email_send = i['email']
-                    send_mail('Новый заказ', 'Ожидает новый заказ: ', settings.EMAIL_HOST_USER, [(email_send)], fail_silently=False)
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
                     ord=order.id
                     return redirect(cart_ok_chetkarino ,ord)
 

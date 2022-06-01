@@ -41,6 +41,10 @@
                                                    maxlength="8" size="8" required="">
                                             <i class="uil uil-padlock lgn_icon"></i>
                                         </div>
+                                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                                        <text></text>
+                                        <div class="g-recaptcha" data-sitekey="6LdAOl0bAAAAAE419NeExrlRFkqU8rKOvWC8oMSg"></div>
+                                    <br>
                                         <input class="login-btn hover-btn" type="submit" value="Зарегистрироваться">
                                     </form>
                                 </div>
@@ -58,5 +62,6 @@
     {% block javascripts %}
         <script src="{% static 'file/shop/js/password.js' %}"></script>
         <script src="{% static 'file/shop/js/email_valid.js' %}"></script>
+        <script src="{% static 'file/shop/contact/checkbocks.js' %}"></script>
     {% endblock javascripts %}
 {% endblock content %}

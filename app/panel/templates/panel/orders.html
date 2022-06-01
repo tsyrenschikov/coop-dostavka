@@ -140,13 +140,16 @@
                                     </tbody>
                                 </table>
                                 {% if not page_obj and address == 0 %}
-                                    <p style="color: red; text-align: center">Ожидаемых к формированию заказов нет</p>
+                                    <img style="display: block;margin-left: auto;margin-right: auto;height: 170px;margin-top: 10px" src="{% static 'file/panel/images/order.png' %}">
+                                    <p style="color: red;margin-left: auto;margin-right: auto;width: 25em">Ожидаемых к формированию заказов нет</p>
                                 {% elif not page_obj and address == 1 %}
-                                    <p style="color: red; text-align: center">Формируемых заказов нет</p>
+                                    <p style="color: red;margin-left: auto;margin-right: auto;width: 15em">Формируемых заказов нет</p>
                                 {% elif not page_obj and address == 2 %}
-                                    <p style="color: red; text-align: center">Доставляемых заказов нет</p>
+                                    <img style="display: block;margin-left: auto;margin-right: auto;height: 200px" src="{% static 'file/panel/images/delivery.png' %}">
+                                    <p style="color: red;margin-left: auto;margin-right: auto;width: 15em">Доставляемых заказов нет</p>
                                 {% elif not page_obj and address == 3 %}
-                                    <p style="color: red; text-align: center">Закрытых заказов нет</p>
+                                    <img style="display: block;margin-left: auto;margin-right: auto; width: 100px;height: 100px" src="{% static 'file/panel/images/pngwing.com.png' %}">
+                                    <p style="color: red;margin-left: auto;margin-right: auto;width: 15em">Закрытых заказов нет</p>
                                 {% elif not page_obj and address == 4 %}
                                     <p style="color: red; text-align: center">Отмененных заказов нет</p>
                                 {% endif %}

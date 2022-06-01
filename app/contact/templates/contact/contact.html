@@ -22,7 +22,7 @@
                 <div class="col-lg-6 col-md-6">
                 </div>
                 <div class="contact-form">
-                    <form method="POST">
+                    <form method="POST" id="my_captcha_form">
                         <h2>Отправить сообщение</h2>
                         {% csrf_token %}
                         <div class="form-group mt-1">
@@ -49,7 +49,7 @@
                         </div>
                         <script src='https://www.google.com/recaptcha/api.js'></script>
                         <div class="g-recaptcha" data-sitekey="6LdAOl0bAAAAAE419NeExrlRFkqU8rKOvWC8oMSg"></div>
-                        <button type="submit" name="submit" class="next-btn16 hover-btn mt-3">Отправить</button>
+                        <button id="btn" type="submit" name="submit" class="next-btn16 hover-btn mt-3">Отправить</button>
                     </form>
                 </div>
             </div>
@@ -61,5 +61,6 @@
     <!-- Body End -->
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts_home.html' %}
+    <script src="{% static 'file/shop/contact/checkbocks.js' %}"></script>
 {% endblock content %}
 

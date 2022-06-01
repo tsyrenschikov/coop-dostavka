@@ -1,4 +1,4 @@
-document.getElementById("my_captcha_form").addEventListener("submit", function (evt) {
+document.getElementById("form_id").addEventListener("submit", function (evt) {
 
     var response = grecaptcha.getResponse();
     if (response.length == 0) {

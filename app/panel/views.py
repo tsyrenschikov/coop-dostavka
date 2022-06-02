@@ -214,17 +214,17 @@ def post_tags(request):
 # Населенный пункт
 def locations(request):
     users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
     supermanager = User.objects.filter(groups__name='manager')
     if request.user.is_authenticated:
         for user in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
-                    local = Locations.objects.filter(slug=slug_shop)
-                    return render(request, 'panel/locations.html', {'local': local})
+                    local = Locations.objects.filter(slug=slug_shop).order_by('slug')
+                    return render(request, 'panel/locations.html', {'local': local,'shops':shops})
                 elif request.user.is_superuser:
                     local = Locations.objects.all()
-                    return render(request, 'panel/locations.html', {'local': local})
+                    return render(request, 'panel/locations.html', {'local': local,'shops':shops})
     else:
         return redirect('/login')
 

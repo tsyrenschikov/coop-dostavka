@@ -21,14 +21,14 @@ def cart(request):
     return render(request, 'shop/cart.html', {})
 
 def local():
-    l=Locations.objects.values_list('name','slug').distinct()
-    local=l
-    return local
-
-def local_index():
-    l = Locations.objects.values_list('name', 'slug').distinct()
-    dict_l={ k['name']: [k['slug']] for k in l }
-    local = l
+    l = Locations.objects.values('name', 'slug').distinct().order_by('slug')
+    dict_l = {k['name']: [] for k in l}
+    list_slug = list(set([i['slug'] for i in l]))
+    for loc in l:
+        for j in list_slug:
+            if j in loc['slug']:
+                dict_l[loc['name']].append(j)
+    local = dict_l
     return local
 
 def shop(request):

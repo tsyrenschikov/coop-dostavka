@@ -33,81 +33,11 @@
 <script src="{% static 'file/shop/js/checkbox.js' %}"></script>
 
 <!-- Start search-->
-<input type="hidden" id="locations" value="{% for name in local %}{{ name }}{% endfor %}">
-<script type="text/javascript" src="{% static 'file/shop/js/locations.js' %}"></script>
-<script>
-    /*jslint  browser: true, white: true, plusplus: true */
-/*global $, countries */
-$(function () {
-    'use strict';
-
-    var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
-
-    var nhlTeams = ['{% for name,slug in local %}','{{ name }}','{{ slug }}','{% endfor %}'];
-    var nbaTeams = [''];
-
-    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });
-    var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
-    var teams = nhl.concat(nba);
-
-    // Initialize autocomplete with local lookup:
-    $('#autocomplete').devbridgeAutocomplete({
-        lookup: teams,
-        minChars: 1,
-        onSelect: function (suggestion) {
-            $('#selection').html('Вы выбрали: ' + suggestion.value);
-            var city_local;
-            var location_slug=$('#location_slug').val();
-
-            var field = suggestion.value;
-            localStorage.location = field;
-            var city_local= suggestion.value;
-            for (var j = 0; j < nhlTeams.length; j++) {
-                if (city_local === nhlTeams[j]) {
-                    if (location_slug != nhlTeams[j+1]){
-                        $("#remove").trigger("click");
-                    };
-                    window.location.href = 'https://coop-dostavka.ru/' + nhlTeams[j+1],
-                    window.location(window.location.href);
-                };
-            }
-        },
-        showNoSuggestionNotice: true,
-        noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
-        groupBy: 'category'
-    });
-    if (localStorage.location){
-        $('#local-name').text(localStorage.location);
-        $('#select_local').attr({
-            'value':localStorage.location,
-        });
-    }
-    else {
-       $(window).load(function () {
-            if (window.location.href.indexOf('shop') == -1){
-                 window.location.replace('https://coop-dostavka.ru/');
-            }
-        });
-    }
-
-
-    // Initialize autocomplete with custom appendTo:
-    $('#autocomplete-custom-append').autocomplete({
-        lookup: countriesArray,
-        appendTo: '#suggestions-container'
-    });
-
-    // Initialize autocomplete with custom appendTo:
-    $('#autocomplete-dynamic').autocomplete({
-        lookup: countriesArray
-    });
-});
-</script>
-
 <script type="text/javascript" src="{% static 'file/shop/js/search_city/jquery-1.8.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'file/shop/js/search_city/jquery.mockjax.js' %}"></script>
 <script type="text/javascript" src="{% static 'file/shop/js/search_city/jquery.autocomplete.js' %}"></script>
 <script type="text/javascript" src="{% static 'file/shop/js/search_city/countries.js' %}"></script>
+<script type="text/javascript" src="{% static 'file/shop/js/locations.js' %}"></script>
 <!-- END Search -->
 
 

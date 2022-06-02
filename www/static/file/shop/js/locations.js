@@ -1,14 +1,11 @@
  /*jslint  browser: true, white: true, plusplus: true */
 /*global $, countries */
-$(function () {
+$(document).ready(function () {
     'use strict';
 
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
     var items = $('#locations').val();
     var nhlTeams = [];
-    console.log(nhlTeams)
-    var nbaTeams = [''];
-
     var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });
     var teams = nhl.concat(nba);

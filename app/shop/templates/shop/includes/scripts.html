@@ -44,7 +44,7 @@ $(function () {
 
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
 
-    var nhlTeams = ['{% for name,slug in local %}','{{ name }}','{{ slug }}','{% endfor %}'];
+    var nhlTeams = ['{% for local in local %}','{{ local.0 }}','{{ local.1 }}','{% endfor %}'];
     var nbaTeams = [''];
 
     var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });

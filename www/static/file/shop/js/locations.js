@@ -1,15 +1,14 @@
  /*jslint  browser: true, white: true, plusplus: true */
 /*global $, countries */
+var
+    locat='';
 
-$(document).ready(function () {
+$(function () {
+    locat=$('#locations').val();
+
     'use strict';
-     var nhlTeams=[];
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
-
-    var items = {'д. Афонасково Артинского р-на': ['arti'], 'д. Курки Артинского р-на': ['arti'], 'д. Усть-Югуш Артинского р-на': ['arti'], 'п. Арти Артинского р-на': ['arti', 'artiobschepit', 'arti'], 'с. Пристань"" Артинского р-на': ['arti'], 'с. Старые Арти Артинского р-на': ['arti']};
-    $.each(items, function (k,v){
-        nhlTeams.push(k)
-    });
+    var nhlTeams=[''];
     var nbaTeams = [''];
     var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });

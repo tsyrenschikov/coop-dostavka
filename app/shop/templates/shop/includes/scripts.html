@@ -34,6 +34,8 @@
 <script src="{% static 'file/shop/js/checkbox.js' %}"></script>
 
 <!-- Start search-->
+<input type="hidden" id="locations" value="{% for name in local %}{{ name }}{% endfor %}">
+<script type="text/javascript" src="{% static 'file/shop/js/locations.js' %}"></script>
 <script>
     /*jslint  browser: true, white: true, plusplus: true */
 /*global $, countries */

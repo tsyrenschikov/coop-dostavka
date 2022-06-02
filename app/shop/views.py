@@ -20,17 +20,27 @@ def manager(user, group_name):
 def cart(request):
     return render(request, 'shop/cart.html', {})
 
+def local():
+    l=Locations.objects.values_list('name','slug').distinct()
+    local=l
+    return local
+
+def local_index():
+    l = Locations.objects.values_list('name', 'slug').distinct()
+    dict_l={ k['name']: [k['slug']] for k in l }
+    local = l
+    return local
 
 def shop(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "categories" : Category.objects.order_by('number'),
     }
+    local()
     users = User.objects.all()
-    local=Locations.objects.values_list('name','slug').distinct()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -69,12 +79,12 @@ def searcharti(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -112,12 +122,12 @@ def searchproduct(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -132,7 +142,7 @@ def cart_arti(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for n,s,dp,dpm,days_numb in local_d:
@@ -193,7 +203,7 @@ def cart_ok(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -216,7 +226,7 @@ def cart_ok(request,ord):
 def shop_arti(request):
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas=Area.objects.values_list('name', 'slug').distinct()
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -240,7 +250,7 @@ def shop_arti(request):
                                                            'address_str':address_str})
 
 def shop_arti_grid(request):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -268,7 +278,7 @@ def shop_arti_grid(request):
 #View products
 def shop_arti_products(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -297,7 +307,7 @@ def shop_arti_products(request):
 
 def sort_list(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -324,7 +334,7 @@ def sort_list(request,list):
 
 #View product
 def shop_arti_product(request, id):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -371,12 +381,12 @@ def searcharti_p(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -414,12 +424,12 @@ def searchproduct(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -434,7 +444,7 @@ def cart_arti_p(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     for n,s,dp,dpm,days_numb in local_d:
@@ -495,7 +505,7 @@ def cart_arti_p_ok(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -517,7 +527,7 @@ def cart_arti_p_ok(request,ord):
 
 
 def shop_arti_p_grid(request):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][1])
@@ -545,7 +555,7 @@ def shop_arti_p_grid(request):
 #View products
 def shop_arti_p(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -574,7 +584,7 @@ def shop_arti_p(request):
 
 def sort_list_arti_p(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -601,7 +611,7 @@ def sort_list_arti_p(request,list):
 
 #View product
 def shop_arti_p_product(request, id):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -632,7 +642,7 @@ def shop_arti_p_product(request, id):
 def shop_artiobschepit(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -661,7 +671,7 @@ def shop_artiobschepit(request):
 
 def sort_list_artiobschepit(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -687,7 +697,7 @@ def sort_list_artiobschepit(request,list):
                                                               'address_str': address_str})
 
 def shop_artiobschepit_grid(request):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][1])
@@ -714,7 +724,7 @@ def shop_artiobschepit_grid(request):
 
 
 def shop_artiobschepit_product(request,id):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][1])
@@ -744,7 +754,7 @@ def cart_artiobschepit(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     for n,s,dp,dpm,days_numb in local_d:
@@ -804,7 +814,7 @@ def cart_artiobschepit_ok(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][1])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -829,7 +839,7 @@ def cart_artiobschepit_ok(request,ord):
 # Shop pokrovskoe
 def shop_pokrovskoe(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -858,7 +868,7 @@ def shop_pokrovskoe(request):
 
 def sort_list_pokrovskoe(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -884,7 +894,7 @@ def sort_list_pokrovskoe(request,list):
                                                               'address_str': address_str})
 
 def shop_pokrovskoe_grid(request):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -931,12 +941,12 @@ def searchproduct_pokrovskoe(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -948,7 +958,7 @@ def searchproduct_pokrovskoe(request):
 
 #View product
 def shop_pokrovskoe_product(request, id):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -973,7 +983,7 @@ def shop_pokrovskoe_product(request, id):
                 return render(request, 'pokrovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
 def shop_pokrovskoe_career(reguest):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'arti/career.html', {'users':users, 'categories' : categories,'local':local})
@@ -982,7 +992,7 @@ def shop_pokrovskoe_career(reguest):
 def cart_pokrovskoe(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for n,s,dp,dpm,days_numb in local_d:
@@ -1043,7 +1053,7 @@ def cart_ok_pokrovskoe(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -1066,7 +1076,7 @@ def cart_ok_pokrovskoe(request,ord):
 # Shop rezh
 def shop_rezh(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1095,7 +1105,7 @@ def shop_rezh(request):
 
 def sort_list_rezh(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1121,7 +1131,7 @@ def sort_list_rezh(request,list):
                                                               'address_str': address_str})
 
 def shop_rezh_grid(request):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1168,12 +1178,12 @@ def searchproduct_rezh(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -1185,7 +1195,7 @@ def searchproduct_rezh(request):
 
 #View product
 def shop_rezh_product(request, id):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1210,7 +1220,7 @@ def shop_rezh_product(request, id):
                 return render(request, 'rezh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
 def shop_rezh_career(reguest):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'rezh/career.html', {'users':users, 'categories' : categories,'local':local})
@@ -1219,7 +1229,7 @@ def shop_rezh_career(reguest):
 def cart_rezh(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for n,s,dp,dpm,days_numb in local_d:
@@ -1280,7 +1290,7 @@ def cart_ok_rezh(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -1321,12 +1331,12 @@ def searchrezh(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -1366,12 +1376,12 @@ def searchzajkovskoe(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -1409,12 +1419,12 @@ def searchproduct_zajkovskoe(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str": str([i for i in str(request.path).split('/') if i][0]),
         "category_product": dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -1428,7 +1438,7 @@ def cart_zajkovskoe(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     email_send=''
@@ -1491,7 +1501,7 @@ def cart_ok_zajkovskoe(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -1513,7 +1523,7 @@ def cart_ok_zajkovskoe(request,ord):
 
 def shop_zajkovskoe(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1541,7 +1551,7 @@ def shop_zajkovskoe(request):
                                'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
 
 def shop_zajkovskoe_grid(request):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop= Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1569,7 +1579,7 @@ def shop_zajkovskoe_grid(request):
 
 def sort_list_zajkovskoe(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1596,7 +1606,7 @@ def sort_list_zajkovskoe(request,list):
 
 
 def shop_zajkovskoe_product(request, id):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1626,7 +1636,7 @@ def shop_zajkovskoe_product(request, id):
 # Shop bogdan
 def shop_bogdan(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1655,7 +1665,7 @@ def shop_bogdan(request):
 
 def sort_list_bogdan(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1681,7 +1691,7 @@ def sort_list_bogdan(request,list):
                                                               'address_str': address_str})
 
 def shop_bogdan_grid(request):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1728,7 +1738,7 @@ def searchproduct_bogdan(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
@@ -1745,7 +1755,7 @@ def searchproduct_bogdan(request):
 
 #View product
 def shop_bogdan_product(request, id):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1770,7 +1780,7 @@ def shop_bogdan_product(request, id):
                 return render(request, 'bogdan/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
 def shop_bogdan_career(reguest):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'bogdan/career.html', {'users':users, 'categories' : categories,'local':local})
@@ -1779,7 +1789,7 @@ def shop_bogdan_career(reguest):
 def cart_bogdan(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for n,s,dp,dpm,days_numb in local_d:
@@ -1840,7 +1850,7 @@ def cart_ok_bogdan(request,ord):
     order = orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -1882,12 +1892,12 @@ def searchbogdan(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')
@@ -1906,7 +1916,7 @@ def searchbogdan(request):
 # Shop chetkarino
 def shop_chetkarino(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1935,7 +1945,7 @@ def shop_chetkarino(request):
 
 def sort_list_chetkarino(request,list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     areas = Area.objects.values_list('name', 'slug').distinct()
     for slug in shop:
@@ -1961,7 +1971,7 @@ def sort_list_chetkarino(request,list):
                                                               'address_str': address_str})
 
 def shop_chetkarino_grid(request):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -2008,12 +2018,12 @@ def searchproduct_chetkarino(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     if request.method == "POST":
         query_name = request.POST.get('name')
         if query_name:
@@ -2025,7 +2035,7 @@ def searchproduct_chetkarino(request):
 
 #View product
 def shop_chetkarino_product(request, id):
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -2050,7 +2060,7 @@ def shop_chetkarino_product(request, id):
                 return render(request, 'chetkarino/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
 def shop_chetkarino_career(reguest):
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
     return render(reguest, 'chetkarino/career.html', {'users':users, 'categories' : categories,'local':local})
@@ -2059,7 +2069,7 @@ def shop_chetkarino_career(reguest):
 def cart_chetkarino(request):
     shop=Shop.objects.values_list('name','ogrn','uraddress','times','days','slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     local_d=Locations.objects.values_list('name','slug','delivery_price','delivery_price_min','days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     for n,s,dp,dpm,days_numb in local_d:
@@ -2120,7 +2130,7 @@ def cart_ok_chetkarino(request,ord):
     order=orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
-    local = Locations.objects.values_list('name', 'slug').distinct()
+    local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
     categories = Category.objects.order_by('number')
     for slug in shop:
@@ -2161,12 +2171,12 @@ def searchchetkarino(request):
     alert = {
         "name": request.GET.get('name', ''),
         "phone": request.GET.get('phone', ''),
-        "local": Locations.objects.values_list('name', 'slug').distinct(),
+        "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str" : str([i for i in str(request.path).split('/') if i][0]),
         "category_product" : dict(sorted(list_category_product.items())),
     }
-    local=Locations.objects.values_list('name','slug').distinct()
+    local()
     categories = Category.objects.order_by('number')
     if request.method == 'POST':
         name=request.POST.get('name')

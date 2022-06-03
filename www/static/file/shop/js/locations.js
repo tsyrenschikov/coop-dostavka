@@ -2,13 +2,13 @@
 /*global $, countries */
 var
     locat='';
-
-$(function () {
+$(document).ready(function (){
     locat=$('#locations').val();
-
+    });
+$(function () {
     'use strict';
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
-    var nhlTeams=[''];
+    var nhlTeams=[locat];
     var nbaTeams = [''];
     var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'Свердловская область' } }; });
     var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: '' } }; });

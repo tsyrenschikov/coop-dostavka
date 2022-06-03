@@ -1,5 +1,5 @@
 {% load static %}
-<div hidden id="locations" value="{{ local }}"></div>
+<input type="hidden" id="local_input" data-value="{{ local }}">
 <!-- Footer Start -->
 <footer class="footer">
     <div class="footer-first-row">
@@ -102,7 +102,7 @@
                         </ul>
                     </div>
                     <div class="copyright-text">
-                        <i class="uil uil-copyright"></i>Copyright 2021 - {% now "Y" %}  КООП Доставка продуктов</b> .
+                        <i class="uil uil-copyright"></i>Copyright 2021 - {% now "Y" %} КООП Доставка продуктов</b> .
                     </div>
                 </div>
             </div>

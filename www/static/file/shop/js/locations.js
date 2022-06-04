@@ -42,11 +42,12 @@ $(document).ready(function () {
                     $.each(list_slug, function (indexlist, valuelist){
                         console.log(valuelist)
                         if (city_local === valuename && valuelist.length === 1) {
-                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
+                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[indexlist],
                                 window.location(window.location.href);
                         }
-                        if (city_local === value && valuelist.length >=1) {
-                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[i- 1],
+                        else
+                        {
+                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
                         }
                     });

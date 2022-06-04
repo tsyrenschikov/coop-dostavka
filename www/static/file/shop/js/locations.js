@@ -38,18 +38,19 @@ $(document).ready(function () {
                 var field = suggestion.value;
                 localStorage.location = field;
                 var city_local = suggestion.value;
-                for (var j = 0; j < nhlTeams.length; j++) {
-                    for (var i = 0; i < list_slug.length; i++) {
-                        if (city_local === nhlTeams[j] && j == i && j == 1) {
-                            window.location.href = 'https://coop-dostavka.ru/' + list_slug[i],
+                $.each(nhlTeams, function (indexname, valuename){
+                    $.each(list_slug, function (indexlist, valuelist){
+                        console.log(valuelist)
+                        if (city_local === valuename && valuelist.length === 1) {
+                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
                         }
-                        if (city_local === nhlTeams[j] && j == i && j >= 1) {
-                            window.location.href = 'https://coop-dostavka.ru/' + list_slug[i- 1],
+                        if (city_local === value && valuelist.length >=1) {
+                            window.location.href = 'https://coop-dostavka.ru/' + valuelist[i- 1],
                                 window.location(window.location.href);
                         }
-                    }
-                }
+                    });
+                });
             },
             showNoSuggestionNotice: true,
             noSuggestionNotice: 'В населенный пункт доставка не осуществляется',

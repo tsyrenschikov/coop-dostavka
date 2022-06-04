@@ -59,7 +59,7 @@ $(document).ready(function () {
             });
         } else {
             $(window).load(function () {
-                if (window.location.href.indexOf('shop') == -1) {
+                if (window.location.href.indexOf('shop') === -1) {
                     window.location.replace('https://coop-dostavka.ru/'+'?shop');
                 }
             });

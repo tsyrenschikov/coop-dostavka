@@ -2,7 +2,7 @@
 /*global $, countries */
 var
     list_slug = [],
-    list_name=[];
+    list_name = [];
 
 $(document).ready(function () {
     var dict = $("input#local_input").data().value;
@@ -14,15 +14,10 @@ $(document).ready(function () {
         var countriesArray = $.map(countries, function (value, key) {
             return {value: value, data: key};
         });
-        $.map(object, function (slug, name){
+        $.map(object, function (slug, name) {
             list_name.push(name);
             list_slug.push(slug);
         });
-        $.map(list_slug, function (i,v){
-            $.map(i, function (k,val){
-                console.log(k)
-            })
-        })
         var nhlTeams = list_name;
         var nbaTeams = [''];
         var nhl = $.map(nhlTeams, function (team) {
@@ -44,9 +39,15 @@ $(document).ready(function () {
                 localStorage.location = field;
                 var city_local = suggestion.value;
                 for (var j = 0; j < nhlTeams.length; j++) {
-                    if (city_local === nhlTeams[j]) {
-                        window.location.href = 'https://coop-dostavka.ru/' + nhlTeams[j + 1],
-                            window.location(window.location.href);
+                    for (var i = 0; i < list_slug.length; i++) {
+                        if (city_local === nhlTeams[j] && j == i && j == 1) {
+                            window.location.href = 'https://coop-dostavka.ru/' + list_slug[i],
+                                window.location(window.location.href);
+                        }
+                        if (city_local === nhlTeams[j] && j == i && j >= 1) {
+                            window.location.href = 'https://coop-dostavka.ru/' + list_slug[i- 1],
+                                window.location(window.location.href);
+                        }
                     }
                 }
             },
@@ -54,6 +55,19 @@ $(document).ready(function () {
             noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
             groupBy: 'category'
         });
+        if (localStorage.location) {
+            $('#local-name').text(localStorage.location);
+            $('#select_local').attr({
+                'value': localStorage.location,
+            });
+        }
+        /*else {
+            $(window).load(function () {
+                if (window.location.href.indexOf('shop') == -1) {
+                    window.location.replace('https://coop-dostavka.ru/');
+                }
+            });
+        }*/
 
 
 // Initialize autocomplete with custom appendTo:

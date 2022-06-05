@@ -260,6 +260,7 @@ def add_location(request):
         "name": request.GET.get('name', ''),
         "local": Locations.objects.all(),
         "shops": Shop.objects.all(),
+        "day" : Days.objects.values_list('name', 'daysdict').distinct(),
     }
     local = Locations.objects.all()
     shops = Shop.objects.all()
@@ -272,7 +273,7 @@ def add_location(request):
         days_numb = request.POST.getlist('days_numb')
         slug = request.POST.get('slug')
 
-        if Locations.objects.filter(name=request.POST['name']).exists():
+        if Locations.objects.filter(name=request.POST['name']).exists() and Locations.objects.filter(slug=request.POST['slug']).exists():
             alert['name'] = "Название населенного пункта уже существует"
             return render(request, 'panel/add_location.html', alert)
         else:

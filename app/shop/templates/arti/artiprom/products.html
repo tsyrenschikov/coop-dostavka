@@ -10,7 +10,7 @@
 
     <div class="wrapper">
         <div class="all-product-grid">
-        {{ address }}
+            {{ address }}
             {% include 'shop/includes/search_top.html' %}
             <div id="container_hide" class="container_products">
                 {% include 'shop/includes/search_product_artiprom.html' %}
@@ -22,7 +22,7 @@
                                 {% if product.status %}
                                     <div class="col-lg-33 col-md-6">
                                         <div class="product-item mb-30">
-                                            <a href="/arti_p/{{ address_str }}/product/{{ product.id }}" class="product-img">
+                                            <a href="/arti/{{ address_str }}/product/{{ product.id }}" class="product-img">
                                                 {% thumbnail product.image "250x250" crop="center" as im %}
                                                     <img src="{{ im.url }}" alt="">
                                                 {% endthumbnail %}

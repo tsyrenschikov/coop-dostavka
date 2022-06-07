@@ -3,87 +3,90 @@
 {% block content %}
     {% load static %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
-{% endblock stylesheet %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Категории</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'category' %}">Категории</a></li>
-                            <li class="breadcrumb-item active">Редактировать</li>
-                        </ol>
-                        <div class="row">
-							<div class="col-lg-6 col-md-6">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-                                        <h4>Редактировать категорию товара - </h4><h4 style="color: orangered">"{{ categories.name }}"</h4>
-									</div>
-									<div class="card-body-table">
-                                        <form method="post" enctype="multipart/form-data">
-                                            {% csrf_token %}
-										<div class="news-content-right pd-20">
-                                            <div class="form-group">
-												<label class="form-label">Номер категории*</label>
-                                                {% if categories.number == null %}
-												<input type="text" class="form-control" name="number" placeholder="Номер не присвоен">
-                                                {% else %}
-                                                <input type="text" class="form-control" name="number" value="{{ categories.number }}">
-                                                {% endif %}
-											</div>
-											<div class="form-group">
-												<label class="form-label">Название категории*</label>
-												<input type="text" class="form-control" name="name" value="{{ categories.name }}" placeholder="Введите название категории">
-											</div>
-											<div class="form-group">
-                                                <label class="form-label">Товарная группа</label>
-                                                    <select class="form-control selectpicker" name="subcat" value="{{ categories.subcat }}" multiple data-live-search="true">
-                                                        {{ categories.subcat }}
-                                                        {% for subcategory in subcategory %}
-                                                            <option name="subcat">{{ subcategory.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Загрузка изображения*</label>
-                                            </div>
-                                            <div class="form-group">
-                                                {% if categories.image %}
-                                                <label class="" ><img src="{{ categories.image.url }}"width="80" height="80"/></label>
-                                                {% endif %}
-                                            </div>
-                                            <div class="input-group">
-													<div class="custom-file">
-														<input type="file" value="{{ categories.image }}" name="image" id="file" >
-														<label type="file"  for="file" ></label>
-													</div>
-                                            </div>
-                                            <div class="form-group"></div>
-											<div class="form-group">
-												<label class="form-label">Статус*</label>
-                                                <div></div>
-                                                <select id="action" name="status" class="form-control">
-                                                    {% if categories.status  %}
-                                                    <option value="True">Опубликовать</option>
-                                                    <option name="status" value="False">Не опубликовывать</option>
-                                                    {% else %}
-                                                    <option value="False">Не опубликовывать</option>
-                                                    <option name="status" value="True">Опубликовать</option>
-                                                    {% endif %}
-										        </select>
-											</div>
-											<button class="save-btn hover-btn" type="submit">Сохранить</button>
-										</div>
-                                    </form>
-									</div>
-								</div>
-							</div>
+        <link rel="stylesheet" href="{% static 'file/panel/css/chosen/style_chosen.css' %}">
+        <link rel="stylesheet" href="{% static 'file/panel/css/chosen/prism.css' %}">
+        <link rel="stylesheet" href="{% static 'file/panel/css/chosen/chosen.css' %}">
+    {% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Категории</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'category' %}">Категории</a></li>
+                <li class="breadcrumb-item active">Редактировать</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Редактировать категорию товара - </h4><h4 style="color: orangered">"{{ categories.name }}"</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Номер категории*</label>
+                                        {% if categories.number == null %}
+                                            <input type="text" class="form-control" name="number" placeholder="Номер не присвоен">
+                                        {% else %}
+                                            <input type="text" class="form-control" name="number" value="{{ categories.number }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Название категории*</label>
+                                        <input type="text" class="form-control" name="name" value="{{ categories.name }}" placeholder="Введите название категории">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label"><em>Товарная группа</em></label>
+                                    </br>
+                                        <select data-placeholder="Выбор категории" class="chosen-select" tabindex="2" name="subcat" value="{{ categories.subcat }}"multiple class="chosen-select">
+                                            {{ categories.subcat }}
+                                            {% for subcategory in subcategory %}
+                                                <option name="subcat">{{ subcategory.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Загрузка изображения*</label>
+                                    </div>
+                                    <div class="form-group">
+                                        {% if categories.image %}
+                                            <label class=""><img src="{{ categories.image.url }}" width="80" height="80"/></label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" value="{{ categories.image }}" name="image" id="file">
+                                            <label type="file" for="file"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"></div>
+                                    <div class="form-group">
+                                        <label class="form-label">Статус*</label>
+                                        <div></div>
+                                        <select id="action" name="status" class="form-control">
+                                            {% if categories.status %}
+                                                <option value="True">Опубликовать</option>
+                                                <option name="status" value="False">Не опубликовывать</option>
+                                            {% else %}
+                                                <option value="False">Не опубликовывать</option>
+                                                <option name="status" value="True">Опубликовать</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                    <button class="save-btn hover-btn" type="submit">Сохранить</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </main>
-    <script>
-$(function () {
-    $('select').selectpicker();
-});
-</script>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% comment %}Выбор из списка{% endcomment %}
+    <script src="{% static 'file/panel/js/chosen/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/chosen.jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/prism.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'file/panel/js/chosen/init.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endblock content %}

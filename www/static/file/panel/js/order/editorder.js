@@ -317,7 +317,7 @@ $(document).ready(function () {
         });
         $(".chosen").chosen({
             allow_single_deselect: true,
-            no_results_text: "Нет результатов для: "
+            no_results_text: "Совпадений не найдено: "
         });
         textproduct = '';
         productsname = '';

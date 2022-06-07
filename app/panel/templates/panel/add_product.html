@@ -3,141 +3,148 @@
 {% block content %}
     {% load static %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
-{% endblock stylesheet %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Продукты</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{%  url 'products' %}">Продукты</a></li>
-                            <li class="breadcrumb-item active">Добавить продукт</li>
-                        </ol>
-                    <div>
-                    <form method="post" enctype="multipart/form-data">
-                                            {% csrf_token %}
-                        <div class="row">
-							<div class="col-lg-9 col-md-8">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-										<h4>Добавить продукт (товар) </h4>
-									</div>
-										<div class="news-content-right pd-20">
-											<div class="form-group">
-												<label class="form-label">Имя*</label>
-												<input type="text" name="name" class="form-control" placeholder="Наименование товара" required="">
-											</div>
-                                            {% if name %}
-                                                <div class="alert alert-danger alert-dismissible">
-                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                    {{ name }}
-                                                </div>
-                                            {% endif %}
-											<div class="form-group">
-												<label class="form-label">Товарная группа*</label>
-												<select id="categtory" name="subcat" class="form-control">
-													<option selected value="0">--Выбрать для продуктов--</option>
-                                                    {% for subcategory in subcategory %}
-                                                        <option name="subcat" >{{ subcategory.name }}</option>
-                                                    {% endfor %}
-												</select>
-											</div>
-                                            <div class="form-group">
-												<label class="form-label">Товарная подгруппа*</label>
-												<select id="categtory" name="subsubcat" class="form-control" >
-													<option selected value="0">--Выбрать для промышленных товаров--</option>
-                                                    {% for subsubcategory in subsubcategory %}
-                                                        <option name="subsubcat" >{{ subsubcategory.name }}</option>
-                                                    {% endfor %}
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Цена*</label>
-                                                <label class="form-label" style="color: red">(формат записи цены 00.00)</label>
-												<input type="number" step="any" name="price" class="form-control" placeholder="10 р." required="">
-											</div>
-											<div class="form-group">
-												<label class="form-label">Цена со скидкой</label>
-                                                <label class="form-label" style="color: red">(формат записи цены со скидкой 00.00)</label>
-												<input type="number" step="any" name="discount" class="form-control" value="0" placeholder="7 р." required="">
-											</div>
-                                        <div class="form-group">
-                                                <label class="form-label">Загрузка изображения*</label>
-                                            </div>
-                                            <div class="form-group">
-                                                {% if products.image %}
-                                                <label class="" ><img src="{{ products.image.url }}"/></label>
-                                                {% endif %}
-                                            </div>
-                                            <div class="input-group">
-													<div class="custom-file">
-														<input type="file" value="{{ products.image }}" name="image" id="file" required="" >
-														<label type="file"  for="file" ></label>
-													</div>
-											</div>
-                                        </br>
-                                            <div class="form-group">
-												<label class="form-label">Статус*</label>
-												<select id="action" name="status" class="form-control">
-                                                    <option value="True">Опубликован</option>
-                                                    <option name="status" value="False">Не опубликован</option>
-										        </select>
-											</div>
-                                            </br>
-                                            <div class="form-group">
-                                                <label class="form-label">Описание товара</label>
-                                                <input type="text" class="form-control" name="description" placeholder="Описание товара"></div>
-                                            <button class="save-btn hover-btn" type="submit">Добавить продукт</button>
+        <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+    {% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Продукты</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'products' %}">Продукты</a></li>
+                <li class="breadcrumb-item active">Добавить продукт</li>
+            </ol>
+            <div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-9 col-md-8">
+                            <div class="card card-static-2 mb-30">
+                                <div class="card-title-2">
+                                    <h4>Добавить продукт (товар) </h4>
+                                </div>
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Имя*</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Наименование товара" required="">
+                                    </div>
+                                    {% if name %}
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            {{ name }}
                                         </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        <label class="form-label"><em>Товарная группа*</em></label>
+                                    </br>
+                                        <select id="categtory" name="subcat" class="chosen-select" tabindex="2">
+                                            <option selected value="0">--Выбрать для продуктов--</option>
+                                            {% for subcategory in subcategory %}
+                                                <option name="subcat">{{ subcategory.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </br>
+                                    <div class="form-group">
+                                        <label class="form-label"><em>Товарная подгруппа*</em></label>
+                                    </br>
+                                        <select id="categtory" name="subsubcat" class="chosen-select" tabindex="2">
+                                            <option selected value="0">--Выбрать для промышленных товаров--</option>
+                                            {% for subsubcategory in subsubcategory %}
+                                                <option name="subsubcat">{{ subsubcategory.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </br>
+                                    <div class="form-group">
+                                        <label class="form-label">Цена*</label>
+                                        <label class="form-label" style="color: red">(формат записи цены 00.00)</label>
+                                        <input type="number" step="any" name="price" class="form-control" placeholder="10 р." required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Цена со скидкой</label>
+                                        <label class="form-label" style="color: red">(формат записи цены со скидкой 00.00)</label>
+                                        <input type="number" step="any" name="discount" class="form-control" value="0" placeholder="7 р." required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Загрузка изображения*</label>
+                                    </div>
+                                    <div class="form-group">
+                                        {% if products.image %}
+                                            <label class=""><img src="{{ products.image.url }}"/></label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" value="{{ products.image }}" name="image" id="file" required="">
+                                            <label type="file" for="file"></label>
+                                        </div>
+                                    </div>
+                                    </br>
+                                    <div class="form-group">
+                                        <label class="form-label">Статус*</label>
+                                        <select id="action" name="status" class="form-control">
+                                            <option value="True">Опубликован</option>
+                                            <option name="status" value="False">Не опубликован</option>
+                                        </select>
+                                    </div>
+                                    </br>
+                                    <div class="form-group">
+                                        <label class="form-label">Описание товара</label>
+                                        <input type="text" class="form-control" name="description" placeholder="Описание товара"></div>
+                                    <button class="save-btn hover-btn" type="submit">Добавить продукт</button>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="card card-static-2 mb-30">
-                                    <div class="card-title-2">
-										<h4>Характеристика товара</h4>
-									</div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Ширина (мм)</label>
-                                            <input type="number" name="width" class="form-control" value="0" >
-                                        </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <div class="card card-static-2 mb-30">
+                                <div class="card-title-2">
+                                    <h4>Характеристика товара</h4>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Ширина (мм)</label>
+                                        <input type="number" name="width" class="form-control" value="0">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Высота (мм)</label>
-                                            <input type="number" name="height" class="form-control" value="0">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Высота (мм)</label>
+                                        <input type="number" name="height" class="form-control" value="0">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Глубина (мм)</label>
-                                            <input type="number" name="length" class="form-control" value="0">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Глубина (мм)</label>
+                                        <input type="number" name="length" class="form-control" value="0">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Производитель</label>
-                                            <input type="text" name="fabricator" class="form-control" value="" placeholder="Пермь">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Производитель</label>
+                                        <input type="text" name="fabricator" class="form-control" value="" placeholder="Пермь">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Материал</label>
-                                            <input type="text" name="material" class="form-control"value="" placeholder="ДСП">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Материал</label>
+                                        <input type="text" name="material" class="form-control" value="" placeholder="ДСП">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Цвет</label>
-                                            <input type="text" name="color" class="form-control" value="" placeholder="Красно-синий">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="news-content-right pd-20">
+                                        <label class="form-label">Цвет</label>
+                                        <input type="text" name="color" class="form-control" value="" placeholder="Красно-синий">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
                     </div>
-                    </div>
-        </main>
-
+                </form>
+            </div>
+        </div>
+    </main>
+    {% comment %}Выбор из списка{% endcomment %}
+    <script src="{% static 'file/panel/js/chosen/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/editcategory.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/chosen.jquery.min.js' %}" type="text/javascript"></script>
 {% endblock content %}

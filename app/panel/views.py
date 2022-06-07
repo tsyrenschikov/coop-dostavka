@@ -195,6 +195,7 @@ def panel(request):
     if request.user.is_authenticated != users:
         return render(request, 'panel/error_auth.html')
 
+
 def posts(request):
     return render(request, 'panel/posts.html', {})
 
@@ -221,10 +222,10 @@ def locations(request):
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
                     local = Locations.objects.filter(slug=slug_shop).order_by('slug')
-                    return render(request, 'panel/locations.html', {'local': local,'shops':shops})
+                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops})
                 elif request.user.is_superuser:
                     local = Locations.objects.all()
-                    return render(request, 'panel/locations.html', {'local': local,'shops':shops})
+                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops})
     else:
         return redirect('/login')
 
@@ -260,7 +261,7 @@ def add_location(request):
         "name": request.GET.get('name', ''),
         "local": Locations.objects.all(),
         "shops": Shop.objects.all(),
-        "day" : Days.objects.values_list('name', 'daysdict').distinct(),
+        "day": Days.objects.values_list('name', 'daysdict').distinct(),
     }
     local = Locations.objects.all()
     shops = Shop.objects.all()
@@ -374,41 +375,49 @@ def delete_area(request, id):
 
 
 def category(request, ):
-    users = User.objects.all()
-    categories = Category.objects.all().order_by('number')
-    return render(request, 'panel/category.html', {'categories': categories, 'users': users})
+    if request.user.is_authenticated:
+        users = User.objects.all()
+        categories = Category.objects.all().order_by('number')
+        return render(request, 'panel/category.html', {'categories': categories, 'users': users})
+    else:
+        return redirect('/login')
 
 
 # Просмотр категории товаров
 def view_category(request, id):
-    images = Category.objects.get(id=id)
-    categories = Category.objects.values('name', 'status', 'image', 'subcat', 'area__name').get(id=id)
-    return render(request, 'panel/view_category.html', {'categories': categories, 'images': images})
-
+    if request.user.is_authenticated:
+        images = Category.objects.get(id=id)
+        categories = Category.objects.values('name', 'status', 'image', 'subcat', 'area__name').get(id=id)
+        return render(request, 'panel/view_category.html', {'categories': categories, 'images': images})
+    else:
+        return redirect('/login')
 
 # Редактировать категорию товара
 def edit_category(request, id):
-    try:
-        categories = Category.objects.get(id=id)
-        subcategory = SubCategory.objects.all()
-        if request.method == "POST":
-            categories.name = request.POST.get("name")
-            categories.status = request.POST.get("status")
-            categories.number = request.POST.get("number")
-            categories.save()
-        if request.method == 'POST':
+    if request.user.is_authenticated:
+        try:
             categories = Category.objects.get(id=id)
-            categories.subcat = request.POST.getlist('subcat')
-            categories.save(update_fields=['subcat'])
-            if request.FILES:
-                categories.image = request.FILES["image"]
+            subcategory = SubCategory.objects.all()
+            if request.method == "POST":
+                categories.name = request.POST.get("name")
+                categories.status = request.POST.get("status")
+                categories.number = request.POST.get("number")
                 categories.save()
+            if request.method == 'POST':
+                categories = Category.objects.get(id=id)
+                categories.subcat = request.POST.getlist('subcat')
+                categories.save(update_fields=['subcat'])
+                if request.FILES:
+                    categories.image = request.FILES["image"]
+                    categories.save()
+                    return render(request, 'panel/edit_ok_category.html', {'categories': categories, 'subcategory': subcategory})
                 return render(request, 'panel/edit_ok_category.html', {'categories': categories, 'subcategory': subcategory})
-            return render(request, 'panel/edit_ok_category.html', {'categories': categories, 'subcategory': subcategory})
-        else:
-            return render(request, 'panel/edit_category.html', {'categories': categories, 'subcategory': subcategory}, )
-    except User.DoesNotExist:
-        return render(request, 'panel/edit_category.html', {})
+            else:
+                return render(request, 'panel/edit_category.html', {'categories': categories, 'subcategory': subcategory}, )
+        except User.DoesNotExist:
+            return render(request, 'panel/edit_category.html', {})
+    else:
+        return redirect('/login')
 
 
 # Успешное редактирование категории товара
@@ -543,29 +552,34 @@ def delete_ok_subcategory(request):
 
 # Подподкатегория
 def subsubcategory(request):
-    subsubcategory = SubSubCategory.objects.all().order_by('number')
-    return render(request, 'panel/subsubcategory.html', {'subsubcategory': subsubcategory})
+    if request.user.is_authenticated:
+        subsubcategory = SubSubCategory.objects.all().order_by('number')
+        return render(request, 'panel/subsubcategory.html', {'subsubcategory': subsubcategory})
+    return redirect('/login')
 
 
 # Добавить подподкатегорию
 def add_subsubcategory(request):
-    alert = {
-        'number': request.GET.get('number', ''),
-        'name': request.GET.get('name', ''),
-    }
+    if request.user.is_authenticated:
+        alert = {
+            'number': request.GET.get('number', ''),
+            'name': request.GET.get('name', ''),
+            }
 
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        number = request.POST.get('number')
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            number = request.POST.get('number')
 
-        if SubSubCategory.objects.filter(number=request.POST['number']).exists():
-            alert['number'] = 'Номер товарной подгруппы уже существует'
-        elif SubSubCategory.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Имя товарной подгруппы уже существует'
-        else:
-            SubSubCategory.objects.create(name=name, number=number)
-            return render(request, 'panel/add_ok_subsubcategory.html')
-    return render(request, 'panel/add_subsubcategory.html', alert)
+            if SubSubCategory.objects.filter(number=request.POST['number']).exists():
+                alert['number'] = 'Номер товарной подгруппы уже существует'
+            elif SubSubCategory.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Имя товарной подгруппы уже существует'
+            else:
+                SubSubCategory.objects.create(name=name, number=number)
+                return render(request, 'panel/add_ok_subsubcategory.html')
+        return render(request, 'panel/add_subsubcategory.html', alert)
+    else:
+        return redirect('/login')
 
 
 # Успешное добавления подподкатегории
@@ -575,22 +589,25 @@ def add_ok_subsubcategory(request):
 
 # Редактировать подподкатегорию
 def edit_subsubcategory(request, id):
-    try:
-        subsubcategory = SubSubCategory.objects.get(id=id)
+    if request.user.is_authenticated:
+        try:
+            subsubcategory = SubSubCategory.objects.get(id=id)
 
-        if request.method == "POST":
-            subsubcategory.name = request.POST.get("name")
-            subsubcategory.number = request.POST.get("number")
-            subsubcategory.save()
-            if request.FILES:
-                subsubcategory.image = request.FILES["image"]
+            if request.method == "POST":
+                subsubcategory.name = request.POST.get("name")
+                subsubcategory.number = request.POST.get("number")
                 subsubcategory.save()
+                if request.FILES:
+                    subsubcategory.image = request.FILES["image"]
+                    subsubcategory.save()
+                    return render(request, 'panel/edit_ok_subsubcategory.html', {'subsubcategory': subsubcategory})
                 return render(request, 'panel/edit_ok_subsubcategory.html', {'subsubcategory': subsubcategory})
-            return render(request, 'panel/edit_ok_subsubcategory.html', {'subsubcategory': subsubcategory})
-        else:
-            return render(request, 'panel/edit_subsubcategory.html', {'subsubcategory': subsubcategory}, )
-    except SubSubCategory.DoesNotExist:
-        return render(request, 'panel/edit_subsubcategory.html', {})
+            else:
+                return render(request, 'panel/edit_subsubcategory.html', {'subsubcategory': subsubcategory}, )
+        except SubSubCategory.DoesNotExist:
+            return render(request, 'panel/edit_subsubcategory.html', {})
+    else:
+        return redirect('/login')
 
 
 # Удаление подкатегории

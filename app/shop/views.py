@@ -262,7 +262,7 @@ def shop_arti_products(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'arti/products.html',
                               {'category_product': category_product, 'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 
 def sort_list(request, list):
@@ -614,7 +614,7 @@ def shop_pokrovskoe(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'pokrovskoe/products.html',
                               {'category_product': category_product, 'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 
 def sort_list_pokrovskoe(request, list):
@@ -795,7 +795,7 @@ def shop_rezh(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'rezh/products.html',
                               {'category_product': category_product, 'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 
 def sort_list_rezh(request, list):
@@ -1144,7 +1144,7 @@ def shop_zajkovskoe(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'zajkovskoe/products.html',
                               {'category_product': category_product, 'products': products,
-                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str, 'count_sidebar': count_sidebar})
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 
 def shop_zajkovskoe_grid(request):

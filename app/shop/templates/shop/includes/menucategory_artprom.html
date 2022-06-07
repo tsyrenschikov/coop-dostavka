@@ -3,7 +3,7 @@
     <div class="cf">
         <nav id="main-nav">
             {% for name,sub in category_product.items %}
-                {% if sub and sub != '[]' %}
+                {% if sub %}
                     <ul class="second-nav">
                         <li class="menu-category">
                             <a href="#">{{ name }}</a>

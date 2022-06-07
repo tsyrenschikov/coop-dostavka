@@ -41,6 +41,7 @@ def dict_category_product(name_slug):
     category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
     dict_category_product = {category['name']: [] for category in category_shop}
     list_p = list(set([i for i, j, k in category_product]))
+    list_p= [x for x in list_p if x and x!='0']
     for category in category_shop:
         for n in category['subcat']:
             for i in list_p:
@@ -277,7 +278,7 @@ def sort_list(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -339,7 +340,7 @@ def sort_list_arti_p(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_artiprom.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -485,7 +486,7 @@ def sort_list_artiobschepit(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_artiobschepit.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -629,7 +630,7 @@ def sort_list_pokrovskoe(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_pokrovskoe.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -810,7 +811,7 @@ def sort_list_rezh(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_rezh.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -1177,7 +1178,7 @@ def sort_list_zajkovskoe(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'zajkovskoe/list_zajkovskoe.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -1236,7 +1237,7 @@ def sort_list_bogdan(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_bogdan.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
@@ -1451,7 +1452,7 @@ def sort_list_chetkarino(request, list):
                 name_slug = eval(slug)
                 category_product=dict_category_product(name_slug)
                 products = name_slug.objects.filter(subcat=list)
-                paginator = Paginator(products, 20)
+                paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_chetkarino.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,

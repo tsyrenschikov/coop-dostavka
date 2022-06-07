@@ -17,7 +17,7 @@
                 <h3><i class="uil uil-apps"></i>Категории</h3>
                 <ul>
                     {% for name,sub in category_product.items %}
-                        {% if sub %}
+                        {% if sub and sub != 0 %}
                             <li class="widget_sub_categories sub_categories{{ forloop.counter }}"><a style="color: #000000; font-size: 14px" href="javascript:void(0)">{{ name }}</a>
                                 <ul class="widget_dropdown_categories dropdown_categories{{ forloop.counter }}">
                                     {% for sub in sub %}

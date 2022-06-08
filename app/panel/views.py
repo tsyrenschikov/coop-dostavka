@@ -392,6 +392,7 @@ def view_category(request, id):
     else:
         return redirect('/login')
 
+
 # Редактировать категорию товара
 def edit_category(request, id):
     if request.user.is_authenticated:
@@ -564,7 +565,7 @@ def add_subsubcategory(request):
         alert = {
             'number': request.GET.get('number', ''),
             'name': request.GET.get('name', ''),
-            }
+        }
 
         if request.method == 'POST':
             name = request.POST.get('name')
@@ -674,15 +675,18 @@ def products(request):
 
 # Просмотр продукта
 def product_view(request, id):
-    users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    for u in users:
-        if request.user.id == u:
-            for s, slug in shops:
-                if u == s:
-                    name = eval(slug)
-                    products = name.objects.get(id=id)
-                    return render(request, 'panel/product_view.html', {'products': products})
+    if request.user.is_authenticated:
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        for u in users:
+            if request.user.id == u:
+                for s, slug in shops:
+                    if u == s:
+                        name = eval(slug)
+                        products = name.objects.get(id=id)
+                        return render(request, 'panel/product_view.html', {'products': products})
+    else:
+        return redirect('/login')
 
 
 # Редактировать продукт
@@ -730,48 +734,51 @@ def edit_product(request, id):
 
 # Добавить продукт
 def add_product(request, **kwargs):
-    users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
+    if request.user.is_authenticated:
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
 
-    for u in users:
-        if request.user.id == u:
-            for s, slug, id in shops:
-                if u == s:
-                    n = eval(slug)
-                    alert = {
-                        'name': request.GET.get('name', ''),
-                        'products': n.objects.all(),
-                        'subcategory': SubCategory.objects.all()
-                    }
-                    products = n.objects.all()
-                    subcategory = SubCategory.objects.all()
-                    subsubcategory = SubSubCategory.objects.all()
-                    if request.method == 'POST' and request.FILES:
-                        name = request.POST.get('name')
-                        price = request.POST.get('price')
-                        discount = request.POST.get('discount')
-                        subcat = request.POST.get('subcat')
-                        subsubcat = request.POST.get('subsubcat')
-                        status = request.POST.get('status')
-                        description = request.POST.get('description')
-                        image = request.FILES["image"]
-                        if request.method == 'POST':
-                            width = request.POST.get('width')
-                            height = request.POST.get('height')
-                            length = request.POST.get('length')
-                            fabricator = request.POST.get('fabricator')
-                            material = request.POST.get('material')
-                            color = request.POST.get('color')
-                            if n.objects.filter(name=request.POST['name']).exists():
-                                alert['name'] = 'Наименование товара уже существует'
-                                return render(request, 'panel/add_product.html', alert)
-                            else:
-                                n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
-                                                 width=width, \
-                                                 height=height,
-                                                 length=length, fabricator=fabricator, material=material, color=color)
-                            return render(request, 'panel/add_ok_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
-                    return render(request, 'panel/add_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+        for u in users:
+            if request.user.id == u:
+                for s, slug, id in shops:
+                    if u == s:
+                        n = eval(slug)
+                        alert = {
+                            'name': request.GET.get('name', ''),
+                            'products': n.objects.all(),
+                            'subcategory': SubCategory.objects.all()
+                        }
+                        products = n.objects.all()
+                        subcategory = SubCategory.objects.all()
+                        subsubcategory = SubSubCategory.objects.all()
+                        if request.method == 'POST' and request.FILES:
+                            name = request.POST.get('name')
+                            price = request.POST.get('price')
+                            discount = request.POST.get('discount')
+                            subcat = request.POST.get('subcat')
+                            subsubcat = request.POST.get('subsubcat')
+                            status = request.POST.get('status')
+                            description = request.POST.get('description')
+                            image = request.FILES["image"]
+                            if request.method == 'POST':
+                                width = request.POST.get('width')
+                                height = request.POST.get('height')
+                                length = request.POST.get('length')
+                                fabricator = request.POST.get('fabricator')
+                                material = request.POST.get('material')
+                                color = request.POST.get('color')
+                                if n.objects.filter(name=request.POST['name']).exists():
+                                    alert['name'] = 'Наименование товара уже существует'
+                                    return render(request, 'panel/add_product.html', alert)
+                                else:
+                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
+                                                     width=width, \
+                                                     height=height,
+                                                     length=length, fabricator=fabricator, material=material, color=color)
+                                return render(request, 'panel/add_ok_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                        return render(request, 'panel/add_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+    else:
+        return redirect('/login')
 
 
 # Удаление товара

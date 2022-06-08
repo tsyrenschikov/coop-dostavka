@@ -6,7 +6,7 @@ $(".chosen").chosen({
 $("select").change(function () {
     var str = "";
     $(".tg option:selected").each(function () {
-        str += $(this).text();
+        str += $(this).val();
     });
-    console.log(str)
+
 });

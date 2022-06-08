@@ -2,152 +2,165 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Продукты</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{%  url 'products' %}">Продукты</a></li>
-                            <li class="breadcrumb-item active">Редактировать продукт</li>
-                        </ol>
-                    </div>
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="card card-static-2 mb-30">
-                                        <div class="card-title-2">
-                                            <h4>Редактировать продукт</h4>
-                                        </div>
-                                        <div class="card-body-table">
-                                            <div class="news-content-right pd-20">
-                                                <div class="form-group">
-                                                    <label class="form-label">Имя</label>
-                                                    <input type="text" name="name" class="form-control" placeholder="Наименование товара" value="{{ products.name }}">
-                                                </div>
-                                                {% if name %}
-                                                    <div class="alert alert-danger alert-dismissible">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        {{ name }}
-                                                    </div>
-                                                {% endif %}
-                                                <div class="form-group">
-                                                    <label class="form-label">Товарная группа</label>
-                                                    <select id="category" name="subcat" class="form-control">
-                                                    {% if products.subcat %}
-                                                        <option selected></option>
-                                                        <option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
-                                                    {% else %}
-                                                    <option selected></option>
-                                                    {% endif %}
-                                                        {% for subcategory in subcategory %}
-                                                            <option name="subcat" >{{ subcategory.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Товарная подгруппа</label>
-                                                    <select id="categtory" name="subsubcat" class="form-control">
-                                                    {% if products.subsubcat %}
-                                                        <option selected></option>
-                                                        <option selected>{{ products.subsubcat }}</option>
-                                                    {% else %}
-                                                    <option selected></option>
-                                                    {% endif %}
-                                                        {% for subsubcategory in subsubcategory %}
-                                                            <option name="subcat" >{{ subsubcategory.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Цена (p)</label>
-                                                    <input type="text"  name="price" class="form-control" placeholder="10 р." value="{{ products.price }}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Цена со скидкой (р)</label>
-                                                    <input type="text" name="discount" class="form-control" value="{{ products.discount }}" placeholder="7 р.">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Загрузка изображения*</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    {% if products.image %}
-                                                        <label class=""><img src="{{ products.image.url }} " width="80px" height="80"></label>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" name="image" value="{{ products.image }}" id="file" >
-														<label type="file"  for="file" ></label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group"></div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Статус*</label>
-                                                    <select id="action" name="status" class="form-control">
-                                                        {% if products.status %}
-                                                            <option value="True">Опубликован</option>
-                                                            <option name="status" value="False">Не опубликован</option>
-                                                        {% else %}
-                                                            <option name="status" value="False">Не опубликован</option>
-                                                            <option value="True">Опубликован</option>
-                                                        {% endif %}
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Описание товара</label>
-                                                    <input type="text" class="form-control" name="description" value="{{ products.description }}" placeholder="Описание товара">
-                                                </div>
-                                                <button class="save-btn hover-btn" type="submit">Обновить продукт</button>
-                                            </div>
-                                        </div>
+    {% block stylesheet %}
+        <!--Выбор(сss из панели заказа)-->
+        <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
+    {% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Продукты</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'products' %}">Продукты</a></li>
+                <li class="breadcrumb-item active">Редактировать продукт</li>
+            </ol>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Редактировать продукт</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <div class="news-content-right pd-20">
+                                <div class="form-group">
+                                    <label class="form-label">Имя</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Наименование товара" value="{{ products.name }}">
+                                </div>
+                                {% if name %}
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        {{ name }}
+                                    </div>
+                                {% endif %}
+                                <div class="form-group">
+                                    <label class="form-label"><em>Товарная группа</em></label>
+                                    </br>
+                                    <select id="category" name="subcat" required class="form-control chosen tg deselect">
+                                        {% if products.subcat %}
+                                            <option selected></option>
+                                            <option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
+                                        {% else %}
+                                            <option selected></option>
+                                        {% endif %}
+                                        {% for subcategory in subcategory %}
+                                            <option name="subcat">{{ subcategory.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="form-label"><em>Товарная подгруппа</em></label>
+                                    </br>
+                                    <select id="categtory" name="subsubcat" class="form-control chosen tpg deselect">
+                                        {% if products.subsubcat %}
+                                            <option selected></option>
+                                            <option selected>{{ products.subsubcat }}</option>
+                                        {% else %}
+                                            <option selected></option>
+                                        {% endif %}
+                                        {% for subsubcategory in subsubcategory %}
+                                            <option name="subcat">{{ subsubcategory.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="form-label">Цена (p)</label>
+                                    <input type="text" name="price" class="form-control" placeholder="10 р." value="{{ products.price }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Цена со скидкой (р)</label>
+                                    <input type="text" name="discount" class="form-control" value="{{ products.discount }}" placeholder="7 р.">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Загрузка изображения*</label>
+                                </div>
+                                <div class="form-group">
+                                    {% if products.image %}
+                                        <label class=""><img src="{{ products.image.url }} " width="80px" height="80"></label>
+                                    {% endif %}
+                                </div>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image" value="{{ products.image }}" id="file">
+                                        <label type="file" for="file"></label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-4">
-                                    <div class="card card-static-2 mb-30">
-                                        <div class="card-title-2">
-                                            <h4>Характеристика товара</h4>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Ширина (мм)</label>
-                                                <input type="number" name="width" class="form-control" value="{{ products.width }}" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Высота (мм)</label>
-                                                <input type="number" name="height" class="form-control" value="{{ products.height }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Глубина (мм)</label>
-                                                <input type="number" name="length" class="form-control" value="{{ products.length }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Производитель</label>
-                                                <input type="text" name="fabricator" class="form-control" value="{{ products.fabricator }}" placeholder="Пермь">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Материал</label>
-                                                <input type="text" name="material" class="form-control"value="{{ products.material }}" placeholder="ДСП">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="news-content-right pd-20">
-                                                <label class="form-label">Цвет</label>
-                                                <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Красно-синий">
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-group"></div>
+                                <div class="form-group">
+                                    <label class="form-label">Статус*</label>
+                                    <select id="action" name="status" class="form-control">
+                                        {% if products.status %}
+                                            <option value="True">Опубликован</option>
+                                            <option name="status" value="False">Не опубликован</option>
+                                        {% else %}
+                                            <option name="status" value="False">Не опубликован</option>
+                                            <option value="True">Опубликован</option>
+                                        {% endif %}
+                                    </select>
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label">Описание товара</label>
+                                    <input type="text" class="form-control" name="description" value="{{ products.description }}" placeholder="Описание товара">
+                                </div>
+                                <button class="save-btn hover-btn" type="submit">Обновить продукт</button>
                             </div>
-                        </form>
-        </main>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Характеристика товара</h4>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Ширина (мм)</label>
+                                <input type="number" name="width" class="form-control" value="{{ products.width }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Высота (мм)</label>
+                                <input type="number" name="height" class="form-control" value="{{ products.height }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Глубина (мм)</label>
+                                <input type="number" name="length" class="form-control" value="{{ products.length }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Производитель</label>
+                                <input type="text" name="fabricator" class="form-control" value="{{ products.fabricator }}" placeholder="Пермь">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Материал</label>
+                                <input type="text" name="material" class="form-control" value="{{ products.material }}" placeholder="ДСП">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Цвет</label>
+                                <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Красно-синий">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+    {% comment %}Выбор из списка{% endcomment %}
+
+    <script src="{% static 'file/panel/js/chosen/jquery-ui.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/chosen.jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/editcategory.js' %}" type="text/javascript"></script>
 
 {% endblock content %}

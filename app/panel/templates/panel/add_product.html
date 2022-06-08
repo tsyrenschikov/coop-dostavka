@@ -2,7 +2,7 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
-     {% block stylesheet %}
+    {% block stylesheet %}
         <!--Выбор(сss из панели заказа)-->
         <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
     {% endblock stylesheet %}
@@ -37,7 +37,7 @@
                                     <div class="form-group">
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                         </br>
-                                        <select id="selectsub" name="subcat"  required class="form-control chosen tg deselect">
+                                        <select id="selectsub" name="subcat" required class="form-control chosen tg deselect">
                                             <option selected value="0">-- Выберите товарную группу --</option>
                                             {% for subcategory in subcategory %}
                                                 <option name="subcat" value="{{ subcategory.name }}">{{ subcategory.name }}</option>
@@ -51,20 +51,19 @@
                                         <select id="categtory" name="subsubcat" required class="form-control chosen tpg deselect">
                                             <option selected value="0">-- Выбрать товарную подгруппу --</option>
                                             {% for subsubcategory in subsubcategory %}
-                                                <option name="subsubcat">{{ subsubcategory.name }}</option>
+                                                <option name="subsubcat" value="{{ subsubcategory.name }}">{{ subsubcategory.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
-                                <text></text>
                                     </br>
                                     <div class="form-group">
                                         <label class="form-label">Цена*</label>
-                                        <label class="form-label" style="color: red">(формат записи цены 00.00)</label>
+                                        <label class="form-label" style="color: red">(формат записи цены 0.00)</label>
                                         <input type="number" step="any" name="price" class="form-control" placeholder="10 р." required="">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Цена со скидкой</label>
-                                        <label class="form-label" style="color: red">(формат записи цены со скидкой 00.00)</label>
+                                        <label class="form-label" style="color: red">(формат записи цены со скидкой 0.00)</label>
                                         <input type="number" step="any" name="discount" class="form-control" value="0" placeholder="7 р." required="">
                                     </div>
                                     <div class="form-group">
@@ -145,7 +144,7 @@
             </div>
         </div>
     </main>
-        {% comment %}Выбор из списка{% endcomment %}
+    {% comment %}Выбор из списка{% endcomment %}
 
     <script src="{% static 'file/panel/js/chosen/jquery-ui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/chosen.jquery.min.js' %}" type="text/javascript"></script>

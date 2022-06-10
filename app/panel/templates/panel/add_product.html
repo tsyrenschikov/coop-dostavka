@@ -35,23 +35,34 @@
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
+                                        <label class="form-label"><em>Категория*</em></label>
+                                        </br>
+                                        <select name="categ" required class="form-control chosen cat deselect">
+                                            <option selected value="0">-- Выберите категорию --</option>
+                                            {% for category in category %}
+                                                <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    {% for category in category %}
+                                        <namesubcat{{ forloop.counter0 }} hidden value="{{ category.subcat }}"></namesubcat{{ forloop.counter0 }}>
+                                    {% endfor %}
+                                    </br>
+                                    <div id="tgdiv" class="form-group">
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                         </br>
                                         <select id="selectsub" name="subcat" required class="form-control chosen tg deselect">
                                             <option selected value="0">-- Выберите товарную группу --</option>
-                                            {% for subcategory in subcategory %}
-                                                <option name="subcat" value="{{ subcategory.name }}">{{ subcategory.name }}</option>
-                                            {% endfor %}
                                         </select>
                                     </div>
                                     </br>
-                                    <div class="form-group">
+                                    <div hidden class="form-group tpgdiv">
                                         <label class="form-label"><em>Товарная подгруппа*</em></label>
                                         </br>
                                         <select id="categtory" name="subsubcat" required class="form-control chosen tpg deselect">
                                             <option selected value="0">-- Выбрать товарную подгруппу --</option>
                                             {% for subsubcategory in subsubcategory %}
-                                                <option name="subsubcat" value="{{ subsubcategory.name }}">{{ subsubcategory.name }}</option>
+                                                <option name="subsubcat" value="{{ subsubcategory }}">{{ subsubcategory }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>

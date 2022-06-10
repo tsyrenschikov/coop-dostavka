@@ -746,15 +746,18 @@ def add_product(request, **kwargs):
                         alert = {
                             'name': request.GET.get('name', ''),
                             'products': n.objects.all(),
-                            'subcategory': SubCategory.objects.all()
-                        }
+                            'subcategory': SubCategory.objects.all(),
+                            'subsubcategory': SubSubCategory.objects.all(),
+                         }
                         products = n.objects.all()
+                        category= Category.objects.all()
                         subcategory = SubCategory.objects.all()
                         subsubcategory = SubSubCategory.objects.all()
                         if request.method == 'POST' and request.FILES:
                             name = request.POST.get('name')
                             price = request.POST.get('price')
                             discount = request.POST.get('discount')
+                            categ = request.POST.get('categ')
                             subcat = request.POST.get('subcat')
                             subsubcat = request.POST.get('subsubcat')
                             status = request.POST.get('status')
@@ -771,12 +774,12 @@ def add_product(request, **kwargs):
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
                                 else:
-                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
+                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount,categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
                                                      width=width, \
                                                      height=height,
                                                      length=length, fabricator=fabricator, material=material, color=color)
-                                return render(request, 'panel/add_ok_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
-                        return render(request, 'panel/add_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                                return render(request, 'panel/add_ok_product.html', {'products': products,'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                        return render(request, 'panel/add_product.html', {'products': products,'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 

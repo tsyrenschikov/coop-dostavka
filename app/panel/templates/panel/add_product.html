@@ -37,8 +37,8 @@
                                     <div class="form-group">
                                         <label class="form-label"><em>Категория*</em></label>
                                         </br>
-                                        <select name="categ" data-placeholder="-- Выберите категорию --" required class="form-control chosen cat deselect">
-                                            <option value="" disabled selected></option>
+                                        <select name="categ" required class="form-control chosen cat deselect">
+                                            <option value="0">-- Выберите категорию --</option>
                                             {% for category in category %}
                                                 <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
                                             {% endfor %}
@@ -52,7 +52,10 @@
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                         </br>
                                         <select id="selectsub" name="subcat" data-placeholder="-- Выберите товарную группу --" required class="form-control chosen-select tg deselect">
-                                            <option value="" disabled selected></option>
+                                            <option value="0">-- Выберите товарную группу --</option>
+                                            {% for subcategory in subcategory %}
+                                                <option number="{{ forloop.counter }}" value="{{ subcategory }}">{{ subcategory }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     </br>

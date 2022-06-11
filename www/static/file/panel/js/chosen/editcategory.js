@@ -17,6 +17,7 @@ $("select").change(function () {
     category = 0;
     subcategory = 0;
     category = [];
+
     /*Считываем выбранный продукт при добавлении или редактировании продукта*/
     $(".cat option:selected").each(function () {
         count = $(this).attr('number');
@@ -27,11 +28,14 @@ $("select").change(function () {
     } else {
         $('#tgdiv').fadeOut();
     }
+
+    /*Добавляем выбранную категорию с подкатегориями*/
     subcategory = subcategory.replace(/'/g, '"');
     subcategory = JSON.parse(subcategory);
+    $('#selectsub').empty();
     $.each(subcategory, function (i, v) {
-        console.log(v)
-        $('#selectsub').append($('<option>').val(v).text(v));
+        $("#selectsub").append($('<option name="subcat" value="' + v + '">' + v + '</option>'));
     });
+    $("#selectsub").trigger("chosen:updated");
+    console.log($(".chosen-select").trigger("chosen:updated"));
 });
-

@@ -51,11 +51,7 @@
                                     <div id="tgdiv" class="form-group">
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                         </br>
-                                        <select id="selectsub" name="subcat" data-placeholder="-- Выберите товарную группу --" required class="form-control chosen-select tg deselect">
-                                            <option value="0">-- Выберите товарную группу --</option>
-                                            {% for subcategory in subcategory %}
-                                                <option number="{{ forloop.counter }}" value="{{ subcategory }}">{{ subcategory }}</option>
-                                            {% endfor %}
+                                        <select id="selectsub" name="subcat" data-placeholder="-- Выберите товарную группу --" required class="form-control chosen tg deselect">
                                         </select>
                                     </div>
                                     </br>
@@ -162,4 +158,5 @@
     <script src="{% static 'file/panel/js/chosen/jquery-ui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/chosen.jquery.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/editcategory.js' %}" type="text/javascript"></script>
+    <script src="{% static 'file/panel/js/chosen/editorder1.js' %}"></script>
 {% endblock content %}

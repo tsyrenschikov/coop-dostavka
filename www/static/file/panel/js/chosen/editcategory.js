@@ -9,8 +9,6 @@ $(".chosen").chosen({
 
 });
 
-$('#tgdiv').fadeOut();
-
 $("select").change(function () {
     var
         count = 0;
@@ -22,24 +20,15 @@ $("select").change(function () {
     /*Считываем выбранный продукт при добавлении или редактировании продукта*/
     $(".cat option:selected").each(function () {
         count = $(this).attr('number');
-        console.log($(this).attr('number'))
     });
+
     subcategory = $('namesubcat' + count + '').attr('value');
 
     /*Добавляем выбранную категорию с подкатегориями*/
     subcategory = subcategory.replace(/'/g, '"');
     subcategory = JSON.parse(subcategory);
-    if (subcategory !== undefined) {
-        $('#tgdiv').fadeIn();
-    } else {
-        $('#tgdiv').fadeOut();
-    }
-
-
-
-    /*$('#selectsub').empty();
-    /!*$.each(subcategory, function (i, v) {
-        $("#selectsub").append($('<option name="subcat" value="' + v + '">' + v + '</option>'));
+    $('#selectsub').empty();
+    $.each(subcategory, function (i, v) {
+        $("#selectsub").append($("<option></option>", {value: v, text: v}));
     });
-    $('#selectsub').trigger("chosen:updated");*!/*/
 });

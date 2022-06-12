@@ -746,7 +746,8 @@ def add_product(request, **kwargs):
                         alert = {
                             'name': request.GET.get('name', ''),
                             'products': n.objects.all(),
-                            'subcategory': SubCategory.objects.all(),
+                            'category' : Category.objects.all(),
+                            'subcategory':SubCategory.objects.all(),
                             'subsubcategory': SubSubCategory.objects.all(),
                          }
                         products = n.objects.all()
@@ -778,8 +779,8 @@ def add_product(request, **kwargs):
                                                      width=width, \
                                                      height=height,
                                                      length=length, fabricator=fabricator, material=material, color=color)
-                                return render(request, 'panel/add_ok_product.html', {'products': products,'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
-                        return render(request, 'panel/add_product.html', {'products': products,'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                                return render(request, 'panel/add_ok_product.html', {'products': products,'category':category,'subcategory':subcategory, 'subsubcategory': subsubcategory})
+                        return render(request, 'panel/add_product.html', {'products': products,'category':category,'subcategory':subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 

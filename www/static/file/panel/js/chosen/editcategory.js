@@ -7,11 +7,10 @@ var
 $(".chosen").chosen({
     allow_single_deselect: true,
     no_results_text: "Совпадений не найдено: ",
-    search_contains: true,
-    display_selected_options: true
 });
 
-$("select").on('change',function () {
+
+$("select").chosen().change(function () {
     var
         count = 0;
     category = 0;
@@ -23,17 +22,18 @@ $("select").on('change',function () {
     /*Считываем выбранный продукт при добавлении или редактировании продукта*/
     $(".cat option:selected").each(function () {
         count = $(this).attr('number');
-        name = $(this).text();
     });
     subcategory = $('namesubcat' + count + '').attr('value');
-    console.log(name)
+
     /*Добавляем выбранную категорию с подкатегориями*/
     subcategory = subcategory.replace(/'/g, '"');
     subcategory = JSON.parse(subcategory);
 
     $('#selectsub').empty();
-    $('#selectsub').prepend("<option>--Выберите товарную группу--</option>");
     $.each(subcategory, function (i, v) {
-        $("#selectsub").append($("<option></option>", {value: v, text: v}));
+        var newrow = $('<option name="subcat" value="'+v+'">'+v+'</option>');
+        $('#selectsub').append( newrow ).trigger('chosen:updated');
     });
-});
+    $('#selectsub').chosen();
+
+}).change();

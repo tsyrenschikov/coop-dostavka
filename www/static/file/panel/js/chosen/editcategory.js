@@ -27,8 +27,10 @@ $("select").change(function () {
     /*Добавляем выбранную категорию с подкатегориями*/
     subcategory = subcategory.replace(/'/g, '"');
     subcategory = JSON.parse(subcategory);
+
     $('#selectsub').empty();
+    $('#selectsub').prepend("<option>--Выберите товарную группу--</option>");
     $.each(subcategory, function (i, v) {
-        $("#selectsub").append($("<option></option>", {value: v, text: v}));
+        $("#selectsub").append($("<option></option>", {number:i,value: v, text: v}));
     });
 });

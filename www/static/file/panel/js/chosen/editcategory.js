@@ -10,7 +10,8 @@ $(".chosen").chosen({
 });
 
 $("select").change(function () {
-$('#tgdiv').hide();
+    $('#tgdiv').hide();
+
     var
         count = 0;
     category = 0;
@@ -22,7 +23,7 @@ $('#tgdiv').hide();
     $(".cat option:selected").each(function () {
         count = $(this).attr('number');
         console.log(count)
-        if(count >= 0 || count !== undefined) {
+        if (count >= 0 || count !== undefined) {
             $('#tgdiv').show();
             subcategory = $('namesubcat' + count + '').attr('value');
 

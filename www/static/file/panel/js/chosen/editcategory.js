@@ -31,9 +31,8 @@ $("select").chosen().change(function () {
 
     $('#selectsub').empty();
     $.each(subcategory, function (i, v) {
-        var newrow = $('<option name="subcat" value="'+v+'">'+v+'</option>');
-        $('#selectsub').append( newrow ).trigger('chosen:updated');
+        var newrow = $('<option name="subcat" value="' + v + '">' + v + '</option>');
+        $('#selectsub').append(newrow);
+        $('#selectsub').trigger('chosen:updated');
     });
-    $('#selectsub').chosen();
-
-}).change();
+}).trigger('change');

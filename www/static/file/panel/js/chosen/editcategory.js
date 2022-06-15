@@ -21,8 +21,9 @@ $(document).ready(function () {
             subcategory = JSON.parse(subcategory);
             len=0;
             $.each(subcategory, function (i, v) {
-                $('#selectsub').append($('<option></option>', {value: v, text: v}));
+                $('#selectsub').append($('<option></option>', {name:'subcat',value: v, text: v}));
                 len+=1;
+
             });
             lens=(lens+len);
             while(lens !== len){

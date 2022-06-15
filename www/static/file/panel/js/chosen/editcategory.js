@@ -1,23 +1,27 @@
 var
-    subcategory = 0;
+    subcategory = [];
 
+$(document).ready(function (){
+    $('#selectsub').empty()
+})
 
-$("select").change( function () {
+$("select").change(function () {
     var
         count = 0;
-    subcategory =[];
+    subcategory.length = 0;
+    subcategory = [];
+
     /*Считываем выбранный продукт при добавлении или редактировании продукта*/
     $(".cat option:selected").each(function () {
-        count = $(this).attr('number');
+        count += Number($(this).attr('number'));
     });
-    subcategory = $('namesubcat' + count + '').attr('value');
+    /*Очистка старого списка товарной категории*/
 
     /*Создаем список из выбранной категории подкатегории*/
+    subcategory = $('namesubcat' + count + '').attr('value');
     subcategory = subcategory.replace(/'/g, '"');
     subcategory = JSON.parse(subcategory);
 
-    $('#selectsub').empty();
-    $('#selectsub').prepend('<options selected disabled value="">Выберите товарную группу</options>');
     $.each(subcategory, function (i, v) {
         $('#selectsub').append($('<option name="subcat" value="' + v + '">' + v + '</option>'));
     });

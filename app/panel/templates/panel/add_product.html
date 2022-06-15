@@ -38,7 +38,6 @@
                                         <label class="form-label">Категория*</label>
                                         </br>
                                         <select name="categ" id="selectcat" required class="form-control cat">
-                                            <option>-- Выберите категорию --</option>
                                             {% for category in category %}
                                                 <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
                                             {% endfor %}

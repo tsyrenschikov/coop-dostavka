@@ -1,43 +1,24 @@
-
 var
-    name = '',
-    category = [],
-    subcategory = 0,
-    subsubcategory = [];
+    subcategory = 0;
 
-$(".chosen").chosen({
-    allow_single_deselect: true,
-    no_results_text: "Совпадений не найдено: ",
-});
 
-$("select").on("change",function () {
-    $('#tgdiv').hide();
-
+$("select").change( function () {
     var
         count = 0;
-    category = 0;
-    name = '';
-    category = [];
-    subcategory = 0;
-    subsubcategory = 0;
+    subcategory =[];
     /*Считываем выбранный продукт при добавлении или редактировании продукта*/
     $(".cat option:selected").each(function () {
         count = $(this).attr('number');
+    });
+    subcategory = $('namesubcat' + count + '').attr('value');
 
-        if (count >= 0 || count !== undefined) {
-            $('#tgdiv').show();
-            subcategory = $('namesubcat' + count + '').attr('value');
+    /*Создаем список из выбранной категории подкатегории*/
+    subcategory = subcategory.replace(/'/g, '"');
+    subcategory = JSON.parse(subcategory);
 
-            /*Создаем список из выбранной категории подкатегории*/
-            subcategory = subcategory.replace(/'/g, '"');
-            subcategory = JSON.parse(subcategory);
-
-            $('#selectsub').empty();
-            $.each(subcategory, function (i, v) {
-                var newrow = $('<option name="subcat" value="' + v + '">' + v + '</option>');
-                $('#selectsub').append(newrow);
-                $('#selectsub').trigger("chosen:updated");
-            });
-        };
+    $('#selectsub').empty();
+    $('#selectsub').prepend('<options selected disabled value="">Выберите товарную группу</options>');
+    $.each(subcategory, function (i, v) {
+        $('#selectsub').append($('<option name="subcat" value="' + v + '">' + v + '</option>'));
     });
 }).change();

@@ -35,9 +35,9 @@
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
-                                        <label class="form-label"><em>Категория*</em></label>
+                                        <label class="form-label">Категория*</label>
                                         </br>
-                                        <select name="categ" id="selectcat" data-placeholder="-- Выберите категорию --" required class="form-control chosen cat deselect">
+                                        <select name="categ" id="selectcat" required class="form-control cat">
                                             <option>-- Выберите категорию --</option>
                                             {% for category in category %}
                                                 <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
@@ -49,12 +49,10 @@
                                     {% endfor %}
                                     </br>
                                     <div id="tgdiv" class="form-group">
-                                        <label class="form-label"><em>Товарная группа*</em></label>
+                                        <label class="form-label">Товарная группа*</label>
                                         </br>
                                         <!--редактир!-->
-                                        <select id="selectsub" name="subcat" data-placeholder="-- Выберите товарную группу --" required class="form-control chosen tg deselect">
-
-                                        </select>
+                                        <select id="selectsub" name="subcat"  required class="form-control"></select>
                                     </div>
                                     </br>
                                     <div hidden class="form-group tpgdiv">

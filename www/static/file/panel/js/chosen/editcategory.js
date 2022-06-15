@@ -23,7 +23,6 @@ $(document).ready(function () {
             $.each(subcategory, function (i, v) {
                 $('#selectsub').append($('<option></option>', {value: v, text: v}));
                 len+=1;
-
             });
             lens=(lens+len);
             while(lens !== len){

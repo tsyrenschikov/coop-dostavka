@@ -746,12 +746,12 @@ def add_product(request, **kwargs):
                         alert = {
                             'name': request.GET.get('name', ''),
                             'products': n.objects.all(),
-                            'category' : Category.objects.all(),
+                            'category' : Category.objects.all().order_by('number'),
                             'subcategory':SubCategory.objects.all(),
                             'subsubcategory': SubSubCategory.objects.all(),
                          }
                         products = n.objects.all()
-                        category= Category.objects.all()
+                        category= Category.objects.all().order_by('number')
                         subcategory = SubCategory.objects.all()
                         subsubcategory = SubSubCategory.objects.all()
                         if request.method == 'POST' and request.FILES:

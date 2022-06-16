@@ -51,9 +51,9 @@
                                         <select id="selectsub" name="subcat" required class="form-control tg">
                                         </select>
                                     </div>
-                                    <div hidden class="form-group tpgdiv">
+                                    <div class="form-group tpgdiv">
                                         <label class="form-label">Товарная подгруппа*</label>
-                                        <select id="categtory" name="subsubcat" required class="form-control chosen tpg deselect">
+                                        <select id="selectsubsub" name="subsubcat" required class="form-control tpg">
                                             {% for subsubcategory in subsubcategory %}
                                                 <option name="subsubcat" value="{{ subsubcategory }}">{{ subsubcategory }}</option>
                                             {% endfor %}
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4">
-                            <div class="card card-static-2 mb-30">
+                            <div class="card card-static-2 mb-30 prom">
                                 <div class="card-title-2">
                                     <h4>Характеристика товара</h4>
                                 </div>

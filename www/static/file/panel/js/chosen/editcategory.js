@@ -1,7 +1,7 @@
 var
     row = 0,
     lens = 0,
-    len =0,
+    len = 0,
     subcategory = [];
 $(document).ready(function () {
     $("#selectcat").on('change', function () {
@@ -19,17 +19,26 @@ $(document).ready(function () {
             subcategory = $('namesubcat' + count + '').attr('value');
             subcategory = subcategory.replace(/'/g, '"');
             subcategory = JSON.parse(subcategory);
-            len=0;
+            len = 0;
             $.each(subcategory, function (i, v) {
-                $('#selectsub').append($('<option></option>', {name:'subcat',value: v, text: v}));
-                len+=1;
+                $('#selectsub').append($('<option></option>', {name: 'subcat', value: v, text: v}));
+                len += 1;
 
             });
-            lens=(lens+len);
-            while(lens !== len){
+            lens = (lens + len);
+            while (lens !== len) {
                 $('#selectsub option:first').remove();
-                lens-=1;
+                lens -= 1;
             }
         });
+        $("#selectsub").on('change', function () {
+            var
+                cnttg = '';
+            $('.tg option:selected').each(function () {
+                cnttg += $(this).text();
+            });
+            console.log(cnttg)
+        });
     }).trigger('change');
+
 });

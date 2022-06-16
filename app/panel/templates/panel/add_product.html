@@ -48,14 +48,12 @@
                                     {% endfor %}
                                     <div id="tgdiv" class="form-group">
                                         <label class="form-label">Товарная группа*</label>
-                                        <!--редактир!-->
-                                        <select id="selectsub" name="subcat" required class="form-control tg"></select>
+                                        <select id="selectsub" name="subcat" required class="form-control tg">
+                                        </select>
                                     </div>
                                     <div hidden class="form-group tpgdiv">
-                                        <label class="form-label"><em>Товарная подгруппа*</em></label>
-                                        </br>
+                                        <label class="form-label">Товарная подгруппа*</label>
                                         <select id="categtory" name="subsubcat" required class="form-control chosen tpg deselect">
-                                            <option selected value="0">-- Выбрать товарную подгруппу --</option>
                                             {% for subsubcategory in subsubcategory %}
                                                 <option name="subsubcat" value="{{ subsubcategory }}">{{ subsubcategory }}</option>
                                             {% endfor %}

@@ -38,11 +38,15 @@ $(document).ready(function () {
             }
             if(count > 22){
                 $('.tpgdiv').show();
+                $('#selectsubsub').attr({'name' : 'subsubcat'})
+                $('#selectsubsub option').attr({'name' : 'subsubcat'})
                 $('.prom').show();
                 subsubcategory.length = 0; subsubcategory = [];
             }
             else {
                 $('.tpgdiv').hide();
+                $('#selectsubsub').attr({'name' : ''})
+                $('#selectsubsub option').attr({'name' : ''})
                 $('.prom').hide();
             }
         });

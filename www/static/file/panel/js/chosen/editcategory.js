@@ -10,11 +10,10 @@ $(document).ready(function () {
 
         var
             count = 0,
-            str = '';
+            countsubsub = 0;
         /*Считываем выбранный продукт при добавлении или редактировании продукта*/
         $(".cat option:selected").each(function () {
             count += Number($(this).attr('number'));
-            str += $(this).text();
 
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
@@ -36,17 +35,24 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if(count > 22){
+            if (count > 21) {
                 $('.tpgdiv').show();
-                $('#selectsubsub').attr({'name' : 'subsubcat'})
-                $('#selectsubsub option').attr({'name' : 'subsubcat'})
-                $('.prom').show();
-                subsubcategory.length = 0; subsubcategory = [];
-            }
-            else {
+                    $('#selectsubsub').attr({'name': 'subsubcat'})
+                    $('#selectsubsub option').attr({'name': 'subsubcat'})
+                    $('.prom').show();
+                    subsubcategory.length = 0;
+                    subsubcategory = [];
+
+                $(".tg option:selected").each(function () {
+                    countsubsub += $(this).text();
+
+                    subsubcategory = $('namesubsub' + countsubsub + '').attr('value');
+                    console.log(countsubsub)
+                });
+            } else {
                 $('.tpgdiv').hide();
-                $('#selectsubsub').attr({'name' : ''})
-                $('#selectsubsub option').attr({'name' : ''})
+                $('#selectsubsub').attr({'name': ''})
+                $('#selectsubsub option').attr({'name': ''})
                 $('.prom').hide();
             }
         });

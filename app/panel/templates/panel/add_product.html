@@ -49,8 +49,8 @@
                                             <namesubcat{{ forloop.counter0 }} hidden value="{{ category.subcat }}"></namesubcat{{ forloop.counter0 }}>
                                         {% endfor %}
                                         {% comment %}Subsubcategory{% endcomment %}
-                                        {% for subcat in subcategory %}
-                                            <namesubsub{{ forloop.counter0 }} hidden value="{{ subcat.subsubcat }}"></namesubsub>{{ forloop.counter0 }}
+                                        {% for sub in subcategory %}
+                                            <namesubsub hidden value="{{ sub }}">{{ sub }}</namesubsub>
                                         {% endfor %}
                                     </div>
                                     <div id="tgdiv" class="form-group">

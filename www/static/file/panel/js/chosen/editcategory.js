@@ -10,10 +10,13 @@ $(document).ready(function () {
 
         var
             count = 0,
+            countname = '',
             countsubsub = 0;
         /*Считываем выбранный продукт при добавлении или редактировании продукта*/
         $(".cat option:selected").each(function () {
             count += Number($(this).attr('number'));
+            countname += $(this).text();
+            console.log(countname)
 
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
@@ -35,19 +38,15 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if (count > 21) {
+            if (countname === 'Мебель') {
                 $("#selectsub").on('change', function () {
                     $('.tpgdiv').show();
-                    $('#selectsubsub').attr({'name': 'subsubcat'})
-                    $('#selectsubsub option').attr({'name': 'subsubcat'})
                     $('.prom').show();
                     subsubcategory.length = 0;
                     subsubcategory = [];
 
                     $(".tg option:selected").each(function () {
-                        countsubsub += $(this).text();
-                        subsubcategory = $('namesubsub' + countsubsub + '').attr('value');
-                        console.log(countsubsub)
+                        countsubsub = $(this).text();
                     }).trigger('change');
                 });
             } else {

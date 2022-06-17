@@ -16,8 +16,6 @@ $(document).ready(function () {
         $(".cat option:selected").each(function () {
             count += Number($(this).attr('number'));
             countname += $(this).text();
-            console.log(countname)
-
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];
@@ -39,16 +37,17 @@ $(document).ready(function () {
                 lens -= 1;
             }
             if (countname === 'Мебель') {
-                $("#selectsub").on('change', function () {
-                    $('.tpgdiv').show();
-                    $('.prom').show();
-                    subsubcategory.length = 0;
-                    subsubcategory = [];
+                $('.tpgdiv').show();
+                $('.prom').show();
 
-                    $(".tg option:selected").each(function () {
-                        countsubsub = $(this).text();
-                    }).trigger('change');
-                });
+                $("#selectsub").on('change', function () {
+                    $("#selectsub option:selected").each(function () {
+                        countsubsub = $(this).attr('value');
+                        console.log(countsubsub)
+                        subsubcategory.length = 0;
+                        subsubcategory = [];
+                    });
+                }).trigger('change');
             } else {
                 $('.tpgdiv').hide();
                 $('#selectsubsub').attr({'name': ''})

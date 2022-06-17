@@ -36,18 +36,19 @@ $(document).ready(function () {
                 lens -= 1;
             }
             if (count > 21) {
-                $('.tpgdiv').show();
+                $("#selectsub").on('change', function () {
+                    $('.tpgdiv').show();
                     $('#selectsubsub').attr({'name': 'subsubcat'})
                     $('#selectsubsub option').attr({'name': 'subsubcat'})
                     $('.prom').show();
                     subsubcategory.length = 0;
                     subsubcategory = [];
 
-                $(".tg option:selected").each(function () {
-                    countsubsub += $(this).text();
-
-                    subsubcategory = $('namesubsub' + countsubsub + '').attr('value');
-                    console.log(countsubsub)
+                    $(".tg option:selected").each(function () {
+                        countsubsub += $(this).text();
+                        subsubcategory = $('namesubsub' + countsubsub + '').attr('value');
+                        console.log(countsubsub)
+                    }).trigger('change');
                 });
             } else {
                 $('.tpgdiv').hide();

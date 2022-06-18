@@ -8,16 +8,18 @@ var
     subsubcategory = [];
 
 $(document).ready(function () {
-    $("#selectcat").on('change', function () {
 
+    $(".cat").on('change', function () {
         var
             count = 0,
             countname = '',
             countsubsub = 0;
         /*Считываем выбранный продукт при добавлении или редактировании продукта*/
         $(".cat option:selected").each(function () {
+            if ($('.cat option:selected').attr('number') < 0){ $('.cat option:selected').remove();}
             count += Number($(this).attr('number'));
             countname += $(this).text();
+            console.log(countname, count)
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];

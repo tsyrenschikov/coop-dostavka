@@ -2,6 +2,8 @@ var
     row = 0,
     lens = 0,
     len = 0,
+    sublen= 0,
+    sublens = 0;
     subcategory = [],
     subsubcategory = [];
 
@@ -36,16 +38,38 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if (countname === 'Мебель') {
+            if (count > 21) {
                 $('.tpgdiv').show();
                 $('.prom').show();
 
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
-                        console.log(countsubsub)
                         subsubcategory.length = 0;
                         subsubcategory = [];
+                        $('namesubname').each(function () {
+                            var sub = $(this).attr('value')
+                            subsubcategory.push(sub)
+                        });
+                        $.each(subsubcategory, function (index, value) {
+                            if (countsubsub === subsubcategory[index]) {
+                                var s = subsubcategory[index + 1];
+                                console.log(s)
+                                s = s.replace(/'/g, '"');
+                                s = JSON.parse(s);
+                                sublen =0;
+                                $.each(s, function (i, v) {
+                                    $('#selectsubsub').append($('<option></option>', {name: 'subsubcat', value: v, text: v}));
+                                    sublen+=1;
+                                });
+                                sublens = (sublens + sublen);
+                                while (sublens !== sublen){
+                                    $('#selectsubsub option:first').remove();
+                                    sublens-=1;
+                                }
+                            }
+                        })
+
                     });
                 }).trigger('change');
             } else {

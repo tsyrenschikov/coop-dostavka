@@ -40,11 +40,11 @@ $(document).ready(function () {
             }
             if (count > 21) {
                 $('.tpgdiv').show();
-                $('.prom').show();
-
+                if (countname === 'Мебель'){$('.prom_mebel').show();};
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
+                        if (countsubsub === 'Электротовары'){$('.prom_electro').show();};
                         subsubcategory.length = 0;
                         subsubcategory = [];
                         $('namesubname').each(function () {
@@ -76,7 +76,8 @@ $(document).ready(function () {
                 $('.tpgdiv').hide();
                 $('#selectsubsub').attr({'name': ''})
                 $('#selectsubsub option').attr({'name': ''})
-                $('.prom').hide();
+                $('.prom_mebel').hide();
+                $('.prom_electro').hide();
             }
         });
     }).trigger('change');

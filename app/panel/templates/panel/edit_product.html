@@ -39,23 +39,32 @@
                                     <label class="form-label"><em>Категория</em></label>
                                     </br>
                                     <select id="category" name="cat" required class="form-control cat">
+                                        <option value="{{ products.categ }}" name="categ">{{ products.categ }}</option>
+                                        {% for category in category %}
+                                            <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
+                                        {% endfor %}
                                     </select>
+                                </div>
+                                <div>
+                                    {% comment %}Subcat{% endcomment %}
+                                    {% for category in category %}
+                                        <namesubcat{{ forloop.counter0 }} hidden value="{{ category.subcat }}"></namesubcat{{ forloop.counter0 }}>
+                                    {% endfor %}
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label"><em>Товарная группа</em></label>
                                     </br>
                                     <select id="category" name="subcat" required class="form-control tg">
-                                        {% if products.subcat %}
-                                            <option selected></option>
-                                            <option selected>{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</option>
-                                        {% else %}
-                                            <option selected></option>
-                                        {% endif %}
-                                        {% for subcategory in subcategory %}
-                                            <option name="subcat">{{ subcategory.name }}</option>
-                                        {% endfor %}
+
                                     </select>
                                 </div>
+                                {% comment %}Subsubcategory{% endcomment %}
+                                {% for sub in subcategory %}
+                                    {% if sub.subsubcat|length %}
+                                        <namesubname hidden value="{{ sub.name }}"></namesubname>
+                                        <namesubname hidden value="{{ sub.subsubcat }}"></namesubname>
+                                    {% endif %}
+                                {% endfor %}
                                 </br>
                                 <div class="form-group">
                                     <label class="form-label"><em>Товарная подгруппа</em></label>

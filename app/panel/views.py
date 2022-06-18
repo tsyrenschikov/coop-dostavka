@@ -691,46 +691,50 @@ def product_view(request, id):
 
 # Редактировать продукт
 def edit_product(request, id):
-    try:
-        users = User.objects.values_list('id', flat=True).distinct()
-        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        for u in users:
-            if request.user.id == u:
-                for s, slug in shops:
-                    if u == s:
-                        name = eval(slug)
-                        products = name.objects.get(id=id)
-                        subcategory = SubCategory.objects.all()
-                        subsubcategory = SubSubCategory.objects.all()
-                        if request.method == "POST":
-                            products.name = request.POST.get("name")
-                            products.status = request.POST.get("status")
-                            products.price = request.POST.get("price")
-                            products.discount = request.POST.get("discount")
-                            products.description = request.POST.get("description")
-                            products.width = request.POST.get('width')
-                            products.height = request.POST.get('height')
-                            products.length = request.POST.get('length')
-                            products.fabricator = request.POST.get('fabricator')
-                            products.material = request.POST.get('material')
-                            products.color = request.POST.get('color')
-                            products.save()
-                        if request.method == 'POST':
-                            products.subcat = request.POST.get('subcat')
-                            products.save(update_fields=['subcat'])
-                        if request.method == 'POST':
-                            products.subsubcat = request.POST.get('subsubcat')
-                            products.save(update_fields=['subsubcat'])
-                            if request.FILES:
-                                products.image = request.FILES["image"]
+    if request.user.is_authenticated:
+        try:
+            users = User.objects.values_list('id', flat=True).distinct()
+            shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+            for u in users:
+                if request.user.id == u:
+                    for s, slug in shops:
+                        if u == s:
+                            name = eval(slug)
+                            products = name.objects.get(id=id)
+                            category = Category.objects.all().order_by('number')
+                            subcategory = SubCategory.objects.values('name', 'subsubcat')
+                            subsubcategory = SubSubCategory.objects.all()
+                            if request.method == "POST":
+                                products.name = request.POST.get("name")
+                                products.categ = request.POST.get("categ")
+                                products.status = request.POST.get("status")
+                                products.price = request.POST.get("price")
+                                products.discount = request.POST.get("discount")
+                                products.description = request.POST.get("description")
+                                products.width = request.POST.get('width')
+                                products.height = request.POST.get('height')
+                                products.length = request.POST.get('length')
+                                products.fabricator = request.POST.get('fabricator')
+                                products.material = request.POST.get('material')
+                                products.color = request.POST.get('color')
                                 products.save()
+                            if request.method == 'POST':
+                                products.subcat = request.POST.get('subcat')
+                                products.save(update_fields=['subcat'])
+                            if request.method == 'POST':
+                                products.subsubcat = request.POST.get('subsubcat')
+                                products.save(update_fields=['subsubcat'])
+                                if request.FILES:
+                                    products.image = request.FILES["image"]
+                                    products.save()
+                                    return render(request, 'panel/edit_ok_product.html', {'products': products})
                                 return render(request, 'panel/edit_ok_product.html', {'products': products})
-                            return render(request, 'panel/edit_ok_product.html', {'products': products})
-                        else:
-                            return render(request, 'panel/edit_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
-    except User.DoesNotExist:
-        return render(request, 'panel/edit_product.html', {'products': products, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
-
+                            else:
+                                return render(request, 'panel/edit_product.html', {'products': products, 'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+        except User.DoesNotExist:
+            return render(request, 'panel/edit_product.html', {'products': products, 'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+    else:
+        return redirect('/login')
 
 # Добавить продукт
 def add_product(request, **kwargs):

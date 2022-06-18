@@ -51,6 +51,7 @@ $(document).ready(function () {
                             var sub = $(this).attr('value')
                             subsubcategory.push(sub)
                         });
+                        $('#selectsubsub').attr({'name' : 'subsubcat'})
                         $.each(subsubcategory, function (index, value) {
                             if (countsubsub === subsubcategory[index]) {
                                 var s = subsubcategory[index + 1];
@@ -58,10 +59,12 @@ $(document).ready(function () {
                                 s = s.replace(/'/g, '"');
                                 s = JSON.parse(s);
                                 sublen =0;
+
                                 $.each(s, function (i, v) {
                                     $('#selectsubsub').append($('<option></option>', {name: 'subsubcat', value: v, text: v}));
                                     sublen+=1;
                                 });
+                                console.log($('#selectsubsub').attr('value'))
                                 sublens = (sublens + sublen);
                                 while (sublens !== sublen){
                                     $('#selectsubsub option:first').remove();

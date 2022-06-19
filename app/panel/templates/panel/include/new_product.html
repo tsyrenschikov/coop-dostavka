@@ -23,6 +23,10 @@
 													<span class="right-dt">{{ products.description }}</span>
                                             </div>
                                             <div class="shopowner-dt-list">
+													<span class="left-dt">Категория</span>
+                                                <span class="right-dt">{{ products.categ }}</span>
+                                            </div>
+                                            <div class="shopowner-dt-list">
 													<span class="left-dt">Товарная группа</span>
                                                 {% if products.subcat != None and products.subcat != '0' %}
 													<span class="right-dt">{{ products.subcat|cut:"["|cut:"]"|cut:"'" }}</span>

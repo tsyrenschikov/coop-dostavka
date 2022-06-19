@@ -79,8 +79,9 @@
                                             <th style="width:100px">Изображение</th>
                                             <th style="width: 100px">Цена</th>
                                             <th style="width: 100px">Цена со скидкой</th>
-                                            <th style="width:300px">Категория</th>
-                                            <th style="width:150px">Тов. группа </br>и</br> Тов. подгруппа</th>
+                                            <th style="width:150px">Категория</th>
+                                            <th style="width:150px">Тов. группа</th>
+                                            <th style="width:150px">Тов. подгруппа</th>
                                             <th style="width:150px">Харак-ки</th>
                                             <th>Статус</th>
                                             <th>Действия</th>
@@ -110,7 +111,14 @@
                                             <td>{{ products.price }} .р</td>
                                             <td>{{ products.discount }} .р</td>
                                             <td>{{ products.categ }}</td>
-                                            <td>{{ products.subcat }}, {{ products.subsubcat }}</td>
+                                            <td>{{ products.subcat }}</td>
+                                            <td>
+                                                {% if products.subsubcat != None %}
+                                                    {{ products.subsubcat }}
+                                                {% else %}
+                                                    Нет
+                                                {% endif %}
+                                            </td>
                                             <td>
                                                 {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
                                                     {{ products.width }} x {{ products.height }} x {{ products.length }}

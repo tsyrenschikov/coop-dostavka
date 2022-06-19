@@ -31,15 +31,13 @@
                                         {{ name }}
                                     </div>
                                 {% endif %}
+                                <input type="hidden" class="sel" value="{{ products.categ }}">
                                 <div class="form-group">
                                     <label class="form-label"><em>Категория</em></label>
                                     </br>
                                     <select id="category" name="categ" id="selectcat" required class="form-control cat">
                                         {% for category in category %}
-                                            {% if products.categ == category.name %}
-                                                <option selected value="{{ category.name }}">{{ category.name }}</option>
-                                            {% endif %}
-                                                <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
+                                            <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>

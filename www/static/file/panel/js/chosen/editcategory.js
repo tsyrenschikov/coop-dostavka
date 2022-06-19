@@ -16,10 +16,10 @@ $(document).ready(function () {
             countsubsub = 0;
         /*Считываем выбранный продукт при добавлении или редактировании продукта*/
         $(".cat option:selected").each(function () {
-            var k=$('sel').attr('value');
+            if ($('.cat option:selected').attr('number') < 0){ $('.cat option:selected').remove();}
             count += Number($(this).attr('number'));
             countname += $(this).text();
-            console.log(countname, count, k)
+            console.log(countname, count)
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];

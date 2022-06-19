@@ -18,6 +18,7 @@ $(document).ready(function () {
         $(".cat option:selected").each(function () {
             count += Number($(this).attr('number'));
             countname += $(this).text();
+            console.log(count)
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];
@@ -38,7 +39,7 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if (count > 21) {
+            if (count > 20) {
                 $('.tpgdiv').show();
                 if (countname === 'Мебель'){$('.prom_mebel').show();};
                 $("#selectsub").on('change', function () {

@@ -40,7 +40,7 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if (count > 21) {
+            if (count > 20) {
                 $('.tpgdiv').show();
                 if (countname === 'Мебель'){$('.prom_mebel').show();};
                 $("#selectsub").on('change', function () {

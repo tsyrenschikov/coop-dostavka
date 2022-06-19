@@ -79,8 +79,8 @@
                                             <th style="width:100px">Изображение</th>
                                             <th style="width: 100px">Цена</th>
                                             <th style="width: 100px">Цена со скидкой</th>
-                                            <th style="width:300px">Описание</th>
-                                            <th style="width:150px">Тов. группа </br>или</br> Тов. подгруппа</th>
+                                            <th style="width:300px">Категория</th>
+                                            <th style="width:150px">Тов. группа </br>и</br> Тов. подгруппа</th>
                                             <th style="width:150px">Харак-ки</th>
                                             <th>Статус</th>
                                             <th>Действия</th>
@@ -109,22 +109,8 @@
                                             {% endif %}
                                             <td>{{ products.price }} .р</td>
                                             <td>{{ products.discount }} .р</td>
-                                            <td>
-                                                {% if products.description %}
-                                                    {{ products.description }}
-                                                {% else %}
-                                                    Без описания
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if products.subcat != None and products.subcat != '0' %}
-                                                    {{ products.subcat|cut:"["|cut:"]"|cut:"'" }}
-                                                {% elif products.subsubcat != None and products.subsubcat != '0' %}
-                                                    {{ products.subsubcat|cut:"["|cut:"]"|cut:"'" }}
-                                                {% else %}
-                                                    Товарная группа или подгруппа не назначена
-                                                {% endif %}
-                                            </td>
+                                            <td>{{ products.categ }}</td>
+                                            <td>{{ products.subcat }}, {{ products.subsubcat }}</td>
                                             <td>
                                                 {% if products.width or products.height or products.length or products.fabricator or products.material or products.color %}
                                                     {{ products.width }} x {{ products.height }} x {{ products.length }}

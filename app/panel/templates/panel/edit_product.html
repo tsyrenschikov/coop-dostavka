@@ -2,6 +2,7 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% load thumbnail %}
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Продукты</h2>
@@ -80,7 +81,9 @@
                                 </div>
                                 <div class="form-group">
                                     {% if products.image %}
-                                        <label class=""><img src="{{ products.image.url }} " width="80px" height="80"></label>
+                                        {% thumbnail products.image '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
                                     {% endif %}
                                 </div>
                                 <div class="input-group">

@@ -113,7 +113,7 @@
                                             <td>{{ products.categ }}</td>
                                             <td>{{ products.subcat }}</td>
                                             <td>
-                                                {% if products.subsubcat != None or products.subsubcat %}
+                                                {% if products.subsubcat != None and products.subsubcat %}
                                                     {{ products.subsubcat }}
                                                 {% else %}
                                                     Нет

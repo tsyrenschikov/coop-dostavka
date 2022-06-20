@@ -45,10 +45,10 @@ $(document).ready(function () {
             var selected_s = $('selected_sub').attr('value');
             $.each(subcategory, function (i, v) {
                 if (v === selected_s) {
-                    $('#selectsub').append('<option name="subcat", value="' + v + '" selected>' + v + '</option>');
+                    $('#selectsub').append('<option name="subcat" value="' + v + '" selected>' + v + '</option>');
                 }
                 if (v !== selected_s) {
-                    $('#selectsub').append($('<option name="subcat", value="' + v + '">' + v + '</option>'));
+                    $('#selectsub').append($('<option name="subcat" value="' + v + '">' + v + '</option>'));
                 }
                 len += 1;
             });
@@ -103,7 +103,8 @@ $(document).ready(function () {
                 }).trigger('change');
             } else {
                 $('.tpgdiv').hide();
-                $('#selectsubsub').attr({'name': ''});
+                $('#selectsubsub').attr({'name': 'subbsubcat', value: ''});
+                $('#selectsubsub option').attr({'name': 'subbsubcat',value:'', selected:false})
                 $('.prom_mebel').hide();
                 $('.prom_electro').hide();
 

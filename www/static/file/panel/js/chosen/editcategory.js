@@ -33,7 +33,6 @@ $(document).ready(function () {
 
             count += Number($(this).attr('number'));
             countname += $(this).text();
-
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];
@@ -63,14 +62,12 @@ $(document).ready(function () {
                 if (countname === 'Мебель') {
                     $('.prom_mebel').show();
                 }
-                ;
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
                         if (countsubsub === 'Электротовары') {
                             $('.prom_electro').show();
                         }
-                        ;
                         subsubcategory.length = 0;
                         subsubcategory = [];
                         $('namesubname').each(function () {
@@ -106,10 +103,10 @@ $(document).ready(function () {
                 }).trigger('change');
             } else {
                 $('.tpgdiv').hide();
-                $('#selectsubsub').attr({'name': ''})
-                $('#selectsubsub option').attr({'name': ''})
+                $('#selectsubsub').attr({'name': ''});
                 $('.prom_mebel').hide();
                 $('.prom_electro').hide();
+
             }
         });
     }).trigger('change');

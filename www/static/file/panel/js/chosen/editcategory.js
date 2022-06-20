@@ -2,13 +2,27 @@ var
     row = 0,
     lens = 0,
     len = 0,
-    sublen= 0,
-    sublens = 0;
-    subcategory = [],
+    sublen = 0,
+    category = []
+sublens = 0;
+subcategory = [],
     subsubcategory = [];
 
 $(document).ready(function () {
-
+    category = 0;
+    category = [];
+    $('categ').each(function () {
+        category.push($(this).attr('value'))
+    });
+    var selected_n = $('selected_name').attr('value');
+    $.each(category, function (i, v) {
+        if (v === selected_n) {
+            $('#category').append('<option number="' + i + '" name="categ" selected value="' + v + '">' + v + '</option>');
+        }
+        if (v !== selected_n) {
+            $('.cat').append($('<option number="' + i + '" name="categ" value="' + v + '">' + v + '</option>'))
+        }
+    });
     $(".cat").on('change', function () {
         var
             count = 0,
@@ -16,10 +30,10 @@ $(document).ready(function () {
             countsubsub = 0;
         /*Считываем выбранный продукт при добавлении или редактировании продукта*/
         $(".cat option:selected").each(function () {
-            if ($('.cat option:selected').attr('number') < 0){ $('.cat option:selected').remove();}
+
             count += Number($(this).attr('number'));
             countname += $(this).text();
-            console.log(countname, count)
+
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];
@@ -29,11 +43,15 @@ $(document).ready(function () {
             subcategory = subcategory.replace(/'/g, '"');
             subcategory = JSON.parse(subcategory);
             len = 0;
-
+            var selected_s = $('selected_sub').attr('value');
             $.each(subcategory, function (i, v) {
-                $('#selectsub').append($('<option></option>', {name: 'subcat', value: v, text: v}));
+                if (v === selected_s) {
+                    $('#selectsub').append('<option name="subcat", value="' + v + '" selected>' + v + '</option>');
+                }
+                if (v !== selected_s) {
+                    $('#selectsub').append($('<option name="subcat", value="' + v + '">' + v + '</option>'));
+                }
                 len += 1;
-
             });
             lens = (lens + len);
             while (lens !== len) {
@@ -42,35 +60,44 @@ $(document).ready(function () {
             }
             if (count > 20) {
                 $('.tpgdiv').show();
-                if (countname === 'Мебель'){$('.prom_mebel').show();};
+                if (countname === 'Мебель') {
+                    $('.prom_mebel').show();
+                }
+                ;
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
-                        if (countsubsub === 'Электротовары'){$('.prom_electro').show();};
+                        if (countsubsub === 'Электротовары') {
+                            $('.prom_electro').show();
+                        }
+                        ;
                         subsubcategory.length = 0;
                         subsubcategory = [];
                         $('namesubname').each(function () {
                             var sub = $(this).attr('value')
                             subsubcategory.push(sub)
                         });
-                        $('#selectsubsub').attr({'name' : 'subsubcat'})
+                        $('#selectsubsub').attr({'name': 'subsubcat'})
                         $.each(subsubcategory, function (index, value) {
                             if (countsubsub === subsubcategory[index]) {
                                 var s = subsubcategory[index + 1];
-                                console.log(s)
                                 s = s.replace(/'/g, '"');
                                 s = JSON.parse(s);
-                                sublen =0;
-
+                                sublen = 0;
+                                var selected_ss = $('selected_subsub').attr('value');
                                 $.each(s, function (i, v) {
-                                    $('#selectsubsub').append($('<option></option>', {name: 'subsubcat', value: v, text: v}));
-                                    sublen+=1;
+                                    if (v === selected_ss) {
+                                        $('#selectsubsub').append('<option name="subsubcat" value="' + v + '" selected>' + v + '</option>');
+                                    }
+                                    if (v !== selected_ss) {
+                                        $('#selectsubsub').append($('<option name="subsubcat" value="' + v + '">' + v + '</option>'));
+                                    }
+                                    sublen += 1;
                                 });
-                                console.log($('#selectsubsub').attr('value'))
                                 sublens = (sublens + sublen);
-                                while (sublens !== sublen){
+                                while (sublens !== sublen) {
                                     $('#selectsubsub option:first').remove();
-                                    sublens-=1;
+                                    sublens -= 1;
                                 }
                             }
                         })

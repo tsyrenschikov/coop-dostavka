@@ -36,12 +36,14 @@
                                     <label class="form-label"><em>Категория</em></label>
                                     </br>
                                     <select id="category" name="categ" id="selectcat" required class="form-control cat">
-                                        {% for category in category %}
-                                            <option number="{{ forloop.counter0 }}" name="categ" value="{{ category.name }}">{{ category.name }}</option>
-                                        {% endfor %}
                                     </select>
                                 </div>
                                 <selected_name hidden value="{{ products.categ }}"></selected_name>
+                                <selected_sub hidden value="{{ products.subcat }}"></selected_sub>
+                                <selected_subsub hidden value="{{ products.subsubcat }}"></selected_subsub>
+                                {% for category in category %}
+                                    <categ number="{{ forloop.counter0 }}" hidden name="categ" value="{{ category.name }}">{{ category.name }}</categ>
+                                {% endfor %}
                                 <div>
                                     {% comment %}Subcat{% endcomment %}
                                     {% for category in category %}
@@ -53,6 +55,7 @@
                                     </br>
                                     <select id="selectsub" name="subcat" required class="form-control tg">{% comment %}Выбор из js{% endcomment %}</select>
                                 </div>
+
                                 {% comment %}Subsubcategory{% endcomment %}
                                 {% for sub in subcategory %}
                                     {% if sub.subsubcat|length %}

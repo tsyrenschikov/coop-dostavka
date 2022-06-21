@@ -104,7 +104,7 @@ $(document).ready(function () {
             } else {
                 $('.tpgdiv').hide();
                 $('#selectsubsub').attr({'name': 'subbsubcat', value: ''});
-                $('#selectsubsub option').attr({'name': 'subbsubcat',value:'', selected:false})
+                $('#selectsubsub option').attr({'name': 'subbsubcat', value: '', selected: false})
                 $('.prom_mebel').hide();
                 $('.prom_electro').hide();
 

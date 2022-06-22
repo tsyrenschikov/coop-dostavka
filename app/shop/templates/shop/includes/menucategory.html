@@ -2,13 +2,13 @@
 <header>
     <div class="cf">
         <nav id="main-nav">
-            {% for name,sub in category_product.items %}
-                {% if sub %}
+            {% for value in category_product.items %}
+                {% if value.1 %}
                     <ul class="second-nav">
                         <li class="menu-category">
-                            <a href="#">{{ name }}</a>
+                            <a href="#">{{ value.0 }}</a>
                             <ul>
-                                {% for sub in sub %}
+                                {% for sub in value.1 %}
                                     <li>
                                         <a href="/{{ address_str }}/sort_list/{{ sub }}">{{ sub }}</a>
                                     </li>

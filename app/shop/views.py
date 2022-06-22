@@ -38,17 +38,24 @@ def local():
 
 def dict_category_product(name_slug):
     category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
-    category_product = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
+    category_products = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
     dict_category_product = {category['name']: [] for category in category_shop}
-    list_p = list(set([i for i, j, k in category_product]))
+    list_p = list(set([i for i, j, k in category_products]))
     list_p= [x for x in list_p if x and x!='0']
     for category in category_shop:
         for n in category['subcat']:
             for i in list_p:
                 if i in n:
                     dict_category_product[category['name']].append(i)
-    category_product = dict(sorted(dict_category_product.items()))
+    category_product = dict_category_product
     return category_product
+
+def cat_arti():
+    category_shop = Category.objects.values('name', 'subcat', 'image').order_by('number')
+    category_products = arti.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
+    dict_category = [category for category in category_shop]
+    list_p = list(set([i for i, j, k in category_products]))
+    list_p = [x for x in list_p if x and x != '0']
 
 
 def shop(request):

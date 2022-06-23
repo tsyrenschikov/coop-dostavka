@@ -56,6 +56,11 @@ def cat_arti():
     dict_category = [category for category in category_shop]
     list_p = list(set([i for i, j, k in category_products]))
     list_p = [x for x in list_p if x and x != '0']
+    for category in category_shop:
+        for n in category['subcat']:
+            for i in list_p:
+                if i in n:
+                    dict_category_product[category['name']].append(i)
 
 
 def shop(request):

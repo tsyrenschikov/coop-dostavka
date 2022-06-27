@@ -99,7 +99,7 @@
 
 .ui.inline.dropdown.loc-title>.text {
     white-space: nowrap;
-    width: 70px;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 }

@@ -425,7 +425,7 @@ class offers(models.Model):
 class orders(models.Model):
     name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Пользователь')
     phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
-    address_city=models.CharField(max_length=30, null=True, verbose_name='Населенный пункт')
+    address_city=models.CharField(max_length=300, null=True, verbose_name='Населенный пункт')
     address_street = models.TextField(max_length=300,null=True,verbose_name='Улица и дом')
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
     commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')

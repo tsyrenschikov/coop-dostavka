@@ -37,7 +37,7 @@
                     </div>
                 <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
                     <div class="form-group mt-1">
-                        <label class="control-label-cart">Статус заказа : {% if order.status == null %}<span style=" color: orangered" >В ожидании</span>{% endif %}</label>
+                        <label class="control-label-cart">Статус заказа : {% if order.status == '0' %}<span style=" color: orangered" >В ожидании</span>{% endif %}</label>
                     </div>
                 </div>
             </div>

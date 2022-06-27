@@ -291,6 +291,7 @@ function displayCart() {
   $('.delivery').html(shoppingCart.Delivery());
   $('.total').html(shoppingCart.totalDelivery());
   $('.amount').html(shoppingCart.Amount());
+
 }
 
 // Delete item button

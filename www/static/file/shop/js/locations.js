@@ -33,17 +33,22 @@ $(document).ready(function () {
             lookup: teams,
             minChars: 1,
             onSelect: function (suggestion) {
+                var location_slug=$('#location_slug').attr('value');
                 $('#selection').html('Вы выбрали: ' + suggestion.value);
                 var field = suggestion.value;
                 localStorage.location = field;
                 $.each(list_name, function (indexname, valuename) {
                     $.each(list_slug, function (indexlist, valuelist) {
                         if ((suggestion.value === valuename) && (valuelist.length === 1) && (indexname === indexlist)) {
+                            if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
+                            console.log(valuelist[0])
                         } else if ((suggestion.value === valuename) && (valuelist.length >= 1) && (indexname === indexlist)) {
+                            if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
+                            console.log(valuelist[0])
                         }
                     });
                 });
@@ -61,6 +66,7 @@ $(document).ready(function () {
             $(window).load(function () {
                 if (window.location.href.indexOf('shop') === -1) {
                     window.location.replace('https://coop-dostavka.ru/'+'?shop');
+
                 }
             });
         }

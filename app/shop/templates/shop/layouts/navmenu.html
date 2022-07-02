@@ -7,20 +7,37 @@
             </a>
         </li>
         <li class="nav__item">
-            <a  class="nav__link">
+            <a class="nav__link">
                 <i class='bx bx-category-alt nav__icon  toggle'></i>
                 <span>Каталог</span>
             </a>
         </li>
-        <li class="nav__item">
-            <a href="#" class="nav__link">
-                <i class='bx bx-user nav__icon'></i>
-                <span>Пользователь</span>
-            </a>
-        </li>
+        {% if user.is_authenticated %}
+            <li class="nav__item">
+                <a href="{% url 'list_order_dashboard' %}" class="nav__link">
+                    <i class='bx bx-user nav__icon'></i>
+                    <span>
+                    {% if user.last_name %}
+                        {{ user.last_name }}
+                    {% else %}
+                        {{ user.first_name }}
+                    {% endif %}
+                </span>
+                </a>
+            </li>
+        {% else %}
+            <li class="nav__item">
+                <a href="{% url 'login' %}?next={{ request.path }}" class="nav__link">
+                    <i class='bx bx-user nav__icon'></i>
+                    <span>Пользователь</span>
+                </a>
+            </li>
+        {% endif %}
         <li class="nav__item">
             <a href="#" class="nav__link" data-toggle="modal" data-target="#cart">
-                <i class='bx bx-cart-alt nav__icon'><ins id="totalItems" class="total-count"></ins></i>
+                <i class='bx bx-cart-alt nav__icon'>
+                    <ins id="totalItems" class="total-count"></ins>
+                </i>
                 <span>Корзина</span>
             </a>
         </li>

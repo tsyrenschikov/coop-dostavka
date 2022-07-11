@@ -90,4 +90,16 @@ urlpatterns = [
     path('chetkarino/searchchetkarino/', views.searchchetkarino, name='searchchetkarino'),
     path('chetkarino/cart_chetkarino/', views.cart_chetkarino, name='cart_chetkarino'),
     path('chetkarino/cart_ok_chetkarino/<int:ord>/', views.cart_ok_chetkarino, name='cart_ok_chetkarino'),
+
+# Shop krasnoufimsk
+    path('krasnoufimsk/', views.shop_krasnoufimsk, name='shop_krasnoufimsk'),
+    path('krasnoufimsk/product/<int:id>/', views.shop_krasnoufimsk_product, name='shop_krasnoufimsk_product'),
+    path('krasnoufimsk/grid/', views.shop_krasnoufimsk_grid, name='shop_krasnoufimsk_grid'),
+    path('krasnoufimsk/career/', views.shop_krasnoufimsk_career, name='shop_krasnoufimsk_career'),
+    path('krasnoufimsk/sort_list/<str:list>/', views.sort_list_krasnoufimsk, name='sort_list_krasnoufimsk'),
+    path('krasnoufimsk/searchproduct_krasnoufimsk/', views.searchproduct_krasnoufimsk, name='searchproduct_krasnoufimsk'),
+    path('krasnoufimsk/searchkrasnoufimsk/', views.searchkrasnoufimsk, name='searchkrasnoufimsk'),
+    path('krasnoufimsk/cart_krasnoufimsk/', views.cart_krasnoufimsk, name='cart_krasnoufimsk'),
+    path('krasnoufimsk/cart_ok_krasnoufimsk/<int:ord>/', views.cart_ok_krasnoufimsk, name='cart_ok_krasnoufimsk'),
+
     ]

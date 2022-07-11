@@ -4,12 +4,6 @@
     <link rel='stylesheet' href="{% static 'file/panel/css/bootstrap.min.css' %}">
     <link rel='stylesheet' href="{% static 'file/panel/css/select/style.css' %}">
 {% endblock stylesheet %}
-{% block js %}
-    <!-- Скрипты для выбора из разных окон -->
-    <script src="{% static 'file/panel/js/select/script.js' %}"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
-{% endblock js %}
 {% block title %}panel{% endblock %}
 {% block content %}
     <main>
@@ -93,4 +87,11 @@
             </div>
         </div>
     </main>
+    {% block js %}
+    <!-- Скрипты для выбора из разных окон -->
+    <script src="{% static 'file/panel/js/select/script.js' %}"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+{% endblock js %}
+
 {% endblock content %}

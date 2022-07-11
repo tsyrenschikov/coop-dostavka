@@ -32,8 +32,6 @@
 <script src="{% static 'file/panel/calendar/js/zebra_datepicker.min.js' %}"></script>
 <script src="{% static 'file/panel/calendar/js/examples.js' %}"></script>
 
-<script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
-
 <!-- Reload Back -->
 <script src="{% static 'file/panel/js/reload-back.js' %}"></script>
 
@@ -55,6 +53,8 @@
 <!-- Search product -->
 <script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
+
+<script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
 {% if address == 'products' %}
     <script>
         var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];

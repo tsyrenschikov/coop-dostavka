@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Оформление заказа{% endblock %}
 {% block content %}
-    <div class="wrapper">
+<div class="wrapper">
         <div class="container">
             <div class="all-product-grid">
                 <div class="contact-title-1">
@@ -13,12 +13,12 @@
                 </div>
             </div>
         </div>
-        <div class="all-product-grid">
+		<div class="all-product-grid">
             <div class="contact-title-1">
                 <div class="col-lg-6 col-md-6">
                 </div>
                 <div class="contact-form-cart">
-                    <h2></h2>
+                    <h2>   </h2>
                     <div class="form-group mt-1">
                         <label class="control-label-cart">Номер заказа : {{ order.id }}</label>
                     </div>
@@ -35,20 +35,20 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
+                <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
                     <div class="form-group mt-1">
-                        <label class="control-label-cart">Статус заказа : <span style=" color: orangered">В ожидании</span></label>
+                        <label class="control-label-cart">Статус заказа : {% if order.status == '0' %}<span style=" color: orangered" >В ожидании</span>{% endif %}</label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    {% include 'shop/includes/modal_checkbox.html' %}
-    {% include 'shop/includes/cart_modal_arti.html' %}
-    {% include 'shop/layouts/footer.html' %}
-    {% include 'shop/includes/scripts.html' %}
+</div>
+{% include 'shop/includes/modal_checkbox.html' %}
+{% include 'shop/includes/cart_modal_arti.html' %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
     {% block script %}
-        <script src="{% static 'file/shop/js/removecart.js' %}"></script>
-    {% endblock %}
+<script src="{% static 'file/shop/js/removecart.js' %}"></script>
+        {% endblock %}
 {% endblock content %}

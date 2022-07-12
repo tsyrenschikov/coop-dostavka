@@ -1646,8 +1646,8 @@ def searchchetkarino(request):
     return render(request, 'chetkarino/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
 
 
-#Shop krasnoufimsk
-def shop_krasnoufimsk(request):
+#Shop bugalysh
+def shop_bugalysh(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1662,12 +1662,12 @@ def shop_krasnoufimsk(request):
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'krasnoufimsk/products.html',
+                return render(request, 'bugalysh/products.html',
                               {'category_product': category_product, 'products': products,
                                'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
 
 
-def sort_list_krasnoufimsk(request, list):
+def sort_list_bugalysh(request, list):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1682,11 +1682,11 @@ def sort_list_krasnoufimsk(request, list):
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'shop/list_krasnoufimsk.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
+                return render(request, 'shop/list_bugalysh.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
                                                                      'address_str': address_str})
 
 
-def shop_krasnoufimsk_grid(request):
+def shop_bugalysh_grid(request):
     local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
@@ -1701,10 +1701,10 @@ def shop_krasnoufimsk_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'krasnoufimsk/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'bugalysh/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
-def searchproduct_krasnoufimsk(request):
+def searchproduct_bugalysh(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1727,14 +1727,14 @@ def searchproduct_krasnoufimsk(request):
         query_name = request.POST.get('name')
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'krasnoufimsk/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
+            return render(request, 'bugalysh/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
 
     else:
-        return render(request, 'krasnoufimsk/search_list.html', alert)
+        return render(request, 'bugalysh/search_list.html', alert)
 
 
 # View product
-def shop_krasnoufimsk_product(request, id):
+def shop_bugalysh_product(request, id):
     local()
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
@@ -1749,18 +1749,18 @@ def shop_krasnoufimsk_product(request, id):
                 product = slug_name.objects.get(id=id)
                 products = slug_name.objects.all().order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
-                return render(request, 'krasnoufimsk/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                return render(request, 'bugalysh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                    'address_str': address_str})
 
 
-def shop_krasnoufimsk_career(reguest):
+def shop_bugalysh_career(reguest):
     local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
-    return render(reguest, 'krasnoufimsk/career.html', {'users': users, 'categories': categories, 'local': local})
+    return render(reguest, 'bugalysh/career.html', {'users': users, 'categories': categories, 'local': local})
 
 
-def cart_krasnoufimsk(request):
+def cart_bugalysh(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
@@ -1805,12 +1805,12 @@ def cart_krasnoufimsk(request):
                     msg.attach_alternative(html_content, "text/html")
                     msg.send()
                     ord = order.id
-                    return redirect(cart_ok_krasnoufimsk, ord)
+                    return redirect(cart_ok_bugalysh, ord)
 
-                return render(request, 'krasnoufimsk/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
-def cart_ok_krasnoufimsk(request, ord):
+def cart_ok_bugalysh(request, ord):
     shops = Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
     order = orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -1824,10 +1824,10 @@ def cart_ok_krasnoufimsk(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'krasnoufimsk/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'bugalysh/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
-def searchkrasnoufimsk(request):
+def searchbugalysh(request):
     areas = Area.objects.values_list('name', 'slug').distinct()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
     address_str = str([i for i in str(request.path).split('/') if i][0])
@@ -1857,5 +1857,5 @@ def searchkrasnoufimsk(request):
             return render(request, 'chetkarino/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name, phone=phone)
-            return render(request, 'krasnoufimsk/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
-    return render(request, 'krasnoufimsk/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
+            return render(request, 'bugalysh/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
+    return render(request, 'bugalysh/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})

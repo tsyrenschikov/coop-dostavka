@@ -1,7 +1,7 @@
-{% extends 'shop/layouts/base_krasnoufimsk.html' %}
+﻿{% extends 'shop/layouts/base_bugalysh.html' %}
 {% load thumbnail %}
 
-{% block title %}Продукты питания{% endblock %}
+{% block title %}grid{% endblock %}
 
 {% block content %}
     {% load static %}
@@ -14,14 +14,15 @@
                     <div class="col-lg-12">
                         <div class="product-top-dt">
                             <div class="product-left-title">
+                                <h2>Новое поступление</h2>
                             </div>
                         </div>
                     </div>
                 </div>
-            {{ address_str }}
                 <div class="product-list-view">
+                    {% include 'shop/includes/toolbar_start.html' %}
                     <div id="product-list" class="row shop_wrapper">
-                        {% for product in products %}
+                        {% for product in page_obj %}
                             <div class="col-lg-33 col-md-6">
                                 <div class="product-item mb-30">
                                     <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
@@ -33,24 +34,21 @@
                                         <h4 class="cuttedText">{{ product.name }}</h4>
                                         <div class="product-price">{{ product.price }} .р</div>
                                         <div class="qty-cart">
-                                            <div class="qty-cart">
                                             <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
                                                 <i class="uil uil-shopping-cart-alt">В корзину</i></span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
+                    {% include 'shop/includes/toolbar_end.html' %}
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    {% include 'shop/includes/animation_add_cart.html' %}
     <!-- Body End -->
-    {% include 'shop/includes/cart_modal_krasnoufimsk.html' %}
+    {% include 'shop/includes/cart_modal_bugalysh.html' %}
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts.html' %}
-{% endblock content %}s
+{% endblock content %}

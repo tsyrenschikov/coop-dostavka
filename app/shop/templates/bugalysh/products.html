@@ -1,4 +1,4 @@
-{% extends 'shop/layouts/base_krasnoufimsk.html' %}
+{% extends 'shop/layouts/base_bugalysh.html' %}
 {% load thumbnail %}
 
 {% block title %}Продукты питания{% endblock %}
@@ -12,7 +12,7 @@
         <div class="all-product-grid">
         {% include 'shop/includes/search_top.html' %}
             <div id="container_hide" class="container_products">
-                {% include 'shop/includes/search_product_krasnoufimsk.html' %}
+                {% include 'shop/includes/search_product_bugalysh.html' %}
                 <article id="article">
                     <div class="products-list-view">
                         {% include 'shop/includes/toolbar_start.html' %}
@@ -46,7 +46,7 @@
     </div>
     {% include 'shop/includes/animation_add_cart.html' %}
     <!-- Body End -->
-    {% include 'shop/includes/cart_modal_krasnoufimsk.html' %}
+    {% include 'shop/includes/cart_modal_bugalysh.html' %}
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

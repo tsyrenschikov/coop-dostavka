@@ -54,8 +54,8 @@
                 <a href="/"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
             </div>
             <div class="main_logo" id="logo">
-                <a href="{% url 'shop_krasnoufimsk' %}"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
-                <a href="{% url 'shop_krasnoufimsk' %}"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                <a href="{% url 'shop_bugalysh' %}"><img src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
+                <a href="{% url 'shop_bugalysh' %}"><img class="logo-inverse" src="{% static 'file/shop/images/logo.svg' %}" alt=""></a>
             </div>
             <div class="select_location">
                 <div class="ui inline dropdown loc-title">
@@ -84,10 +84,10 @@
                     <button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>
                     <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                         <ul class="navbar-nav main_nav align-self-stretch">
-                            <li class="nav-item"><a href="{% url 'shop_krasnoufimsk' %}" class="{% if request.path == '/krasnoufimsk/products' %}active{% endif %} nav-link " title="Home">Главная</a></li>
+                            <li class="nav-item"><a href="{% url 'shop_bugalysh' %}" class="{% if request.path == '/bugalysh/products' %}active{% endif %} nav-link " title="Home">Главная</a></li>
                             <li
                                     class="nav-item">
-                                <a href="{% url 'shop_krasnoufimsk_grid' %}" class="{% if request.path == '/krasnoufimsk/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
+                                <a href="{% url 'shop_bugalysh_grid' %}" class="{% if request.path == '/bugalysh/grid/' %}active{% endif %} nav-link new_item" title="New Products">Новое поступление</a></li>
                             <li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
                                 связь</a></li>
 

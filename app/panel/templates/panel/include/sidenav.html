@@ -62,6 +62,7 @@
                         {% endif %}
                     </nav>
                 </div>
+            {% if request.user.is_superuser %}
                 <a class="nav-link {% if request.path == '/areas/' or request.path == '/add_area/' %}active
 {% endif %}" href="#" data-toggle="collapse" data-target="#collapseAreas" aria-expanded="false" aria-controls="collapseAreas">
                     <div class="sb-nav-link-icon"><i class="fas fa-map-marked-alt"></i></div>
@@ -76,6 +77,7 @@
                         {% endif %}
                     </nav>
                 </div>
+            {% endif %}
                 {% if 'super_manager' in groups %}
                     <a class="nav-link {% if request.path == '/shops/' or request.path == '/add_shop/' %}active{% endif %}" href="#" data-toggle="collapse" data-target="#collapseShops"
                        aria-expanded="false" aria-controls="collapseShops">

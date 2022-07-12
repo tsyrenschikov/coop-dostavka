@@ -91,15 +91,15 @@ urlpatterns = [
     path('chetkarino/cart_chetkarino/', views.cart_chetkarino, name='cart_chetkarino'),
     path('chetkarino/cart_ok_chetkarino/<int:ord>/', views.cart_ok_chetkarino, name='cart_ok_chetkarino'),
 
-# Shop krasnoufimsk
-    path('krasnoufimsk/', views.shop_krasnoufimsk, name='shop_krasnoufimsk'),
-    path('krasnoufimsk/product/<int:id>/', views.shop_krasnoufimsk_product, name='shop_krasnoufimsk_product'),
-    path('krasnoufimsk/grid/', views.shop_krasnoufimsk_grid, name='shop_krasnoufimsk_grid'),
-    path('krasnoufimsk/career/', views.shop_krasnoufimsk_career, name='shop_krasnoufimsk_career'),
-    path('krasnoufimsk/sort_list/<str:list>/', views.sort_list_krasnoufimsk, name='sort_list_krasnoufimsk'),
-    path('krasnoufimsk/searchproduct_krasnoufimsk/', views.searchproduct_krasnoufimsk, name='searchproduct_krasnoufimsk'),
-    path('krasnoufimsk/searchkrasnoufimsk/', views.searchkrasnoufimsk, name='searchkrasnoufimsk'),
-    path('krasnoufimsk/cart_krasnoufimsk/', views.cart_krasnoufimsk, name='cart_krasnoufimsk'),
-    path('krasnoufimsk/cart_ok_krasnoufimsk/<int:ord>/', views.cart_ok_krasnoufimsk, name='cart_ok_krasnoufimsk'),
+# Shop bugalysh
+    path('bugalysh/', views.shop_bugalysh, name='shop_bugalysh'),
+    path('bugalysh/product/<int:id>/', views.shop_bugalysh_product, name='shop_bugalysh_product'),
+    path('bugalysh/grid/', views.shop_bugalysh_grid, name='shop_bugalysh_grid'),
+    path('bugalysh/career/', views.shop_bugalysh_career, name='shop_bugalysh_career'),
+    path('bugalysh/sort_list/<str:list>/', views.sort_list_bugalysh, name='sort_list_bugalysh'),
+    path('bugalysh/searchproduct_bugalysh/', views.searchproduct_bugalysh, name='searchproduct_bugalysh'),
+    path('bugalysh/searchbugalysh/', views.searchbugalysh, name='searchbugalysh'),
+    path('bugalysh/cart_bugalysh/', views.cart_bugalysh, name='cart_bugalysh'),
+    path('bugalysh/cart_ok_bugalysh/<int:ord>/', views.cart_ok_bugalysh, name='cart_ok_bugalysh'),
 
     ]

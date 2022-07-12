@@ -268,7 +268,7 @@ def shop_arti_products(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')[:100]
+                products = name_slug.objects.all().filter(status=True).order_by('name')[:100]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')

@@ -232,8 +232,8 @@ def shop_arti(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('?')[:20]
-                new_products = name_slug.objects.all().order_by('id')[::-1][:20]
+                products = name_slug.objects.all().filter(status=True).order_by('?')[:20]
+                new_products = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:20]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'arti/index.html', {'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local, 'name': name,
                                                            'address_str': address_str})
@@ -249,7 +249,7 @@ def shop_arti_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -311,7 +311,7 @@ def shop_arti_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'arti/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
@@ -329,7 +329,7 @@ def shop_arti_p(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('?')
+                products = name_slug.objects.all().filter(status=True).order_by('?')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -369,7 +369,7 @@ def shop_arti_p_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:20]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:20]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -390,7 +390,7 @@ def shop_arti_p_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'arti/artiprom/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                       'address_str': address_str})
@@ -475,7 +475,7 @@ def shop_artiobschepit(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('?')
+                products = name_slug.objects.all().filter(status=True).order_by('?')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -515,7 +515,7 @@ def shop_artiobschepit_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:20]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:20]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -536,7 +536,7 @@ def shop_artiobschepit_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'arti/artiobschepit/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                            'address_str': address_str})
@@ -620,7 +620,7 @@ def shop_pokrovskoe(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().filter(status=True).order_by('name')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -659,7 +659,7 @@ def shop_pokrovskoe_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -710,7 +710,7 @@ def shop_pokrovskoe_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'pokrovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                    'address_str': address_str})
@@ -801,7 +801,7 @@ def shop_rezh(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().filter(status=True).order_by('name')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -840,7 +840,7 @@ def shop_rezh_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -891,7 +891,7 @@ def shop_rezh_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'rezh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                              'address_str': address_str})
@@ -1170,7 +1170,7 @@ def shop_zajkovskoe_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -1227,7 +1227,7 @@ def shop_bogdan(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().filter(status=True).order_by('name')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -1266,7 +1266,7 @@ def shop_bogdan_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -1317,7 +1317,7 @@ def shop_bogdan_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'bogdan/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                'address_str': address_str})
@@ -1442,7 +1442,7 @@ def shop_chetkarino(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().filter(status=True).order_by('name')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -1481,7 +1481,7 @@ def shop_chetkarino_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -1532,7 +1532,7 @@ def shop_chetkarino_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'chetkarino/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                    'address_str': address_str})
@@ -1657,7 +1657,7 @@ def shop_bugalysh(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                products = name_slug.objects.all().order_by('name')
+                products = name_slug.objects.all().filter(status=True).order_by('name')
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(products, 20)
                 page_number = request.GET.get('page')
@@ -1696,7 +1696,7 @@ def shop_bugalysh_grid(request):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
-                product = name_slug.objects.all().order_by('id')[::-1][:48]
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
                 category_product = dict_category_product(name_slug)
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
@@ -1747,7 +1747,7 @@ def shop_bugalysh_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().order_by('?')[:10]
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'bugalysh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
                                                                    'address_str': address_str})

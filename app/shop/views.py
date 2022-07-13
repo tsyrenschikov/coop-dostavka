@@ -172,6 +172,8 @@ def cart_arti(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -183,7 +185,7 @@ def cart_arti(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv, address_street=address_street, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -414,6 +416,8 @@ def cart_arti_p(request):
                     phone = request.POST.get('phone')
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     address_street = request.POST.get('address_street')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
@@ -426,7 +430,7 @@ def cart_arti_p(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city,address_home=address_home,address_kv=address_kv, address_street=address_street, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -561,6 +565,8 @@ def cart_artiobschepit(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -572,7 +578,7 @@ def cart_artiobschepit(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -725,6 +731,7 @@ def shop_pokrovskoe_career(reguest):
 
 def cart_pokrovskoe(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -741,6 +748,8 @@ def cart_pokrovskoe(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -752,7 +761,7 @@ def cart_pokrovskoe(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -770,7 +779,7 @@ def cart_pokrovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_pokrovskoe, ord)
 
-                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
 def cart_ok_pokrovskoe(request, ord):
@@ -906,6 +915,7 @@ def shop_rezh_career(reguest):
 
 def cart_rezh(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -922,6 +932,8 @@ def cart_rezh(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -933,7 +945,7 @@ def cart_rezh(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -951,7 +963,7 @@ def cart_rezh(request):
                     ord = order.id
                     return redirect(cart_ok_rezh, ord)
 
-                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
 def cart_ok_rezh(request, ord):
@@ -1090,6 +1102,8 @@ def cart_zajkovskoe(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -1101,7 +1115,7 @@ def cart_zajkovskoe(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -1332,6 +1346,7 @@ def shop_bogdan_career(reguest):
 
 def cart_bogdan(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -1348,6 +1363,8 @@ def cart_bogdan(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -1359,7 +1376,7 @@ def cart_bogdan(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -1377,7 +1394,7 @@ def cart_bogdan(request):
                     ord = order.id
                     return redirect(cart_ok_bogdan, ord)
 
-                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
 def cart_ok_bogdan(request, ord):
@@ -1547,6 +1564,7 @@ def shop_chetkarino_career(reguest):
 
 def cart_chetkarino(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -1563,6 +1581,8 @@ def cart_chetkarino(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -1574,7 +1594,7 @@ def cart_chetkarino(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -1592,7 +1612,7 @@ def cart_chetkarino(request):
                     ord = order.id
                     return redirect(cart_ok_chetkarino, ord)
 
-                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
 def cart_ok_chetkarino(request, ord):
@@ -1762,6 +1782,7 @@ def shop_bugalysh_career(reguest):
 
 def cart_bugalysh(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
     areas = Area.objects.values_list('name', 'slug').distinct()
     local()
     local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
@@ -1778,6 +1799,8 @@ def cart_bugalysh(request):
                     products = request.POST.getlist('products')
                     address_city = request.POST.get('address_city')
                     address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
                     cal = request.POST.get('cal')
                     commit = request.POST.get('commit')
                     cart = request.POST.get('cart')
@@ -1789,7 +1812,7 @@ def cart_bugalysh(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, cal=cal,
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
@@ -1807,7 +1830,7 @@ def cart_bugalysh(request):
                     ord = order.id
                     return redirect(cart_ok_bugalysh, ord)
 
-                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
 
 
 def cart_ok_bugalysh(request, ord):

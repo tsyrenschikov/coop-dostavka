@@ -53,7 +53,12 @@
                                                     <input type="hidden" id="delivery_price_min" value="{{ local.delivery_price_min }}">
                                                 {% endif %}
                                             {% endfor %}
-                                            Улица: {{ zakaz.address_street }}
+                                            Улица: {{ zakaz.address_street }}<br>
+                                            Дом: {{ zakaz.address_home }}
+                                            {% if zakaz.address_kv %}
+                                                <br>
+                                                Квартира: {{ zakaz.address_kv }}
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -170,21 +175,21 @@
                                                     <option value="2">Доставка</option>
                                                     <option value="3">Закрыт</option>
                                                     <option value="4">Отменен</option>
-                                                        {% if zakaz.status == '0' %}
-                                                            <option selected value="{{ zakaz.status }}">Ожидание</option>
-                                                        {% endif %}
-                                                        {% if zakaz.status == '1' %}
-                                                            <option selected value="{{ zakaz.status }}">Формирование</option>
-                                                        {% endif %}
-                                                        {% if zakaz.status == '2' %}
-                                                            <option selected value="{{ zakaz.status }}">Доставка</option>
-                                                        {% endif %}
-                                                        {% if zakaz.status == '3' %}
-                                                            <option selected value="{{ zakaz.status }}">Закрыт</option>
-                                                        {% endif %}
-                                                        {% if zakaz.status == '4' %}
-                                                            <option selected value="{{ zakaz.status }}">Отменен</option>
-                                                        {% endif %}
+                                                    {% if zakaz.status == '0' %}
+                                                        <option selected value="{{ zakaz.status }}">Ожидание</option>
+                                                    {% endif %}
+                                                    {% if zakaz.status == '1' %}
+                                                        <option selected value="{{ zakaz.status }}">Формирование</option>
+                                                    {% endif %}
+                                                    {% if zakaz.status == '2' %}
+                                                        <option selected value="{{ zakaz.status }}">Доставка</option>
+                                                    {% endif %}
+                                                    {% if zakaz.status == '3' %}
+                                                        <option selected value="{{ zakaz.status }}">Закрыт</option>
+                                                    {% endif %}
+                                                    {% if zakaz.status == '4' %}
+                                                        <option selected value="{{ zakaz.status }}">Отменен</option>
+                                                    {% endif %}
                                                 </select>
                                                 <div class="input-group-append">
                                                     <button class="status-btn hover-btn" type="submit">Сохранить заказ</button>

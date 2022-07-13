@@ -131,7 +131,7 @@ img {
         display: grid;
         align-content: center;
         border-radius: 1.25rem 1.25rem 0 0;
-        z-index: 99999999;
+        z-index: 1049;
         transition: .4s;
     }
 }

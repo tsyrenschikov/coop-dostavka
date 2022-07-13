@@ -581,6 +581,7 @@ pre code {
     padding-right: 15px;
     padding-left: 15px
 }
+
 .col-lg-33, .col-md-6 {
     position: relative;
     width: 50%;
@@ -1247,7 +1248,7 @@ pre code {
     }
 
     .col-lg-3 {
-        -ms-flex: 0 0 25z%;
+        -ms-flex: 0 0 25 z%;
         flex: 0 0 25%;
         max-width: 25%
     }
@@ -1263,6 +1264,7 @@ pre code {
         flex: 0 0 50%;
         max-width: 50%
     }
+
     .col-lg-33 {
         -ms-flex: 0 0 19%;
         flex: 0 0 25%;
@@ -2491,6 +2493,28 @@ textarea.form-control {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
+@media only screen and (max-width: 767px) {
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: .3rem .3rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .btn {
         transition: none
@@ -3470,6 +3494,19 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex: 1 1 auto;
     width: 1%;
     margin-bottom: 0
+}
+
+@media only screen and (max-width: 767px) {
+    .custom-file, .input-group > .custom-select, .input-group > .form-control, .input-group > .form-control-plaintext {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 50px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 }
 
 .input-group > .custom-file + .custom-file, .input-group > .custom-file + .custom-select, .input-group > .custom-file + .form-control, .input-group > .custom-select + .custom-file, .input-group > .custom-select + .custom-select, .input-group > .custom-select + .form-control, .input-group > .form-control + .custom-file, .input-group > .form-control + .custom-select, .input-group > .form-control + .form-control, .input-group > .form-control-plaintext + .custom-file, .input-group > .form-control-plaintext + .custom-select, .input-group > .form-control-plaintext + .form-control {

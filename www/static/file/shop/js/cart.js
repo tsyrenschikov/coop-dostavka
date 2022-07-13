@@ -138,7 +138,7 @@ var shoppingCart = (function () {
                 $(document).ready(function () {
                     if (Number(totaldelivery.toFixed(1)) > 0) {
                         $('#cartphoto').attr('hidden', true);
-                        $('oform').text('Оформить заказ')
+                        $('oform').text('Оформление заказа')
                     } else {
                         $('#cartphoto').attr('hidden', false);
                         $('oform').text('Ваша корзина пустая')

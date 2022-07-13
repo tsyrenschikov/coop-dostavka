@@ -17,9 +17,9 @@ def contact(request):
     categories = Category.objects.order_by('number')
     request.method == 'POST'
     if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
+        subject = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+        email = request.POST.get('email', '')
         if subject and message and email:
 
             ''' Begin reCAPTCHA validation '''
@@ -39,7 +39,7 @@ def contact(request):
             if result['success']:# or not result['success']:
                 ''' Send email '''
                 try:
-                    send_mail('Форма обратной связи', message, settings.EMAIL_HOST_USER, ['info@coop-dostavka.ru'],)
+                    send_mail('Форма обратной связи', message, email, ['info@coop-dostavka.ru'],)
                 except BadHeaderError:
                     return render(request, 'contact/contact.html', {'recaptcha_site_key': settings.GOOGLE_RECAPTCHA_SITE_KEY})
                 return render(request, 'contact/thanks.html',{'users':users, 'categories' : categories,'local':local})

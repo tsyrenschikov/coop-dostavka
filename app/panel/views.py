@@ -1100,3 +1100,7 @@ def delete_offer(request, id):
         return render(request, "panel/delete_ok_offer.html", {'offer': offer})
     except offer.DoesNotExist:
         return render(request, 'panel/edit_error_offer.html', {'offer': offer})
+
+#Вакансии
+def work(request):
+    return render(request, 'panel/work.html')

@@ -509,3 +509,16 @@ class orders(models.Model):
     def __str__(self):
         return self.name
 
+class work(models.Model):
+    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название Вакансии')
+    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
+    times = models.JSONField(default=list, null=True, blank=True, verbose_name='Время работы')
+    descriptions = models.TextField(max_length=500, db_index=True, null=True, verbose_name='Описание вакансии')
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Вакансии'
+        verbose_name_plural = 'Вакансии'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name

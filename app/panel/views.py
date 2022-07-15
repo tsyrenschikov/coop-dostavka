@@ -1111,9 +1111,16 @@ def add_work(request):
         shops = Shop.objects.all()
         if request.method == 'POST':
             name = request.POST.get('name')
-            status = request.POST.get('status')
+            slug = request.POST.get('slug')
+            phone = request.POST.get('phone')
+            timesstart = request.POST.get('timesstart')
+            timesend = request.POST.get('timesend')
+            zp = request.POST.get('zp')
+            obr = request.POST.get('obr')
             descriptions = request.POST.get('descriptions')
-            offers.objects.create(name=name, status=status, descriptions=descriptions)
+            status = request.POST.get('status')
+
+            works.objects.create(name=name,slug=slug, phone=phone, timesstart=timesstart,timesend=timesend, obr=obr,zp=zp, descriptions=descriptions, status=status)
             return render(request, 'panel/add_ok_work.html', {'shops':shops})
         return render(request, 'panel/add_work.html', {'shops':shops})
     else:

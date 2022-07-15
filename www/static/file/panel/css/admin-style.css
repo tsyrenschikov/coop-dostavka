@@ -701,6 +701,15 @@ input[type=checkbox]:checked:before, input[type=checkbox]:checked:before, input[
     margin-bottom: 10px;
 }
 
+.form-label1 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #2b2f4c;
+    margin-bottom: 5px;
+    margin-left: 10px;
+
+}
+
 .post-form {
     padding: 30px;
     border-top: 1px solid #efefef;

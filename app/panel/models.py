@@ -509,12 +509,17 @@ class orders(models.Model):
     def __str__(self):
         return self.name
 
-class work(models.Model):
+class works(models.Model):
     name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название Вакансии')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
-    times = models.JSONField(default=list, null=True, blank=True, verbose_name='Время работы')
-    descriptions = models.TextField(max_length=500, db_index=True, null=True, verbose_name='Описание вакансии')
-    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
+    timesstart = models.TextField(max_length=300,null=True, verbose_name='Время работы начало')
+    timesend = models.TextField(max_length=300,null=True, verbose_name='Время работы конец')
+    zp = models.CharField(max_length=30, null=True, verbose_name='Зарплата')
+    obr = models.CharField(max_length=30, null=True, verbose_name='Образование')
+    descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание вакансии')
+    status = models.BooleanField(default=True, verbose_name='Статус')
+
     class Meta:
         ordering = ('name',)
         verbose_name = 'Вакансии'

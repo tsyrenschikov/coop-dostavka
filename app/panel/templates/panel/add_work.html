@@ -23,12 +23,12 @@
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Название вакансии*</label>
-                                        <input type="text" id="input" name="name" class="form-control" placeholder="Назовите свою вакансию" required="">
+                                        <input type="text" name="name" class="form-control" placeholder="Назовите свою вакансию" required="">
                                     </div>
                                     {% if  'super_manager' in groups %}
                                         <label class="form-label">Магазин вакансии*</label>
                                         <div class="form-group">
-                                            <select name="aid" value="{{ areas.id }}" class="form-control">
+                                            <select name="slug" class="form-control">
                                                 {% for shop in shops %}
                                                     <option value="{{ shop.slug }}">{{ shop.name }}</option>
                                                 {% endfor %}
@@ -36,10 +36,31 @@
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
+                                        <label class="form-label">Контактный телефон*</label>
+                                        <input type="text" id="phone" name="phone" class="form-control" placeholder="Контактный телефон" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Время работы</label><br>
+                                        <label class="form-label1">Начало смены</label>
+                                        <input type="time" name="timesstart" class="form-control" placeholder="рабочие время">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label1">Конец смены</label>
+                                        <input type="time" name="timesend" class="form-control" placeholder="рабочие время">
+                                    </div>
+                                <div class="form-group">
+                                        <label class="form-label1">Образование сосискателя</label>
+                                        <input type="text" name="obr" class="form-control" placeholder="Образование"><br>
+                                    </div>
+                                <div class="form-group">
+                                        <label class="form-label1">Заработная плата для соискателя</label>
+                                        <input type="text" name="zp" class="form-control" placeholder="Ожидаемая зарплата"><br>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-label">Содержание вакансии*</label>
                                         <div class="card card-editor">
                                             <div class="content-editor">
-                                                <textarea class="text-control" name="descriptions" placeholder="Содержание"></textarea>
+                                                <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Содержание (не более 5000 символов)"></textarea>
                                             </div>
                                         </div>
                                     </div>

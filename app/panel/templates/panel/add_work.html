@@ -48,19 +48,26 @@
                                         <label class="form-label1">Конец смены</label>
                                         <input type="time" name="timesend" class="form-control" placeholder="рабочие время">
                                     </div>
-                                <div class="form-group">
-                                        <label class="form-label1">Образование сосискателя</label>
-                                        <input type="text" name="obr" class="form-control" placeholder="Образование"><br>
+                                    <div class="form-group">
+                                        <label class="form-label">Образование сосискателя</label>
+                                        <select name="obr" class="form-control">
+                                            <option value="0">--Выберите из списка--</option>
+                                            <option value="Среднее общие образование">Среднее общие образование (11 классов)</option>
+                                            <option value="Среднее профессиональное образование">Среднее профессиональное образование</option>
+                                            <option value="Высшее образование - бакалавриат">Высшее образование - бакалавриат</option>
+                                            <option value="Высшее образование - специалитет, магистратура">Высшее образование - специалитет, магистратура</option>
+                                            <option value="Высшее образование - подготовка кадров высшей квалификации">Высшее образование - подготовка кадров высшей квалификации</option>
+                                        </select>
                                     </div>
-                                <div class="form-group">
-                                        <label class="form-label1">Заработная плата для соискателя</label>
-                                        <input type="text" name="zp" class="form-control" placeholder="Ожидаемая зарплата"><br>
+                                    <div class="form-group">
+                                        <label class="form-label">Заработная плата для соискателя</label>
+                                        <input type="number" name="zp" class="form-control" placeholder="Ожидаемая зарплата"><br>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Содержание вакансии*</label>
                                         <div class="card card-editor">
                                             <div class="content-editor">
-                                                <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)"></textarea>
+                                                <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)" required=""></textarea>
                                             </div>
                                         </div>
                                     </div>

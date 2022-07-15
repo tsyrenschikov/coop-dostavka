@@ -516,7 +516,7 @@ class works(models.Model):
     timesstart = models.TextField(max_length=300,null=True, verbose_name='Время работы начало')
     timesend = models.TextField(max_length=300,null=True, verbose_name='Время работы конец')
     zp = models.CharField(max_length=30, null=True, verbose_name='Зарплата')
-    obr = models.CharField(max_length=30, null=True, verbose_name='Образование')
+    obr = models.CharField(max_length=100, null=True, verbose_name='Образование')
     descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание вакансии')
     status = models.BooleanField(default=True, verbose_name='Статус')
 

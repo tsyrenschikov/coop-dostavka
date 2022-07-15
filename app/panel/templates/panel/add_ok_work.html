@@ -1,0 +1,36 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+        <main>
+                    <div class="container-fluid">
+                        <h2 class="mt-30 page-title">Вакансии</h2>
+                        <ol class="breadcrumb mb-30">
+                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
+                            <li class="breadcrumb-item active">Вакансии</li>
+                        </ol>
+                        <div class="row">
+							<div class="col-lg-4 col-md-5">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20">
+											<div class="shopowner-dt-left">
+												        <span>
+                                                            <ul>
+                                                                <p>{{ users.get_full_name }}</p>
+                                                                <p style="color: green; font-size: 1.2em"> Вакансия успешно создана</p>
+                                                            </ul>
+                                                        </span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                             <div class="col-lg-12">
+								        <a href="{% url 'work' %}" class="add-btn hover-btn">К списку вакансий</a>
+                                    </div>
+                        </div>
+                    </div>
+                </main>
+
+{% endblock content %}

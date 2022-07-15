@@ -1104,3 +1104,18 @@ def delete_offer(request, id):
 #Вакансии
 def work(request):
     return render(request, 'panel/work.html')
+
+# Добавить Вакансию
+def add_work(request):
+    if request.user.is_authenticated:
+        shops = Shop.objects.all()
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            status = request.POST.get('status')
+            descriptions = request.POST.get('descriptions')
+            offers.objects.create(name=name, status=status, descriptions=descriptions)
+            return render(request, 'panel/add_ok_work.html', {'shops':shops})
+        return render(request, 'panel/add_work.html', {'shops':shops})
+    else:
+        return redirect('/login')
+

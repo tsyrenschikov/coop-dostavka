@@ -514,6 +514,7 @@ class work(models.Model):
     phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
     times = models.JSONField(default=list, null=True, blank=True, verbose_name='Время работы')
     descriptions = models.TextField(max_length=500, db_index=True, null=True, verbose_name='Описание вакансии')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
     class Meta:
         ordering = ('name',)
         verbose_name = 'Вакансии'

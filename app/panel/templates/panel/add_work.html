@@ -1,0 +1,60 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% load static %}
+{% block content %}
+
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Добавить вакансию</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'work' %}">Вакансии</a></li>
+                <li class="breadcrumb-item active">Добавить Вакансию</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Добавить Вакансию</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Название вакансии*</label>
+                                        <input type="text" id="input" name="name" class="form-control" placeholder="Назовите свою вакансию" required="">
+                                    </div>
+                                    {% if  'super_manager' in groups %}
+                                        <label class="form-label">Магазин вакансии*</label>
+                                        <div class="form-group">
+                                            <select name="aid" value="{{ areas.id }}" class="form-control">
+                                                {% for shop in shops %}
+                                                    <option value="{{ shop.slug }}">{{ shop.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        <label class="form-label">Содержание вакансии*</label>
+                                        <div class="card card-editor">
+                                            <div class="content-editor">
+                                                <textarea class="text-control" name="descriptions" placeholder="Содержание"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="form-label">Статус*</label>
+                                    <select name="status" class="form-control">
+                                        <option value="True" selected>Активный</option>
+                                        <option value="False">Не активный</option>
+                                    </select>
+                                    <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

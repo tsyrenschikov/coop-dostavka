@@ -730,11 +730,12 @@ def edit_product(request, id):
                                     return render(request, 'panel/edit_ok_product.html', {'products': products})
                                 return render(request, 'panel/edit_ok_product.html', {'products': products})
                             else:
-                                return render(request, 'panel/edit_product.html', {'products': products, 'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                                return render(request, 'panel/edit_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
         except User.DoesNotExist:
-            return render(request, 'panel/edit_product.html', {'products': products, 'category':category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+            return render(request, 'panel/edit_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
+
 
 # Добавить продукт
 def add_product(request, **kwargs):
@@ -750,12 +751,12 @@ def add_product(request, **kwargs):
                         alert = {
                             'name': request.GET.get('name', ''),
                             'products': n.objects.all(),
-                            'category' : Category.objects.all().order_by('number'),
-                            'subcategory':SubCategory.objects.values('name', 'subsubcat'),
+                            'category': Category.objects.all().order_by('number'),
+                            'subcategory': SubCategory.objects.values('name', 'subsubcat'),
                             'subsubcategory': SubSubCategory.objects.all(),
-                         }
+                        }
                         products = n.objects.all()
-                        category= Category.objects.all().order_by('number')
+                        category = Category.objects.all().order_by('number')
                         subcategory = SubCategory.objects.values('name', 'subsubcat')
                         subsubcategory = SubSubCategory.objects.all()
                         if request.method == 'POST' and request.FILES:
@@ -779,12 +780,12 @@ def add_product(request, **kwargs):
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
                                 else:
-                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount,categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
+                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
                                                      width=width, \
                                                      height=height,
                                                      length=length, fabricator=fabricator, material=material, color=color)
-                                return render(request, 'panel/add_ok_product.html', {'products': products,'category':category,'subcategory':subcategory, 'subsubcategory': subsubcategory})
-                        return render(request, 'panel/add_product.html', {'products': products,'category':category,'subcategory':subcategory, 'subsubcategory': subsubcategory})
+                                return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                        return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 
@@ -1101,28 +1102,77 @@ def delete_offer(request, id):
     except offer.DoesNotExist:
         return render(request, 'panel/edit_error_offer.html', {'offer': offer})
 
-#Вакансии
+
+# Вакансии
 def work(request):
-    return render(request, 'panel/work.html')
+    if request.user.is_authenticated:
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
+        supermanager = User.objects.filter(groups__name='manager')
+        for user in users:
+            for custom_id, name_shop, slug_shop in shops:
+                if request.user.id == user and user == custom_id and user != supermanager:
+                    work_shop = works.objects.all().filter(slug=slug_shop).order_by('id')
+                    shops_name = Shop.objects.values('name', 'slug')
+                    return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
+                elif request.user.is_superuser:
+                    work_shop = works.objects.all()
+                    shops_name = Shop.objects.values('name', 'slug')
+                    return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
+    else:
+        return redirect('/login')
+
 
 # Добавить Вакансию
 def add_work(request):
     if request.user.is_authenticated:
-        shops = Shop.objects.all()
-        if request.method == 'POST':
-            name = request.POST.get('name')
-            slug = request.POST.get('slug')
-            phone = request.POST.get('phone')
-            timesstart = request.POST.get('timesstart')
-            timesend = request.POST.get('timesend')
-            zp = request.POST.get('zp')
-            obr = request.POST.get('obr')
-            descriptions = request.POST.get('descriptions')
-            status = request.POST.get('status')
-
-            works.objects.create(name=name,slug=slug, phone=phone, timesstart=timesstart,timesend=timesend, obr=obr,zp=zp, descriptions=descriptions, status=status)
-            return render(request, 'panel/add_ok_work.html', {'shops':shops})
-        return render(request, 'panel/add_work.html', {'shops':shops})
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
+        supermanager = User.objects.filter(groups__name='manager')
+        for user in users:
+            for custom_id, name_shop, slug_shop in shops:
+                if request.user.id == user and user == custom_id and user != supermanager:
+                    if request.method == 'POST':
+                        name = request.POST.get('name')
+                        phone = request.POST.get('phone')
+                        timesstart = request.POST.get('timesstart')
+                        timesend = request.POST.get('timesend')
+                        zp = request.POST.get('zp')
+                        obr = request.POST.get('obr')
+                        opwork = request.POST.get('opwork')
+                        descriptions = request.POST.get('descriptions')
+                        status = request.POST.get('status')
+                        works.objects.create(name=name, slug=slug_shop, phone=phone, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        return render(request, 'panel/add_ok_work.html')
+                    return render(request, 'panel/add_work.html', {'shops': shops, 'slug_shop': slug_shop, 'name_shop': name_shop})
+                elif request.user.is_superuser:
+                    if request.method == 'POST':
+                        name = request.POST.get('name')
+                        slug = request.POST.get('slug')
+                        phone = request.POST.get('phone')
+                        timesstart = request.POST.get('timesstart')
+                        timesend = request.POST.get('timesend')
+                        zp = request.POST.get('zp')
+                        obr = request.POST.get('obr')
+                        opwork = request.POST.get('opwork')
+                        descriptions = request.POST.get('descriptions')
+                        status = request.POST.get('status')
+                        works.objects.create(name=name, slug=slug, phone=phone, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        return render(request, 'panel/add_ok_work.html')
+                    return render(request, 'panel/add_work.html', {'shops': shops})
     else:
         return redirect('/login')
 
+#Удалить Вакансии
+def delete_work(request, id):
+    work = ''
+    try:
+        work = works.objects.get(id=id)
+        work.delete()
+        return render(request, "panel/delete_ok_work.html", {'work': work})
+    except work.DoesNotExist:
+        return render(request, 'panel/edit_error_work.html', {'work': work})
+
+#Редактировать вакансию
+def edit_work(request, id):
+    return render(request, 'panel/edit_work.html')

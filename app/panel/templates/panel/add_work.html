@@ -29,8 +29,8 @@
                                         <label class="form-label">Магазин вакансии*</label>
                                         <div class="form-group">
                                             <select name="slug" class="form-control">
-                                                {% for shop in shops %}
-                                                    <option value="{{ shop.slug }}">{{ shop.name }}</option>
+                                                {% for c,n,s in shops %}
+                                                    <option value="{{ s }}">{{ n }}</option>
                                                 {% endfor %}
                                             </select>
                                         </div>
@@ -57,11 +57,16 @@
                                             <option value="Высшее образование - бакалавриат">Высшее образование - бакалавриат</option>
                                             <option value="Высшее образование - специалитет, магистратура">Высшее образование - специалитет, магистратура</option>
                                             <option value="Высшее образование - подготовка кадров высшей квалификации">Высшее образование - подготовка кадров высшей квалификации</option>
+                                            <option value="Незаконченное высшие образование">Незаконченное высшие образование</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Заработная плата для соискателя</label>
-                                        <input type="number" name="zp" class="form-control" placeholder="Ожидаемая зарплата"><br>
+                                        <input type="number" name="zp" class="form-control" placeholder="Ожидаемая зарплата">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Опыт работы</label>
+                                        <input type="number" name="opwork" class="form-control" placeholder="Укажите в годах">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Содержание вакансии*</label>

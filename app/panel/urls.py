@@ -83,4 +83,6 @@ urlpatterns = [
     path('delete_offer/<int:id>/', views.delete_offer, name='delete_offer'),
     path('work/', views.work, name='work' ),
     path('add_work/', views.add_work, name='add_work'),
+    path('delete_work/<int:id>/', views.delete_work, name='delete_work'),
+    path('edit_work/<int:id>/', views.edit_work, name='edit_work'),
 ]

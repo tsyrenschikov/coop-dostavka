@@ -1108,16 +1108,15 @@ def work(request):
     if request.user.is_authenticated:
         users = User.objects.values_list('id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
+        shops_name = Shop.objects.values('name', 'slug')
         supermanager = User.objects.filter(groups__name='manager')
         for user in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
                     work_shop = works.objects.all().filter(slug=slug_shop).order_by('id')
-                    shops_name = Shop.objects.values('name', 'slug')
                     return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
                 elif request.user.is_superuser:
                     work_shop = works.objects.all()
-                    shops_name = Shop.objects.values('name', 'slug')
                     return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
     else:
         return redirect('/login')

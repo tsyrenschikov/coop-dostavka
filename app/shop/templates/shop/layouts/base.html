@@ -114,11 +114,11 @@
                         <ul class="navbar-nav main_nav align-self-stretch">
                             <li class="nav-item"><a href="/" class="{% if request.path == '/' %}active{% endif %} nav-link " title="Home">Главная</a></li>
                             <li class="nav-item">
-                            <li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Карьера</a></li>
+                        {% if work %}
+                            <li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career">Вакансии</a></li>
+                        {% endif %}
                             <li class="nav-item"><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %} nav-link new_item" title="Contact">Обратная
                                 связь</a></li>
-                            <li class="nav-item"><a href="{% url 'career' %}" class="{% if request.path == '/career/' %}active{% endif %} nav-link " title="Career"></a></li>
-
                         </ul>
 
                     </div>

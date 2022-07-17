@@ -26,10 +26,12 @@ def offers(reguest):
     return render(reguest, 'shop/offers.html', {'users':users, 'categories' : categories})
 
 def career(reguest):
+    work = works.objects.all().filter(status=True)
+    shops = Shop.objects.all()
     local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
-    return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories,'local':local})
+    return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories,'local':local, 'work':work, 'shops':shops})
 
 def demo(reguest):
     return render(reguest, 'contact/demo.html')

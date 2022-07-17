@@ -70,10 +70,12 @@ def shop(request):
         "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "categories": Category.objects.order_by('number'),
+        "work" : works.objects.all().filter(status=True)
     }
     local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
+    work = works.objects.all().filter(status=True)
     if request.method == 'POST':
         name = request.POST.get('name')
         phone = request.POST.get('phone')
@@ -85,8 +87,8 @@ def shop(request):
             return render(request, 'shop/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name, phone=phone)
-            return render(request, 'shop/search_order.html', {'client': client, 'local': local})
-    return render(request, 'shop/index.html', {'users': users, 'categories': categories, 'local': local})
+            return render(request, 'shop/search_order.html', {'client': client, 'local': local, 'work':work})
+    return render(request, 'shop/index.html', {'users': users, 'categories': categories, 'local': local, 'work':work})
 
 
 # Shop SearchArti

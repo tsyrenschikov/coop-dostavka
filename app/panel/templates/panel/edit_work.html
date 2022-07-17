@@ -37,7 +37,7 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                {% endif %}
+                                    {% endif %}
                                     <div class="form-group">
                                         <label class="form-label">Контактный телефон*</label>
                                         <input type="text" id="phone" name="phone" value="{{ work.phone }}" class="form-control" placeholder="Контактный телефон" required="">
@@ -83,7 +83,7 @@
                                     <label class="form-label">Статус*</label>
                                     <select name="status" class="form-control">
                                         {% if work.status %}
-                                            <option  value="True" selected>Активный</option>
+                                            <option value="True" selected>Активный</option>
                                             <option value="False">Не активный</option>
                                         {% else %}
                                             <option value="False" selected>Не активный</option>

@@ -1114,10 +1114,16 @@ def work(request):
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
                     work_shop = works.objects.all().filter(slug=slug_shop).order_by('id')
-                    return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
+                    paginator = Paginator(work_shop, 50)
+                    page_number = request.GET.get('page')
+                    page_obj = paginator.get_page(page_number)
+                    return render(request, 'panel/work.html', {'page_obj': page_obj, 'shops_name': shops_name})
                 elif request.user.is_superuser:
                     work_shop = works.objects.all()
-                    return render(request, 'panel/work.html', {'work_shop': work_shop, 'shops_name': shops_name})
+                    paginator = Paginator(work_shop, 50)
+                    page_number = request.GET.get('page')
+                    page_obj = paginator.get_page(page_number)
+                    return render(request, 'panel/work.html', {'page_obj': page_obj, 'shops_name': shops_name})
     else:
         return redirect('/login')
 

@@ -1,0 +1,113 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% load static %}
+{% block content %}
+
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Добавить вакансию</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'work' %}">Вакансии</a></li>
+                <li class="breadcrumb-item active">Редактировать Вакансию</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Редактировать Вакансию</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Название вакансии*</label>
+                                        <input type="text" name="name" class="form-control" value="{{ work.name }}" placeholder="Назовите свою вакансию" required="">
+                                    </div>
+                                    {% if  'super_manager' in groups %}
+                                        <label class="form-label">Магазин вакансии*</label>
+                                        <div class="form-group">
+                                            <select name="slug" class="form-control">
+                                                {% for c,n,s in shops %}
+                                                    {% if work.slug == s %}
+                                                        <option selected value="{{ work.slug }}">{{ n }}</option>
+                                                    {% endif %}
+                                                    <option value="{{ s }}">{{ n }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {% else %}
+                                        <label class="form-label">Магазин вакансии*</label>
+                                        <div class="form-group">
+                                            <select name="slug" class="form-control">
+                                                {% for c,n,s in shops %}
+                                                    {% if work.slug == s %}
+                                                        <option selected value="{{ work.slug }}">{{ n }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                {% endif %}
+                                    <div class="form-group">
+                                        <label class="form-label">Контактный телефон*</label>
+                                        <input type="text" id="phone" name="phone" value="{{ work.phone }}" class="form-control" placeholder="Контактный телефон" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Время работы</label><br>
+                                        <label class="form-label1">Начало смены</label>
+                                        <input type="time" name="timesstart" value="{{ work.timesstart }}" class="form-control" placeholder="рабочие время">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label1">Конец смены</label>
+                                        <input type="time" name="timesend" value="{{ work.timesend }}" class="form-control" placeholder="рабочие время">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Образование сосискателя</label>
+                                        <select name="obr" class="form-control">
+                                            <option value="{{ work.obr }}">{{ work.obr }}</option>
+                                            <option value="Среднее общие образование">Среднее общие образование (11 классов)</option>
+                                            <option value="Среднее профессиональное образование">Среднее профессиональное образование</option>
+                                            <option value="Высшее образование - бакалавриат">Высшее образование - бакалавриат</option>
+                                            <option value="Высшее образование - специалитет, магистратура">Высшее образование - специалитет, магистратура</option>
+                                            <option value="Высшее образование - подготовка кадров высшей квалификации">Высшее образование - подготовка кадров высшей квалификации</option>
+                                            <option value="Незаконченное высшие образование">Незаконченное высшие образование</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Заработная плата для соискателя</label>
+                                        <input type="number" name="zp" class="form-control" value="{{ work.zp }}" placeholder="Ожидаемая зарплата">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Опыт работы</label>
+                                        <input type="number" name="opwork" class="form-control" value="{{ work.opwork }}" placeholder="Укажите в годах">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Содержание вакансии*</label>
+                                        <div class="card card-editor">
+                                            <div class="content-editor">
+                                                <textarea class="text-control" maxlength="5000" value="{{ work.descriptions }}" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)"
+                                                          required="">{{ work.descriptions }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="form-label">Статус*</label>
+                                    <select name="status" class="form-control">
+                                        {% if work.status %}
+                                            <option  value="True" selected>Активный</option>
+                                            <option value="False">Не активный</option>
+                                        {% else %}
+                                            <option value="False" selected>Не активный</option>
+                                            <option value="True">Активный</option>
+                                        {% endif %}
+                                    </select>
+                                    <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

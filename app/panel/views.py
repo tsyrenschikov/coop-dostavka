@@ -1143,7 +1143,7 @@ def add_work(request):
                         status = request.POST.get('status')
                         works.objects.create(name=name, slug=slug_shop, phone=phone, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
                         return render(request, 'panel/add_ok_work.html')
-                    return render(request, 'panel/add_work.html', {'shops': shops, 'slug_shop': slug_shop, 'name_shop': name_shop})
+                    return render(request, 'panel/add_work.html', {'shops': shops})
                 elif request.user.is_superuser:
                     if request.method == 'POST':
                         name = request.POST.get('name')
@@ -1174,4 +1174,45 @@ def delete_work(request, id):
 
 #Редактировать вакансию
 def edit_work(request, id):
-    return render(request, 'panel/edit_work.html')
+    try:
+        if request.user.is_authenticated:
+            users = User.objects.values_list('id', flat=True).distinct()
+            shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
+            supermanager = User.objects.filter(groups__name='manager')
+            work = works.objects.get(id=id)
+            for user in users:
+                for custom_id, name_shop, slug_shop in shops:
+                    if request.user.id == user and user == custom_id and user != supermanager:
+                        if request.method == 'POST':
+                            work.name = request.POST.get('name')
+                            work.slug = request.POST.get('slug')
+                            work.phone = request.POST.get('phone')
+                            work.timesstart = request.POST.get('timesstart')
+                            work.timesend = request.POST.get('timesend')
+                            work.zp = request.POST.get('zp')
+                            work.obr = request.POST.get('obr')
+                            work.opwork = request.POST.get('opwork')
+                            work.descriptions = request.POST.get('descriptions')
+                            work.status = request.POST.get('status')
+                            work.save()
+                            return render(request, 'panel/edit_ok_work.html', {'work':work})
+                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work':work})
+                    elif request.user.is_superuser:
+                        if request.method == 'POST':
+                            work.name = request.POST.get('name')
+                            work.slug = request.POST.get('slug')
+                            work.phone = request.POST.get('phone')
+                            work.timesstart = request.POST.get('timesstart')
+                            work.timesend = request.POST.get('timesend')
+                            work.zp = request.POST.get('zp')
+                            work.obr = request.POST.get('obr')
+                            work.opwork = request.POST.get('opwork')
+                            work.descriptions = request.POST.get('descriptions')
+                            work.status = request.POST.get('status')
+                            work.save()
+                            return render(request, 'panel/edit_ok_work.html', {'work':work})
+                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work':work})
+        else:
+            return redirect('/login')
+    except work.DoesNotExist:
+        return render(request, 'panel/edit_error_work.html', {'shops': shops})

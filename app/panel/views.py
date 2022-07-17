@@ -1185,7 +1185,6 @@ def edit_work(request, id):
                     if request.user.id == user and user == custom_id and user != supermanager:
                         if request.method == 'POST':
                             work.name = request.POST.get('name')
-                            work.slug = request.POST.get('slug')
                             work.phone = request.POST.get('phone')
                             work.timesstart = request.POST.get('timesstart')
                             work.timesend = request.POST.get('timesend')

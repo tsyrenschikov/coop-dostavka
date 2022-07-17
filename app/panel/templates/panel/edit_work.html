@@ -37,17 +37,6 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                    {% else %}
-                                        <label class="form-label">Магазин вакансии*</label>
-                                        <div class="form-group">
-                                            <select name="slug" class="form-control">
-                                                {% for c,n,s in shops %}
-                                                    {% if work.slug == s %}
-                                                        <option selected value="{{ work.slug }}">{{ n }}</option>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </select>
-                                        </div>
                                 {% endif %}
                                     <div class="form-group">
                                         <label class="form-label">Контактный телефон*</label>

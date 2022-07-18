@@ -26,7 +26,7 @@ def offers(reguest):
     return render(reguest, 'shop/offers.html', {'users':users, 'categories' : categories})
 
 def career(reguest):
-    work = works.objects.all().filter(status=True)
+    work = works.objects.all().filter(status=True).order_by('id')[::-1]
     shops = Shop.objects.all()
     local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()

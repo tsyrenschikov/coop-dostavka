@@ -57,9 +57,10 @@
                                 {% if work.opwork %}
                                     Опыт работы: {{ work.opwork }}{% if work.opwork <= '4' %} год(а) {% else %} лет {% endif %}<br>
                                 {% endif %}
-                                {% if work.timesstart and  work.timesend %}
-                                    График работы: {{ work.timesstart }} - {{ work.timesend }}<br>
+                            {% if work.graf or work.timesstart and  work.timesend %}
+                            График работы: {% if work.graf == None %} {% else %}{{ work.graf }}{% endif %} {% if work.timesstart and  work.timesend %}{{ work.timesstart }} - {{ work.timesend }}<br>
                                 {% endif %}
+                            {% endif %}
                             </div>
                             {#                            <i class="uil uil-angle-right-b arrow-icon"></i>#}
                         </div>

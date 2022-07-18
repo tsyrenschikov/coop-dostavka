@@ -43,7 +43,8 @@
                                         <input type="text" id="phone" name="phone" value="{{ work.phone }}" class="form-control" placeholder="Контактный телефон" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Время работы</label><br>
+                                        <label class="form-label">График работы</label><br>
+                                        <input type="text" {% if work.graf %}value="{{ work.graf }}"{% endif %} class="form-control" name="graf" placeholder="Укажите рабочие дни">
                                         <label class="form-label1">Начало смены</label>
                                         <input type="time" name="timesstart" value="{{ work.timesstart }}" class="form-control" placeholder="рабочие время">
                                     </div>
@@ -90,7 +91,7 @@
                                             <option value="True">Активный</option>
                                         {% endif %}
                                     </select>
-                                    <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                    <button class="save-btn hover-btn" type="submit">Сохранить</button>
                                 </div>
                             </form>
                         </div>

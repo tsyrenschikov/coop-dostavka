@@ -1140,6 +1140,7 @@ def add_work(request):
                     if request.method == 'POST':
                         name = request.POST.get('name')
                         phone = request.POST.get('phone')
+                        graf = request.POST.get('graf')
                         timesstart = request.POST.get('timesstart')
                         timesend = request.POST.get('timesend')
                         zp = request.POST.get('zp')
@@ -1147,7 +1148,7 @@ def add_work(request):
                         opwork = request.POST.get('opwork')
                         descriptions = request.POST.get('descriptions')
                         status = request.POST.get('status')
-                        works.objects.create(name=name, slug=slug_shop, phone=phone, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        works.objects.create(name=name, slug=slug_shop, phone=phone,graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
                 elif request.user.is_superuser:
@@ -1155,6 +1156,7 @@ def add_work(request):
                         name = request.POST.get('name')
                         slug = request.POST.get('slug')
                         phone = request.POST.get('phone')
+                        graf = request.POST.get('graf')
                         timesstart = request.POST.get('timesstart')
                         timesend = request.POST.get('timesend')
                         zp = request.POST.get('zp')
@@ -1162,7 +1164,7 @@ def add_work(request):
                         opwork = request.POST.get('opwork')
                         descriptions = request.POST.get('descriptions')
                         status = request.POST.get('status')
-                        works.objects.create(name=name, slug=slug, phone=phone, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        works.objects.create(name=name, slug=slug, phone=phone,graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
     else:
@@ -1192,6 +1194,7 @@ def edit_work(request, id):
                         if request.method == 'POST':
                             work.name = request.POST.get('name')
                             work.phone = request.POST.get('phone')
+                            work.graf = request.POST.get('graf')
                             work.timesstart = request.POST.get('timesstart')
                             work.timesend = request.POST.get('timesend')
                             work.zp = request.POST.get('zp')
@@ -1207,6 +1210,7 @@ def edit_work(request, id):
                             work.name = request.POST.get('name')
                             work.slug = request.POST.get('slug')
                             work.phone = request.POST.get('phone')
+                            work.graf = request.POST.get('graf')
                             work.timesstart = request.POST.get('timesstart')
                             work.timesend = request.POST.get('timesend')
                             work.zp = request.POST.get('zp')

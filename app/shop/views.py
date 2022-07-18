@@ -70,12 +70,12 @@ def shop(request):
         "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "categories": Category.objects.order_by('number'),
-        "work" : works.objects.all().filter(status=True)
+        "work" : works.objects.all().filter(status=True).order_by('id')
     }
     local()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
-    work = works.objects.all().filter(status=True)
+    work = works.objects.all().filter(status=True).order_by('id')
     if request.method == 'POST':
         name = request.POST.get('name')
         phone = request.POST.get('phone')

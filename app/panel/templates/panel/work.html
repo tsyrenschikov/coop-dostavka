@@ -57,11 +57,11 @@
                                         <th style="width: 50px">Магазин</th>
                                         <th style="width: 350px">Содержание</th>
                                         <th style="width: 100px">Зарплата</th>
-                                        <th style="width: 50px">Время работы</th>
+                                        <th style="width: 130px">График работы</th>
                                         <th style="width: 150px">Образование</th>
                                         <th style="width: 50px">Опыт работы</th>
                                         <th style="width: 100px">Телефон</th>
-                                        <th style="width:130px">Статус</th>
+                                        <th style="width:90px">Статус</th>
                                         <th style="width: 50px">Действия</th>
                                     </tr>
                                     </thead>
@@ -88,14 +88,17 @@
                                                 {{ work.zp }} р.
                                             </td>
                                             <td>
+                                                {% if work.graf %}
+                                                    {{ work.graf }}
+                                                {% endif %}
                                                 {% if work.timesstart and work.timesend %}
-                                                    {{ work.timesstart }} - {{ work.timesend }}
+                                                    <p>{{ work.timesstart }} - {{ work.timesend }}</p>
                                                 {% else %}
-                                                    -
+                                                    <p>Время не указано</p>
                                                 {% endif %}
                                             </td>
                                             <td>
-                                                {% if work.obr %}
+                                                {% if work.obr != '0' %}
                                                     {{ work.obr }}
                                                 {% else %}
                                                     -

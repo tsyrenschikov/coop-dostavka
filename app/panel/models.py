@@ -513,6 +513,7 @@ class works(models.Model):
     name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название Вакансии')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
+    graf = models.CharField(max_length=200, db_index=True, null=True, verbose_name='График')
     timesstart = models.TextField(max_length=300,null=True, verbose_name='Время работы начало')
     timesend = models.TextField(max_length=300,null=True, verbose_name='Время работы конец')
     zp = models.CharField(max_length=30, null=True, verbose_name='Зарплата')

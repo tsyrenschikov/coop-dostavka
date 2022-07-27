@@ -1,80 +1,84 @@
 {% extends 'panel/layouts/base.html' %}
 {% load static %}
-    {% block stylesheet %}
-        <link rel="stylesheet" href="https://phpcoder.tech/multiselect/css/jquery.multiselect.css">
-    {% endblock stylesheet %}
+{% block stylesheet %}
+    <!--Панель заказа-->
+    <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
+
 {% block title %}panel{% endblock %}
 {% block content %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Локации</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'locations'%}">Населенный пункт</a></li>
-                            <li class="breadcrumb-item active">Добавить населенный пункт</li>
-                        </ol>
-                        <div class="row">
-							<div class="col-lg-5 col-md-6">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-										<h4>Добавить населенный пункт</h4></br>
-									</div>
-									<div class="card-body-table">
-                                        <form method="post">
-                                        {% csrf_token %}
-										<div class="news-content-right pd-20">
-											<div class="form-group">
-                                                <p style="color: darkgreen;font-size:0.9em">Чтобы добавить населенный пункт убедитесь, что вы создали магазин * </p>
-												<label class="form-label">Название населенного пункта*</label>
-												<input type="text" name="name" class="form-control" placeholder="Название населенного пункта" required="">
-											</div>
-                                            {% if name %}
-                                            <div class="alert alert-danger alert-dismissible">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Локации</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'locations' %}">Населенный пункт</a></li>
+                <li class="breadcrumb-item active">Добавить населенный пункт</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Добавить населенный пункт</h4></br>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Название населенного пункта*</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Название населенного пункта" required="">
+                                    </div>
+                                    {% if name %}
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             {{ name }}
-                                            </div>
-                                            {% endif %}
-                                            <label class="form-label">Магазин доставки*</label>
-                                            <div class="form-group">
-                                                <select  name="slug" value="{{ shop.slug }}" class="form-control">
-                                                    {% for shop in shops %}
-                                                        <option value="{{ shop.slug }}">{{ shop.name }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Плата за доставку*</label>
-                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
-                                                <input type="number" name="delivery_price" class="form-control" placeholder="0 р." required="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
-                                                <p style="color: green;font-size:0.9em">Знак "р" не указывать.</p>
-                                                <input type="number" name="delivery_price_min" class="form-control" value="0" placeholder="0 р." required="">
-                                            </div>
-                                        <div class="form-group">
-                                            <label class="form-label">Дни недели поставки</label>
                                         </div>
-                                            <div class="ui">
-                                                <select multiple id="languageSelect" name="day" class="days_list" >
-                                                    {% for name, daysdict in day %}
-                                                        <option daysdict="{{ daysdict }}" value="{{ name }}">{{ name }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        <input id="days" type="hidden" value="" name="days_numb">
-                                            <button class="save-btn hover-btn" type="submit">Добавить</button>
-										</div>
-                                        </form>
-									</div>
-								</div>
-							</div>
+                                    {% endif %}
+                                    <label class="form-label">Магазин доставки*</label>
+                                    <div class="form-group">
+                                        <select name="slug" value="{{ shop.slug }}" class="form-control">
+                                            {% for shop in shops %}
+                                                <option value="{{ shop.slug }}">{{ shop.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Плата за доставку*</label>
+                                        <input type="number" name="delivery_price" class="form-control" placeholder="0 р." required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
+                                        <input type="number" name="delivery_price_min" class="form-control" value="0" placeholder="0 р." required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Дни недели поставки*</label>
+                                        <div class="form-group">
+                                            <select data-placeholder="-- Выбрать день недели --" multiple class="chosen-select" required>
+                                                <option value></option>
+                                                {% for day in day %}
+                                                    <option value="{{ day.daysdict }}">{{ day.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </br>
+                                </br>
+                                    <div class="form-group">
+                                        <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </main>
-{% block js %}
-    <!-- Add Days -->
-    <script  src="{% static 'file/panel/js/select/select_add_days.js' %}"></script>
-    <script  src="{% static 'file/panel/js/select/select_days.js' %}"></script>
-{% endblock js %}
+                </div>
+            </div>
+        </div>
+    </main>
+    {% block js %}
+        <!-- Скрипты для выбора из разных окон -->
+        <script src="{% static 'file/panel/js/order/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'file/panel/js/order/chosen.jquery.min.js' %}"></script>
+        <script src="{% static 'file/panel/js/days/script.js' %}"></script>
+    {% endblock js %}
 {% endblock content %}

@@ -1,12 +1,9 @@
-var
-    days_list = [];
-
 $(document).ready(function () {
-    $("#selected_name").on('change', function () {
-        var str = "";
-        $("#selected_name option:selected").each(function () {
-            str += $( this ).text()
+    var checked = [];
+    $('#checkbox').click(function () {
+        $('input:checkbox:checked').each(function () {
+            checked.push($(this).val());
         });
-        console.log(str)
-    }).trigger('change');
+    });
+    console.log(checked)
 });

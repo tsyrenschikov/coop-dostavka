@@ -2,6 +2,7 @@
 {% load static %}
 {% block stylesheet %}
     <!--Панель заказа-->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
     <link href="{% static 'file/panel/css/day/days.css' %}" rel="stylesheet">
 {% endblock stylesheet %}
 
@@ -20,7 +21,6 @@
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Добавить населенный пункт</h4>
-                            <h3 style="color: red"> (Раздел редактируется)</h3></br>
                         </div>
                         <div class="card-body-table">
                             <form method="post">
@@ -52,16 +52,24 @@
                                         <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
                                         <input type="number" name="delivery_price_min" class="form-control" value="0" placeholder="0 р." required="">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="days">
                                         <label class="form-label">Дни недели поставки*</label><br>
                                         {% for day in day %}
                                             <label class="control control--checkbox">{{ day.name }}
-                                                <input id="checkbox" type="checkbox">
+                                                <input name="day" value="{{ day.name }}" number="{{ day.daysdict }}" type="checkbox"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         {% endfor %}
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label">Статус*</label>
+                                        <select  name="status" class="form-control">
+                                            <option value="True">Опубликован</option>
+                                            <option value="False">Не опубликован</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="days_numb" value="" id="array">
                                         <button class="save-btn hover-btn" type="submit">Добавить</button>
                                     </div>
                                 </div>
@@ -72,8 +80,6 @@
             </div>
         </div>
     </main>
-    {% block js %}
-        <!-- Скрипты для выбора checked-->
-        <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
-    {% endblock js %}
+    <!-- Скрипты для выбора checked-->
+    <script src="{% static 'file/panel/js/days/selected.js' %}"></script>
 {% endblock content %}

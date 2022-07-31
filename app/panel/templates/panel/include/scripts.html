@@ -2,6 +2,7 @@
 
 <!-- Javascripts -->
 <script src="{% static 'file/panel/js/jquery-3.4.1.min.js' %}"></script>
+
 <script src="{% static 'file/panel/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'file/panel/js/scripts.js' %}"></script>
 <script src="{% static 'file/panel/vendor/chart/highcharts.js' %}"></script>
@@ -26,7 +27,6 @@
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
-
 <!-- Календарь -->
 <script src="https://cdn.jsdelivr.net/npm/zebra_pin@2.0.0/dist/zebra_pin.min.js"></script>
 <script src="{% static 'file/panel/calendar/js/zebra_datepicker.min.js' %}"></script>
@@ -34,6 +34,7 @@
 
 <!-- Reload Back -->
 <script src="{% static 'file/panel/js/reload-back.js' %}"></script>
+
 
 <!-- Checkend -->
 <script src="{% static 'file/panel/js/checken.js' %}"></script>
@@ -55,6 +56,7 @@
 <script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
 
 <script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
+
 {% if address == 'products' %}
     <script>
         var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];

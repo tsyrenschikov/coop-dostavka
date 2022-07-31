@@ -1,9 +1,13 @@
-$(document).ready(function () {
-    var checked = [];
-    $('#checkbox').click(function () {
-        $('input:checkbox:checked').each(function () {
-            checked.push($(this).val());
-        });
+var
+    myArray = [];
+
+$(this).change(function (e) {
+    myArray = 0;
+    myArray = [];
+    $("input:checkbox:checked").each(function () {
+        check = $(this).attr('number');
+        myArray.push(check);
     });
-    console.log(checked)
+    $('#array').attr({'value' : myArray});
+    console.log(myArray)
 });

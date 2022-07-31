@@ -37,9 +37,10 @@
                                         {% if user.is_superuser %}
                                             <th>Магазин</th>
                                         {% endif %}
-                                        <th>Доставка</th>
-                                        <th>Бесплатная доставка</th>
+                                        <th>Платная доставка</th>
+                                        <th>Бесплатная доставка  от:</th>
                                         <th>Дни доставки</th>
+                                        <th>Статус</th>
                                         <th>Действия</th>
                                     </tr>
                                     </thead>
@@ -83,6 +84,11 @@
                                                     <p style="color: green">Не указано</p>
                                                 {% endif %}
                                             </td>
+                                            {% if local.status %}
+                                                <td><span class="badge-item badge-panel-status">Активный</span></td>
+                                            {% else %}
+                                                <td><span class="badge-item badge-status">Не активный</span></td>
+                                            {% endif %}
                                             <td class="action-btns">
                                                 <a href="/edit_location/{{ local.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
                                                 <a href="/delete_location/{{ local.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +

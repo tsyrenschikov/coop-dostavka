@@ -242,6 +242,7 @@ def edit_location(request, id):
             local.delivery_price = request.POST.get("delivery_price")
             local.delivery_price_min = request.POST.get("delivery_price_min")
             local.slug = request.POST.get("slug")
+            local.status = request.POST.get("status")
             local.save()
         if request.method == 'POST':
             local = Locations.objects.get(id=id)
@@ -274,12 +275,13 @@ def add_location(request):
             days = request.POST.getlist('day')
             days_numb = request.POST.getlist('days_numb')
             slug = request.POST.get('slug')
+            status = request.POST.get('status')
 
             if Locations.objects.filter(name=request.POST['name']).filter(slug=request.POST['slug']).exists():
                 alert['name'] = "Название населенного пункта уже существует"
                 return render(request, 'panel/add_location.html', alert)
             else:
-                Locations.objects.create(name=name, delivery_price=delivery_price, delivery_price_min=delivery_price_min, days=days, days_numb=days_numb, slug=slug)
+                Locations.objects.create(name=name, delivery_price=delivery_price, delivery_price_min=delivery_price_min, days=days, days_numb=days_numb, slug=slug, status=status)
                 return render(request, 'panel/add_ok_location.html', {'local': local, 'shops': shops, 'day': day})
         return render(request, 'panel/add_location.html', {'local': local, 'shops': shops, 'day': day})
     else:

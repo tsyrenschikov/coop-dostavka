@@ -26,7 +26,7 @@ def cart(request):
 
 
 def local():
-    l = Locations.objects.values('name', 'slug').distinct().order_by('slug')
+    l = Locations.objects.values('name', 'slug').filter(status=True).order_by('slug')
     dict_l = {k['name']: [] for k in l}
     list_slug = list(set([i['slug'] for i in l]))
     for loc in l:

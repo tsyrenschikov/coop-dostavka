@@ -21,7 +21,7 @@
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Добавить населенный пункт</h4>
-                            <h4 style="color: red; margin-left: 5px">(<strong>Внимание! </strong>Раздел редактируется)</h4>
+                           {% comment %} <h4 style="color: red; margin-left: 5px">(<strong>Внимание! </strong>Раздел редактируется)</h4>{% endcomment %}
                         </div>
                         <div class="card-body-table">
                             <form method="post">
@@ -53,10 +53,10 @@
                                         <input type="text" name="delivery_price_min" class="form-control" value="{{ local.delivery_price_min }}" placeholder="0 р.">
                                     </div>
                                     <div class="form-group" id="days">
-                                        <label class="form-label">Дни недели поставки*</label><br>
+                                        <label class="form-label">Дни недели поставки*</label>
                                         {% for day in days %}
                                             <label class="control control--checkbox">{{ day.name }}
-                                                <input id="checkday" name="day" value="{{ day.name }}" number="{{ day.daysdict }}" type="checkbox"/>
+                                                <input id="checkdays" name="day" value="{{ day.name }}" number="{{ day.daysdict }}" type="checkbox"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         {% endfor %}

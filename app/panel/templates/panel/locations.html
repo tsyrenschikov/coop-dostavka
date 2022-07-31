@@ -38,7 +38,7 @@
                                             <th>Магазин</th>
                                         {% endif %}
                                         <th>Платная доставка</th>
-                                        <th>Бесплатная доставка  от:</th>
+                                        <th>Бесплатная доставка от:</th>
                                         <th>Дни доставки</th>
                                         <th>Статус</th>
                                         <th>Действия</th>
@@ -54,15 +54,15 @@
                                                     <p style="color:green">Не указано</p>
                                                 {% endif %}
                                             </td>
-                                        {% if user.is_superuser %}
-                                            <td>
+                                            {% if user.is_superuser %}
+                                                <td>
                                                     {% for id, name,slug in shops %}
                                                         {% if local.slug == slug %}
                                                             {{ name }}
                                                         {% endif %}
                                                     {% endfor %}
-                                            </td>
-                                        {% endif %}
+                                                </td>
+                                            {% endif %}
                                             <td>
                                                 {% if local.delivery_price or local.delivery_price == 0 %}
                                                     {{ local.delivery_price }}.p

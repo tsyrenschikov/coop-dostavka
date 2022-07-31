@@ -232,28 +232,30 @@ def locations(request):
 
 # Населенный пункт редактировать
 def edit_location(request, id):
-    try:
-
-        local = Locations.objects.get(id=id)
-        days = Days.objects.values('id', 'name', 'daysdict').order_by('id')
-        shops = Shop.objects.values_list('name', 'slug').distinct().order_by('name')
-        if request.method == "POST":
-            local.name = request.POST.get("name")
-            local.delivery_price = request.POST.get("delivery_price")
-            local.delivery_price_min = request.POST.get("delivery_price_min")
-            local.slug = request.POST.get("slug")
-            local.status = request.POST.get("status")
-            local.save()
-        if request.method == 'POST':
+    if request.user.is_authenticated:
+        try:
             local = Locations.objects.get(id=id)
-            local.days = request.POST.getlist('day')
-            local.days_numb = request.POST.getlist('days_numb')
-            local.save(update_fields=['days', 'days_numb'])
-            return render(request, "panel/edit_ok_location.html", {'local': local, 'days': days, 'shops': shops})
-        else:
-            return render(request, "panel/edit_location.html", {"local": local, 'days': days, 'shops': shops})
-    except local.DoesNotExist:
-        return render(request, 'panel/edit_error_location.html', {'local': local, 'days': days, 'shops': shops})
+            days = Days.objects.values('id', 'name', 'daysdict').order_by('id')
+            shops = Shop.objects.values_list('name', 'slug').distinct().order_by('name')
+            if request.method == "POST":
+                local.name = request.POST.get("name")
+                local.delivery_price = request.POST.get("delivery_price")
+                local.delivery_price_min = request.POST.get("delivery_price_min")
+                local.slug = request.POST.get("slug")
+                local.status = request.POST.get("status")
+                local.save()
+            if request.method == 'POST':
+                local = Locations.objects.get(id=id)
+                local.days = request.POST.getlist('day')
+                local.days_numb = request.POST.getlist('days_numb')
+                local.save(update_fields=['days', 'days_numb'])
+                return render(request, "panel/edit_ok_location.html", {'local': local, 'days': days, 'shops': shops})
+            else:
+                return render(request, "panel/edit_location.html", {"local": local, 'days': days, 'shops': shops})
+        except local.DoesNotExist:
+            return render(request, 'panel/edit_error_location.html', {'local': local, 'days': days, 'shops': shops})
+    else:
+        return redirect('/login')
 
 
 # Населенный пункт добавить

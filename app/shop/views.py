@@ -239,8 +239,10 @@ def shop_arti(request):
                 products = name_slug.objects.all().filter(status=True).order_by('?')[:20]
                 new_products = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:20]
                 category_product = dict_category_product(name_slug)
-                return render(request, 'arti/index.html', {'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local, 'name': name,
-                                                           'address_str': address_str})
+                # return render(request, 'arti/index.html', {'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local, 'name': name,
+                #                                            'address_str': address_str})
+                return redirect(shop_artiobschepit)
+
 
 
 def shop_arti_grid(request):

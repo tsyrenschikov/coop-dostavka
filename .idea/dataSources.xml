@@ -18,6 +18,13 @@
       <jdbc-url>jdbc:postgresql://10.19.4.1/c25867_polinome_ru</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="ksk-evakuator" uuid="785d21d4-68c8-4891-801f-c0bc8f421e1e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://10.19.4.1:5432/c61974_ksk_evakuator_ru</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
   <component name="dataSourceStorageLocal" created-in="PY-213.6777.50">
     <data-source name="coop-dostavka.ru" uuid="03b299a0-1f54-4aae-b27a-0afa342c643c">

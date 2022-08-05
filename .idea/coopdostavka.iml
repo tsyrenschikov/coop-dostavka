@@ -10,6 +10,8 @@
     <orderEntry type="module" module-name="polinome" />
     <orderEntry type="module" module-name="polinome" />
     <orderEntry type="module" module-name="polinome" />
+    <orderEntry type="module" module-name="ksk-evakuator" />
+    <orderEntry type="module" module-name="kskevakuator" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

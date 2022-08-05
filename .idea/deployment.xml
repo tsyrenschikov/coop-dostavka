@@ -10,6 +10,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="ksk-evakuator">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="D:/kskevakuator" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="polinome">
         <serverdata>
           <mappings>

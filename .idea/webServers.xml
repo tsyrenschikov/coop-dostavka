@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="3acf2ac7-d7ee-4112-8f3e-336c4429b608" name="ksk-evakuator" url="http://h30.netangels.ru">
+        <fileTransfer host="h30.netangels.ru" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

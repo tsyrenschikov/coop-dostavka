@@ -6,22 +6,10 @@
 {% host_url 'contact' as panel_url %}
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-    <meta name="description" content="Shop">
-    <meta name="author" content="V.Tsyrenschikov">
+    {% include 'shop/layouts/meta.html' %}
     <title>Магазин доставки продуктов - {% block title %}{% endblock %}</title>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZV7WLHDFF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-DZV7WLHDFF');
-    </script>
+    {% include 'shop/layouts/google.html' %}
 
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="{% static 'file/shop/images/fav1.png' %}">

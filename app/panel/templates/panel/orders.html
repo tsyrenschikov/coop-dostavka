@@ -58,7 +58,8 @@
                                         <th style="width:150px">Доставка</th>
                                         <th style="width:130px">Общая сумма</th>
                                         <th style="width:130px">Статус</th>
-                                        <th style="width: 130px">Комментарий</th>
+                                        <th style="width: 130px">Комментарий пользователя</th>
+                                        <th style="width: 130px">Комментарий менеджера</th>
                                         {% if address == 3 or address == 4 and not 'super_manager' in groups %}
                                             <th style="width:100px"></th>
                                         {% else %}
@@ -120,7 +121,18 @@
                                             {% endif %}
 
                                         </td>
-                                        <td style="color: green">{{ zakaz.commit }}</td>
+                                        {% if zakaz.commit %}
+                                            <td style="color: green">{{ zakaz.commit }}</td>
+                                        {% else %}
+                                            <td style="color: red">Нет</td>
+                                        {% endif %}
+                                        <td style="color: green">
+                                            {% if zakaz.comment_man and zakaz.comment_man != 'None' %}
+                                                {{ zakaz.comment_man }}
+                                            {% else %}
+                                                Отсутствует
+                                            {% endif %}
+                                        </td>
                                         <td class="action-btns">
                                             {% if 'super_manager' in groups %}
                                                 <a href="/order_view/{{ zakaz.id }}" class="views-btn"><i class="fas fa-eye"></i></a>

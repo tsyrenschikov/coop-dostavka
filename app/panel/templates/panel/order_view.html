@@ -191,9 +191,23 @@
                                                         <option selected value="{{ zakaz.status }}">Отменен</option>
                                                     {% endif %}
                                                 </select>
-                                                <div class="input-group-append">
-                                                    <button class="status-btn hover-btn" type="submit">Сохранить заказ</button>
-                                                </div>
+                                            </div>
+                                            <br>
+                                            <message>
+                                            </message>
+                                            <br>
+                                            {% if zakaz.comment_man %}
+                                                <label for="status">Комментарий менеджера</label>
+                                                <input id="comm" type="hidden" value="1">
+                                                <br>
+                                                {{ zakaz.comment_man }}
+                                                <br>
+                                            {% else %}
+                                                <input id="comm" type="hidden" value="2">
+                                            {% endif %}
+                                            <br>
+                                            <div class="input-group-append1">
+                                                <button id="butstatus" class="status-btn hover-btn" type="submit">Сохранить заказ</button>
                                             </div>
                                         </div>
                                     </div>

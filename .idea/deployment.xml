@@ -13,7 +13,8 @@
       <paths name="ksk-evakuator">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="D:/kskevakuator" web="/" />
+            <mapping local="$PROJECT_DIR$/../pythonProject" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

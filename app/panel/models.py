@@ -486,6 +486,7 @@ class orders(models.Model):
     address_kv = models.TextField(max_length=300,null=True,verbose_name='Квартира')
     data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
     commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')
+    comment_man = models.TextField(max_length=300, null=True, verbose_name='Коментарий менеджера')
     time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
     cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
     delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')

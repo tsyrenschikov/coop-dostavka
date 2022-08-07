@@ -4,7 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="tsyrenschikov" />
     <orderEntry type="module" module-name="pythonProject" />
     <orderEntry type="module" module-name="Project" />
     <orderEntry type="module" module-name="polinome" />
@@ -12,6 +11,7 @@
     <orderEntry type="module" module-name="polinome" />
     <orderEntry type="module" module-name="ksk-evakuator" />
     <orderEntry type="module" module-name="kskevakuator" />
+    <orderEntry type="module" module-name="tsyrenschikov" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

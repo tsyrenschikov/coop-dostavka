@@ -3482,6 +3482,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     margin-left: -1px
 }
 
+.input-group-append1 {
+    margin-left: -10px
+}
+
 .input-group-text {
     display: -ms-flexbox;
     display: flex;

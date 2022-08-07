@@ -84,6 +84,41 @@ $(document).ready(function () {
     nal();
 });
 
+// Проверка выбора статуса заказа и комментарий
+$(document).ready(function () {
+    $('#status').change(function () {
+        var status_manadger = '';
+        $("#status option:selected").each(function () {
+            status_manadger += $(this).text();
+        });
+        var comm = $('#comm').val();
+        console.log(comm)
+        if (((status_manadger === "Закрыт") || (status_manadger === "Отменен")) && (comm === "2")) {
+            $('button').hide();
+            $('message').show();
+            $('message').html('<label for="status">Комментарий менеджера*</label>' +
+                '<textarea id="commentman" name="comment_man" style="width:100%; position : relative; display : flex;"' +
+                ' placeholder="Укажите причину статуса <<' + status_manadger + '>>. Не' +
+                ' менее' +
+                ' 10' +
+                ' символов"></textarea>')
+            $('textarea').on("input", function() {
+                var comman = $("#commentman").val().length;
+                console.log(comman)
+                if (comman >= 10) {
+                    $('button').show();
+                } else {
+                    $('button').hide();
+                }
+
+            });
+        } else {
+            $('button').show();
+            $('message').hide();
+        }
+    }).change();
+});
+
 // Handles live/dynamic element events, i.e. for newly created edit buttons
 $(document).on('click', '.edit', function () {
     var parentRow = $(this).closest('tr'),
@@ -184,13 +219,13 @@ $(document).on('click', '.edit', function () {
 
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $('#cartval').attr({'value': cart.toFixed(2)});
-    var coun = counter -1,
-        valcount = $("#count"+ coun +"").text(),
-        fooloop = $("#forloop"+ coun +"").text();
+    var coun = counter - 1,
+        valcount = $("#count" + coun + "").text(),
+        fooloop = $("#forloop" + coun + "").text();
     console.log(fooloop)
-     $('.appcount'+ coun +'').attr({'value' : valcount,});
-     $('.forloop'+ coun +'').removeAttr('value');
-     $('.forloop'+ coun +'').attr({'value' : fooloop,});
+    $('.appcount' + coun + '').attr({'value': valcount,});
+    $('.forloop' + coun + '').removeAttr('value');
+    $('.forloop' + coun + '').attr({'value': fooloop,});
     $(document).ready(function () {
         nal();
     });
@@ -263,11 +298,11 @@ $(document).ready(function () {
                 '          <option></option>\n' +
                 '        </select>\n' +
                 '      </div></td>' +
-                '<input class="appname'+ coun +'" type="hidden" name="products_list">\n' +
-                '<td class="data text-center" id="count'+ coun +'"><input id="inputreq" type="text" name="data" value=""></td>' +
-                '<input class="appcount'+ coun +'" type="hidden" name="products_list">\n' +
+                '<input class="appname' + coun + '" type="hidden" name="products_list">\n' +
+                '<td class="data text-center" id="count' + coun + '"><input id="inputreq" type="text" name="data" value=""></td>' +
+                '<input class="appcount' + coun + '" type="hidden" name="products_list">\n' +
                 '<td class="price text-center" value=""><input id="selectprice" type="text" name="price" value="" disabled></td>' +
-                '<input class="appprice'+ coun +'" type="hidden" name="products_list">\n' +
+                '<input class="appprice' + coun + '" type="hidden" name="products_list">\n' +
                 '<td class="text-center" value=""></td>' +
                 '<td class="edit text-center"><i class="fa fa-floppy-o" aria-hidden="true"></i></td>' +
                 '<td class="trash text-center"><i class="fa fa-trash" aria-hidden="true"></i></td>' +
@@ -335,11 +370,11 @@ $(document).ready(function () {
             //Добавить значения в новой позиции для сохранения в базе
             $.each(products, function (index, value) {
                 var coun = counter - 1;
-                if(productsname == value.replace(/([="])/g, '')){
+                if (productsname == value.replace(/([="])/g, '')) {
                     //Название выбранного продукта
-                    $('.appname'+ coun +'').attr({'value' : value.replace(/([="])/g, ''),});
+                    $('.appname' + coun + '').attr({'value': value.replace(/([="])/g, ''),});
                     //Цена выбранного продукта
-                    $('.appprice'+ coun +'').attr({'value' : products[index + 1],});
+                    $('.appprice' + coun + '').attr({'value': products[index + 1],});
                 }
             });
         });

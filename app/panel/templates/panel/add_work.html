@@ -28,11 +28,16 @@
                                     {% if  'super_manager' in groups %}
                                         <label class="form-label">Магазин вакансии*</label>
                                         <div class="form-group">
-                                            <select name="slug" class="form-control">
+                                            <select name="slug" id="selorg" class="form-control">
+                                                <option value="0">--Выберите из списка--</option>
                                                 {% for c,n,s in shops %}
                                                     <option value="{{ s }}">{{ n }}</option>
                                                 {% endfor %}
                                             </select>
+                                        </div>
+                                        <label class="form-label">Произвольный магазин вакансий</label>
+                                        <input name="shopproiz" id="shopproiz" class="form-control" placeholder="Укажите магазин, если вы его не нашли в списке">
+                                        <div class="form-group">
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
@@ -73,7 +78,8 @@
                                         <label class="form-label">Содержание вакансии*</label>
                                         <div class="card card-editor">
                                             <div class="content-editor">
-                                                <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)" required=""></textarea>
+                                                <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)"
+                                                          required=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -91,4 +97,8 @@
             </div>
         </div>
     </main>
+    {% block js %}
+        <!--Редактировать поле произвольного заказа-->
+        <script src="{% static 'file/panel/js/work/work.js' %}"></script>
+    {% endblock js %}
 {% endblock content %}

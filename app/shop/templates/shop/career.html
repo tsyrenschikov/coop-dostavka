@@ -44,6 +44,9 @@
                                         <p style="color: #000000; font-size: 15px"><i class="uil uil-map-marker-alt"></i>{{ shop.name }}</p>
                                     {% endif %}
                                 {% endfor %}
+                                {% if work.shopproiz %}
+                                    <p style="color: #000000; font-size: 15px"><i class="uil uil-map-marker-alt"></i>{{ work.shopproiz }}</p>
+                                {% endif %}
                                 <p style="color: #000000; font-size: 15px">{{ work.descriptions }}</p>
                                 Контактный телефон: <a href="tel:{{ work.phone }}">{{ work.phone }}</a>
                                 <br>
@@ -57,10 +60,11 @@
                                 {% if work.opwork %}
                                     Опыт работы: {{ work.opwork }}{% if work.opwork <= '4' %} год(а) {% else %} лет {% endif %}<br>
                                 {% endif %}
-                            {% if work.graf or work.timesstart and  work.timesend %}
-                            График работы: {% if work.graf == None %} {% else %}{{ work.graf }}{% endif %} {% if work.timesstart and  work.timesend %}{{ work.timesstart }} - {{ work.timesend }}<br>
+                                {% if work.graf or work.timesstart and  work.timesend %}
+                                    График работы: {% if work.graf == None %} {% else %}{{ work.graf }}{% endif %}
+                                    {% if work.timesstart and  work.timesend %}{{ work.timesstart }} - {{ work.timesend }}<br>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
                             </div>
                             {#                            <i class="uil uil-angle-right-b arrow-icon"></i>#}
                         </div>

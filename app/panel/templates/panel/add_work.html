@@ -22,11 +22,11 @@
                                 {% csrf_token %}
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
-                                        <label class="form-label">Название вакансии*</label>
+                                        <label class="form-label">Название вакансии *</label>
                                         <input type="text" name="name" class="form-control" placeholder="Назовите свою вакансию" required="">
                                     </div>
                                     {% if  'super_manager' in groups %}
-                                        <label class="form-label">Магазин вакансии*</label>
+                                        <label class="form-label">Магазин вакансии *</label>
                                         <div class="form-group">
                                             <select name="slug" id="selorg" class="form-control">
                                                 <option value="0">--Выберите из списка--</option>
@@ -35,13 +35,13 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        <label class="form-label">Произвольный магазин вакансий</label>
+                                        <label class="form-label">Произвольный магазин вакансии</label>
                                         <input name="shopproiz" id="shopproiz" class="form-control" placeholder="Укажите магазин, если вы его не нашли в списке">
                                         <div class="form-group">
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
-                                        <label class="form-label">Контактный телефон*</label>
+                                        <label class="form-label">Контактный телефон *</label>
                                         <input type="text" id="phone" name="phone" class="form-control" placeholder="Контактный телефон" required="">
                                     </div>
                                     <div class="form-group">
@@ -67,7 +67,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Заработная плата для соискателя*</label>
+                                        <label class="form-label">Заработная плата для соискателя *</label>
                                         <input type="number" name="zp" class="form-control" placeholder="Ожидаемая зарплата" required>
                                     </div>
                                     <div class="form-group">
@@ -75,7 +75,7 @@
                                         <input type="number" name="opwork" class="form-control" placeholder="Укажите в годах">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Содержание вакансии*</label>
+                                        <label class="form-label">Содержание вакансии *</label>
                                         <div class="card card-editor">
                                             <div class="content-editor">
                                                 <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Опишите предлагаемую вакансию (не более 5000 символов)"
@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <label class="form-label">Статус*</label>
+                                    <label class="form-label">Статус *</label>
                                     <select name="status" class="form-control">
                                         <option value="True" selected>Активный</option>
                                         <option value="False">Не активный</option>

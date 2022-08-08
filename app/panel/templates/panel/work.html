@@ -75,11 +75,15 @@
                                                 {{ work.name }}
                                             </td>
                                             <td>
-                                                {% for shop in shops_name %}
-                                                    {% if shop.slug == work.slug %}
-                                                        {{ shop.name }}
-                                                    {% endif %}
-                                                {% endfor %}
+                                                {% if work.shopproiz %}
+                                                    {{ work.shopproiz }}
+                                                {% else %}
+                                                    {% for shop in shops_name %}
+                                                        {% if shop.slug == work.slug %}
+                                                            {{ shop.name }}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
                                             </td>
                                             <td>
                                                 {{ work.descriptions }}

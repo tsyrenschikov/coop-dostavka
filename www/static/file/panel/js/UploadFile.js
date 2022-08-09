@@ -5,7 +5,7 @@ $.fn.filestyle = function (options) {
       buttonText: 'Select File',
       wrapClass:   'file',
       wrapContent: '<div class="file"></div>',
-      fakeContent: '<div class="fake"><button></button><input type="text" disabled="disabled" class="filename" /></div>'
+      fakeContent: '<div class="fake"><button></button><input type="text" name="name" disabled="disabled" class="filename" /></div>'
     },
     options
   );

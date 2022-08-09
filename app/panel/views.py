@@ -653,6 +653,12 @@ def products(request):
                             page_number = request.GET.get('page')
                             page_obj = paginator.get_page(page_number)
                             if request.method == 'POST':
+                                if request.FILES:
+                                    name_file = request.POST.get('name_file')
+                                    fileart = request.FILES.get('fileart')
+                                    file.objects.create(fileart=fileart, name_file=name_file)
+                                    return render(request, 'panel/file.html', {})
+                            if request.method == 'POST':
                                 check_ = request.POST.getlist("check_")
                                 checkbool = request.POST.get("checkbool")
                                 query_name = request.POST.get('name')
@@ -661,7 +667,7 @@ def products(request):
                                     paginator = Paginator(product, 50)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products_search.html', {'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
+                                    return render(request, 'panel/products_search.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':
@@ -669,13 +675,13 @@ def products(request):
                                 items = list(map(int, item))
                                 if checkbool and checkbool != 'delete':
                                     name.objects.filter(pk__in=items).update(status=checkbool)
-                                    return render(request, 'panel/products.html', {'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
                                 if checkbool == 'delete':
                                     name.objects.filter(pk__in=items).delete()
-                                    return render(request, 'panel/products.html', {'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
                             else:
-                                return render(request, 'panel/products.html', {'address': address, 'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', {'address': address, 'page_obj': page_obj, 'products': products})
+                                return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
+                            return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
     else:
         return redirect('/login')
 

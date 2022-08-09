@@ -713,6 +713,7 @@ def edit_product(request, id):
                             subsubcategory = SubSubCategory.objects.all()
                             if request.method == "POST":
                                 products.name = request.POST.get("name")
+                                products.artikul = request.POST.get("artikul")
                                 products.categ = request.POST.get("categ")
                                 products.status = request.POST.get("status")
                                 products.price = request.POST.get("price")
@@ -768,6 +769,7 @@ def add_product(request, **kwargs):
                         subsubcategory = SubSubCategory.objects.all()
                         if request.method == 'POST' and request.FILES:
                             name = request.POST.get('name')
+                            artikul = request.POST.get('artikul')
                             price = request.POST.get('price')
                             discount = request.POST.get('discount')
                             categ = request.POST.get('categ')
@@ -787,7 +789,8 @@ def add_product(request, **kwargs):
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
                                 else:
-                                    n.objects.create(name=name, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, image=image,
+                                    n.objects.create(name=name,artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, \
+                                                                                                                                                                                                    image=image,
                                                      width=width, \
                                                      height=height,
                                                      length=length, fabricator=fabricator, material=material, color=color)

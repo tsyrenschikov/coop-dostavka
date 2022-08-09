@@ -49,7 +49,7 @@
                                             <td>
                                                 {{ value.3 }}
                                             </td>
-                                        <td>
+                                            <td>
                                                 {{ value.4 }}
                                             </td>
                                         </tr>
@@ -73,6 +73,7 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Артикул</th>
                                         <th style="width:150px">Название</th>
                                         <th style="width:150px">Изображение</th>
                                         <th>Цена</th>
@@ -86,6 +87,13 @@
                                     {% for products in products %}
                                         <tr>
                                             <td>{{ products.id }}</td>
+                                            <td>
+                                                {% if products.artikul %}
+                                                    {{ products.artikul }}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
                                             <td>
                                                 {{ products.name }}
                                             </td>

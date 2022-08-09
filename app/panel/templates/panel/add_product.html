@@ -35,6 +35,10 @@
                                         </div>
                                     {% endif %}
                                     <div class="form-group">
+                                        <label class="form-label">Артикул*</label>
+                                        <input type="text" name="artikul" class="form-control" placeholder="Артикул" required="">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-label">Категория*</label>
                                         </br>
                                         <select name="categ" id="selectcat" required class="form-control cat">
@@ -102,7 +106,8 @@
                                     </br>
                                     <div class="form-group">
                                         <label class="form-label">Описание товара</label>
-                                        <input type="text" class="form-control" name="description" placeholder="Описание товара"></div>
+                                        <textarea  class="form-control" name="description" placeholder="Описание товара"></textarea>
+                                    </div>
                                     <button class="save-btn hover-btn" type="submit">Добавить продукт</button>
                                 </div>
                             </div>

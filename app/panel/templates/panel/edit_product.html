@@ -33,6 +33,10 @@
                                     </div>
                                 {% endif %}
                                 <div class="form-group">
+                                    <label class="form-label">Артикул</label>
+                                    <input type="text" name="artikul" class="form-control" placeholder="Артикул" value="{% if products.artikul %}{{ products.artikul }}{% else %}{% endif %}">
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label"><em>Категория</em></label>
                                     </br>
                                     <select id="category" name="categ" id="selectcat" required class="form-control cat">

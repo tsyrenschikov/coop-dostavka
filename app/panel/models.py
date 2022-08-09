@@ -135,6 +135,8 @@ class Category(models.Model):
 class Product(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,null=True, verbose_name='Изображение')
     description = models.TextField(blank=True,verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Цена')
@@ -162,6 +164,8 @@ class Product(models.Model):
 class rezh(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='rezh/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -190,6 +194,8 @@ class rezh(models.Model):
 class arti(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='arti/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -217,6 +223,8 @@ class arti(models.Model):
 class arti_p(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='arti_p/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -244,6 +252,8 @@ class arti_p(models.Model):
 class artiobschepit(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='artiobschepit/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -272,6 +282,8 @@ class artiobschepit(models.Model):
 class bogdan(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='bogdan/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -299,6 +311,8 @@ class bogdan(models.Model):
 class chetkarino(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='chetkarin/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -326,6 +340,8 @@ class chetkarino(models.Model):
 class shalinsk(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='shalinsk/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -353,6 +369,8 @@ class shalinsk(models.Model):
 class zajkovskoe(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='zajkovskoe/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -380,6 +398,8 @@ class zajkovskoe(models.Model):
 class pokrovskoe(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='pokrovskoe/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -407,6 +427,8 @@ class pokrovskoe(models.Model):
 class krasnoufimsk(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='krasnoufimsk/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
@@ -434,6 +456,8 @@ class krasnoufimsk(models.Model):
 class bugalysh(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, verbose_name='Магазин')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
+    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
+    fileart = models.FileField(upload_to='rezh/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     image = models.ImageField(upload_to='bugalysh/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')

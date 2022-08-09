@@ -81,6 +81,7 @@
                                             <thead>
                                             <tr>
                                                 <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                                <th style="width: 100px">Артикул</th>
                                                 <th>Имя</th>
                                                 <th style="width:100px">Изображение</th>
                                                 <th style="width: 100px">Цена</th>
@@ -96,6 +97,13 @@
                                             {% for products in page_obj %}
                                                 <td>
                                                     <input type="checkbox" class="check-item" value="{{ products.id }}">
+                                                </td>
+                                                <td>
+                                                    {% if products.artikul %}
+                                                        {{ products.artikul }}
+                                                    {% else %}
+                                                        -
+                                                    {% endif %}
                                                 </td>
                                                 <td>
                                                     <a style="color: rgb(32,79,150)" href="/product_view/{{ products.id }}">{{ products.name }}</a>
@@ -195,7 +203,7 @@
                                 </div>
                             {% else %}
                                 <center>
-                                <img src="{% static 'file/panel/images/avatar/mouse.webp' %}" width="360" height="400"  >
+                                    <img src="{% static 'file/panel/images/avatar/mouse.webp' %}" width="360" height="400">
                                 </center>
                             {% endif %}
                             </div>

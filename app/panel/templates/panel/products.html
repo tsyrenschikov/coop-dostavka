@@ -1,5 +1,5 @@
 {% extends 'panel/layouts/base.html' %}
-{% block title %}panel{% endblock %}
+{% block title %}Продукты{% endblock %}
 {% block content %}
     {% load static %}
     {% load thumbnail %}
@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
                 <li class="breadcrumb-item active">Продукты</li>
             </ol>
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post"  action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row justify-content-between">
                     <div class="pagination">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-6">
+                    <div class="col-lg-51 col-md-6">
                         <div class="bulk-section mt-30">
                             <div class="input-group">
                                 <select name="checkbool" class="form-control">

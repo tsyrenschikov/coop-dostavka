@@ -42,7 +42,7 @@ section button:hover, section .file [type="file"]:hover + div button {
 section button {
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
-    border-radius: 0px;
+    border-radius: 3px;
     background-color: #428BCA;
     border: 0px solid rgba(0, 0, 0, 0.3);
     border-bottom-width: 1px;
@@ -61,7 +61,6 @@ section label {
 
 section button,
 section .file {
-    font-size: 14px;
     line-height: 2em;
 }
 
@@ -69,7 +68,7 @@ section .file {
     background-color: #ccc;
     display: inline-block;
     overflow: hidden;
-    padding-right: 4em;
+    padding-right: 3.5em;
     position: relative;
     vertical-align: top;
 }

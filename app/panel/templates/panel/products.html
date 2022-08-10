@@ -21,7 +21,9 @@
                     <div class="paginator">
                         <section>
                             <input type="file" accept=".xls,.xlsx,.txt" name="fileart" id="upload"/>
-                            <input type="hidden" value="{{ slug }}" name="name_file" />
+                            <input type="hidden" value="{{ slug }}" name="slug" />
+                            <input type="hidden" name="filename" id="filename" />
+                            <input type="hidden" name="date" id="date" />
                             <button class="upload" type="submit">Загрузить</button>
                         </section>
                     </div>

@@ -547,11 +547,13 @@ class works(models.Model):
         return self.name
 
 
-class file(models.Model):
-    name_file = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название организации')
+class files(models.Model):
+    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название файла')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     fileart = models.FileField(upload_to='file/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
+    date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
     class Meta:
-        ordering = ('name_file',)
+        ordering = ('name',)
         verbose_name = 'Файловая обработка'
         verbose_name_plural = 'Файловая обработка'
         index_together = (('id'),)

@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -654,9 +653,11 @@ def products(request):
                             page_obj = paginator.get_page(page_number)
                             if request.method == 'POST':
                                 if request.FILES:
-                                    name_file = request.POST.get('name_file')
+                                    name = request.POST.get('filename')
+                                    slug = request.POST.get('slug')
                                     fileart = request.FILES.get('fileart')
-                                    file.objects.create(fileart=fileart, name_file=name_file)
+                                    date = request.POST.get('date')
+                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
                                     return render(request, 'panel/file.html', {})
                             if request.method == 'POST':
                                 check_ = request.POST.getlist("check_")

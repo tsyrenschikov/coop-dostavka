@@ -26,5 +26,5 @@ $.fn.filestyle = function (options) {
 
 $('[type="file"]').filestyle({
   fieldText: 'Файл не выбран', // german translation
-  buttonText: 'Файл обработки'
+  buttonText: 'Файл выгрузки '
 });

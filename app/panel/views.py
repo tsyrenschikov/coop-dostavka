@@ -658,7 +658,7 @@ def products(request):
                                     fileart = request.FILES.get('fileart')
                                     date = request.POST.get('date')
                                     files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
-                                    return render(request, 'panel/file.html', {})
+                                    return redirect(file)
                             if request.method == 'POST':
                                 check_ = request.POST.getlist("check_")
                                 checkbool = request.POST.get("checkbool")
@@ -686,6 +686,31 @@ def products(request):
     else:
         return redirect('/login')
 
+# Список файлов
+def file(request):
+    if request.user.is_authenticated:
+        users = User.objects.values_list('id', flat=True).distinct()
+        manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        address = str([i for i in str(request.path).split('/') if i][0])
+        if request.user.is_authenticated:
+            for u in users:
+                for m in manager:
+                    if u == m and request.user.id == u:
+                        for s, slug in shops:
+                            if s == m:
+                                file = files.objects.order_by('-date')
+                                if request.method == 'POST':
+                                    if request.FILES:
+                                        name = request.POST.get('filename')
+                                        slug = request.POST.get('slug')
+                                        fileart = request.FILES.get('fileart')
+                                        date = request.POST.get('date')
+                                        files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
+                                        return redirect(file)
+                                return render(request, 'panel/file.html', {'slug':slug ,'file':file })
+    else:
+        return redirect('/login')
 
 # Просмотр продукта
 def product_view(request, id):

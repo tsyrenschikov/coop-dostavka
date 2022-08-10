@@ -59,6 +59,7 @@ urlpatterns = [
     #path('products_view_shop/<int:id>', views.products_view_shop, name='products_view_shop'),
     path('delete_shop/<int:id>/',views.delete_shop,name='delete_shop'),
     path('products/', views.products, name='products'),
+    path('file/', views.file, name='file'),
     path('product_view/<int:id>/', views.product_view, name='product_view'),
     path('edit_product/<int:id>/', views.edit_product, name='edit_product'),
     path('delete_product/<int:id>/', views.delete_product, name='delete_product'),

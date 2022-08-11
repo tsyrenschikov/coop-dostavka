@@ -85,7 +85,9 @@
                                             <tbody>
                                             {% for files in file %}
                                                 <tr>
-                                                    <td>{{ files.name }}</td>
+                                                    <td>
+                                                        <a href="{{ files.fileart.url }}" download>{{ files.name }}</a>
+                                                    </td>
                                                     <td>
                                                         {% if user.is_superuser %}
                                                             {{ files.org }}
@@ -94,7 +96,7 @@
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
                                                     <td>
-                                                        <form  method="post" action="" enctype="multipart/form-data">
+                                                        <form method="post" action="" enctype="multipart/form-data">
                                                             <a href="/update_file/{{ files.id }}" class="update">Обновить</a>
                                                             <button class="delete">Удалить</button>
                                                         </form>
@@ -109,9 +111,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <a href="{% url 'products' %}" class="add-btn hover-btn">К списку продуктов</a>
-                </div>
+                {% if not user.is_superuser %}
+                    <div class="col-lg-12">
+                        <a href="{% url 'products' %}" class="add-btn hover-btn">К списку продуктов</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </main>

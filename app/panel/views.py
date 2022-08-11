@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -668,7 +669,7 @@ def products(request):
                                     paginator = Paginator(product, 50)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products_search.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
+                                    return render(request, 'panel/products_search.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':
@@ -676,41 +677,47 @@ def products(request):
                                 items = list(map(int, item))
                                 if checkbool and checkbool != 'delete':
                                     name.objects.filter(pk__in=items).update(status=checkbool)
-                                    return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                                 if checkbool == 'delete':
                                     name.objects.filter(pk__in=items).delete()
-                                    return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                             else:
-                                return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', {'slug':slug,'address': address, 'page_obj': page_obj, 'products': products})
+                                return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                            return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
     else:
         return redirect('/login')
+
 
 # Список файлов
 def file(request):
     if request.user.is_authenticated:
         users = User.objects.values_list('id', flat=True).distinct()
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        address = str([i for i in str(request.path).split('/') if i][0])
-        if request.user.is_authenticated:
-            for u in users:
-                for m in manager:
-                    if u == m and request.user.id == u:
-                        for s, slug in shops:
-                            if s == m:
-                                file = files.objects.order_by('-date')
-                                if request.method == 'POST':
-                                    if request.FILES:
-                                        name = request.POST.get('filename')
-                                        slug = request.POST.get('slug')
-                                        fileart = request.FILES.get('fileart')
-                                        date = request.POST.get('date')
-                                        files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
-                                        return redirect(file)
-                                return render(request, 'panel/file.html', {'slug':slug ,'file':file })
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
+        for u in users:
+            for m in manager:
+                if u == m and request.user.id == u:
+                    for s, slug, n in shops:
+                        if s == m:
+                            shop = n
+                            file = files.objects.filter(slug=slug).order_by('-date', '-time')
+                            if request.method == 'POST':
+                                if request.FILES:
+                                    name = request.POST.get('filename')
+                                    slug = request.POST.get('slug')
+                                    fileart = request.FILES.get('fileart')
+                                    date = request.POST.get('date')
+                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
+                                    return render(request, 'panel/file.html', {'slug': slug, 'file': file, 'shop': shop})
+                            return render(request, 'panel/file.html', {'slug': slug, 'file': file, 'shop': shop})
+                elif request.user.is_superuser:
+                    shop = Shop.objects.values('slug', 'name')
+                    file = files.objects.values('slug','name').order_by('-date', '-time')
+                    return render(request, 'panel/file.html', { 'file': file, 'shop': shop})
+
     else:
         return redirect('/login')
+
 
 # Просмотр продукта
 def product_view(request, id):
@@ -821,8 +828,8 @@ def add_product(request, **kwargs):
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
                                 else:
-                                    n.objects.create(name=name,artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, \
-                                                                                                                                                                                                    image=image,
+                                    n.objects.create(name=name, artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, \
+                                                     image=image,
                                                      width=width, \
                                                      height=height,
                                                      length=length, fabricator=fabricator, material=material, color=color)
@@ -1192,7 +1199,7 @@ def add_work(request):
                         opwork = request.POST.get('opwork')
                         descriptions = request.POST.get('descriptions')
                         status = request.POST.get('status')
-                        works.objects.create(name=name, slug=slug_shop, phone=phone,graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        works.objects.create(name=name, slug=slug_shop, phone=phone, graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
                 elif request.user.is_superuser:
@@ -1209,14 +1216,15 @@ def add_work(request):
                         opwork = request.POST.get('opwork')
                         descriptions = request.POST.get('descriptions')
                         status = request.POST.get('status')
-                        works.objects.create(name=name, slug=slug,shopproiz=shopproiz, phone=phone,graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, \
-                                                                                                                                                                     descriptions=descriptions, status=status)
+                        works.objects.create(name=name, slug=slug, shopproiz=shopproiz, phone=phone, graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, \
+                                             descriptions=descriptions, status=status)
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
     else:
         return redirect('/login')
 
-#Удалить Вакансии
+
+# Удалить Вакансии
 def delete_work(request, id):
     work = ''
     try:
@@ -1226,7 +1234,8 @@ def delete_work(request, id):
     except work.DoesNotExist:
         return render(request, 'panel/edit_error_work.html', {'work': work})
 
-#Редактировать вакансию
+
+# Редактировать вакансию
 def edit_work(request, id):
     try:
         if request.user.is_authenticated:
@@ -1249,8 +1258,8 @@ def edit_work(request, id):
                             work.descriptions = request.POST.get('descriptions')
                             work.status = request.POST.get('status')
                             work.save()
-                            return render(request, 'panel/edit_ok_work.html', {'work':work})
-                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work':work})
+                            return render(request, 'panel/edit_ok_work.html', {'work': work})
+                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work': work})
                     elif request.user.is_superuser:
                         if request.method == 'POST':
                             work.name = request.POST.get('name')
@@ -1266,8 +1275,8 @@ def edit_work(request, id):
                             work.descriptions = request.POST.get('descriptions')
                             work.status = request.POST.get('status')
                             work.save()
-                            return render(request, 'panel/edit_ok_work.html', {'work':work})
-                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work':work})
+                            return render(request, 'panel/edit_ok_work.html', {'work': work})
+                        return render(request, 'panel/edit_work.html', {'shops': shops, 'work': work})
         else:
             return redirect('/login')
     except work.DoesNotExist:

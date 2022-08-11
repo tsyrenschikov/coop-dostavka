@@ -553,6 +553,7 @@ class files(models.Model):
     fileart = models.FileField(upload_to='file/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
     time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время загрузки')
+    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
     class Meta:
         ordering = ('name',)
         verbose_name = 'Файловая обработка'

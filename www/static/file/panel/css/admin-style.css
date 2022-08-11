@@ -1722,3 +1722,35 @@ div#editor {
     border-color: 0 !important;
     width: 100% !important;
 }
+
+.update {
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 3px;
+    background-color: green;
+    border: 0px solid rgba(0, 0, 0, 0.3);
+    border-bottom-width: 0px;
+    border-bottom-width: 1px;
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+    margin-right: 0px;
+    padding: 0 .75em;
+    margin-right: 19px;
+}
+
+.delete {
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 3px;
+    background-color: #f55d2c;
+    border: 0px solid rgba(0, 0, 0, 0.3);
+    border-bottom-width: 0px;
+    border-bottom-width: 1px;
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+    margin-right: 0px;
+    padding: 0 .75em;
+    margin-right: 19px;
+}

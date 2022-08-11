@@ -7,26 +7,57 @@
             <h2 class="mt-30 page-title">Продукты</h2>
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'products' %}">Продукты</a></li>
-                <li class="breadcrumb-item active">Файл обновления</li>
+                <li class="breadcrumb-item"><a href="{% url 'file' %}">Файлы выгрузки</a></li>
             </ol>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card card-static-2 mb-30">
                         <div class="card-body-table">
                             <div class="shopowner-content-left text-center pd-20">
-                                <form method="post" action="" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <div class="paginator">
-                                        <section>
-                                            <input type="file" accept=".xls,.xlsx,.txt" name="fileart" id="upload"/>
-                                            <input type="hidden" value="{{ slug }}" name="slug"/>
-                                            <input type="hidden" name="filename" id="filename"/>
-                                            <input type="hidden" name="date" id="date"/>
-                                            <button class="upload" type="submit">Загрузить</button>
-                                        </section>
-                                    </div>
-                                </form>
+                                <div class="shopowner-dt-left">
+                                    <span>
+                                        <ul>
+                                            <p style="font-size: 1.2em">Добавить файл обновления номенклатуры</p>
+                                        </ul>
+                                    </span>
+                                </div>
+                                {% if not user.is_superuser %}
+                                    <form method="post" action="" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="paginator">
+                                            <section>
+                                                <input type="file" accept=".xls,.xlsx,.txt" name="fileart" id="upload"/>
+                                                <input type="hidden" value="{{ slug }}" name="slug"/>
+                                                <input type="hidden" name="filename" id="filename"/>
+                                                <input type="hidden" name="date" id="date"/>
+                                                <input type="hidden" name="org" value="{{ n }}"/>
+                                                <button class="upload" type="submit">Загрузить</button>
+                                            </section>
+                                        </div>
+                                    </form>
+                                {% else %}
+                                    <form method="post" action="" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="paginator">
+                                            <div class="form-group">
+                                                <select name="slug" id="selorg" class="form-control">
+                                                    <option value="0">--Выберите организацию из списка--</option>
+                                                    {% for c,slug,name in shops %}
+                                                        <option value="{{ slug }}">{{ name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <section style="margin-left: 30px">
+                                                <input type="file" accept=".xls,.xlsx,.txt" name="fileart" id="upload"/>
+                                                <input type="hidden" name="slug" id="slug"/>
+                                                <input type="hidden" name="filename" id="filename"/>
+                                                <input type="hidden" name="date" id="date"/>
+                                                <input type="hidden" name="org" id="organiz"/>
+                                                <button class="upload" type="submit">Загрузить</button>
+                                            </section>
+                                        </div>
+                                    </form>
+                                {% endif %}
                                 <br>
                                 <div class="shopowner-dt-left">
                                     <span>
@@ -41,7 +72,11 @@
                                             <thead>
                                             <tr>
                                                 <th>Имя файла</th>
-                                                <th>Организация</th>
+                                                <th>
+                                                    {% if user.is_superuser %}
+                                                        Организация
+                                                    {% endif %}
+                                                </th>
                                                 <th>Дата</th>
                                                 <th>Время</th>
                                                 <th>Действия</th>
@@ -52,18 +87,17 @@
                                                 <tr>
                                                     <td>{{ files.name }}</td>
                                                     <td>
-                                                        {% if not user.is_superuser %}
-                                                            {{ shop }}
+                                                        {% if user.is_superuser %}
+                                                            {{ files.org }}
                                                         {% endif %}
                                                     </td>
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
-                                                    <td class="action-btns">
-                                                        <a href="#" class="edit-btn" title="Редактировать"><i class="fas
-															fa-edit"></i></a>
-                                                        <a href="#" class="delete-btn" title="Удалить" onclick="return confirm('Удалить клиента??? (ДЕЙСТВИЕ НЕ ' +
-															 'ОБРАТИМО)')"><i class="fas
-															fa-trash-alt"></i></a>
+                                                    <td>
+                                                        <form  method="post" action="" enctype="multipart/form-data">
+                                                            <a href="/update_file/{{ files.id }}" class="update">Обновить</a>
+                                                            <button class="delete">Удалить</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             {% endfor %}

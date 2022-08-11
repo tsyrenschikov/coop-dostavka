@@ -1,0 +1,43 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Продукты</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'file' %}">Файлы выгрузки</a></li>
+                <li class="breadcrumb-item active">Обновления позиций</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-body-table">
+                            <div class="shopowner-content-left text-center pd-20">
+                                <div class="shopowner-dt-left">
+                                    <span>
+                                        <ul>
+                                            <p style="font-size: 1.2em">Обновленные позиции</p>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% if not user.is_superuser %}
+                    <div class="col-lg-12">
+                        <a href="{% url 'products' %}" class="add-btn hover-btn">К списку продуктов</a>
+                    </div>
+                {% else %}
+                    <div class="col-lg-12">
+                        <a href="{% url 'file' %}" class="add-btn hover-btn">К списку файлов</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="{% static 'file/panel/js/UploadFile.js' %}"></script>
+{% endblock content %}

@@ -639,13 +639,13 @@ def delete_ok_subsubcategory(request):
 def products(request):
     users = User.objects.values_list('id', flat=True).distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
     address = str([i for i in str(request.path).split('/') if i][0])
     if request.user.is_authenticated:
         for u in users:
             for m in manager:
                 if u == m and request.user.id == u:
-                    for s, slug in shops:
+                    for s, slug, n in shops:
                         if s == m:
                             name = eval(slug)
                             products = name.objects.all()
@@ -658,7 +658,8 @@ def products(request):
                                     slug = request.POST.get('slug')
                                     fileart = request.FILES.get('fileart')
                                     date = request.POST.get('date')
-                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
+                                    org = request.POST.get('org')
+                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
                                     return redirect(file)
                             if request.method == 'POST':
                                 check_ = request.POST.getlist("check_")
@@ -669,7 +670,7 @@ def products(request):
                                     paginator = Paginator(product, 50)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products_search.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
+                                    return render(request, 'panel/products_search.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':
@@ -677,13 +678,13 @@ def products(request):
                                 items = list(map(int, item))
                                 if checkbool and checkbool != 'delete':
                                     name.objects.filter(pk__in=items).update(status=checkbool)
-                                    return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                                 if checkbool == 'delete':
                                     name.objects.filter(pk__in=items).delete()
-                                    return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                             else:
-                                return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', {'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                            return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
     else:
         return redirect('/login')
 
@@ -693,7 +694,7 @@ def file(request):
     if request.user.is_authenticated:
         users = User.objects.values_list('id', flat=True).distinct()
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-        shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'name').order_by('name').distinct()
         for u in users:
             for m in manager:
                 if u == m and request.user.id == u:
@@ -707,17 +708,33 @@ def file(request):
                                     slug = request.POST.get('slug')
                                     fileart = request.FILES.get('fileart')
                                     date = request.POST.get('date')
-                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date)
-                                    return render(request, 'panel/file.html', {'slug': slug, 'file': file, 'shop': shop})
-                            return render(request, 'panel/file.html', {'slug': slug, 'file': file, 'shop': shop})
+                                    org = request.POST.get('org')
+                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
+                                    return render(request, 'panel/file.html', {'n':n,'slug': slug, 'file': file, 'shop': shop})
+                            return render(request, 'panel/file.html', {'n':n,'slug': slug, 'file': file, 'shop': shop})
                 elif request.user.is_superuser:
-                    shop = Shop.objects.values('slug', 'name')
-                    file = files.objects.values('slug','name').order_by('-date', '-time')
-                    return render(request, 'panel/file.html', { 'file': file, 'shop': shop})
+                    file = files.objects.order_by('-date', '-time')
+                    if request.method == 'POST':
+                        if request.FILES:
+                            name = request.POST.get('filename')
+                            slug = request.POST.get('slug')
+                            fileart = request.FILES.get('fileart')
+                            date = request.POST.get('date')
+                            org = request.POST.get('org')
+                            files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
+                            return render(request, 'panel/file.html', {'file': file, 'shops': shops})
+                    return render(request, 'panel/file.html', { 'file': file, 'shops':shops })
 
     else:
         return redirect('/login')
 
+# Обновление позиций файлом
+def update_file(request, id):
+    if request.user.is_authenticated:
+        file = files.objects.get(id=id)
+        return render(request, 'panel/update_file.html', {'file':file })
+    else:
+        return redirect('/login')
 
 # Просмотр продукта
 def product_view(request, id):

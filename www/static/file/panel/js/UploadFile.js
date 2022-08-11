@@ -39,7 +39,8 @@ $('input').on('change', function () {
     var output = d.getFullYear() + '-' +
         (month < 10 ? '0' : '') + month + '-' +
         (day < 10 ? '0' : '') + day;
-    console.log(output)
+
+    var organ
 
     $('#filename').attr({
         'value': splittedFakePath[splittedFakePath.length - 1],
@@ -48,3 +49,17 @@ $('input').on('change', function () {
         'value': output,
     });
 });
+$('select').change(function () {
+        var org = '',
+            slug = '';
+        $('select option:selected').each(function () {
+            org += $(this).text();
+            slug += $(this).val()
+        });
+        $('#organiz').attr({
+            'value':org,
+        });
+        $('#slug').attr({
+            'value': slug,
+        })
+    }).change();

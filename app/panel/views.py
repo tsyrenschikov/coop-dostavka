@@ -167,10 +167,11 @@ def panel(request):
                     count_order4 = orders.objects.filter(slug=slug_shop).filter(status=4).count()
                     count_true = name_p.objects.filter(status=True).count()
                     products_count_user.update({name_shop: [name_p.objects.count(), count_true, count_total, count_order3, count_order4]})
-                    return render(request, 'panel/index.html', {'products_count_user': products_count_user, 'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1,
-                                                                'count_order2': count_order2,
-                                                                'count_order3': count_order3,
-                                                                'count_order4': count_order4, 'count_true': count_true})
+                    return render(request, 'panel/index.html',
+                                  {'products_count_user': products_count_user, 'products': products, 'count': count, 'count_order': count_order, 'count_order1': count_order1,
+                                   'count_order2': count_order2,
+                                   'count_order3': count_order3,
+                                   'count_order4': count_order4, 'count_true': count_true})
                 elif request.user.is_superuser:
                     count_order = orders.objects.filter(status=0).count()
                     count_order1 = orders.objects.filter(status=1).count()
@@ -436,24 +437,29 @@ def edit_ok_category(request, id):
 
 # Добавить категорию товара категории
 def add_category(request):
-    alert = {
-        'number': request.GET.get('number', ''),
-        'name': request.GET.get('name', ''),
-    }
+    if request.user.is_authenticated:
+        alert = {
+            'number': request.GET.get('number', ''),
+            'name': request.GET.get('name', ''),
+            'subcat': request.GET.getlist('subcat', ''),
+            'status': request.POST.get('status'),
+        }
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            status = request.POST.get('status')
+            subcat = request.POST.getlist('subcat')
+            number = request.POST.get('number')
 
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        status = request.POST.get('status')
-        number = request.POST.get('number')
-
-        if Category.objects.filter(number=request.POST['number']).exists():
-            alert['number'] = 'Номер категории уже существует'
-        elif Category.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Имя категории уже существует'
-        else:
-            Category.objects.create(name=name, status=status, number=number)
+            if Category.objects.filter(number=request.POST['number']).exists():
+                alert['number'] = 'Номер категории уже существует'
+            elif Category.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Имя категории уже существует'
+            else:
+                Category.objects.create(name=name, status=status, subcat=subcat, number=number)
+                return render(request, 'panel/add_ok_category.html')
             return render(request, 'panel/add_ok_category.html')
-    return render(request, 'panel/add_category.html', alert)
+        return render(request, 'panel/add_category.html', alert)
+    return redirect('/login')
 
 
 # Успешное добавления категории
@@ -670,7 +676,7 @@ def products(request):
                                     paginator = Paginator(product, 50)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products_search.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
+                                    return render(request, 'panel/products_search.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':
@@ -678,13 +684,13 @@ def products(request):
                                 items = list(map(int, item))
                                 if checkbool and checkbool != 'delete':
                                     name.objects.filter(pk__in=items).update(status=checkbool)
-                                    return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                                 if checkbool == 'delete':
                                     name.objects.filter(pk__in=items).delete()
-                                    return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                    return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                             else:
-                                return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', { 'n':n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                                return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
+                            return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
     else:
         return redirect('/login')
 
@@ -710,8 +716,8 @@ def file(request):
                                     date = request.POST.get('date')
                                     org = request.POST.get('org')
                                     files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
-                                    return render(request, 'panel/file.html', {'n':n,'slug': slug, 'file': file, 'shop': shop})
-                            return render(request, 'panel/file.html', {'n':n,'slug': slug, 'file': file, 'shop': shop})
+                                    return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
+                            return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
                 elif request.user.is_superuser:
                     file = files.objects.order_by('-date', '-time')
                     if request.method == 'POST':
@@ -723,18 +729,20 @@ def file(request):
                             org = request.POST.get('org')
                             files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
                             return render(request, 'panel/file.html', {'file': file, 'shops': shops})
-                    return render(request, 'panel/file.html', { 'file': file, 'shops':shops })
+                    return render(request, 'panel/file.html', {'file': file, 'shops': shops})
 
     else:
         return redirect('/login')
+
 
 # Обновление позиций файлом
 def update_file(request, id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
-        return render(request, 'panel/update_file.html', {'file':file })
+        return render(request, 'panel/update_file.html', {'file': file})
     else:
         return redirect('/login')
+
 
 # Просмотр продукта
 def product_view(request, id):
@@ -845,7 +853,8 @@ def add_product(request, **kwargs):
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
                                 else:
-                                    n.objects.create(name=name, artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat, description=description, \
+                                    n.objects.create(name=name, artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat,
+                                                     description=description, \
                                                      image=image,
                                                      width=width, \
                                                      height=height,
@@ -964,7 +973,8 @@ def order_total(request, statusord):
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4,
+                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                   'count_order4': count_order4,
                                    'areas': areas, 'address': address})
                 if request.user.is_superuser:
                     zakaz = orders.objects.all().filter(status=statusord)
@@ -977,7 +987,8 @@ def order_total(request, statusord):
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3, 'count_order4': count_order4,
+                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                   'count_order4': count_order4,
                                    'address': address})
     else:
         return redirect('/login')
@@ -1216,7 +1227,8 @@ def add_work(request):
                         opwork = request.POST.get('opwork')
                         descriptions = request.POST.get('descriptions')
                         status = request.POST.get('status')
-                        works.objects.create(name=name, slug=slug_shop, phone=phone, graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions, status=status)
+                        works.objects.create(name=name, slug=slug_shop, phone=phone, graf=graf, timesstart=timesstart, timesend=timesend, obr=obr, zp=zp, opwork=opwork, descriptions=descriptions,
+                                             status=status)
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
                 elif request.user.is_superuser:

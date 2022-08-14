@@ -15,6 +15,5 @@ $(document).ready(function () {
           $('msg_old').show();
           $('msg_number').html("<span style='font-size: 14px; color: red'></span>");
         }
-        var name = $('#name').val();
     });
 });

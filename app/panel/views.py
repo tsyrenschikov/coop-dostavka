@@ -438,27 +438,16 @@ def edit_ok_category(request, id):
 # Добавить категорию товара категории
 def add_category(request):
     if request.user.is_authenticated:
-        alert = {
-            'number': request.GET.get('number', ''),
-            'name': request.GET.get('name', ''),
-            'subcat': request.GET.getlist('subcat', ''),
-            'status': request.POST.get('status'),
-        }
+        count = Category.objects.count()
+        subcategory = SubCategory.objects.all()
         if request.method == 'POST':
             name = request.POST.get('name')
             status = request.POST.get('status')
             subcat = request.POST.getlist('subcat')
             number = request.POST.get('number')
-
-            if Category.objects.filter(number=request.POST['number']).exists():
-                alert['number'] = 'Номер категории уже существует'
-            elif Category.objects.filter(name=request.POST['name']).exists():
-                alert['name'] = 'Имя категории уже существует'
-            else:
-                Category.objects.create(name=name, status=status, subcat=subcat, number=number)
-                return render(request, 'panel/add_ok_category.html')
+            Category.objects.create(name=name, status=status, subcat=subcat, number=number)
             return render(request, 'panel/add_ok_category.html')
-        return render(request, 'panel/add_category.html', alert)
+        return render(request, 'panel/add_category.html', { 'subcategory':subcategory, 'count':count })
     return redirect('/login')
 
 

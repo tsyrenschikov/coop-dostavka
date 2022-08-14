@@ -2,6 +2,10 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% block stylesheet %}
+        <!--Выбор(сss из панели заказа)-->
+        <link rel='stylesheet' href="{% static 'file/panel/css/category/chosen.min.css' %}">
+    {% endblock stylesheet %}
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Категории</h2>
@@ -22,31 +26,21 @@
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Номер*</label>
-                                        <input type="number" name="number" class="form-control" pattern="[0-9]{,3}" placeholder="Порядковый номер" required="">
+                                        <input id="number" type="number" name="number" class="form-control" pattern="[0-9]{,3}" placeholder="Порядковый номер" required="">
+                                        <msg_old style="font-size: 14px; color: green">Всего позиций - {{ count }}</msg_old>
+                                        <msg_number></msg_number>
                                     </div>
-                                    {% if number %}
-                                        <div class="alert alert-danger alert-dismissible">
-                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            {{ number }}
-                                        </div>
-                                    {% endif %}
+                                    <input type="hidden" id="count" value="{{ count }}"/>
                                     <div class="form-group">
                                         <label class="form-label">Имя*</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Имя категории" required="">
+                                        <input id="name" type="text" name="name" class="form-control" placeholder="Имя категории" required="">
                                     </div>
                                     <div class="form-group">
-                                        {% if name %}
-                                            <div class="alert alert-danger alert-dismissible">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                {{ name }}
-                                            </div>
-                                        {% endif %}
+                                        <label class="form-label"><em>Товарная группа*</em></label>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label"><em>Товарная группа{{ subcat }}</em></label>
-                                        </br>
-                                        <select tabindex="2" name="subcat">
-                                            {% for subcategory in subcat %}
+                                        <select name="subcat" data-placeholder="-- Выберите необходимую товарную группу --" multiple="" class="chosen-select form-control">
+                                            {% for subcategory in subcategory %}
                                                 <option name="subcat">{{ subcategory.name }}</option>
                                             {% endfor %}
                                         </select>
@@ -59,7 +53,7 @@
                                             <option name="status" value="False">Не активный</option>
                                         </select>
                                     </div>
-                                    <button class="save-btn hover-btn" type="submit">Добавить категорию</button>
+                                    <button id="button" class="save-btn hover-btn" type="submit">Добавить категорию</button>
                                 </div>
                             </form>
                         </div>
@@ -68,4 +62,5 @@
             </div>
         </div>
     </main>
+    <script src="{% static 'file/panel/js/category/category.js' %}"></script>
 {% endblock content %}

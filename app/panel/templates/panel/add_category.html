@@ -29,22 +29,42 @@
                                         <input id="number" type="number" name="number" class="form-control" pattern="[0-9]{,3}" placeholder="Порядковый номер" required="">
                                         <msg_number></msg_number>
                                     </div>
-                                    <input type="hidden" id="count" value="{{ count }}"/>
-                                    <div class="form-group">
+                                    <table id="count_tab" hidden>
+                                        <tbody>
+                                        <tr>
+                                            {% for count in count %}
+                                                <td value="{{ count }}">
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table id="name_tab" hidden>
+                                        <tbody>
+                                        <tr>
+                                            {% for count_name in count_name %}
+                                                <td value="{{ count_name }}">
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div id="lab_name" class="form-group">
                                         <label class="form-label">Имя*</label>
                                         <input id="name" type="text" name="name" class="form-control" placeholder="Имя категории" required="">
+                                        <msg_name></msg_name>
                                     </div>
-                                    <div class="form-group">
+                                    <div id="tov_name" class="form-group">
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                     </div>
-                                    <div class="form-group">
+                                    <div id="sel_name" class="form-group">
                                         <select name="subcat" data-placeholder="-- Выберите необходимую товарную группу --" multiple="" class="chosen-select form-control">
                                             {% for subcategory in subcategory %}
                                                 <option name="subcat">{{ subcategory.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div id="status_name" class="form-group">
                                         <label class="form-label">Статус*</label>
                                         <div></div>
                                         <select id="action" name="status" class="form-control">

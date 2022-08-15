@@ -446,7 +446,8 @@ def add_category(request):
             status = request.POST.get('status')
             subcat = request.POST.getlist('subcat')
             number = request.POST.get('number')
-            Category.objects.create(name=name, status=status, subcat=subcat, number=number)
+            image = request.FILES["image"]
+            Category.objects.create(name=name, status=status, subcat=subcat, number=number, image=image)
             return render(request, 'panel/add_ok_category.html')
         return render(request, 'panel/add_category.html', { 'subcategory':subcategory, 'count':count, 'count_name':count_name })
     return redirect('/login')

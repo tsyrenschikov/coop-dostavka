@@ -438,8 +438,8 @@ def edit_ok_category(request, id):
 # Добавить категорию товара категории
 def add_category(request):
     if request.user.is_authenticated:
-        count = Category.objects.values_list('number', flat=True).distinct()
-        count_name = Category.objects.values_list('name', flat=True).distinct()
+        count = Category.objects.values_list('number', flat=True).order_by('-id').distinct()
+        count_name = Category.objects.values_list('name', flat=True).order_by('-id').distinct()
         subcategory = SubCategory.objects.all()
         if request.method == 'POST':
             name = request.POST.get('name')

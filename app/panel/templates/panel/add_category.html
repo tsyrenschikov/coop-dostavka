@@ -62,7 +62,7 @@
                                     </div>
                                     <div id="image_load" class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" value="" name="image" id="file">
+                                            <input type="file" value="" name="image" id="file" required="">
                                             <label type="file" for="file"></label>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                         <label class="form-label"><em>Товарная группа*</em></label>
                                     </div>
                                     <div id="tov_sel" class="form-group">
-                                        <select name="subcat" data-placeholder="-- Выберите необходимую товарную группу --" multiple="" class="chosen-select form-control">
+                                        <select name="subcat" data-placeholder="-- Выберите необходимую товарную группу --" multiple="" class="chosen-select form-control" required="">
                                             {% for subcategory in subcategory %}
                                                 <option name="subcat">{{ subcategory.name }}</option>
                                             {% endfor %}

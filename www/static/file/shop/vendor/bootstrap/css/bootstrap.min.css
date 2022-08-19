@@ -5690,6 +5690,39 @@ a.badge-dark.focus, a.badge-dark:focus {
     border-color: #1b1e21
 }
 
+.close1 {
+    color: #535151;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    height: 14px;
+    width: 5px;
+}
+
+.close1:hover {
+    color: #000;
+    text-decoration: none
+}
+
+.close1:not(:disabled):not(.disabled):focus, .close:not(:disabled):not(.disabled):hover {
+    opacity: .75
+}
+
+button.close1 {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+a.close1.disabled {
+    pointer-events: none
+}
+
 .close {
     float: right;
     font-size: 1.5rem;

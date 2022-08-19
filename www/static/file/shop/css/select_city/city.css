@@ -19,7 +19,8 @@
 @media (max-width: 992px) {
     #exampleModalCenter .modal-content,
     #exampleModalCenter2 .modal-content {
-        width: initial;
+        height: 100%;
+        margin: 0;
     }
 }
 

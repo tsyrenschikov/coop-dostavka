@@ -7427,6 +7427,7 @@ textarea {
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: .3rem;
     border-top-right-radius: .3rem;
+    background: #f7f7f7;
 }
 
 .autocomplete-suggestions {

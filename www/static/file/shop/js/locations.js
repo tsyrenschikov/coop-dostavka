@@ -33,7 +33,6 @@ $(document).ready(function () {
             lookup: teams,
             minChars: 1,
             onSelect: function (suggestion) {
-                var location_slug=$('#location_slug').attr('value');
                 $('#selection').html('Вы выбрали: ' + suggestion.value);
                 var field = suggestion.value;
                 localStorage.location = field;
@@ -43,16 +42,15 @@ $(document).ready(function () {
                             if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
-                            console.log(valuelist[0])
                         } else if ((suggestion.value === valuename) && (valuelist.length >= 1) && (indexname === indexlist)) {
                             if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
-                            console.log(valuelist[0])
                         }
                     });
                 });
             },
+
             showNoSuggestionNotice: true,
             noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
             groupBy: 'category'

@@ -1,8 +1,7 @@
 <!-- Category Model Start-->
-<div class="main-gambo-model modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="main-gambo-model modal fade" id="exampleModalCenter" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            {% comment %}Название блока в контенте{% endcomment %}
             <div class="modal-header_city">
                 <h3>Населенный пункт доставки</h3>
                 <button class="close1" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -11,17 +10,16 @@
                 <div class="autocomplete">
                     <input type="text" name="country" id="autocomplete" placeholder="Поиск населенного пункта"/>
                 </div>
-                {% comment %}<ul class="top-cities">
-                    <li><a href="#">Москва</a></li>
-                    <li><a href="#">Санкт-Петербург</a></li>
-                    <li><a href="#">Казань</a></li>
-                    <li><a href="#">Нижний Новгород</a></li>
-                    <li><a href="#">Новосибирск</a></li>
-                </ul>{% endcomment %}
                 <div id="selection"></div>
-                <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
                 <ul class="top-cities">
+                    <li class="bubble"><a href="{% url 'arti' %}">Арти</a></li>
+                    <li class="bubble"><a href="{% url 'shop_bogdan' %}">Богданович</a></li>
+                    <li class="bubble"><a href="{% url 'shop_bugalysh' %}">Бугалыш</a></li>
+                    <li class="bubble"><a href="{% url 'zajkovskoe' %}">Зайково</a></li>
+                    <li class="bubble"><a href="{% url 'pokrovskoe' %}">Покровское</a></li>
+                    <li class="bubble"><a href="{% url 'shop_chetkarino' %}">Четкарино</a></li>
                 </ul>
+                <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
                 <div class="modal-list">
                 </div>
             </div>

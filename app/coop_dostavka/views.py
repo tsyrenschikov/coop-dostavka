@@ -28,9 +28,16 @@ def offers(reguest):
 def career(reguest):
     work = works.objects.all().filter(status=True).order_by('id')[::-1]
     shops = Shop.objects.all()
-    local = Locations.objects.values_list('name', 'slug').distinct()
     users = User.objects.all()
     categories = Category.objects.order_by('number')
+    l = Locations.objects.values('name', 'slug').filter(status=True).order_by('slug')
+    dict_l = {k['name']: [] for k in l}
+    list_slug = list(set([i['slug'] for i in l]))
+    for loc in l:
+        for j in list_slug:
+            if j in loc['slug']:
+                dict_l[loc['name']].append(j)
+    local = dict_l
     return render(reguest, 'shop/career.html', {'users':users, 'categories' : categories,'local':local, 'work':work, 'shops':shops})
 
 def demo(reguest):

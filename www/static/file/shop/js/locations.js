@@ -4,7 +4,15 @@ var
     list_slug = [],
     list_name = [];
 
-$(document).ready(function () {
+$(document).ready(function ($) {
+    $(".top-cities li a, li a").click(function (e) {
+        var click_city = $(this).attr('value').toString();
+        $("#autocomplete").val(click_city);
+        $('#selection').html('Вы выбрали: ' + click_city);
+        $("#remove").trigger("click");
+        localStorage.location = click_city;
+    });
+
     var dict = $("input#local_input").data().value;
     dict = dict.replace(/'/g, '"');
     var object = JSON.parse(dict);
@@ -39,18 +47,21 @@ $(document).ready(function () {
                 $.each(list_name, function (indexname, valuename) {
                     $.each(list_slug, function (indexlist, valuelist) {
                         if ((suggestion.value === valuename) && (valuelist.length === 1) && (indexname === indexlist)) {
-                            if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
+                            if (location_slug !== valuelist[0]) {
+                                $("#remove").trigger("click");
+                            }
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
                         } else if ((suggestion.value === valuename) && (valuelist.length >= 1) && (indexname === indexlist)) {
-                            if (location_slug !== valuelist[0]){$("#remove").trigger("click");}
+                            if (location_slug !== valuelist[0]) {
+                                $("#remove").trigger("click");
+                            }
                             window.location.href = 'https://coop-dostavka.ru/' + valuelist[0],
                                 window.location(window.location.href);
                         }
                     });
                 });
             },
-
             showNoSuggestionNotice: true,
             noSuggestionNotice: 'В населенный пункт доставка не осуществляется',
             groupBy: 'category'
@@ -61,10 +72,10 @@ $(document).ready(function () {
                 'value': localStorage.location,
             });
         } else {
+            localStorage.location = "Выберите населенный пункт";
             $(window).load(function () {
                 if (window.location.href.indexOf('shop') === -1) {
-                    window.location.replace('https://coop-dostavka.ru/'+'?shop');
-
+                    window.location.replace('https://coop-dostavka.ru/' + '?shop');
                 }
             });
         }

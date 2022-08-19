@@ -3,6 +3,17 @@
 var
     list_slug = [],
     list_name = [];
+$(function (loc) {
+    if (!localStorage.location) {
+        localStorage.location = "Выберите населенный пункт";
+        $(window).load(function () {
+            if (window.location.href.indexOf() === -1) {
+                window.location.href = 'https://coop-dostavka.ru/'
+                window.location(window.location.href);
+            }
+        });
+    }
+});
 
 $(document).ready(function ($) {
     $(".top-cities li a, li a").click(function (e) {
@@ -73,11 +84,8 @@ $(document).ready(function ($) {
             });
         } else {
             localStorage.location = "Выберите населенный пункт";
-            $(window).load(function () {
-                if (window.location.href.indexOf('shop') === -1) {
-                    window.location.replace('https://coop-dostavka.ru/' + '?shop');
-                }
-            });
+            window.location.href = 'https://coop-dostavka.ru/'
+            window.location(window.location.href);
         }
 
 

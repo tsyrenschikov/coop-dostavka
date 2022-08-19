@@ -19,11 +19,31 @@
                     <li class="bubble"><a href="{% url 'pokrovskoe' %}" value="с.Покровское Артемовский р-он">с.Покровское</a></li>
                     <li class="bubble"><a href="{% url 'shop_chetkarino' %}" value="с.Четкарино Пышминский р-он">с.Четкарино</a></li>
                 </ul>
-                <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
-                <div class="modal-list">
+                {% comment %}<div class="modal-list">
+                    <div class="cities">
+                        <div class="city_list">
+                            <ul class="main-item">
+                                <li>
+                                    <ul class="sub-item">
+                                        <li><a href="#">Абакан</a></li>
+                                        <li><a href="#">Альметьевск</a></li>
+                                        <li><a href="#">Ангарск</a></li>
+                                        <li><a href="#">Арзамас</a></li>
+                                        <li><a href="#">Армавир </a></li>
+                                        <li><a href="#">Артём</a></li>
+                                        <li><a href="#">Архангельск</a></li>
+                                        <li><a href="#">Астрахань</a></li>
+                                        <li><a href="#">Ачинск</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>{% endcomment %}
+                    <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
+                    <div class="modal-list">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Category Model End-->
+    <!-- Category Model End-->

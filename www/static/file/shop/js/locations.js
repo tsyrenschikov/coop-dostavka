@@ -40,7 +40,7 @@ $(document).ready(function ($) {
         var nhlTeams = list_name;
         var nbaTeams = [''];
         var nhl = $.map(nhlTeams, function (team) {
-            return {value: team, data: {category: 'Свердловская область'}};
+            return {value: team, data: {category: 'Мы можем доставить в:'}};
         });
         var nba = $.map(nbaTeams, function (team) {
             return {value: team, data: {category: ''}};

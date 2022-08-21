@@ -23,27 +23,29 @@
                     <div class="cities">
                         <div class="city_list">
                             <ul class="main-item">
-                                <li>
+                                <li class="modalhead">Область
                                     <ul class="sub-item">
-                                        <li><a href="#">Абакан</a></li>
-                                        <li><a href="#">Альметьевск</a></li>
-                                        <li><a href="#">Ангарск</a></li>
-                                        <li><a href="#">Арзамас</a></li>
-                                        <li><a href="#">Армавир </a></li>
-                                        <li><a href="#">Артём</a></li>
-                                        <li><a href="#">Архангельск</a></li>
-                                        <li><a href="#">Астрахань</a></li>
-                                        <li><a href="#">Ачинск</a></li>
+                                        <li>Свердловская</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="main-item">
+                                <li class="modalhead">Населенный пункт
+                                    <ul class="sub-item">
+                                        {% for local in local %}
+                                        <li><a href="#">{{ local }}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </li>
                             </ul>
                         </div>
-                    </div>{% endcomment %}
-                    <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
-                    <div class="modal-list">
                     </div>
-                </div>
+                </div>{% endcomment %}
+            </div>
+            <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
+            <div class="modal-list">
             </div>
         </div>
     </div>
-    <!-- Category Model End-->
+</div>
+<!-- Category Model End-->

@@ -730,6 +730,12 @@ def file(request):
 def update_file(request, id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
+        with open(file.fileart.path) as f:
+            Line = f.readline()
+            while f.readline():
+                Line_rep = Line.replace('\ufeff', '')
+                # line = list(map(int,Line_rep.split()))
+
         return render(request, 'panel/update_file.html', {'file': file})
     else:
         return redirect('/login')

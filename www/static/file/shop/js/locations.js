@@ -16,6 +16,11 @@ $(function (loc) {
 });
 
 $(document).ready(function ($) {
+    $(window).resize(function () {
+        if ($(window).width() > 992) {
+
+        }
+    });
     $(".top-cities li a, li a").click(function (e) {
         var click_city = $(this).attr('value').toString();
         $("#autocomplete").val(click_city);

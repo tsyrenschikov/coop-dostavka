@@ -12,35 +12,13 @@
                 </div>
                 <div id="selection"></div>
                 <ul class="top-cities">
-                    <li class="bubble"><a href="{% url 'arti' %}" value="п.Арти Артинского р-на">п.Арти</a></li>
-                    <li class="bubble"><a href="{% url 'shop_bogdan' %}" value="г.Богданович Богдановичский р-он">г.Богданович</a></li>
-                    <li class="bubble"><a href="{% url 'shop_bugalysh' %}" value="с.Средний Бугалыш Красноуфимского р-на">с.Бугалыш</a></li>
-                    <li class="bubble"><a href="{% url 'zajkovskoe' %}" value="п.Зайково Ирбитский р-он">п.Зайково</a></li>
-                    <li class="bubble"><a href="{% url 'pokrovskoe' %}" value="с.Покровское Артемовский р-он">с.Покровское</a></li>
-                    <li class="bubble"><a href="{% url 'shop_chetkarino' %}" value="с.Четкарино Пышминский р-он">с.Четкарино</a></li>
+                    <li><a href="{% url 'arti' %}" value="п.Арти Артинского р-на">п.Арти</a></li>
+                    <li><a href="{% url 'shop_bogdan' %}" value="г.Богданович Богдановичский р-он">г.Богданович</a></li>
+                    <li><a href="{% url 'shop_bugalysh' %}" value="с.Средний Бугалыш Красноуфимского р-на">с.Бугалыш</a></li>
+                    <li><a href="{% url 'zajkovskoe' %}" value="п.Зайково Ирбитский р-он">п.Зайково</a></li>
+                    <li><a href="{% url 'pokrovskoe' %}" value="с.Покровское Артемовский р-он">с.Покровское</a></li>
+                    <li><a href="{% url 'shop_chetkarino' %}" value="с.Четкарино Пышминский р-он">с.Четкарино</a></li>
                 </ul>
-                {% comment %}<div class="modal-list">
-                    <div class="cities">
-                        <div class="city_list">
-                            <ul class="main-item">
-                                <li class="modalhead">Область
-                                    <ul class="sub-item">
-                                        <li>Свердловская</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="main-item">
-                                <li class="modalhead">Населенный пункт
-                                    <ul class="sub-item">
-                                        {% for local in local %}
-                                        <li><a href="#">{{ local }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>{% endcomment %}
             </div>
             <input type="submit" hidden="hidden" id="remove" class="clear-cart btn">
             <div class="modal-list">

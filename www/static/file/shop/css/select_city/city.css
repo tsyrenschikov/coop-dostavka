@@ -99,7 +99,7 @@
     padding-left: 0;
 }
 
-.bubble {
+.top-cities li {
     background-color: #f7f7f7;
     border: none;
     border-radius: 100px;
@@ -108,6 +108,13 @@
     justify-content: center;
     padding: 9px 12px;
     margin-top: 10px;
+}
+
+@media (max-width: 992px) {
+    .top-cities li {
+        background-color: #fff !important;
+        margin-left: 15px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -143,50 +150,33 @@
     flex-wrap: wrap;
 }
 
-@media (min-width: 992px) {
-    #exampleModalCenter .modal-body .modal-list .main-item,
-    #exampleModalCenter2 .modal-body .modal-list .main-item {
-        list-style: none;
-        padding-left: 0;
-        margin: 20px 0 0 0;
-        flex-grow: 1;
-        width: calc(100% * (1 / 2) - 10px - 1px);
-        font-weight: bold;
-    }
-}
-
-#exampleModalCenter .modal-body .modal-list .main-item .modalhead,
-#exampleModalCenter2 .modal-body .modal-list .main-item .modalhead {
-    color: #8c8c8c;
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0;
-    z-index: 10001;
-}
-
-@media (min-width: 992px) {
-    #exampleModalCenter .modal-body .modal-list .main-item .modalhead ul,
-    #exampleModalCenter2 .modal-body .modal-list .main-item .modalhead ul {
-        color: #000;
-        font-family: PT Sans, Helvetica, Arial, sans-serif;
-        padding: 10px 1em 10px 1px;
-        line-height: 1.42857;
-    }
-}
-
-#exampleModalCenter .modal-body .modal-list .main-item .sub-item,
-#exampleModalCenter2 .modal-body .modal-list .main-item .sub-item {
+#exampleModalCenter .modal-body .modal-list .main-item ,
+#exampleModalCenter2 .modal-body .modal-list .main-item  {
+    color: #000;
+    font-size: 16px;
     list-style: none;
     padding-left: 0;
     margin-top: 20px;
     font-weight: normal;
+    border-left: 1px solid #d8d8d8;
 }
 
-#exampleModalCenter .modal-body .modal-list .main-item .sub-item li a,
-#exampleModalCenter2 .modal-body .modal-list .main-item .sub-item li a {
-    color: #000;
+#exampleModalCenter .modal-body .modal-list .main-item  li,
+#exampleModalCenter2 .modal-body .modal-list .main-item  li {
+    border-right: 0;
+    width: 100%;
+    margin-top: 16px;
+    min-height: 1px;
+    overflow: auto;
+    padding: 5px;
+    scrollbar-color: #8c8c8c #f6f6f6;
 }
+
+/*#exampleModalCenter .modal-body .modal-list .main-item li a,
+#exampleModalCenter2 .modal-body .modal-list .main-item li a {
+    color: #000;
+}*/
+
 
 .modal-backdrop {
     display: none;

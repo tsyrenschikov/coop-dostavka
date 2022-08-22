@@ -732,20 +732,23 @@ def update_file(request, id):
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        for c, s in shops:
-            for m in manager:
-                if c == m and request.user.id == c:
-                    name = eval(s)
-                    products = name.objects.values_list('artikul','price', 'status').distinct()
-                    with open(file.fileart.path) as f:
-                        Line = f.readline()
-                        while f.readline():
-                            Line_rep = Line.replace('\ufeff', '')
-                            line = list(map(str,Line_rep.replace(';',' ').split()))
-                            for _ in line:
-                                price_line = line[2].replace(',', '.')
-                                for product in products:
-                                    if product[0] != None and product[0] == line[0]:
+        # for c, s in shops:
+        #     for m in manager:
+        #         if c == m and request.user.id == c:
+        #             name = eval(s)
+        #             products = name.objects.values_list('artikul','price', 'status').distinct()
+        #             with open(file.fileart.path) as f:
+        #                 Line = f.readline()
+        #                 while f.readline():
+        #                     Line_rep = Line.replace('\ufeff', '')
+        #                     line = list(map(str,Line_rep.replace(';',' ').split()))
+        #                     for _ in line:
+        #                         price_line = line[2].replace(',', '.')
+        #                         for product in products:
+        #                             product_float = float(product[1])
+        #                             if product[0] != None and product[0] == line[0] and product_float != price_line and line[1] >= 0:
+        #                                 try:
+
 
         return render(request, 'panel/update_file.html', {'file': file})
     else:

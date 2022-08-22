@@ -730,11 +730,25 @@ def file(request):
 def update_file(request, id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
-        with open(file.fileart.path) as f:
-            Line = f.readline()
-            while f.readline():
-                Line_rep = Line.replace('\ufeff', '')
-                # line = list(map(int,Line_rep.split()))
+        manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        for c, s in shops:
+            for m in manager:
+                if c == m and request.user.id == c:
+                    name = eval(s)
+                    products = name.objects.values_list('artikul','price', 'status').distinct()
+                    with open(file.fileart.path) as f:
+                        Line = f.readline()
+                        while f.readline():
+                            Line_rep = Line.replace('\ufeff', '')
+                            line = list(map(str,Line_rep.replace(';',' ').split()))
+                            # for line_file in line:
+                            #     for product in products:
+                            #         if product[0] != None and product[0] == line_file:
+                            #             price = products[1].replace(',', '.')
+                            #             if line_file != product[1]:
+
+
 
         return render(request, 'panel/update_file.html', {'file': file})
     else:

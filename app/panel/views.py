@@ -742,13 +742,10 @@ def update_file(request, id):
                         while f.readline():
                             Line_rep = Line.replace('\ufeff', '')
                             line = list(map(str,Line_rep.replace(';',' ').split()))
-                            # for line_file in line:
-                            #     for product in products:
-                            #         if product[0] != None and product[0] == line_file:
-                            #             price = products[1].replace(',', '.')
-                            #             if line_file != product[1]:
-
-
+                            for _ in line:
+                                price_line = line[2].replace(',', '.')
+                                for product in products:
+                                    if product[0] != None and product[0] == line[0]:
 
         return render(request, 'panel/update_file.html', {'file': file})
     else:

@@ -729,6 +729,7 @@ def file(request):
 # Обновление позиций файлом
 def update_file(request, id):
     if request.user.is_authenticated:
+        log = []
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
@@ -749,13 +750,16 @@ def update_file(request, id):
                                     product_get = name.objects.get(id=product[3])
                                     if product[0] == line[0] and product_float != price_line and line[1] > '0':
                                         product_get.price = price_line
-                                        product_get.status = True
-                                        product_get.save()
+                                        if  s != 'artiobchepit' and s != 'arti_p':
+                                            product_get.status = True
+                                            product_get.save()
+                                        else:
+                                            product_get.save()
                                     else:
                                         product_get.status = False
-                                        product_get.save()
+                                        # product_get.save()
                             Line = f.readline()
-        return render(request, 'panel/update_file.html', {'file': file})
+        return render(request, 'panel/file.html', {'file': file})
     else:
         return redirect('/login')
 

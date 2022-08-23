@@ -12,18 +12,39 @@
             </ol>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mb-30">
+                    <div class="card card-static-2 mt-30 mb-30">
+                        <div class="card-title-2">
+                            <h4>Обновленные позиции (Всего {{ count }})</h4>
+                        </div>
+                        <br>
                         <div class="card-body-table">
-                            <div class="shopowner-content-left text-center pd-20">
-                                <div class="shopowner-dt-left">
-                                    <span>
-                                        <ul>
-                                            <p style="font-size: 1.2em">Обновленные позиции</p>
-                                        </ul>
-                                    </span>
-                                </div>
+                            <div class="table-responsive">
+                                <table id="info-table" class="table ucp-table table-hover table_sort">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 20%">Номенклатура</th>
+                                        <th style="width: 40%">Цена</th>
+                                        <th style="width: 40%">Статус</th>
+                                    </tr>
+                                    {{ log }}
+                                    </thead>
+                                    <tbody>
+                                    {% comment %}{% for l in log %}
+                                        <tr>
+                                            <td>
+                                                {{ l.0 }}
+                                            </td>
+                                            <td>
+                                                {{ l.1 }}
+                                            </td>
+                                            <td>
+                                                {{ l.2 }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}{% endcomment %}
+                                    </tbody>
+                                </table>
                             </div>
-
                         </div>
                     </div>
                 </div>

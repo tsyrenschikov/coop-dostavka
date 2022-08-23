@@ -732,24 +732,29 @@ def update_file(request, id):
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        # for c, s in shops:
-        #     for m in manager:
-        #         if c == m and request.user.id == c:
-        #             name = eval(s)
-        #             products = name.objects.values_list('artikul','price', 'status').distinct()
-        #             with open(file.fileart.path) as f:
-        #                 Line = f.readline()
-        #                 while f.readline():
-        #                     Line_rep = Line.replace('\ufeff', '')
-        #                     line = list(map(str,Line_rep.replace(';',' ').split()))
-        #                     for _ in line:
-        #                         price_line = line[2].replace(',', '.')
-        #                         for product in products:
-        #                             product_float = float(product[1])
-        #                             if product[0] != None and product[0] == line[0] and product_float != price_line and line[1] >= 0:
-        #                                 try:
-
-
+        for c, s in shops:
+            for m in manager:
+                if c == m and request.user.id == c:
+                    name = eval(s)
+                    products = name.objects.values_list('artikul','price', 'status', 'id').distinct()
+                    with open(file.fileart.path) as f:
+                        Line = f.readline()
+                        while Line:
+                            Line_rep = Line.replace('\ufeff', '')
+                            line = list(map(str,Line_rep.replace(';',' ').split()))
+                            for _ in line:
+                                price_line = line[2].replace(',', '.')
+                                for product in products:
+                                    product_float = float(product[1])
+                                    product_get = name.objects.get(id=product[3])
+                                    if product[0] == line[0] and product_float != price_line and line[1] > '0':
+                                        product_get.price = price_line
+                                        product_get.status = True
+                                        product_get.save()
+                                    else:
+                                        product_get.status = False
+                                        product_get.save()
+                            Line = f.readline()
         return render(request, 'panel/update_file.html', {'file': file})
     else:
         return redirect('/login')

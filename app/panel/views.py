@@ -727,7 +727,7 @@ def file(request):
 
 
 # Обновление позиций файлом
-def update_file(request, id):
+def update_file(request,id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -736,24 +736,27 @@ def update_file(request, id):
             for m in manager:
                 if c == m and request.user.id == c:
                     name = eval(s)
-        products = name.objects.values_list('artikul', 'price', 'status', 'id').distinct()
+        products = name.objects.values_list('artikul', 'status','price','id').order_by('id')
+        count = 0
         with open(file.fileart.path) as f:
-            while f.readline():
-                Line = f.readline()
-                Line = Line.replace('\ufeff', '')
+            Line = f.readline()
+            Line = Line.replace('\ufeff', '')
+            while Line:
+                count += 1
                 line = list(map(str, Line.replace(';', ' ').split()))
                 price_line = line[2].replace(',', '.')
+                artikul = list(filter(lambda x: line[0] in x and int(line[1]) > 0, products))
                 for product in products:
                     product_get = name.objects.get(id=product[3])
                     if product[0] == line[0] and int(line[1]) > 0:
                         product_get.price = price_line
-                        product_get.status = True
+                        product_get.status = 'True'
                         product_get.save()
-                        return render(request, 'panel/update_file.html', {})
                     elif product[0] == line[0] and int(line[1]) <= 0:
-                        product_get.status = False
+                        product_get.status = 'False'
                         product_get.save()
-                        return render(request, 'panel/update_file.html', {})
+                Line = f.readline()
+        return render(request, 'panel/update_file.html', {'count':count})
     else:
         return redirect('/login')
 

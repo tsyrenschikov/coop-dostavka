@@ -738,10 +738,9 @@ def update_file(request, id):
                     name = eval(s)
         products = name.objects.values_list('artikul', 'price', 'status', 'id').distinct()
         with open(file.fileart.path) as f:
-            Line = f.readline()
-            Line_rep = Line.replace('\ufeff', '')
-            Line = Line_rep
             while f.readline():
+                Line = f.readline()
+                Line = Line.replace('\ufeff', '')
                 line = list(map(str, Line.replace(';', ' ').split()))
                 price_line = line[2].replace(',', '.')
                 for product in products:
@@ -750,14 +749,11 @@ def update_file(request, id):
                         product_get.price = price_line
                         product_get.status = True
                         product_get.save()
+                        return render(request, 'panel/update_file.html', {})
                     elif product[0] == line[0] and int(line[1]) <= 0:
                         product_get.status = False
                         product_get.save()
-                    else:
-                        product_get.status = False
-                        product_get.save()
-                Line = f.readline()
-        return render(request, 'panel/update_file.html', {})
+                        return render(request, 'panel/update_file.html', {})
     else:
         return redirect('/login')
 

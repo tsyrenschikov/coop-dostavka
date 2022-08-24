@@ -739,22 +739,26 @@ def update_file(request,id):
         products = name.objects.values_list('artikul', 'status','price','id').order_by('id')
         count = 0
         with open(file.fileart.path) as f:
-            Line = f.readline()
-            Line = Line.replace('\ufeff', '')
+            Line_ = f.readline()
+            Line = Line_.replace('\ufeff', '')
             while Line:
                 count += 1
                 line = list(map(str, Line.replace(';', ' ').split()))
                 price_line = line[2].replace(',', '.')
-                artikul = list(filter(lambda x: line[0] in x and int(line[1]) > 0, products))
-                for product in products:
-                    product_get = name.objects.get(id=product[3])
-                    if product[0] == line[0] and int(line[1]) > 0:
-                        product_get.price = price_line
-                        product_get.status = 'True'
-                        product_get.save()
-                    elif product[0] == line[0] and int(line[1]) <= 0:
-                        product_get.status = 'False'
-                        product_get.save()
+                artikul_true = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
+
+                for artikul1 in artikul_true:
+                    product_get = name.objects.get(id=artikul1[3])
+                    product_get.price = price_line
+                    product_get.status = 'True'
+                    product_get.save()
+
+                artikul_false = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                for artikul0 in artikul_false:
+                    product_get = name.objects.get(id=artikul0[3])
+                    product_get.price = price_line
+                    product_get.status = 'False'
+                    product_get.save()
                 Line = f.readline()
         return render(request, 'panel/update_file.html', {'count':count})
     else:

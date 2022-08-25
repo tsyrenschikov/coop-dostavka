@@ -2,6 +2,10 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% block stylesheet %}
+        <link href="{% static 'file/panel/css/modal_update.css' %}" rel="stylesheet">
+        <link href="{% static 'file/panel/css/flash_progress.css' %}" rel="stylesheet">
+    {% endblock stylesheet %}
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Продукты</h2>
@@ -97,8 +101,11 @@
                                                     <td>{{ files.time }}</td>
                                                     <td>
                                                         <form method="post" action="" enctype="multipart/form-data">
-                                                            <a href="/update_file/{{ files.id }}" class="update">Обновить</a>
-                                                            <button class="delete">Удалить</button>
+                                                            <div  data-toggle="modal" data-target="#exampleModalCenter2">
+                                                                <a href="/update_file/{{ files.id }}" class="update">Обновить</a>
+                                                                {% include 'panel/include/modal_progress.html' %}
+                                                            </div>
+                                                            {% comment %}<button class="delete">Удалить</button>{% endcomment %}
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -120,4 +127,6 @@
         </div>
     </main>
     <script type="text/javascript" src="{% static 'file/panel/js/UploadFile.js' %}"></script>
+    <script type="text/javascript" src="{% static 'file/panel/js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'file/panel/js/flash_progress.js' %}"></script>
 {% endblock content %}

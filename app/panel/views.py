@@ -449,7 +449,7 @@ def add_category(request):
             image = request.FILES["image"]
             Category.objects.create(name=name, status=status, subcat=subcat, number=number, image=image)
             return render(request, 'panel/add_ok_category.html')
-        return render(request, 'panel/add_category.html', { 'subcategory':subcategory, 'count':count, 'count_name':count_name })
+        return render(request, 'panel/add_category.html', {'subcategory': subcategory, 'count': count, 'count_name': count_name})
     return redirect('/login')
 
 
@@ -727,30 +727,40 @@ def file(request):
 
 
 # Обновление позиций файлом
-def update_file(request, id):
+def update_file(request,id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        # for c, s in shops:
-        #     for m in manager:
-        #         if c == m and request.user.id == c:
-        #             name = eval(s)
-        #             products = name.objects.values_list('artikul','price', 'status').distinct()
-        #             with open(file.fileart.path) as f:
-        #                 Line = f.readline()
-        #                 while f.readline():
-        #                     Line_rep = Line.replace('\ufeff', '')
-        #                     line = list(map(str,Line_rep.replace(';',' ').split()))
-        #                     for _ in line:
-        #                         price_line = line[2].replace(',', '.')
-        #                         for product in products:
-        #                             product_float = float(product[1])
-        #                             if product[0] != None and product[0] == line[0] and product_float != price_line and line[1] >= 0:
-        #                                 try:
+        for c, s in shops:
+            for m in manager:
+                if c == m and request.user.id == c:
+                    name = eval(s)
+        products = name.objects.values_list('artikul', 'status','price','id').order_by('id')
+        count = 0
+        with open(file.fileart.path) as f:
+            Line_ = f.readline()
+            Line = Line_.replace('\ufeff', '')
+            while Line:
+                count += 1
+                line = list(map(str, Line.replace(';', ' ').split()))
+                price_line = line[2].replace(',', '.')
+                artikul_true = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
 
+                for artikul1 in artikul_true:
+                    product_get = name.objects.get(id=artikul1[3])
+                    product_get.price = price_line
+                    product_get.status = 'True'
+                    product_get.save()
 
-        return render(request, 'panel/update_file.html', {'file': file})
+                artikul_false = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                for artikul0 in artikul_false:
+                    product_get = name.objects.get(id=artikul0[3])
+                    product_get.price = price_line
+                    product_get.status = 'False'
+                    product_get.save()
+                Line = f.readline()
+        return render(request, 'panel/update_file.html', {'count':count})
     else:
         return redirect('/login')
 

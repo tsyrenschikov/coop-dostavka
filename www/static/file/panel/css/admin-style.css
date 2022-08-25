@@ -1728,15 +1728,18 @@ div#editor {
     -webkit-border-radius: 0px;
     border-radius: 3px;
     background-color: green;
-    border: 0px solid rgba(0, 0, 0, 0.3);
-    border-bottom-width: 0px;
     border-bottom-width: 1px;
     color: #fff;
     display: inline-block;
     margin: 0;
-    margin-right: 0px;
     padding: 0 .75em;
     margin-right: 19px;
+}
+
+a:hover.update {
+    text-decoration: none;
+    color: #ffc107;
+    background-color: green;
 }
 
 .delete {

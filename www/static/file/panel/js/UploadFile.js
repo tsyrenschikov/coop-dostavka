@@ -50,16 +50,16 @@ $('input').on('change', function () {
     });
 });
 $('select').change(function () {
-        var org = '',
-            slug = '';
-        $('select option:selected').each(function () {
-            org += $(this).text();
-            slug += $(this).val()
-        });
-        $('#organiz').attr({
-            'value':org,
-        });
-        $('#slug').attr({
-            'value': slug,
-        })
-    }).change();
+    var org = '',
+        slug = '';
+    $('select option:selected').each(function () {
+        org += $(this).text();
+        slug += $(this).val()
+    });
+    $('#organiz').attr({
+        'value': org,
+    });
+    $('#slug').attr({
+        'value': slug,
+    })
+}).change();

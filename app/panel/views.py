@@ -700,6 +700,7 @@ def file(request):
                             shop = n
                             file = files.objects.filter(slug=slug).order_by('-date', '-time')
                             if request.method == 'POST':
+                                ostatki = request.POST.get('ostatki')
                                 if request.FILES:
                                     name = request.POST.get('filename')
                                     slug = request.POST.get('slug')
@@ -708,6 +709,7 @@ def file(request):
                                     org = request.POST.get('org')
                                     files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
                                     return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
+                                return ostatki
                             return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
                 elif request.user.is_superuser:
                     file = files.objects.order_by('-date', '-time')
@@ -727,7 +729,7 @@ def file(request):
 
 
 # Обновление позиций файлом
-def update_file(request,id):
+def update_file(request, id):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -736,7 +738,7 @@ def update_file(request,id):
             for m in manager:
                 if c == m and request.user.id == c:
                     name = eval(s)
-        products = name.objects.values_list('artikul', 'status','price','id').order_by('id')
+        products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count = 0
         with open(file.fileart.path) as f:
             Line_ = f.readline()
@@ -745,22 +747,29 @@ def update_file(request,id):
                 count += 1
                 line = list(map(str, Line.replace(';', ' ').split()))
                 price_line = line[2].replace(',', '.')
-                artikul_true = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
 
-                for artikul1 in artikul_true:
-                    product_get = name.objects.get(id=artikul1[3])
+                artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
+                for artikul in artikul:
+                    product_get = name.objects.get(id=artikul[3])
                     product_get.price = price_line
                     product_get.status = 'True'
                     product_get.save()
-
-                artikul_false = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
-                for artikul0 in artikul_false:
-                    product_get = name.objects.get(id=artikul0[3])
+                artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                for artikul in artikul:
+                    product_get = name.objects.get(id=artikul[3])
                     product_get.price = price_line
                     product_get.status = 'False'
                     product_get.save()
+                # else:
+                #     artikul = list(filter(lambda x: line[0] in x, products))
+                #     for artikul in artikul:
+                #         product_get = name.objects.get(id=artikul[3])
+                #         product_get.price = price_line
+                #         product_get.status = 'True'
+                #         product_get.save()
                 Line = f.readline()
-        return render(request, 'panel/update_file.html', {'count':count})
+        return render(request, 'panel/update_file.html', {'count': count})
+
     else:
         return redirect('/login')
 

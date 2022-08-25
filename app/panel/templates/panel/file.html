@@ -83,6 +83,7 @@
                                                 </th>
                                                 <th>Дата</th>
                                                 <th>Время</th>
+                                                <th>Остатки</th>
                                                 <th>Действия</th>
                                             </tr>
                                             </thead>
@@ -100,8 +101,11 @@
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
                                                     <td>
+                                                        <input id="c1" type="checkbox" checked>
+                                                    </td>
+                                                    <td>
                                                         <form method="post" action="" enctype="multipart/form-data">
-                                                            <div  data-toggle="modal" data-target="#exampleModalCenter2">
+                                                            <div data-toggle="modal" data-target="#exampleModalCenter2">
                                                                 <a href="/update_file/{{ files.id }}" class="update">Обновить</a>
                                                                 {% include 'panel/include/modal_progress.html' %}
                                                             </div>

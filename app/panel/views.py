@@ -700,7 +700,6 @@ def file(request):
                             shop = n
                             file = files.objects.filter(slug=slug).order_by('-date', '-time')
                             if request.method == 'POST':
-                                ostatki = request.POST.get('ostatki')
                                 if request.FILES:
                                     name = request.POST.get('filename')
                                     slug = request.POST.get('slug')
@@ -709,7 +708,6 @@ def file(request):
                                     org = request.POST.get('org')
                                     files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
                                     return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
-                                return ostatki
                             return render(request, 'panel/file.html', {'n': n, 'slug': slug, 'file': file, 'shop': shop})
                 elif request.user.is_superuser:
                     file = files.objects.order_by('-date', '-time')
@@ -729,7 +727,7 @@ def file(request):
 
 
 # Обновление позиций файлом
-def update_file(request, id):
+def update_file(request, id, ost):
     if request.user.is_authenticated:
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()

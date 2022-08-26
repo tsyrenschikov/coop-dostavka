@@ -15,19 +15,18 @@
             </ol>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <form method="post" action="" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input id="ost_check" type="hidden" name="ostatki">
-                        <div class="card card-static-2 mb-30">
-                            <div class="card-body-table">
-                                <div class="shopowner-content-left text-center pd-20">
-                                    <div class="shopowner-dt-left">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-body-table">
+                            <div class="shopowner-content-left text-center pd-20">
+                                <div class="shopowner-dt-left">
                                     <span>
                                         <ul>
                                             <p style="font-size: 1.2em">Добавить файл обновления номенклатуры</p>
                                         </ul>
                                     </span>
-                                    </div>
+                                </div>
+                                <form method="post" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
                                     {% if not user.is_superuser %}
                                         <div class="paginator">
                                             <section>
@@ -59,64 +58,65 @@
                                             </section>
                                         </div>
                                     {% endif %}
-                                    <br>
-                                    <div class="shopowner-dt-left">
+                                </form>
+                                <br>
+                                <div class="shopowner-dt-left">
                                     <span>
                                         <ul>
                                             <p style="font-size: 1.2em"> Список загруженных файлов</p>
                                         </ul>
                                     </span>
-                                    </div>
-                                    <div class="card-body-table">
-                                        <div class="table-responsive">
-                                            <table id="info-table" class="table ucp-table table-hover table_sort">
-                                                <thead>
+                                </div>
+                                <div class="card-body-table">
+                                    <div class="table-responsive">
+                                        <table id="info-table" class="table ucp-table table-hover table_sort">
+                                            <thead>
+                                            <tr>
+                                                <th>Имя файла</th>
+                                                <th>
+                                                    {% if user.is_superuser %}
+                                                        Организация
+                                                    {% endif %}
+                                                </th>
+                                                <th>Дата</th>
+                                                <th>Время</th>
+                                                <th>Остатки</th>
+                                                <th>Действия</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for files in file %}
                                                 <tr>
-                                                    <th>Имя файла</th>
-                                                    <th>
+                                                    <td>
+                                                        <a href="{{ files.fileart.url }}" download>{{ files.name }}</a>
+                                                    </td>
+                                                    <td>
                                                         {% if user.is_superuser %}
-                                                            Организация
+                                                            {{ files.org }}
                                                         {% endif %}
-                                                    </th>
-                                                    <th>Дата</th>
-                                                    <th>Время</th>
-                                                    <th>Остатки</th>
-                                                    <th>Действия</th>
+                                                    </td>
+                                                    <td>{{ files.date }}</td>
+                                                    <td>{{ files.time }}</td>
+                                                    <td>
+                                                        <input type="checkbox" class="check-all">
+                                                    </td>
+                                                    <td>
+                                                        <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
+                                                            <input id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link">
+                                                            {% include 'panel/include/modal_progress.html' %}
+                                                        </div>
+                                                        {% comment %}<button class="delete">Удалить</button>{% endcomment %}
+                                                    </td>
                                                 </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for files in file %}
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{ files.fileart.url }}" download>{{ files.name }}</a>
-                                                        </td>
-                                                        <td>
-                                                            {% if user.is_superuser %}
-                                                                {{ files.org }}
-                                                            {% endif %}
-                                                        </td>
-                                                        <td>{{ files.date }}</td>
-                                                        <td>{{ files.time }}</td>
-                                                        <td>
-                                                            <input type="checkbox" class="check-all">
-                                                        </td>
-                                                        <td>
-                                                            <div data-toggle="modal" data-target="#exampleModalCenter2">
-                                                                <a href="/update_file/{{ files.id }}" type="submit" class="update">Обновить</a>
-                                                                {% include 'panel/include/modal_progress.html' %}
-                                                            </div>
-                                                            {% comment %}<button class="delete">Удалить</button>{% endcomment %}
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    <input id="ost_check" type="hidden" name="ostatki">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 {% if not user.is_superuser %}
                     <div class="col-lg-12">

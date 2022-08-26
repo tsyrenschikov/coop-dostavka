@@ -1,26 +1,22 @@
 $(document).ready(function () {
-    $('#ost_check').attr({
-        'value': 0,
+    var href = '',
+        check_list = [],
+        check_href = [],
+        ost = 0;
+    $('.ost').each(function (i, v) {
+        href = $(v).find('.link').attr('value');
+        check_href.push(href);
+        $(this).html('<a class="update" type="submit" href="' + href + '' + ost + '">Обновить</a>');
     });
-    $('#info-table input:checkbox').click(function () {
-        if ($(this).is(':checked')) {
-            $('#info-table input:checkbox').not(this).prop('checked', false);
-            $('#ost_check').attr({
-                'value': 1,
-            });
-        } else {
-            $('#ost_check').attr({
-                'value': 0,
-            });
-        }
-    });
-    $('.ost').each(function (id, elm) {
-        var ost='';
-        var href = $(elm).find('.link').attr('value');
-        $('input').each(function () {
-            ost+= $('#ost_check').attr('value');
+    $(this).change(function (e) {
+        check_list = [];
+        $("input:checkbox:checked").each(function () {
+            if ($(this).is(':checked')) {
+                check_list.push(1);
+            } else {
+                check_list.push(0)
+            }
         });
-        console.log(href, ost)
-        $(elm).append('<a class="update" type="submit" href="' + href + '' + ost + '/ ">Обновить</a>');
+        console.log(check_list, check_href)
     });
 });

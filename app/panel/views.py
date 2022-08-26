@@ -732,6 +732,7 @@ def update_file(request, id, ost):
         file = files.objects.get(id=id)
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        address = int([i for i in str(request.path).split('/') if i][-1])
         for c, s in shops:
             for m in manager:
                 if c == m and request.user.id == c:
@@ -746,27 +747,28 @@ def update_file(request, id, ost):
                 line = list(map(str, Line.replace(';', ' ').split()))
                 price_line = line[2].replace(',', '.')
 
-                artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
-                for artikul in artikul:
-                    product_get = name.objects.get(id=artikul[3])
-                    product_get.price = price_line
-                    product_get.status = 'True'
-                    product_get.save()
-                artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
-                for artikul in artikul:
-                    product_get = name.objects.get(id=artikul[3])
-                    product_get.price = price_line
-                    product_get.status = 'False'
-                    product_get.save()
-                # else:
-                #     artikul = list(filter(lambda x: line[0] in x, products))
-                #     for artikul in artikul:
-                #         product_get = name.objects.get(id=artikul[3])
-                #         product_get.price = price_line
-                #         product_get.status = 'True'
-                #         product_get.save()
+                if address == 1:
+                    artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
+                    for artikul in artikul:
+                        product_get = name.objects.get(id=artikul[3])
+                        product_get.price = price_line
+                        product_get.status = 'True'
+                        product_get.save()
+                    artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                    for artikul in artikul:
+                        product_get = name.objects.get(id=artikul[3])
+                        product_get.price = price_line
+                        product_get.status = 'False'
+                        product_get.save()
+                elif address == 0:
+                    artikul = list(filter(lambda x: line[0] in x, products))
+                    for artikul in artikul:
+                        product_get = name.objects.get(id=artikul[3])
+                        product_get.price = price_line
+                        product_get.status = 'True'
+                        product_get.save()
                 Line = f.readline()
-        return render(request, 'panel/update_file.html', {'count': count})
+        return render(request, 'panel/update_file.html', {'count': count, 'address':address})
 
     else:
         return redirect('/login')

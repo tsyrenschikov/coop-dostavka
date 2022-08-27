@@ -98,11 +98,11 @@
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
                                                     <td>
-                                                        <input type="checkbox" class="check-all">
+                                                        <input type="checkbox" name="field" class="check-all" value="{{ files.id }}">
                                                     </td>
                                                     <td>
                                                         <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
-                                                            <input id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link">
+                                                            <a id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link"></a>
                                                             {% include 'panel/include/modal_progress.html' %}
                                                         </div>
                                                         {% comment %}<button class="delete">Удалить</button>{% endcomment %}

@@ -17,7 +17,6 @@ $(document).ready(function () {
                     'required': false
                 });
                 check = $(this).val();
-                console.log(check)
                 $.each(check_href, function (hindex, hvalue) {
                     if (check === hvalue) {
                         ost = 1;

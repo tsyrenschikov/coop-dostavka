@@ -5,6 +5,7 @@
     {% block stylesheet %}
         <link href="{% static 'file/panel/css/modal_update.css' %}" rel="stylesheet">
         <link href="{% static 'file/panel/css/flash_progress.css' %}" rel="stylesheet">
+        <link href="{% static 'file/panel/vendor/semantic/semantic.min.css' %}" rel="stylesheet">
     {% endblock stylesheet %}
     <main>
         <div class="container-fluid">
@@ -80,7 +81,9 @@
                                                 </th>
                                                 <th>Дата</th>
                                                 <th>Время</th>
-                                                <th>Остатки</th>
+                                                <th class="order-title">Остатки
+                                                    <span data-inverted="" data-tooltip="Если Вам необходимо учитывать остатки, то установите галочку." data-position="top center">?</span>
+                                                </th>
                                                 <th>Действия</th>
                                             </tr>
                                             </thead>

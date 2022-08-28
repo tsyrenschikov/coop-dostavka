@@ -106,7 +106,7 @@
                         </nav>
                     </div>
                 {% endif %}
-                 <a class="nav-link {% if request.path == '/file/' %}active{% endif %}" href="{% url 'file' %}">
+                <a class="nav-link {% if request.path == '/file/' %}active{% endif %}" href="{% url 'file' %}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     Файлы выгрузки
                 </a>
@@ -115,8 +115,12 @@
                     Заказы
                 </a>
                 <a class="nav-link" href="{% url 'work' %}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                     Вакансии
+                </a>
+                <a class="nav-link" href="{% url 'instructions' %}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Инструкции
                 </a>
             </div>
         </div>

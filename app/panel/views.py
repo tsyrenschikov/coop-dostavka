@@ -1374,3 +1374,11 @@ def edit_work(request, id):
             return redirect('/login')
     except work.DoesNotExist:
         return render(request, 'panel/edit_error_work.html', {'shops': shops})
+
+
+#Инструкции
+def instructions(request):
+    if request.user.is_authenticated:
+        return render(request, 'panel/instructions.html', {})
+    else:
+        return redirect('/login')

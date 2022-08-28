@@ -1,0 +1,36 @@
+{% extends 'panel/layouts/base.html' %}
+{% block title %}panel{% endblock %}
+{% block content %}
+    {% load static %}
+    {% block stylesheet %}
+        <link href="{% static 'file/panel/css/instructions.css' %}" rel="stylesheet">
+    {% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Инструкции</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'instructions' %}">Инструкции</a></li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-body-table">
+                            <div class="shopowner-content-left text-center pd-20">
+                                <div class="videos">
+                                    <div class="video">
+                                        <video controls>
+                                            <source src="{% static 'file/panel/instructions/update_file.mp4' %}" controls="controls" type="video/mp4"></source>
+                                        </video>
+                                        <div class="video-content">Работа с файлами обмена 1С рарус</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="{% static 'file/panel/js/instructions.js' %}"></script>
+{% endblock content %}

@@ -88,4 +88,5 @@ urlpatterns = [
     path('add_work/', views.add_work, name='add_work'),
     path('delete_work/<int:id>/', views.delete_work, name='delete_work'),
     path('edit_work/<int:id>/', views.edit_work, name='edit_work'),
+    path('instructions/', views.instructions, name='instructions'),
 ]

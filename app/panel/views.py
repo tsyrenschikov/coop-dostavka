@@ -747,32 +747,44 @@ def update_file(request, id, ost):
             while Line:
                 count += 1
                 line = list(map(str, Line.replace(';', ' ').split()))
-                price_line = line[2].replace(',', '.')
 
-                if address == 1:
-                    artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
-                    for artikul in artikul:
-                        product_get = name.objects.get(id=artikul[3])
-                        product_get.price = price_line
-                        product_get.status = 'True'
-                        product_get.save()
-                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
-                    artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
-                    for artikul in artikul:
-                        product_get = name.objects.get(id=artikul[3])
-                        product_get.price = price_line
-                        product_get.status = 'False'
-                        product_get.save()
-                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'False')])
-                elif address == 0:
-                    artikul = list(filter(lambda x: line[0] in x, products))
-                    for artikul in artikul:
-                        product_get = name.objects.get(id=artikul[3])
-                        product_get.price = price_line
-                        product_get.status = 'True'
-                        product_get.save()
-                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
-                Line = f.readline()
+                try:
+                    price_line = line[2].replace(',', '.')
+
+                    if address == 1:
+                        artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
+                        for artikul in artikul:
+                            product_get = name.objects.get(id=artikul[3])
+                            product_get.price = price_line
+                            product_get.status = 'True'
+                            product_get.save()
+                            product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
+                        artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                        for artikul in artikul:
+                            product_get = name.objects.get(id=artikul[3])
+                            product_get.price = price_line
+                            product_get.status = 'False'
+                            product_get.save()
+                            product_list.extend([(artikul[0],product_get,artikul[2],price_line,'False')])
+                    elif address == 0:
+                        artikul = list(filter(lambda x: line[0] in x, products))
+                        for artikul in artikul:
+                            product_get = name.objects.get(id=artikul[3])
+                            product_get.price = price_line
+                            product_get.status = 'True'
+                            product_get.save()
+                            product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
+                    Line = f.readline()
+                except IndexError:
+                    proverka = 0
+                    file.delete();
+                    os.remove(file.fileart.path)
+                    return render(request, 'panel/update_file.html', {'proverka': proverka})
+                except DoesNotExist:
+                    proverka = 0
+                    file.delete();
+                    os.remove(file.fileart.path)
+                    return render(request, 'panel/update_file.html', {'proverka': proverka})
         file.delete(); os.remove(file.fileart.path)
         file_count = len(product_list)
         return render(request, 'panel/update_file.html', {'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})

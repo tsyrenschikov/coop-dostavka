@@ -1,11 +1,9 @@
 #exampleModalCenter .modal-content,
 #exampleModalCenter2 .modal-content {
-    box-shadow: none;
-    border-radius: initial;
     width: 800px;
     margin: auto;
     border-radius: 8px;
-    background: #fff;
+    /*background: #fff;*/
     min-width: 200px;
     max-width: 100%;
     box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .32);

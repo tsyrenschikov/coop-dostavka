@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
+import os
 from panel.models import *
 
 register = template.Library()
@@ -738,7 +739,8 @@ def update_file(request, id, ost):
                 if c == m and request.user.id == c:
                     name = eval(s)
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
-        count = 0
+        product_count = name.objects.count()
+        count = 0;product_list = [];
         with open(file.fileart.path) as f:
             Line_ = f.readline()
             Line = Line_.replace('\ufeff', '')
@@ -754,12 +756,14 @@ def update_file(request, id, ost):
                         product_get.price = price_line
                         product_get.status = 'True'
                         product_get.save()
+                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
                     artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
                     for artikul in artikul:
                         product_get = name.objects.get(id=artikul[3])
                         product_get.price = price_line
                         product_get.status = 'False'
                         product_get.save()
+                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'False')])
                 elif address == 0:
                     artikul = list(filter(lambda x: line[0] in x, products))
                     for artikul in artikul:
@@ -767,12 +771,23 @@ def update_file(request, id, ost):
                         product_get.price = price_line
                         product_get.status = 'True'
                         product_get.save()
+                        product_list.extend([(artikul[0],product_get,artikul[2],price_line,'True')])
                 Line = f.readline()
-        return render(request, 'panel/update_file.html', {'count': count, 'address':address})
-
+        file.delete(); os.remove(file.fileart.path)
+        file_count = len(product_list)
+        return render(request, 'panel/update_file.html', {'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})
     else:
         return redirect('/login')
 
+#Удалить файл
+def delete_file(request,id):
+
+    file = files.objects.get(id=id)
+    try:
+        file.delete();os.remove(file.fileart.path)
+        return render(request, 'panel/delete_file.html', {})
+    except file.DoesNotExist:
+        return render(request, 'panel/delete_file.html', {})
 
 # Просмотр продукта
 def product_view(request, id):

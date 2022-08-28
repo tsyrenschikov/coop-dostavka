@@ -107,7 +107,10 @@
                                                         <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
                                                             <a id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link"></a>
                                                         </div>
-                                                        <button class="delete">Удалить</button>
+                                                        <a href="/delete_file/{{ files.id }}" class="delete" onclick="return confirm('Удалить файл???' +
+                                                 ' (ДЕЙСТВИЕ НЕ' +
+                                                             ' ' +
+															 'ОБРАТИМО)')">Удалить</a>
                                                         {% include 'panel/include/modal_progress.html' %}
                                                     </td>
                                                 </tr>

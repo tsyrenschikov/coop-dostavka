@@ -733,7 +733,7 @@ def update_file(request, id, ost):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        address = int([i for i in str(request.path).split('/') if i][-1])
+        address = str([i for i in str(request.path).split('/') if i][-1])
         for c, s in shops:
             for m in manager:
                 if c == m and request.user.id == c:
@@ -753,22 +753,22 @@ def update_file(request, id, ost):
 
                     price_line = line[2].replace(',', '.')
 
-                    if address == 1:
-                        artikul = list(filter(lambda x: line[0] in x and int(line[1]) != 0, products))
+                    if address == '1':
+                        artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])
                             product_get.price = price_line
                             product_get.status = 'True'
                             product_get.save()
                             product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                        artikul = list(filter(lambda x: line[0] in x and int(line[1]) == 0, products))
+                        artikul = list(filter(lambda x: line[0] in x and line[1] == '0', products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])
                             product_get.price = price_line
                             product_get.status = 'False'
                             product_get.save()
                             product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
-                    elif address == 0:
+                    elif address == '0':
                         artikul = list(filter(lambda x: line[0] in x, products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])
@@ -790,6 +790,9 @@ def update_file(request, id, ost):
         except ObjectDoesNotExist:
             proverka = 1
             return render(request, 'panel/update_file.html', {'proverka': proverka})
+        # except ValueError:
+        #     proverka = 1
+        #     return render(request, 'panel/update_file.html', {'proverka': proverka})
         file.delete();os.remove(file.fileart.path)
         file_count = len(product_list)
         return render(request, 'panel/update_file.html', {'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})

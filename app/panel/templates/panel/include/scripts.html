@@ -52,21 +52,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 
 <!-- Search product -->
-<script src="{% static 'file/panel/js/searchproduct/jquery.min.js' %}"></script>
-<script src="{% static 'file/panel/js/searchproduct/jquery-ui.min.js' %}"></script>
+<script src="{% static 'file/panel/js/searchproduct/search_product.js' %}"></script>
 
 <script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
 
 {% if address == 'products' %}
     <script>
-        var list_product = [{% for product in products %}'{{ product.name }}',{% endfor %}];
+        var list_product = [{% for product in products %}'{{ product.artikul }}','{{product.name }}',{% endfor %}];
         var list = []
         $.each(list_product, function (index, value) {
+            console.log(value)
             val = value.replace(/(&quot;)/g, '"');
             list.push(val)
-
         });
-
 
         $("#search_field").autocomplete({
             source: function (request, response) {

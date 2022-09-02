@@ -648,7 +648,7 @@ def products(request):
                         if s == m:
                             name = eval(slug)
                             products = name.objects.all()
-                            paginator = Paginator(products, 50)
+                            paginator = Paginator(products, 100)
                             page_number = request.GET.get('page')
                             page_obj = paginator.get_page(page_number)
                             if request.method == 'POST':
@@ -664,9 +664,13 @@ def products(request):
                                 check_ = request.POST.getlist("check_")
                                 checkbool = request.POST.get("checkbool")
                                 query_name = request.POST.get('name')
+
                                 if query_name:
-                                    product = name.objects.filter(Q(name__icontains=query_name)).order_by('name')
-                                    paginator = Paginator(product, 50)
+                                    product = name.objects.filter(
+                                        Q(name__icontains=query_name)|
+                                        Q(artikul__icontains=query_name)
+                                    ).order_by('name')
+                                    paginator = Paginator(product, 100)
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
                                     return render(request, 'panel/products_search.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product, 'products': products})

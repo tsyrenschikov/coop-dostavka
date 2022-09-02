@@ -38,6 +38,11 @@
                                         <label class="form-label">Номенклатура (Артикул)*</label>
                                         <input type="text" name="artikul" class="form-control" placeholder="Артикул" required="">
                                     </div>
+                                    <div hidden>
+                                        {% for product in products %}
+                                            <artikul type="hidden" value="{{ product.artikul }}"></artikul>
+                                        {% endfor %}
+                                    </div>
                                     <div class="form-group">
                                         <label class="form-label">Категория*</label>
                                         </br>
@@ -106,7 +111,7 @@
                                     </br>
                                     <div class="form-group">
                                         <label class="form-label">Описание товара</label>
-                                        <textarea  class="form-control" name="description" placeholder="Описание товара"></textarea>
+                                        <textarea class="form-control" name="description" placeholder="Описание товара"></textarea>
                                     </div>
                                     <button class="save-btn hover-btn" type="submit">Добавить продукт</button>
                                 </div>
@@ -201,8 +206,10 @@
             </div>
         </div>
     </main>
-    {% comment %}Выбор из списка{% endcomment %}
+    <!--Выбор из списка-->
     <script src="{% static 'file/panel/js/chosen/jquery-ui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/addcategory.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/editorder1.js' %}"></script>
+    <!--Поиск артикула-->
+    <script src="{% static 'file/panel/js/products/products.js' %}"></script>
 {% endblock content %}

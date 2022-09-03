@@ -19,7 +19,7 @@
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table class="table ucp-table table-hover">
+                                <table class="table ucp-table table-hover" id="superuser">
                                     <thead>
                                     <tr>
                                         <th style="width:7em">Название</th>
@@ -39,32 +39,45 @@
                                             <td>
                                                 {{ key }}
                                             </td>
-                                            <td>
+                                            <td data-total="{{ value.0 }}">
                                                 {{ value.0 }} шт.
                                             </td>
-                                            <td>
-                                                {{ value.1 }}
+                                            <td data-active="{{ value.1 }}">
+                                                {{ value.1 }} шт.
                                             </td>
-                                            <td>
+                                            <td data-order="{{ value.2 }}">
                                                 {{ value.2 }}
                                             </td>
-                                            <td>
+                                            <td data-expectation="{{ value.3 }}">
                                                 {{ value.3 }}
                                             </td>
-                                            <td>
+                                            <td data-formed="{{ value.4 }}">
                                                 {{ value.4 }}
                                             </td>
-                                            <td>
+                                            <td data-delivery="{{ value.5 }}">
                                                 {{ value.5 }}
                                             </td>
-                                            <td>
+                                            <td data-perfomed="{{ value.6 }}">
                                                 {{ value.6 }}
                                             </td>
-                                            <td>
+                                            <td data-refusal="{{ value.7 }}">
                                                 {{ value.7 }}
                                             </td>
                                         </tr>
                                     {% endfor %}
+                                    <tr  class="total_table_panel">
+                                        <td>
+                                            Итого:
+                                        </td>
+                                        <td class="total_price"></td>
+                                        <td class="active_price"></td>
+                                        <td class="order_price"></td>
+                                        <td class="expectation_price"></td>
+                                        <td class="formed_price"></td>
+                                        <td class="delivery_price"></td>
+                                        <td class="perfomed_price"></td>
+                                        <td class="refusal_price"></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -74,4 +87,5 @@
             </div>
         </div>
     </main>
+    <script type="text/javascript" src="{% static 'file/panel/js/total_table.js' %}"></script>
 {% endblock content %}

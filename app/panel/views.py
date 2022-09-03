@@ -155,6 +155,7 @@ def panel(request):
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}
+        total_table_panel = {}
         for user in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id:
@@ -191,7 +192,7 @@ def panel(request):
                         cancel = orders.objects.filter(slug=slug_p).filter(status=4).count()
                         products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait, formation, delivery, close, cancel]})
                     return render(request, 'panel/index_superuser.html',
-                                  {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                  {'products_count': products_count,'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
     else:
         return redirect('/login')

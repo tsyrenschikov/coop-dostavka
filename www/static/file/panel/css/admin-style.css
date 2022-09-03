@@ -500,6 +500,13 @@ input[type=checkbox], input[type=radio] {
     font-weight: 500;
 }
 
+.total_table_panel {
+    color: #fff;
+    font-size: 14px;
+    background-color: #78c350;
+    font-weight: 500;
+}
+
 .ucp-table td {
     font-size: 14px;
     font-weight: 400;
@@ -556,7 +563,7 @@ input[type=checkbox], input[type=radio] {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 3px;
-    box-shadow:  0 16px 24px 0 rgba(0, 0, 0, .32);
+    box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .32);
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -734,7 +741,7 @@ input[type=checkbox], input[type=radio] {
     background-color: #f55d2c;
     border: 0;
     border-radius: 3px;
-    box-shadow:  0 16px 24px 0 rgba(0, 0, 0, .32)!important;
+    box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .32) !important;
 }
 
 .status-active {
@@ -1736,7 +1743,7 @@ div#editor {
     margin: 0;
     padding: 0 .75em;
     margin-right: 19px;
-    box-shadow:  0 16px 24px 0 rgba(0, 0, 0, .32);
+    box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .32);
 }
 
 a:hover.update {
@@ -1759,7 +1766,7 @@ a:hover.update {
     margin-right: 0px;
     padding: 0 .75em;
     margin-right: 19px;
-    box-shadow:  0 16px 24px 0 rgba(0, 0, 0, .32)!important;
+    box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .32) !important;
 }
 
 .order-title {
@@ -1786,7 +1793,7 @@ a:hover.update {
     background: #f55d2c;
 }
 
-.display{
+.display {
     display: flex;
     flex-direction: row;
     justify-content: center;

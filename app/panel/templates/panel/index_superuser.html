@@ -15,6 +15,7 @@
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Статистика по организациям</h4>
+                            <button id="printTable" class="view-btn_print hover-btn">Печать таблицы</button>
                             <a style="margin-bottom: 10px" href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
                         </div>
                         <div class="card-body-table">
@@ -65,7 +66,7 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                    <tr  class="total_table_panel">
+                                    <tr class="total_table_panel">
                                         <td>
                                             Итого:
                                         </td>
@@ -88,4 +89,31 @@
         </div>
     </main>
     <script type="text/javascript" src="{% static 'file/panel/js/total_table.js' %}"></script>
+
+    <script>
+        jQuery(function ($) {
+            const tableToPrint = document.getElementById("superuser");
+
+            function printData(tableToPrint) {
+                Popup($(tableToPrint).html());
+            }
+
+            function Popup(data) {
+                const mywindow = window.open("", "printMe", "height=600, width=1000");
+                // стили таблицы
+                mywindow.document.write("<link rel=\"stylesheet\" href=\"styles.css\" type=\"text/css\" />");
+                mywindow.document.write(tableToPrint.outerHTML);
+                mywindow.document.close(); // для IE >= 10
+                mywindow.focus(); // для IE >= 10
+                mywindow.print();
+                mywindow.close();
+                return true;
+            }
+
+            $(document).on("click", "#printTable", function () {
+                printData();
+                return false;
+            });
+        });
+    </script>
 {% endblock content %}

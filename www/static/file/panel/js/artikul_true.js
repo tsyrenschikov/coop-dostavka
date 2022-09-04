@@ -8,7 +8,7 @@ $(document).ready(function () {
             list_artikul.push(artikul_base);
         }
     });
-    $("#artikul").bind('change keydown paste input', function () {
+    $("#input_artikul").bind('change keydown paste input', function () {
         $(this).val($(this).val().toUpperCase());
         var artikul_input = $(this).val();
         if (artikul_input.length < 8) {

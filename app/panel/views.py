@@ -844,6 +844,7 @@ def edit_product(request, id):
                         if u == s:
                             name = eval(slug)
                             products = name.objects.get(id=id)
+                            product_artikul = name.objects.values('artikul').order_by('id')
                             category = Category.objects.all().order_by('number')
                             subcategory = SubCategory.objects.values('name', 'subsubcat')
                             subsubcategory = SubSubCategory.objects.all()
@@ -871,12 +872,13 @@ def edit_product(request, id):
                                 if request.FILES:
                                     products.image = request.FILES["image"]
                                     products.save()
-                                    return render(request, 'panel/edit_ok_product.html', {'products': products})
-                                return render(request, 'panel/edit_ok_product.html', {'products': products})
+                                    return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul':product_artikul})
+                                return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul':product_artikul})
                             else:
-                                return render(request, 'panel/edit_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+                                return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul':product_artikul, 'category': category, 'subcategory': subcategory,
+                                                                                   'subsubcategory': subsubcategory})
         except User.DoesNotExist:
-            return render(request, 'panel/edit_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+            return render(request, 'panel/edit_product.html', {'products': products,'product_artikul':product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 

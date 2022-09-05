@@ -12,7 +12,6 @@ $(document).ready(function () {
         var artikul_input = $(this).val();
         if (artikul_input.length < 8) {
             $('message').html("<span style='font-size: 14px; color: red'>Не менее 8 символов</span>")
-            $('button').hide();
             $('message_button').html("<span style='font-size: 14px; color: red'>Неверно заполнено поле 'Артикул'</span>")
         }
         if (artikul_input.length === 8) {
@@ -34,6 +33,7 @@ $(document).ready(function () {
         }
         if (artikul_input.length > 8) {
             $('message').html("<span style='font-size: 14px; color: red'>Превышено кол-во символов</span>")
+            $('message_button').html("<span style='font-size: 14px; color: red'>Превышено кол-во символов в поле Артикул</span>")
         }
     });
 })

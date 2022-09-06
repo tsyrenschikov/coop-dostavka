@@ -10,6 +10,9 @@ from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
 import os
+from django.conf import settings
+from django.template.loader import get_template
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
 
@@ -743,6 +746,7 @@ def update_file(request, id, ost):
             for m in manager:
                 if c == m and request.user.id == c:
                     name = eval(s)
+                    slug_name = s
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         product_count = name.objects.count()
         count = 0;
@@ -800,6 +804,22 @@ def update_file(request, id, ost):
         #     return render(request, 'panel/update_file.html', {'proverka': proverka})
         file.delete();os.remove(file.fileart.path)
         file_count = len(product_list)
+
+        #Отправка сообщения на почту после обновления файлов
+        id_manager = Shop.objects.values('customuser_id').filter(slug=slug_name)
+        for i in id_manager:
+            id_man = i['customuser_id']
+        email_manager = User.objects.values('email').filter(id=id_man)
+        for i in email_manager:
+            email_send = i['email']
+        htmly = get_template('panel/send_update_file_product.html').render({'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})
+        subject, from_email, to = 'Обновленные позиций товаров', settings.EMAIL_HOST_USER, (email_send)
+        text_content = 'Список обновленных позиций'
+        html_content = htmly
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+
         return render(request, 'panel/update_file.html', {'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})
     else:
         return redirect('/login')

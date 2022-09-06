@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://coop-dostavka.ru/static/file/panel/css/styles.css" rel="stylesheet">
+    <link href="https://coop-dostavka.ru/static/file/panel/css/admin-style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Vendor Stylesheets -->
+    <link href="https://coop-dostavka.ru/static/file/panel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://coop-dostavka.ru/static/file/panel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container-fluid">
+    {% if proverka != 0 %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-static-2 mt-30 mb-30">
+                    <div class="card-title-2">
+                        <h4>Обработанные позиции</h4>
+                    </div>
+                    <br>
+                    <div class="card-body-table">
+                        <div class="table-responsive">
+                            <table id="info-table" class="table ucp-table table-hover table_sort">
+                                <thead>
+                                <tr>
+                                    <th>Номенклатура</th>
+                                    <th>Название продукта</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for l in product_list %}
+                                    <tr>
+                                        <td>
+                                            {{ l.0 }}
+                                        </td>
+                                        <td>
+                                            {{ l.1 }}
+                                        </td>
+                                        <td>
+                                            {% if l.4 == 'True' %}
+                                                <span class="badge-item badge-panel-status">Опубликован</span>
+                                            {% elif l.4 == 'False' %}
+                                                <span class="badge-item badge-status">Не опубликован</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    {% elif proverka == 1 %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-static-2 mb-30">
+                    <div class="card-body-table">
+                        <div class="shopowner-content-left text-center pd-20">
+                            <br>
+                            <div class="shopowner-dt-left">
+                                    <span>
+                                        <ul>
+                                            <p style="font-size: 1.2em; color: red">Файл был обработан с ошибкой</p>
+                                        </ul>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-static-2 mb-30">
+                    <div class="card-body-table">
+                        <div class="shopowner-content-left text-center pd-20">
+                            <br>
+                            <div class="shopowner-dt-left">
+                                    <span>
+                                        <ul>
+                                            <p style="font-size: 1.2em; color: red">Неверный формат загруженного файла.</p>
+                                        </ul>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+</body>

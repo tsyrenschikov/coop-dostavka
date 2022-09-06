@@ -36,7 +36,7 @@
                                     {% endif %}
                                     <div class="form-group">
                                         <label class="form-label">Номенклатура (Артикул)*</label>
-                                        <input type="text" name="artikul" id="input_artikul" class="form-control" placeholder="Артикул" required="">
+                                        <input type="text" name="artikul" id="input_artikul" class="form-control" placeholder="Артикул">
                                         <message></message>
                                     </div>
                                     <table id="artikul" hidden>
@@ -119,8 +119,10 @@
                                         <label class="form-label">Описание товара</label>
                                         <textarea class="form-control" name="description" placeholder="Описание товара"></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <message_button></message_button>
+                                    </div>
                                     <button class="save-btn hover-btn" type="submit">Добавить продукт</button>
-                                    <message_button></message_button>
                                 </div>
                             </div>
                         </div>

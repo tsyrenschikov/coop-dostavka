@@ -562,3 +562,20 @@ class files(models.Model):
 
     def __str__(self):
         return self.name
+
+class helpdesk(models.Model):
+    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название заявки')
+    name_user = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Пользователь')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата создания')
+    time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время создания')
+    descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание проблемы')
+    status = models.BooleanField(default=True, verbose_name='Статус')
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Служба поддержки'
+        verbose_name_plural = 'Служба поддержки'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name

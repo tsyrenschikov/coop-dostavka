@@ -1421,7 +1421,7 @@ def helpdesk(request):
         for id_user, first_name, last_name in users:
             for custom_id, slug in shops:
                 if request.user.id == id_user and custom_id == id_user or request.user.is_superuser:
-                    helpdesk = helpdesk_user.objects.all()
+                    helpdesk = helpdesk_user.objects.all().order_by('-id')
                     return render(request, 'panel/helpdesk.html', {'helpdesk':helpdesk,'last_name':last_name, 'first_name':first_name})
     else:
         return redirect('/login')

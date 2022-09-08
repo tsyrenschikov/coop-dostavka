@@ -1412,3 +1412,25 @@ def instructions(request):
         return render(request, 'panel/instructions.html', {})
     else:
         return redirect('/login')
+
+#Служба поддержки
+def helpdesk(request):
+    if request.user.is_authenticated:
+        return render(request, 'panel/helpdesk.html', {})
+    else:
+        return redirect('/login')
+
+#Добавить заявку
+def add_helpdesk(request):
+    if request.user.is_authenticated:
+
+        return render(request, 'panel/add_helpdesk.html', {})
+    else:
+        return redirect('/login')
+
+#Редактировать заявку
+def edit_helpdesk(request):
+    if request.user.is_authenticated:
+        return render(request, 'panel/edit_helpdesk.html', {})
+    else:
+        return redirect('/login')

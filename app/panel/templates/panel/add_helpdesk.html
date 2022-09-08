@@ -1,0 +1,52 @@
+{% extends 'panel/layouts/base.html' %}
+{% load static %}
+{% block stylesheet %}
+{% endblock stylesheet %}
+
+{% block title %}panel{% endblock %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Служба поддержки</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'helpdesk' %}">Служба поодержки</a></li>
+                <li class="breadcrumb-item active">Создать заявку</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Подать заявку (Раздел редактируется)</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+
+                                    <label class="form-label">Получатель: </label>
+                                    <div class="form-group">
+                                        <select name="slug" class="form-control">
+
+                                                <option> 1</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Тема заявки: </label>
+                                        <input type="text" name="name" class="form-control" placeholder="Кратко назовите свою проблему" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="hidden" name="days_numb" value="" id="array">
+                                        <button class="save-btn hover-btn" type="submit">Добавить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

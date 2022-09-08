@@ -566,11 +566,12 @@ class files(models.Model):
 class helpdesk(models.Model):
     name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название заявки')
     name_user = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Пользователь')
+    name_user_help = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Специалист по обработке заявки')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата создания')
     time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время создания')
-    descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание проблемы')
-    status = models.BooleanField(default=True, verbose_name='Статус')
+    descriptions = models.JSONField(default=list, null=True, blank=True, verbose_name='Описание проблемы')
+    status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     class Meta:
         ordering = ('name',)
         verbose_name = 'Служба поддержки'

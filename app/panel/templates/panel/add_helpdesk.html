@@ -17,12 +17,20 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-helpdesk">
-                            <h4 style="font-size: 1.3em">Подать заявку (Раздел редактируется)</h4>
+                            <h4 style="font-size: 1.3em">Подать заявку</h4>
                         </div>
                         <div class="card-body-table">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="news-content-right pd-20">
+                                    <label class="form-label">Получатель:</label>
+                                    <div class="form-group">
+                                        <select name="name_user_help" class="form-control">
+                                            <option>-- Выберите получателя--</option>
+                                            <option value="ОблПотребСоюз">Облпотребсоюз</option>
+                                            <option value="Разработчики">Разработчики</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label class="form-label">Тема заявки: </label>
                                         <input type="text" name="name" class="form-control" placeholder="Кратко назовите свою проблему" required="">
@@ -30,15 +38,17 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Текст заявки: </label>
-                                        <textarea name="name" class="form-control" placeholder="Опишите свою проблему" required=""></textarea>
+                                        <textarea name="descriptions" class="form-control" placeholder="Опишите свою проблему подробно не более 10000 символов" maxlength="10000" required=""></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Прикрепить файл: </label>
-                                        <input type="file" name="name" class="form-control">
+                                        <input type="file" name="file" class="form-control" accept=".doc, docx, jpg, jpeg">
                                     </div>
+                                    <input type="hidden" name="slug" value="{{ slug_shop }}"/>
+                                    <input type="hidden" name="name_user" value="{{ request.user.id }}"/>
+                                    <input type="hidden" name="status" value="0">
                                     <div class="form-group">
-                                        <input type="hidden" name="days_numb" value="" id="array">
                                         <button class="save-btn hover-btn" type="submit">Добавить</button>
                                     </div>
                                 </div>

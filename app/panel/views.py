@@ -1416,15 +1416,33 @@ def instructions(request):
 #Служба поддержки
 def helpdesk(request):
     if request.user.is_authenticated:
-        return render(request, 'panel/helpdesk.html', {})
+        users = User.objects.values_list('id', 'last_name', 'first_name').distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct().order_by('name')
+        for id_user, first_name, last_name in users:
+            for custom_id, slug in shops:
+                if request.user.id == id_user and custom_id == id_user or request.user.is_superuser:
+                    helpdesk = helpdesk_user.objects.all()
+                    return render(request, 'panel/helpdesk.html', {'helpdesk':helpdesk,'last_name':last_name, 'first_name':first_name})
     else:
         return redirect('/login')
 
 #Добавить заявку
 def add_helpdesk(request):
     if request.user.is_authenticated:
-
-        return render(request, 'panel/add_helpdesk.html', {})
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct().order_by('name')
+        for custom_id,  slug_shop in shops:
+            if request.user.id == custom_id:
+                if request.method == 'POST':
+                    name_user_help = request.POST.get('name_user_help')
+                    name = request.POST.get('name')
+                    descriptions = request.POST.get('descriptions')
+                    file = request.FILES.get('file')
+                    slug = request.POST.get('slug')
+                    name_user = request.POST.get('name_user')
+                    status = request.POST.get('status')
+                    helpdesk_user.objects.create(name=name, descriptions = descriptions, file=file, name_user_help = name_user_help, slug=slug, name_user=name_user, status=status)
+                    return redirect('/helpdesk')
+                return render(request, 'panel/add_helpdesk.html', {'slug_shop':slug_shop, 'request.user.id':request.user.id})
     else:
         return redirect('/login')
 

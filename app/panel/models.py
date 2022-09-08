@@ -571,6 +571,7 @@ class helpdesk(models.Model):
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата создания')
     time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время создания')
     descriptions = models.JSONField(default=list, null=True, blank=True, verbose_name='Описание проблемы')
+    file = models.FileField(upload_to='helpdeskfile/', blank=True, null=True, verbose_name='Скриншот')
     status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
     class Meta:
         ordering = ('name',)

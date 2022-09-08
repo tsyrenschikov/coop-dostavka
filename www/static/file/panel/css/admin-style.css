@@ -458,6 +458,20 @@ input[type=checkbox], input[type=radio] {
     padding: 10px;
 }
 
+.card-title-helpdesk {
+    display: flex;
+    /*align-items: center;*/
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 0;
+    padding: 15px 10px 1px 20px;
+}
+
+.card-title-helpdesk paginator {
+    flex-grow: 1;
+    padding: 10px;
+}
+
 .paginator {
     display: flex;
     padding-left: 0;
@@ -482,6 +496,26 @@ input[type=checkbox], input[type=radio] {
     background: #f1f1f1;
     border-radius: 3px;
     margin-left: 3px;
+}
+
+input[type="file"] {
+    -webkit-box-shadow: 0 0 7px #CCC inset;
+    -moz-box-shadow: 0 0 7px #CCC inset;
+    -o-box-shadow: 0 0 7px #CCC inset;
+    box-shadow: 0 0 7px #CCC inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ecf0f1), color-stop(1, #fff));
+    background-image: -moz-linear-gradient(center top, #ecf0f1 5%, #fff 100%);
+    background-image: -webkit-linear-gradient(center top, #ecf0f1 5%, #fff 100%);
+    background-image: -o-linear-gradient(top, #ecf0f1, #fff);
+    background-image: -ms-linear-gradient(top, #ecf0f1 5%, #fff 100%);
+    background-image: linear-gradient(center top, #ecf0f1 5%, #fff 100%);
+    background-color: #ecf0f1;
+    cursor: pointer;
+    color: #40494c;
+    border: 1px solid #EEE;
 }
 
 .card-title-2 h4 {
@@ -771,6 +805,17 @@ input[type=checkbox], input[type=radio] {
     font-weight: 500;
     color: #fff;
     background: #f55d2c;
+    padding: 10px 20px;
+    display: inline-block;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.add-btn-helpdesk {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: #45bbe0;
     padding: 10px 20px;
     display: inline-block;
     height: 40px;

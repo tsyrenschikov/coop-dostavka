@@ -64,13 +64,14 @@
                                         <th>Дата и время</th>
                                         <th>Тема</th>
                                         <th>Статус</th>
+                                        <th>Действия</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for helpdesk in helpdesk %}
                                         <tr>
                                             <td>
-                                                #{{ helpdesk.id }}
+                                                <a href="/edit_helpdesk/{{ helpdesk.id }}">#{{ helpdesk.id }}</a>
                                             </td>
                                             {% if user.is_superuser %}
                                                 <td>{{ helpdesk.name_user_help }}</td>
@@ -86,6 +87,16 @@
                                             {% elif helpdesk.status == '2' %}
                                                 <td>Закрыта</td>
                                             {% endif %}
+                                            <td class="action-btns">
+                                                <a href="/edit_helpdesk/{{ helpdesk.id }}/" class="edit-btn"><i class="fas fa-edit"></i></a>
+                                                {% if user.is_superuser %}
+                                                    <a href="/delete_helpdesk/{{ helpdesk.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +
+															 'ОБРАТИМО)')"><i
+                                                            class="fas
+															fa-trash-alt" onSubmit="if(confirm('Sure?'))
+															this.submit"></i></a>
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

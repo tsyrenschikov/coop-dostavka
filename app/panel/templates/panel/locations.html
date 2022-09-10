@@ -91,11 +91,13 @@
                                             {% endif %}
                                             <td class="action-btns">
                                                 <a href="/edit_location/{{ local.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
-                                                <a href="/delete_location/{{ local.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +
+                                                {% if user.is_superuser %}
+                                                    <a href="/delete_location/{{ local.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i
-                                                        class="fas
+                                                            class="fas
 															fa-trash-alt" onSubmit="if(confirm('Sure?'))
 															this.submit"></i></a>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                     {% endfor %}

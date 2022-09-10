@@ -25,8 +25,28 @@
                 </div>
                 <div class="col-lg-12 col-md-12">
                     <div class="card card-static-2 mt-30 mb-30">
-                        <div class="card-title-helpdesk">
-                            <h4 style="font-size: 1.3em">Заявки (Раздел редактируется)</h4>
+                        <div class="card-title-2">
+                            <div class="paginator"><h4 style="font-size: 1.3em">Заявки (Раздел редактируется)</h4></div>
+                            <paginator></paginator>
+                            <div class="paginator">
+                                <ul>
+                                    {% if page_obj.has_previous %}
+                                        <li class="next"><a href="?page=1"> << </a></li>
+                                        <li><a href="?page={{ page_obj.previous_page_number }}"> < </a></li>
+                                        <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                    {% endif %}
+
+                                    <li class="current">{{ page_obj.number }}</li>
+
+                                    {% if page_obj.has_next %}
+                                        <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                        <li><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                        <li class="next"><a href="?page={{ page_obj.paginator.num_pages }}"> >> </a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <paginator></paginator>
+
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
@@ -50,18 +70,22 @@
                                     {% for helpdesk in helpdesk %}
                                         <tr>
                                             <td>
-                                                {{ helpdesk.id }}
+                                                #{{ helpdesk.id }}
                                             </td>
                                             {% if user.is_superuser %}
                                                 <td>{{ helpdesk.name_user_help }}</td>
-                                                <td>
-                                                    {{ helpdes.last_name }}
-                                                </td>
-                                                <td></td>
+                                                <td>{{ helpdesk.name_user }}</td>
+                                                <td>{{ helpdesk.org }}</td>
                                             {% endif %}
-                                        <td>{{ helpdesk.date }}  {{ helpdesk.time }}</td>
-                                        <td>{{ helpdesk.name }}</td>
-                                        <td>{{ helpdesk.status }}</td>
+                                            <td>{{ helpdesk.date }} {{ helpdesk.time }}</td>
+                                            <td>{{ helpdesk.name }}</td>
+                                            {% if helpdesk.status == '0' %}
+                                                <td>Ожидание</td>
+                                            {% elif helpdesk.status == '1' %}
+                                                <td>Обработка</td>
+                                            {% elif helpdesk.status == '2' %}
+                                                <td>Закрыта</td>
+                                            {% endif %}
                                         </tr>
                                     {% endfor %}
                                     </tbody>

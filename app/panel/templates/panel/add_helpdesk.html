@@ -27,8 +27,9 @@
                                     <div class="form-group">
                                         <select name="name_user_help" class="form-control">
                                             <option>-- Выберите получателя--</option>
-                                            <option value="ОблПотребСоюз">Облпотребсоюз</option>
-                                            <option value="Разработчики">Разработчики</option>
+                                            {% for supermanager in user_select %}
+                                                <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -43,10 +44,14 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Прикрепить файл: </label>
-                                        <input type="file" name="file" class="form-control" accept=".doc, docx, jpg, jpeg">
+                                        <input type="file" name="file" class="form-control" accept=".docx, .doc, .jpg, .jpeg">
                                     </div>
                                     <input type="hidden" name="slug" value="{{ slug_shop }}"/>
-                                    <input type="hidden" name="name_user" value="{{ request.user.id }}"/>
+                                    <input type="hidden" name="org" value="{{ name_org }}"/>
+                                    {% for users in users %}
+                                        <input type="hidden" name="name_user" value="{{ users.last_name }} {{ users.first_name }}"/>
+                                    {% endfor %}
+                                    <input type="hidden" id="email_send_manager" name="email_send_manager">
                                     <input type="hidden" name="status" value="0">
                                     <div class="form-group">
                                         <button class="save-btn hover-btn" type="submit">Добавить</button>
@@ -59,4 +64,5 @@
             </div>
         </div>
     </main>
+    <script type="text/javascript" src="{% static 'file/panel/js/select/select_add_helpdesk.js' %}"></script>
 {% endblock content %}

@@ -27,9 +27,15 @@
                                     <div class="form-group">
                                         <select name="name_user_help" class="form-control">
                                             <option>-- Выберите получателя--</option>
+                                        {% if not user.is_superuser %}
                                             {% for supermanager in user_select %}
                                                 <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
                                             {% endfor %}
+                                        {% else %}
+                                            {% for supermanager in user_select %}
+                                                <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
+                                            {% endfor %}
+                                        {% endif %}
                                         </select>
                                     </div>
                                     <div class="form-group">

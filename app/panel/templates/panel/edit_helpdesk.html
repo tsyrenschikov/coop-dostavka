@@ -1,86 +1,97 @@
 {% extends 'panel/layouts/base.html' %}
+{% load static %}
+{% block stylesheet %}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="{% static 'file/panel/css/helpdesk/edit_helpdesk.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
 {% block title %}panel{% endblock %}
 {% block content %}
-    {% load static %}
-    {% block stylesheet %}
-        <!--Панель заказа-->
-        <link href="{% static 'file/panel/css/chosen.min.css' %}" rel="stylesheet">
-    {% endblock stylesheet %}
-    <main>
-        <div class="container-fluid">
-            <h2 class="mt-30 page-title">Служба поддержки</h2>
-            <ol class="breadcrumb mb-30">
-                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'helpdesk' %}">Служба поддержки</a></li>
-                <li class="breadcrumb-item active">Просмотр заявки</li>
-            </ol>
-            <div class="row">
-                <div class="col-xl-12 col-md-12">
-                    <div class="card card-static-2 mb-30">
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="card-title-2">
-                                <h2 class="title1458">Заявка</h2>
-                                <span>#{{ helpdesk.id }}</span>
-                            </div>
-                            <div class="invoice-content">
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6">
-                                        <div class="ordr-date">
-                                            <b>Дата заявки :</b> {{ helpdesk.date }}
-                                            </br>
-                                            <b>Время заявки :</b> {{ helpdesk.time }}
-                                            </br>
-                                            <b>Отправитель :</b> {{ helpdesk.name_user }}
-                                            </br>
-                                            <b>E-mail:</b> {{ helpdesk.email_user }}
-                                            </br>
-                                            <b>Организация:</b> {{ helpdesk.org }}
-                                            </br>
-                                            <b>Получатель : </b>{{ helpdesk.name_user_help }}<br>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="card card-static-2 mb-30 mt-30">
-                                            <div class="card-body-table">
-                                                <div class="table-responsive">
-                                                    <table id="mytable" class="table ucp-table table-hover">
-                                                        <thead>
-                                                        <tr>
-                                                            <th style="width: 50px">Тема</th>
-                                                            <th style="width:200px">Текст заявки</th>
-                                                            <th style="width:50px">Файл</th>
-                                                        </tr>
+    <div class="container-fluid">
+        <h2 class="mt-30 page-title">Служба поддержки</h2>
+        <ol class="breadcrumb mb-30">
+            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'helpdesk' %}">Служба поддержки</a></li>
+            <li class="breadcrumb-item active">Просмотр заявки</li>
+        </ol>
+        <div class="body-wrapper">
+            <section>
+                    <article class="wrapper">
+                        <div class="header">
+                            <div class="time">Заявка : #{{ helpdesk.id }}</div>
+                        </div>
 
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>{{ helpdesk.name }}</td>
-                                                            <td>{{ helpdesk.descriptions }}</td>
-                                                            {% if helpdesk.file %}
-                                                                <td><a href="{{ helpdesk.file.url }}" download>Файл скриншот</a></td>
-                                                            {% else %}
-                                                                <td>Пользователь не прикреплял файл</td>
-                                                            {% endif %}
-                                                        </tr>
-                                                        {#                                                        <tr class="add-row">#}
-                                                        {#                                                            <td colspan="7" class="new-row">#}
-                                                        {#                                                                <i class="fa fa-plus btn btn-info" aria-hidden="false"></i>#}
-                                                        {#                                                                <span>Оставить комментарий</span>#}
-                                                        {#                                                            </td>#}
-                                                        {#                                                        </tr>#}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+                        <!-- Оглавление -->
+                        <div class="mail-wrapper" style="display:none">
+                            <div class="mail-top shadow">
+                                <div class="mail-subject"> {{ helpdesk.descriptions.0 }}</div>
+                                <div class="mail-action"></div>
+                            </div>
+
+                            <!-- Тело -->
+                            <div class="mail-content">
+                                <div class="mail-body ">
+                                    <div class="image">
+                                        <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
+                                    </div>
+                                    <div class="someClass">
+                                        <div class="sender">
+                                            <sapn>{{ helpdesk.name_user.0 }}</sapn>
+                                            <span>  для {{ helpdesk.name_user_help.0 }} </span>
+                                        </div>
+                                        <message class="message">
+                                            </br>
+                                            {{ helpdesk.descriptions.0 }}
+                                            </br>
+                                            <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
+                                        </message>
+                                    </div>
+                                </div>
+                                <div class="mail-footer shadow">
+                                    <div class="image">
+                                        <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_a_56.png"/>
+                                    </div>
+                                    <div class="replybox">
+                                        {% if not user.is_superuser %}
+                                            <div class="draft"><span id="first_name_to"></span>{{ helpdesk.name_user.0 }} <span> для {{ helpdesk.name_user_help.0 }}</span></div>
+                                        {% else %}
+                                            <div class="draft"><span id="first_name_to"></span>{{ helpdesk.name_user_help.0 }} <span> для {{ helpdesk.name_user.0 }}</span></div>
+                                        {% endif %}
+                                        <textarea></textarea>
+                                        </br>
+                                        <div class="left">
+                                            <button type="submit" class="send-btn">Отправить</button>
+                                            <label><input type="file" hidden name="file"><span class="js-value"></span>&nbsp;<i class="fa fa-paperclip"></i></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        </div>
+
+                        <!-- Шапка -->
+                        <div class="content-wrapper">
+                            <div class="image">
+                                <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
+                            </div>
+                            <div class="name"><span>{{ helpdesk.name_user.0 }}</span></div>
+                            <div class="subject">
+                                <div class="actions">
+                                    <a href="#" class="pinned-msg"><i class="fa fa-thumb-tack"></i></a>
+                                    <ul>
+                                        {% comment %}<li><a href="#"><i class="fa fa-thumb-tack"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-clock-o"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-check"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-ellipsis-v"></i></a></li>{% endcomment %}
+                                    </ul>
+                                </div>
+                                <div class="content">
+                                    <span class="fs"></span><span class="sn"> {{ helpdesk.descriptions.0 }}</span>
+                                    <input id="descriptions" type="hidden" value="{{ helpdesk.descriptions }}">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+            </section>
         </div>
-    </main>
+    </div>
+    <script src="{% static 'file/panel/js/helpdesk/edit_helpdesk.js' %}"></script>
 {% endblock content %}

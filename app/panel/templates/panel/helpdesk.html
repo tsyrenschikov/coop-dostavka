@@ -74,8 +74,8 @@
                                                 <a href="/edit_helpdesk/{{ helpdesk.id }}">#{{ helpdesk.id }}</a>
                                             </td>
                                             {% if user.is_superuser %}
-                                                <td>{{ helpdesk.name_user_help }}</td>
-                                                <td>{{ helpdesk.name_user }}</td>
+                                                <td>{{ helpdesk.name_user_help.0 }}</td>
+                                                <td>{{ helpdesk.name_user.0 }}</td>
                                                 <td>{{ helpdesk.org }}</td>
                                             {% endif %}
                                             <td>{{ helpdesk.date }} {{ helpdesk.time }}</td>

@@ -41,7 +41,7 @@
     <tr>
         <td colspan="2" style="padding:15px;">
             <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;">
-                <span style="display:block;font-size:13px;font-weight:normal;">{{ descriptions }}</span>
+                <span style="display:block;font-size:13px;font-weight:normal;">{{ descriptions|cut:"'"|cut:"["|cut:"]" }}</span>
             </p>
         </td>
     </tr>

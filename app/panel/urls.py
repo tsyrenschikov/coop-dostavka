@@ -92,4 +92,5 @@ urlpatterns = [
     path('helpdesk/', views.helpdesk, name='helpdesk'),
     path('add_helpdesk/', views.add_helpdesk, name='add_helpdesk'),
     path('edit_helpdesk/<int:id>/', views.edit_helpdesk, name='edit_helpdesk'),
+    path('delete_helpdesk/<int:id>/', views.delete_helpdesk, name='delete_helpdesk'),
 ]

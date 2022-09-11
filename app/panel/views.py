@@ -1485,3 +1485,13 @@ def edit_helpdesk(request, id):
         return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
     else:
         return redirect('/login')
+
+#Удаление заявки
+def delete_helpdesk(id):
+    helpdesk = helpdesk_user.objects.get(id=id)
+    try:
+        helpdesk.delete()
+        return redirect('/helpdesk')
+    except helpdesk.DoesNotExist:
+        return redirect('/helpdesk')
+

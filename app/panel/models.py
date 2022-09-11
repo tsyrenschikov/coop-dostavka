@@ -569,6 +569,7 @@ class helpdesk_user(models.Model):
     name_user_help = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Специалист по обработке заявки')
     org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    email_user = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Email')
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата создания')
     time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время создания')
     descriptions = models.JSONField(default=list, null=True, blank=True, verbose_name='Описание проблемы')

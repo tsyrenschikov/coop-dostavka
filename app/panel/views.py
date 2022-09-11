@@ -12,7 +12,7 @@ from django.contrib.auth.models import Group
 import os
 from django.conf import settings
 from django.template.loader import get_template
-from django.core.mail import send_mail,send_mass_mail, EmailMultiAlternatives
+from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
 
@@ -195,7 +195,7 @@ def panel(request):
                         cancel = orders.objects.filter(slug=slug_p).filter(status=4).count()
                         products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait, formation, delivery, close, cancel]})
                     return render(request, 'panel/index_superuser.html',
-                                  {'products_count': products_count,'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                  {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
     else:
         return redirect('/login')
@@ -671,7 +671,7 @@ def products(request):
 
                                 if query_name:
                                     product = name.objects.filter(
-                                        Q(name__icontains=query_name)|
+                                        Q(name__icontains=query_name) |
                                         Q(artikul__icontains=query_name)
                                     ).order_by('name')
                                     paginator = Paginator(product, 100)
@@ -802,17 +802,18 @@ def update_file(request, id, ost):
         # except ValueError:
         #     proverka = 1
         #     return render(request, 'panel/update_file.html', {'proverka': proverka})
-        file.delete();os.remove(file.fileart.path)
+        file.delete();
+        os.remove(file.fileart.path)
         file_count = len(product_list)
 
-        #Отправка сообщения на почту после обновления файлов
+        # Отправка сообщения на почту после обновления файлов
         id_manager = Shop.objects.values('customuser_id').filter(slug=slug_name)
         for i in id_manager:
             id_man = i['customuser_id']
         email_manager = User.objects.values('email').filter(id=id_man)
         for i in email_manager:
             email_send = i['email']
-        htmly = get_template('panel/send_update_file_product.html').render({'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})
+        htmly = get_template('panel/send_update_file_product.html').render({'count': count, 'product_list': product_list, 'product_count': product_count, 'file_count': file_count})
         subject, from_email, to = 'Обновленные позиций товаров', settings.EMAIL_HOST_USER, (email_send)
         text_content = 'Список обновленных позиций'
         html_content = htmly
@@ -820,7 +821,7 @@ def update_file(request, id, ost):
         msg.attach_alternative(html_content, "text/html")
         msg.send()
 
-        return render(request, 'panel/update_file.html', {'count': count, 'product_list':product_list, 'product_count':product_count, 'file_count':file_count})
+        return render(request, 'panel/update_file.html', {'count': count, 'product_list': product_list, 'product_count': product_count, 'file_count': file_count})
     else:
         return redirect('/login')
 
@@ -892,13 +893,13 @@ def edit_product(request, id):
                                 if request.FILES:
                                     products.image = request.FILES["image"]
                                     products.save()
-                                    return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul':product_artikul})
-                                return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul':product_artikul})
+                                    return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
+                                return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
                             else:
-                                return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul':product_artikul, 'category': category, 'subcategory': subcategory,
+                                return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
                                                                                    'subsubcategory': subsubcategory})
         except User.DoesNotExist:
-            return render(request, 'panel/edit_product.html', {'products': products,'product_artikul':product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+            return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 
@@ -1406,14 +1407,15 @@ def edit_work(request, id):
         return render(request, 'panel/edit_error_work.html', {'shops': shops})
 
 
-#Инструкции
+# Инструкции
 def instructions(request):
     if request.user.is_authenticated:
         return render(request, 'panel/instructions.html', {})
     else:
         return redirect('/login')
 
-#Служба поддержки
+
+# Служба поддержки
 def helpdesk(request):
     if request.user.is_authenticated:
         users = User.objects.values_list('id', 'last_name', 'first_name').distinct()
@@ -1425,22 +1427,23 @@ def helpdesk(request):
                     paginator = Paginator(helpdesk, 50)
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
-                    return render(request, 'panel/helpdesk.html', {'helpdesk':helpdesk,'page_obj':page_obj})
+                    return render(request, 'panel/helpdesk.html', {'helpdesk': helpdesk, 'page_obj': page_obj})
                 elif request.user.is_superuser:
                     helpdesk = helpdesk_user.objects.all().order_by('-id')
                     paginator = Paginator(helpdesk, 50)
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
-                    return render(request, 'panel/helpdesk.html', {'helpdesk':helpdesk,'page_obj':page_obj})
+                    return render(request, 'panel/helpdesk.html', {'helpdesk': helpdesk, 'page_obj': page_obj})
     else:
         return redirect('/login')
 
-#Добавить заявку
+
+# Добавить заявку
 def add_helpdesk(request):
     if request.user.is_authenticated:
-        shops = Shop.objects.values_list('customuser_id', 'slug','name').distinct().order_by('name')
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct().order_by('name')
         user_select = User.objects.filter(is_superuser='True')
-        for custom_id,  slug_shop, name_org in shops:
+        for custom_id, slug_shop, name_org in shops:
             if request.user.id == custom_id:
                 users = User.objects.filter(id=custom_id)
                 if request.method == 'POST':
@@ -1452,17 +1455,17 @@ def add_helpdesk(request):
                     name_user = request.POST.get('name_user')
                     org = request.POST.get('org')
                     email_send_manager = request.POST.get('email_send_manager')
+                    email_user = request.POST.get('email_user')
                     status = request.POST.get('status')
-                    helpdesk_user.objects.create(name=name, descriptions = descriptions, file=file, name_user_help = name_user_help, slug=slug, name_user=name_user,org=org, status=status)
+                    helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org, status=status)
                     id_obj = helpdesk_user.objects.order_by('-id').first()
                     id_help = id_obj.id if id_obj else 0
                     email_manager = User.objects.values('email').filter(id=custom_id)
                     for i in email_manager:
                         email_send = i['email']
-                    htmly = get_template('panel/send_add_helpdesk.html').render({'name':name,'name_user_help':name_user_help,'id_help':id_help,'name_user':name_user, 'email_send_manager':email_send_manager,
-                                                                                 'email_send':email_send,
-                    'descriptions':descriptions})
-                    subject, from_email, recipient_list = 'Заявка. Панель управления КООП доставка', settings.EMAIL_HOST_USER, ([email_send,email_send_manager])
+                    htmly = get_template('panel/send_add_helpdesk.html').render(
+                        {'name': name, 'name_user_help': name_user_help, 'id_help': id_help, 'name_user': name_user, 'email_send_manager': email_send_manager, 'email_send': email_send, 'descriptions': descriptions})
+                    subject, from_email, recipient_list = 'Заявка. Панель управления КООП доставка', settings.EMAIL_HOST_USER, ([email_send, email_send_manager])
                     text_content = 'Новая заявка в панеле управления сайтом https://panel.coop-dostavka.ru'
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, recipient_list)
@@ -1470,13 +1473,15 @@ def add_helpdesk(request):
                     msg.send()
 
                     return redirect('/helpdesk')
-                return render(request, 'panel/add_helpdesk.html', {'slug_shop':slug_shop,'users':users,'user_select':user_select,'name_org':name_org,'custom_id':custom_id})
+                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users, 'user_select': user_select, 'name_org': name_org, 'custom_id': custom_id})
     else:
         return redirect('/login')
 
-#Редактировать заявку
+
+# Редактировать заявку
 def edit_helpdesk(request, id):
     if request.user.is_authenticated:
-        return render(request, 'panel/edit_helpdesk.html', {})
+        helpdesk = helpdesk_user.objects.get(id=id)
+        return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
     else:
         return redirect('/login')

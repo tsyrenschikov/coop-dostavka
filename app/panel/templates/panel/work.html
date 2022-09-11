@@ -69,7 +69,7 @@
                                     {% for work in page_obj %}
                                         <tr>
                                             <td>
-                                                {{ work.id }}
+                                                <a href="/edit_work/{{ work.id }}">{{ work.id }}</a>
                                             </td>
                                             <td>
                                                 {{ work.name }}

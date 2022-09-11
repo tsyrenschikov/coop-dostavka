@@ -50,6 +50,7 @@
                                     <input type="hidden" name="org" value="{{ name_org }}"/>
                                     {% for users in users %}
                                         <input type="hidden" name="name_user" value="{{ users.last_name }} {{ users.first_name }}"/>
+                                        <input type="hidden" name="email_user" value="{{ users.email }}">
                                     {% endfor %}
                                     <input type="hidden" id="email_send_manager" name="email_send_manager">
                                     <input type="hidden" name="status" value="0">

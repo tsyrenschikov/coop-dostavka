@@ -15,63 +15,87 @@
         </ol>
         <div class="body-wrapper">
             <section>
-                    <article class="wrapper">
-                        <div class="header">
-                            <div class="time">Заявка : #{{ helpdesk.id }}</div>
+                <article class="wrapper">
+
+                    <!-- Список заявок -->
+                    <div class="header">
+                        <div class="time">Заявка : #{{ helpdesk.id }}</div>
+                    </div>
+                    <div class="content-wrapper1">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="news-content-right pd-20">
+                                        <div class="form-group">
+                                            <label class="form-label">Текст: </label>
+                                            <textarea name="descriptions" class="form-control" placeholder="Добавить комментарий" maxlength="10000"
+                                                      required=""></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Прикрепить файл: </label>
+                                            <input type="file" name="file" class="form-control" accept=".docx, .doc, .jpg, .jpeg">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="edit-btn-helpdesk hover-btn" type="submit">Отправить сообщение</button>
+                                        </div>
+                                    </div>
+                                </form>
                         </div>
 
-                        <!-- Оглавление -->
-                        <div class="mail-wrapper" style="display:none">
-                            <div class="mail-top shadow">
-                                <div class="mail-subject"> {{ helpdesk.descriptions.0 }}</div>
-                                <div class="mail-action"></div>
-                            </div>
 
-                            <!-- Тело -->
-                            <div class="mail-content">
-                                <div class="mail-body ">
-                                    <div class="image">
-                                        <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
+                    <!-- Оглавление -->
+                    <div class="mail-wrapper" style="display:none">
+                        <div class="mail-top shadow">
+                            <div class="mail-subject"> {{ helpdesk.descriptions.0 }}</div>
+                            <div class="mail-action"></div>
+                        </div>
+
+                        <!-- Тело -->
+                        <div class="mail-content">
+                            <div class="mail-body ">
+                                <div class="image">
+                                    <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
+                                </div>
+                                <div class="someClass">
+                                    <div class="sender">
+                                        <sapn>{{ helpdesk.name_user.0 }}</sapn>
+                                        <span>  для {{ helpdesk.name_user_help.0 }} </span>
                                     </div>
-                                    <div class="someClass">
-                                        <div class="sender">
-                                            <sapn>{{ helpdesk.name_user.0 }}</sapn>
-                                            <span>  для {{ helpdesk.name_user_help.0 }} </span>
-                                        </div>
-                                        <message class="message">
-                                            </br>
-                                            {{ helpdesk.descriptions.0 }}
-                                            </br>
-                                            <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
-                                        </message>
-                                    </div>
+                                    <message class="message">
+                                        </br>
+                                        {{ helpdesk.descriptions.0 }}
+                                        </br>
+                                        <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
+                                    </message>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Шапка -->
-                        <div class="content-wrapper">
-                            <div class="image">
-                                <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
-                            </div>
-                            <div class="name"><span>{{ helpdesk.name_user.0 }}</span></div>
-                            <div class="subject">
-                                <div class="actions">
-                                    <a href="#" class="pinned-msg"><i class="fa fa-thumb-tack"></i></a>
-                                    <ul>
-                                        {% comment %}<li><a href="#"><i class="fa fa-thumb-tack"></i></a></li>
+                    <!-- Шапка -->
+                    <div class="content-wrapper">
+                        <div class="image">
+                            <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_s_56.png"/>
+                        </div>
+                        <div class="name"><span>{{ helpdesk.name_user.0 }}</span></div>
+                        <div class="subject">
+                            <div class="actions">
+                                <a href="#" class="pinned-msg"><i class="fa fa-thumb-tack"></i></a>
+                                <ul>
+                                    {% comment %}<li><a href="#"><i class="fa fa-thumb-tack"></i></a></li>
                                         <li><a href="#"><i class="fa fa-clock-o"></i></a></li>
                                         <li><a href="#"><i class="fa fa-check"></i></a></li>
                                         <li><a href="#"><i class="fa fa-ellipsis-v"></i></a></li>{% endcomment %}
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <span class="fs"></span><span class="sn"> {{ helpdesk.descriptions.0 }}</span>
-                                    <input id="descriptions" type="hidden" value="{{ helpdesk.descriptions }}">
-                                </div>
+                                </ul>
+                            </div>
+                            <div class="content">
+                                <span class="fs"></span><span class="sn"> {{ helpdesk.descriptions.0 }}</span>
+                                <input id="descriptions" type="hidden" value="{{ helpdesk.descriptions }}">
                             </div>
                         </div>
-                    </article>
+                    </div>
+
+                </article>
             </section>
         </div>
     </div>

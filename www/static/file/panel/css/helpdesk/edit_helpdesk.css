@@ -1468,3 +1468,14 @@ pull-right {
         display: none;
     }
 }
+
+/*Для добавления комментария*/
+.wrapper .content-wrapper1 {
+    margin: 0 1%;
+    background: #fff;
+    position: relative;
+    margin-bottom: 30px;
+    margin-left: 10%;
+    margin-right: 50%;
+}
+

@@ -822,6 +822,16 @@ input[type="file"] {
     border-radius: 3px;
 }
 
+.edit-btn-helpdesk {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: #45bbe0;
+    display: inline-block;
+    height: 40px;
+    border-radius: 3px;
+}
+
 .bulk-section {
     display: flex;
     align-items: center;

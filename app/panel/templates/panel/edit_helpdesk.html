@@ -46,24 +46,6 @@
                                         </message>
                                     </div>
                                 </div>
-                                <div class="mail-footer shadow">
-                                    <div class="image">
-                                        <img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/avatars/avatar_tile_a_56.png"/>
-                                    </div>
-                                    <div class="replybox">
-                                        {% if not user.is_superuser %}
-                                            <div class="draft"><span id="first_name_to"></span>{{ helpdesk.name_user.0 }} <span> для {{ helpdesk.name_user_help.0 }}</span></div>
-                                        {% else %}
-                                            <div class="draft"><span id="first_name_to"></span>{{ helpdesk.name_user_help.0 }} <span> для {{ helpdesk.name_user.0 }}</span></div>
-                                        {% endif %}
-                                        <textarea></textarea>
-                                        </br>
-                                        <div class="left">
-                                            <button type="submit" class="send-btn">Отправить</button>
-                                            <label><input type="file" hidden name="file"><span class="js-value"></span>&nbsp;<i class="fa fa-paperclip"></i></label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 

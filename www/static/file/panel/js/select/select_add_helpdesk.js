@@ -5,3 +5,9 @@ $("select").change(function () {
     });
     $('#email_send_manager').attr({'value': str,})
 }).change();
+
+// Дата и время на странице
+$.date = function () {
+    return new Date().toLocaleString();
+};
+console.log($.date())

@@ -23,7 +23,7 @@ $("select").change(function () {
                 return false;
             }
             else {
-                $('#slug_superuser').attr({'value': 0,});
+                $('#slug_superuser').attr({'value': '',});
                 $('#org_superuser').attr({'value': org,});
             }
         });

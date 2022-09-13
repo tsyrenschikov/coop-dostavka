@@ -20,6 +20,11 @@ $("select").change(function () {
             if(org === v){
                 $('#slug_superuser').attr({'value': array[i+1],});
                 $('#org_superuser').attr({'value': v,});
+                return false;
+            }
+            else {
+                $('#slug_superuser').attr({'value': 0,});
+                $('#org_superuser').attr({'value': org,});
             }
         });
 }).change();

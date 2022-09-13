@@ -25,17 +25,15 @@
                                 <div class="news-content-right pd-20">
                                     <label class="form-label">Получатель:</label>
                                     <div class="form-group">
-                                        <select name="name_user_help" class="form-control">
-                                            <option>-- Выберите получателя--</option>
-                                        {% if not user.is_superuser %}
+                                        <select name="name_user_help" class="form-control" required="">
+                                            <option value="" disabled selected style='display:none;'>-- Выберите получателя--</option>
                                             {% for supermanager in user_select %}
-                                                <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
+                                                {% if not user.is_superuser %}
+                                                    <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
+                                                {% elif request.user.id != supermanager.id and user.is_superuser %}
+                                                    <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
+                                                {% endif %}
                                             {% endfor %}
-                                        {% else %}
-                                            {% for supermanager in user_select %}
-                                                <option value="{{ supermanager.last_name }} {{ supermanager.first_name }}" data-value="{{ supermanager.email }}">{{ supermanager.org }}</option>
-                                            {% endfor %}
-                                        {% endif %}
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -45,20 +43,37 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Текст заявки: </label>
-                                        <textarea name="descriptions" class="form-control" placeholder="Опишите свою проблему подробно не более 10000 символов" maxlength="10000" required=""></textarea>
+                                        <textarea name="descriptions" class="form-control" placeholder="Опишите свою проблему подробно не более 10000 символов" maxlength="10000"
+                                                  required=""></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Прикрепить файл: </label>
                                         <input type="file" name="file" class="form-control" accept=".docx, .doc, .jpg, .jpeg">
                                     </div>
-                                    <input type="hidden" name="slug" value="{{ slug_shop }}"/>
-                                    <input type="hidden" name="org" value="{{ name_org }}"/>
+                                    {% if not user.is_superuser %}
+                                        <input type="hidden" name="slug" value="{{ slug_shop }}"/>
+                                        <input type="hidden" name="org" value="{{ name_org }}"/>
+                                    {% elif user.is_superuser %}
+                                        <table hidden>
+                                            <tbody>
+                                            {% for shop in shops %}
+                                                <tr>
+                                                    <td value="{{ shop.2 }}"></td>
+                                                    <td value="{{ shop.1 }}"></td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        <input id="slug_superuser" type="hidden" name="slug">
+                                        <input id="org_superuser" type="hidden" name="org">
+                                    {% endif %}
                                     {% for users in users %}
                                         <input type="hidden" name="name_user" value="{{ users.last_name }} {{ users.first_name }}"/>
                                         <input type="hidden" name="email_user" value="{{ users.email }}">
                                     {% endfor %}
                                     <input type="hidden" id="email_send_manager" name="email_send_manager">
+                                    <input type="hidden" id="date_time" name="date_time">
                                     <input type="hidden" name="status" value="0">
                                     <div class="form-group">
                                         <button class="save-btn hover-btn" type="submit">Добавить</button>
@@ -71,5 +86,9 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="{% static 'file/panel/js/select/select_add_helpdesk.js' %}"></script>
+    {% if not user.is_superuser %}
+        <script type="text/javascript" src="{% static 'file/panel/js/select/select_add_helpdesk.js' %}"></script>
+    {% elif user.is_superuser %}
+        <script type="text/javascript" src="{% static 'file/panel/js/helpdesk/add_helpdesk.js' %}"></script>
+    {% endif %}
 {% endblock content %}

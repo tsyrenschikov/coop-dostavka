@@ -1442,10 +1442,10 @@ def helpdesk(request):
 def add_helpdesk(request):
     if request.user.is_authenticated:
         shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct().order_by('name')
-        user_select = User.objects.filter(is_superuser='True')
         for custom_id, slug_shop, name_org in shops:
             if request.user.id == custom_id:
                 users = User.objects.filter(id=custom_id)
+                user_select = User.objects.filter(is_superuser='True')
                 if request.method == 'POST':
                     name_user_help = request.POST.getlist('name_user_help')
                     name = request.POST.get('name')
@@ -1457,7 +1457,9 @@ def add_helpdesk(request):
                     email_send_manager = request.POST.get('email_send_manager')
                     email_user = request.POST.get('email_user')
                     status = request.POST.get('status')
-                    helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org, status=status)
+                    date_time = request.POST.getlist('date_time')
+                    helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org,
+                                                 status=status,date_time=date_time)
                     # id_obj = helpdesk_user.objects.order_by('-id').first()
                     # id_help = id_obj.id if id_obj else 0
                     # email_manager = User.objects.values('email').filter(id=custom_id)
@@ -1473,9 +1475,11 @@ def add_helpdesk(request):
                     # msg.send()
 
                     return redirect('/helpdesk')
-                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users, 'user_select': user_select, 'name_org': name_org, 'custom_id': custom_id})
+                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users,'request.user.id':request.user.id, 'user_select': user_select, 'name_org': name_org,
+                                                                   'custom_id': custom_id})
 
             elif request.user.is_superuser:
+                users = User.objects.filter(id=request.user.id)
                 user_select = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
                 if request.method == 'POST':
                     name_user_help = request.POST.getlist('name_user_help')
@@ -1488,7 +1492,9 @@ def add_helpdesk(request):
                     email_send_manager = request.POST.get('email_send_manager')
                     email_user = request.POST.get('email_user')
                     status = request.POST.get('status')
-                    helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org, status=status)
+                    date_time = request.POST.getlist('date_time')
+                    helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org,
+                                                 status=status,date_time=date_time)
                     # id_obj = helpdesk_user.objects.order_by('-id').first()
                     # id_help = id_obj.id if id_obj else 0
                     # email_manager = User.objects.values('email').filter(id=custom_id)
@@ -1504,7 +1510,8 @@ def add_helpdesk(request):
                     # msg.send()
 
                     return redirect('/helpdesk')
-                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop,'user_select': user_select, 'name_org': name_org, 'custom_id': custom_id})
+                return render(request, 'panel/add_helpdesk.html', {'shops':shops,'user_select': user_select,'users':users,'request.user.id':request.user.id, 'name_org': name_org,
+                                                                   'custom_id': custom_id})
 
     else:
         return redirect('/login')

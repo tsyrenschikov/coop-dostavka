@@ -10,4 +10,5 @@ $("select").change(function () {
 $.date = function () {
     return new Date().toLocaleString();
 };
-console.log($.date())
+var date_time = $.date();
+$('#date_time').attr({'value':date_time,});

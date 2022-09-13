@@ -54,8 +54,8 @@
                                         <th>
                                             Номер заявки
                                         </th>
+                                        <th>Получатель</th>
                                         {% if user.is_superuser %}
-                                            <th>Получатель</th>
                                             <th>Менеджер</th>
                                             <th>Организация</th>
                                         {% endif %}
@@ -71,8 +71,8 @@
                                             <td>
                                                 <a href="/edit_helpdesk/{{ helpdesk.id }}">#{{ helpdesk.id }}</a>
                                             </td>
+                                            <td>{{ helpdesk.name_user_help.0 }}</td>
                                             {% if user.is_superuser %}
-                                                <td>{{ helpdesk.name_user_help.0 }}</td>
                                                 <td>{{ helpdesk.name_user.0 }}</td>
                                                 <td>{{ helpdesk.org }}</td>
                                             {% endif %}

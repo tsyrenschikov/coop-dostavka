@@ -22,25 +22,25 @@
                         <div class="time">Заявка : #{{ helpdesk.id }}</div>
                     </div>
                     <div class="content-wrapper1">
-                                <form method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <div class="news-content-right pd-20">
-                                        <div class="form-group">
-                                            <label class="form-label">Текст: </label>
-                                            <textarea name="descriptions" class="form-control" placeholder="Добавить комментарий" maxlength="10000"
-                                                      required=""></textarea>
-                                        </div>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="news-content-right pd-20">
+                                <div class="form-group">
+                                    <label class="form-label">Текст: </label>
+                                    <textarea name="descriptions" class="form-control" placeholder="Добавить комментарий" maxlength="10000"
+                                              required=""></textarea>
+                                </div>
 
-                                        <div class="form-group">
-                                            <label class="form-label">Прикрепить файл: </label>
-                                            <input type="file" name="file" class="form-control" accept=".docx, .doc, .jpg, .jpeg">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="edit-btn-helpdesk hover-btn" type="submit">Отправить сообщение</button>
-                                        </div>
-                                    </div>
-                                </form>
-                        </div>
+                                <div class="form-group">
+                                    <label class="form-label">Прикрепить файл: </label>
+                                    <input type="file" name="file" class="form-control" accept=".docx, .doc, .jpg, .jpeg">
+                                </div>
+                                <div class="form-group">
+                                    <button class="edit-btn-helpdesk hover-btn" type="submit">Отправить сообщение</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
 
                     <!-- Оглавление -->
@@ -65,7 +65,9 @@
                                         </br>
                                         {{ helpdesk.descriptions.0 }}
                                         </br>
-                                        <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
+                                        {% if helpdesk.file %}
+                                            <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
+                                        {% endif %}
                                     </message>
                                 </div>
                             </div>

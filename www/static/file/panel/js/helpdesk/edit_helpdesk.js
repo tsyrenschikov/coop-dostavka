@@ -3,7 +3,6 @@ $(function () {
     $.date = function () {
         return new Date().toLocaleString();
     };
-    console.log($.date())
     //Название прикрепленного файла
     var val = $('.message a').attr('value').split('/');
     $('#download').text(val[val.length - 1])

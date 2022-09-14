@@ -67,6 +67,8 @@
                                         </br>
                                         {% if helpdesk.file %}
                                             <a id="download" style="display: block;margin-top: 20px" href="{{ helpdesk.file.url }}" value="{{ helpdesk.file }}" download></a>
+                                        {% else %}
+                                            <a style="display: block;margin-top: 20px" href="/" value="/" download></a>
                                         {% endif %}
                                     </message>
                                 </div>

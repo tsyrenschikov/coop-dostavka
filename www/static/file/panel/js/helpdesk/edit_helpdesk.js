@@ -7,6 +7,13 @@ $(function () {
     var val = $('.message a').attr('value').split('/');
     $('#download').text(val[val.length - 1])
 
+    //формирования списка комментарий
+    var comment_list = [];
+    $('#table_comment td').each(function () {
+        comment_list.push($(this).attr('value'));
+    });
+    console.log(comment_list)
+
     //Прикрепленный файл
     $('input').on('change', function () {
         var splittedFakePath = this.value.split('\\');
@@ -19,7 +26,6 @@ $(function () {
         ele.hide();
         content.hide();
         mailWrapper.show();
-
         // $mailWrapper[0].scrollIntoView({ behavior: 'smooth' });
 
         content.show()

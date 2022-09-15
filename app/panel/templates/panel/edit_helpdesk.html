@@ -41,6 +41,14 @@
                             </div>
                         </form>
                     </div>
+                    {% comment %}Список комментарий{% endcomment %}
+                    <table id="table_comment" hidden>
+                        {% for helpdesk in helpdesk.descriptions %}
+                            <tr>
+                                <td value="{{ helpdesk }}"></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
 
                     <!-- Оглавление после нажатия -->
                     <div class="mail-wrapper" style="display:none">
@@ -52,8 +60,8 @@
                                     </ul>
                                 </div>
                                 <div class="content">
-                                <span class="fs"></span><span class="sn">Тема заявки: "{{ helpdesk.name }}"</span>
-                            </div>
+                                    <span class="fs"></span><span class="sn">Тема заявки: "{{ helpdesk.name }}"</span>
+                                </div>
                             </div>
                             <div class="mail-action">
                             </div>

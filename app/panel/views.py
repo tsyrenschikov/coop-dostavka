@@ -1527,7 +1527,7 @@ def edit_helpdesk(request, id):
                 helpdesk.descriptions = request.POST.get('descriptions')
                 helpdesk.email_user = request.POST.get('email_user')
                 helpdesk.date_time = request.POST.get('date_time')
-                helpdesk.save(update_fields=['name_user','name_user_help', 'descriptions',''])
+                helpdesk.save(update_fields=['name_user','name_user_help', 'descriptions','date_time'])
             return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
         else:
             return redirect('/login')

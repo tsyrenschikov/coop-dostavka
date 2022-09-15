@@ -16,10 +16,10 @@ $(function () {
         var ele = $(this);
         var mailWrapper = ele.prev();
         var content = mailWrapper.find('.mail-content');
-
         ele.hide();
         content.hide();
         mailWrapper.show();
+
         // $mailWrapper[0].scrollIntoView({ behavior: 'smooth' });
 
         content.show()

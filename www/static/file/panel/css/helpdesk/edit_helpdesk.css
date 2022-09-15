@@ -627,13 +627,13 @@ pull-right {
 }
 
 .wrapper .content-wrapper .subject .actions ul {
-    overflow: hidden;
-    list-style: none;
+    /*overflow: hidden;
+    list-style: none;*/
     position: absolute;
     top: 16px;
     right: 5px;
-    display: none;
-    background: white;
+    /*display: none;
+    background: white;*/
 }
 
 .wrapper .content-wrapper .subject .actions ul li {
@@ -692,9 +692,59 @@ pull-right {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
 }
 
+.wrapper .mail-wrapper .mail-top .mail-subject {
+    position: relative;
+    display: block;
+    margin: 0 20px 0 8px;
+    min-width: 150px;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .action {
+    float: right;
+    width: 50px;
+    font-size: 16px;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .action ul {
+    /*overflow: hidden;
+    list-style: none;*/
+    position: absolute;
+    top: 16px;
+    right: 5px;
+    /*display: none;
+    background: white;*/
+}
+
+
 .wrapper .mail-wrapper .mail-top {
     cursor: pointer;
     padding: 20px;
+}
+.wrapper .mail-wrapper .mail-top .mail-subject .action ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .action ul li a {
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    opacity: 0.5;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .content span {
+    display: inline-block;
+    padding-top: 16px;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .content .fs {
+    padding-right: 5px;
+}
+
+.wrapper .mail-wrapper .mail-top .mail-subject .sn {
+    display: inline-block;
+    color: #757575;
+    padding-right: 5px;
 }
 
 .wrapper .mail-wrapper .mail-body .someClass {

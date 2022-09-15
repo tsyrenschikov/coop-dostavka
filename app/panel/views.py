@@ -1518,11 +1518,21 @@ def add_helpdesk(request):
 
 # Редактировать заявку
 def edit_helpdesk(request, id):
-    if request.user.is_authenticated:
-        helpdesk = helpdesk_user.objects.get(id=id)
-        return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
-    else:
-        return redirect('/login')
+    try:
+        if request.user.is_authenticated:
+            helpdesk = helpdesk_user.objects.get(id=id)
+            if request.method == 'POST':
+                helpdesk.name_user = request.POST.get('name_user')
+                helpdesk.name_user_help = request.POST.get('name_user_help')
+                helpdesk.descriptions = request.POST.get('descriptions')
+                helpdesk.email_user = request.POST.get('email_user')
+                helpdesk.date_time = request.POST.get('date_time')
+                helpdesk.save(update_fields=['name_user','name_user_help', 'descriptions',''])
+            return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
+        else:
+            return redirect('/login')
+    except helpdesk.DoesNotExist:
+        return render(request, 'panel/edit_helpdesk.html', {})
 
 #Удаление заявки
 def delete_helpdesk(request,id):

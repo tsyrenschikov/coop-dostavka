@@ -42,12 +42,22 @@
                         </form>
                     </div>
 
-
-                    <!-- Оглавление -->
+                    <!-- Оглавление после нажатия -->
                     <div class="mail-wrapper" style="display:none">
                         <div class="mail-top shadow">
-                            <div class="mail-subject"> {{ helpdesk.descriptions.0 }}</div>
-                            <div class="mail-action"></div>
+                            <div class="mail-subject">
+                                <div class="action">
+                                    <ul>
+                                        <li>{{ helpdesk.date_time.0 }}</li>
+                                    </ul>
+                                </div>
+                                <div class="content">
+                                <span class="fs"></span><span class="sn">Тема заявки: "{{ helpdesk.name }}"</span>
+                            </div>
+                            </div>
+                            <div class="mail-action">
+                            </div>
+
                         </div>
 
                         <!-- Тело -->
@@ -84,17 +94,13 @@
                         <div class="name"><span>{{ helpdesk.name_user.0 }}</span></div>
                         <div class="subject">
                             <div class="actions">
-                                <a href="#" class="pinned-msg"><i class="fa fa-thumb-tack"></i></a>
                                 <ul>
-                                    {% comment %}<li><a href="#"><i class="fa fa-thumb-tack"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-clock-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-check"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-ellipsis-v"></i></a></li>{% endcomment %}
+                                    <li>{{ helpdesk.date_time.0 }}</li>
                                 </ul>
+                                <input id="help_date" type="hidden" value="{{ helpdesk.date_time.0 }}">
                             </div>
                             <div class="content">
-                                <span class="fs"></span><span class="sn"> {{ helpdesk.descriptions.0 }}</span>
-                                <input id="descriptions" type="hidden" value="{{ helpdesk.descriptions }}">
+                                <span class="fs"></span><span class="sn">Комментарий: "{{ helpdesk.descriptions.0 }}"</span>
                             </div>
                         </div>
                     </div>

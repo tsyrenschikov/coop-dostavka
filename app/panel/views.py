@@ -1517,6 +1517,18 @@ def add_helpdesk(request):
         return redirect('/login')
 
 # Редактировать заявку
+
+# def local():
+#     l = Locations.objects.values('name', 'slug').filter(status=True).order_by('slug')
+#     dict_l = {k['name']: [] for k in l}
+#     list_slug = list(set([i['slug'] for i in l]))
+#     for loc in l:
+#         for j in list_slug:
+#             if j in loc['slug']:
+#                 dict_l[loc['name']].append(j)
+#     local = dict_l
+#     return local
+
 def edit_helpdesk(request, id):
     try:
         if request.user.is_authenticated:

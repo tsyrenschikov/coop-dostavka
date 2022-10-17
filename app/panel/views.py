@@ -791,12 +791,12 @@ def update_file(request, id, ost):
                     while Line:
                         count += 1
                         price_line = []
-                        # line = list(map(str, Line.replace(';', ' ').split()))
+                        # line = list(map(str, Line.replace(';', ' ').split())) https://evileg.com/ru/post/642/
                         line = Line.replace(',', '.')
                         line = Line.replace(';', ' ')
                         price_line.append(line)
 
-                        artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
+                        artikul = list(filter(lambda x: line[0] in x, products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])
                             product_get.price = price_line

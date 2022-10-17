@@ -757,7 +757,10 @@ def update_file(request, id, ost):
                 Line_ = f.readline()
                 Line = Line_.replace('\ufeff', '')
                 Line = Line.replace('\n', '')
+
+                # Обновления позиций из файла
                 if Line == 'update':
+                    Line = f.readline()
                     while Line:
                         count += 1
                         line = list(map(str, Line.replace(';', ' ').split()))
@@ -765,20 +768,13 @@ def update_file(request, id, ost):
                         price_line = line[2].replace(',', '.')
 
                         if address == '1':
-                            artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
+                            artikul = list(filter(lambda x: line[0] in x, products))
                             for artikul in artikul:
                                 product_get = name.objects.get(id=artikul[3])
                                 product_get.price = price_line
                                 product_get.status = 'True'
                                 product_get.save()
                                 product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                            artikul = list(filter(lambda x: line[0] in x and line[1] == '0', products))
-                            for artikul in artikul:
-                                product_get = name.objects.get(id=artikul[3])
-                                product_get.price = price_line
-                                product_get.status = 'False'
-                                product_get.save()
-                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
                         elif address == '0':
                             artikul = list(filter(lambda x: line[0] in x, products))
                             for artikul in artikul:
@@ -788,12 +784,18 @@ def update_file(request, id, ost):
                                 product_get.save()
                                 product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                         Line = f.readline()
+
+                # Добавления позиций из файла
                 else:
+                    Line = f.readline()
                     while Line:
                         count += 1
-                        line = list(map(str, Line.replace(';', ' ').split()))
+                        price_line = []
+                        # line = list(map(str, Line.replace(';', ' ').split()))
+                        line = Line.replace(',', '.')
+                        line = Line.replace(';', ' ')
+                        price_line.append(line)
 
-                        price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])

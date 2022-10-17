@@ -756,13 +756,44 @@ def update_file(request, id, ost):
             with open(file.fileart.path) as f:
                 Line_ = f.readline()
                 Line = Line_.replace('\ufeff', '')
-                while Line:
-                    count += 1
-                    line = list(map(str, Line.replace(';', ' ').split()))
+                Line = Line.replace('\n', '')
+                if Line == 'update':
+                    while Line:
+                        count += 1
+                        line = list(map(str, Line.replace(';', ' ').split()))
 
-                    price_line = line[2].replace(',', '.')
+                        price_line = line[2].replace(',', '.')
 
-                    if address == '1':
+                        if address == '1':
+                            artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
+                            for artikul in artikul:
+                                product_get = name.objects.get(id=artikul[3])
+                                product_get.price = price_line
+                                product_get.status = 'True'
+                                product_get.save()
+                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                            artikul = list(filter(lambda x: line[0] in x and line[1] == '0', products))
+                            for artikul in artikul:
+                                product_get = name.objects.get(id=artikul[3])
+                                product_get.price = price_line
+                                product_get.status = 'False'
+                                product_get.save()
+                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
+                        elif address == '0':
+                            artikul = list(filter(lambda x: line[0] in x, products))
+                            for artikul in artikul:
+                                product_get = name.objects.get(id=artikul[3])
+                                product_get.price = price_line
+                                product_get.status = 'True'
+                                product_get.save()
+                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                        Line = f.readline()
+                else:
+                    while Line:
+                        count += 1
+                        line = list(map(str, Line.replace(';', ' ').split()))
+
+                        price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x and line[1] != '0', products))
                         for artikul in artikul:
                             product_get = name.objects.get(id=artikul[3])
@@ -770,22 +801,7 @@ def update_file(request, id, ost):
                             product_get.status = 'True'
                             product_get.save()
                             product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                        artikul = list(filter(lambda x: line[0] in x and line[1] == '0', products))
-                        for artikul in artikul:
-                            product_get = name.objects.get(id=artikul[3])
-                            product_get.price = price_line
-                            product_get.status = 'False'
-                            product_get.save()
-                            product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
-                    elif address == '0':
-                        artikul = list(filter(lambda x: line[0] in x, products))
-                        for artikul in artikul:
-                            product_get = name.objects.get(id=artikul[3])
-                            product_get.price = price_line
-                            product_get.status = 'True'
-                            product_get.save()
-                            product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                    Line = f.readline()
+                        Line = f.readline()
         except IndexError:
             proverka = 0
             file.delete();
@@ -899,7 +915,8 @@ def edit_product(request, id):
                                 return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
                                                                                    'subsubcategory': subsubcategory})
         except User.DoesNotExist:
-            return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+            return render(request, 'panel/edit_product.html',
+                          {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
 
@@ -1459,7 +1476,7 @@ def add_helpdesk(request):
                     status = request.POST.get('status')
                     date_time = request.POST.getlist('date_time')
                     helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org,
-                                                 status=status,date_time=date_time)
+                                                 status=status, date_time=date_time)
                     # id_obj = helpdesk_user.objects.order_by('-id').first()
                     # id_help = id_obj.id if id_obj else 0
                     # email_manager = User.objects.values('email').filter(id=custom_id)
@@ -1475,7 +1492,7 @@ def add_helpdesk(request):
                     # msg.send()
 
                     return redirect('/helpdesk')
-                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users,'request.user.id':request.user.id, 'user_select': user_select, 'name_org': name_org,
+                return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users, 'request.user.id': request.user.id, 'user_select': user_select, 'name_org': name_org,
                                                                    'custom_id': custom_id})
 
             elif request.user.is_superuser:
@@ -1494,7 +1511,7 @@ def add_helpdesk(request):
                     status = request.POST.get('status')
                     date_time = request.POST.getlist('date_time')
                     helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org,
-                                                 status=status,date_time=date_time)
+                                                 status=status, date_time=date_time)
                     # id_obj = helpdesk_user.objects.order_by('-id').first()
                     # id_help = id_obj.id if id_obj else 0
                     # email_manager = User.objects.values('email').filter(id=custom_id)
@@ -1510,11 +1527,12 @@ def add_helpdesk(request):
                     # msg.send()
 
                     return redirect('/helpdesk')
-                return render(request, 'panel/add_helpdesk.html', {'shops':shops,'user_select': user_select,'users':users,'request.user.id':request.user.id, 'name_org': name_org,
+                return render(request, 'panel/add_helpdesk.html', {'shops': shops, 'user_select': user_select, 'users': users, 'request.user.id': request.user.id, 'name_org': name_org,
                                                                    'custom_id': custom_id})
 
     else:
         return redirect('/login')
+
 
 # Редактировать заявку
 
@@ -1539,19 +1557,19 @@ def edit_helpdesk(request, id):
                 helpdesk.descriptions = request.POST.get('descriptions')
                 helpdesk.email_user = request.POST.get('email_user')
                 helpdesk.date_time = request.POST.get('date_time')
-                helpdesk.save(update_fields=['name_user','name_user_help', 'descriptions','date_time'])
-            return render(request, 'panel/edit_helpdesk.html', {'helpdesk':helpdesk})
+                helpdesk.save(update_fields=['name_user', 'name_user_help', 'descriptions', 'date_time'])
+            return render(request, 'panel/edit_helpdesk.html', {'helpdesk': helpdesk})
         else:
             return redirect('/login')
     except helpdesk.DoesNotExist:
         return render(request, 'panel/edit_helpdesk.html', {})
 
-#Удаление заявки
-def delete_helpdesk(request,id):
+
+# Удаление заявки
+def delete_helpdesk(request, id):
     try:
         helpdesk = helpdesk_user.objects.get(id=id)
         helpdesk.delete()
         return redirect('/helpdesk')
     except helpdesk.DoesNotExist:
         return redirect('/helpdesk')
-

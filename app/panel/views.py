@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
@@ -10,6 +9,7 @@ from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
 import os
+from ftplib import FTP
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
@@ -18,6 +18,11 @@ from panel.models import *
 
 register = template.Library()
 
+# Настройки FTP соединения для скачивания файлов обновлений продукции
+host = '176.215.4.118'
+ftp_user = 'ftpops'
+ftp_password = '111111'
+ftp_cwd = '/website_exchange'
 
 @register.filter(name='manager')
 def manager(user, group_name):
@@ -751,6 +756,7 @@ def update_file(request, id, ost):
         product_count = name.objects.count()
         count = 0;
         product_list = [];
+        ftp = FTP(host, ftp_user, ftp_password)
         try:
             file = files.objects.get(id=id)
             with open(file.fileart.path) as f:

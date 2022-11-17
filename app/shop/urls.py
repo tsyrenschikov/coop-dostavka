@@ -102,4 +102,15 @@ urlpatterns = [
     path('bugalysh/cart_bugalysh/', views.cart_bugalysh, name='cart_bugalysh'),
     path('bugalysh/cart_ok_bugalysh/<int:ord>/', views.cart_ok_bugalysh, name='cart_ok_bugalysh'),
 
+# Shop bbisert
+    path('bisert/', views.shop_bisert, name='shop_bisert'),
+    path('bisert/product/<int:id>/', views.shop_bisert_product, name='shop_bisert_product'),
+    path('bisert/grid/', views.shop_bisert_grid, name='shop_bisert_grid'),
+    path('bisert/career/', views.shop_bisert_career, name='shop_bisert_career'),
+    path('bisert/sort_list/<str:list>/', views.sort_list_bisert, name='sort_list_bisert'),
+    path('bisert/searchproduct_bisert/', views.searchproduct_bisert, name='searchproduct_bisert'),
+    path('bisert/searchbisert/', views.searchbisert, name='searchbisert'),
+    path('bisert/cart_bisert/', views.cart_bisert, name='cart_bisert'),
+    path('bisert/cart_ok_bisert/<int:ord>/', views.cart_ok_bisert, name='cart_ok_bisert'),
+
     ]

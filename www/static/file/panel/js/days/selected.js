@@ -26,13 +26,13 @@ $('#days_dop').change(function () {
                 check_dop = $(this).attr('number_dop');
                 myArray_dop.push(check_dop)
                 Time = 0;
-                Time = [];
-                $('#day_price_delivery').bind('change keydown paste input', function () {
+                    Time = [];
+                $("#day_price_delivery").bind('change keydown paste input', function () {
                     var start = $('#start').val()
-                    Time.push(start);
+                    Time.push(start)
                 });
+                console.log(Time)
             });
-            console.log(Time)
             $('#array_dop').attr({'value': myArray_dop});
             $('#array_time').attr({'value': Time});
         });

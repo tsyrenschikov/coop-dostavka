@@ -2106,3 +2106,224 @@ def searchbisert(request):
             client = orders.objects.filter(name=name, phone=phone)
             return render(request, 'bisert/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
     return render(request, 'bisert/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
+
+#Shop chernovskoe
+def shop_chernovskoe(request):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    local()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                products = name_slug.objects.all().filter(status=True).order_by('name')
+                category_product = dict_category_product(name_slug)
+                paginator = Paginator(products, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'chernovskoe/products.html',
+                              {'category_product': category_product, 'products': products,
+                               'page_obj': page_obj, 'name': name, 'local': local, 'address_str': address_str})
+
+
+def sort_list_chernovskoe(request, list):
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    local()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_product = dict_category_product(name_slug)
+                products = name_slug.objects.filter(subcat=list)
+                paginator = Paginator(products, 50)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'shop/list_chernovskoe.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
+                                                                     'address_str': address_str})
+
+
+def shop_chernovskoe_grid(request):
+    local()
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                product = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:48]
+                category_product = dict_category_product(name_slug)
+                paginator = Paginator(product, 20)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'chernovskoe/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name,
+                                                                'address_str': address_str})
+
+
+def searchproduct_chernovskoe(request):
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address = eval(address_str)
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+    alert = {
+        "name": request.GET.get('name', ''),
+        "phone": request.GET.get('phone', ''),
+        "local": local(),
+        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+        "address_str": str([i for i in str(request.path).split('/') if i][0]),
+        "category_product": category_product,
+    }
+    local()
+    if request.method == "POST":
+        query_name = request.POST.get('name')
+        if query_name:
+            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
+            return render(request, 'chernovskoe/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
+
+    else:
+        return render(request, 'chernovskoe/search_list.html', alert)
+
+
+# View product
+def shop_chernovskoe_product(request, id):
+    local()
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                shop_name = slug
+                slug_name = eval(slug)
+                name_slug = slug_name
+                product = slug_name.objects.get(id=id)
+                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+                category_product = dict_category_product(name_slug)
+                return render(request, 'chernovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
+                                                                    'name': name,
+                                                                   'address_str': address_str})
+
+
+def shop_chernovskoe_career(reguest):
+    local()
+    users = User.objects.all()
+    categories = Category.objects.order_by('number')
+    return render(reguest, 'chernovskoe/career.html', {'users': users, 'categories': categories, 'local': local})
+
+
+def cart_chernovskoe(request):
+    shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
+    shops = Shop.objects.values_list('name', 'slug').distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name = name_a
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+                if request.method == 'POST':
+                    name = request.POST.get('name')
+                    phone = request.POST.get('phone')
+                    products = request.POST.getlist('products')
+                    address_city = request.POST.get('address_city')
+                    address_street = request.POST.get('address_street')
+                    address_home = request.POST.get('address_home')
+                    address_kv = request.POST.get('address_kv')
+                    cal = request.POST.get('cal')
+                    commit = request.POST.get('commit')
+                    cart = request.POST.get('cart')
+                    delivery = request.POST.get('deliv')
+                    total_price = request.POST.get('total_price')
+                    slug = request.POST.get('slug')
+                    email = request.POST.get('email')
+                    replace = request.POST.get('replace')
+                    payment = request.POST.get('payment')
+                    money = request.POST.get('money')
+                    status = request.POST.get('status')
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+                    for i in id_manager:
+                        id_man = i['customuser_id']
+                    email_manager = User.objects.values('email').filter(id=id_man)
+                    for i in email_manager:
+                        email_send = i['email']
+                    htmly = get_template('shop/send_email.html').render()
+                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
+                    text_content = 'В панеле управления Вас ожидает очередной заказ'
+                    html_content = htmly
+                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
+                    ord = order.id
+                    return redirect(cart_ok_chernovskoe, ord)
+
+                return render(request, 'chernovskoe/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
+
+
+def cart_ok_chernovskoe(request, ord):
+    shops = Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
+    order = orders.objects.get(id=ord)
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    categories = Category.objects.order_by('number')
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_product = dict_category_product(name_slug)
+    return render(request, 'chernovskoe/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
+                                                'address_str': address_str})
+
+
+def searchchernovskoe(request):
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+    alert = {
+        "name": request.GET.get('name', ''),
+        "phone": request.GET.get('phone', ''),
+        "local": local(),
+        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
+        "address_str": str([i for i in str(request.path).split('/') if i][0]),
+        "category_product": category_product,
+    }
+    local()
+    categories = Category.objects.order_by('number')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        if orders.objects.filter(name=request.POST['name']).exists() == False:
+            alert['name'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'chetkarino/search_order.html', alert)
+        if orders.objects.filter(phone=request.POST['phone']).exists() == False:
+            alert['phone'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
+            return render(request, 'chetkarino/search_order.html', alert)
+        else:
+            client = orders.objects.filter(name=name, phone=phone)
+            return render(request, 'chernovskoe/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
+    return render(request, 'chernovskoe/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})

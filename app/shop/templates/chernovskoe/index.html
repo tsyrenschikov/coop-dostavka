@@ -1,0 +1,49 @@
+{% extends 'shop/layoutschernovskoe.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}arti{% endblock %}
+{% block stylesheets %}
+    <!-- Style CSS -->
+{% include 'shop/includes/style.html' %}
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" type="text/css">
+{% endblock stylesheets %}
+
+{% block content %}
+
+
+  	<!-- Body Start -->
+		<div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="headline_part centered margin-top-75"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container_categories_box margin-top-5 margin-bottom-30">
+                            <a href="{% url 'shop_pokrovskoe_products' %}" class="utf_category_small_box_part"> <i class="im im-icon-Shop-2"></i>
+                                <h4>Продукты питания и <br>бытовая химия для дома</h4>
+                            </a>
+                            <a href="{% url 'shop_pokrovskoe' %}" class="utf_category_small_box_part"> <i class="im im-icon-Hamburger"></i>
+                                <h4>Готовая еда <br>(продукция собственного производства)</h4>
+                            </a>
+                            <a href="#" class="utf_category_small_box_part"> <i class="im im-icon-Home-2"></i>
+                                <h4>Промышленные товары</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% include 'shop/includes/featured_chernovskoe.html' %}
+                {% include 'shop/includes/new_chernovskoe.html' %}
+            </div>
+        </div>
+    <!-- Body End -->
+{% include 'shop/includes/cart_modal_chernovskoe.html' %}
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

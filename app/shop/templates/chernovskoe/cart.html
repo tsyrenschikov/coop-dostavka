@@ -1,0 +1,17 @@
+{% extends 'shop/layouts/base_chernovskoe.html' %}
+{% load static %}
+{% block title %}Оформление заказа{% endblock %}
+{% block content %}
+    {% include 'shop/includes/calendar/cart_css.html' %}
+    {% block stylesheet %}
+        <!--Select Accordion -->
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+        <link rel="stylesheet" href="{% static 'file/shop/css/anim_select.css' %}">
+    {% endblock stylesheet %}
+    {% include 'shop/includes/cart.html' %}
+    {% include 'shop/includes/modal_checkbox.html' %}
+    {% include 'shop/includes/cart_modal_chernovskoe.html' %}
+    {% include 'shop/layouts/footer.html' %}
+    {% include 'shop/includes/scripts.html' %}
+    {% include 'shop/includes/calendar/cart_js.html' %}
+{% endblock content %}

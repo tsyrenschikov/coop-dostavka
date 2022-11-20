@@ -113,4 +113,15 @@ urlpatterns = [
     path('bisert/cart_bisert/', views.cart_bisert, name='cart_bisert'),
     path('bisert/cart_ok_bisert/<int:ord>/', views.cart_ok_bisert, name='cart_ok_bisert'),
 
+#Shop chernovskoe
+path('chernovskoe/', views.shop_chernovskoe, name='shop_chernovskoe'),
+    path('chernovskoe/product/<int:id>/', views.shop_chernovskoe_product, name='shop_chernovskoe_product'),
+    path('chernovskoe/grid/', views.shop_chernovskoe_grid, name='shop_chernovskoe_grid'),
+    path('chernovskoe/career/', views.shop_chernovskoe_career, name='shop_chernovskoe_career'),
+    path('chernovskoe/sort_list/<str:list>/', views.sort_list_chernovskoe, name='sort_list_chernovskoe'),
+    path('chernovskoe/searchproduct_bisert/', views.searchproduct_chernovskoe, name='searchproduct_chernovskoe'),
+    path('chernovskoe/searchbisert/', views.searchchernovskoe, name='searchchernovskoe'),
+    path('chernovskoe/cart_bisert/', views.cart_chernovskoe, name='cart_chernovskoe'),
+    path('chernovskoe/cart_ok_bisert/<int:ord>/', views.cart_ok_chernovskoe, name='cart_ok_chernovskoe'),
+
     ]

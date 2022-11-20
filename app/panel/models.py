@@ -34,9 +34,10 @@ class Locations(models.Model):
     delivery_price = models.PositiveIntegerField(null=True, verbose_name='Цена доставки')
     delivery_price_min = models.PositiveIntegerField(null=True, verbose_name='Минимальная цена доставки')
     days = models.JSONField(default=list, null=True, blank=True, verbose_name='День недели')
+    days_numb = models.JSONField(default=list, null=True, blank=True, verbose_name='Номера дней')
+    days_numb_dop = models.JSONField(default=list, null=True, blank=True, verbose_name='Номера дней дополнительно')
     time = models.JSONField(default=list, null=True, blank=True, verbose_name='Время платной доставки')
     time_price_delivery = models.PositiveIntegerField(null=True, verbose_name='Стоимость доставки по времени')
-    days_numb = models.JSONField(default=list, null=True, blank=True, verbose_name='Номера дней')
     slug = models.CharField(max_length=200, db_index=True,null=True, verbose_name='Ссылка на сайт')
     status = models.BooleanField(default=True, verbose_name='Активный')
 

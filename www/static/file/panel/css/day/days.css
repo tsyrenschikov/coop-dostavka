@@ -19,6 +19,31 @@ h1 {
   font-weight: 300;
   margin-top: 0;
 }
+
+.input_time {
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+  font-size: 14px;
+  margin-bottom: 1em;
+}
+.input_time input {
+  width: 13%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem;
+  margin-right: 1em;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
 .control-group {
   display: inline-block;
   vertical-align: top;
@@ -34,15 +59,16 @@ h1 {
   display: block;
   position: relative;
   padding-left: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
 }
 .control input {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
+
 .control__indicator {
   position: absolute;
   top: 2px;

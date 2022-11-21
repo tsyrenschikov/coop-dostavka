@@ -1049,6 +1049,12 @@ pre code {
         max-width: 50%
     }
 
+    .col-md-6a {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+
     .col-md-7 {
         -ms-flex: 0 0 58.333333%;
         flex: 0 0 58.333333%;
@@ -1257,6 +1263,12 @@ pre code {
         -ms-flex: 0 0 41.666667%;
         flex: 0 0 41.666667%;
         max-width: 41.666667%
+    }
+
+    .col-lg-5a {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
     }
 
     .col-lg-51 {

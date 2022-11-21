@@ -11,7 +11,8 @@ $(this).change(function (e) {
         myArray.push(check);
     });
     $('#array').attr({'value': myArray});
-
+    $('#start').attr({'name': ''});
+    $('#end').attr({'name': ''});
     if ($('#checkbox').is(':checked')) {
         $('#days_time').show()
         myArray_dop = 0;
@@ -19,13 +20,9 @@ $(this).change(function (e) {
         $('#days_time input:checkbox:checked').each(function () {
             check_dop = $(this).attr('number_dop');
             myArray_dop.push(check_dop);
-            if ($('#day_dop').is(':checked')) {
+                if($('#days_time').prop('checked', true)){
                 $('#start').attr({'name': 'time_start'});
-                $('#end').attr({'name': 'time_end'});
-            } else {
-                $('#start').attr({'name': ''});
-                $('#end').attr({'name': ''});
-            }
+                $('#end').attr({'name': 'time_end'});}
         });
         $('#array_dop').attr({'value': myArray_dop});
     } else {

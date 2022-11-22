@@ -44,6 +44,10 @@ h1 {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 
+.line {
+    border-bottom: 2px solid #428BCA; /* Параметры линии */
+   }
+
 .control-group {
   display: inline-block;
   vertical-align: top;

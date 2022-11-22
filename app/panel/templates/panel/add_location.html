@@ -53,7 +53,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Cумма заказа для бесплатной доставки*</label>
-                                        <input type="number" name="delivery_price_min" class="form-control" value="1" placeholder="1 р." oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required="">
+                                        <input type="number" name="delivery_price_min" class="form-control" value="1" placeholder="1 р."
+                                               oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required="">
                                     </div>
                                     <div class="form-group" id="days">
                                         <label class="form-label">Периодичность доставки (дни недели)*</label><br>
@@ -64,6 +65,9 @@
                                             </label>
                                         {% endfor %}
                                     </div>
+                                    <div class="form-group">
+                                        <div class="line"></div>
+                                    </div>
                                     <div class="form-group" id="days_dop">
                                         <label class="form-label"><input type="checkbox" id="checkbox">Дополнительный период доставки (дни недели, время, стоимость)</label>
                                     </div>
@@ -73,26 +77,26 @@
                                                 <input id="day_dop" name="day_dop" value="{{ day.name }}" number_dop="{{ day.daysdict }}" type="checkbox"/>
                                                 <div class="control__indicator"></div>
                                             </label>
-                                            <div id="start-end"></div>
-                                            <div class="mbsc-grid mbsc-no-padding" id="day_price_delivery">
+                                            <div class="mbsc-grid mbsc-no-padding">
                                                 <div class="mbsc-row">
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Начало
-                                                            <input type="time" id="start" time_start="{{ day.daysdict }}" mbsc-input data-input-style="outline" data-label-style="stacked"
+                                                            <input type="time" id='start{{ day.daysdict }}' mbsc-input data-input-style="outline"
+                                                                   data-label-style="stacked"
                                                                    value="00:00"/>
                                                         </label>
                                                     </div>
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Окончание
-                                                            <input type="time" id="end" mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
+                                                            <input type="time" id='end{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
                                                         </label>
                                                     </div>
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Стоимость доставки
-                                                            <input type="number" mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value =
+                                                            <input type="number" id='price{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value =
                                                             this.value.replace
                                                             (/[^0-9
                                                             .]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="0" placeholder="1р."/>
@@ -101,6 +105,9 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="line"></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Статус*</label>
@@ -126,7 +133,6 @@
     </main>
     <!-- Скрипты для выбора checked-->
     <script src="{% static 'file/panel/js/days/selected.js' %}"></script>
-    <script src="{% static 'file/panel/js/days/mobiscroll.js' %}"></script>
     <script src="{% static 'file/panel/js/days/mobiscroll.jquery.min.js' %}"></script>
     <script src="{% static 'file/panel/js/days/mobiscroll.js' %}"></script>
 {% endblock content %}

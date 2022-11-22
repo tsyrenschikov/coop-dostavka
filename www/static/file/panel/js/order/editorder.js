@@ -222,7 +222,6 @@ $(document).on('click', '.edit', function () {
     var coun = counter - 1,
         valcount = $("#count" + coun + "").text(),
         fooloop = $("#forloop" + coun + "").text();
-    console.log(fooloop)
     $('.appcount' + coun + '').attr({'value': valcount,});
     $('.forloop' + coun + '').removeAttr('value');
     $('.forloop' + coun + '').attr({'value': fooloop,});

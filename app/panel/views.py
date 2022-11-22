@@ -283,6 +283,7 @@ def add_location(request):
             days_numb = request.POST.getlist('days_numb')
             days_numb_dop = request.POST.getlist('days_numb_dop')
             time = request.POST.getlist(['time_start', 'time_end'])
+            time_price_delivery = request.POST.get('price')
 
             slug = request.POST.get('slug')
             status = request.POST.get('status')
@@ -292,7 +293,7 @@ def add_location(request):
                 return render(request, 'panel/add_location.html', alert)
             else:
                 Locations.objects.create(name=name, delivery_price=delivery_price, delivery_price_min=delivery_price_min, days=days, days_numb=days_numb, days_numb_dop=days_numb_dop,
-                                         time=time, slug=slug, status=status)
+                                         time=time,time_price_delivery=time_price_delivery, slug=slug, status=status)
                 return render(request, 'panel/add_ok_location.html', {'local': local, 'shops': shops, 'day': day})
         return render(request, 'panel/add_location.html', {'local': local, 'shops': shops, 'day': day})
     else:

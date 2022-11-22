@@ -1,8 +1,9 @@
 var
     myArray = [],
     myArray_dop = [],
-    time_array = [];
+    days_array = ["1", "2", "3", "4", "5", "6", "0"];
 $('#days_time').hide();
+
 $(this).change(function (e) {
     myArray = 0;
     myArray = [];
@@ -11,22 +12,26 @@ $(this).change(function (e) {
         myArray.push(check);
     });
     $('#array').attr({'value': myArray});
-    $('#start').attr({'name': ''});
-    $('#end').attr({'name': ''});
+
     if ($('#checkbox').is(':checked')) {
-        $('#days_time').show()
+        $('#days_time').show();
         myArray_dop = 0;
         myArray_dop = [];
-        time_array = 0;
-        time_array=[];
         $('#days_time input:checkbox:checked').each(function () {
-            check_dop = $(this).attr('number_dop');
-            check_time = $('#start').attr('time_start')
+            var check_dop = $(this).attr('number_dop');
             myArray_dop.push(check_dop);
-            time_array.push(check_time)
-            console.log(time_array)
         });
+        console.log(myArray_dop)
         $('#array_dop').attr({'value': myArray_dop});
+        $.each(myArray_dop, function (index, value) {
+            $.each(days_array, function (i, v) {
+                if (value === v) {
+                    $('#start' + value + '').attr({'name': 'time_start'});
+                    $('#end' + value + '').attr({'name': 'time_end'});
+                    $('#price' + value + '').attr({'name': 'price'});
+                }
+            });
+        });
     } else {
         $('#days_time').hide();
         $('#days_time input:checkbox').prop('checked', false);

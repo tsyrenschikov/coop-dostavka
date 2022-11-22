@@ -79,20 +79,23 @@
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Начало
-                                                            <input type="time" id="start" mbsc-input data-input-style="outline" data-label-style="stacked"/>
+                                                            <input type="time" id="start" time_start="{{ day.daysdict }}" mbsc-input data-input-style="outline" data-label-style="stacked"
+                                                                   value="00:00"/>
                                                         </label>
                                                     </div>
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Окончание
-                                                            <input type="time" id="end" mbsc-input data-input-style="outline" data-label-style="stacked"/>
+                                                            <input type="time" id="end" mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
                                                         </label>
                                                     </div>
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Стоимость доставки
-                                                            <input type="number" mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value = this.value.replace(/[^0-9
-                                                            .]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="100" placeholder="1р."/>
+                                                            <input type="number" mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value =
+                                                            this.value.replace
+                                                            (/[^0-9
+                                                            .]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="0" placeholder="1р."/>
                                                         </label>
                                                     </div>
                                                 </div>

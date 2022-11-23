@@ -4,6 +4,7 @@
     <!--Панель заказа-->
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
     <link href="{% static 'file/panel/css/day/days.css' %}" rel="stylesheet">
+    <link href="{% static 'file/panel/css/day/mobiscroll.jquery.min.css' %}" rel="stylesheet">
 {% endblock stylesheet %}
 
 {% block title %}panel{% endblock %}
@@ -21,7 +22,7 @@
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Добавить населенный пункт</h4>
-                           {% comment %} <h4 style="color: red; margin-left: 5px">(<strong>Внимание! </strong>Раздел редактируется)</h4>{% endcomment %}
+                            {% comment %} <h4 style="color: red; margin-left: 5px">(<strong>Внимание! </strong>Раздел редактируется)</h4>{% endcomment %}
                         </div>
                         <div class="card-body-table">
                             <form method="post">
@@ -49,17 +50,61 @@
                                         <input type="text" name="delivery_price" class="form-control" value="{{ local.delivery_price }}" placeholder="1 р.">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Минимальная сумма заказа для бесплатной доставки*</label>
+                                        <label class="form-label">Cумма заказа для бесплатной доставки*</label>
                                         <input type="text" name="delivery_price_min" class="form-control" value="{{ local.delivery_price_min }}" placeholder="1 р.">
                                     </div>
                                     <div class="form-group" id="days">
-                                        <label class="form-label">Дни недели поставки*</label>
+                                        <label class="form-label">Периодичность доставки (дни недели)*</label>
                                         {% for day in days %}
                                             <label class="control control--checkbox">{{ day.name }}
                                                 <input id="checkdays" name="day" value="{{ day.name }}" number="{{ day.daysdict }}" type="checkbox"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="form-group" id="days_dop">
+                                        <label class="form-label"><input type="checkbox" id="checkbox">Дополнительный период доставки (дни недели, время, стоимость)</label>
+                                    </div>
+                                    <div class="form-group" id="days_time">
+                                        {% for day in days %}
+                                            <label class="control control--checkbox">{{ day.name }}
+                                                <input id="day_dop" name="day_dop" value="{{ day.name }}" number_dop="{{ day.daysdict }}" type="checkbox"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                            <div class="mbsc-grid mbsc-no-padding">
+                                                <div class="mbsc-row">
+                                                    <div class="mbsc-col-6">
+                                                        <label>
+                                                            Начало
+                                                            <input type="time" id='start{{ day.daysdict }}' mbsc-input data-input-style="outline"
+                                                                   data-label-style="stacked"
+                                                                   value="00:00"/>
+                                                        </label>
+                                                    </div>
+                                                    <div class="mbsc-col-6">
+                                                        <label>
+                                                            Окончание
+                                                            <input type="time" id='end{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
+                                                        </label>
+                                                    </div>
+                                                    <div class="mbsc-col-6">
+                                                        <label>
+                                                            Стоимость доставки
+                                                            <input type="number" id='price{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value =
+                                                            this.value.replace
+                                                            (/[^0-9
+                                                            .]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="0" placeholder="1р."/>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="line"></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Статус*</label>
@@ -87,6 +132,8 @@
     {% block js %}
         <!-- Скрипты для выбора из разных окон -->
         <script src="{% static 'file/panel/js/days/check_days.js' %}"></script>
+        <script src="{% static 'file/panel/js/days/mobiscroll.jquery.min.js' %}"></script>
+        <script src="{% static 'file/panel/js/days/mobiscroll.js' %}"></script>
     {% endblock js %}
 
 {% endblock content %}

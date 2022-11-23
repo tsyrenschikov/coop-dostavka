@@ -282,7 +282,7 @@ def add_location(request):
             days = request.POST.getlist('day')
             days_numb = request.POST.getlist('days_numb')
             days_numb_dop = request.POST.getlist('days_numb_dop')
-            time = request.POST.getlist(['time_start', 'time_end'])
+            time = request.POST.getlist('time_start', 'time_end'])
             time_price_delivery = request.POST.get('price')
 
             slug = request.POST.get('slug')

@@ -12,6 +12,7 @@ $(document).ready(function () {
         array_dop_str = Array_day_dop.replace(/'/g,'');
     array_str = JSON.parse(array_str);
     array_dop_str = JSON.parse(array_dop_str);
+    console.log($('#checkdays[name=day]').length)
     for (var i = 0; i < $('#checkdays[name=day]').length; i++) {
         $.each(array_str, function (index, value) {
             $(this).ready(function (e) {

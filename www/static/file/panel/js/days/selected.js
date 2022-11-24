@@ -1,7 +1,6 @@
 var
     myArray = [],
-    myArray_dop = [],
-    days_array = ["1", "2", "3", "4", "5", "6", "0"];
+    myArray_dop = [];
 $('#days_time').hide();
 
 $(this).change(function (e) {
@@ -25,7 +24,6 @@ $(this).change(function (e) {
             myArray_dop.push(check_dop);
         });
         $('#array_dop').attr({'value': myArray_dop});
-        console.log(myArray_dop)
         $('#days_time input:checkbox:not(:checked)').each(function (){
             var nocheck_dop = $(this).attr('number_dop')
             $('#start' + nocheck_dop + '').attr({'name': ''});

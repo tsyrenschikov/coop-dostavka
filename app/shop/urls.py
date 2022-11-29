@@ -102,7 +102,7 @@ urlpatterns = [
     path('bugalysh/cart_bugalysh/', views.cart_bugalysh, name='cart_bugalysh'),
     path('bugalysh/cart_ok_bugalysh/<int:ord>/', views.cart_ok_bugalysh, name='cart_ok_bugalysh'),
 
-# Shop bbisert
+# Shop bisert
     path('bisert/', views.shop_bisert, name='shop_bisert'),
     path('bisert/product/<int:id>/', views.shop_bisert_product, name='shop_bisert_product'),
     path('bisert/grid/', views.shop_bisert_grid, name='shop_bisert_grid'),
@@ -123,5 +123,17 @@ path('chernovskoe/', views.shop_chernovskoe, name='shop_chernovskoe'),
     path('chernovskoe/searchbisert/', views.searchchernovskoe, name='searchchernovskoe'),
     path('chernovskoe/cart_bisert/', views.cart_chernovskoe, name='cart_chernovskoe'),
     path('chernovskoe/cart_ok_bisert/<int:ord>/', views.cart_ok_chernovskoe, name='cart_ok_chernovskoe'),
+
+#Shop natalinsk
+# Shop bisert
+    path('natalinsk/', views.shop_natalinsk, name='shop_natalinsk'),
+    path('natalinsk/product/<int:id>/', views.shop_natalinsk_product, name='shop_natalinsk_product'),
+    path('natalinsk/grid/', views.shop_natalinsk_grid, name='shop_natalinsk_grid'),
+    path('natalinsk/career/', views.shop_natalinsk_career, name='shop_natalinsk_career'),
+    path('natalinsk/sort_list/<str:list>/', views.sort_list_natalinsk, name='sort_list_natalinsk'),
+    path('natalinsk/searchproduct_bisert/', views.searchproduct_natalinsk, name='searchproduct_natalinsk'),
+    path('natalinsk/searchbisert/', views.searchnatalinsk, name='searchnatalinsk'),
+    path('natalinsk/cart_bisert/', views.cart_natalinsk, name='cart_natalinsk'),
+    path('natalinsk/cart_ok_bisert/<int:ord>/', views.cart_ok_natalinsk, name='cart_ok_natalinsk'),
 
     ]

@@ -250,11 +250,12 @@ def edit_location(request, id):
                 local.status = request.POST.get("status")
                 local.save()
                 if request.method == 'POST':
-                    local = Locations.objects.get(id=id)
                     local.days = request.POST.getlist('day')
+                    local.save(update_fields=['days'])
+                if request.method == 'POST':
                     local.days_numb = request.POST.getlist('days_numb')
-                    local.save(update_fields=['days', 'days_numb'])
-                    return render(request, "panel/edit_ok_location.html", {'local': local, 'days': days, 'shops': shops})
+                    local.save(update_fields=['days_numb'])
+                return render(request, "panel/edit_ok_location.html", {'local': local, 'days': days, 'shops': shops})
             else:
                 return render(request, "panel/edit_location.html", {"local": local, 'days': days, 'shops': shops})
         except local.DoesNotExist:

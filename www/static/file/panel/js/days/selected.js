@@ -2,6 +2,7 @@ var
     myArray = [],
     myArray_dop = [];
 $('#days_time').hide();
+$('#checkbox').prop("checked", false);
 
 $(this).change(function (e) {
     myArray = 0;

@@ -38,7 +38,7 @@ class Locations(models.Model):
     days_numb_dop = models.JSONField(default=list, null=True, blank=True, verbose_name='Номера дней дополнительно')
     time_start = models.JSONField(default=list, null=True, blank=True, verbose_name='Время платной доставки начало')
     time_end = models.JSONField(default=list, null=True, blank=True, verbose_name='Время платной доставки конец')
-    time_price_delivery = models.PositiveIntegerField(null=True, verbose_name='Стоимость доставки по времени')
+    time_price_delivery = models.JSONField(default=list, null=True, blank=True, verbose_name='Стоимость доставки по времени')
     slug = models.CharField(max_length=200, db_index=True,null=True, verbose_name='Ссылка на сайт')
     status = models.BooleanField(default=True, verbose_name='Активный')
 

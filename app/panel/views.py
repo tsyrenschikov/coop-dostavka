@@ -287,7 +287,7 @@ def add_location(request):
             status = request.POST.get('status')
             time_start = request.POST.getlist('time_start')
             time_end = request.POST.getlist('time_end')
-            time_price_delivery = request.POST.get('price')
+            time_price_delivery = request.POST.getlist('price')
 
             if Locations.objects.filter(name=request.POST['name']).filter(slug=request.POST['slug']).exists():
                 alert['name'] = "Название населенного пункта уже существует"

@@ -65,7 +65,7 @@ $(document).ready(function () {
                             if (i === ie) {
                                 $('#end' + String(v) + '').attr({'value': ve});
                             }
-                            if (i === ip){
+                            if (i === ip) {
                                 $('#price' + String(v) + '').attr({'value': vp});
                             }
                         });
@@ -84,13 +84,9 @@ $(this).change(function (e) {
     time_s = 0;
     time_e = 0;
     time_s = [],
-    time_e = [];
+        time_e = [];
     $('#days input:checkbox:checked').each(function () {
         var check = $(this).attr('number');
-        time = $('#start'+ check +'').val()
-        time_end_ = $('#end'+ check +'').val()
-        time_s.push(time)
-        time_e.push(time_e)
         $('input:checkbox[number="' + String(check) + '"]').attr({'checked': true})
         Number_days.push(check);
     });
@@ -106,13 +102,19 @@ $(this).change(function (e) {
         myArray_dop = [];
         $('#days_time input:checkbox:checked').each(function () {
             var check_dop = $(this).attr('number_dop');
+
+            time = $('#start' + check + '').val()
+            time_end_ = $('#end' + check + '').val()
+            time_s.push(time)
+            time_e.push(time_e)
+
             $('#start' + check_dop + '').attr({'name': 'time_start'});
             $('#end' + check_dop + '').attr({'name': 'time_end'});
             $('#price' + check_dop + '').attr({'name': 'price'});
             myArray_dop.push(check_dop);
         });
         $('#array_dop').attr({'value': myArray_dop});
-        $('#days_time input:checkbox:not(:checked)').each(function (){
+        $('#days_time input:checkbox:not(:checked)').each(function () {
             var nocheck_dop = $(this).attr('number_dop')
             $('#start' + nocheck_dop + '').attr({'name': ''});
             $('#end' + nocheck_dop + '').attr({'name': ''});

@@ -1,11 +1,15 @@
 var
     Number_days = [],
+    time_s = [],
+    time_e = [],
     Array_days = [],
     Array_days_dop = 0,
     Array_time_start = [],
     Array_time_end = [],
     Array_price = [],
-    len_array = 0;
+    len_array = 0,
+    myArray = [],
+    myArray_dop = [];
 
 $(document).ready(function () {
 
@@ -77,21 +81,48 @@ $(document).ready(function () {
 $(this).change(function (e) {
     Number_days = 0;
     Number_days = [];
+    time_s = 0;
+    time_e = 0;
+    time_s = [],
+    time_e = [];
     $('#days input:checkbox:checked').each(function () {
-        check = $(this).attr('number');
+        var check = $(this).attr('number');
+        time = $('#start'+ check +'').val()
+        time_end_ = $('#end'+ check +'').val()
+        time_s.push(time)
+        time_e.push(time_e)
         $('input:checkbox[number="' + String(check) + '"]').attr({'checked': true})
         Number_days.push(check);
     });
     $('#days input:checkbox:not(:checked)').each(function () {
-        check = $(this).attr('number');
+        var check = $(this).attr('number');
         $('input:checkbox[number="' + String(check) + '"]').attr({'checked': false})
     });
     $('#days_numb').attr({'value': Number_days}) /*Список дней check*/
 
     if ($('#checkbox').is(':checked')) {
         $('#days_time').show();
+        myArray_dop = 0;
+        myArray_dop = [];
+        $('#days_time input:checkbox:checked').each(function () {
+            var check_dop = $(this).attr('number_dop');
+            $('#start' + check_dop + '').attr({'name': 'time_start'});
+            $('#end' + check_dop + '').attr({'name': 'time_end'});
+            $('#price' + check_dop + '').attr({'name': 'price'});
+            myArray_dop.push(check_dop);
+        });
+        $('#array_dop').attr({'value': myArray_dop});
+        $('#days_time input:checkbox:not(:checked)').each(function (){
+            var nocheck_dop = $(this).attr('number_dop')
+            $('#start' + nocheck_dop + '').attr({'name': ''});
+            $('#end' + nocheck_dop + '').attr({'name': ''});
+            $('#price' + nocheck_dop + '').attr({'name': ''});
+        });
     } else {
         $('#days_time').hide();
+        myArray_dop = 0;
+        myArray_dop = [];
+        $('#array_dop').attr({'value': myArray_dop});
     }
 });
 

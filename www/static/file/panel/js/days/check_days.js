@@ -83,8 +83,8 @@ $(this).change(function (e) {
     Number_days = [];
     time_s = 0;
     time_e = 0;
-    time_s = [],
-        time_e = [];
+    time_s = [];
+    time_e = [];
     $('#days input:checkbox:checked').each(function () {
         var check = $(this).attr('number');
         $('input:checkbox[number="' + String(check) + '"]').attr({'checked': true})
@@ -102,18 +102,16 @@ $(this).change(function (e) {
         myArray_dop = [];
         $('#days_time input:checkbox:checked').each(function () {
             var check_dop = $(this).attr('number_dop');
-
-            time = $('#start' + check + '').val()
-            time_end_ = $('#end' + check + '').val()
-            time_s.push(time)
-            time_e.push(time_e)
-
-            $('#start' + check_dop + '').attr({'name': 'time_start'});
-            $('#end' + check_dop + '').attr({'name': 'time_end'});
-            $('#price' + check_dop + '').attr({'name': 'price'});
+            var time_start_ = $('input[number_time_start="' + check_dop + '"]').val();
+            var time_end_ = $('input[number_time_end="' + check_dop + '"]').val();
+            var price_ = $('input[number_price="' + check_dop + '"]').val();
+            $('#start' + check_dop + '').attr({'name': 'time_start', 'value': time_start_});
+            $('#end' + check_dop + '').attr({'name': 'time_end', 'value': time_end_});
+            $('#price' + check_dop + '').attr({'name': 'price', 'value': price_});
             myArray_dop.push(check_dop);
         });
         $('#array_dop').attr({'value': myArray_dop});
+
         $('#days_time input:checkbox:not(:checked)').each(function () {
             var nocheck_dop = $(this).attr('number_dop')
             $('#start' + nocheck_dop + '').attr({'name': ''});
@@ -125,6 +123,14 @@ $(this).change(function (e) {
         myArray_dop = 0;
         myArray_dop = [];
         $('#array_dop').attr({'value': myArray_dop});
+        $('#days_time input').each(function () {
+            var nocheck_dop = $(this).attr('number_dop');
+            if(nocheck_dop !== 'undefined') {
+                $('#start' + nocheck_dop + '').attr({'name': ''});
+                $('#end' + nocheck_dop + '').attr({'name': ''});
+                $('#price' + nocheck_dop + '').attr({'name': ''});
+            }
+        });
     }
 });
 

@@ -61,7 +61,7 @@
                                                 <div class="control__indicator"></div>
                                             </label>
                                         {% endfor %}
-                                    <input type="hidden" id="days_numb" name="days_numb">
+                                        <input type="hidden" id="days_numb" name="days_numb">
                                     </div>
                                     <div class="form-group">
                                         <div class="line"></div>
@@ -122,8 +122,8 @@
                                         </select>
                                     </div>
                                     <input id="array_days" type="hidden" value="{{ local.days_numb }}">
-                                    <input id="array_dop" type="hidden">
-                                {% comment %}Список доп дней{% endcomment %}
+                                    <input type="hidden" name="days_numb_dop" id="array_dop">
+                                    {% comment %}Список доп дней{% endcomment %}
                                     <input id="array_day_dop" type="hidden" value="{{ local.days_numb_dop }}">
                                     <input id="array_time_start" type="hidden" value="{{ local.time_start }}">
                                     <input id="array_time_end" type="hidden" value="{{ local.time_end }}">

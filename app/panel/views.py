@@ -256,6 +256,18 @@ def edit_location(request, id):
                 if request.method == 'POST':
                     local.days_numb = request.POST.getlist('days_numb')
                     local.save(update_fields=['days_numb'])
+                if request.method == 'POST':
+                    local.days_numb_dop = request.POST.getlist('days_numb_dop')
+                    local.save(update_fields=['days_numb_dop'])
+                if request.method == 'POST':
+                    local.time_start = request.POST.getlist('time_start')
+                    local.save(update_fields=['time_start'])
+                if request.method == 'POST':
+                    local.time_end = request.POST.getlist('time_end')
+                    local.save(update_fields=['time_end'])
+                if request.method == 'POST':
+                    local.time_price_delivery = request.POST.getlist('price')
+                    local.save(update_fields=['time_price_delivery'])
                 return render(request, "panel/edit_ok_location.html", {'local': local, 'days': days, 'shops': shops})
             else:
                 return render(request, "panel/edit_location.html", {"local": local, 'days': days, 'shops': shops})

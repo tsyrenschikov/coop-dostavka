@@ -61,7 +61,7 @@
                                                 <div class="control__indicator"></div>
                                             </label>
                                         {% endfor %}
-                                    <input type="hidden" id="days_numb" name="days_numb">
+                                        <input type="hidden" id="days_numb" name="days_numb">
                                     </div>
                                     <div class="form-group">
                                         <div class="line"></div>
@@ -80,7 +80,7 @@
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Начало
-                                                            <input type="time" id='start{{ day.daysdict }}' mbsc-input data-input-style="outline"
+                                                            <input type="time" number_time_start="{{ day.daysdict }}" id='start{{ day.daysdict }}' mbsc-input data-input-style="outline"
                                                                    data-label-style="stacked"
                                                                    value="00:00"/>
                                                         </label>
@@ -88,13 +88,15 @@
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Окончание
-                                                            <input type="time" id='end{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
+                                                            <input type="time" number_time_end="{{ day.daysdict }}" id='end{{ day.daysdict }}' mbsc-input data-input-style="outline"
+                                                                   data-label-style="stacked" value="00:00"/>
                                                         </label>
                                                     </div>
                                                     <div class="mbsc-col-6">
                                                         <label>
                                                             Стоимость доставки
-                                                            <input type="number" id='price{{ day.daysdict }}' mbsc-input data-input-style="outline" data-label-style="stacked" oninput="this.value =
+                                                            <input type="number" number_price="{{ day.daysdict }}" id='price{{ day.daysdict }}' mbsc-input data-input-style="outline"
+                                                                   data-label-style="stacked" oninput="this.value =
                                                             this.value.replace
                                                             (/[^0-9
                                                             .]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="0" placeholder="1р."/>
@@ -120,8 +122,8 @@
                                         </select>
                                     </div>
                                     <input id="array_days" type="hidden" value="{{ local.days_numb }}">
-                                    <input id="array_dop" type="hidden">
-                                {% comment %}Список доп дней{% endcomment %}
+                                    <input type="hidden" name="days_numb_dop" id="array_dop">
+                                    {% comment %}Список доп дней{% endcomment %}
                                     <input id="array_day_dop" type="hidden" value="{{ local.days_numb_dop }}">
                                     <input id="array_time_start" type="hidden" value="{{ local.time_start }}">
                                     <input id="array_time_end" type="hidden" value="{{ local.time_end }}">

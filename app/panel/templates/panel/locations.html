@@ -40,6 +40,7 @@
                                         <th>Платная доставка</th>
                                         <th>Бесплатная доставка от:</th>
                                         <th>Дни доставки</th>
+                                        <th>Доп.дни</th>
                                         <th>Статус</th>
                                         <th>Действия</th>
                                     </tr>
@@ -83,6 +84,15 @@
                                                 {% else %}
                                                     <p style="color: green">Не указано</p>
                                                 {% endif %}
+                                            </td>
+                                            <td>
+                                                {% for l in local.days_numb_dop %}
+                                                    {% if l %}
+                                                        ✔️
+                                                    {% else %}
+                                                        ❌
+                                                    {% endif %}
+                                                {% endfor %}
                                             </td>
                                             {% if local.status %}
                                                 <td><span class="badge-item badge-panel-status">Активный</span></td>

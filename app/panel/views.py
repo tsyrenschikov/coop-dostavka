@@ -227,7 +227,7 @@ def locations(request):
         for user in users:
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
-                    local = Locations.objects.filter(slug=slug_shop).order_by('slug')
+                    local = Locations.objects.filter(slug=slug_shop).order_by('name')
                     if request.method == 'POST':
                         check_ = request.POST.getlist("check_")
                         checkbool = request.POST.get("checkbool")
@@ -241,7 +241,7 @@ def locations(request):
                             return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
                     return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day' : day})
                 elif request.user.is_superuser:
-                    local = Locations.objects.all()
+                    local = Locations.objects.all().order_by('slug')
                     if request.method == 'POST':
                         check_ = request.POST.getlist("check_")
                         checkbool = request.POST.get("checkbool")

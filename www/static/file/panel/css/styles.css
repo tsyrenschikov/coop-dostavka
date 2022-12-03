@@ -1165,3 +1165,34 @@ ul.ui-autocomplete li.ui-menu-item.ui-state-focus {
 .ui-helper-hidden-accessible {
     display: none;
 }
+
+/*--
+    Scroll Up
+-----------------------------------------*/
+#scrollUp {
+  background: #40A944 none repeat scroll 0 0;
+  bottom: 85px;
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
+  font-size: 20px;
+  height: 45px;
+  line-height: 39px;
+  position: fixed;
+  right: 12px;
+  text-align: center;
+  width: 45px;
+  z-index: 9999;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+#scrollUp:hover i {
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+/*--

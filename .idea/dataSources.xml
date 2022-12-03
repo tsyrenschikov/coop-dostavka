@@ -5,7 +5,7 @@
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://10.19.4.1/c39682_coop_dostavka_ru</jdbc-url>
+      <jdbc-url>jdbc:postgresql://10.19.4.1:5432/c39682_coop_dostavka_ru</jdbc-url>
       <jdbc-additional-properties>
         <property name="SHOW_TEMPLATE_DATABASES" value="true" />
       </jdbc-additional-properties>

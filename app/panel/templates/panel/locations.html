@@ -10,116 +10,141 @@
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
                 <li class="breadcrumb-item active">Населенные пункты</li>
             </ol>
-            <div class="row justify-content-between">
-                {% if 'super_manager' in groups %}
-                    <div class="col-lg-12">
-                        <a href="{% url 'add_location' %}" class="add-btn hover-btn">Добавить населенный пункт</a>
-                    </div>
-                {% endif %}
-                <div class="col-lg-5 col-md-6">
-                    <div class="bulk-section mt-30">
-                        <div class="search-by-name-input">
-                            <input type="text" class="form-control" placeholder="Поиск" id="search-text" onkeyup="tableSearch()">
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row justify-content-between">
+                    {% if 'super_manager' in groups %}
+                        <div class="col-lg-12">
+                            <a href="{% url 'add_location' %}" class="add-btn hover-btn">Добавить населенный пункт</a>
+                        </div>
+                    {% endif %}
+                    <div class="col-lg-5 col-md-6">
+                        <div class="bulk-section mt-30">
+                            <div class="search-by-name-input">
+                                <input type="text" class="form-control" placeholder="Поиск" id="search-text" onkeyup="tableSearch()">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mt-30 mb-30">
-                        <div class="card-title-2">
-                            <h4>Список населенных пунктов</h4>
+
+                    <div class="col-lg-51 col-md-6">
+                        <div class="bulk-section mt-30">
+                            <div class="input-group">
+                                <select name="checkbool" class="form-control">
+                                    <option value="" disabled selected>Установить статус</option>
+                                    <option value="True">Активный</option>
+                                    <option value="False">Не активный</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button id="btn" class="status-btn hover-btn" type="submit" disabled>Применить</button>
+                                </div>
+                                <input hidden id="check" name="check_">
+                            </div>
                         </div>
-                        <div class="card-body-table">
-                            <div class="table-responsive">
-                                <table id="info-table" class="table ucp-table table-hover table_sort">
-                                    <thead>
-                                    <tr>
-                                        <th>Имя</th>
-                                        {% if user.is_superuser %}
-                                            <th>Магазин</th>
-                                        {% endif %}
-                                        <th>Платная доставка</th>
-                                        <th>Бесплатная доставка от:</th>
-                                        <th>Дни доставки</th>
-                                        <th>Доп.дни</th>
-                                        <th>Статус</th>
-                                        <th>Действия</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for local in local %}
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card card-static-2 mt-30 mb-30">
+                            <div class="card-title-2">
+                                <h4>Список населенных пунктов</h4>
+                            </div>
+                            <div class="card-body-table">
+                                <div class="table-responsive">
+                                    <table id="info-table" class="table ucp-table table-hover table_sort">
+                                        <thead>
                                         <tr>
-                                            <td>
-                                                {% if local.name %}
-                                                    {{ local.name }}
-                                                {% else %}
-                                                    <p style="color:green">Не указано</p>
-                                                {% endif %}
-                                            </td>
+                                            <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                            <th>Имя</th>
                                             {% if user.is_superuser %}
+                                                <th>Магазин</th>
+                                            {% endif %}
+                                            <th>Платная доставка</th>
+                                            <th>Бесплатная доставка от:</th>
+                                            <th>Дни доставки</th>
+                                            <th>Доп.дни</th>
+                                            <th>Статус</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for local in local %}
+                                            <tr>
                                                 <td>
-                                                    {% for id, name,slug in shops %}
-                                                        {% if local.slug == slug %}
-                                                            {{ name }}
+                                                    <input type="checkbox" class="check-item" value="{{ local.id }}">
+                                                </td>
+                                                <td>
+                                                    {% if local.name %}
+                                                        {{ local.name }}
+                                                    {% else %}
+                                                        <p style="color:green">Не указано</p>
+                                                    {% endif %}
+                                                </td>
+                                                {% if user.is_superuser %}
+                                                    <td>
+                                                        {% for id, name,slug in shops %}
+                                                            {% if local.slug == slug %}
+                                                                {{ name }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                {% endif %}
+                                                <td>
+                                                    {% if local.delivery_price or local.delivery_price == 0 %}
+                                                        {{ local.delivery_price }}.p
+                                                    {% else %}
+                                                        <p style="color: green">Не указано</p>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if local.delivery_price_min or  local.delivery_price_min == 0 %}
+                                                        {{ local.delivery_price_min }}.р
+                                                    {% else %}
+                                                        <p style="color: green">Не указано</p>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if local.days %}
+                                                        {{ local.days|cut:"["|cut:"]"|cut:"'" }}
+                                                    {% else %}
+                                                        <p style="color: green">Не указано</p>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% for l in local.days_numb_dop %}
+                                                        {% if l %}
+                                                            ✔️
+                                                        {% else %}
+                                                            ❌
                                                         {% endif %}
                                                     {% endfor %}
                                                 </td>
-                                            {% endif %}
-                                            <td>
-                                                {% if local.delivery_price or local.delivery_price == 0 %}
-                                                    {{ local.delivery_price }}.p
+                                                {% if local.status %}
+                                                    <td><span class="badge-item badge-panel-status">Активный</span></td>
                                                 {% else %}
-                                                    <p style="color: green">Не указано</p>
+                                                    <td><span class="badge-item badge-status">Не активный</span></td>
                                                 {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if local.delivery_price_min or  local.delivery_price_min == 0 %}
-                                                    {{ local.delivery_price_min }}.р
-                                                {% else %}
-                                                    <p style="color: green">Не указано</p>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if local.days %}
-                                                    {{ local.days|cut:"["|cut:"]"|cut:"'" }}
-                                                {% else %}
-                                                    <p style="color: green">Не указано</p>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% for l in local.days_numb_dop %}
-                                                    {% if l %}
-                                                        ✔️
-                                                    {% else %}
-                                                        ❌
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </td>
-                                            {% if local.status %}
-                                                <td><span class="badge-item badge-panel-status">Активный</span></td>
-                                            {% else %}
-                                                <td><span class="badge-item badge-status">Не активный</span></td>
-                                            {% endif %}
-                                            <td class="action-btns">
-                                                <a href="/edit_location/{{ local.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
-                                                {% if user.is_superuser %}
-                                                    <a href="/delete_location/{{ local.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +
+                                                <td class="action-btns">
+                                                    <a href="/edit_location/{{ local.id }}" class="edit-btn"><i class="fas fa-edit"></i></a>
+                                                    {% if user.is_superuser %}
+                                                        <a href="/delete_location/{{ local.id }}" class="delete-btn" title="Удалить" onclick="return confirm('Удалить локацию??? (ДЕЙСТВИЕ НЕ ' +
 															 'ОБРАТИМО)')"><i
-                                                            class="fas
+                                                                class="fas
 															fa-trash-alt" onSubmit="if(confirm('Sure?'))
 															this.submit"></i></a>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
+    <script src="{% static 'file/panel/js/city/city_check.js' %}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 

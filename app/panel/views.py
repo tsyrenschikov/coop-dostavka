@@ -228,9 +228,31 @@ def locations(request):
             for custom_id, name_shop, slug_shop in shops:
                 if request.user.id == user and user == custom_id and user != supermanager:
                     local = Locations.objects.filter(slug=slug_shop).order_by('slug')
+                    if request.method == 'POST':
+                        check_ = request.POST.getlist("check_")
+                        checkbool = request.POST.get("checkbool")
+                        item = [i.split(',') for i in check_][0]
+                        for i in item:
+                            if i == 'on':
+                                item.pop(0)
+                        items = list(map(int, item))
+                        if checkbool:
+                            Locations.objects.filter(pk__in=items).update(status=checkbool)
+                            return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
                     return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day' : day})
                 elif request.user.is_superuser:
                     local = Locations.objects.all()
+                    if request.method == 'POST':
+                        check_ = request.POST.getlist("check_")
+                        checkbool = request.POST.get("checkbool")
+                        item = [i.split(',') for i in check_][0]
+                        for i in item:
+                            if i == 'on':
+                                item.pop(0)
+                        items = list(map(int, item))
+                        if checkbool:
+                            Locations.objects.filter(pk__in=items).update(status=checkbool)
+                        return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
                     return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day' : day})
     else:
         return redirect('/login')

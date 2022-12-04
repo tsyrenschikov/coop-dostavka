@@ -232,9 +232,7 @@ def locations(request):
                         check_ = request.POST.getlist("check_")
                         checkbool = request.POST.get("checkbool")
                         item = [i.split(',') for i in check_][0]
-                        for i in item:
-                            if i == 'on':
-                                item.pop(0)
+                        item = [i for i in item if i != 'on']
                         items = list(map(int, item))
                         if checkbool:
                             Locations.objects.filter(pk__in=items).update(status=checkbool)
@@ -246,9 +244,7 @@ def locations(request):
                         check_ = request.POST.getlist("check_")
                         checkbool = request.POST.get("checkbool")
                         item = [i.split(',') for i in check_][0]
-                        for i in item:
-                            if i == 'on':
-                                item.pop(0)
+                        item = [i for i in item if i != 'on']
                         items = list(map(int, item))
                         if checkbool:
                             Locations.objects.filter(pk__in=items).update(status=checkbool)

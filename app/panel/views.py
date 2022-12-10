@@ -932,8 +932,8 @@ def edit_product(request, id):
                                 products.height = request.POST.get('height')
                                 products.length = request.POST.get('length')
                                 products.fabricator = request.POST.get('fabricator')
-                                products.material = request.POST.get('material')
                                 products.color = request.POST.get('color')
+                                products.material = request.POST.get('material')
                                 products.save()
                             if request.method == 'POST':
                                 products.subcat = request.POST.get('subcat')

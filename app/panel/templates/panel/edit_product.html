@@ -137,26 +137,26 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="card card-static-2 mb-30 prom_mebel">
+                    <div class="card card-static-2 mb-30 prom_electro">
                         <div class="card-title-2">
                             <h4>Характеристика товара</h4>
                         </div>
                         <div class="form-group">
                             <div class="news-content-right pd-20">
                                 <label class="form-label">Ширина (мм)</label>
-                                <input type="number" name="width" class="form-control" value="{{ products.width }}">
+                                <input id="w" min="0" type="number" name="width" class="form-control" value="{{ products.width }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="news-content-right pd-20">
                                 <label class="form-label">Высота (мм)</label>
-                                <input type="number" name="height" class="form-control" value="{{ products.height }}">
+                                <input id="h" min="0" type="number" name="height" class="form-control" value="{{ products.height }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="news-content-right pd-20">
                                 <label class="form-label">Глубина (мм)</label>
-                                <input type="number" name="length" class="form-control" value="{{ products.length }}">
+                                <input id="l" min="0" type="number" name="length" class="form-control" value="{{ products.length }}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -168,54 +168,13 @@
                         <div class="form-group">
                             <div class="news-content-right pd-20">
                                 <label class="form-label">Материал</label>
-                                <input type="text" name="material" class="form-control" value="{{ products.material }}" placeholder="ДСП">
+                                <input type="text" name="material" class="form-control" value="{{ products.material }}" placeholder="ДВП">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="news-content-right pd-20">
                                 <label class="form-label">Цвет</label>
-                                <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Красно-синий">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-static-2 mb-30 prom_electro">
-                        <div class="card-title-2">
-                            <h4>Характеристика товара</h4>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Ширина (мм)</label>
-                                <input type="number" name="width" class="form-control" value="0">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Высота (мм)</label>
-                                <input type="number" name="height" class="form-control" value="0">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Глубина (мм)</label>
-                                <input type="number" name="length" class="form-control" value="0">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Производитель</label>
-                                <input type="text" name="fabricator" class="form-control" value="" placeholder="Пермь">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Макс. напряжение, В</label>
-                                <input type="text" name="material" class="form-control" value="" placeholder="230">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="news-content-right pd-20">
-                                <label class="form-label">Макс. ток, А</label>
-                                <input type="text" name="color" class="form-control" value="" placeholder="10">
+                                <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Черный">
                             </div>
                         </div>
                     </div>

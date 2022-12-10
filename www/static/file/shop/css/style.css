@@ -3186,7 +3186,7 @@ span.save-icon {
 .pdp-details ul li {
     padding: 20px;
     border-right: 1px solid #efefef;
-    width: 50%;
+    width: 100%;
     display: inline-block;
     float: left;
 }
@@ -3208,6 +3208,7 @@ span.save-icon {
 
 .pdp-text-dt {
     margin-left: 10px;
+    width: 100%;
 }
 
 .pdp-text-dt span {
@@ -7786,3 +7787,17 @@ textarea {
     pointer-events: visible;
 }
 
+.product-characteristics__spec {
+  grid-gap: 16px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.product-characteristics__spec-title {
+  border-bottom: 1px dotted #a9a8a8;
+}
+
+.product-characteristics__spec + .product-characteristics__spec {
+  margin-top: 8px;
+}

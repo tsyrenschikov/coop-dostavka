@@ -111,5 +111,34 @@ $(document).ready(function () {
             }
         });
     }).trigger('change');
-
+    $( "input[type='number']" ).change(function() {
+        var w = $('#w').val();
+        var h = $('#h').val();
+        var l = $('#l').val();
+        if(w === ''){
+            $('#w').val(0);
+            $('#w').attr({'value':0});
+        }
+        else {
+            $('#w').val(w)
+            $('#w').attr({'value':w});
+        }
+        if(h === ''){
+            $('#h').val(0);
+            $('#h').attr({'value' : '0'});
+        }
+        else {
+            $('#h').val(h);
+            $('#h').attr({'value' : h})
+        }
+        if(l === ''){
+            $('#l').val(0);
+            $('#l').attr({'value' : '0'});
+        }
+        else {
+            $('#l').val(l);
+            $('#l').attr({'value' : l})
+        }
+        console.log(w)
+    });
 });

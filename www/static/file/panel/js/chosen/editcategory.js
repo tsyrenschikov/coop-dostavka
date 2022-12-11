@@ -23,6 +23,17 @@ $(document).ready(function () {
             $('.cat').append($('<option number="' + i + '" name="categ" value="' + v + '">' + v + '</option>'))
         }
     });
+    $("input[name='discount']").change(function (){
+       var value = $(this);
+       var v = value.val();
+       if(v === ''){
+           value.val(0);
+           value.attr({'value':0})
+       }else{
+           value.val(v)
+           value.attr({'value':v})
+       }
+    });
     $(".cat").on('change', function () {
         var
             count = 0,
@@ -112,33 +123,14 @@ $(document).ready(function () {
         });
     }).trigger('change');
     $( "input[type='number']" ).change(function() {
-        var w = $('#w').val();
-        var h = $('#h').val();
-        var l = $('#l').val();
-        if(w === ''){
-            $('#w').val(0);
-            $('#w').attr({'value':0});
+        var value=$(this).val();
+        if(value === ''){
+            $(this).attr({'value':0});
+            $(this).val(0)
         }
-        else {
-            $('#w').val(w)
-            $('#w').attr({'value':w});
+        else{
+            $(this).val(value)
+            $(this).attr({'value':value})
         }
-        if(h === ''){
-            $('#h').val(0);
-            $('#h').attr({'value' : '0'});
-        }
-        else {
-            $('#h').val(h);
-            $('#h').attr({'value' : h})
-        }
-        if(l === ''){
-            $('#l').val(0);
-            $('#l').attr({'value' : '0'});
-        }
-        else {
-            $('#l').val(l);
-            $('#l').attr({'value' : l})
-        }
-        console.log(w)
     });
 });

@@ -1,4 +1,5 @@
 {% load static %}
+{% load qr_code %}
 <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="all-product-grid">
@@ -18,6 +19,7 @@
                         {% csrf_token %}
                         <div class="modal-body total">
                             <table class="show-cart table">
+                                {% comment %}{% qr_from_text "Hello World!" %}{% endcomment %}
                             </table>
                             <div><h5>Стоимость товаров: <span type="text" class="cart"></span> р.</h5></div>
                             <br>

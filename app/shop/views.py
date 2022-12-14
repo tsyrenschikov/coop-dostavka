@@ -2492,7 +2492,7 @@ def cart_natalinsk(request):
                     msg.attach_alternative(html_content, "text/html")
                     msg.send()
                     ord = order.id
-                    return redirect(cart_ok_chernovskoe, ord)
+                    return redirect(cart_ok_natalinsk, ord)
 
                 return render(request, 'natalinsk/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
                 'address_str': address_str})
@@ -2540,10 +2540,10 @@ def searchnatalinsk(request):
         phone = request.POST.get('phone')
         if orders.objects.filter(name=request.POST['name']).exists() == False:
             alert['name'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
-            return render(request, 'chetkarino/search_order.html', alert)
+            return render(request, 'natalinsk/search_order.html', alert)
         if orders.objects.filter(phone=request.POST['phone']).exists() == False:
             alert['phone'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
-            return render(request, 'chetkarino/search_order.html', alert)
+            return render(request, 'natalinsk/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name, phone=phone)
             return render(request, 'natalinsk/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})

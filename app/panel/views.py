@@ -824,7 +824,7 @@ def update_file(request, id, ost):
                     while Line:
                         count += 1
                         price_line = []
-                        # line = list(map(str, Line.replace(';', ' ').split())) https://evileg.com/ru/post/642/
+                        # line = list(map(str, Line.replace(';', ' ').split()))
                         line = Line.replace(',', '.')
                         line = Line.replace(';', ' ')
                         price_line.append(line)

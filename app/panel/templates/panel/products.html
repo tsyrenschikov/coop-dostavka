@@ -18,16 +18,6 @@
                             <a href="{% url 'add_product' %}" class="add-btn hover-btn">Добавить продукт</a>
                         </div>
                     </div>
-                    <div class="paginator">
-                        <section>
-                            <input type="file" accept=".xls,.xlsx,.txt" name="fileart" id="upload"/>
-                            <input type="hidden" value="{{ slug }}" name="slug" />
-                            <input type="hidden" name="filename" id="filename" />
-                            <input type="hidden" name="date" id="date" />
-                            <input type="hidden" name="org" value="{{ n }}" />
-                            <button class="upload" type="submit">Загрузить</button>
-                        </section>
-                    </div>
                 </div>
                 <div class="row justify-content-between">
                     <div class="col-lg-5 col-md-6">

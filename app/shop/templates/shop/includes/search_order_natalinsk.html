@@ -1,0 +1,30 @@
+{% load static %}
+<li class="ui dropdown">
+    <a href="#" class="opts_account1">
+        <img src="{% static 'file/shop/images/avatar/search1.png' %}" alt="">
+        <span class="user__name">Отследить заказ</span>
+    </a>
+    <div class="menu right dropdown_account dropdown_account_rl">
+        <div class="rl-account">
+            <form method="post" action="{% url 'searchnatalinsk' %}">
+                {% csrf_token %}
+                <div class="rl-account-step">
+                    <input hidden="hidden" type="text" class="item">
+                </div>
+                <div class="rl-account-step">
+                    <input hidden="hidden" type="text" class="item">
+                    <input type="text" class="form-control" name="name" placeholder="Имя">
+                </div>
+                <div class="rl-account-step">
+                    <input hidden="hidden" type="text" class="item">
+                    <input id="phone1" type="text" name="phone" class="form-control" placeholder="Номер телефона">
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <button type="submit" class="btn btn-success sign-in-btn">
+                        <i aria-hidden="true"></i>Поиск заказа
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</li>

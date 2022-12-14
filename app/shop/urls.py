@@ -114,26 +114,25 @@ urlpatterns = [
     path('bisert/cart_ok_bisert/<int:ord>/', views.cart_ok_bisert, name='cart_ok_bisert'),
 
 #Shop chernovskoe
-path('chernovskoe/', views.shop_chernovskoe, name='shop_chernovskoe'),
+    path('chernovskoe/', views.shop_chernovskoe, name='shop_chernovskoe'),
     path('chernovskoe/product/<int:id>/', views.shop_chernovskoe_product, name='shop_chernovskoe_product'),
     path('chernovskoe/grid/', views.shop_chernovskoe_grid, name='shop_chernovskoe_grid'),
     path('chernovskoe/career/', views.shop_chernovskoe_career, name='shop_chernovskoe_career'),
     path('chernovskoe/sort_list/<str:list>/', views.sort_list_chernovskoe, name='sort_list_chernovskoe'),
-    path('chernovskoe/searchproduct_bisert/', views.searchproduct_chernovskoe, name='searchproduct_chernovskoe'),
-    path('chernovskoe/searchbisert/', views.searchchernovskoe, name='searchchernovskoe'),
-    path('chernovskoe/cart_bisert/', views.cart_chernovskoe, name='cart_chernovskoe'),
-    path('chernovskoe/cart_ok_bisert/<int:ord>/', views.cart_ok_chernovskoe, name='cart_ok_chernovskoe'),
+    path('chernovskoe/searchproduct_chernovskoe/', views.searchproduct_chernovskoe, name='searchproduct_chernovskoe'),
+    path('chernovskoe/searchchernovskoe/', views.searchchernovskoe, name='searchchernovskoe'),
+    path('chernovskoe/cart_chernovskoe/', views.cart_chernovskoe, name='cart_chernovskoe'),
+    path('chernovskoe/cart_ok_chernovskoe/<int:ord>/', views.cart_ok_chernovskoe, name='cart_ok_chernovskoe'),
 
 #Shop natalinsk
-# Shop bisert
     path('natalinsk/', views.shop_natalinsk, name='shop_natalinsk'),
     path('natalinsk/product/<int:id>/', views.shop_natalinsk_product, name='shop_natalinsk_product'),
     path('natalinsk/grid/', views.shop_natalinsk_grid, name='shop_natalinsk_grid'),
     path('natalinsk/career/', views.shop_natalinsk_career, name='shop_natalinsk_career'),
     path('natalinsk/sort_list/<str:list>/', views.sort_list_natalinsk, name='sort_list_natalinsk'),
-    path('natalinsk/searchproduct_bisert/', views.searchproduct_natalinsk, name='searchproduct_natalinsk'),
-    path('natalinsk/searchbisert/', views.searchnatalinsk, name='searchnatalinsk'),
-    path('natalinsk/cart_bisert/', views.cart_natalinsk, name='cart_natalinsk'),
-    path('natalinsk/cart_ok_bisert/<int:ord>/', views.cart_ok_natalinsk, name='cart_ok_natalinsk'),
+    path('natalinsk/searchproduct_natalinsk/', views.searchproduct_natalinsk, name='searchproduct_natalinsk'),
+    path('natalinsk/searchnatalinsk/', views.searchnatalinsk, name='searchnatalinsk'),
+    path('natalinsk/cart_natalinsk/', views.cart_natalinsk, name='cart_natalinsk'),
+    path('natalinsk/cart_ok_natalinsk/<int:ord>/', views.cart_ok_natalinsk, name='cart_ok_natalinsk'),
 
     ]

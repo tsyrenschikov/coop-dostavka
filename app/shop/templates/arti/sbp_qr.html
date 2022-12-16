@@ -1,0 +1,21 @@
+{% extends 'shop/layouts/base_arti.html' %}
+{% load static %}
+{% load qr_code %}
+{% block title %}Оплата заказа по qr коду{% endblock %}
+{% block content %}
+<div class="wrapper">
+        <div class="container">
+            <div class="all-product-grid">
+                <div class="contact-title-1">
+                    <div class="card-title-2">
+                        <div class="main-cart-title"></div>
+                        {% qr_from_text "https://qr.nspk.ru/AS1A007THK0KHCG68898TLVSG84AJLFH?type=01&bank=100000000111&sum=1&cur=RUB&crc=F411" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'shop/layouts/footer.html' %}
+{% include 'shop/includes/scripts.html' %}
+{% endblock content %}

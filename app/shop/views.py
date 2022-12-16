@@ -202,7 +202,7 @@ def cart_arti(request):
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
                     msg.attach_alternative(html_content, "text/html")
-                    # msg.send()
+                    msg.send()
                     ord = order.id
                     return redirect(cart_ok, ord)
 
@@ -227,7 +227,7 @@ def cart_ok(request, ord):
     return render(request, 'arti/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 def gr_arti(request):
-    return render(request, 'arti/cart_ok.html')
+    return render(request, 'arti/sbp_qr.html')
 
 def shop_arti(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()

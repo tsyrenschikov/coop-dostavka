@@ -57,7 +57,7 @@
 }
 .mi-radio__label {
   display: block;
-  padding: 1.2rem 1.2rem 1.2rem 4.8rem;
+  padding: 1.2rem 1.2rem 1.2rem 3.8rem;
 }
 .mi-radio__input {
   margin-right: 1.6rem;
@@ -78,4 +78,37 @@
   25%, 75% {
     opacity: 0;
   }
+}
+
+.icon-wallet1 {
+  content: '';
+  height: 16px;
+  width: 16px;
+  margin-right: 0.5em;
+  background: url('../images/wallet.png') center center no-repeat;
+    background-size: auto;
+  background-size: cover;
+  display: inline flow-root list-item;
+}
+
+.icon-cart {
+  content: '';
+  height: 16px;
+  width: 16px;
+  margin-right: 0.5em;
+  background: url('../images/cart.svg') center center no-repeat;
+    background-size: auto;
+  background-size: cover;
+  display: inline flow-root list-item;
+}
+
+.icon-sbp {
+  content: '';
+  height: 16px;
+  width: 16px;
+  margin-right: 0.5em;
+  background: url('../images/sbp.svg') center center no-repeat;
+    background-size: auto;
+  background-size: cover;
+  display: inline flow-root list-item;
 }

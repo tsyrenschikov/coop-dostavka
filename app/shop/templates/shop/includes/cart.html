@@ -19,7 +19,6 @@
                         {% csrf_token %}
                         <div class="modal-body total">
                             <table class="show-cart table">
-                                {% comment %}{% qr_from_text "Hello World!" %}{% endcomment %}
                             </table>
                             <div><h5>Стоимость товаров: <span type="text" class="cart"></span> р.</h5></div>
                             <br>
@@ -76,7 +75,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group mb-3">
-                                            <div class="order-title"><label class="form-label">Квартира</label><span data-inverted="" data-tooltip="Для жителей многоквартирных домов" data-position="top center">?</span></div>
+                                            <div class="order-title"><label class="form-label">Квартира</label><span data-inverted="" data-tooltip="Для жителей многоквартирных домов"
+                                                                                                                     data-position="top center">?</span></div>
                                             <input type="text" class="form-control" name="address_kv" value="" placeholder="Квартира">
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                                             <input type="checkbox" required="" name="check" id="checkbox">
                                             <label for="personaldata" data-toggle="modal" data-target="#category_model">Я прочитал и согласен с <span style="color: blue">условиями
                                                     доставки</span></label>
-                                            <input type="hidden" value="{{ address_str }}" name="slug">
+                                            <input type="hidden" id="address_str" value="{{ address_str }}" name="slug">
                                             <input type="hidden" value="0" name="status">
                                             </br>
                                             <input id="btn" class="save-btn" type="submit" value="Подтвердить заказ" disabled>

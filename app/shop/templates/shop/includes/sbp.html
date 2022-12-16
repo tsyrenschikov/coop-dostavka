@@ -1,0 +1,14 @@
+{% for sbp in sbp %}
+    {% if sbp.sbp == True %}
+        <fieldset class="mi-fieldset">
+            <div class="fieldset__option mi-radio">
+                <label class="mi-radio__label">
+                    <input type="radio" id="sbp" class="mi-radio__input js-radio-input" name="payment" value="СБП"/>
+                    <span>
+                <h4><i class="icon-sbp"></i>Системой быстрых платежей</h4>
+            </span>
+                </label>
+            </div>
+        </fieldset>
+    {% endif %}
+{% endfor %}

@@ -168,6 +168,7 @@ def cart_arti(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -201,11 +202,12 @@ def cart_arti(request):
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
                     msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    # msg.send()
                     ord = order.id
                     return redirect(cart_ok, ord)
 
-                return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok(request, ord):
@@ -224,6 +226,8 @@ def cart_ok(request, ord):
                 category_product = dict_category_product(name_slug)
     return render(request, 'arti/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
+def gr_arti(request):
+    return render(request, 'arti/cart_ok.html')
 
 def shop_arti(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -415,6 +419,7 @@ def cart_arti_p(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -451,7 +456,8 @@ def cart_arti_p(request):
                     msg.send()
                     ord = order.id
                     return redirect(cart_artiobschepit_ok, ord)
-                return render(request, 'arti/artiprom/cart.html', {'category_product': category_product, 'shop': shop, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'arti/artiprom/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_arti_p_ok(request, ord):
@@ -563,6 +569,7 @@ def cart_artiobschepit(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -599,7 +606,8 @@ def cart_artiobschepit(request):
                     msg.send()
                     ord = order.id
                     return redirect(cart_artiobschepit_ok, ord)
-                return render(request, 'arti/artiobschepit/cart.html', {'category_product': category_product, 'shop': shop, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'arti/artiobschepit/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_artiobschepit_ok(request, ord):
@@ -746,6 +754,7 @@ def cart_pokrovskoe(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -783,7 +792,8 @@ def cart_pokrovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_pokrovskoe, ord)
 
-                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_pokrovskoe(request, ord):
@@ -930,6 +940,7 @@ def cart_rezh(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -967,7 +978,8 @@ def cart_rezh(request):
                     ord = order.id
                     return redirect(cart_ok_rezh, ord)
 
-                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_rezh(request, ord):
@@ -1100,6 +1112,7 @@ def cart_zajkovskoe(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -1138,7 +1151,8 @@ def cart_zajkovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_zajkovskoe, ord)
 
-                return render(request, 'zajkovskoe/cart.html', {'category_product': category_product, 'shop': shop, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'zajkovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_zajkovskoe(request, ord):
@@ -1361,6 +1375,7 @@ def cart_bogdan(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -1398,7 +1413,8 @@ def cart_bogdan(request):
                     ord = order.id
                     return redirect(cart_ok_bogdan, ord)
 
-                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_bogdan(request, ord):
@@ -1579,6 +1595,7 @@ def cart_chetkarino(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -1616,7 +1633,8 @@ def cart_chetkarino(request):
                     ord = order.id
                     return redirect(cart_ok_chetkarino, ord)
 
-                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_chetkarino(request, ord):
@@ -1797,6 +1815,7 @@ def cart_bugalysh(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -1834,7 +1853,8 @@ def cart_bugalysh(request):
                     ord = order.id
                     return redirect(cart_ok_bugalysh, ord)
 
-                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name, 'address_str': address_str})
+                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                'address_str': address_str})
 
 
 def cart_ok_bugalysh(request, ord):
@@ -2015,6 +2035,7 @@ def cart_bisert(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -2052,7 +2073,7 @@ def cart_bisert(request):
                     ord = order.id
                     return redirect(cart_ok_bisert, ord)
 
-                return render(request, 'bisert/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                return render(request, 'bisert/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
                 'address_str': address_str})
 
 
@@ -2236,6 +2257,7 @@ def cart_chernovskoe(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -2273,7 +2295,7 @@ def cart_chernovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_chernovskoe, ord)
 
-                return render(request, 'chernovskoe/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                return render(request, 'chernovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
                 'address_str': address_str})
 
 
@@ -2457,6 +2479,7 @@ def cart_natalinsk(request):
                 name = name_a
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
+                sbp = Shop.objects.filter(slug=s).values('sbp')
                 if request.method == 'POST':
                     name = request.POST.get('name')
                     phone = request.POST.get('phone')
@@ -2494,7 +2517,7 @@ def cart_natalinsk(request):
                     ord = order.id
                     return redirect(cart_ok_natalinsk, ord)
 
-                return render(request, 'natalinsk/cart.html', {'category_product': category_product, 'shop': shop,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
+                return render(request, 'natalinsk/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
                 'address_str': address_str})
 
 

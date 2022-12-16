@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 56 (101010) - https://sketch.com -->
+    <title>A22CD762-9A3C-4394-9C1C-61B6B77245A8</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0.161000845%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#1097D5" offset="0%"/>
+            <stop stop-color="#107AD5" offset="100%"/>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="payment-actions" transform="translate(-49.000000, -46.000000)">
+            <g transform="translate(36.000000, 29.000000)" id="Group-37">
+                <g transform="translate(13.000000, 17.000000)">
+                    <g id="Group-36" transform="translate(0.000000, 1.000000)" stroke="#8DAAC4">
+                        <rect id="Rectangle" x="0.5" y="0.5" width="14" height="9" rx="2"/>
+                        <path d="M0,3 L15,3" id="Line-7"/>
+                    </g>
+                    <rect id="Rectangle" fill="url(#linearGradient-1)" x="1" y="6" width="15" height="10" rx="2"/>
+                    <circle id="Oval" stroke="#FFFFFF" cx="7" cy="11" r="2.5"/>
+                    <circle id="Oval-Copy" stroke="#FFFFFF" fill="#108CD5" cx="10" cy="11" r="2.5"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

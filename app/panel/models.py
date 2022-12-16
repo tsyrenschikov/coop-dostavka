@@ -82,6 +82,7 @@ class Shop(models.Model):
     name_id = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Краткое название')
     slug = models.SlugField(max_length=200, null=True, db_index=True)
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
+    sbp = models.BooleanField(default=False, verbose_name='SBP')
 
     class Meta:
         ordering = ('name',)
@@ -602,6 +603,7 @@ class orders(models.Model):
     replace = models.CharField(max_length=100, null=True, verbose_name='Замена товара')
     payment = models.CharField(max_length=30, null=True, verbose_name='Оплата')
     money = models.CharField(max_length=30, null=True, verbose_name='Сумма для сдачи')
+    sbp = models.BooleanField(default=False, verbose_name='SBP')
 
 
     class Meta:

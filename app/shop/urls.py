@@ -16,7 +16,7 @@ urlpatterns = [
     path('arti/products/', views.shop_arti_products, name='shop_arti_products'),
     path('arti/product/<int:id>/', views.shop_arti_product, name='shop_arti_product'),
     path('arti/grid/', views.shop_arti_grid, name='shop_arti_grid'),
-    path('arti/qr_arti/', views.gr_arti, name='qr_arti'),
+    path('arti/qr_arti/<int:ord>/', views.gr_arti, name='qr_arti'),
 
 # Shop artiobschepit
     path('arti/artiobschepit/', views.shop_artiobschepit, name='shop_artiobschepit'),

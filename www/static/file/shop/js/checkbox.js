@@ -1,5 +1,3 @@
-$('form').attr({'action':""});
-var address = $('#address_str').val();
 $('#checkbox').change(function () {
     $('#btn').addClass('save-btn-noactive')
     $('#btn').prop("disabled", !this.checked);
@@ -10,10 +8,10 @@ $('#checkbox').change(function () {
     }
 }).change()
 
-$('#sbp').change(function () {
-    if ($(this).is(':checked')) {
-        $('form').attr({'action': '/' + address + '/' + 'qr_' + address + '/'})
+$('input[name="payment"]').change(function () {
+    if ($('#sbp').is(':checked')) {
+        $('.sbp').attr({'value': 'SBP'})
     } else {
-        $('form').attr({'action': ""})
+        $('.sbp').attr({'value': ""})
     }
 })

@@ -188,8 +188,19 @@ def cart_arti(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv, address_street=address_street, cal=cal,
+                    if payment == 'SBP':
+                        order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv,
+                                                      address_street=address_street, cal=cal,
+                                                      commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                      status=status)
+                        ord=order.id
+                        return redirect(gr_arti,ord)
+                    else:
+                        order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv,
+                                                       address_street=address_street, cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                        ord = order.id
+                        return redirect(cart_ok, ord)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -202,9 +213,7 @@ def cart_arti(request):
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
                     msg.attach_alternative(html_content, "text/html")
-                    msg.send()
-                    ord = order.id
-                    return redirect(cart_ok, ord)
+                    #msg.send()
 
                 return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
                 'address_str': address_str})
@@ -226,8 +235,22 @@ def cart_ok(request, ord):
                 category_product = dict_category_product(name_slug)
     return render(request, 'arti/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
-def gr_arti(request):
-    return render(request, 'arti/sbp_qr.html')
+def gr_arti(request,ord):
+    shops = Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
+    order = orders.objects.get(id=ord)
+    shop = Shop.objects.values_list('slug', flat=True).distinct()
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    categories = Category.objects.order_by('number')
+    for slug in shop:
+        for name_a, slug_a in areas:
+            if slug == address_str and slug == slug_a:
+                name = name_a
+                name_slug = eval(slug)
+                category_product = dict_category_product(name_slug)
+    return render(request, 'arti/sbp_qr.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
+                                               'address_str': address_str})
 
 def shop_arti(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()

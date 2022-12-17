@@ -12,6 +12,7 @@ from panel.models import *
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect
+import qr_code
 
 register = template.Library()
 
@@ -38,10 +39,9 @@ def local():
 
 
 def dict_category_product(name_slug):
-    category_shop = Category.objects.values('name', 'subcat', 'image').filter(status = True).order_by('number')
+    category_shop = Category.objects.values('name', 'subcat', 'image').filter(status=True).order_by('number')
     category_products = name_slug.objects.values_list('subcat', 'name', 'subsubcat').filter(status='True').order_by('name')
     dict_category = {category['name']: [] for category in category_shop}
-
 
     # Формирования подкатегории
     dict_subcat = {i: [] for i, j, k in category_products}
@@ -70,7 +70,7 @@ def shop(request):
         "local": local(),
         "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "categories": Category.objects.order_by('number'),
-        "work" : works.objects.all().filter(status=True).order_by('id')
+        "work": works.objects.all().filter(status=True).order_by('id')
     }
     local()
     users = User.objects.all()
@@ -87,8 +87,8 @@ def shop(request):
             return render(request, 'shop/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name, phone=phone)
-            return render(request, 'shop/search_order.html', {'client': client, 'local': local, 'work':work})
-    return render(request, 'shop/index.html', {'users': users, 'categories': categories, 'local': local, 'work':work})
+            return render(request, 'shop/search_order.html', {'client': client, 'local': local, 'work': work})
+    return render(request, 'shop/index.html', {'users': users, 'categories': categories, 'local': local, 'work': work})
 
 
 # Shop SearchArti
@@ -193,12 +193,13 @@ def cart_arti(request):
                                                       address_street=address_street, cal=cal,
                                                       commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                       status=status)
-                        ord=order.id
-                        return redirect(gr_arti,ord)
+                        ord = order.id
+                        return redirect(gr_arti, ord)
                     else:
                         order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv,
-                                                       address_street=address_street, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                                                      address_street=address_street, cal=cal,
+                                                      commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                      status=status)
                         ord = order.id
                         return redirect(cart_ok, ord)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
@@ -213,10 +214,10 @@ def cart_arti(request):
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
                     msg.attach_alternative(html_content, "text/html")
-                    #msg.send()
+                    # msg.send()
 
-                return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                          'address_str': address_str})
 
 
 def cart_ok(request, ord):
@@ -233,9 +234,11 @@ def cart_ok(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'arti/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'arti/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
-def gr_arti(request,ord):
+
+def gr_arti(request, ord):
     shops = Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct()
     order = orders.objects.get(id=ord)
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -248,9 +251,12 @@ def gr_arti(request,ord):
             if slug == address_str and slug == slug_a:
                 name = name_a
                 name_slug = eval(slug)
+                sbp = Shop.objects.get(slug=slug)
+                data = sbp.qr_code + '&sum=' + str(int(order.total_price * 100)) + '&cur=RUB'
                 category_product = dict_category_product(name_slug)
-    return render(request, 'arti/sbp_qr.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
-                                               'address_str': address_str})
+    return render(request, 'arti/sbp_qr.html', {'local': local, 'name': name,'sbp':sbp,'data':data, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
+                                                'address_str': address_str})
+
 
 def shop_arti(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
@@ -266,10 +272,10 @@ def shop_arti(request):
                 products = name_slug.objects.all().filter(status=True).order_by('?')[:20]
                 new_products = name_slug.objects.all().filter(status=True).order_by('id')[::-1][:20]
                 category_product = dict_category_product(name_slug)
-                return render(request, 'arti/index.html', {'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local, 'name': name,
-                                                           'address_str': address_str})
+                return render(request, 'arti/index.html',
+                              {'products': products, 'new_products': new_products, 'category_product': category_product, 'categories': categories, 'local': local, 'name': name,
+                               'address_str': address_str})
                 # return redirect(shop_artiobschepit)
-
 
 
 def shop_arti_grid(request):
@@ -407,7 +413,8 @@ def shop_arti_p_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'arti/artiprom/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'arti/artiprom/grid.html',
+                              {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
 def shop_arti_p_product(request, id):
@@ -425,8 +432,9 @@ def shop_arti_p_product(request, id):
                 product = slug_name.objects.get(id=id)
                 products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
-                return render(request, 'arti/artiprom/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                      'address_str': address_str})
+                return render(request, 'arti/artiprom/product.html',
+                              {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                               'address_str': address_str})
 
 
 def cart_arti_p(request):
@@ -462,8 +470,10 @@ def cart_arti_p(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city,address_home=address_home,address_kv=address_kv, address_street=address_street, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv, address_street=address_street,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -479,8 +489,8 @@ def cart_arti_p(request):
                     msg.send()
                     ord = order.id
                     return redirect(cart_artiobschepit_ok, ord)
-                return render(request, 'arti/artiprom/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'arti/artiprom/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                                   'address_str': address_str})
 
 
 def cart_arti_p_ok(request, ord):
@@ -497,7 +507,8 @@ def cart_arti_p_ok(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'arti/artiprom/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'arti/artiprom/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 # Shop artiobschepit
@@ -557,7 +568,8 @@ def shop_artiobschepit_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'arti/artiobschepit/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'arti/artiobschepit/grid.html',
+                              {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
 def shop_artiobschepit_product(request, id):
@@ -575,8 +587,9 @@ def shop_artiobschepit_product(request, id):
                 product = slug_name.objects.get(id=id)
                 products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
-                return render(request, 'arti/artiobschepit/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                           'address_str': address_str})
+                return render(request, 'arti/artiobschepit/product.html',
+                              {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                               'address_str': address_str})
 
 
 def cart_artiobschepit(request):
@@ -612,8 +625,10 @@ def cart_artiobschepit(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -629,8 +644,9 @@ def cart_artiobschepit(request):
                     msg.send()
                     ord = order.id
                     return redirect(cart_artiobschepit_ok, ord)
-                return render(request, 'arti/artiobschepit/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'arti/artiobschepit/cart.html',
+                              {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                               'address_str': address_str})
 
 
 def cart_artiobschepit_ok(request, ord):
@@ -647,7 +663,8 @@ def cart_artiobschepit_ok(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'arti/artiobschepit/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'arti/artiobschepit/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 # Shop pokrovskoe
@@ -705,7 +722,8 @@ def shop_pokrovskoe_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'pokrovskoe/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'pokrovskoe/grid.html',
+                              {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
 def searchproduct_pokrovskoe(request):
@@ -797,8 +815,10 @@ def cart_pokrovskoe(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -815,8 +835,8 @@ def cart_pokrovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_pokrovskoe, ord)
 
-                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'pokrovskoe/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                                'address_str': address_str})
 
 
 def cart_ok_pokrovskoe(request, ord):
@@ -833,7 +853,8 @@ def cart_ok_pokrovskoe(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'pokrovskoe/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'pokrovskoe/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 # Shop rezh
@@ -983,8 +1004,10 @@ def cart_rezh(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -1001,8 +1024,8 @@ def cart_rezh(request):
                     ord = order.id
                     return redirect(cart_ok_rezh, ord)
 
-                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'rezh/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                          'address_str': address_str})
 
 
 def cart_ok_rezh(request, ord):
@@ -1019,7 +1042,8 @@ def cart_ok_rezh(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'rezh/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'rezh/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 def searchrezh(request):
@@ -1155,8 +1179,10 @@ def cart_zajkovskoe(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -1174,8 +1200,8 @@ def cart_zajkovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_zajkovskoe, ord)
 
-                return render(request, 'zajkovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'zajkovskoe/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                                'address_str': address_str})
 
 
 def cart_ok_zajkovskoe(request, ord):
@@ -1192,7 +1218,8 @@ def cart_ok_zajkovskoe(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'zajkovskoe/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'zajkovskoe/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 def shop_zajkovskoe(request):
@@ -1230,7 +1257,8 @@ def shop_zajkovskoe_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'zajkovskoe/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'zajkovskoe/grid.html',
+                              {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
 def sort_list_zajkovskoe(request, list):
@@ -1418,8 +1446,10 @@ def cart_bogdan(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -1436,8 +1466,8 @@ def cart_bogdan(request):
                     ord = order.id
                     return redirect(cart_ok_bogdan, ord)
 
-                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'bogdan/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                            'address_str': address_str})
 
 
 def cart_ok_bogdan(request, ord):
@@ -1454,7 +1484,8 @@ def cart_ok_bogdan(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'bogdan/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'bogdan/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 def searchbogdan(request):
@@ -1546,7 +1577,8 @@ def shop_chetkarino_grid(request):
                 paginator = Paginator(product, 20)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
-                return render(request, 'chetkarino/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
+                return render(request, 'chetkarino/grid.html',
+                              {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
 def searchproduct_chetkarino(request):
@@ -1638,8 +1670,10 @@ def cart_chetkarino(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -1656,8 +1690,8 @@ def cart_chetkarino(request):
                     ord = order.id
                     return redirect(cart_ok_chetkarino, ord)
 
-                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'chetkarino/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                                'address_str': address_str})
 
 
 def cart_ok_chetkarino(request, ord):
@@ -1674,7 +1708,8 @@ def cart_ok_chetkarino(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'chetkarino/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'chetkarino/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 def searchchetkarino(request):
@@ -1711,7 +1746,7 @@ def searchchetkarino(request):
     return render(request, 'chetkarino/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
 
 
-#Shop bugalysh
+# Shop bugalysh
 def shop_bugalysh(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
@@ -1748,7 +1783,7 @@ def sort_list_bugalysh(request, list):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_bugalysh.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
-                                                                     'address_str': address_str})
+                                                                   'address_str': address_str})
 
 
 def shop_bugalysh_grid(request):
@@ -1815,7 +1850,7 @@ def shop_bugalysh_product(request, id):
                 products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'bugalysh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                   'address_str': address_str})
+                                                                 'address_str': address_str})
 
 
 def shop_bugalysh_career(reguest):
@@ -1858,8 +1893,10 @@ def cart_bugalysh(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -1876,8 +1913,8 @@ def cart_bugalysh(request):
                     ord = order.id
                     return redirect(cart_ok_bugalysh, ord)
 
-                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'bugalysh/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                              'address_str': address_str})
 
 
 def cart_ok_bugalysh(request, ord):
@@ -1894,7 +1931,8 @@ def cart_ok_bugalysh(request, ord):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-    return render(request, 'bugalysh/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
+    return render(request, 'bugalysh/cart_ok.html',
+                  {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops, 'address_str': address_str})
 
 
 def searchbugalysh(request):
@@ -1931,7 +1969,7 @@ def searchbugalysh(request):
     return render(request, 'bugalysh/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
 
 
-#Shop bisert
+# Shop bisert
 def shop_bisert(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
@@ -1968,7 +2006,7 @@ def sort_list_bisert(request, list):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_bisert.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
-                                                                     'address_str': address_str})
+                                                                 'address_str': address_str})
 
 
 def shop_bisert_grid(request):
@@ -2035,7 +2073,7 @@ def shop_bisert_product(request, id):
                 products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'bisert/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                   'address_str': address_str})
+                                                               'address_str': address_str})
 
 
 def shop_bisert_career(reguest):
@@ -2078,8 +2116,10 @@ def cart_bisert(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -2096,8 +2136,8 @@ def cart_bisert(request):
                     ord = order.id
                     return redirect(cart_ok_bisert, ord)
 
-                return render(request, 'bisert/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'bisert/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                            'address_str': address_str})
 
 
 def cart_ok_bisert(request, ord):
@@ -2115,7 +2155,7 @@ def cart_ok_bisert(request, ord):
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
     return render(request, 'bisert/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
-                                                'address_str': address_str})
+                                                   'address_str': address_str})
 
 
 def searchbisert(request):
@@ -2151,7 +2191,8 @@ def searchbisert(request):
             return render(request, 'bisert/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
     return render(request, 'bisert/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
 
-#Shop chernovskoe
+
+# Shop chernovskoe
 def shop_chernovskoe(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
@@ -2188,7 +2229,7 @@ def sort_list_chernovskoe(request, list):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_chernovskoe.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
-                                                                     'address_str': address_str})
+                                                                      'address_str': address_str})
 
 
 def shop_chernovskoe_grid(request):
@@ -2207,7 +2248,7 @@ def shop_chernovskoe_grid(request):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'chernovskoe/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name,
-                                                                'address_str': address_str})
+                                                                 'address_str': address_str})
 
 
 def searchproduct_chernovskoe(request):
@@ -2257,7 +2298,7 @@ def shop_chernovskoe_product(request, id):
                 category_product = dict_category_product(name_slug)
                 return render(request, 'chernovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
                                                                     'name': name,
-                                                                   'address_str': address_str})
+                                                                    'address_str': address_str})
 
 
 def shop_chernovskoe_career(reguest):
@@ -2300,8 +2341,10 @@ def cart_chernovskoe(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -2318,8 +2361,8 @@ def cart_chernovskoe(request):
                     ord = order.id
                     return redirect(cart_ok_chernovskoe, ord)
 
-                return render(request, 'chernovskoe/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'chernovskoe/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                                 'address_str': address_str})
 
 
 def cart_ok_chernovskoe(request, ord):
@@ -2337,7 +2380,7 @@ def cart_ok_chernovskoe(request, ord):
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
     return render(request, 'chernovskoe/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
-                                                'address_str': address_str})
+                                                        'address_str': address_str})
 
 
 def searchchernovskoe(request):
@@ -2373,7 +2416,8 @@ def searchchernovskoe(request):
             return render(request, 'chernovskoe/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
     return render(request, 'chernovskoe/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
 
-#Shop natalinsk
+
+# Shop natalinsk
 def shop_natalinsk(request):
     shop = Shop.objects.values_list('slug', flat=True).distinct()
     local()
@@ -2410,7 +2454,7 @@ def sort_list_natalinsk(request, list):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'shop/list_natalinsk.html', {'category_product': category_product, 'products': products, 'page_obj': page_obj, 'name': name, 'local': local,
-                                                                     'address_str': address_str})
+                                                                    'address_str': address_str})
 
 
 def shop_natalinsk_grid(request):
@@ -2429,7 +2473,7 @@ def shop_natalinsk_grid(request):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'natalinsk/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name,
-                                                                'address_str': address_str})
+                                                               'address_str': address_str})
 
 
 def searchproduct_natalinsk(request):
@@ -2478,8 +2522,8 @@ def shop_natalinsk_product(request, id):
                 products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'natalinsk/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
-                                                                    'name': name,
-                                                                   'address_str': address_str})
+                                                                  'name': name,
+                                                                  'address_str': address_str})
 
 
 def shop_natalinsk_career(reguest):
@@ -2522,8 +2566,10 @@ def cart_natalinsk(request):
                     payment = request.POST.get('payment')
                     money = request.POST.get('money')
                     status = request.POST.get('status')
-                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street,address_home=address_home,address_kv=address_kv, cal=cal,
-                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money, status=status)
+                    order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_street=address_street, address_home=address_home, address_kv=address_kv,
+                                                  cal=cal,
+                                                  commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
+                                                  status=status)
                     id_manager = Shop.objects.values('customuser_id').filter(slug=s)
                     for i in id_manager:
                         id_man = i['customuser_id']
@@ -2540,8 +2586,8 @@ def cart_natalinsk(request):
                     ord = order.id
                     return redirect(cart_ok_natalinsk, ord)
 
-                return render(request, 'natalinsk/cart.html', {'category_product': category_product, 'shop': shop,'sbp':sbp,'shops':shops, 'local': local, 'local_d': local_d, 'name': name,
-                'address_str': address_str})
+                return render(request, 'natalinsk/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
+                                                               'address_str': address_str})
 
 
 def cart_ok_natalinsk(request, ord):
@@ -2559,7 +2605,7 @@ def cart_ok_natalinsk(request, ord):
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
     return render(request, 'natalinsk/cart_ok.html', {'local': local, 'name': name, 'category_product': category_product, 'categories': categories, 'order': order, 'shops': shops,
-                                                'address_str': address_str})
+                                                      'address_str': address_str})
 
 
 def searchnatalinsk(request):

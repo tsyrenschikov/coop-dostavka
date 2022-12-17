@@ -83,6 +83,7 @@ class Shop(models.Model):
     slug = models.SlugField(max_length=200, null=True, db_index=True)
     descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
     sbp = models.BooleanField(default=False, verbose_name='SBP')
+    qr_code = models.CharField(max_length=500, db_index=True,null=True, verbose_name='QR код')
 
     class Meta:
         ordering = ('name',)

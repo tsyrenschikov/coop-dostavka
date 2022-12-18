@@ -106,10 +106,10 @@
                         </nav>
                     </div>
                 {% endif %}
-                <a class="nav-link {% if request.path == '/file/' %}active{% endif %}" href="{% url 'file' %}">
+                {% comment %}<a class="nav-link {% if request.path == '/file/' %}active{% endif %}" href="{% url 'file' %}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     Файлы выгрузки
-                </a>
+                </a>{% endcomment %}
                 <a class="nav-link" href="{% url 'order' %}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                     Заказы

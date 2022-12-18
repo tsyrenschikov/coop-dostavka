@@ -6,14 +6,6 @@
       <paths name="coop-dostavka">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ksk-evakuator">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$/../pythonProject" web="/" />
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>

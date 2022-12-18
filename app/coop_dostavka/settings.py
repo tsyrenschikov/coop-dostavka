@@ -16,7 +16,6 @@ from qr_code.qrcode import constants
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -28,12 +27,11 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6LdAOl0bAAAAAPzGlnY5zOx5PpjMx4FaZhVyg0OA'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['coop-dostavka.ru','.coop-dostavka.ru']
+ALLOWED_HOSTS = ['coop-dostavka.ru', '.coop-dostavka.ru']
 ROOT_URLCONF = 'coop_dostavka.urls'
 ROOT_HOSTCONF = 'coop_dostavka.hosts'
 PARENT_HOST = 'coop-dostavka.ru'
 DEFAULT_HOST = 'www'
-
 
 # Application definition
 
@@ -57,8 +55,7 @@ INSTALLED_APPS = [
     'copyright',
     'qr_code',
 ]
-
-SITE_ID=1
+SITE_ID = 1
 
 COPY_START_YEAR = 2021
 
@@ -77,9 +74,8 @@ MIDDLEWARE = [
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
-
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-#SESSION_COOKIE_AGE = 12600 # set just 10 seconds to test
+# SESSION_COOKIE_AGE = 12600 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
 
 AUTHENTICATION_BACKENDS = (
@@ -88,23 +84,21 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1082854939163-n13fgc37tetjeia9m1bqgpf887qd8cp4.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='SVbewJUgmHt9tlkTnBnkQkUx'
+# SOCIAL_AUTH_VK_OAUTH2_KEY = '7901580'
+# SOCIAL_AUTH_VK_OAUTH2_SECRET = 'KWjRSWOIyi5KWR3zMkrr'
+# SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1082854939163-n13fgc37tetjeia9m1bqgpf887qd8cp4.apps.googleusercontent.com'
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='SVbewJUgmHt9tlkTnBnkQkUx'
-#SOCIAL_AUTH_VK_OAUTH2_KEY = '7901580'
-#SOCIAL_AUTH_VK_OAUTH2_SECRET = 'KWjRSWOIyi5KWR3zMkrr'
-#SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
-
-LOGIN_URL='/'
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.netangels.ru'
 EMAIL_HOST_USER = 'info@coop-dostavka.ru'
-EMAIL_HOST_PASSWORD = 'cbvgcjy00' #past the key or password app here
+EMAIL_HOST_PASSWORD = 'cbvgcjy00'  # past the key or password app here
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'info@coop-dostavka.ru'
@@ -129,7 +123,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coop_dostavka.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -151,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 6,}
+            'min_length': 6, }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -160,7 +153,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -174,7 +166,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -207,6 +198,7 @@ QR_CODE_URL_PROTECTION = {
     constants.TOKEN_LENGTH: 30,  # Optional random token length for URL protection. Defaults to 20.
     constants.SIGNING_KEY: "my-secret-signing-key",  # Optional signing key for URL token. Uses SECRET_KEY if not defined.
     constants.SIGNING_SALT: "my-signing-salt",  # Optional signing salt for URL token.
-    constants.ALLOWS_EXTERNAL_REQUESTS_FOR_REGISTERED_USER: lambda u: True,  # Tells whether a registered user can request the QR code URLs from outside a site that uses this app. It can be a boolean value used for any user, or a callable that takes a user as parameter. Defaults to False (nobody can access the URL without the security token).
+    constants.ALLOWS_EXTERNAL_REQUESTS_FOR_REGISTERED_USER: lambda u: True,
+    # Tells whether a registered user can request the QR code URLs from outside a site that uses this app. It can be a boolean value used for any user, or a callable that takes a user as parameter. Defaults to False (nobody can access the URL without the security token).
 }
 SERVE_QR_CODE_IMAGE_PATH = "qr-code-image/"

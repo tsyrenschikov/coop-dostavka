@@ -54,14 +54,20 @@ INSTALLED_APPS = [
     'django_hosts',
     'copyright',
     'qr_code',
+    'django_cron',
     'django_celery_beat',
 ]
+
 SITE_ID = 1
-CELERY_BEAT_SCHEDULER='django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 COPY_START_YEAR = 2021
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [1.5, 2]
+
+CRON_CLASSES = [
+    "panel.update_file.update_product",
+]
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',

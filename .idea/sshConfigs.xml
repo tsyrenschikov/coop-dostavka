@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="45.86.183.51" id="ce9a8ae0-da7d-4945-9763-df6bf7ddb7ab" port="22" customName="coop-dostavka" nameFormat="CUSTOM" username="root" useOpenSSHConfig="true">
+      <sshConfig authType="PASSWORD" host="45.86.183.51" id="ce9a8ae0-da7d-4945-9763-df6bf7ddb7ab" port="22" customName="coop-dostavka" nameFormat="CUSTOM" username="web" useOpenSSHConfig="true">
         <option name="customName" value="coop-dostavka" />
       </sshConfig>
     </configs>

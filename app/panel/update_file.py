@@ -6,10 +6,10 @@ class update_product(CronJobBase):
     RUN_EVERY_MINS = 1  # every 2 hours
 
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-    code = 'panel.update_file'  # a unique code
+    code = 'Обновления позиций продуктов'  # a unique code
 
     def do(self):
-        directory = '/home/c39682/coop-dostavka.ru/www/media/file/website_exchange'
+        directory = '/home/web/Env/coop-dostavka.ru/www/media/file/website_exchange'
         content = os.listdir(directory)
         slug = Shop.objects.values_list('slug', flat=True).distinct()
         for dir in content:

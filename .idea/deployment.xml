@@ -8,6 +8,9 @@
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/home/web/Env/coop-dostavka.ru" />
+          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="polinome">

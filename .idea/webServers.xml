@@ -17,9 +17,9 @@
         </fileTransfer>
       </webServer>
       <webServer id="af9990dc-ebe3-4b6a-b43f-583e4ecf69b9" name="coop-dostavka" url="http://h25.netangels.ru">
-        <fileTransfer host="h25.netangels.ru" port="21">
+        <fileTransfer rootFolder="/home/web/Env/coop-dostavka.ru" accessType="SFTP" host="45.86.183.51" port="22" sshConfigId="ce9a8ae0-da7d-4945-9763-df6bf7ddb7ab" sshConfig="coop-dostavka">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

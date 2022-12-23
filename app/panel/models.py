@@ -155,6 +155,7 @@ class Product(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -183,6 +184,7 @@ class rezh(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -212,6 +214,7 @@ class arti(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -240,6 +243,7 @@ class arti_p(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -268,6 +272,7 @@ class artiobschepit(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -297,6 +302,7 @@ class bogdan(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -325,6 +331,7 @@ class chetkarino(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -353,6 +360,7 @@ class shalinsk(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -381,6 +389,7 @@ class zajkovskoe(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -409,6 +418,7 @@ class pokrovskoe(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -437,6 +447,7 @@ class krasnoufimsk(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -465,6 +476,7 @@ class bugalysh(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -493,6 +505,7 @@ class chernovskoe(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -522,6 +535,7 @@ class bisert(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:
@@ -551,6 +565,7 @@ class natalinsk(models.Model):
     fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')
     color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
+    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
 
     class Meta:

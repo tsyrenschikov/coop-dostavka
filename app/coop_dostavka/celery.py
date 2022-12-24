@@ -17,7 +17,7 @@ app.autodiscover_tasks()
 # @app.task
 # def update_file(**kwargs):
 #     from panel.models import Shop
-#     directory = '/home/c39682/coop-dostavka.ru/www/media/file/website_exchange'
+#     directory = '/home/web/Env/coop-dostavka.ru/www/media/file/website_exchange'
 #     content = os.listdir(directory)
 #     slug = Shop.objects.values_list('slug', flat=True).distinct()
 #     for dir in content:

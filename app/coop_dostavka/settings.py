@@ -106,8 +106,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.netangels.ru'
 EMAIL_HOST_USER = 'info@coop-dostavka.ru'
 EMAIL_HOST_PASSWORD = 'cbvgcjy00'  # past the key or password app here
-EMAIL_PORT = 25
-EMAIL_USE_TLS = False
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'info@coop-dostavka.ru'
 
 TEMPLATES = [
@@ -178,10 +178,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/c39682/coop-dostavka.ru/www/static'
+STATIC_ROOT = '/home/web/Env/coop-dostavka.ru/www/static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/c39682/coop-dostavka.ru/www/media'
+MEDIA_ROOT = '/home/web/Env/coop-dostavka.ru/www/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -192,7 +192,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'postgres.c39682.h2',
+        'HOST': 'localhost',
         'PORT': '5432',
         'NAME': 'c39682_coop_dostavka_ru',
         'USER': 'c39682_coop_dostavka_ru',

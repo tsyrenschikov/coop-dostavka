@@ -21,7 +21,8 @@ class update_product(CronJobBase):
                         for file in files:
                             if file.name == sl + '.txt':
                                 products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
-                                product_list =[]
+                                product_list_update =[]
+                                product_list_noupdate = []
                                 with open(dir_ + '/' + file.name) as f:
                                     Line = f.readline()
                                     line = list(map(str, Line.replace(',', ' ').split()))
@@ -36,7 +37,7 @@ class update_product(CronJobBase):
                                                 product_get.price = price_line
                                                 product_get.status = 'True'
                                                 product_get.save()
-                                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                                                product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                                     elif str([i for i in line if i][0]) == 'update' and str([i for i in line if i][-1]) == '0':
                                         while Line:
                                             Line = f.readline()
@@ -48,5 +49,5 @@ class update_product(CronJobBase):
                                                 product_get.price = price_line
                                                 product_get.status = 'True'
                                                 product_get.save()
-                                                product_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                                                product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                                     os.remove(dir_ + '/' + file.name)

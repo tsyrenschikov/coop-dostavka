@@ -1,4 +1,9 @@
 import os
+from django.contrib.auth import get_user_model
+User = get_user_model()
+from django.conf import settings
+from django.template.loader import get_template
+from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django_cron import CronJobBase, Schedule
 from panel.models import *
 
@@ -22,32 +27,69 @@ class update_product(CronJobBase):
                             if file.name == sl + '.txt':
                                 products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
                                 product_list_update =[]
-                                product_list_noupdate = []
+                                artikul_list = []
                                 with open(dir_ + '/' + file.name) as f:
                                     Line = f.readline()
                                     line = list(map(str, Line.replace(',', ' ').split()))
                                     if str([i for i in line if i][0]) == 'update' and str([i for i in line if i][-1]) == '1':
+                                        Line = f.readline()
                                         while Line:
-                                            Line = f.readline()
                                             line = list(map(str, Line.replace(';', ' ').split()))
                                             price_line = line[2].replace(',', '.')
+                                            count_line =line[1].replace(',','.')
                                             artikul = list(filter(lambda x: line[0] in x, products))
                                             for artikul in artikul:
                                                 product_get = name.objects.get(id=artikul[3])
                                                 product_get.price = price_line
                                                 product_get.status = 'True'
+                                                product_get.count = count_line
                                                 product_get.save()
-                                                product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                                                artikul_list.extend([artikul[0]])
+                                            Line = f.readline()
+                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
+                                            update_ost = 'Обновленные позиций товаров в наличии'
+
                                     elif str([i for i in line if i][0]) == 'update' and str([i for i in line if i][-1]) == '0':
+                                        Line = f.readline()
                                         while Line:
-                                            Line = f.readline()
                                             line = list(map(str, Line.replace(';', ' ').split()))
                                             price_line = line[2].replace(',', '.')
                                             artikul = list(filter(lambda x: line[0] in x, products))
                                             for artikul in artikul:
                                                 product_get = name.objects.get(id=artikul[3])
                                                 product_get.price = price_line
-                                                product_get.status = 'True'
+                                                product_get.status = 'False'
+                                                product_get.count = '0'
                                                 product_get.save()
                                                 product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                                                artikul_list.extend([artikul[0]])
+                                            Line = f.readline()
+                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
+                                            update_ost = 'Обновленные позиций товаров c нулевыми остатками'
+                                    else:
+                                        Line = f.readline()
+                                        while Line:
+                                            line = list(map(str, Line.split(';')))
+                                            name.objects.create(artikul=line[0], name=line[1], count=line[2].replace(',', '.'), price=line[3].replace(',', '.'), description=line[4],
+                                                                status='False',discount='0.00')
+                                            Line = f.readline()
+                                        update_ost = 'Добавленные позиций товаров в наличии'
                                     os.remove(dir_ + '/' + file.name)
+
+                                # Отправка сообщения на почту после обновления файлов
+                                id_manager = Shop.objects.values('customuser_id').filter(slug=sl)
+                                for i in id_manager:
+                                    id_man = i['customuser_id']
+                                email_manager = User.objects.values('email').filter(id=id_man)
+                                for i in email_manager:
+                                    email_send = i['email']
+                                htmly = get_template('panel/send_update_file_product.html').render({})
+                                subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
+                                text_content = 'Список обновленных позиций'
+                                html_content = htmly
+                                msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                                msg.attach_alternative(html_content, "text/html")
+                                msg.send()
+
+                else:
+                    continue

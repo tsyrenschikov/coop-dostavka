@@ -44,7 +44,7 @@ class update_product(CronJobBase):
                                                 product_get.status = 'True'
                                                 product_get.count = count_line
                                                 product_get.save()
-                                                artikul_list.extend([artikul[0]])
+                                                artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                                             Line = f.readline()
                                             message_product = [(i, j) for i in products for j in artikul_list if i != j]
                                             update_ost = 'Обновленные позиций товаров в наличии'
@@ -62,7 +62,7 @@ class update_product(CronJobBase):
                                                 product_get.count = '0'
                                                 product_get.save()
                                                 product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                                                artikul_list.extend([artikul[0]])
+                                                artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
                                             Line = f.readline()
                                             message_product = [(i, j) for i in products for j in artikul_list if i != j]
                                             update_ost = 'Обновленные позиций товаров c нулевыми остатками'
@@ -72,8 +72,10 @@ class update_product(CronJobBase):
                                             line = list(map(str, Line.split(';')))
                                             name.objects.create(artikul=line[0], name=line[1], count=line[2].replace(',', '.'), price=line[3].replace(',', '.'), description=line[4],
                                                                 status='False',discount='0.00')
+                                            artikul_list.extend([(line[0],line[1],line[3],line[4], 'False')])
+                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
                                             Line = f.readline()
-                                        update_ost = 'Добавленные позиций товаров в наличии'
+                                            update_ost = 'Добавленные позиций товаров в наличии'
                                     os.remove(dir_ + '/' + file.name)
 
                                 # Отправка сообщения на почту после обновления файлов
@@ -83,8 +85,8 @@ class update_product(CronJobBase):
                                 email_manager = User.objects.values('email').filter(id=id_man)
                                 for i in email_manager:
                                     email_send = i['email']
-                                htmly = get_template('panel/send_update_file_product.html').render({})
-                                subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
+                                htmly = get_template('panel/send_update_file_product.html').render({'artikul_list':artikul_list,'message_product':message_product})
+                                subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
                                 text_content = 'Список обновленных позиций'
                                 html_content = htmly
                                 msg = EmailMultiAlternatives(subject, text_content, from_email, [to])

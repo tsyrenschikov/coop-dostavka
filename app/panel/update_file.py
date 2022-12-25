@@ -86,7 +86,7 @@ class update_product(CronJobBase):
                                 for i in email_manager:
                                     email_send = i['email']
                                 htmly = get_template('panel/send_update_file_product.html').render({'artikul_list':artikul_list,'message_product':message_product})
-                                subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
+                                subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
                                 text_content = 'Список обновленных позиций'
                                 html_content = htmly
                                 msg = EmailMultiAlternatives(subject, text_content, from_email, [to])

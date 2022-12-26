@@ -83,7 +83,8 @@
                                                 <th>Дата</th>
                                                 <th>Время</th>
                                                 <th style="width: 20%" class="order-title">Действия
-                                                    <span data-inverted="" data-tooltip="При нажатии на кнопку Обновить  база обновится.  Загруженный файл будет удален." data-position="top center">?</span>
+                                                    <span data-inverted="" data-tooltip='При нажатии на кнопку "Подтвердить"  база обновится.  Загруженный файл будет удален'
+                                                          data-position="top center">?</span>
                                                 </th>
                                             </tr>
                                             </thead>
@@ -103,7 +104,7 @@
                                                     <td>{{ files.time }}</td>
                                                     <td class="display">
                                                         <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
-                                                            <a id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link"></a>
+                                                            <a id="ost" type="submit" value="/update_file/{{ files.id }}/" class="link"></a>
                                                         </div>
                                                         <a href="/delete_file/{{ files.id }}" class="delete" onclick="return confirm('Удалить файл???' +
                                                  ' (ДЕЙСТВИЕ НЕ' +

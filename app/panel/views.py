@@ -804,7 +804,7 @@ def update_file(request, id, ost):
                             product_get = name.objects.get(id=artikul[3])
                             product_get.price = price_line
                             product_get.status = 'True'
-                            product_get.count = '1'
+                            product_get.count = line[1]
                             product_get.save()
                             artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                         Line = f.readline()
@@ -820,7 +820,7 @@ def update_file(request, id, ost):
                             product_get = name.objects.get(id=artikul[3])
                             product_get.price = price_line
                             product_get.status = 'False'
-                            product_get.count = '0'
+                            product_get.count = line[1]
                             product_get.save()
                             artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                         Line = f.readline()

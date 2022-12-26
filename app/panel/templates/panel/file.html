@@ -73,6 +73,7 @@
                                         <table id="info-table" class="table ucp-table table-hover table_sort">
                                             <thead>
                                             <tr>
+                                                <th style="width: 20%">ID</th>
                                                 <th style="width: 20%">Имя файла</th>
                                                 <th>
                                                     {% if user.is_superuser %}
@@ -81,9 +82,6 @@
                                                 </th>
                                                 <th>Дата</th>
                                                 <th>Время</th>
-                                                <th class="order-title">Остатки
-                                                    <span data-inverted="" data-tooltip="Если Вам необходимо учитывать остатки, то установите галочку." data-position="top center">?</span>
-                                                </th>
                                                 <th style="width: 20%" class="order-title">Действия
                                                     <span data-inverted="" data-tooltip="При нажатии на кнопку Обновить  база обновится.  Загруженный файл будет удален." data-position="top center">?</span>
                                                 </th>
@@ -92,6 +90,7 @@
                                             <tbody>
                                             {% for files in file %}
                                                 <tr>
+                                                    <td>{{files.id}}</td>
                                                     <td>
                                                         <a href="{{ files.fileart.url }}" download>{{ files.name }}</a>
                                                     </td>
@@ -102,9 +101,6 @@
                                                     </td>
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
-                                                    <td>
-                                                        <input type="checkbox" name="field" class="check-all" value="{{ files.id }}">
-                                                    </td>
                                                     <td class="display">
                                                         <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
                                                             <a id="ost" type="hidden" value="/update_file/{{ files.id }}/" class="link"></a>

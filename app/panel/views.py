@@ -809,6 +809,8 @@ def update_file(request, id, ost):
                             artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров в наличии'
+                    file.delete();
+                    os.remove(file.fileart.path)
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
                     while Line:
@@ -825,6 +827,8 @@ def update_file(request, id, ost):
                             artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров c 0 остатком'
+                    file.delete();
+                    os.remove(file.fileart.path)
                 else:
                     Line = f.readline()
                     while Line:
@@ -835,6 +839,8 @@ def update_file(request, id, ost):
                         message_product = [(i, j) for i in products for j in artikul_list if i != j]
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
+                    file.delete();
+                    os.remove(file.fileart.path)
 
         except IndexError:
             proverka = 0

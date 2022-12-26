@@ -1510,6 +1510,21 @@ def helpdesk(request):
 # Добавить заявку
 def add_helpdesk(request):
     if request.user.is_authenticated:
+        def email(email_send_manager):
+            id_obj = helpdesk_user.objects.order_by('-id').first()
+            id_help = id_obj.id if id_obj else 0
+            email_manager = User.objects.get(id=custom_id)
+            email_send = email_manager
+            htmly = get_template('panel/send_add_helpdesk.html').render(
+                {'name': name, 'name_user_help': name_user_help, 'id_help': id_help, 'name_user': name_user, 'email_send_manager': email_send_manager, 'email_send': email_send,
+                 'descriptions': descriptions})
+            subject, from_email, recipient_list = 'Заявка. Панель управления КООП доставка', settings.EMAIL_HOST_USER, ([email_send, email_send_manager])
+            text_content = 'Новая заявка в панеле управления сайтом https://panel.coop-dostavka.ru'
+            html_content = htmly
+            msg = EmailMultiAlternatives(subject, text_content, from_email, recipient_list)
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+
         shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct().order_by('name')
         for custom_id, slug_shop, name_org in shops:
             if request.user.id == custom_id:
@@ -1529,20 +1544,7 @@ def add_helpdesk(request):
                     date_time = request.POST.getlist('date_time')
                     helpdesk_user.objects.create(name=name, descriptions=descriptions, file=file, name_user_help=name_user_help, email_user=email_user, slug=slug, name_user=name_user, org=org,
                                                  status=status, date_time=date_time)
-                    # id_obj = helpdesk_user.objects.order_by('-id').first()
-                    # id_help = id_obj.id if id_obj else 0
-                    # email_manager = User.objects.values('email').filter(id=custom_id)
-                    # for i in email_manager:
-                    #     email_send = i['email']
-                    # htmly = get_template('panel/send_add_helpdesk.html').render(
-                    #     {'name': name, 'name_user_help': name_user_help, 'id_help': id_help, 'name_user': name_user, 'email_send_manager': email_send_manager, 'email_send': email_send, 'descriptions': descriptions})
-                    # subject, from_email, recipient_list = 'Заявка. Панель управления КООП доставка', settings.EMAIL_HOST_USER, ([email_send, email_send_manager])
-                    # text_content = 'Новая заявка в панеле управления сайтом https://panel.coop-dostavka.ru'
-                    # html_content = htmly
-                    # msg = EmailMultiAlternatives(subject, text_content, from_email, recipient_list)
-                    # msg.attach_alternative(html_content, "text/html")
-                    # msg.send()
-
+                    email(email_send_manager)
                     return redirect('/helpdesk')
                 return render(request, 'panel/add_helpdesk.html', {'slug_shop': slug_shop, 'users': users, 'request.user.id': request.user.id, 'user_select': user_select, 'name_org': name_org,
                                                                    'custom_id': custom_id})

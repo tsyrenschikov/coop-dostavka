@@ -214,7 +214,7 @@ def cart_arti(request):
                     html_content = htmly
                     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
                     msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    # msg.send()
 
                 return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
                                                           'address_str': address_str})

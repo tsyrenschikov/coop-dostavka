@@ -8,23 +8,6 @@
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath path="/home/web/Env/coop-dostavka.ru" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
-      <paths name="polinome">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/" local="D:/polinome" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="tsyrenschikov">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/../tsyrenschikov.ru" web="/" />
-          </mappings>
         </serverdata>
       </paths>
     </serverData>

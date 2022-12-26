@@ -18,7 +18,6 @@ $(function (loc) {
 $(document).ready(function ($) {
     $(window).resize(function () {
         if ($(window).width() > 992) {
-
         }
     });
     $(".top-cities li a, li a").click(function (e) {

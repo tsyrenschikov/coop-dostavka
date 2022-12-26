@@ -13,39 +13,8 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card card-static-2 mt-30 mb-30">
-                        <br>
-                        <div class="card-body-table">
-                            <div class="table-responsive">
-                                <table id="info-table" class="table ucp-table table-hover table_sort">
-                                    <thead>
-                                    <tr>
-                                        <th>Всего позиций в базе</th>
-                                        <th>Позиций в файле</th>
-                                        <th>Найдено совпадений</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            {{ count_base }} шт.
-                                        </td>
-                                        <td>
-                                            {{ count }} шт.
-                                        </td>
-                                        <td>
-                                            {{ file_count }} шт.
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mt-30 mb-30">
                         <div class="card-title-2">
-                            <h4>Обработанные позиции{{ artikul }}</h4>
+                            <h4>Добавленные позиции{{ artikul }}</h4>
                         </div>
                         <br>
                         <div class="card-body-table">
@@ -56,7 +25,7 @@
                                         <th>Номенклатура</th>
                                         <th>Название продукта</th>
                                         <th>Старая цена</th>
-                                        <th>Новая цена</th>
+                                        <th>Описание</th>
                                         <th>Статус</th>
                                     </tr>
                                     </thead>
@@ -73,7 +42,7 @@
                                                 {{ l.2 }} р.
                                             </td>
                                             <td>
-                                                {{ l.3 }} р.
+                                                {{ l.3 }}
                                             </td>
                                             <td>
                                                 {% if l.4 == 'True' %}

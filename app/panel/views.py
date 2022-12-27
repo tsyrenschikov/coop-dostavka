@@ -795,7 +795,7 @@ def update_file(request, id):
             for i in email_manager:
                 email_send = i['email']
             htmly = html_
-            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
+            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
             text_content = 'Список обновленных позиций'
             html_content = htmly
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])

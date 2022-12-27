@@ -876,7 +876,7 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
-                    html_  = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list})
+                    html_  = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list,'message_product':message_product })
                     email(update_ost,html_)
                     file.delete();
                     os.remove(file.fileart.path)

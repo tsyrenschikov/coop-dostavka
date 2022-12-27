@@ -26,8 +26,8 @@ class update_product(CronJobBase):
                         for file in files:
                             if file.name == sl + '.txt':
                                 products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
-                                product_list_update =[]
                                 artikul_list = []
+                                message_product = []
                                 with open(dir_ + '/' + file.name) as f:
                                     Line = f.readline()
                                     line = list(map(str, Line.replace(',', ' ').split()))
@@ -38,34 +38,43 @@ class update_product(CronJobBase):
                                             price_line = line[2].replace(',', '.')
                                             count_line =line[1].replace(',','.')
                                             artikul = list(filter(lambda x: line[0] in x, products))
-                                            for artikul in artikul:
-                                                product_get = name.objects.get(id=artikul[3])
+                                            for artikul_ in artikul:
+                                                product_get = name.objects.get(id=artikul_[3])
                                                 product_get.price = price_line
                                                 product_get.status = 'True'
                                                 product_get.count = count_line
                                                 product_get.save()
-                                                artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                                for product in products:
+                                                    if product[0] != artikul_[0]:
+                                                        product_get_no = name.objects.get(artikul=product[0])
+                                                        product_get_no.status = 'False'
+                                                        product_get_no.count = '0.000'
+                                                        product_get_no.save()
+                                                        message_product.extend([(product[0],product_get_no, product_get_no.status)])
                                             Line = f.readline()
-                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
-                                            update_ost = 'Обновленные позиций товаров в наличии'
+                                            update_ost = 'Обновленные позиций товаров с проверкой остатков'
 
                                     elif str([i for i in line if i][0]) == 'update' and str([i for i in line if i][-1]) == '0':
                                         Line = f.readline()
                                         while Line:
                                             line = list(map(str, Line.replace(';', ' ').split()))
                                             price_line = line[2].replace(',', '.')
+                                            count_line = line[1].replace(',', '.')
                                             artikul = list(filter(lambda x: line[0] in x, products))
-                                            for artikul in artikul:
-                                                product_get = name.objects.get(id=artikul[3])
+                                            for artikul_ in artikul:
+                                                product_get = name.objects.get(id=artikul_[3])
                                                 product_get.price = price_line
-                                                product_get.status = 'False'
-                                                product_get.count = '0'
+                                                product_get.status = 'True'
+                                                product_get.count = count_line
                                                 product_get.save()
-                                                product_list_update.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
-                                                artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
+                                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                                for product in products:
+                                                    if product[0] != artikul_[0]:
+                                                        product_get_no = name.objects.get(artikul=product[0])
+                                                        message_product.extend([(product[0],product_get_no, product[1])])
                                             Line = f.readline()
-                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
-                                            update_ost = 'Обновленные позиций товаров c нулевыми остатками'
+                                            update_ost = 'Обновленные позиций товаров без проверки остатков'
                                     else:
                                         Line = f.readline()
                                         while Line:
@@ -73,9 +82,9 @@ class update_product(CronJobBase):
                                             name.objects.create(artikul=line[0], name=line[1], count=line[2].replace(',', '.'), price=line[3].replace(',', '.'), description=line[4],
                                                                 status='False',discount='0.00')
                                             artikul_list.extend([(line[0],line[1],line[3],line[4], 'False')])
-                                            message_product = [(i, j) for i in products for j in artikul_list if i != j]
                                             Line = f.readline()
-                                            update_ost = 'Добавленные позиций товаров в наличии'
+                                        message_product = '0'
+                                        update_ost = 'Добавленные позиций товаров в наличии'
                                     os.remove(dir_ + '/' + file.name)
 
                                 # Отправка сообщения на почту после обновления файлов

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/media/file/website_exchange/arti/log_arti.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/media/file/website_exchange/basic_settings.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/media/file/website_exchange/shalinsk/shalinsk.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/media/file/website_exchange/users/authorization.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/media/file/website_exchange/users/log_users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/update_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/update_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +117,10 @@
       <workItem from="1672067444805" duration="24000" />
       <workItem from="1672067476970" duration="14969000" />
       <workItem from="1672082749397" duration="136000" />
-      <workItem from="1672082896252" duration="1617000" />
+      <workItem from="1672082896252" duration="1655000" />
+      <workItem from="1672127340549" duration="1604000" />
+      <workItem from="1672131815789" duration="434000" />
+      <workItem from="1672149769848" duration="19799000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -168,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672082255665</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="helpdesk">
+      <created>1672084529290</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672084529290</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,14 +196,15 @@
     <MESSAGE value="new" />
     <MESSAGE value="add file" />
     <MESSAGE value="add git" />
-    <option name="LAST_COMMIT_MESSAGE" value="add git" />
+    <MESSAGE value="helpdesk" />
+    <option name="LAST_COMMIT_MESSAGE" value="helpdesk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>1510</line>
+          <line>1521</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

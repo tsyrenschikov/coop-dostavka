@@ -771,7 +771,7 @@ def file(request):
         return redirect('/login')
 
 # Обновление позиций файлом
-def update_file(request, id, ost):
+def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
@@ -783,6 +783,7 @@ def update_file(request, id, ost):
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count_base = name.objects.count()
         artikul_list = [];
+        message_product = []
         count=0
         file_count=0
         def email(update_ost,html_):
@@ -794,7 +795,7 @@ def update_file(request, id, ost):
             for i in email_manager:
                 email_send = i['email']
             htmly = html_
-            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
+            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
             text_content = 'Список обновленных позиций'
             html_content = htmly
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
@@ -816,15 +817,21 @@ def update_file(request, id, ost):
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
-                        for artikul in artikul:
-                            product_get = name.objects.get(id=artikul[3])
+                        for artikul_ in artikul:
+                            product_get = name.objects.get(id=artikul_[3])
                             product_get.price = price_line
                             product_get.status = 'True'
                             product_get.count = line[1]
                             product_get.save()
-                            artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'True')])
+                            artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                            for product in products:
+                                if product[0] != artikul_[0]:
+                                    product_get_no = name.objects.get(artikul=product[0])
+                                    product_get_no.status = 'False'
+                                    product_get_no.count = '0.000'
+                                    product_get_no.save()
+                                    message_product.extend([(product[0], product_get_no, product_get_no.status)])
                         Line = f.readline()
-                    message_product = [(i, j) for i in products for j in artikul_list if i != j]
                     update_ost = 'Обновленные позиций товаров в наличии'
                     html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
                     email(update_ost,html_)
@@ -838,16 +845,20 @@ def update_file(request, id, ost):
                         file_count+=1
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
+                        count_line = line[1].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
-                        for artikul in artikul:
-                            product_get = name.objects.get(id=artikul[3])
+                        for artikul_ in artikul:
+                            product_get = name.objects.get(id=artikul_[3])
                             product_get.price = price_line
-                            product_get.status = 'False'
-                            product_get.count = line[1]
+                            product_get.status = 'True'
+                            product_get.count = count_line
                             product_get.save()
-                            artikul_list.extend([(artikul[0], product_get, artikul[2], price_line, 'False')])
+                            artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                            for product in products:
+                                if product[0] != artikul_[0]:
+                                    product_get_no = name.objects.get(artikul=product[0])
+                                    message_product.extend([(product[0], product_get_no, product[1])])
                         Line = f.readline()
-                    message_product = [(i, j) for i in products for j in artikul_list if i != j]
                     update_ost = 'Обновленные позиций товаров c 0 остатком'
                     html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
                     email(update_ost,html_)
@@ -864,9 +875,9 @@ def update_file(request, id, ost):
                         artikul_list.extend([(line[0], line[1], line[3], line[4], 'False')])
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
+                    message_product = '0'
                     html_  = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list})
                     email(update_ost,html_)
-                    message_product = [(i, j) for i in products for j in artikul_list if i != j]
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',

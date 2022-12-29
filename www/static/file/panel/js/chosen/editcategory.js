@@ -43,8 +43,8 @@ $(document).ready(function () {
         $(".cat option:selected").each(function () {
 
             count += Number($(this).attr('number'));
-            console.log(count)
             countname += $(this).text();
+            console.log(count, countname)
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;
             subcategory = [];
@@ -72,7 +72,7 @@ $(document).ready(function () {
             if (count > 20) {
                 $('.tpgdiv').show();
                 if (countname === 'Мебель') {
-                    $('.prom_mebel').show();
+                    $('.prom_electro').show();
                 }
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {

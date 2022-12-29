@@ -43,6 +43,7 @@ $(document).ready(function () {
         $(".cat option:selected").each(function () {
 
             count += Number($(this).attr('number'));
+            console.log(count)
             countname += $(this).text();
             /*Очистка старого списка товарной подкатегории*/
             subcategory.length = 0;

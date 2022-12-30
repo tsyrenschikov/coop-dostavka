@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +169,8 @@
       <workItem from="1672297114962" duration="487000" />
       <workItem from="1672308926279" duration="323000" />
       <workItem from="1672309264615" duration="185000" />
+      <workItem from="1672404006860" duration="471000" />
+      <workItem from="1672406287568" duration="974000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -290,7 +291,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672309425813</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="edit_product">
+      <created>1672309691135</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672309691135</updated>
+    </task>
+    <task id="LOCAL-00019" summary="edit_product">
+      <created>1672309699826</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672309699826</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +329,7 @@
     <MESSAGE value="helpdesk" />
     <MESSAGE value="new update_file.py and views.py" />
     <MESSAGE value="new" />
-    <option name="LAST_COMMIT_MESSAGE" value="new" />
+    <MESSAGE value="edit_product" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit_product" />
   </component>
 </project>

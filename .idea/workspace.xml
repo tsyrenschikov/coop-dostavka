@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
@@ -174,6 +178,7 @@
       <workItem from="1672407493461" duration="131000" />
       <workItem from="1672407905365" duration="307000" />
       <workItem from="1672409084926" duration="135000" />
+      <workItem from="1672522101949" duration="415000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -315,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672407511834</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="new idea">
+      <created>1672522189981</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1672522189981</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

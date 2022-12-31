@@ -3,72 +3,73 @@
 {% block content %}
     {% load static %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
-{% endblock stylesheet %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Акции</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{%  url 'offer' %}">Продукты</a></li>
-                            <li class="breadcrumb-item active">Акции</li>
-                        </ol>
-                        <div class="row">
-							<div class="col-lg-6 col-md-6">
-								<div class="card card-static-2 mb-30">
-									<div class="card-title-2">
-										<h4>Добавить акцию (Страница в доработке)</h4>
-									</div>
-									<div class="card-body-table">
-                                        <form method="post" enctype="multipart/form-data">
-                                            {% csrf_token %}
-										<div class="news-content-right pd-20">
-											<div class="form-group">
-												<label class="form-label">Название*</label>
-												<input type="text" name="name" class="form-control" placeholder="Название акции" required="">
-											</div>
-                                            <div class="form-group">
-                                                <label class="form-label">Территория</label>
-                                                    <select class="form-control" name="area_name" value="{{ categories.subcat }}">
-                                                        {% for areas in areas %}
-                                                            <option name="area_name">{{ areas.name }}</option>
-                                                        {% endfor %}
-                                                    </select>
+        <link rel="stylesheet" href="{% static 'file/panel/css/select/bootstrap-select.min.css' %}">
+    {% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Акции</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'offer' %}">Продукты</a></li>
+                <li class="breadcrumb-item active">Акции</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h4>Добавить акцию (Страница в доработке)</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Название*</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Название акции" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Территория</label>
+                                        <select class="form-control" name="area_name" value="{{ categories.subcat }}">
+                                            {% for areas in areas %}
+                                                <option name="area_name">{{ areas.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Скидка*</label>
+                                        <input type="text" name="discount" class="form-control" placeholder="0" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Баннер*</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" value="{{ offer.image }}" name="image" id="file" required="">
+                                                <label type="file" for="file"></label>
+                                            </div>
                                         </div>
-											<div class="form-group">
-												<label class="form-label">Скидка*</label>
-												<input type="text" name="discount" class="form-control" placeholder="0" required="">
-											</div>
-											<div class="form-group">
-												<label class="form-label">Баннер*</label>
-												<div class="input-group">
-													<div class="custom-file">
-														<input type="file" value="{{ offer.image }}" name="image" id="file" required="" >
-														<label type="file"  for="file" ></label>
-													</div>
-                                                </div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Описание*</label>
-												<div class="card card-editor">
-													<div class="content-editor">
-														<textarea class="text-control" name="descriptions" placeholder="Ввод описания"></textarea>
-													</div>
-												</div>
-											</div>
-                                            <div class="form-group">
-												<label class="form-label">Статус*</label>
-												<select id="status" name="status" class="form-control">
-													<option selected value="True">Опубликовать</option>
-													<option value="False">Не опубликовывать</option>
-												</select>
-											</div>
-											<button class="save-btn hover-btn" type="submit">Добавить акцию</button>
-                                        </form>
-									</div>
-								</div>
-							</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Описание*</label>
+                                        <div class="card card-editor">
+                                            <div class="content-editor">
+                                                <textarea class="text-control" name="descriptions" placeholder="Ввод описания"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Статус*</label>
+                                        <select id="status" name="status" class="form-control">
+                                            <option selected value="True">Опубликовать</option>
+                                            <option value="False">Не опубликовывать</option>
+                                        </select>
+                                    </div>
+                                    <button class="save-btn hover-btn" type="submit">Добавить акцию</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </main>
+                </div>
+            </div>
+        </div>
+    </main>
 {% endblock content %}

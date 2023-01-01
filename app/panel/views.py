@@ -366,6 +366,7 @@ def areas(request):
             for l in list_slug:
                 if a['slug'] in l:
                     dict_a[a['name']].append(l)
+                    cat_pr = eval(l).objects.values()
 
         dict_a = {k:(v if len(v) == 1 else v[0:1]) for k, v in dict_a.items()}
         return render(request, 'panel/areas.html', {'areas': areas, 'location':location,'dict_cat':dict_cat, 'dict_a':dict_a})

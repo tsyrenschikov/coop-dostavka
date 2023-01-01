@@ -356,72 +356,21 @@ def delete_ok_location(request):
 
 # Список территорий продаж
 def areas(request):
-    areas = Area.objects.all()
-    return render(request, 'panel/areas.html', {'areas': areas})
+    if request.user.is_authenticated:
+        areas = Shop.objects.values('name', 'slug').filter(status=True).order_by('slug')
+        location = Locations.objects.values('name', 'slug').filter(status=True).order_by('slug')
+        dict_cat = {}
+        dict_a = {k['name']: [] for k in areas}
+        list_slug = sorted(list(set([i['slug'] for i in areas])))
+        for a in areas:
+            for l in list_slug:
+                if a['slug'] in l:
+                    dict_a[a['name']].append(l)
 
-
-# Добавить территорию
-def add_area(request, **kwargs):
-    alert = {
-        "area": request.GET.get('area', ''),
-        "local": Locations.objects.values('name'),
-        "category": Category.objects.values('name'),
-        "users": User.objects.filter(groups__name='manager').order_by('last_name'),
-    }
-    local = Locations.objects.values('name')
-    category = Category.objects.values('name')
-    users = User.objects.filter(groups__name='manager').order_by('last_name')
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        status = request.POST.get('status')
-        localname = request.POST.getlist('local_city')
-        slug = request.POST.get('slug')
-        category = request.POST.getlist('category_city')
-
-        if Area.objects.filter(name=request.POST['name']).exists():
-            alert['area'] = "Территория уже существует"
-            return render(request, 'panel/add_area.html', alert)
-        else:
-            Area.objects.create(name=name, status=status, slug=slug, local_city=[localname], category_city=[category])
-            return render(request, 'panel/add_ok_area.html')
-    return render(request, 'panel/add_area.html', {'local': local, 'category': category, 'users': users})
-
-
-# Редактировать территорию
-def edit_area(request, id):
-    try:
-        areas = Area.objects.get(id=id)
-        local = Locations.objects.values('name')
-        categories = Category.objects.values('name')
-        if request.method == "POST":
-            areas.name = request.POST.get("name")
-            areas.status = request.POST.get("status")
-            areas.save()
-        if request.method == "POST":
-            areas = Area.objects.get(id=id)
-            areas.local_city = request.POST.getlist('local_city')
-            areas.save(update_fields=['local_city'])
-        if request.method == "POST":
-            areas = Area.objects.get(id=id)
-            areas.category_city = request.POST.getlist('category_city')
-            areas.save(update_fields=['category_city'])
-            return render(request, 'panel/edit_ok_area.html', {'areas': areas, 'local': local, 'categories': categories})
-        else:
-            return render(request, 'panel/edit_area.html', {'areas': areas, 'local': local, 'categories': categories}, )
-    except User.DoesNotExist:
-        return render(request, 'panel/edit_area.html', {})
-
-
-# Удалить зону - территорию
-def delete_area(request, id):
-    areas = ''
-    try:
-        areas = Area.objects.get(id=id)
-        areas.delete()
-        return render(request, 'panel/delete_ok_area.html', {'areas': areas}, )
-    except areas.DoesNotExist:
-        return render(request, 'panel/delete_error_areas.html', {})
-
+        dict_a = {k:(v if len(v) == 1 else v[0:1]) for k, v in dict_a.items()}
+        return render(request, 'panel/areas.html', {'areas': areas, 'location':location,'dict_cat':dict_cat, 'dict_a':dict_a})
+    else:
+        return redirect('/login')
 
 def category(request, ):
     if request.user.is_authenticated:

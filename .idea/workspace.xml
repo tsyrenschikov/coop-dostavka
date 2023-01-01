@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/areas.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/areas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +183,8 @@
       <workItem from="1672407493461" duration="131000" />
       <workItem from="1672407905365" duration="307000" />
       <workItem from="1672409084926" duration="135000" />
-      <workItem from="1672522101949" duration="415000" />
+      <workItem from="1672522101949" duration="445000" />
+      <workItem from="1672575528452" duration="28064000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -327,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672522189981</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="new idea">
+      <created>1672522587320</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672522587320</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,5 +367,23 @@
     <MESSAGE value="edit_product" />
     <MESSAGE value="new idea" />
     <option name="LAST_COMMIT_MESSAGE" value="new idea" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>357</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -40,21 +40,37 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     {% for keys,values in dict_a.items %}
                                         <tr>
                                             <td>
                                                 {{ keys }}
                                             </td>
                                             <td>
-                                                {% for local in location %}
-                                                    {% if local.slug in values %}
+                                                {% for v in values %}
+                                                    {% if v != '0' %}
                                                         <li>
-                                                            {{ local.name }}
+                                                            {{ forloop.counter }}. {{ v }}
                                                         </li>
+                                                        {% else %}
+                                                        <p style="color: rgb(255, 0 , 0);">Населенные пункты не опубликованы</p>
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>
                                             <td>
+                                                {% for key, val in dict_l.items %}
+                                                    {% if keys == key %}
+                                                        {% for v in val %}
+                                                            {% if v != '0' %}
+                                                            <li>
+                                                                {{ forloop.counter }}. {{ v }}
+                                                            </li>
+                                                            {% else %}
+                                                                <p style="color: rgb(255, 0 , 0);">Товары не опубликованы</p>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
                                             </td>
                                         </tr>
                                     {% endfor %}

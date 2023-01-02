@@ -358,18 +358,25 @@ def delete_ok_location(request):
 def areas(request):
     if request.user.is_authenticated:
         areas = Shop.objects.values('name', 'slug').filter(status=True).order_by('slug')
-        location = Locations.objects.values('name', 'slug').filter(status=True).order_by('slug')
-        dict_cat = {}
-        dict_a = {k['name']: [] for k in areas}
+        dict_a = {k['name']: '0' for k in areas}
         list_slug = sorted(list(set([i['slug'] for i in areas])))
+        dict_l={}
         for a in areas:
             for l in list_slug:
-                if a['slug'] in l:
-                    dict_a[a['name']].append(l)
-                    cat_pr = eval(l).objects.values()
-
-        dict_a = {k:(v if len(v) == 1 else v[0:1]) for k, v in dict_a.items()}
-        return render(request, 'panel/areas.html', {'areas': areas, 'location':location,'dict_cat':dict_cat, 'dict_a':dict_a})
+                if a['slug'] == l:
+                    loc =[x.name for x in Locations.objects.filter(slug=l,status=True).order_by('name')]
+                    if len(loc) != 0:
+                        dict_a[a['name']]= loc
+                    else:
+                        dict_a[a['name']]= ['0']
+                    cat_pr = eval(l).objects.values('categ').filter(status=True).order_by('name')
+                    cat_pr_ = list(set([x['categ'] for x in cat_pr if x['categ'] is not None]))
+                    cat_pr_ = sorted(cat_pr_)
+                    if len(cat_pr_) !=0:
+                        dict_l.update({a['name']:cat_pr_})
+                    else:
+                        dict_l.update({a['name']: '0'})
+        return render(request, 'panel/areas.html', {'list_slug': list_slug,'dict_a':dict_a,'dict_l':dict_l})
     else:
         return redirect('/login')
 

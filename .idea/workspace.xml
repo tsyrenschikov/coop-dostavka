@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/areas.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/areas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +186,7 @@
       <workItem from="1672409084926" duration="135000" />
       <workItem from="1672522101949" duration="445000" />
       <workItem from="1672575528452" duration="28856000" />
-      <workItem from="1672668255198" duration="20832000" />
+      <workItem from="1672668255198" duration="21771000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -388,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672685401164</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="areas and popular_product">
+      <created>1672689312546</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1672689312546</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +418,8 @@
     <MESSAGE value="edit_product" />
     <MESSAGE value="new idea" />
     <MESSAGE value="areas" />
-    <option name="LAST_COMMIT_MESSAGE" value="areas" />
+    <MESSAGE value="areas and popular_product" />
+    <option name="LAST_COMMIT_MESSAGE" value="areas and popular_product" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

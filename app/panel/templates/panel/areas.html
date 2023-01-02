@@ -10,11 +10,6 @@
                 <li class="breadcrumb-item active">Территория обслуживания</li>
             </ol>
             <div class="row justify-content-between">
-                {% comment %}<div class="col-lg-12">
-                    {% if 'super_manager' in groups %}
-                        <a href="{% url 'add_area' %}" class="add-btn hover-btn">Добавить территорию</a>
-                    {% endif %}
-                </div>{% endcomment %}
                 <div class="col-lg-5 col-md-6">
                     <div class="bulk-section mt-30">
                         <div class="search-by-name-input">
@@ -31,7 +26,7 @@
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table id="info-table" class="table ucp-table table-hover table_sort">
+                                <table id="info-table" class="table ucp-table table-hover table_sort fixtable">
                                     <thead>
                                     <tr>
                                         <th style="width: 20%">Имя</th>

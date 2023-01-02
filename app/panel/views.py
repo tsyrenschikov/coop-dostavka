@@ -3,7 +3,7 @@ User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
-from django.db.models import Q
+from django.db.models import Q, Count,Avg
 from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
@@ -993,6 +993,20 @@ def add_product(request, **kwargs):
                                                      length=length, fabricator=fabricator, material=material, color=color)
                                 return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
                         return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+    else:
+        return redirect('/login')
+
+#Популярные продукты
+def popular_product(request):
+    if request.user.is_authenticated:
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
+        for u in users:
+            if request.user.id == u:
+                for s, slug, id in shops:
+                    if u == s:
+                        n = eval(slug)
+                        order_ = orders.objects.filter(slug=n).order_by('name')
     else:
         return redirect('/login')
 

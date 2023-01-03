@@ -1007,6 +1007,7 @@ def popular_product(request):
                     if u == s:
                         n = eval(slug)
                         order_ = orders.objects.filter(slug=n).order_by('name')
+                        list_prod = [y for x in order_ for y in x.products]
     else:
         return redirect('/login')
 

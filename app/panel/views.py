@@ -1060,28 +1060,31 @@ def shop_view(request, id):
 
 # Добавить магазины
 def add_shop(request, **kwargs):
-    alert = {
-        'name': request.GET.get('name', ''),
-        'users': User.objects.filter(groups__name='manager').order_by('last_name'),
-        'areas': Area.objects.all().order_by('name'),
-    }
-    areas = Area.objects.all().order_by('name')
-    users = User.objects.filter(groups__name='manager').order_by('last_name')
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        id = request.POST.get('aid')
-        status = request.POST.get('status')
-        pk = request.POST.get('id')
-        descriptions = request.POST.get('descriptions')
-        name_id = request.POST.get('name_id')
-        slug = request.POST.get('slug')
-        if Shop.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Название магазина уже существует'
-            return render(request, 'panel/add_shop.html', alert)
-        else:
-            Shop.objects.create(name=name, area_id=id, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug)
-            return render(request, 'panel/add_ok_shop.html')
-    return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
+    if request.user.is_authenticated:
+        alert = {
+            'name': request.GET.get('name', ''),
+            'users': User.objects.filter(groups__name='manager').order_by('last_name'),
+            'areas': Area.objects.all().order_by('name'),
+        }
+        areas = Area.objects.all().order_by('name')
+        users = User.objects.filter(groups__name='manager').order_by('last_name')
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            id = request.POST.get('aid')
+            status = request.POST.get('status')
+            pk = request.POST.get('id')
+            descriptions = request.POST.get('descriptions')
+            name_id = request.POST.get('name_id')
+            slug = request.POST.get('slug')
+            if Shop.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Название магазина уже существует'
+                return render(request, 'panel/add_shop.html', alert)
+            else:
+                Shop.objects.create(name=name, area_id=id, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug)
+                return render(request, 'panel/add_ok_shop.html')
+        return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
+    else:
+        return redirect('/login')
 
 
 # Успешное добавления магазина

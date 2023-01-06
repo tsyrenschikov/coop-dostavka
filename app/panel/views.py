@@ -1,9 +1,10 @@
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 from django_hosts.resolvers import reverse
-from django.db.models import Q, Count,Avg
+from django.db.models import Q, Count, Avg
 from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
@@ -13,10 +14,10 @@ from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
-from panel.celery import app
 from panel.models import *
 
 register = template.Library()
+
 
 @register.filter(name='manager')
 def manager(user, group_name):
@@ -238,7 +239,7 @@ def locations(request):
                         if checkbool:
                             Locations.objects.filter(pk__in=items).update(status=checkbool)
                             return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
-                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day' : day})
+                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
                 elif request.user.is_superuser:
                     local = Locations.objects.all().order_by('slug')
                     if request.method == 'POST':
@@ -250,7 +251,7 @@ def locations(request):
                         if checkbool:
                             Locations.objects.filter(pk__in=items).update(status=checkbool)
                         return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
-                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day' : day})
+                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
     else:
         return redirect('/login')
 
@@ -326,7 +327,7 @@ def add_location(request):
                 return render(request, 'panel/add_location.html', alert)
             else:
                 Locations.objects.create(name=name, delivery_price=delivery_price, delivery_price_min=delivery_price_min, days=days, days_numb=days_numb, days_numb_dop=days_numb_dop,
-                                         time_start=time_start,time_end=time_end,time_price_delivery=time_price_delivery, slug=slug, status=status)
+                                         time_start=time_start, time_end=time_end, time_price_delivery=time_price_delivery, slug=slug, status=status)
                 return render(request, 'panel/add_ok_location.html', {'local': local, 'shops': shops, 'day': day})
         return render(request, 'panel/add_location.html', {'local': local, 'shops': shops, 'day': day})
     else:
@@ -361,25 +362,26 @@ def areas(request):
         areas = Shop.objects.values('name', 'slug').filter(status=True).order_by('slug')
         dict_a = {k['name']: '0' for k in areas}
         list_slug = sorted(list(set([i['slug'] for i in areas])))
-        dict_l={}
+        dict_l = {}
         for a in areas:
             for l in list_slug:
                 if a['slug'] == l:
-                    loc =[x.name for x in Locations.objects.filter(slug=l,status=True).order_by('name')]
+                    loc = [x.name for x in Locations.objects.filter(slug=l, status=True).order_by('name')]
                     if len(loc) != 0:
-                        dict_a[a['name']]= loc
+                        dict_a[a['name']] = loc
                     else:
-                        dict_a[a['name']]= ['0']
+                        dict_a[a['name']] = ['0']
                     cat_pr = eval(l).objects.values('categ').filter(status=True).order_by('name')
                     cat_pr_ = list(set([x['categ'] for x in cat_pr if x['categ'] is not None]))
                     cat_pr_ = sorted(cat_pr_)
-                    if len(cat_pr_) !=0:
-                        dict_l.update({a['name']:cat_pr_})
+                    if len(cat_pr_) != 0:
+                        dict_l.update({a['name']: cat_pr_})
                     else:
                         dict_l.update({a['name']: '0'})
-        return render(request, 'panel/areas.html', {'list_slug': list_slug,'dict_a':dict_a,'dict_l':dict_l})
+        return render(request, 'panel/areas.html', {'list_slug': list_slug, 'dict_a': dict_a, 'dict_l': dict_l})
     else:
         return redirect('/login')
+
 
 def category(request, ):
     if request.user.is_authenticated:
@@ -728,6 +730,7 @@ def file(request):
     else:
         return redirect('/login')
 
+
 # Обновление позиций файлом
 def update_file(request, id):
     if request.user.is_authenticated:
@@ -742,9 +745,10 @@ def update_file(request, id):
         count_base = name.objects.count()
         artikul_list = [];
         message_product = []
-        count=0
-        file_count=0
-        def email(update_ost,html_):
+        count = 0
+        file_count = 0
+
+        def email(update_ost, html_):
             # Отправка сообщения на почту после обновления файлов
             id_manager = Shop.objects.values('customuser_id').filter(slug=slug_name)
             for i in id_manager:
@@ -759,19 +763,20 @@ def update_file(request, id):
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
+
         try:
             file = files.objects.get(id=id)
             with open(file.fileart.path) as f:
-                count+=1
+                count += 1
                 Line_ = f.readline()
-                Line_=Line_.replace('\ufeff','')
+                Line_ = Line_.replace('\ufeff', '')
                 Line = list(map(str, Line_.replace(',', ' ').split()))
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
                     Line = f.readline()
                     while Line:
-                        file_count+=1
+                        file_count += 1
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
@@ -792,7 +797,7 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров в наличии'
                     html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
-                    email(update_ost,html_)
+                    email(update_ost, html_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -800,7 +805,7 @@ def update_file(request, id):
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
                     while Line:
-                        file_count+=1
+                        file_count += 1
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         count_line = line[1].replace(',', '.')
@@ -819,7 +824,7 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров c 0 остатком'
                     html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
-                    email(update_ost,html_)
+                    email(update_ost, html_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -834,8 +839,8 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
-                    html_  = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list,'message_product':message_product })
-                    email(update_ost,html_)
+                    html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
+                    email(update_ost, html_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',
@@ -997,7 +1002,8 @@ def add_product(request, **kwargs):
     else:
         return redirect('/login')
 
-#Популярные продукты
+
+# Популярные продукты
 def popular_product(request):
     if request.user.is_authenticated:
         users = User.objects.values_list('id', flat=True).distinct()
@@ -1082,16 +1088,37 @@ def add_shop(request, **kwargs):
                 return render(request, 'panel/add_shop.html', alert)
             else:
                 Shop.objects.create(name=name, area_id=id, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug)
-                Area.objects.create(name=name, customuser_id=pk,slug=slug, status=status)
-                return render(request, 'panel/add_ok_shop.html')
+                Area.objects.create(name=name, customuser_id=pk, slug=slug, status=status)
+                template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
+                                                                                                               "verbose_name='Магазин')", " \
+                                                                                                                                                                                                 ""\n",
+                                 "    name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')", "\n",
+                                 "    artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')", "\n", "    image = models.ImageField(upload_to='" + slug
+                                 + "/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')", "\n", "    description = models.TextField(blank=True, verbose_name='Описания продукта')", "\n",
+                                 "    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')", "\n",
+                                 "    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')", "\n",
+                                 "    categ = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Категория продукта')", "\n", "    subcat = models.JSONField(default=list, "
+                                                                                                                                                    "null=True, blank=True)", "\n",
+                                 "    subsubcat = models.CharField(max_length=200, db_index=True, null=True)", "\n", "    width = models.IntegerField(blank=True, null=True, verbose_name='Ширина')",
+                                 "\n", "    height = models.IntegerField(blank=True, null=True, verbose_name='Высота')", "\n",
+                                 "    length = models.IntegerField(blank=True, null=True, verbose_name='Длина')", "\n",
+                                 "    fabricator = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Производитель')", "\n",
+                                 "    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')", "\n",
+                                 "    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')", "\n",
+                                 "    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')", "\n",
+                                 "    status = models.BooleanField(default=True, verbose_name='Активный')", "\n", "\n", "    class Meta:","\n", "        ordering = ('name',)", "\n",
+                                 "        verbose_name"
+                                                                                                                                                                                 " = "
+                                                                                                                                                                                 "'" + name + "'", "\n",
+                                 "        verbose_name_plural = '" + name + "'", "\n", "        index_together = (('id'),)", "\n", "\n", "    def __str__(self):", "\n", "        return self.name"]
+                with open('/home/web/Env/coop-dostavka.ru/app/panel/models.py', 'r+') as f:
+                    f.seek(0, 2)
+                    f.writelines(template_list)
 
+                return render(request, 'panel/add_ok_shop.html')
         return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
     else:
         return redirect('/login')
-
-@app.task(bind=True)
-def debug_task1(self):
-    print(f'Request: {self.request!r}')
 
 
 # Успешное добавления магазина

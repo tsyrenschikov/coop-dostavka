@@ -13,8 +13,6 @@ DAYS_OF_WEEK = (
     (6, 'Sunday'),
 )
 
-
-
 class Days(models.Model):
     name = models.CharField(max_length=200, db_index=True,verbose_name='День недели')
     daysdict = models.CharField(max_length=1,null=True, choices=DAYS_OF_WEEK)

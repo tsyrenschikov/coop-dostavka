@@ -34,7 +34,6 @@
 													<tr>
 														<th>Название магазина</th>
 														<th>Менеджер</th>
-														<th style="width: 200px;">Территория</th>
 														<th style="width: 120px;">Статус</th>
 														<th style="width: 150px;">Действия</th>
 													</tr>
@@ -48,13 +47,6 @@
                                                                 {{ managers.customuser__last_name }} {{ managers.customuser__first_name }}
                                                             {% else %}
                                                                 <a href="{% url 'edit_manager' %}"><p style="color: red">Укажите менеджера либо заполните все поля у ответственного лица.</p></a>
-                                                            {% endif %}
-                                                        </td>
-														<td>
-                                                            {% if managers.area__name %}
-                                                            {{ managers.area__name }}
-                                                            {% else %}
-                                                            <a href="{% url 'areas' %}"><p style="color: green">Территория не назначена</p></a>
                                                             {% endif %}
                                                         </td>
 														<td>

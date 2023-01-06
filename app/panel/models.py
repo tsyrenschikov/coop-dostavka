@@ -53,9 +53,6 @@ class Locations(models.Model):
 
 class Area(models.Model):
     customuser = ForeignKey('accounts.CustomUser', null=True, blank=True, on_delete=CASCADE, related_name='+', verbose_name='Пользователь')
-    local_city = models.JSONField(default=list,null=True,blank=True)
-    category_city = models.JSONField(default=list, null=True, blank=True)
-    location = models.ForeignKey(Locations, on_delete=models.CASCADE, null=True, verbose_name='Населенный пункт')
     name = models.CharField(max_length=255,db_index=True, verbose_name='Территория продаж')
     slug = models.SlugField(max_length=200,null=True, db_index=True)
     status = models.BooleanField(default=True,verbose_name='Активный')
@@ -134,6 +131,101 @@ class Category(models.Model):
         ordering = ('name',)
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
+    def __str__(self):
+        return self.name
+
+class orders(models.Model):
+    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Пользователь')
+    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
+    address_city=models.CharField(max_length=300, null=True, verbose_name='Населенный пункт')
+    address_street = models.TextField(max_length=300,null=True,verbose_name='Улица')
+    address_home = models.TextField(max_length=300,null=True,verbose_name='Дом')
+    address_kv = models.TextField(max_length=300,null=True,verbose_name='Квартира')
+    data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
+    commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')
+    comment_man = models.TextField(max_length=300, null=True, verbose_name='Коментарий менеджера')
+    time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
+    cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
+    delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')
+    total_price =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
+    products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
+    status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
+    data_status=models.CharField(max_length=200, null=True, db_index=True, verbose_name='Время обновления статуса')
+    cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
+    email=models.EmailField(null=True,verbose_name='E-mail')
+    replace = models.CharField(max_length=100, null=True, verbose_name='Замена товара')
+    payment = models.CharField(max_length=30, null=True, verbose_name='Оплата')
+    money = models.CharField(max_length=30, null=True, verbose_name='Сумма для сдачи')
+    sbp = models.BooleanField(default=False, verbose_name='SBP')
+
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказ'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+class works(models.Model):
+    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название Вакансии')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    shopproiz = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин произвольный')
+    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
+    graf = models.CharField(max_length=200, db_index=True, null=True, verbose_name='График')
+    timesstart = models.TextField(max_length=300,null=True, verbose_name='Время работы начало')
+    timesend = models.TextField(max_length=300,null=True, verbose_name='Время работы конец')
+    zp = models.CharField(max_length=30, null=True, verbose_name='Зарплата')
+    opwork = models.CharField(max_length=30, null=True, verbose_name='Опыт работы')
+    obr = models.CharField(max_length=100, null=True, verbose_name='Образование')
+    descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание вакансии')
+    status = models.BooleanField(default=True, verbose_name='Статус')
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Вакансии'
+        verbose_name_plural = 'Вакансии'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+
+class files(models.Model):
+    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название файла')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    fileart = models.FileField(upload_to='file/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
+    date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
+    time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время загрузки')
+    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Файловая обработка'
+        verbose_name_plural = 'Файловая обработка'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+class helpdesk_user(models.Model):
+    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название заявки')
+    name_user = models.JSONField(default=list, null=True, blank=True, verbose_name='Пользователь')
+    name_user_help = models.JSONField(default=list, null=True, blank=True, verbose_name='Специалист по обработке заявки')
+    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    email_user = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Email')
+    date_time = models.JSONField(default=list, null=True, blank=True, verbose_name='Дата создания и время')
+    descriptions = models.JSONField(default=list, null=True, blank=True, verbose_name='Описание проблемы')
+    file = models.FileField(upload_to='helpdeskfile/', blank=True, null=True, verbose_name='Скриншот')
+    status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Служба поддержки'
+        verbose_name_plural = 'Служба поддержки'
+        index_together = (('id'),)
 
     def __str__(self):
         return self.name
@@ -572,120 +664,6 @@ class natalinsk(models.Model):
         ordering = ('name',)
         verbose_name = 'Натальинское потребительское общество'
         verbose_name_plural = 'Натальинское потребительское общество'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
-
-class offers(models.Model):
-    area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, verbose_name='Территория')
-    name = models.CharField(max_length=200, db_index=True, verbose_name='Акции')
-    area_name = models.JSONField(default=list, null=True, blank=True, verbose_name='Территория')
-    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
-    image = models.ImageField(upload_to='offers/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
-    descriptions=models.TextField(max_length=500,db_index=True,null=True,verbose_name='Описание')
-    status = models.BooleanField(default=True, verbose_name='Статус')
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Акция'
-        verbose_name_plural = 'Акция'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
-class orders(models.Model):
-    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Пользователь')
-    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
-    address_city=models.CharField(max_length=300, null=True, verbose_name='Населенный пункт')
-    address_street = models.TextField(max_length=300,null=True,verbose_name='Улица')
-    address_home = models.TextField(max_length=300,null=True,verbose_name='Дом')
-    address_kv = models.TextField(max_length=300,null=True,verbose_name='Квартира')
-    data=models.DateField(auto_now=True, db_index=True, verbose_name='Дата заказа')
-    commit = models.TextField(max_length=300, null=True, verbose_name='Коментарий')
-    comment_man = models.TextField(max_length=300, null=True, verbose_name='Коментарий менеджера')
-    time=models.TimeField(auto_now=True, db_index=True, verbose_name='Время заказа')
-    cart = models.DecimalField( max_digits=7, decimal_places=2,null=True, verbose_name='Общая сумма заказа')
-    delivery = models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Сумма доставки')
-    total_price =models.DecimalField(max_digits=7, decimal_places=2, null=True, verbose_name='Общая сумма')
-    products = models.JSONField(default=list, null=True, blank=True, verbose_name='Продукты в корзине')
-    status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
-    data_status=models.CharField(max_length=200, null=True, db_index=True, verbose_name='Время обновления статуса')
-    cal= models.TextField(max_length=300,null=True,verbose_name='Дата доставки')
-    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Территория')
-    email=models.EmailField(null=True,verbose_name='E-mail')
-    replace = models.CharField(max_length=100, null=True, verbose_name='Замена товара')
-    payment = models.CharField(max_length=30, null=True, verbose_name='Оплата')
-    money = models.CharField(max_length=30, null=True, verbose_name='Сумма для сдачи')
-    sbp = models.BooleanField(default=False, verbose_name='SBP')
-
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказ'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
-class works(models.Model):
-    name=models.CharField(max_length=200, db_index=True,null=True, verbose_name='Название Вакансии')
-    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
-    shopproiz = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин произвольный')
-    phone = models.CharField(max_length=30, null=True, verbose_name='Номер телефона')
-    graf = models.CharField(max_length=200, db_index=True, null=True, verbose_name='График')
-    timesstart = models.TextField(max_length=300,null=True, verbose_name='Время работы начало')
-    timesend = models.TextField(max_length=300,null=True, verbose_name='Время работы конец')
-    zp = models.CharField(max_length=30, null=True, verbose_name='Зарплата')
-    opwork = models.CharField(max_length=30, null=True, verbose_name='Опыт работы')
-    obr = models.CharField(max_length=100, null=True, verbose_name='Образование')
-    descriptions = models.TextField(max_length=10000, db_index=True, null=True, verbose_name='Описание вакансии')
-    status = models.BooleanField(default=True, verbose_name='Статус')
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Вакансии'
-        verbose_name_plural = 'Вакансии'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
-
-class files(models.Model):
-    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название файла')
-    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
-    fileart = models.FileField(upload_to='file/', blank=True, null=True, verbose_name='Файл выгрузки товаров')
-    date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
-    time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время загрузки')
-    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Файловая обработка'
-        verbose_name_plural = 'Файловая обработка'
-        index_together = (('id'),)
-
-    def __str__(self):
-        return self.name
-
-class helpdesk_user(models.Model):
-    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название заявки')
-    name_user = models.JSONField(default=list, null=True, blank=True, verbose_name='Пользователь')
-    name_user_help = models.JSONField(default=list, null=True, blank=True, verbose_name='Специалист по обработке заявки')
-    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
-    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
-    email_user = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Email')
-    date_time = models.JSONField(default=list, null=True, blank=True, verbose_name='Дата создания и время')
-    descriptions = models.JSONField(default=list, null=True, blank=True, verbose_name='Описание проблемы')
-    file = models.FileField(upload_to='helpdeskfile/', blank=True, null=True, verbose_name='Скриншот')
-    status = models.CharField(max_length=200, null=True,db_index=True, verbose_name='Статус')
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Служба поддержки'
-        verbose_name_plural = 'Служба поддержки'
         index_together = (('id'),)
 
     def __str__(self):

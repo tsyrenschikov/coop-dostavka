@@ -13,6 +13,7 @@ from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
+from panel.celery import app
 from panel.models import *
 
 register = template.Library()
@@ -1081,10 +1082,16 @@ def add_shop(request, **kwargs):
                 return render(request, 'panel/add_shop.html', alert)
             else:
                 Shop.objects.create(name=name, area_id=id, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug)
+                Area.objects.create(name=name, customuser_id=pk,slug=slug, status=status)
                 return render(request, 'panel/add_ok_shop.html')
+
         return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
     else:
         return redirect('/login')
+
+@app.task(bind=True)
+def debug_task1(self):
+    print(f'Request: {self.request!r}')
 
 
 # Успешное добавления магазина

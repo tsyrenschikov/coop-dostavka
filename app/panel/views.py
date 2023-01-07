@@ -1085,11 +1085,13 @@ def add_shop(request, **kwargs):
             uraddress = request.POST.get('uraddress')
             sbp = request.POST.get('sbp')
             qr_code = request.POST.get('qr_code')
+            times = request.POST.getlist('times')
             if Shop.objects.filter(name=request.POST['name']).exists():
                 alert['name'] = 'Название магазина уже существует'
                 return render(request, 'panel/add_shop.html', alert)
             else:
-                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress,sbp=sbp,qr_code=qr_code)
+                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress,sbp=sbp,
+                                    qr_code=qr_code,times=times)
                 Area.objects.create(name=name, customuser_id=pk, slug=slug, status=status)
                 template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
                                                                                                                "verbose_name='Магазин')", " \

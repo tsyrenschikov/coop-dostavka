@@ -1090,9 +1090,14 @@ def add_shop(request, **kwargs):
                 alert['name'] = 'Название магазина уже существует'
                 return render(request, 'panel/add_shop.html', alert)
             else:
-                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress,sbp=sbp,
-                                    qr_code=qr_code,times=times)
-                Area.objects.create(name=name, customuser_id=pk, slug=slug, status=status)
+                Area.objects.create(name=name_id, customuser_id=pk, slug=slug, status=status)
+                areas = Area.objects.values('id').filter(slug=slug)
+                area_id = [i['id'] for i in areas][0]
+                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress, sbp=sbp,
+                                    qr_code=qr_code, times=times, area_id=area_id)
+                template_cron = ["#!/bin/bash", "\n", "source /home/web/.bashrc", "\n", "source /home/web/Env/coop-dostavka.ru/bin/activate", "\n",
+                                 "python /home/web/Env/coop-dostavka.ru/app/manage.py "
+                                 "makemigrations", "\n", "python /home/web/Env/coop-dostavka.ru/app/manage.py migrate"]
                 template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
                                                                                                                "verbose_name='Магазин')", " \
                                                                                                                                                                                                  ""\n",
@@ -1118,9 +1123,8 @@ def add_shop(request, **kwargs):
                 with open('/home/web/Env/coop-dostavka.ru/app/panel/models.py', 'r+') as f:
                     f.seek(0, 2)
                     f.writelines(template_list)
-
                 return render(request, 'panel/add_ok_shop.html')
-        return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
+        return render(request, 'panel/add_shop.html', {'users': users})
     else:
         return redirect('/login')
 

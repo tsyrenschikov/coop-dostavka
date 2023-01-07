@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 import os
-from celery.schedules import crontab
+# from celery.schedules import crontab
 from celery import Celery
 # from time import sleep
 # from django.core.mail import send_mail

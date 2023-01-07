@@ -2,83 +2,132 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
-        <main>
-                    <div class="container-fluid">
-                        <h2 class="mt-30 page-title">Магазины</h2>
-                        <ol class="breadcrumb mb-30">
-                            <li class="breadcrumb-item"><a href="{%  url 'panel' %}">Панель управления</a></li>
-                            <li class="breadcrumb-item"><a href="{%  url 'shops' %}">Магазины</a></li>
-                            <li class="breadcrumb-item active">Добавить магазин</li>
-                        </ol>
-                        <div class="row">
-							<div class="col-lg-12">
-								<div class="add-new-shop">
-									<div class="card card-static-2 mb-30">
-										<div class="row no-gutters">
-											<div class="col-lg-6 col-md-6">
-												<div class="card-title-2">
-													<h4 style="color: red">Добавить магазин</h4>
-												</div>
-                                                <form method="post">
-                                                    {% csrf_token %}
-												<div class="card-body-table">
-													<div class="add-shop-content pd-20">
-														<div class="form-group">
-															<label class="form-label">Название магазина*</label>
-															<input type="text" class="form-control" name="name" placeholder="Название магазина" required="">
-														</div>
-                                                         <div class="form-group">
-                                                             {% if name %}
-                                                                 <div class="alert alert-danger alert-dismissible">
-                                                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                                     {{ name }}
-                                                                 </div>
-                                                             {% endif %}
-                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="form-label">Краткое имя*</label>
-                                                            <input type="text" id="input" name="name_id" class="form-control" placeholder="Имя территории" required="">
+    {% block stylesheet %}
+    <!--Панель заказа-->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'file/panel/css/day/days.css' %}" rel="stylesheet">
+    <link href="{% static 'file/panel/css/day/mobiscroll.jquery.min.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Магазины</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'shops' %}">Магазины</a></li>
+                <li class="breadcrumb-item active">Добавить магазин</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="add-new-shop">
+                        <div class="card card-static-2 mb-30">
+                            <div class="row no-gutters">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="card-title-2">
+                                        <h4 style="color: red">Добавить магазин</h4>
+                                    </div>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="card-body-table">
+                                            <div class="add-shop-content pd-20">
+                                                <div class="form-group">
+                                                    <label class="form-label">Название магазина*</label>
+                                                    <input type="text" class="form-control" name="name" placeholder="Название магазина" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    {% if name %}
+                                                        <div class="alert alert-danger alert-dismissible">
+                                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                            {{ name }}
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="form-label">Slug(краткое имя)*</label>
-                                                            <p style="color: green">(Поле заполняется автоматически)</p>
-                                                            <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" readonly="readonly" required="">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Краткое имя*</label>
+                                                    <input type="text" id="input" name="name_id" class="form-control" placeholder="Имя территории" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Slug(краткое имя)*</label>
+                                                    <p style="color: green">(Поле заполняется автоматически)</p>
+                                                    <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" readonly="readonly" required="">
+                                                </div>
+                                                <label class="form-label">Менеджер магазина*</label>
+                                                <div class="form-group">
+                                                    <select name="id" value="{{ users.pk }}" class="form-control">
+                                                        <!--<option selected>--Выбрать менеджера--</option>-->
+                                                        {% for users in users %}
+                                                            <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">ОГРН*</label>
+                                                    <input type="text" name="ogrn" class="form-control" placeholder="ОГРН предприятия" required="">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Телефон предприятия*</label>
+                                                    <input id="phone" type="text" class="form-control" name="phone" value="" placeholder="Телефон предприятия" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Юридический адрес*</label>
+                                                    <input type="text" name="uraddress" class="form-control" placeholder="Свердловская обл., г.Североуральск, ул.Ленина 4" required="">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">Время работы*</label>
+                                                    <div class="mbsc-grid mbsc-no-padding">
+                                                        <div class="mbsc-row">
+                                                            <div class="mbsc-col-6">
+                                                                <label>
+                                                                    Начало
+                                                                    <input type="time" mbsc-input data-input-style="outline"
+                                                                           data-label-style="stacked"
+                                                                           value="00:00"/>
+                                                                </label>
+                                                            </div>
+                                                            <div class="mbsc-col-6">
+                                                                <label>
+                                                                    Окончание
+                                                                    <input type="time" mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
+                                                                </label>
+                                                            </div>
                                                         </div>
-                                                        <label class="form-label">Менеджер магазина*</label>
-                                                        <div class="form-group">
-                                                            <select  name="id" value="{{ users.pk }}" class="form-control">
-                                                                <!--<option selected>--Выбрать менеджера--</option>-->
-                                                                {% for users in users %}
-                                                                    <option value="{{ users.pk }}">{{ users.last_name }} {{ users.first_name }}</option>
-                                                                {% endfor %}
-                                                            </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group" id="sbp">
+                                                    <label class="form-label"><input type="checkbox" id="checkbox">СБП</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Статус*</label>
+                                                    <select id="status" name="status" class="form-control">
+                                                        <option selected value="True">Активный</option>
+                                                        <option value="False">Не активный</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Описание</label>
+                                                    <div class="card card-editor">
+                                                        <div class="content-editor">
+                                                            <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Описание объекта"></textarea>
                                                         </div>
-                                                            <div class="form-group">
-															<label class="form-label">Статус*</label>
-															<select id="status" name="status" class="form-control">
-																<option selected value="True">Активный</option>
-																<option value="False">Не активный</option>
-															</select>
-														</div>
-                                                        <div class="form-group">
-															<label class="form-label">Описание</label>
-															<div class="card card-editor">
-																<div class="content-editor">
-																	 <textarea class="text-control" maxlength="5000" name="descriptions" placeholder="Описание объекта"></textarea>
-																</div>
-															</div>
-														</div>
-														<button class="save-btn hover-btn" type="submit">Добавить магазин</button>
-													</div>
-												</div>
-                                                </form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+                                                    </div>
+                                                </div>
+                                                <button class="save-btn hover-btn" type="submit">Добавить магазин</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </main>
+                </div>
+            </div>
+        </div>
+        <!-- Скрипты для выбора checked-->
+    <script src="{% static 'file/panel/js/days/selected.js' %}"></script>
+    <script src="{% static 'file/panel/js/days/mobiscroll.jquery.min.js' %}"></script>
+    <script src="{% static 'file/panel/js/days/mobiscroll.js' %}"></script>
+    </main>
 
 {% endblock content %}

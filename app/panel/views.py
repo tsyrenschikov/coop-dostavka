@@ -1074,20 +1074,23 @@ def add_shop(request, **kwargs):
             'areas': Area.objects.all().order_by('name'),
         }
         areas = Area.objects.all().order_by('name')
+        day = Days.objects.all()
         users = User.objects.filter(groups__name='manager').order_by('last_name')
         if request.method == 'POST':
             name = request.POST.get('name')
-            id = request.POST.get('aid')
             status = request.POST.get('status')
             pk = request.POST.get('id')
             descriptions = request.POST.get('descriptions')
             name_id = request.POST.get('name_id')
             slug = request.POST.get('slug')
+            ogrn = request.POST.get('ogrn')
+            phone = request.POST.get('phone')
+            uraddress = request.POST.get('uraddress')
             if Shop.objects.filter(name=request.POST['name']).exists():
                 alert['name'] = 'Название магазина уже существует'
                 return render(request, 'panel/add_shop.html', alert)
             else:
-                Shop.objects.create(name=name, area_id=id, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug)
+                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress)
                 Area.objects.create(name=name, customuser_id=pk, slug=slug, status=status)
                 template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
                                                                                                                "verbose_name='Магазин')", " \
@@ -1106,17 +1109,17 @@ def add_shop(request, **kwargs):
                                  "    color = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Цвет')", "\n",
                                  "    material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')", "\n",
                                  "    count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')", "\n",
-                                 "    status = models.BooleanField(default=True, verbose_name='Активный')", "\n", "\n", "    class Meta:","\n", "        ordering = ('name',)", "\n",
+                                 "    status = models.BooleanField(default=True, verbose_name='Активный')", "\n", "\n", "    class Meta:", "\n", "        ordering = ('name',)", "\n",
                                  "        verbose_name"
-                                                                                                                                                                                 " = "
-                                                                                                                                                                                 "'" + name + "'", "\n",
+                                 " = "
+                                 "'" + name + "'", "\n",
                                  "        verbose_name_plural = '" + name + "'", "\n", "        index_together = (('id'),)", "\n", "\n", "    def __str__(self):", "\n", "        return self.name"]
                 with open('/home/web/Env/coop-dostavka.ru/app/panel/models.py', 'r+') as f:
                     f.seek(0, 2)
                     f.writelines(template_list)
 
                 return render(request, 'panel/add_ok_shop.html')
-        return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
+        return render(request, 'panel/add_shop.html', {'users': users, 'day': day, 'areas': areas})
     else:
         return redirect('/login')
 

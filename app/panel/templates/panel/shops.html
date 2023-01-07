@@ -51,17 +51,12 @@
                                                         </td>
 														<td>
                                                             {% if managers.status %}
-                                                            <span class="badge-item badge-status">Активный</span></td>
+                                                            <span class="badge-item badge-panel-status">Активный</span></td>
                                                             {% else %}
                                                             <span class="badge-item badge-status">Не активный</span></td>
                                                             {% endif %}
 														<td class="action-btns">
 															<a href="/shop_view/{{ managers.id }}" class="view-shop-btn"><i class="fas fa-eye"></i></a>
-                                                            {% if 'super_manager' in groups %}
-															<!--<a href="{% url 'add_shop' %}" class="edit-btn"><i class="fas fa-edit"></i></a>-->
-                                                            <a href="#" class="delete-btn" title="Удалить" onclick="return confirm('Удалить клиента??? (ДЕЙСТВИЕ НЕ ' +
-															 'ОБРАТИМО)')"><i class="fas fa-trash-alt"></i></a>
-                                                            {% endif %}
 														</td>
 													</tr>
                                                 {% endfor %}

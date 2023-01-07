@@ -71,7 +71,6 @@
                                                     <label class="form-label">Юридический адрес*</label>
                                                     <input type="text" name="uraddress" class="form-control" placeholder="Свердловская обл., г.Североуральск, ул.Ленина 4" required="">
                                                 </div>
-
                                                 <div class="form-group">
                                                     <label class="form-label">Время работы*</label>
                                                     <div class="mbsc-grid mbsc-no-padding">
@@ -79,7 +78,7 @@
                                                             <div class="mbsc-col-6">
                                                                 <label>
                                                                     Начало
-                                                                    <input type="time" mbsc-input data-input-style="outline"
+                                                                    <input type="time" id="begin_time" mbsc-input data-input-style="outline"
                                                                            data-label-style="stacked"
                                                                            value="00:00"/>
                                                                 </label>
@@ -87,17 +86,18 @@
                                                             <div class="mbsc-col-6">
                                                                 <label>
                                                                     Окончание
-                                                                    <input type="time" mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
+                                                                    <input type="time" id="end_time" mbsc-input data-input-style="outline" data-label-style="stacked" value="00:00"/>
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-                                                <div class="form-group" id="sbp">
+                                            <input type="hidden" id="times" name="times">
+                                                <div class="form-group">
                                                     <label class="form-label"><input type="checkbox" id="checkbox">СБП</label>
+                                                    <input type="text" id="sbp" class="form-control" name="qr_code" value="" placeholder="Например:https://qr.nspk.ru/AS1A007THK0KHCG68898TLVSG84AJLFH?type=01&bank=100000000111&crc=F411" required="">
                                                 </div>
+                                            <input type="hidden" id="sbp_bool" name="sbp">
                                                 <div class="form-group">
                                                     <label class="form-label">Статус*</label>
                                                     <select id="status" name="status" class="form-control">
@@ -125,7 +125,7 @@
             </div>
         </div>
         <!-- Скрипты для выбора checked-->
-    <script src="{% static 'file/panel/js/days/selected.js' %}"></script>
+    <script src="{% static 'file/panel/js/days/select_add_shop.js' %}"></script>
     <script src="{% static 'file/panel/js/days/mobiscroll.jquery.min.js' %}"></script>
     <script src="{% static 'file/panel/js/days/mobiscroll.js' %}"></script>
     </main>

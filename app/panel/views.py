@@ -1071,10 +1071,7 @@ def add_shop(request, **kwargs):
         alert = {
             'name': request.GET.get('name', ''),
             'users': User.objects.filter(groups__name='manager').order_by('last_name'),
-            'areas': Area.objects.all().order_by('name'),
         }
-        areas = Area.objects.all().order_by('name')
-        day = Days.objects.all()
         users = User.objects.filter(groups__name='manager').order_by('last_name')
         if request.method == 'POST':
             name = request.POST.get('name')
@@ -1086,11 +1083,13 @@ def add_shop(request, **kwargs):
             ogrn = request.POST.get('ogrn')
             phone = request.POST.get('phone')
             uraddress = request.POST.get('uraddress')
+            sbp = request.POST.get('sbp')
+            qr_code = request.POST.get('qr_code')
             if Shop.objects.filter(name=request.POST['name']).exists():
                 alert['name'] = 'Название магазина уже существует'
                 return render(request, 'panel/add_shop.html', alert)
             else:
-                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress)
+                Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress,sbp=sbp,qr_code=qr_code)
                 Area.objects.create(name=name, customuser_id=pk, slug=slug, status=status)
                 template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
                                                                                                                "verbose_name='Магазин')", " \
@@ -1119,7 +1118,7 @@ def add_shop(request, **kwargs):
                     f.writelines(template_list)
 
                 return render(request, 'panel/add_ok_shop.html')
-        return render(request, 'panel/add_shop.html', {'users': users, 'day': day, 'areas': areas})
+        return render(request, 'panel/add_shop.html', {'users': users, 'areas': areas})
     else:
         return redirect('/login')
 

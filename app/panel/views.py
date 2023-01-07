@@ -15,7 +15,7 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
-
+from panel.tasks import rename_add_shop
 register = template.Library()
 
 
@@ -1131,6 +1131,8 @@ def add_shop(request, **kwargs):
 
 # Успешное добавления магазина
 def add_ok_shop(request):
+    def rename(self):
+        rename_add_shop()
     return render(request, 'panel/add_ok_shop.html')
 
 

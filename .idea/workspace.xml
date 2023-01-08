@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/68abcc7d-e632-4eaa-b53d-e6d991f2601d/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/celery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/celery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_ok_shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_ok_shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,6 +211,7 @@
       <workItem from="1672987748166" duration="6733000" />
       <workItem from="1673004772955" duration="22697000" />
       <workItem from="1673098544009" duration="14000" />
+      <workItem from="1673176123082" duration="5546000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -482,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673121497919</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="add shop celery NO">
+      <created>1673123856701</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1673123856701</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,17 +533,7 @@
     <MESSAGE value="add shop" />
     <MESSAGE value="add shop jquery" />
     <MESSAGE value="add shop celery" />
-    <option name="LAST_COMMIT_MESSAGE" value="add shop celery" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>1125</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add shop celery NO" />
+    <option name="LAST_COMMIT_MESSAGE" value="add shop celery NO" />
   </component>
 </project>

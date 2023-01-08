@@ -10,12 +10,12 @@ from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
 import os
+import subprocess
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
-from panel.tasks import rename_add_shop
 register = template.Library()
 
 
@@ -1095,9 +1095,6 @@ def add_shop(request, **kwargs):
                 area_id = [i['id'] for i in areas][0]
                 Shop.objects.create(name=name, customuser_id=pk, status=status, descriptions=descriptions, name_id=name_id, slug=slug, ogrn=ogrn, phone=phone, uraddress=uraddress, sbp=sbp,
                                     qr_code=qr_code, times=times, area_id=area_id)
-                template_cron = ["#!/bin/bash", "\n", "source /home/web/.bashrc", "\n", "source /home/web/Env/coop-dostavka.ru/bin/activate", "\n",
-                                 "python /home/web/Env/coop-dostavka.ru/app/manage.py "
-                                 "makemigrations", "\n", "python /home/web/Env/coop-dostavka.ru/app/manage.py migrate"]
                 template_list = ["\n", "\n", "#" + slug + "", "\n", "class " + slug + "(models.Model):", "\n", "    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True, "
                                                                                                                "verbose_name='Магазин')", " \
                                                                                                                                                                                                  ""\n",
@@ -1123,7 +1120,7 @@ def add_shop(request, **kwargs):
                 with open('/home/web/Env/coop-dostavka.ru/app/panel/models.py', 'r+') as f:
                     f.seek(0, 2)
                     f.writelines(template_list)
-                return render(request, 'panel/add_ok_shop.html')
+                return redirect('/add_ok_shop')
         return render(request, 'panel/add_shop.html', {'users': users})
     else:
         return redirect('/login')
@@ -1131,9 +1128,8 @@ def add_shop(request, **kwargs):
 
 # Успешное добавления магазина
 def add_ok_shop(request):
-    def rename(self):
-        rename_add_shop()
-    return render(request, 'panel/add_ok_shop.html')
+    output = subprocess.run(["bash", "script_add_shop.sh"], cwd="/home/web", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return render(request, 'panel/add_ok_shop.html',{'output':output})
 
 
 # Удаление магазина

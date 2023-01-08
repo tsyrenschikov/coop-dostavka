@@ -156,7 +156,7 @@ def edit_profile(request):
 # Главна страница панели управления
 def panel(request):
     users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').filter(status=True).distinct()
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}

@@ -208,3 +208,7 @@ QR_CODE_URL_PROTECTION = {
     # Tells whether a registered user can request the QR code URLs from outside a site that uses this app. It can be a boolean value used for any user, or a callable that takes a user as parameter. Defaults to False (nobody can access the URL without the security token).
 }
 SERVE_QR_CODE_IMAGE_PATH = "qr-code-image/"
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"

@@ -16,6 +16,8 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
+from panel.tasks import process
+
 register = template.Library()
 
 
@@ -1128,8 +1130,8 @@ def add_shop(request, **kwargs):
 
 # Успешное добавления магазина
 def add_ok_shop(request):
-    output = subprocess.run(["bash", "script_add_shop.sh"], cwd="/home/web", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return render(request, 'panel/add_ok_shop.html',{'output':output})
+    process()
+    return render(request, 'panel/add_ok_shop.html')
 
 
 # Удаление магазина

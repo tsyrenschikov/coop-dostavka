@@ -2,8 +2,10 @@
 {% block title %}Менеджер{% endblock %}
 {% block content %}
     {% load static %}
-{% comment %}    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>{% endcomment %}
+    {% comment %}<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>{% endcomment %}
+    {% comment %}<link href="{% static 'file/panel/calendar/css/daterangepicker.css' %}" rel="stylesheet">{% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'file/panel/calendar/css/daterangepicker.css' %}"/>
+
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Панель управления</h2>
@@ -21,7 +23,7 @@
                                 <input type="text1" placeholder="Сортировать по дате" id="booking-date-search">
                                 <i class="fa fa-calendar"></i>
                             </div>{% endcomment %}
-                            <div id="reportrange" class="pull-left" style=" margin-left: 2%; cursor: pointer; padding: 5px 10px;">
+                            <div id="reportrange" class="pull-left" style=" margin-left: 2%; cursor: pointer; padding: 1px 10px 0 0;">
                                 <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                                 <span></span> <b class="caret"></b>
                             </div>

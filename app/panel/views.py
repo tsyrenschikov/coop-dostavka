@@ -156,7 +156,7 @@ def edit_profile(request):
 # Главна страница панели управления
 def panel(request):
     users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').filter(status=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'name', 'slug').filter(status=True).order_by('name').distinct()
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}
@@ -186,6 +186,22 @@ def panel(request):
                     count_order2 = orders.objects.filter(status=2).count()
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
+                    if request.method == 'POST':
+                        date_start=request.POST.get('date_start')
+                        date_end=request.POST.get('date_end')
+                        for custom_id, name,slug_p in shops:
+                            name_shop = eval(slug_p)
+                            count_true = name_shop.objects.filter(status=True).count()
+                            count_total = orders.objects.filter(slug=slug_p).count()
+                            wait = orders.objects.filter(slug=slug_p).filter(status=0).filter(data__range=[date_start,date_end]).count()
+                            formation = orders.objects.filter(slug=slug_p).filter(status=1).filter(data__range=[date_start,date_end]).count()
+                            delivery = orders.objects.filter(slug=slug_p).filter(status=2).filter(data__range=[date_start,date_end]).count()
+                            close = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date_start,date_end]).count()
+                            cancel = orders.objects.filter(slug=slug_p).filter(status=4).filter(data__range=[date_start,date_end]).count()
+                            products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait, formation, delivery, close, cancel]})
+                            return render(request, 'panel/index_superuser.html',
+                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                    'count_order4': count_order4})
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
                         count_true = name_shop.objects.filter(status=True).count()

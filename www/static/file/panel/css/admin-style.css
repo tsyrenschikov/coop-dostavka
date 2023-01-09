@@ -472,6 +472,74 @@ input[type=checkbox], input[type=radio] {
     padding: 10px;
 }
 
+/*Фильтры для суперпользователя*/
+.search-input-icon {
+    width: 330px;
+    padding: 0 0px 0 20px;
+    position: relative;
+    margin-top: 3px;
+}
+
+.main_input_search_part_item {
+    flex: 1;
+    margin-top: -1px;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.main_input_search_part input, .main_input_search_part input:focus {
+    font-size: 16px;
+    border: none;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    padding-right: 0px;
+    height: 44px;
+    line-height: 44px;
+    box-shadow: none;
+}
+
+.input, input[type="text1"] {
+    height: 33px;
+    line-height: 50px;
+    padding: 0 15px;
+    outline: none;
+    font-size: 15px;
+    color: #808080;
+    margin: 0 0 1px 0;
+    max-width: 100%;
+    width: 30%;
+    box-sizing: border-box;
+    display: block;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03);
+    font-weight: 400;
+    opacity: 1;
+    border-radius: 4px;
+}
+
+.search-input-icon i {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    right: 70%;
+    z-index: 10;
+    color: #999;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*Конец стилей фильтр*/
+
 .paginator {
     display: flex;
     padding-left: 0;

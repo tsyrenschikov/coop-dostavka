@@ -23,8 +23,13 @@
                                  font-weight: 400;opacity: 1;border-radius: 4px; margin-bottom: 11px">
                                 <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                                 <span class="main_input_search_part input"></span> <b class="caret"></b>
-                                <button type="submit" class="save-btn-filter hover-btn-filter">Сортировать</button>
                             </div>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button type="submit" class="save-btn-filter hover-btn-filter">Сортировать</button>
+                                <input type="hidden" id="date_start" name="date_start">
+                                <input type="hidden" id="date_end" name="date_end">
+                            </form>
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
@@ -118,62 +123,6 @@
     {% block js %}
         <script type="text/javascript" src="{% static 'file/panel/calendar/js/moment.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'file/panel/calendar/js/daterangepicker.js' %}"></script>
-        <script>
-            $(function () {
-
-                var start = moment().subtract(29, 'days');
-                var end = moment();
-
-                function cb(start, end) {
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                }
-
-                $('#reportrange').daterangepicker({
-                    "locale": {
-                        "format": "MM/DD/YYYY",
-                        "separator": " - ",
-                        "applyLabel": "Сохранить",
-                        "cancelLabel": "Назад",
-                        "daysOfWeek": [
-                            "Вс",
-                            "Пн",
-                            "Вт",
-                            "Ср",
-                            "Чт",
-                            "Пт",
-                            "Сб"
-                        ],
-                        "monthNames": [
-                            "Январь",
-                            "Февраль",
-                            "Март",
-                            "Апрель",
-                            "Май",
-                            "Июнь",
-                            "Июль",
-                            "Август",
-                            "Сентябрь",
-                            "Октябрь",
-                            "Ноябрь",
-                            "Декабрь"
-                        ],
-                        "firstDay": 1
-                    },
-                    startDate: start,
-                    endDate: end,
-                    ranges: {
-                        'Сегодня': [moment(), moment()],
-                        'Вчера': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Последние 7 дней': [moment().subtract(6, 'days'), moment()],
-                        'Последние 30 дней': [moment().subtract(29, 'days'), moment()],
-                        'Этот месяц': [moment().startOf('month'), moment().endOf('month')],
-                        'Прошлый месяц': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                    }
-                }, cb);
-
-                cb(start, end);
-
-            });
-        </script>
+        <script type="text/javascript" src="{% static 'file/panel/calendar/js/days_range.js' %}"></script>
     {% endblock js %}
 {% endblock content %}

@@ -204,7 +204,7 @@ def panel(request):
                             products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, total_,refusal]})
                         return render(request, 'panel/index_superuser.html',
                                       {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
-                                       'count_order4': count_order4})
+                                       'count_order4': count_order4,'date_start':date_start,'date_end':date_end})
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
                         count_true = name_shop.objects.filter(status=True).count()

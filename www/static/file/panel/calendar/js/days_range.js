@@ -1,6 +1,14 @@
 $(function () {
-
-    var start = moment().subtract(29, 'days');
+    var old_date_start = new Date($('#old_date_start').val()),
+        old_date_end = new Date($('#old_date_end').val());
+    console.log(typeof old_date_start)
+    var timeDiff = Math.abs(old_date_end.getTime() - old_date_start.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if ($('#old_date_start').val() === 'None') {
+        var start = moment().subtract(29, 'days');
+    } else {
+        var start = moment().subtract(diffDays, 'days');
+    }
     var end = moment();
 
     function cb(start, end) {

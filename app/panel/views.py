@@ -10,7 +10,7 @@ from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
 import os
-import subprocess
+from django.utils import timezone
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
@@ -186,24 +186,27 @@ def panel(request):
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
                     if request.method == 'POST':
-                        date=request.POST.get('date')
-                        for custom_id, name,slug_p in shops:
+                        date = request.POST.get('date')
+                        for custom_id, name, slug_p in shops:
                             name_shop = eval(slug_p)
                             count_true = name_shop.objects.filter(status=True).count()
-                            count_total = orders.objects.filter(slug=slug_p).count()
+                            count_total = orders.objects.filter(slug=slug_p).filter(data__range=[date]).count()
                             wait = orders.objects.filter(slug=slug_p).filter(status=0).filter(data__range=[date]).count()
                             close = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date]).count()
                             products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait, close]})
                             return render(request, 'panel/index_superuser.html',
-                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
-                                    'count_order4': count_order4})
+                                          {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                           'count_order4': count_order4})
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
-                        count_true = name_shop.objects.filter(status=True).count()
-                        count_total = orders.objects.filter(slug=slug_p).count()
-                        wait = orders.objects.filter(slug=slug_p).filter(status=0).count()
-                        close = orders.objects.filter(slug=slug_p).filter(status=3).count()
-                        products_count.update({name: [name_shop.objects.count(), count_true, count_total, wait,close]})
+                        count_true = name_shop.objects.filter(status=True).filter(data__range=[timezone.now() - timezone.timedelta(30), timezone.now()]).count()
+                        count_total = orders.objects.filter(slug=slug_p).filter(data__range=[timezone.now() - timezone.timedelta(30), timezone.now()]).count()
+                        done = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[timezone.now() - timezone.timedelta(30), timezone.now()]).count()
+                        close = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[timezone.now() - timezone.timedelta(30), timezone.now()]).count()
+                        total_price = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[timezone.now() - timezone.timedelta(30), timezone.now()]).values_list('total_price', flat=True).distinct()
+                        sum=0
+                        total=[float(i)+sum for i in total_price]
+                        products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, close]})
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})

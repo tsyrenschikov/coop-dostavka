@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/www/static/file/panel/calendar/css/button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/index_superuser.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/index_superuser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/calendar/css/daterangepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/calendar/css/daterangepicker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/calendar/js/daterangepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/calendar/js/daterangepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/css/admin-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/css/admin-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +230,8 @@
       <workItem from="1673189337012" duration="2482000" />
       <workItem from="1673244445938" duration="2903000" />
       <workItem from="1673263263799" duration="22954000" />
-      <workItem from="1673325394129" duration="9466000" />
+      <workItem from="1673325394129" duration="9497000" />
+      <workItem from="1673348105337" duration="4151000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1672067282420</created>
@@ -572,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673298999847</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="panel calendar style">
+      <created>1673336383291</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1673336383291</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,10 +614,18 @@
     <MESSAGE value="django celery add &#10;add in celery process models" />
     <MESSAGE value="panel status True" />
     <MESSAGE value="panel calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="panel calendar" />
+    <MESSAGE value="panel calendar style" />
+    <option name="LAST_COMMIT_MESSAGE" value="panel calendar style" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

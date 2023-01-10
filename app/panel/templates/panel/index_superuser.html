@@ -55,13 +55,15 @@
                                             <td data-order="{{ value.2 }}">
                                                 {{ value.2 }}
                                             </td>
-                                            <td data-perfomed="{{ value.3 }}">
+                                            <td data-done="{{ value.3 }}">
                                                 {{ value.3 }}
                                             </td>
-                                            <td data-refusal="{{ value.4 }}">
-                                                {{ value.4 }}
+                                            <td data-total_="{{ value.4 }}">
+                                                {{ value.4 }} р.
                                             </td>
-                                            <td></td>
+                                            <td data-refusal="{{ value.5 }}">
+                                                {{ value.5 }}
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                     <tr class="total_table_panel">
@@ -71,9 +73,9 @@
                                         <td class="total_price"></td>
                                         <td class="active_price"></td>
                                         <td class="order_price"></td>
+                                        <td class="done"></td>
+                                        <td class="total_"></td>
                                         <td class="refusal_price"></td>
-                                        <td class="expectation_price"></td>
-                                        <td class="formed_price"></td>
                                     </tr>
                                     </tbody>
                                 </table>

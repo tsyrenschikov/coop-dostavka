@@ -186,9 +186,9 @@ def panel(request):
                     count_order2 = orders.objects.filter(status=2).count()
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
-                    if request.method == 'POST':
-                        date_start = request.POST.get('date_start')
-                        date_end = request.POST.get('date_end')
+                    if request.method == 'GET':
+                        date_start = request.GET.get('date_start')
+                        date_end = request.GET.get('date_end')
                         for custom_id, name, slug_p in shops:
                             name_shop = eval(slug_p)
                             count_true = name_shop.objects.filter(status=True).count()

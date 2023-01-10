@@ -24,7 +24,7 @@
                                 <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                                 <span class="main_input_search_part input"></span> <b class="caret"></b>
                             </div>
-                            <form method="post" enctype="multipart/form-data">
+                            <form method="get" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <button type="submit" class="save-btn-filter hover-btn-filter">Сортировать</button>
                                 <input type="hidden" id="date_start" name="date_start">

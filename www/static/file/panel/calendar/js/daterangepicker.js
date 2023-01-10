@@ -70,7 +70,7 @@
             applyLabel: 'Применить',
             cancelLabel: 'Закрыть',
             weekLabel: 'W',
-            customRangeLabel: 'Ручной выбор',
+            customRangeLabel: 'Выбрать диапазон',
             daysOfWeek: moment.weekdaysMin(),
             monthNames: moment.monthsShort(),
             firstDay: moment.localeData().firstDayOfWeek()

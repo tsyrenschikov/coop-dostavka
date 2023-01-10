@@ -2,9 +2,8 @@
 {% block title %}Менеджер{% endblock %}
 {% block content %}
     {% load static %}
-    {% comment %}<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>{% endcomment %}
-    {% comment %}<link href="{% static 'file/panel/calendar/css/daterangepicker.css' %}" rel="stylesheet">{% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'file/panel/calendar/css/daterangepicker.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'file/panel/calendar/css/button.css' %}"/>
 
     <main>
         <div class="container-fluid">
@@ -19,31 +18,26 @@
                         <div class="card-title-2">
                             <h4 style="margin-top: 8px">Статистика по организациям</h4>{{ shops }}
                             <button id="printTable" class="view-btn_print hover-btn">Напечатать таблицу</button>
-                            {% comment %}<div class="main_input_search_part_item main-search-input-item search-input-icon">
-                                <input type="text1" placeholder="Сортировать по дате" id="booking-date-search">
-                                <i class="fa fa-calendar"></i>
-                            </div>{% endcomment %}
-                            <div id="reportrange" class="pull-left" style=" margin-left: 2%; cursor: pointer; padding: 1px 10px 0 0;">
+                            <div id="reportrange" class="pull-left"
+                                 style=" margin-left: 2%; cursor: pointer; padding: 1px 10px 0 0;background-color: #fff;border: 1px solid #dbdbdb;box-shadow:0 4px 8px 0 rgba(0,0,0,0.03);
+                                 font-weight: 400;opacity: 1;border-radius: 4px; margin-bottom: 11px">
                                 <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-                                <span></span> <b class="caret"></b>
+                                <span class="main_input_search_part input"></span> <b class="caret"></b>
+                                <button type="submit" class="save-btn-filter hover-btn-filter">Сортировать</button>
                             </div>
-                            <a style="margin-bottom: 10px" href="{% url 'shops' %}" class="view-btn hover-btn">Организации</a>
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
                                 <table class="table ucp-table table-hover" id="superuser">
                                     <thead>
                                     <tr>
-                                        <th style="width:7em">Название</th>
-                                        <th style="width:7em">Товары</th>
-                                        <th style="width:7em">Опублик.товары</th>
-                                        <th style="width:5em">Заказы</th>
-                                        <th style="width:5em">В ожидании</th>
-                                        <th style="width:5em">Формируются</th>
-                                        <th style="width:5em">Доставка</th>
-                                        <th style="width:5em">Выполнено</th>
-                                        <th style="width:5em">Отказ</th>
-                                        {% comment %}<th style="width:5em">Выручка</th>{% endcomment %}
+                                        <th>Название</th>
+                                        <th>Товары</th>
+                                        <th>Опублик.товары</th>
+                                        <th>Заказы</th>
+                                        <th>Выполнено</th>
+                                        <th>Выручка</th>
+                                        <th>Отказ</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -61,22 +55,13 @@
                                             <td data-order="{{ value.2 }}">
                                                 {{ value.2 }}
                                             </td>
-                                            <td data-expectation="{{ value.3 }}">
-                                                {{ value.3 }}
-                                            </td>
-                                            <td data-formed="{{ value.4 }}">
-                                                {{ value.4 }}
-                                            </td>
-                                            <td data-delivery="{{ value.5 }}">
-                                                {{ value.5 }}
-                                            </td>
-                                            <td data-perfomed="{{ value.6 }}">
+                                            <td data-perfomed="{{ value.3 }}">
                                                 {{ value.6 }}
                                             </td>
-                                            <td data-refusal="{{ value.7 }}">
+                                            <td data-refusal="{{ value.4 }}">
                                                 {{ value.7 }}
                                             </td>
-                                            {% comment %}<td></td>{% endcomment %}
+                                            <td></td>
                                         </tr>
                                     {% endfor %}
                                     <tr class="total_table_panel">
@@ -86,11 +71,9 @@
                                         <td class="total_price"></td>
                                         <td class="active_price"></td>
                                         <td class="order_price"></td>
+                                        <td class="refusal_price"></td>
                                         <td class="expectation_price"></td>
                                         <td class="formed_price"></td>
-                                        <td class="delivery_price"></td>
-                                        <td class="perfomed_price"></td>
-                                        <td class="refusal_price"></td>
                                     </tr>
                                     </tbody>
                                 </table>

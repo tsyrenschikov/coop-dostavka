@@ -406,7 +406,6 @@ section .file [type="file"] {
 
 .view-btn_print {
     margin-left: 10px;
-    padding: 5px 15px;
     border: 1px solid #f55d2c;
     background: #f55d2c;
     color: #fff;
@@ -502,7 +501,7 @@ input[type=checkbox], input[type=radio] {
 
 .input, input[type="text1"] {
     height: 33px;
-    line-height: 50px;
+    line-height: 35px;
     padding: 0 15px;
     outline: none;
     font-size: 15px;
@@ -511,9 +510,7 @@ input[type=checkbox], input[type=radio] {
     max-width: 100%;
     width: 30%;
     box-sizing: border-box;
-    display: block;
     background-color: #fff;
-    border: 1px solid #dbdbdb;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03);
     font-weight: 400;
     opacity: 1;
@@ -537,6 +534,7 @@ input[type=checkbox], input[type=radio] {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin-left: 10px;
 }
 /*Конец стилей фильтр*/
 
@@ -694,6 +692,19 @@ input[type="file"] {
     -webkit-transition: all 0.2s ease-in-out;
     background-image: -webkit-linear-gradient(left, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
     background-image: linear-gradient(to right, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+}
+
+.hover-btn-filter:hover {
+    text-decoration: none !important;
+    background: #8f91ac;
+    color: #fff !important;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    background-image: -webkit-linear-gradient(left, rgba(91, 103, 230, 0.9), rgba(44, 208, 245, 0.9));
+    background-image: linear-gradient(to right, rgba(91, 103, 230, 0.9), rgba(44, 208, 245, 0.9));
 }
 
 .action-btns {
@@ -1116,6 +1127,19 @@ div#editor {
     padding: 0 20px;
     border-radius: 3px;
     margin-top: 20px;
+}
+
+.save-btn-filter {
+    background: #428BCA;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    padding: 0 20px;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-bottom: 4px;
 }
 
 .fea-img {

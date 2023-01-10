@@ -215,7 +215,6 @@
     line-height: 30px;
     display: block;
     vertical-align: middle;
-    margin: 0 0 5px 0;
     padding: 0 6px 0 28px;
     width: 100%;
 }
@@ -231,7 +230,6 @@
 
 .daterangepicker .daterangepicker_input i {
     position: absolute;
-    left: 8px;
     top: 8px;
 }
 
@@ -281,6 +279,12 @@
     padding: 3px 12px;
     margin-bottom: 8px;
     cursor: pointer;
+    margin-left: 0px;
+}
+
+ul li {
+  list-style: none;!important;
+  margin-bottom: 1.25em;!important;
 }
 
 .ranges li:hover {
@@ -288,7 +292,6 @@
     border: 1px solid #08c;
     color: #fff;
 }
-
 .ranges li.active {
     background-color: #08c;
     border: 1px solid #08c;

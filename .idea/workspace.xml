@@ -233,14 +233,8 @@
       <workItem from="1673263263799" duration="22954000" />
       <workItem from="1673325394129" duration="9497000" />
       <workItem from="1673348105337" duration="4172000" />
-      <workItem from="1673358662751" duration="15185000" />
-    </task>
-    <task id="LOCAL-00005" summary="add file">
-      <created>1672078802857</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1672078802857</updated>
+      <workItem from="1673358662751" duration="15237000" />
+      <workItem from="1673444176559" duration="16514000" />
     </task>
     <task id="LOCAL-00006" summary="add file">
       <created>1672079423267</created>
@@ -578,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673372539404</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="panel sort date jquery">
+      <created>1673375336682</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1673375336682</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +620,8 @@
     <MESSAGE value="panel calendar" />
     <MESSAGE value="panel calendar jquery total_table" />
     <MESSAGE value="panel sort date" />
-    <option name="LAST_COMMIT_MESSAGE" value="panel sort date" />
+    <MESSAGE value="panel sort date jquery" />
+    <option name="LAST_COMMIT_MESSAGE" value="panel sort date jquery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

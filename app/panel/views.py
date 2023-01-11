@@ -12,6 +12,7 @@ from django.contrib.auth.models import Group
 import os
 from functools import reduce
 from django.utils import timezone
+from datetime import date
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
@@ -186,6 +187,7 @@ def panel(request):
                     count_order2 = orders.objects.filter(status=2).count()
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
+                    current_date=str(date.today())
                     if request.method == 'GET':
                         date_start = request.GET.get('date_start')
                         date_end = request.GET.get('date_end')
@@ -204,7 +206,7 @@ def panel(request):
                             products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, total_,refusal]})
                         return render(request, 'panel/index_superuser.html',
                                       {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
-                                       'count_order4': count_order4,'date_start':date_start,'date_end':date_end})
+                                       'count_order4': count_order4,'date_start':date_start,'date_end':date_end,'current_date':current_date})
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
                         count_true = name_shop.objects.filter(status=True).count()

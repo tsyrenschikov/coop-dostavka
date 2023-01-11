@@ -1,7 +1,5 @@
 $(function () {
 
-    var start = moment().subtract(-29, 'days');
-    var end = moment();
     var old_date_start = new Date($('#old_date_start').val()),
         old_date_end = new Date($('#old_date_end').val()),
         current_date = new Date($('#current_date').val());
@@ -45,14 +43,13 @@ $(function () {
         var start = moment().subtract(1, 'month').startOf('month');
         var end = moment().subtract(1, 'month').endOf('month');
     }
-    /*Диапазон*/
+    // /*Диапазон*/
     else {
         var start = moment().subtract(time_range_,'days');
         var end = moment().subtract(time_range_E_, 'days');
     }
-    /*console.log(time_range_,time_range_E_)*/
-    console.log(diffDays,days_of_start)
 
+    console.log(diffDays-days_of_start)
     function cb(start, end) {
         $('#reportrange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
         $('#date_start').attr({'value': start.format('YYYY-MM-D')});

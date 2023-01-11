@@ -39,7 +39,7 @@ $(function () {
         var end = moment();
     }
     /*Прошлый месяц*/
-    else if ((diffDays - days_of_start) < 0) {
+    else if ((diffDays - days_of_start) < 0 && time_range_E_ === 0) {
         var start = moment().subtract(1, 'month').startOf('month');
         var end = moment().subtract(1, 'month').endOf('month');
     }
@@ -48,8 +48,6 @@ $(function () {
         var start = moment().subtract(time_range_,'days');
         var end = moment().subtract(time_range_E_, 'days');
     }
-
-    console.log(diffDays-days_of_start)
     function cb(start, end) {
         $('#reportrange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
         $('#date_start').attr({'value': start.format('YYYY-MM-D')});

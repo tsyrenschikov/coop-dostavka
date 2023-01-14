@@ -2816,6 +2816,9 @@
 .search_box {
     position: relative;
     width: 100%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .04), 0 4px 4px rgba(0, 0, 0, .04), 0 20px 40px rgba(0, 0, 0, .08);
+    z-index: 4;
 }
 
 @media only screen and (max-width: 479px) {

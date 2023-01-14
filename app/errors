@@ -1,0 +1,4 @@
+/home/web/Env/coop-dostavka.ru/lib/python3.9/site-packages/social_django/fields.py:16: UserWarning: SOCIAL_AUTH_POSTGRES_JSONFIELD has been renamed to SOCIAL_AUTH_JSONFIELD_ENABLED and will be removed in the next release.
+  warnings.warn(
+/home/web/Env/coop-dostavka.ru/lib/python3.9/site-packages/social_django/fields.py:16: UserWarning: SOCIAL_AUTH_POSTGRES_JSONFIELD has been renamed to SOCIAL_AUTH_JSONFIELD_ENABLED and will be removed in the next release.
+  warnings.warn(

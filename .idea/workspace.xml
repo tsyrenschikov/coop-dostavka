@@ -5,62 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/dashboard/templates/dashboard/daschboard_my_order_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/errors" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0002_delete_files.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0003_files.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0004_files_date.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0005_files_time.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0006_files_org.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0007_subcategory_subcat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0008_remove_subcategory_subcat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0009_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0010_delete_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0011_helpdesk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0012_helpdesk_descriptions_helpdesk_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0013_helpdesk_name_user_help.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0014_alter_helpdesk_descriptions_alter_helpdesk_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0015_helpdesk_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0016_delete_helpdesk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0017_helpdesk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0018_delete_helpdesk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0019_helpdesk_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0020_helpdesk_user_org.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0021_helpdesk_user_email_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0022_alter_helpdesk_user_name_user_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0023_remove_helpdesk_user_date_remove_helpdesk_user_time_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0024_chernovskoe.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0025_bisert.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0026_locations_time_locations_time_price_delivery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0027_remove_locations_time_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0028_locations_days_numb_dop_locations_time_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0029_remove_locations_time.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0030_locations_time_end_locations_time_start.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0031_natalinsk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0032_remove_locations_time_price_delivery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0033_locations_time_price_delivery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0034_orders_sbp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0035_alter_orders_sbp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0036_remove_orders_sbp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0037_orders_sbp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0038_shop_sbp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0039_shop_qr_code.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0040_arti_count_arti_p_count_artiobschepit_count_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0041_remove_area_category_city_remove_area_local_city_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0042_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0043_delete_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0044_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0045_delete_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0046_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0047_delete_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0048_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0049_delete_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0050_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0051_delete_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0052_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0053_delete_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_chetkarino.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/shop/category/css/sort.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/shop/category/css/sort.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,36 +50,37 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka/app/panel&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "D:/coop-dostavka/app/shop/templates/shop/includes",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\coop-dostavka\app\shop\templates\shop\includes" />
       <recent name="D:\coop-dostavka\app\panel" />
       <recent name="D:\coop-dostavka\app\panel\templates\panel" />
     </key>
@@ -288,14 +236,8 @@
       <workItem from="1673358662751" duration="15237000" />
       <workItem from="1673444176559" duration="18361000" />
       <workItem from="1673699698981" duration="1331000" />
-      <workItem from="1673716210503" duration="1084000" />
-    </task>
-    <task id="LOCAL-00010" summary="new update_file.py and views.py">
-      <created>1672169888947</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1672169888947</updated>
+      <workItem from="1673716210503" duration="1312000" />
+      <workItem from="1673719171162" duration="731000" />
     </task>
     <task id="LOCAL-00011" summary="new update_file.py and views.py">
       <created>1672169912032</created>
@@ -633,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673699916709</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="style search shop">
+      <created>1673717458293</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1673717458293</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,10 +625,18 @@
     <MESSAGE value="panel sort date" />
     <MESSAGE value="panel sort date jquery" />
     <MESSAGE value="Download" />
-    <option name="LAST_COMMIT_MESSAGE" value="Download" />
+    <MESSAGE value="style search shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="style search shop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
+          <line>1583</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

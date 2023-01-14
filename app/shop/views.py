@@ -1600,8 +1600,8 @@ def searchproduct_chetkarino(request):
         "category_product": category_product,
     }
     local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
+    if request.method == "GET":
+        query_name = request.GET.get('name')
         if query_name:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
             return render(request, 'chetkarino/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})

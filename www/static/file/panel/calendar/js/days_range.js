@@ -38,11 +38,6 @@ $(function () {
         var start = moment().subtract(29, 'days');
         var end = moment();
     }
-    /*Прошлый месяц*/
-    else if ((diffDays - days_of_start) < 0 && time_range_E_ === 0) {
-        var start = moment().subtract(1, 'month').startOf('month');
-        var end = moment().subtract(1, 'month').endOf('month');
-    }
     // /*Диапазон*/
     else {
         var start = moment().subtract(time_range_,'days');

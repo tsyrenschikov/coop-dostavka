@@ -51,7 +51,7 @@
                                     {% for key, value in products_count.items %}
                                         <tr>
                                             <td>
-                                                {{ key }}
+                                                {{forloop.counter}}.  {{ key }}
                                             </td>
                                             <td data-total="{{ value.0 }}">
                                                 {{ value.0 }} шт.

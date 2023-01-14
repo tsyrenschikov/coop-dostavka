@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_chetkarino.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,14 +236,7 @@
       <workItem from="1673444176559" duration="18361000" />
       <workItem from="1673699698981" duration="1331000" />
       <workItem from="1673716210503" duration="1312000" />
-      <workItem from="1673719171162" duration="731000" />
-    </task>
-    <task id="LOCAL-00011" summary="new update_file.py and views.py">
-      <created>1672169912032</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1672169912032</updated>
+      <workItem from="1673719171162" duration="4849000" />
     </task>
     <task id="LOCAL-00012" summary="new update_file.py and views.py">
       <created>1672170021422</created>
@@ -582,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673717458293</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="chetkarino search">
+      <created>1673720184756</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1673720184756</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add file" />
     <MESSAGE value="add git" />
     <MESSAGE value="helpdesk" />
     <MESSAGE value="new update_file.py and views.py" />
@@ -626,17 +624,11 @@
     <MESSAGE value="panel sort date jquery" />
     <MESSAGE value="Download" />
     <MESSAGE value="style search shop" />
-    <option name="LAST_COMMIT_MESSAGE" value="style search shop" />
+    <MESSAGE value="chetkarino search" />
+    <option name="LAST_COMMIT_MESSAGE" value="chetkarino search" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
-          <line>1583</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

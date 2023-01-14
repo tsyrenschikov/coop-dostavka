@@ -758,21 +758,15 @@ def searchproduct_pokrovskoe(request):
 # View product
 def shop_pokrovskoe_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'pokrovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                   'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_pokrovskoe_career(reguest):
@@ -947,21 +941,15 @@ def searchproduct_rezh(request):
 # View product
 def shop_rezh_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'rezh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                             'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_rezh_career(reguest):
@@ -1282,21 +1270,15 @@ def sort_list_zajkovskoe(request, list):
 
 def shop_zajkovskoe_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.filter(status='True').order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'zajkovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                   'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 # Shop bogdan
@@ -1389,21 +1371,15 @@ def searchproduct_bogdan(request):
 # View product
 def shop_bogdan_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'bogdan/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                               'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_bogdan_career(reguest):
@@ -1613,21 +1589,15 @@ def searchproduct_chetkarino(request):
 # View product
 def shop_chetkarino_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'chetkarino/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                   'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_chetkarino_career(reguest):
@@ -1836,21 +1806,15 @@ def searchproduct_bugalysh(request):
 # View product
 def shop_bugalysh_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'bugalysh/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                                 'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_bugalysh_career(reguest):
@@ -2059,21 +2023,15 @@ def searchproduct_bisert(request):
 # View product
 def shop_bisert_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'bisert/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
-                                                               'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_bisert_career(reguest):
@@ -2283,22 +2241,15 @@ def searchproduct_chernovskoe(request):
 # View product
 def shop_chernovskoe_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'chernovskoe/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
-                                                                    'name': name,
-                                                                    'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_chernovskoe_career(reguest):
@@ -2508,22 +2459,15 @@ def searchproduct_natalinsk(request):
 # View product
 def shop_natalinsk_product(request, id):
     local()
-    shop = Shop.objects.values_list('slug', flat=True).distinct()
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    for slug in shop:
-        for name_a, slug_a in areas:
-            if slug == address_str and slug == slug_a:
-                name = name_a
-                shop_name = slug
-                slug_name = eval(slug)
-                name_slug = slug_name
-                product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
-                category_product = dict_category_product(name_slug)
-                return render(request, 'natalinsk/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local,
-                                                                  'name': name,
-                                                                  'address_str': address_str})
+    name = str([i for i in str(request.path).split('/') if i][0])
+    address_str = name
+    slug_name = eval(name)
+    shop_name = slug_name
+    product = slug_name.objects.get(id=id)
+    products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+    category_product = dict_category_product(slug_name)
+    return render(request, name + '/product.html', {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,
+                                                    'address_str': address_str})
 
 
 def shop_natalinsk_career(reguest):

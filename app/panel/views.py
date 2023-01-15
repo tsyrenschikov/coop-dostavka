@@ -251,34 +251,32 @@ def locations(request):
     users = User.objects.values_list('id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
     day = Days.objects.values('name', 'daysdict').order_by('name')
-    supermanager = User.objects.filter(groups__name='manager')
     if request.user.is_authenticated:
-        for user in users:
-            for custom_id, name_shop, slug_shop in shops:
-                if request.user.id == user and user == custom_id and user != supermanager:
-                    local = Locations.objects.filter(slug=slug_shop).order_by('name')
-                    if request.method == 'POST':
-                        check_ = request.POST.getlist("check_")
-                        checkbool = request.POST.get("checkbool")
-                        item = [i.split(',') for i in check_][0]
-                        item = [i for i in item if i != 'on']
-                        items = list(map(int, item))
-                        if checkbool:
-                            Locations.objects.filter(pk__in=items).update(status=checkbool)
-                            return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
+        if not request.user.is_superuser:
+            slug_name = [y[2] for x in users for y in shops if x == y[0] and request.user.id == x][0]
+            local = Locations.objects.filter(slug=slug_name).order_by('name')
+            if request.method == 'GET':
+                check_ = request.GET.getlist("check_",default='0')
+                checkbool = request.GET.get("checkbool")
+                item = [i.split(',') for i in check_][0]
+                item = [i for i in item if i != 'on']
+                items = list(map(int, item))
+                if checkbool:
+                    Locations.objects.filter(pk__in=items).update(status=checkbool)
                     return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
-                elif request.user.is_superuser:
-                    local = Locations.objects.all().order_by('slug')
-                    if request.method == 'POST':
-                        check_ = request.POST.getlist("check_")
-                        checkbool = request.POST.get("checkbool")
-                        item = [i.split(',') for i in check_][0]
-                        item = [i for i in item if i != 'on']
-                        items = list(map(int, item))
-                        if checkbool:
-                            Locations.objects.filter(pk__in=items).update(status=checkbool)
-                        return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
-                    return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
+            return render(request, 'panel/locations.html', {'local': local,'shops': shops, 'day': day})
+        else:
+            local = Locations.objects.all().order_by('slug','name')
+            if request.method == 'GET':
+                check_ = request.GET.getlist("check_",default='0')
+                checkbool = request.GET.get("checkbool")
+                item = [i.split(',') for i in check_][0]
+                item = [i for i in item if i != 'on']
+                items = list(map(int, item))
+                if checkbool:
+                    Locations.objects.filter(pk__in=items).update(status=checkbool)
+                return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
+            return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
     else:
         return redirect('/login')
 

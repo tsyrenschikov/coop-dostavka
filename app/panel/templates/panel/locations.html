@@ -10,8 +10,7 @@
                 <li class="breadcrumb-item"><a href="{% url 'panel' %}">Панель управления</a></li>
                 <li class="breadcrumb-item active">Населенные пункты</li>
             </ol>
-            <form method="post" action="" enctype="multipart/form-data">
-                {% csrf_token %}
+            <form method="get" action="" enctype="multipart/form-data">
                 <div class="row justify-content-between">
                     {% if 'super_manager' in groups %}
                         <div class="col-lg-12">

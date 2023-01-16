@@ -761,11 +761,14 @@ def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        for c, s in shops:
-            for m in manager:
-                if c == m and request.user.id == c:
-                    name = eval(s)
-                    slug_name = s
+        # for c, s in shops:
+        #     for m in manager:
+        #         if c == m and request.user.id == c:
+        #             name = eval(s)
+        #             slug_name = s
+        name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
+        name=eval(name_)
+        slug_name=name_
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count_base = name.objects.count()
         artikul_list = [];

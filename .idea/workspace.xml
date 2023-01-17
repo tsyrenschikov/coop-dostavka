@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/calendar/js/days_range.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/calendar/js/days_range.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,14 +239,7 @@
       <workItem from="1673764643023" duration="9000" />
       <workItem from="1673785680397" duration="4461000" />
       <workItem from="1673807555309" duration="2074000" />
-      <workItem from="1673966788207" duration="3061000" />
-    </task>
-    <task id="LOCAL-00015" summary="new update_file.py and views.py">
-      <created>1672295827542</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1672295827542</updated>
+      <workItem from="1673966788207" duration="3870000" />
     </task>
     <task id="LOCAL-00016" summary="new">
       <created>1672308985723</created>
@@ -588,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673789475252</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="request GET panel">
+      <created>1673970180600</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1673970180600</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +603,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new update_file.py and views.py" />
     <MESSAGE value="new" />
     <MESSAGE value="edit_product" />
     <MESSAGE value="new idea" />
@@ -632,7 +627,8 @@
     <MESSAGE value="chetkarino search" />
     <MESSAGE value="product optimizations" />
     <MESSAGE value="request GET location&#10;optimization sort list slug" />
-    <option name="LAST_COMMIT_MESSAGE" value="request GET location&#10;optimization sort list slug" />
+    <MESSAGE value="request GET panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="request GET panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

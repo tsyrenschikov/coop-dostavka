@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/calendar/js/days_range.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/calendar/js/days_range.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +243,7 @@
       <workItem from="1673764643023" duration="9000" />
       <workItem from="1673785680397" duration="4461000" />
       <workItem from="1673807555309" duration="2074000" />
-      <workItem from="1673855862195" duration="1280000" />
+      <workItem from="1673966788207" duration="3061000" />
     </task>
     <task id="LOCAL-00015" summary="new update_file.py and views.py">
       <created>1672295827542</created>
@@ -634,13 +636,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>759</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

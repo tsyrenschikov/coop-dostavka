@@ -187,26 +187,6 @@ def panel(request):
                     count_order2 = orders.objects.filter(status=2).count()
                     count_order3 = orders.objects.filter(status=3).count()
                     count_order4 = orders.objects.filter(status=4).count()
-                    current_date=str(date.today())
-                    if request.method == 'GET':
-                        date_start = request.GET.get('date_start')
-                        date_end = request.GET.get('date_end')
-                        for custom_id, name, slug_p in shops:
-                            name_shop = eval(slug_p)
-                            count_true = name_shop.objects.filter(status=True).count()
-                            count_total = orders.objects.filter(slug=slug_p).filter(data__range=[date_start, date_end]).count()
-                            done = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date_start, date_end]).count()
-                            total_price = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date_start, date_end]).values_list('total_price', flat=True).distinct()
-                            refusal = orders.objects.filter(slug=slug_p).filter(status=4).filter(data__range=[date_start, date_end]).count()
-                            total = [float(i) for i in total_price]
-                            if len(total) != 0:
-                                total_ = reduce(lambda i, sum_: sum_ + i, total)
-                            else:
-                                total_ = 0
-                            products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, total_,refusal]})
-                        return render(request, 'panel/index_superuser.html',
-                                      {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
-                                       'count_order4': count_order4,'date_start':date_start,'date_end':date_end,'current_date':current_date})
                     for custom_id, name, slug_p in shops:
                         name_shop = eval(slug_p)
                         count_true = name_shop.objects.filter(status=True).count()
@@ -221,13 +201,33 @@ def panel(request):
                         else:
                             total_ = 0
                         products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, total_, refusal]})
+                    current_date = str(date.today())
+                    if request.method == 'GET' and request.GET.get('date_start'):
+                        date_start = request.GET.get('date_start')
+                        date_end = request.GET.get('date_end')
+                        for custom_id, name, slug_p in shops:
+                            name_shop = eval(slug_p)
+                            count_true = name_shop.objects.filter(status=True).count()
+                            count_total = orders.objects.filter(slug=slug_p).filter(data__range=[date_start, date_end]).count()
+                            done = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date_start, date_end]).count()
+                            total_price = orders.objects.filter(slug=slug_p).filter(status=3).filter(data__range=[date_start, date_end]).values_list('total_price', flat=True).distinct()
+                            refusal = orders.objects.filter(slug=slug_p).filter(status=4).filter(data__range=[date_start, date_end]).count()
+                            total = [float(i) for i in total_price]
+                            if len(total) != 0:
+                                total_ = reduce(lambda i, sum_: sum_ + i, total)
+                            else:
+                                total_ = 0
+                            products_count.update({name: [name_shop.objects.count(), count_true, count_total, done, total_, refusal]})
+                        return render(request, 'panel/index_superuser.html',
+                                      {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                       'count_order4': count_order4, 'date_start': date_start, 'date_end': date_end, 'current_date': current_date})
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
+                else:
+                    return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
-    if request.user.is_authenticated != users:
-        return render(request, 'panel/error_auth.html')
 
 
 def posts(request):
@@ -256,7 +256,7 @@ def locations(request):
             slug_name = [y[2] for x in users for y in shops if x == y[0] and request.user.id == x][0]
             local = Locations.objects.filter(slug=slug_name).order_by('name')
             if request.method == 'GET':
-                check_ = request.GET.getlist("check_",default='0')
+                check_ = request.GET.getlist("check_", default='0')
                 checkbool = request.GET.get("checkbool")
                 item = [i.split(',') for i in check_][0]
                 item = [i for i in item if i != 'on']
@@ -264,11 +264,11 @@ def locations(request):
                 if checkbool:
                     Locations.objects.filter(pk__in=items).update(status=checkbool)
                     return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
-            return render(request, 'panel/locations.html', {'local': local,'shops': shops, 'day': day})
+            return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
         else:
-            local = Locations.objects.all().order_by('slug','name')
+            local = Locations.objects.all().order_by('slug', 'name')
             if request.method == 'GET':
-                check_ = request.GET.getlist("check_",default='0')
+                check_ = request.GET.getlist("check_", default='0')
                 checkbool = request.GET.get("checkbool")
                 item = [i.split(',') for i in check_][0]
                 item = [i for i in item if i != 'on']
@@ -767,8 +767,8 @@ def update_file(request, id):
         #             name = eval(s)
         #             slug_name = s
         name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
-        name=eval(name_)
-        slug_name=name_
+        name = eval(name_)
+        slug_name = name_
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count_base = name.objects.count()
         artikul_list = [];

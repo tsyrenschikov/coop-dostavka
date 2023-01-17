@@ -14,7 +14,7 @@ $(function () {
     var time_range_e = Math.round(current_date.getTime() - old_date_end.getTime()),
         time_range_E_ = Math.ceil(time_range_e / (1000 * 3600 * 24));
 
-     if ($('#old_date_start').val() === 'None'){
+     if ($('#old_date_start').val() === ''){
         var start = moment().subtract(29, 'days');
         var end = moment();
     }

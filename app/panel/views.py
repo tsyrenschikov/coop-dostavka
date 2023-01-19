@@ -224,8 +224,8 @@ def panel(request):
                     return render(request, 'panel/index_superuser.html',
                                   {'products_count': products_count, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4})
-                else:
-                    return render(request, 'panel/error_auth.html')
+                # else:
+                #     return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
 

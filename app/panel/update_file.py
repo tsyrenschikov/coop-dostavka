@@ -85,7 +85,7 @@ class update_product(CronJobBase):
                                             Line = f.readline()
                                         message_product = '0'
                                         update_ost = 'Добавленные позиций товаров в наличии'
-                                    os.remove(dir_ + '/' + file.name)
+                                os.remove(dir_ + '/' + file.name)
 
                                 # Отправка сообщения на почту после обновления файлов
                                 id_manager = Shop.objects.values('customuser_id').filter(slug=sl)

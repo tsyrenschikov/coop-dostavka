@@ -157,14 +157,14 @@ def edit_profile(request):
 
 # Главна страница панели управления
 def panel(request):
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').filter(status=True).order_by('name').distinct()
     if request.user.is_authenticated:
         products_count_user = {}
         products_count = {}
         for user in users:
             for custom_id, name_shop, slug_shop in shops:
-                if request.user.id == user and user == custom_id:
+                if request.user.id == user and request.user.id == custom_id:
                     name_p = eval(slug_shop)
                     products = name_p.objects.all().order_by('id')[::-1][:10]
                     count = name_p.objects.count()
@@ -228,6 +228,7 @@ def panel(request):
                 #     return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
+    return render(request, 'panel/error_auth.html')
 
 
 def posts(request):
@@ -248,7 +249,7 @@ def post_tags(request):
 
 # Населенный пункт
 def locations(request):
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
     day = Days.objects.values('name', 'daysdict').order_by('name')
     if request.user.is_authenticated:
@@ -660,7 +661,7 @@ def delete_ok_subsubcategory(request):
 
 # Продукты
 def products(request):
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
     address = str([i for i in str(request.path).split('/') if i][0])
@@ -910,7 +911,7 @@ def delete_file(request, id):
 # Просмотр продукта
 def product_view(request, id):
     if request.user.is_authenticated:
-        users = User.objects.values_list('id', flat=True).distinct()
+        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
         for u in users:
             if request.user.id == u:
@@ -927,7 +928,7 @@ def product_view(request, id):
 def edit_product(request, id):
     if request.user.is_authenticated:
         try:
-            users = User.objects.values_list('id', flat=True).distinct()
+            users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
             shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
             for u in users:
                 if request.user.id == u:
@@ -978,7 +979,7 @@ def edit_product(request, id):
 # Добавить продукт
 def add_product(request, **kwargs):
     if request.user.is_authenticated:
-        users = User.objects.values_list('id', flat=True).distinct()
+        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
 
         for u in users:
@@ -1034,7 +1035,7 @@ def add_product(request, **kwargs):
 # Популярные продукты
 def popular_product(request):
     if request.user.is_authenticated:
-        users = User.objects.values_list('id', flat=True).distinct()
+        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
         for u in users:
             if request.user.id == u:
@@ -1049,7 +1050,7 @@ def popular_product(request):
 
 # Удаление товара
 def delete_product(request, id):
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
     products = ''
     try:
@@ -1098,9 +1099,9 @@ def add_shop(request, **kwargs):
     if request.user.is_authenticated:
         alert = {
             'name': request.GET.get('name', ''),
-            'users': User.objects.filter(groups__name='manager').order_by('last_name'),
+            'users': User.objects.filter(groups__name='manager').filter(groups__name='manager').order_by('last_name'),
         }
-        users = User.objects.filter(groups__name='manager').order_by('last_name')
+        users = User.objects.filter(groups__name='manager').filter(groups__name='manager').order_by('last_name')
         if request.method == 'POST':
             name = request.POST.get('name')
             status = request.POST.get('status')
@@ -1174,7 +1175,7 @@ def delete_shop(request, id):
 # Список заказов с блоками
 def order_total(request, statusord):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
-    users = User.objects.values_list('id', flat=True).distinct()
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     address = int([i for i in str(request.path).split('/') if i][-1])
     if request.user.is_authenticated:
         for u in users:
@@ -1368,7 +1369,7 @@ def offer(request):
 # Добавить акцию
 def add_offer(request):
     areas = Area.objects.all()
-    users = User.objects.filter(groups__name='manager').order_by('last_name')
+    users = User.objects.filter(groups__name='manager').filter(groups__name='manager').order_by('last_name')
     offer = offers.objects.all()
 
     if request.method == 'POST':
@@ -1403,7 +1404,7 @@ def delete_offer(request, id):
 # Вакансии
 def work(request):
     if request.user.is_authenticated:
-        users = User.objects.values_list('id', flat=True).distinct()
+        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
         shops_name = Shop.objects.values('name', 'slug')
         supermanager = User.objects.filter(groups__name='manager')
@@ -1428,7 +1429,7 @@ def work(request):
 # Добавить Вакансию
 def add_work(request):
     if request.user.is_authenticated:
-        users = User.objects.values_list('id', flat=True).distinct()
+        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
         supermanager = User.objects.filter(groups__name='manager')
         for user in users:
@@ -1486,7 +1487,7 @@ def delete_work(request, id):
 def edit_work(request, id):
     try:
         if request.user.is_authenticated:
-            users = User.objects.values_list('id', flat=True).distinct()
+            users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
             shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
             supermanager = User.objects.filter(groups__name='manager')
             work = works.objects.get(id=id)

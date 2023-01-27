@@ -13,6 +13,15 @@
           </excludedPaths>
         </serverdata>
       </paths>
+      <paths name="project.tsyrenschikov.ru">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../Project" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../project.tsyrenschikov.ru" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

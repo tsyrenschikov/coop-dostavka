@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="coop-dostavka" preserveTimestamps="false" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+  <component name="PublishConfigData" serverName="coop-dostavka" preserveTimestamps="false" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" showEqualInSync="true">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="coop-dostavka">
@@ -16,7 +16,7 @@
       <paths name="project.tsyrenschikov.ru">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/../project.tsyrenschikov.ru" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/../project.tsyrenschikov" web="/" />
           </mappings>
           <excludedPaths>
             <excludedPath path="/" />

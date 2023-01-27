@@ -9,10 +9,10 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
-      <webServer id="1378e9d6-ca4d-4445-bfef-84ef80a21abe" name="project.tsyrenschikov.ru">
-        <fileTransfer rootFolder="/home/c25867/project.tsyrenschikov.ru" accessType="SFTP" host="h19.netangels.ru" port="22" sshConfigId="45ce74de-e6b9-4cae-b1e1-b094d9e6990b" sshConfig="c25867@h19.netangels.ru:22 password">
+      <webServer id="1378e9d6-ca4d-4445-bfef-84ef80a21abe" name="project.tsyrenschikov.ru" url="http://h19.netangels.ru">
+        <fileTransfer host="h19.netangels.ru" port="21">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

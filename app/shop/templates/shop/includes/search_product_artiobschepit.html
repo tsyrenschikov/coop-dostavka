@@ -4,8 +4,7 @@
 
     <aside id="aside1" class="sidebar_widget">
         <div class="search_container mobail_s_none">
-            <form method="post" action="{% url 'searchproduct' %}">
-                {% csrf_token %}
+            <form method="get" action="{% url 'searchproduct_artiob' %}">
                 <div class="search_box">
                     <input placeholder="Поиск товара..." type="text" name="name" required="">
                     <button type="submit"><span class="lnr lnr-magnifier"></span></button>

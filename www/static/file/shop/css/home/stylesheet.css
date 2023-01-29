@@ -349,3 +349,19 @@
 	-webkit-animation-name: flip;
 	animation-name: flip;
 }
+
+.alert-danger1 {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alert-danger1 hr {
+    border-top-color: #f1b0b7
+}
+
+.alert-danger1 .alert-link {
+    color: #491217
+}

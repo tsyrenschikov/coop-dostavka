@@ -18,7 +18,6 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
-# from panel.tasks import process
 
 register = template.Library()
 

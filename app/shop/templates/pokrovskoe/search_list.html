@@ -18,29 +18,43 @@
                         </div>
                     </div>
                 </div>
-            {{ address_str }}
+                {% if query_name %}
+                    <div class="alert alert-danger1 alert-dismissible">
+                        <div style="text-align: center">{{ query_name }}</div>
+                    </div>
+                    <div class="search_container mobail_s_none">
+                        <form method="get" action="/{{ address_str }}/searchproduct">
+                            <div class="search_box">
+                                <input placeholder="Поиск товара..." type="text" name="name" required="">
+                                <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
                 <div class="product-list-view">
                     <div id="product-list" class="row shop_wrapper">
                         {% for product in products %}
-                            <div class="col-lg-33 col-md-6">
-                                <div class="product-item mb-30">
-                                    <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
-                                        {% thumbnail product.image "250x250" crop="center" as im %}
-                                            <img src="{{ im.url }}" alt="">
-                                        {% endthumbnail %}
-                                    </a>
-                                    <div class="product-text-dt">
-                                        <h4 class="cuttedText">{{ product.name }}</h4>
-                                        <div class="product-price">{{ product.price }} .р</div>
-                                        <div class="qty-cart">
+                            {% if product.status %}
+                                <div class="col-lg-33 col-md-6">
+                                    <div class="product-item mb-30">
+                                        <a href="/{{ address_str }}/product/{{ product.id }}" class="product-img">
+                                            {% thumbnail product.image "250x250" crop="center" as im %}
+                                                <img src="{{ im.url }}" alt="">
+                                            {% endthumbnail %}
+                                        </a>
+                                        <div class="product-text-dt">
+                                            <h4 class="cuttedText">{{ product.name }}</h4>
+                                            <div class="product-price">{{ product.price }} .р</div>
                                             <div class="qty-cart">
+                                                <div class="qty-cart">
                                             <span data-name="{{ product.name }}" data-price='{{ product.price }}' class="cart-icon add-to-cart">
                                                 <i class="uil uil-shopping-cart-alt">В корзину</i></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -53,4 +67,4 @@
     {% include 'shop/includes/cart_modal_pokrovskoe.html' %}
     {% include 'shop/layouts/footer.html' %}
     {% include 'shop/includes/scripts.html' %}
-{% endblock content %}s
+{% endblock content %}

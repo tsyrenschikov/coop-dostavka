@@ -1,8 +1,7 @@
 <div class="container">
 <aside id="hidesearchtop">
 <div class="search_container mobail_s_none">
-    <form method="post" action="{% url 'searchproduct' %}">
-        {% csrf_token %}
+    <form method="get" action="/arti/{{ address_str }}/searchproduct">
         <div class="search_box">
             <input placeholder="Поиск товара..." type="text" name="name" required="">
             <button type="submit"><span class="lnr lnr-magnifier"></span></button>

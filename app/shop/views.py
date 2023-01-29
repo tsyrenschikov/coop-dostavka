@@ -62,6 +62,84 @@ def dict_category_product(name_slug):
     category_product = dict_category
     return category_product
 
+def searchproduct(request):
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][0])
+    address = eval(address_str)
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+    alert = {
+        "products": address.objects.all().order_by('id')[::-1][:20],
+        "local": local(),
+        "address_str": str([i for i in str(request.path).split('/') if i][0]),
+        "category_product": category_product,
+    }
+    local()
+    if request.method == "GET":
+        query_name = request.GET.get('name')
+        if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
+            alert['query_name'] = 'По вашему запросу'+ '  '+ '<<' +query_name + '>>' + '  ' +'ничего не найдено'
+            return render(request, address_str +'/search_list.html', alert)
+        else:
+            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
+            return render(request, address_str +'/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'address_str': address_str})
+
+
+def searchproduct_art(request):
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][1])
+    address = eval(address_str)
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+    alert = {
+        "products": address.objects.all().order_by('id')[::-1][:20],
+        "local": local(),
+        "address_str": str([i for i in str(request.path).split('/') if i][1]),
+        "category_product": category_product,
+    }
+    local()
+    if request.method == "GET":
+        query_name = request.GET.get('name')
+        if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
+            alert['query_name'] = 'По вашему запросу'+ '  '+ '<<' +query_name + '>>' + '  ' +'ничего не найдено'
+            return render(request, 'arti/'+address_str +'/search_list.html', alert)
+        else:
+            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
+            return render(request, 'arti/'+address_str +'/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'address_str': address_str})
+
+def searchproduct_arti_p(request):
+    areas = Area.objects.values_list('name', 'slug').distinct()
+    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
+    address_str = str([i for i in str(request.path).split('/') if i][1])
+    address = eval(address_str)
+    for n, s, dp, dpm, days_numb in local_d:
+        for name_a, slug_a in areas:
+            if s == address_str and s == slug_a:
+                name_slug = eval(s)
+                category_product = dict_category_product(name_slug)
+    alert = {
+        "products": address.objects.all().order_by('id')[::-1][:20],
+        "local": local(),
+        "address_str": str([i for i in str(request.path).split('/') if i][1]),
+        "category_product": category_product,
+    }
+    local()
+    if request.method == "GET":
+        query_name = request.GET.get('name')
+        if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
+            alert['query_name'] = 'По вашему запросу'+ '  '+ '<<' +query_name + '>>' + '  ' +'ничего не найдено'
+            return render(request, 'arti/artiprom/search_list.html', alert)
+        else:
+            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
+            return render(request, 'arti/artiprom/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'address_str': address_str})
 
 def shop(request):
     alert = {
@@ -124,34 +202,6 @@ def searcharti(request):
             client = orders.objects.filter(name=name, phone=phone)
             return render(request, 'arti/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
     return render(request, 'arti/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
-
-
-def searchproduct(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "products": address.objects.all().order_by('id')[::-1][:20],
-        "local": local(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "GET":
-        query_name = request.GET.get('name')
-        if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
-            alert['query_name'] = 'По вашему запросу'+ ' '+ query_name + ' ' +'ничего не найдено'
-            return render(request, 'arti/search_list.html', alert)
-        else:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'arti/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'address_str': address_str})
-
 
 def cart_arti(request):
     shop = Shop.objects.values_list('name', 'ogrn', 'uraddress', 'times', 'days', 'slug')
@@ -724,35 +774,6 @@ def shop_pokrovskoe_grid(request):
                               {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
-def searchproduct_pokrovskoe(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'pokrovskoe/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'pokrovskoe/search_list.html', alert)
-
-
 # View product
 def shop_pokrovskoe_product(request, id):
     local()
@@ -905,36 +926,6 @@ def shop_rezh_grid(request):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'rezh/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
-
-
-def searchproduct_rezh(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'rezh/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'rezh/search_list.html', alert)
-
 
 # View product
 def shop_rezh_product(request, id):
@@ -1100,35 +1091,6 @@ def searchzajkovskoe(request):
             client = orders.objects.filter(name=name, phone=phone)
             return render(request, 'zajkovskoe/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})
     return render(request, 'zajkovskoe/index.html', {'category_product': category_product, 'categories': categories, 'local': local, 'address_str': address_str})
-
-
-def searchproduct_zajkovskoe(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'zajkovskoe/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'zajkovskoe/search_list.html', alert)
 
 
 def cart_zajkovskoe(request):
@@ -1337,34 +1299,6 @@ def shop_bogdan_grid(request):
                 return render(request, 'bogdan/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
-def searchproduct_bogdan(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local = Locations.objects.values_list('name', 'slug').distinct()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'bogdan/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'bogdan/search_list.html', alert)
-
 
 # View product
 def shop_bogdan_product(request, id):
@@ -1555,35 +1489,6 @@ def shop_chetkarino_grid(request):
                               {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
-def searchproduct_chetkarino(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "GET":
-        query_name = request.GET.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'chetkarino/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'chetkarino/search_list.html', alert)
-
-
 # View product
 def shop_chetkarino_product(request, id):
     local()
@@ -1772,35 +1677,6 @@ def shop_bugalysh_grid(request):
                 return render(request, 'bugalysh/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
 
 
-def searchproduct_bugalysh(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'bugalysh/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'bugalysh/search_list.html', alert)
-
-
 # View product
 def shop_bugalysh_product(request, id):
     local()
@@ -1987,35 +1863,6 @@ def shop_bisert_grid(request):
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'bisert/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name, 'address_str': address_str})
-
-
-def searchproduct_bisert(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'bisert/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'bisert/search_list.html', alert)
 
 
 # View product
@@ -2207,35 +2054,6 @@ def shop_chernovskoe_grid(request):
                                                                  'address_str': address_str})
 
 
-def searchproduct_chernovskoe(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'chernovskoe/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'chernovskoe/search_list.html', alert)
-
-
 # View product
 def shop_chernovskoe_product(request, id):
     local()
@@ -2423,36 +2241,6 @@ def shop_natalinsk_grid(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'natalinsk/grid.html', {'product': product, 'category_product': category_product, 'page_obj': page_obj, 'local': local, 'name': name,
                                                                'address_str': address_str})
-
-
-def searchproduct_natalinsk(request):
-    areas = Area.objects.values_list('name', 'slug').distinct()
-    local_d = Locations.objects.values_list('name', 'slug', 'delivery_price', 'delivery_price_min', 'days_numb').distinct()
-    address_str = str([i for i in str(request.path).split('/') if i][0])
-    address = eval(address_str)
-    for n, s, dp, dpm, days_numb in local_d:
-        for name_a, slug_a in areas:
-            if s == address_str and s == slug_a:
-                name_slug = eval(s)
-                category_product = dict_category_product(name_slug)
-    alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
-        "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
-        "address_str": str([i for i in str(request.path).split('/') if i][0]),
-        "category_product": category_product,
-    }
-    local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
-            products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'natalinsk/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'natalinsk/search_list.html', alert)
-
 
 # View product
 def shop_natalinsk_product(request, id):

@@ -18,7 +18,7 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from panel.models import *
-from panel.tasks import process
+# from panel.tasks import process
 
 register = template.Library()
 
@@ -762,11 +762,6 @@ def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        # for c, s in shops:
-        #     for m in manager:
-        #         if c == m and request.user.id == c:
-        #             name = eval(s)
-        #             slug_name = s
         name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
         name = eval(name_)
         slug_name = name_
@@ -825,12 +820,6 @@ def update_file(request, id):
                                     message_product.extend([(product[0], product_get_no, product_get_no.status)])
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров в наличии'
-                    html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
-                    email(update_ost, html_)
-                    file.delete();
-                    os.remove(file.fileart.path)
-                    return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count})
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
                     while Line:
@@ -852,12 +841,6 @@ def update_file(request, id):
                                     message_product.extend([(product[0], product_get_no, product[1])])
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров c 0 остатком'
-                    html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
-                    email(update_ost, html_)
-                    file.delete();
-                    os.remove(file.fileart.path)
-                    return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count})
                 else:
                     Line = f.readline()
                     while Line:
@@ -868,12 +851,11 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
-                    html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
-                    email(update_ost, html_)
-                    file.delete();
-                    os.remove(file.fileart.path)
-                    return render(request, 'panel/add_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count})
+            html_ = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product})
+            email(update_ost, html_)
+            file.delete();
+            os.remove(file.fileart.path)
+            return render(request, 'panel/add_file.html',{'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count})
 
         except IndexError:
             proverka = 0
@@ -890,9 +872,6 @@ def update_file(request, id):
             file.delete();
             os.remove(file.fileart.path)
             return render(request, 'panel/update_file.html', {'proverka': proverka})
-        # except ValueError:
-        #     proverka = 1
-        #     return render(request, 'panel/update_file.html', {'proverka': proverka})
     else:
         return redirect('/login')
 
@@ -1064,35 +1043,40 @@ def delete_product(request, id):
     except products.DoesNotExist:
         return render(request, 'panel/delete_error_product.html', {})
 
-
 # Список магазинов
 def shops(request):
-    managers = Shop.objects.values('id', 'name', 'status', 'customuser__last_name', 'customuser__first_name', 'area__name')
-    users = User.objects.values_list('id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    for u in users:
-        for s, slug in shops:
-            if u == s:
-                name = eval(slug)
-                count = name.objects.count()
-                return render(request, 'panel/shops.html', {'managers': managers, 'count': count})
+    if request.user.is_authenticated:
+        managers = Shop.objects.values('id', 'name', 'status', 'customuser__last_name', 'customuser__first_name', 'area__name')
+        users = User.objects.values_list('id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+        for u in users:
+            for s, slug in shops:
+                if u == s:
+                    name = eval(slug)
+                    count = name.objects.count()
+                    return render(request, 'panel/shops.html', {'managers': managers, 'count': count})
+
+    else:
+        return redirect('/login')
 
 
 # Просмотр магазина
 def shop_view(request, id):
-    object_id = int([i for i in str(request.path).split('/') if i][-1])  # Взять из строки число
-    users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
-                                'customuser__org', 'area_id', 'area__name', 'ogrn', 'uraddress', 'times', 'days').get(id=id)
-    id = Shop.objects.values_list('id', 'slug').distinct()
-    for i, slug in id:
-        if i == object_id:
-            name = eval(slug)
-            count_product = name.objects.count()
-            products = name.objects.all()
-            return render(request, 'panel/shop_view.html', {'users': users, 'object_id': object_id, 'count_product': count_product, 'products': products})
-        if i == object_id:
-            return slug
-
+    if request.user.is_authenticated:
+        object_id = int([i for i in str(request.path).split('/') if i][-1])  # Взять из строки число
+        users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
+                                    'customuser__org', 'area_id', 'area__name', 'ogrn', 'uraddress', 'times', 'days').get(id=id)
+        id = Shop.objects.values_list('id', 'slug').distinct()
+        for i, slug in id:
+            if i == object_id:
+                name = eval(slug)
+                count_product = name.objects.count()
+                products = name.objects.all()
+                return render(request, 'panel/shop_view.html', {'users': users, 'object_id': object_id, 'count_product': count_product, 'products': products})
+            if i == object_id:
+                return slug
+    else:
+        return redirect('/login')
 
 # Добавить магазины
 def add_shop(request, **kwargs):
@@ -1157,7 +1141,6 @@ def add_shop(request, **kwargs):
 
 # Успешное добавления магазина
 def add_ok_shop(request):
-    process()
     return render(request, 'panel/add_ok_shop.html')
 
 

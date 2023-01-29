@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="" />
+    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/shops.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/shops.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/search_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +35,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../project.tsyrenschikov" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -262,6 +273,9 @@
       <workItem from="1674834407824" duration="1170000" />
       <workItem from="1674835613439" duration="11995000" />
       <workItem from="1674849030445" duration="251000" />
+      <workItem from="1674909834892" duration="745000" />
+      <workItem from="1674917047149" duration="251000" />
+      <workItem from="1674979793166" duration="12190000" />
     </task>
     <task id="LOCAL-00027" summary="areas">
       <created>1672682744822</created>
@@ -654,13 +668,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>158</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

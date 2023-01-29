@@ -18,6 +18,12 @@
                         </div>
                     </div>
                 </div>
+                {% if query_name %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <h2 class="close"></h2>
+                        <div style="text-align: center">{{ query_name }}</div>
+                    </div>
+                {% endif %}
                 <div class="product-list-view">
                     <div id="product-list" class="row shop_wrapper">
                         {% for product in products %}

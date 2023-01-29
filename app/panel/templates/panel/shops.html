@@ -41,7 +41,7 @@
 												<tbody>
                                                 {% for managers in managers %}
 													<tr>
-														<td>{{ managers.name}}</td>
+														<td>{{ forloop.counter }}.&nbsp; {{ managers.name}}</td>
 														<td>
                                                             {% if managers.customuser__last_name and managers.customuser__first_name %}
                                                                 {{ managers.customuser__last_name }} {{ managers.customuser__first_name }}

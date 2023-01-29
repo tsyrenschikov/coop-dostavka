@@ -137,22 +137,20 @@ def searchproduct(request):
                 name_slug = eval(s)
                 category_product = dict_category_product(name_slug)
     alert = {
-        "name": request.GET.get('name', ''),
-        "phone": request.GET.get('phone', ''),
+        "products": address.objects.all().order_by('id')[::-1][:20],
         "local": local(),
-        "shops": Shop.objects.values_list('name', 'phone', 'times', 'uraddress', 'slug').distinct(),
         "address_str": str([i for i in str(request.path).split('/') if i][0]),
         "category_product": category_product,
     }
     local()
-    if request.method == "POST":
-        query_name = request.POST.get('name')
-        if query_name:
+    if request.method == "GET":
+        query_name = request.GET.get('name')
+        if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
+            alert['query_name'] = 'По вашему запросу'+ ' '+ query_name + ' ' +'ничего не найдено'
+            return render(request, 'arti/search_list.html', alert)
+        else:
             products = address.objects.filter(Q(name__icontains=query_name)).order_by('name')
-            return render(request, 'arti/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'local': local, 'address_str': address_str})
-
-    else:
-        return render(request, 'arti/search_list.html', alert)
+            return render(request, 'arti/search_list.html', {'products': products, 'local': local, 'category_product': category_product, 'address_str': address_str})
 
 
 def cart_arti(request):

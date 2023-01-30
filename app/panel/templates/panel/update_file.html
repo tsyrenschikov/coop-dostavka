@@ -9,141 +9,94 @@
             <li class="breadcrumb-item"><a href="{% url 'file' %}">Файлы выгрузки</a></li>
             <li class="breadcrumb-item active">Обновления позиций</li>
         </ol>
-        {% if proverka != 0 %}
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mt-30 mb-30">
-                        <br>
-                        <div class="card-body-table">
-                            <div class="table-responsive">
-                                <table id="info-table" class="table ucp-table table-hover table_sort">
-                                    <thead>
-                                    <tr>
-                                        <th>Всего позиций в базе</th>
-                                        <th>Позиций в файле</th>
-                                        <th>Найдено совпадений</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            {{ count_base }} шт.
-                                        </td>
-                                        <td>
-                                            {{ count }} шт.
-                                        </td>
-                                        <td>
-                                            {{ file_count }} шт.
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mt-30 mb-30">
-                        <div class="card-title-2">
-                            <h4>Обработанные позиции{{ artikul }}</h4>
-                        </div>
-                        <br>
-                        <div class="card-body-table">
-                            <div class="table-responsive">
-                                <table id="info-table" class="table ucp-table table-hover table_sort">
-                                    <thead>
-                                    <tr>
-                                        <th>Номенклатура</th>
-                                        <th>Название продукта</th>
-                                        <th>Старая цена</th>
-                                        <th>Новая цена</th>
-                                        <th>Статус</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for l in artikul_list %}
-                                        <tr>
-                                            <td>
-                                                {{ l.0 }}
-                                            </td>
-                                            <td>
-                                                {{ l.1 }}
-                                            </td>
-                                            <td>
-                                                {{ l.2 }} р.
-                                            </td>
-                                            <td>
-                                                {{ l.3 }} р.
-                                            </td>
-                                            <td>
-                                                {% if l.4 == 'True' %}
-                                                    <span class="badge-item badge-panel-status">Опубликован</span>
-                                                {% elif l.4 == 'False' %}
-                                                    <span class="badge-item badge-status">Не опубликован</span>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-static-2 mt-30 mb-30">
+                    <br>
+                    <div class="card-body-table">
+                        <div class="table-responsive">
+                            <table id="info-table" class="table ucp-table table-hover table_sort">
+                                <thead>
+                                <tr>
+                                    <th>Всего позиций в базе</th>
+                                    <th>Позиций в файле</th>
+                                    <th>Найдено совпадений</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        {{ count_base }} шт.
+                                    </td>
+                                    <td>
+                                        {{ count }} шт.
+                                    </td>
+                                    <td>
+                                        {{ file_count }} шт.
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            {% if not user.is_superuser %}
-                <div class="col-lg-12">
-                    <a href="{% url 'products' %}" class="add-btn hover-btn">К списку продуктов</a>
-                </div>
-            {% else %}
-                <div class="col-lg-12">
-                    <a href="{% url 'file' %}" class="add-btn hover-btn">К списку файлов</a>
-                </div>
-            {% endif %}
-            <br>
-        {% elif proverka == 1 %}
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mb-30">
-                        <div class="card-body-table">
-                            <div class="shopowner-content-left text-center pd-20">
-                                <br>
-                                <div class="shopowner-dt-left">
-                                    <span>
-                                        <ul>
-                                            <p style="font-size: 1.2em; color: red">Файл был обработан с ошибкой и уже удален</p>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-static-2 mt-30 mb-30">
+                    <div class="card-title-2">
+                        <h4>Обработанные позиции{{ artikul }}</h4>
+                    </div>
+                    <br>
+                    <div class="card-body-table">
+                        <div class="table-responsive">
+                            <table id="info-table" class="table ucp-table table-hover table_sort">
+                                <thead>
+                                <tr>
+                                    <th>Номенклатура</th>
+                                    <th>Название продукта</th>
+                                    <th>Старая цена</th>
+                                    <th>Новая цена</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for l in artikul_list %}
+                                    <tr>
+                                        <td>
+                                            {{ l.0 }}
+                                        </td>
+                                        <td>
+                                            {{ l.1 }}
+                                        </td>
+                                        <td>
+                                            {{ l.2 }} р.
+                                        </td>
+                                        <td>
+                                            {{ l.3 }} р.
+                                        </td>
+                                        <td>
+                                            {% if l.4 == 'True' %}
+                                                <span class="badge-item badge-panel-status">Опубликован</span>
+                                            {% elif l.4 == 'False' %}
+                                                <span class="badge-item badge-status">Не опубликован</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <a href="{% url 'file' %}" class="add-btn hover-btn">К списку файлов</a>
-                </div>
+            </div>
+        </div>
+        {% if not user.is_superuser %}
+            <div class="col-lg-12">
+                <a href="{% url 'products' %}" class="add-btn hover-btn">К списку продуктов</a>
             </div>
         {% else %}
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="card card-static-2 mb-30">
-                        <div class="card-body-table">
-                            <div class="shopowner-content-left text-center pd-20">
-                                <br>
-                                <div class="shopowner-dt-left">
-                                    <span>
-                                        <ul>
-                                            <p style="font-size: 1.2em; color: red">Неверный формат загруженного файла. Загрузите файл из 1С рарус. Файл удален</p>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <a href="{% url 'file' %}" class="add-btn hover-btn">К списку файлов</a>
-                </div>
+            <div class="col-lg-12">
+                <a href="{% url 'file' %}" class="add-btn hover-btn">К списку файлов</a>
             </div>
         {% endif %}
     </div>

@@ -91,7 +91,7 @@
                                             <tbody>
                                             {% for files in file %}
                                                 <tr>
-                                                    <td>{{files.id}}</td>
+                                                    <td>{{ files.id }}</td>
                                                     <td>
                                                         <a href="{{ files.fileart.url }}" download>{{ files.name }}</a>
                                                     </td>
@@ -103,9 +103,11 @@
                                                     <td>{{ files.date }}</td>
                                                     <td>{{ files.time }}</td>
                                                     <td class="display">
-                                                        <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
-                                                            <a id="ost" type="submit" value="/update_file/{{ files.id }}/" class="link"></a>
-                                                        </div>
+                                                        {% if not user.is_superuser %}
+                                                            <div data-toggle="modal" data-target="#exampleModalCenter2" class="ost">
+                                                                <a id="ost" type="submit" value="/update_file/{{ files.id }}/" class="link"></a>
+                                                            </div>
+                                                        {% endif %}
                                                         <a href="/delete_file/{{ files.id }}" class="delete" onclick="return confirm('Удалить файл???' +
                                                  ' (ДЕЙСТВИЕ НЕ' +
                                                              ' ' +

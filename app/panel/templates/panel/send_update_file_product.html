@@ -83,6 +83,46 @@
                             </div>
                         </div>
                     {% endif %}
+
+                <div class="card-title-2">
+                        <h4>Несуществующие позиции на сайте</h4>
+                    </div>
+                    <br>
+                    {% if no_product != '0' %}
+                        <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Номенклатура</th>
+                                        <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Название продукта</th>
+                                        <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Статус</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for l in no_product %}
+                                        <tr>
+                                            <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
+                                                {{ l.0 }}
+                                            </td>
+                                            <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
+                                                {{ l.1 }}
+                                            </td>
+                                            <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
+                                                {% if l.2 == 'True' %}
+                                                    <span class="badge-item badge-panel-status">Опубликован</span>
+                                                {% else %}
+                                                    <span class="badge-item badge-status">Не опубликован</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    {% endif %}
+
                 </div>
             </div>
         </div>

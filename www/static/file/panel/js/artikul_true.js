@@ -19,11 +19,13 @@ $(document).ready(function () {
                 if (artikul_input === v) {
                     $('message').html("<span style='font-size: 14px; color: red'>Номер номенклатуры занят</span>")
                     $('message_button').html("<span style='font-size: 14px; color: red'>Проверьте номенклатурный код(артикул) *</span>")
+                    $('#butdis').hide()
                     return false
                 }
                 else {
                     $('message').html("<span style='font-size: 14px; color: green'>Номер номенклатуры свободен</span>")
                     $('message_button').html("")
+                    $('#butdis').show()
                 }
             });
         }

@@ -5,36 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/update_file_indexerror.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/update_file_multipleobjectreturned.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/update_file_objectDoesNotExist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/file.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_artiobschepit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_artiobschepit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_artiprom.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_product_artiprom.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_top.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_top_pokrovskoe.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_top_pokrovskoe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/shop/css/home/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/shop/css/home/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/artikul_true.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/artikul_true.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +34,17 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -104,7 +97,7 @@
     "WebServerToolWindowPanel.toolwindow.show.date": "false",
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "last_opened_file_path": "D:/coop-dostavka/app/shop/templates",
+    "last_opened_file_path": "D:/coop-dostavka/app/panel/templates/panel/error",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -122,8 +115,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\coop-dostavka\app\shop\templates" />
+      <recent name="D:\coop-dostavka\app\panel\templates\panel\error" />
       <recent name="D:\coop-dostavka\app\shop\templates\shop\includes" />
+      <recent name="D:\coop-dostavka\app\shop\templates" />
       <recent name="D:\coop-dostavka\app\panel" />
       <recent name="D:\coop-dostavka\app\panel\templates\panel" />
     </key>
@@ -296,14 +290,9 @@
       <workItem from="1674849030445" duration="251000" />
       <workItem from="1674909834892" duration="745000" />
       <workItem from="1674917047149" duration="251000" />
-      <workItem from="1674979793166" duration="28573000" />
-    </task>
-    <task id="LOCAL-00028" summary="areas">
-      <created>1672685401164</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1672685401164</updated>
+      <workItem from="1674979793166" duration="29532000" />
+      <workItem from="1675076943405" duration="33000" />
+      <workItem from="1675082590865" duration="15961000" />
     </task>
     <task id="LOCAL-00029" summary="areas and popular_product">
       <created>1672689312546</created>
@@ -641,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674995254649</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="edit search">
+      <created>1675014446600</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1675014446600</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="areas" />
     <MESSAGE value="areas and popular_product" />
     <MESSAGE value="order popular" />
     <MESSAGE value="shop" />
@@ -685,7 +680,8 @@
     <MESSAGE value="edit" />
     <MESSAGE value="add project" />
     <MESSAGE value="delete celery" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete celery" />
+    <MESSAGE value="edit search" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit search" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

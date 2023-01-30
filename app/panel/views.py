@@ -675,15 +675,7 @@ def products(request):
                             paginator = Paginator(products, 100)
                             page_number = request.GET.get('page')
                             page_obj = paginator.get_page(page_number)
-                            if request.method == 'POST':
-                                if request.FILES:
-                                    name = request.POST.get('filename')
-                                    slug = request.POST.get('slug')
-                                    fileart = request.FILES.get('fileart')
-                                    date = request.POST.get('date')
-                                    org = request.POST.get('org')
-                                    files.objects.create(name=name, slug=slug, fileart=fileart, date=date, org=org)
-                                    return redirect(file)
+
                             if request.method == 'POST':
                                 check_ = request.POST.getlist("check_")
                                 checkbool = request.POST.get("checkbool")

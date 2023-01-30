@@ -80,7 +80,7 @@ def searchproduct(request):
     }
     local()
     if request.method == "GET":
-        query_name = request.GET.get('name')
+        query_name = request.GET.get('name', None)
         if address.objects.filter(Q(name__icontains=query_name)).exists() == False:
             alert['query_name'] = 'По вашему запросу'+ '  '+ '<<' +query_name + '>>' + '  ' +'ничего не найдено'
             return render(request, address_str +'/search_list.html', alert)

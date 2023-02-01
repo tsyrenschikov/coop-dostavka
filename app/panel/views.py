@@ -751,7 +751,6 @@ def file(request):
         return redirect('/login')
 
 
-# Обновление позиций файлом
 def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -766,20 +765,20 @@ def update_file(request, id):
         file_count = 0
         no_product = []
         yes_product = []
-        def email(update_ost,html):
-            # Отправка сообщения на почту после обновления файлов
-            id_manager = Shop.objects.values('customuser_id').filter(slug=name)
-            for i in id_manager:
-                id_man = i['customuser_id']
-            email_manager = User.objects.values('email').filter(id=id_man)
-            for i in email_manager:
-                email_send = i['email']
-            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
-            text_content = 'Список обновленных позиций'
-            html_content = html
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+        # def email(update_ost,html):
+        #     # Отправка сообщения на почту после обновления файлов
+        #     id_manager = Shop.objects.values('customuser_id').filter(slug=name)
+        #     for i in id_manager:
+        #         id_man = i['customuser_id']
+        #     email_manager = User.objects.values('email').filter(id=id_man)
+        #     for i in email_manager:
+        #         email_send = i['email']
+        #     subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
+        #     text_content = 'Список обновленных позиций'
+        #     html_content = html
+        #     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        #     msg.attach_alternative(html_content, "text/html")
+        #     msg.send()
 
 
         try:
@@ -806,19 +805,19 @@ def update_file(request, id):
                                 product_get.count = line[1]
                                 product_get.save()
                                 artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                for product in products:
-                                    if product[0] != artikul_[0]:
-                                        product_get_no = name.objects.get(artikul=product[0])
-                                        product_get_no.status = 'False'
-                                        product_get_no.count = '0.000'
-                                        product_get_no.save()
-                                        message_product.extend([(product[0], product_get_no, product_get_no.status)])
+                                # for product in products:
+                                #     if product[0] != artikul_[0]:
+                                #         product_get_no = name.objects.get(artikul=product[0])
+                                #         product_get_no.status = 'False'
+                                #         product_get_no.count = '0.000'
+                                #         product_get_no.save()
+                                #         message_product.extend([(product[0], product_get_no, product_get_no.status)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров в наличии'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product,'no_product':no_product})
-                    email(update_ost,html)
+                    # email(update_ost,html)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -839,17 +838,17 @@ def update_file(request, id):
                                 product_get.count = count_line
                                 product_get.save()
                                 artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                for product in products:
-                                    if product[0] != artikul_[0]:
-                                        product_get_no = name.objects.get(artikul=product[0])
-                                        product_get_no.save()
-                                        message_product.extend([(product[0], product_get_no, product[1])])
+                                # for product in products:
+                                #     if product[0] != artikul_[0]:
+                                #         product_get_no = name.objects.get(artikul=product[0])
+                                #         product_get_no.save()
+                                #         message_product.extend([(product[0], product_get_no, product[1])])
                         else:
                             no_product.extend(line)
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров c 0 остатком'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product,'no_product':no_product})
-                    email(update_ost, html)
+                    # email(update_ost, html)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -869,7 +868,7 @@ def update_file(request, id):
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product':yes_product})
-                    email(update_ost, html)
+                    # email(update_ost, html)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',

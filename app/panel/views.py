@@ -805,6 +805,7 @@ def update_file(request, id):
                                 product_get.count = line[1]
                                 product_get.save()
                                 artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                # Необработанные позиции
                                 # for product in products:
                                 #     if product[0] != artikul_[0]:
                                 #         product_get_no = name.objects.get(artikul=product[0])

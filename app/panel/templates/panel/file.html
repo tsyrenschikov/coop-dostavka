@@ -82,10 +82,17 @@
                                                 </th>
                                                 <th>Дата</th>
                                                 <th>Время</th>
+                                                {% if not user.is_superuser %}
                                                 <th style="width: 20%" class="order-title">Действия
                                                     <span data-inverted="" data-tooltip='При нажатии на кнопку "Подтвердить"  база обновится.  Загруженный файл будет удален'
                                                           data-position="top center">?</span>
                                                 </th>
+                                                {% else %}
+                                                <th style="width: 20%" class="order-title">Действия
+                                                    <span data-inverted="" data-tooltip='Вы можете только удалить файл. Обновляет товар менеджер магазина!'
+                                                          data-position="top center">?</span>
+                                                </th>
+                                                {% endif %}
                                             </tr>
                                             </thead>
                                             <tbody>

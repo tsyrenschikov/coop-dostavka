@@ -802,17 +802,18 @@ def update_file(request, id):
                             for artikul_ in artikul:
                                 product_get = name.objects.get(id=artikul_[3])
                                 product_get.price = price_line
-                                product_get.status = 'True'
-                                product_get.count = line[1]
-                                product_get.save()
-                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                # # Не встретил в файле позиции
-                                product = [i for i in products if artikul_[0] != i[0]][0]
-                                product_get_no = name.objects.get(artikul=product)
-                                product_get_no.status = 'False'
-                                product_get_no.count = '0.000'
-                                product_get_no.save()
-                                message_product.extend([(product, product_get_no, product_get_no.status)])
+                                if line[1] != '0.000':
+                                    product_get.status = 'True'
+                                    product_get.count = line[1]
+                                    product_get.save()
+                                    artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                # # product = [i for i in products if artikul_[0] != i[0]][0]
+                                # product = (tuple(filter(lambda x:  line[3] in x, products)))[0]
+                                else:
+                                    product_get.status = 'False'
+                                    product_get.count = '0.000'
+                                    product_get.save()
+                                    message_product.extend([(product_get, product_get.count, product_get.status)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()
@@ -839,10 +840,7 @@ def update_file(request, id):
                                 product_get.count = count_line
                                 product_get.save()
                                 artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                #Не встретил в файле
-                                product = [i for i in products if artikul_[0] != i[0]][0]
-                                product_get_no = name.objects.get(artikul=product)
-                                message_product.extend([(product, product_get_no)])
+                                message_product.extend([(product_get)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()

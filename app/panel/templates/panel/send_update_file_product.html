@@ -45,11 +45,11 @@
                         </div>
                     </div>
 
-                    <div class="card-title-2">
-                        <h4>Необработанные позиции</h4>
-                    </div>
-                    <br>
                     {% if message_product != '0' %}
+                        <div class="card-title-2">
+                            <h4>Обработанные позиции с 0-ми остатками</h4>
+                        </div>
+                        <br>
                         <div class="card-body-table">
                             <div class="table-responsive">
                                 <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">
@@ -84,11 +84,11 @@
                         </div>
                     {% endif %}
 
-                <div class="card-title-2">
-                        <h4>Несуществующие позиции на сайте</h4>
-                    </div>
-                    <br>
                     {% if no_product != '0' %}
+                        <div class="card-title-2">
+                            <h4>Несуществующие позиции на сайте</h4>
+                        </div>
+                        <br>
                         <div class="card-body-table">
                             <div class="table-responsive">
                                 <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">

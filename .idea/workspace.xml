@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +39,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../project.tsyrenschikov" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -98,7 +95,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.templateLanguages.PyTemplateLanguageModulesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -285,28 +282,9 @@
       <workItem from="1675076943405" duration="33000" />
       <workItem from="1675082590865" duration="18607000" />
       <workItem from="1675174553534" duration="1844000" />
-      <workItem from="1675258742686" duration="17147000" />
-    </task>
-    <task id="LOCAL-00032" summary="shop">
-      <created>1672758814840</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1672758814840</updated>
-    </task>
-    <task id="LOCAL-00033" summary="add shop celery">
-      <created>1672993428524</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1672993428524</updated>
-    </task>
-    <task id="LOCAL-00034" summary="add shop celery">
-      <created>1672994476776</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1672994476776</updated>
+      <workItem from="1675258742686" duration="17723000" />
+      <workItem from="1675433646485" duration="90000" />
+      <workItem from="1675433748702" duration="7597000" />
     </task>
     <task id="LOCAL-00035" summary="add shop celery">
       <created>1673037473427</created>
@@ -630,7 +608,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675106769278</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="update_file">
+      <created>1675279292112</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1675279292112</updated>
+    </task>
+    <task id="LOCAL-00082" summary="update_file">
+      <created>1675279852131</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1675279852131</updated>
+    </task>
+    <task id="LOCAL-00083" summary="edit_file">
+      <created>1675443052947</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1675443052948</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add shop" />
-    <MESSAGE value="add shop jquery" />
     <MESSAGE value="add shop celery" />
     <MESSAGE value="add shop celery NO" />
     <MESSAGE value="add shop create models and migrate &#10;celery uninstall" />
@@ -674,15 +671,22 @@
     <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
-    <option name="LAST_COMMIT_MESSAGE" value="POST search NO" />
+    <MESSAGE value="update_file" />
+    <MESSAGE value="edit_file" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit_file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>753</line>
+          <line>754</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>810</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

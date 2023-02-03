@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/UnboundLocalError.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
@@ -39,7 +44,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../project.tsyrenschikov" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -195,6 +200,9 @@
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\Админ\AppData\Local\Programs\Python\Python310\python.exe" />
       <option name="SDK_NAME" value="Python 3.10" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -284,14 +292,8 @@
       <workItem from="1675174553534" duration="1844000" />
       <workItem from="1675258742686" duration="17723000" />
       <workItem from="1675433646485" duration="90000" />
-      <workItem from="1675433748702" duration="7597000" />
-    </task>
-    <task id="LOCAL-00035" summary="add shop celery">
-      <created>1673037473427</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1673037473427</updated>
+      <workItem from="1675433748702" duration="7624000" />
+      <workItem from="1675443938934" duration="11774000" />
     </task>
     <task id="LOCAL-00036" summary="add shop celery">
       <created>1673038916862</created>
@@ -629,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675443052948</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="edit_file">
+      <created>1675443887824</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1675443887824</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,12 +689,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>754</line>
+          <line>758</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>810</line>
+          <line>799</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

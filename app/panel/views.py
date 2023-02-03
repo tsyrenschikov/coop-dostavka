@@ -16,7 +16,7 @@ from datetime import date
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
-from django.core.exceptions import ObjectDoesNotExist,MultipleObjectsReturned
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from functools import lru_cache
 from panel.models import *
 
@@ -751,6 +751,10 @@ def file(request):
     else:
         return redirect('/login')
 
+
+from panel.tasks import email
+
+
 @lru_cache()
 def update_file(request, id):
     if request.user.is_authenticated:
@@ -766,26 +770,10 @@ def update_file(request, id):
         file_count = 0
         no_product = []
         yes_product = []
-        def email(update_ost,html):
-            # Отправка сообщения на почту после обновления файлов
-            id_manager = Shop.objects.values('customuser_id').filter(slug=name)
-            for i in id_manager:
-                id_man = i['customuser_id']
-            email_manager = User.objects.values('email').filter(id=id_man)
-            for i in email_manager:
-                email_send = i['email']
-            subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
-            text_content = 'Список обновленных позиций'
-            html_content = html
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
-
 
         try:
             file = files.objects.get(id=id)
             with open(file.fileart.path) as f:
-                count += 1
                 Line_ = f.readline()
                 Line_ = Line_.replace('\ufeff', '')
                 Line = list(map(str, Line_.replace(',', ' ').split()))
@@ -794,10 +782,11 @@ def update_file(request, id):
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
                     Line = f.readline()
                     while Line:
+                        count += 1
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
-                        if len(artikul)!=0:
+                        if len(artikul) != 0:
                             file_count += 1
                             for artikul_ in artikul:
                                 product_get = name.objects.get(id=artikul_[3])
@@ -818,45 +807,49 @@ def update_file(request, id):
                             no_product.extend(line)
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product,'no_product':no_product})
-                    email(update_ost,html)
+                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
+                    email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'no_product':no_product})
+                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
+
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
                     while Line:
+                        count += 1
                         line = list(map(str, Line.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         count_line = line[1].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
-                        if len(artikul)!=0:
+                        if len(artikul) != 0:
                             file_count += 1
                             for artikul_ in artikul:
                                 product_get = name.objects.get(id=artikul_[3])
                                 product_get.price = price_line
-                                product_get.status = 'True'
-                                product_get.count = count_line
-                                product_get.save()
-                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                message_product.extend([(product_get)])
+                                if line[1] != '0.000':
+                                    product_get.status = 'True'
+                                    product_get.count = count_line
+                                    product_get.save()
+                                    artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                else:
+                                    message_product.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product,'no_product':no_product})
-                    email(update_ost, html)
+                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
+                    email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'no_product':no_product})
+                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
                 else:
                     Line = f.readline()
                     while Line:
                         line = list(map(str, Line.split(';')))
                         artikul = list(filter(lambda x: line[0] in x, products))
-                        if len(artikul)==0:
+                        if len(artikul) == 0:
                             name.objects.create(artikul=line[0], name=line[1], count=line[2].replace(',', '.'), price=line[3].replace(',', '.'), description=line[4],
                                                 status='False', discount='0.00')
                             artikul_list.extend([(line[0], line[1], line[3], line[4], 'False')])
@@ -865,14 +858,14 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product':yes_product})
-                    email(update_ost, html)
+                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product': yes_product})
+                    email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'yes_product':yes_product})
+                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'yes_product': yes_product})
 
-        except (IndexError,UnicodeError):
+        except (IndexError, UnicodeError):
             file.delete();
             os.remove(file.fileart.path)
             return render(request, 'panel/error/update_file_indexerror.html')
@@ -880,11 +873,13 @@ def update_file(request, id):
             file.delete();
             os.remove(file.fileart.path)
             return render(request, 'panel/error/update_file_objectDoesNotExist.html')
+        except UnboundLocalError:
+            return render(request, 'panel/error/UnboundLocalError.html')
         except MultipleObjectsReturned:
             nums = [i[0] for i in products]
             dup = [x for i, x in enumerate(nums) if i != nums.index(x)]
             dup_1 = [i for i in dup if i != None]
-            return render(request, 'panel/error/update_file_multipleobjectreturned.html', {'dup_1':dup_1})
+            return render(request, 'panel/error/update_file_multipleobjectreturned.html', {'dup_1': dup_1})
     else:
         return redirect('/login')
 
@@ -1056,6 +1051,7 @@ def delete_product(request, id):
     except products.DoesNotExist:
         return render(request, 'panel/delete_error_product.html', {})
 
+
 # Список магазинов
 def shops(request):
     if request.user.is_authenticated:
@@ -1090,6 +1086,7 @@ def shop_view(request, id):
                 return slug
     else:
         return redirect('/login')
+
 
 # Добавить магазины
 def add_shop(request, **kwargs):

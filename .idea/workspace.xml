@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/UnboundLocalError.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +121,7 @@
       <recent name="D:\coop-dostavka\app\panel" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.uchi">
+  <component name="RunManager" selected="JavaScript Debug.file.html">
     <configuration name="file.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/coop-dostavka/app/panel/templates/panel/file.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -221,7 +219,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.uchi" />
         <item itemvalue="JavaScript Debug.file.html" />
       </list>
     </recent_temporary>
@@ -293,14 +290,9 @@
       <workItem from="1675258742686" duration="17723000" />
       <workItem from="1675433646485" duration="90000" />
       <workItem from="1675433748702" duration="7624000" />
-      <workItem from="1675443938934" duration="11774000" />
-    </task>
-    <task id="LOCAL-00036" summary="add shop celery">
-      <created>1673038916862</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1673038916862</updated>
+      <workItem from="1675443938934" duration="12133000" />
+      <workItem from="1675514279791" duration="10547000" />
+      <workItem from="1675539094491" duration="6000" />
     </task>
     <task id="LOCAL-00037" summary="add shop">
       <created>1673103717746</created>
@@ -638,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675443887824</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="celery">
+      <created>1675456043159</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1675456043159</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add shop celery" />
     <MESSAGE value="add shop celery NO" />
     <MESSAGE value="add shop create models and migrate &#10;celery uninstall" />
     <MESSAGE value="django celery add &#10;add in celery process models" />
@@ -682,29 +680,7 @@
     <MESSAGE value="POST search NO" />
     <MESSAGE value="update_file" />
     <MESSAGE value="edit_file" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit_file" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>758</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>799</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="celery" />
+    <option name="LAST_COMMIT_MESSAGE" value="celery" />
   </component>
 </project>

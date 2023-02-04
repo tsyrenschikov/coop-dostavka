@@ -1,10 +1,7 @@
-from panel.celery import app
-# Декоратор @app.task, говорит celery о том, что эта функция является (task-ом) т.е. должна выполнятся в фоне.
-
+from panel.celery_setting import app
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.conf import settings
-from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from panel.models import *
 @app.task()

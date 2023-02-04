@@ -827,13 +827,9 @@ def update_file(request, id):
                             for artikul_ in artikul:
                                 product_get = name.objects.get(id=artikul_[3])
                                 product_get.price = price_line
-                                if line[1] != '0.000':
-                                    product_get.status = 'True'
-                                    product_get.count = count_line
-                                    product_get.save()
-                                    artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
-                                else:
-                                    message_product.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                product_get.count = count_line
+                                product_get.save()
+                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()

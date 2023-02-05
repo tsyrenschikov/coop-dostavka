@@ -805,7 +805,7 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
-                    email.delay(update_ost,html,name_)
+                    # email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -832,7 +832,7 @@ def update_file(request, id):
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
-                    email.delay(update_ost,html,name_)
+                    # email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
@@ -852,7 +852,7 @@ def update_file(request, id):
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product': yes_product})
-                    email.delay(update_ost,html,name_)
+                    # email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',

@@ -4,7 +4,6 @@ User = get_user_model()
 from django.conf import settings
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from panel.models import *
-app.autodiscover_tasks(lambda:settings.INSTALLED_APPS)
 @app.task()
 def email(update_ost, html, name):
     # Отправка сообщения на почту после обновления файлов

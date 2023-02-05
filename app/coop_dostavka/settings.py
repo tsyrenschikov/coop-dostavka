@@ -213,8 +213,8 @@ SERVE_QR_CODE_IMAGE_PATH = "qr-code-image/"
 REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
 # CELERY settings
-# CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_BROKER_URL = 'amqp://127.0.0.1:5672'
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+# CELERY_BROKER_URL = 'amqp://127.0.0.1:5672'
 CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
 CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']

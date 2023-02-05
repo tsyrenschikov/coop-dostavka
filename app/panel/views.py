@@ -18,6 +18,7 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from functools import lru_cache
+from panel.tasks import email
 from panel.models import *
 
 register = template.Library()
@@ -750,10 +751,6 @@ def file(request):
 
     else:
         return redirect('/login')
-
-
-from panel.tasks import email
-
 
 @lru_cache()
 def update_file(request, id):

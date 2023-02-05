@@ -6,32 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.csh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.fish" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.nu" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.nu" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate_this.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate_this.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/celery" beforeDir="false" afterPath="$PROJECT_DIR$/bin/celery" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/bin/django-admin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/get_env_details" beforeDir="false" afterPath="$PROJECT_DIR$/bin/get_env_details" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/normalizer" beforeDir="false" afterPath="$PROJECT_DIR$/bin/normalizer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/postactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/postdeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postdeactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/preactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/predeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/predeactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/segno" beforeDir="false" afterPath="$PROJECT_DIR$/bin/segno" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sqlformat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel-3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel-3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/celery_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,14 +295,8 @@
       <workItem from="1675514279791" duration="10547000" />
       <workItem from="1675539094491" duration="6000" />
       <workItem from="1675596038952" duration="3598000" />
-      <workItem from="1675609165526" duration="5455000" />
-    </task>
-    <task id="LOCAL-00039" summary="add shop jquery">
-      <created>1673110781405</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1673110781405</updated>
+      <workItem from="1675609165526" duration="5475000" />
+      <workItem from="1675617192464" duration="10713000" />
     </task>
     <task id="LOCAL-00040" summary="add shop celery">
       <created>1673121497919</created>
@@ -660,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675599624071</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="celery service">
+      <created>1675616999489</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1675616999489</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,5 +686,16 @@
     <MESSAGE value="celery" />
     <MESSAGE value="celery service" />
     <option name="LAST_COMMIT_MESSAGE" value="celery service" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>755</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

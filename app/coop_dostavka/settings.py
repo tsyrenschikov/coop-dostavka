@@ -210,9 +210,10 @@ QR_CODE_URL_PROTECTION = {
 SERVE_QR_CODE_IMAGE_PATH = "qr-code-image/"
 
 # REDIS settings
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
 # CELERY settings
+# CELERY_BROKER_URL = 'redis://web:cfvjktn0'+'@' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
 CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'

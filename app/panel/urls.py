@@ -59,6 +59,7 @@ urlpatterns = [
     path('file/', views.file, name='file'),
     path('delete_file/<int:id>/', views.delete_file, name='delete_file'),
     path('update_file/<int:id>/', views.update_file, name='update_file'),
+    path('export_0/', views.export_0, name='export_0'),
     path('product_view/<int:id>/', views.product_view, name='product_view'),
     path('popular_product/', views.popular_product, name='popular_product'),
     path('edit_product/<int:id>/', views.edit_product, name='edit_product'),
@@ -91,4 +92,5 @@ urlpatterns = [
     path('add_helpdesk/', views.add_helpdesk, name='add_helpdesk'),
     path('edit_helpdesk/<int:id>/', views.edit_helpdesk, name='edit_helpdesk'),
     path('delete_helpdesk/<int:id>/', views.delete_helpdesk, name='delete_helpdesk'),
+
 ]

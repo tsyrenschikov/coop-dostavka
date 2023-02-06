@@ -3,13 +3,14 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django_hosts.resolvers import reverse
 from django.db.models import Q, Count, Avg
 from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
-import os
+import os,csv,xlwt
 from functools import reduce
 from django.utils import timezone
 from datetime import date
@@ -17,7 +18,6 @@ from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from functools import lru_cache
 from .tasks import email
 from panel.models import *
 
@@ -716,7 +716,6 @@ def file(request):
         users = User.objects.values_list('id', flat=True).distinct()
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'name').order_by('name').distinct()
-        dublicat = []
         for u in users:
             for m in manager:
                 if u == m and request.user.id == u:
@@ -724,8 +723,6 @@ def file(request):
                         if s == m:
                             shop = n
                             file = files.objects.filter(slug=slug).order_by('-date', '-time')
-                            slug_name = eval(slug)
-                            products = slug_name.objects.values_list('artikul').order_by('id')
                             if request.method == 'POST':
                                 if request.FILES:
                                     name = request.POST.get('filename')
@@ -752,7 +749,26 @@ def file(request):
     else:
         return redirect('/login')
 
-@lru_cache()
+def export_0(artikul_list):
+    # response = HttpResponse(content_type='text/csv')
+    # response['Content-Disposition'] = 'attachment; filename="Файл экспорта без контроля остатков.xls"'
+    # writer = csv.writer(response)
+    # writer.writerow(['Артикул', 'Название', 'Старая Цена','Цена', 'Статус'])
+    # for i in artikul_list:
+    #     writer.writerow([i[0],i[1],i[2],i[3],i[4]])
+    # return response
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="export-0.csv"'},
+    )
+    writer = csv.writer(response)
+    writer.writerow(['Артикул', 'Название продукта','Старая цена', 'Новая цена'])
+    writer.writerow(['Артикул', 'Название продукта','Старая цена', 'Новая цена'])
+    writer.writerow([artikul_list])
+
+    return response
+
 def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -833,10 +849,13 @@ def update_file(request, id):
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
                     email.delay(update_ost,html,name_)
+                    # export_0(artikul_list)
                     file.delete();
                     os.remove(file.fileart.path)
+
                     return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
+                                  {'artikul_list': artikul_list, 'message_product': message_product,'count_base': count_base, 'count': count, 'file_count': file_count,
+                    'no_product': no_product})
                 else:
                     Line = f.readline()
                     while Line:
@@ -852,7 +871,7 @@ def update_file(request, id):
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product': yes_product})
-                    # email.delay(update_ost,html,name_)
+                    email.delay(update_ost,html,name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',

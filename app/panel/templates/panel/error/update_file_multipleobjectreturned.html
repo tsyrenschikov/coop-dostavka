@@ -18,9 +18,14 @@
                             <div class="shopowner-dt-left">
                                     <span>
                                         <ul>
+                                            {% if dup %}
                                             <p style="font-size: 1.5em; color: red; width: 100%">В базе данных сайта существуют дублирующие записи. Исправьте ошибку и заново возобновите обновления
                                                 позиций!</p>
                                             <p style="font-size: 1em; color: green">{{ dup_1|cut:'['|cut:']' }}</p>
+                                                {% else %}
+                                                <p style="font-size: 1.5em; color: red; width: 100%">В базе данных сайта существуют не заполненное поле << АРТИКУЛ >>. Исправьте ошибку и заново
+                                                    возобновите обновления позиций!</p>
+                                            {% endif %}
                                         </ul>
                                     </span>
                             </div>

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/.jsdtscope" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.container" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/error/update_file_objectDoesNotExist.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/update_file_objectDoesNotExist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
@@ -300,14 +295,7 @@
       <workItem from="1675778383651" duration="148000" />
       <workItem from="1675778543481" duration="132000" />
       <workItem from="1675778753526" duration="1520000" />
-      <workItem from="1675780360371" duration="15896000" />
-    </task>
-    <task id="LOCAL-00046" summary="panel status True">
-      <created>1673191675268</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1673191675268</updated>
+      <workItem from="1675780360371" duration="16981000" />
     </task>
     <task id="LOCAL-00047" summary="panel calendar">
       <created>1673297802536</created>
@@ -645,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675785271215</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="file excel update_file">
+      <created>1675797481610</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1675797481610</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +659,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="panel calendar jquery total_table" />
     <MESSAGE value="panel sort date" />
     <MESSAGE value="panel sort date jquery" />
     <MESSAGE value="Download" />
@@ -689,6 +683,7 @@
     <MESSAGE value="export" />
     <MESSAGE value="celery server" />
     <MESSAGE value="update file 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update file 1" />
+    <MESSAGE value="file excel update_file" />
+    <option name="LAST_COMMIT_MESSAGE" value="file excel update_file" />
   </component>
 </project>

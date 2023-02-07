@@ -20,4 +20,6 @@ def email(update_ost, html, name):
     text_content = 'Список обновленных позиций'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html, "text/html")
+    fd = open('/home/web/Env/coop-dostavka.ru/www/static/file/panel/css/style.css', 'r')
+    msg.attach('manage.py', fd.read(), 'text/plain')
     msg.send()

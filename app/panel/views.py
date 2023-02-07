@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
-import os,csv,xlwt
+import os, csv, xlwt
 from functools import reduce
 from django.utils import timezone
 from datetime import date
@@ -749,25 +749,78 @@ def file(request):
     else:
         return redirect('/login')
 
-def export_0(artikul_list):
-    # response = HttpResponse(content_type='text/csv')
-    # response['Content-Disposition'] = 'attachment; filename="Файл экспорта без контроля остатков.xls"'
-    # writer = csv.writer(response)
-    # writer.writerow(['Артикул', 'Название', 'Старая Цена','Цена', 'Статус'])
-    # for i in artikul_list:
-    #     writer.writerow([i[0],i[1],i[2],i[3],i[4]])
-    # return response
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(
-        content_type='text/csv',
-        headers={'Content-Disposition': 'attachment; filename="export-0.csv"'},
-    )
-    writer = csv.writer(response)
-    writer.writerow(['Артикул', 'Название продукта','Старая цена', 'Новая цена'])
-    writer.writerow(['Артикул', 'Название продукта','Старая цена', 'Новая цена'])
-    writer.writerow([artikul_list])
+
+def export_0(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Published Products.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Опубликованные')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Артикул', 'Название', 'Цена']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
+    name = eval(name_)
+    products = name.objects.values_list('artikul', 'name', 'price').filter(status=True).order_by('id')
+    for row in products:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
 
     return response
+
+
+def export_1(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Unpublished items.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Неопубликованные')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Артикул', 'Название', 'Цена']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
+    name = eval(name_)
+    products = name.objects.values_list('artikul', 'name', 'price').filter(status=False).order_by('id')
+    for row in products:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+
+    return response
+
 
 def update_file(request, id):
     if request.user.is_authenticated:
@@ -777,7 +830,6 @@ def update_file(request, id):
         name = eval(name_)
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count_base = name.objects.count()
-        artikul_list = [];
         message_product = []
         count = 0
         file_count = 0
@@ -793,7 +845,7 @@ def update_file(request, id):
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
-                    prod=[i[3] for i in products]
+                    prod = [i[3] for i in products]
                     name.objects.filter(pk__in=prod).update(status='False')
                     Line = f.readline()
                     while Line:
@@ -809,7 +861,6 @@ def update_file(request, id):
                                 product_get.status = 'True'
                                 product_get.count = line[1]
                                 product_get.save()
-                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
                                 # # product = [i for i in products if artikul_[0] != i[0]][0]
                                 # product = (tuple(filter(lambda x:  line[3] in x, products)))[0]
                                 message_product.extend([(product_get, product_get.count, product_get.status)])
@@ -818,12 +869,14 @@ def update_file(request, id):
 
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
-                    email.delay(update_ost,html,name_)
+                    html = get_template('panel/send_update_file_product.html').render({})
+                    email.delay(update_ost, html, name_)
+                    export_1(request)
+                    export_0(request)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
+                                  { 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
 
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
@@ -840,20 +893,20 @@ def update_file(request, id):
                                 product_get.price = price_line
                                 product_get.count = count_line
                                 product_get.save()
-                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
                         else:
                             no_product.extend(line)
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})
-                    email.delay(update_ost,html,name_)
-                    # export_0(artikul_list)
+                    html = get_template('panel/send_update_file_product.html').render({})
+                    email.delay(update_ost, html, name_)
+                    export_1(request)
+                    export_0(request)
                     file.delete();
                     os.remove(file.fileart.path)
 
                     return render(request, 'panel/update_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product,'count_base': count_base, 'count': count, 'file_count': file_count,
-                    'no_product': no_product})
+                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,
+                                   'no_product': no_product})
                 else:
                     Line = f.readline()
                     while Line:
@@ -862,29 +915,24 @@ def update_file(request, id):
                         if len(artikul) == 0:
                             name.objects.create(artikul=line[0], name=line[1], count=line[2].replace(',', '.'), price=line[3].replace(',', '.'), description=line[4],
                                                 status='False', discount='0.00')
-                            artikul_list.extend([(line[0], line[1], line[3], line[4], 'False')])
                         else:
                             yes_product.extend(artikul)
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
                     message_product = '0'
-                    html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'yes_product': yes_product})
-                    email.delay(update_ost,html,name_)
+                    html = get_template('panel/send_update_file_product.html').render({})
+                    email.delay(update_ost, html, name_)
                     file.delete();
                     os.remove(file.fileart.path)
                     return render(request, 'panel/add_file.html',
-                                  {'artikul_list': artikul_list, 'message_product': message_product, 'count_base': count_base, 'count': count, 'yes_product': yes_product})
+                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'yes_product': yes_product})
 
         except (IndexError, UnicodeError):
             file.delete();
             os.remove(file.fileart.path)
             return render(request, 'panel/error/update_file_indexerror.html')
         except ObjectDoesNotExist:
-            file.delete();
-            os.remove(file.fileart.path)
             return render(request, 'panel/error/update_file_objectDoesNotExist.html')
-        except UnboundLocalError:
-            return render(request, 'panel/error/UnboundLocalError.html')
         except MultipleObjectsReturned:
             nums = [i[0] for i in products]
             dup = [x for i, x in enumerate(nums) if i != nums.index(x)]

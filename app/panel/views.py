@@ -793,6 +793,8 @@ def update_file(request, id):
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
+                    prod=[i[3] for i in products]
+                    name.objects.filter(pk__in=prod).update(status='False')
                     Line = f.readline()
                     while Line:
                         count += 1
@@ -804,20 +806,16 @@ def update_file(request, id):
                             for artikul_ in artikul:
                                 product_get = name.objects.get(id=artikul_[3])
                                 product_get.price = price_line
-                                if line[1] != '0.000':
-                                    product_get.status = 'True'
-                                    product_get.count = line[1]
-                                    product_get.save()
-                                    artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
+                                product_get.status = 'True'
+                                product_get.count = line[1]
+                                product_get.save()
+                                artikul_list.extend([(artikul_[0], product_get, artikul_[2], price_line, product_get.status)])
                                 # # product = [i for i in products if artikul_[0] != i[0]][0]
                                 # product = (tuple(filter(lambda x:  line[3] in x, products)))[0]
-                                else:
-                                    product_get.status = 'False'
-                                    product_get.count = '0.000'
-                                    product_get.save()
-                                    message_product.extend([(product_get, product_get.count, product_get.status)])
+                                message_product.extend([(product_get, product_get.count, product_get.status)])
                         else:
                             no_product.extend(line)
+
                         Line = f.readline()
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
                     html = get_template('panel/send_update_file_product.html').render({'artikul_list': artikul_list, 'message_product': message_product, 'no_product': no_product})

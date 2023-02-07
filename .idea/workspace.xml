@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
-    </list>
+    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,14 +290,7 @@
       <workItem from="1675778383651" duration="148000" />
       <workItem from="1675778543481" duration="132000" />
       <workItem from="1675778753526" duration="1520000" />
-      <workItem from="1675780360371" duration="18329000" />
-    </task>
-    <task id="LOCAL-00048" summary="panel calendar">
-      <created>1673298999847</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1673298999847</updated>
+      <workItem from="1675780360371" duration="18947000" />
     </task>
     <task id="LOCAL-00049" summary="panel calendar style">
       <created>1673336383291</created>
@@ -638,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675799661657</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="email_attach">
+      <created>1675800776756</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1675800776756</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="panel sort date" />
     <MESSAGE value="panel sort date jquery" />
     <MESSAGE value="Download" />
     <MESSAGE value="style search shop" />
@@ -682,6 +678,7 @@
     <MESSAGE value="celery server" />
     <MESSAGE value="update file 1" />
     <MESSAGE value="file excel update_file" />
-    <option name="LAST_COMMIT_MESSAGE" value="file excel update_file" />
+    <MESSAGE value="email_attach" />
+    <option name="LAST_COMMIT_MESSAGE" value="email_attach" />
   </component>
 </project>

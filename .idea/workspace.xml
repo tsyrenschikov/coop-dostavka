@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,13 +294,7 @@
       <workItem from="1675778753526" duration="1520000" />
       <workItem from="1675780360371" duration="19039000" />
       <workItem from="1675858382237" duration="14621000" />
-    </task>
-    <task id="LOCAL-00051" summary="panel calendar jquery total_table">
-      <created>1673364276328</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1673364276328</updated>
+      <workItem from="1675875152681" duration="379000" />
     </task>
     <task id="LOCAL-00052" summary="panel sort date">
       <created>1673371046543</created>
@@ -639,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675870872393</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="meta">
+      <created>1675875246375</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1675875246375</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Download" />
     <MESSAGE value="style search shop" />
     <MESSAGE value="chetkarino search" />
     <MESSAGE value="product optimizations" />
@@ -683,6 +682,7 @@
     <MESSAGE value="file excel update_file" />
     <MESSAGE value="email_attach" />
     <MESSAGE value="update file (no_product, delete base no_product)" />
-    <option name="LAST_COMMIT_MESSAGE" value="update file (no_product, delete base no_product)" />
+    <MESSAGE value="meta" />
+    <option name="LAST_COMMIT_MESSAGE" value="meta" />
   </component>
 </project>

@@ -937,6 +937,7 @@ def update_file(request, id):
                         else:
                             no_product.extend(line)
                         Line = f.readline()
+                    no_product.objects.create(name='Позиции не попавшие в проверку', slug=name_, list_product=no_product_list, file_id=id)
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)

@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/.jsdtscope" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.container" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +294,7 @@
       <workItem from="1675778543481" duration="132000" />
       <workItem from="1675778753526" duration="1520000" />
       <workItem from="1675780360371" duration="19039000" />
-      <workItem from="1675858382237" duration="11681000" />
-    </task>
-    <task id="LOCAL-00050" summary="panel calendar">
-      <created>1673352948895</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1673352948895</updated>
+      <workItem from="1675858382237" duration="14621000" />
     </task>
     <task id="LOCAL-00051" summary="panel calendar jquery total_table">
       <created>1673364276328</created>
@@ -647,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675801448821</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="update file (no_product, delete base no_product)">
+      <created>1675870872393</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1675870872393</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="panel sort date jquery" />
     <MESSAGE value="Download" />
     <MESSAGE value="style search shop" />
     <MESSAGE value="chetkarino search" />
@@ -691,6 +682,7 @@
     <MESSAGE value="update file 1" />
     <MESSAGE value="file excel update_file" />
     <MESSAGE value="email_attach" />
-    <option name="LAST_COMMIT_MESSAGE" value="email_attach" />
+    <MESSAGE value="update file (no_product, delete base no_product)" />
+    <option name="LAST_COMMIT_MESSAGE" value="update file (no_product, delete base no_product)" />
   </component>
 </project>

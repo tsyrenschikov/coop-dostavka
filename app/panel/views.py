@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 from django import template
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
-import os, csv, xlwt
+import os, xlwt
 from functools import reduce
 from django.utils import timezone
 from datetime import date
@@ -19,6 +19,7 @@ from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from .tasks import email
+from itertools import zip_longest
 from panel.models import *
 
 register = template.Library()
@@ -822,6 +823,45 @@ def export_1(request):
     return response
 
 
+def no_product_(request,id):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="No product items.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Не попали в проверку')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Артикул', 'Количество', 'Цена']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    no = no_product.objects.values_list('list_product').filter(file_id=id)
+    no_ = [y for i in no for y in i][0]
+    i_=iter(no_)
+    no_list = list(zip_longest(i_,i_,i_))
+
+    for row in no_list:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    today = date.today().strftime('%Y-%m-%d')
+    obj = no_product.objects.values_list('id', 'date').order_by('id')
+    for base_obj in obj:
+        date_obj = base_obj[1].strftime('%Y-%m-%d')
+        if today != date_obj:
+            no_product.objects.filter(id=base_obj[0]).delete()
+    return response
+
 def update_file(request, id):
     if request.user.is_authenticated:
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -833,7 +873,7 @@ def update_file(request, id):
         message_product = []
         count = 0
         file_count = 0
-        no_product = []
+        no_product_list = []
         yes_product = []
 
         try:
@@ -861,22 +901,23 @@ def update_file(request, id):
                                 product_get.status = 'True'
                                 product_get.count = line[1]
                                 product_get.save()
-                                # # product = [i for i in products if artikul_[0] != i[0]][0]
-                                # product = (tuple(filter(lambda x:  line[3] in x, products)))[0]
                                 message_product.extend([(product_get, product_get.count, product_get.status)])
                         else:
-                            no_product.extend(line)
+                            no_product_list.extend(line)
 
                         Line = f.readline()
+                    no_product.objects.create(name='Позиции не попавшие в проверку', slug=name_, list_product=no_product_list, file_id=id)
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
                     export_1(request)
                     export_0(request)
+                    no_product_(request,id)
                     file.delete();
                     os.remove(file.fileart.path)
+                    address_str = str([i for i in str(request.path).split('/') if i][-1])
                     return render(request, 'panel/update_file.html',
-                                  { 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count, 'no_product': no_product})
+                                  { 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
 
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
@@ -901,12 +942,13 @@ def update_file(request, id):
                     email.delay(update_ost, html, name_)
                     export_1(request)
                     export_0(request)
+                    no_product_(request, id)
                     file.delete();
                     os.remove(file.fileart.path)
+                    address_str = str([i for i in str(request.path).split('/') if i][-1])
 
                     return render(request, 'panel/update_file.html',
-                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,
-                                   'no_product': no_product})
+                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
                 else:
                     Line = f.readline()
                     while Line:

@@ -61,6 +61,7 @@ urlpatterns = [
     path('update_file/<int:id>/', views.update_file, name='update_file'),
     path('export_0/', views.export_0, name='export_0'),
     path('export_1/', views.export_1, name='export_1'),
+    path('no_product_/<int:id>', views.no_product_, name='no_product_'),
     path('product_view/<int:id>/', views.product_view, name='product_view'),
     path('popular_product/', views.popular_product, name='popular_product'),
     path('edit_product/<int:id>/', views.edit_product, name='edit_product'),

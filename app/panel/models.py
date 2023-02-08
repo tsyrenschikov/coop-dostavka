@@ -208,6 +208,24 @@ class files(models.Model):
     def __str__(self):
         return self.name
 
+# Выгрузка не попавшая в базу из-за отсутсвия в базе
+class no_product(models.Model):
+    name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название')
+    slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
+    date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
+    org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
+    list_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров')
+    file_id = models.IntegerField(blank=True, null=True,verbose_name='id Файла')
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Необработанная выгрузка'
+        verbose_name_plural = 'Необработанная выгрузка'
+        index_together = (('id'),)
+
+    def __str__(self):
+        return self.name
+
+
 class helpdesk_user(models.Model):
     name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название заявки')
     name_user = models.JSONField(default=list, null=True, blank=True, verbose_name='Пользователь')

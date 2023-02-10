@@ -751,7 +751,7 @@ def file(request):
         return redirect('/login')
 
 
-def export_0(request):
+def export_0(request,id):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Published Products.xls"'
 
@@ -787,7 +787,7 @@ def export_0(request):
     return response
 
 
-def export_1(request):
+def export_1(request,id):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Unpublished items.xls"'
 
@@ -843,7 +843,7 @@ def no_product_(request,id):
 
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
-    no = no_product.objects.values_list('list_product').filter(file_id=id)
+    no = report.objects.values_list('list_no_product').filter(file_id=id)
     no_ = [y for i in no for y in i][0]
     i_=iter(no_)
     no_list = list(zip_longest(i_,i_,i_))
@@ -855,7 +855,7 @@ def no_product_(request,id):
 
     wb.save(response)
     today = date.today().strftime('%Y-%m-%d')
-    obj = no_product.objects.values_list('id', 'date').order_by('id')
+    obj = report.objects.values_list('id', 'date').order_by('id')
     for base_obj in obj:
         date_obj = base_obj[1].strftime('%Y-%m-%d')
         if today != date_obj:
@@ -870,10 +870,11 @@ def update_file(request, id):
         name = eval(name_)
         products = name.objects.values_list('artikul', 'status', 'price', 'id').order_by('id')
         count_base = name.objects.count()
-        message_product = []
         count = 0
         file_count = 0
-        no_product_list = []
+        list_no_product = []
+        list_yes_product=[]
+        list_nopub_product=[]
         yes_product = []
 
         try:
@@ -882,6 +883,7 @@ def update_file(request, id):
                 Line_ = f.readline()
                 Line_ = Line_.replace('\ufeff', '')
                 Line = list(map(str, Line_.replace(',', ' ').split()))
+                report.objects.create(name='Обновление',slug=name,file_id=id)
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
@@ -890,7 +892,9 @@ def update_file(request, id):
                     Line = f.readline()
                     while Line:
                         count += 1
-                        line = list(map(str, Line.replace(';', ' ').split()))
+                        line_ = Line.rfind(';')
+                        line_1 = Line[:line_]
+                        line = list(map(str, line_1.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
                         if len(artikul) != 0:
@@ -901,29 +905,35 @@ def update_file(request, id):
                                 product_get.status = 'True'
                                 product_get.count = line[1]
                                 product_get.save()
-                                message_product.extend([(product_get, product_get.count, product_get.status)])
+                                list_yes_product.extend([artikul_[0],artikul_[3],line[1]])
+
                         else:
-                            no_product_list.extend(line)
+                            line.append(Line[line_+1:])
+                            list_no_product.extend(line)
 
                         Line = f.readline()
-                    no_product.objects.create(name='Позиции не попавшие в проверку', slug=name_, list_product=no_product_list, file_id=id)
+                    list_nopub=arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
+                    for i in list_nopub:
+                        list_nopub_product.extend([i[0], i[1], float(i[2])])
+                    report.objects.update(list_yes_product=list_yes_product,list_nopub_product=list_nopub_product,list_no_product=list_no_product)
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
-                    export_1(request)
-                    export_0(request)
-                    no_product_(request,id)
+                    export_1(request, id)
+                    export_0(request, id)
+                    no_product_(request, id)
                     file.delete();
                     os.remove(file.fileart.path)
                     address_str = str([i for i in str(request.path).split('/') if i][-1])
-                    return render(request, 'panel/update_file.html',
-                                  { 'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
+                    return render(request, 'panel/update_file.html',{'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
 
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
                     while Line:
                         count += 1
-                        line = list(map(str, Line.replace(';', ' ').split()))
+                        line_ = Line.rfind(';')
+                        line_1 = Line[:line_]
+                        line = list(map(str, line_1.replace(';', ' ').split()))
                         price_line = line[2].replace(',', '.')
                         count_line = line[1].replace(',', '.')
                         artikul = list(filter(lambda x: line[0] in x, products))
@@ -935,21 +945,25 @@ def update_file(request, id):
                                 product_get.count = count_line
                                 product_get.save()
                         else:
-                            no_product.extend(line)
+                            line.append(Line[line_ + 1:])
+                            list_no_product.extend(line)
                         Line = f.readline()
-                    no_product.objects.create(name='Позиции не попавшие в проверку', slug=name_, list_product=no_product_list, file_id=id)
+                    list_nopub = arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
+                    list_yes_product.extend = arti.objects.values_list('artikul', 'name', 'price').filter(status=True).distinct().order_by('id')
+                    for i in list_nopub:
+                        list_nopub_product.extend([i[0], i[1], float(i[2])])
+                    report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
-                    export_1(request)
-                    export_0(request)
+                    export_1(request,id)
+                    export_0(request,id)
                     no_product_(request, id)
                     file.delete();
                     os.remove(file.fileart.path)
                     address_str = str([i for i in str(request.path).split('/') if i][-1])
 
-                    return render(request, 'panel/update_file.html',
-                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
+                    return render(request, 'panel/update_file.html',{'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
                 else:
                     Line = f.readline()
                     while Line:
@@ -962,13 +976,11 @@ def update_file(request, id):
                             yes_product.extend(artikul)
                         Line = f.readline()
                     update_ost = 'Добавленные позиций товаров в наличии'
-                    message_product = '0'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
                     file.delete();
                     os.remove(file.fileart.path)
-                    return render(request, 'panel/add_file.html',
-                                  {'message_product': message_product, 'count_base': count_base, 'count': count, 'yes_product': yes_product})
+                    return render(request, 'panel/add_file.html',{'count_base': count_base, 'count': count, 'yes_product': yes_product})
 
         except (IndexError, UnicodeError):
             file.delete();

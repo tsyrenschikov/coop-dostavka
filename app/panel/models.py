@@ -209,17 +209,19 @@ class files(models.Model):
         return self.name
 
 # Выгрузка не попавшая в базу из-за отсутсвия в базе
-class no_product(models.Model):
+class report(models.Model):
     name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
     org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
-    list_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров')
+    list_yes_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров опубликованные')
+    list_nopub_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров не опубликованные')
+    list_no_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров не существующих в базе')
     file_id = models.IntegerField(blank=True, null=True,verbose_name='id Файла')
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Необработанная выгрузка'
-        verbose_name_plural = 'Необработанная выгрузка'
+        verbose_name = 'Выгрузка'
+        verbose_name_plural = 'Выгрузка'
         index_together = (('id'),)
 
     def __str__(self):

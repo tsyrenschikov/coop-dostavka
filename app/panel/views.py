@@ -996,6 +996,9 @@ def update_file(request, id):
     else:
         return redirect('/login')
 
+def logs(request):
+    return render(request, 'panel/logs.html', {})
+
 
 # Удалить файл
 def delete_file(request, id):

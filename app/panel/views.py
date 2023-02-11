@@ -836,7 +836,7 @@ def no_product_(request,id):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Артикул', 'Количество', 'Цена']
+    columns = ['Артикул','Количество', 'Цена','Название']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -846,7 +846,7 @@ def no_product_(request,id):
     no = report.objects.values_list('list_no_product').filter(file_id=id)
     no_ = [y for i in no for y in i][0]
     i_=iter(no_)
-    no_list = list(zip_longest(i_,i_,i_))
+    no_list = list(zip_longest(i_,i_,i_,i_))
 
     for row in no_list:
         row_num += 1
@@ -856,10 +856,10 @@ def no_product_(request,id):
     wb.save(response)
     today = date.today().strftime('%Y-%m-%d')
     obj = report.objects.values_list('id', 'date').order_by('id')
-    for base_obj in obj:
-        date_obj = base_obj[1].strftime('%Y-%m-%d')
-        if today != date_obj:
-            no_product.objects.filter(id=base_obj[0]).delete()
+    # for base_obj in obj:
+    #     date_obj = base_obj[1].strftime('%Y-%m-%d')
+    #     if today != date_obj:
+    #         no_product.objects.filter(id=base_obj[0]).delete()
     return response
 
 def update_file(request, id):

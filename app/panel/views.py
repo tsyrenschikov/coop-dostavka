@@ -993,9 +993,14 @@ def update_file(request, id):
 
 def logs(request):
     if request.user.is_authenticated:
+        manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug','name').distinct()
         today = date.today().strftime('%Y-%m-%d')
-        obj = report.objects.all().order_by('-id')
-        shops = Shop.objects.values_list('name', 'slug').distinct()
+        if request.user.is_superuser:
+            obj = report.objects.all().order_by('-id')
+        else:
+            name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
+            obj = report.objects.all().filter(slug=name_).order_by('-id')
         for base_obj in obj:
             date_obj = base_obj.date.strftime('%Y-%m-%d')
             if today != date_obj:

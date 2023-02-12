@@ -103,14 +103,12 @@
                     Выгрузка
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                {% if not request.user.is_superuser %}
                     <div class="collapse" id="collapseAreas" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link sub_nav_link" href="{% url 'file' %}">Файлы выгрузки</a>
                             <a class="nav-link sub_nav_link" href="{% url 'logs' %}">Журнал выгрузки</a>
                         </nav>
                     </div>
-                {% endif %}
                 <a class="nav-link" href="{% url 'order' %}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                     Заказы

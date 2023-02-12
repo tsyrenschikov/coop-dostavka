@@ -213,6 +213,7 @@ class report(models.Model):
     name = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, null=True, db_index=True, verbose_name='Магазин')
     date = models.DateField(auto_now=True, db_index=True, verbose_name='Дата загрузки')
+    time = models.TimeField(auto_now=True, db_index=True, verbose_name='Время выгрузки')
     org = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Организация')
     list_yes_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров опубликованные')
     list_nopub_product = models.JSONField(default=list, null=True, blank=True, verbose_name='Список товаров не опубликованные')

@@ -13,7 +13,7 @@ from django.contrib.auth.models import Group
 import os, xlwt
 from functools import reduce
 from django.utils import timezone
-from datetime import date
+from datetime import date,datetime
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
@@ -751,7 +751,7 @@ def file(request):
         return redirect('/login')
 
 
-def export_0(request,id):
+def export_0(request, id):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Published Products.xls"'
 
@@ -772,12 +772,11 @@ def export_0(request,id):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
-    name = eval(name_)
-    products = name.objects.values_list('artikul', 'name', 'price').filter(status=True).order_by('id')
-    for row in products:
+    yes = report.objects.values_list('list_yes_product').filter(file_id=id)
+    yes_ = [y for i in yes for y in i][0]
+    i_ = iter(yes_)
+    yes_pub = list(zip_longest(i_, i_, i_))
+    for row in yes_pub:
         row_num += 1
         for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)
@@ -787,7 +786,7 @@ def export_0(request,id):
     return response
 
 
-def export_1(request,id):
+def export_1(request, id):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Unpublished items.xls"'
 
@@ -808,12 +807,11 @@ def export_1(request,id):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-    name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
-    name = eval(name_)
-    products = name.objects.values_list('artikul', 'name', 'price').filter(status=False).order_by('id')
-    for row in products:
+    yes = report.objects.values_list('list_nopub_product').filter(file_id=id)
+    yes_ = [y for i in yes for y in i][0]
+    i_ = iter(yes_)
+    no_pub = list(zip_longest(i_, i_, i_))
+    for row in no_pub:
         row_num += 1
         for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)
@@ -823,7 +821,7 @@ def export_1(request,id):
     return response
 
 
-def no_product_(request,id):
+def no_product_(request, id):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="No product items.xls"'
 
@@ -836,7 +834,7 @@ def no_product_(request,id):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Артикул','Количество', 'Цена','Название']
+    columns = ['Артикул', 'Количество', 'Цена', 'Название']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -845,8 +843,8 @@ def no_product_(request,id):
     font_style = xlwt.XFStyle()
     no = report.objects.values_list('list_no_product').filter(file_id=id)
     no_ = [y for i in no for y in i][0]
-    i_=iter(no_)
-    no_list = list(zip_longest(i_,i_,i_,i_))
+    i_ = iter(no_)
+    no_list = list(zip_longest(i_, i_, i_, i_))
 
     for row in no_list:
         row_num += 1
@@ -854,13 +852,9 @@ def no_product_(request,id):
             ws.write(row_num, col_num, row[col_num], font_style)
 
     wb.save(response)
-    today = date.today().strftime('%Y-%m-%d')
-    obj = report.objects.values_list('id', 'date').order_by('id')
-    # for base_obj in obj:
-    #     date_obj = base_obj[1].strftime('%Y-%m-%d')
-    #     if today != date_obj:
-    #         no_product.objects.filter(id=base_obj[0]).delete()
+
     return response
+
 
 def update_file(request, id):
     if request.user.is_authenticated:
@@ -873,8 +867,8 @@ def update_file(request, id):
         count = 0
         file_count = 0
         list_no_product = []
-        list_yes_product=[]
-        list_nopub_product=[]
+        list_yes_product = []
+        list_nopub_product = []
         yes_product = []
 
         try:
@@ -883,7 +877,7 @@ def update_file(request, id):
                 Line_ = f.readline()
                 Line_ = Line_.replace('\ufeff', '')
                 Line = list(map(str, Line_.replace(',', ' ').split()))
-                report.objects.create(name='Обновление',slug=name,file_id=id)
+                report.objects.create(name='Обновление', slug=name_, file_id=id,time=datetime.now().strftime('%H:%M:%S'))
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
@@ -905,17 +899,17 @@ def update_file(request, id):
                                 product_get.status = 'True'
                                 product_get.count = line[1]
                                 product_get.save()
-                                list_yes_product.extend([artikul_[0],artikul_[3],line[1]])
+                                list_yes_product.extend([artikul_[0], product_get.name, price_line])
 
                         else:
-                            line.append(Line[line_+1:])
+                            line.append(Line[line_ + 1:])
                             list_no_product.extend(line)
 
                         Line = f.readline()
-                    list_nopub=arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
+                    list_nopub = arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
                     for i in list_nopub:
                         list_nopub_product.extend([i[0], i[1], float(i[2])])
-                    report.objects.update(list_yes_product=list_yes_product,list_nopub_product=list_nopub_product,list_no_product=list_no_product)
+                    report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
@@ -925,7 +919,7 @@ def update_file(request, id):
                     file.delete();
                     os.remove(file.fileart.path)
                     address_str = str([i for i in str(request.path).split('/') if i][-1])
-                    return render(request, 'panel/update_file.html',{'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
+                    return render(request, 'panel/update_file.html', {'count_base': count_base, 'count': count, 'file_count': file_count, 'address_str': address_str})
 
                 elif str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '0':
                     Line = f.readline()
@@ -956,14 +950,14 @@ def update_file(request, id):
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
                     html = get_template('panel/send_update_file_product.html').render({})
                     email.delay(update_ost, html, name_)
-                    export_1(request,id)
-                    export_0(request,id)
+                    export_1(request, id)
+                    export_0(request, id)
                     no_product_(request, id)
                     file.delete();
                     os.remove(file.fileart.path)
                     address_str = str([i for i in str(request.path).split('/') if i][-1])
 
-                    return render(request, 'panel/update_file.html',{'count_base': count_base, 'count': count, 'file_count': file_count,'address_str':address_str})
+                    return render(request, 'panel/update_file.html', {'count_base': count_base, 'count': count, 'file_count': file_count, 'address_str': address_str})
                 else:
                     Line = f.readline()
                     while Line:
@@ -980,7 +974,7 @@ def update_file(request, id):
                     email.delay(update_ost, html, name_)
                     file.delete();
                     os.remove(file.fileart.path)
-                    return render(request, 'panel/add_file.html',{'count_base': count_base, 'count': count, 'yes_product': yes_product})
+                    return render(request, 'panel/add_file.html', {'count_base': count_base, 'count': count, 'yes_product': yes_product})
 
         except (IndexError, UnicodeError):
             file.delete();
@@ -996,8 +990,19 @@ def update_file(request, id):
     else:
         return redirect('/login')
 
+
 def logs(request):
-    return render(request, 'panel/logs.html', {})
+    if request.user.is_authenticated:
+        today = date.today().strftime('%Y-%m-%d')
+        obj = report.objects.all().order_by('-id')
+        shops = Shop.objects.values_list('name', 'slug').distinct()
+        for base_obj in obj:
+            date_obj = base_obj.date.strftime('%Y-%m-%d')
+            if today != date_obj:
+                report.objects.filter(id=base_obj.id).delete()
+        return render(request, 'panel/logs.html', {'obj': obj, 'shops':shops})
+    else:
+        return redirect('/login')
 
 
 # Удалить файл

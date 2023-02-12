@@ -67,10 +67,9 @@
                                         Файл - неопубликованные позиции
                                     </td>
                                     <td>
-                                        <a href="{% url 'export_1' %}">Скачать</a>
+                                        <a href="/export_1/{{ address_str }}">Скачать</a>
                                     </td>
                                 </tr>
-                                {% comment %}Файл опубликованные позиции{% endcomment %}
                                 <tr>
                                     <td>
                                         <p>2</p>
@@ -79,7 +78,7 @@
                                         Файл - опубликованные позиции
                                     </td>
                                     <td>
-                                        <a href="{% url 'export_0' %}">Скачать</a>
+                                        <a href="/export_0/{{ address_str }}">Скачать</a>
                                     </td>
                                 </tr>
                                 {% comment %}Файлы не вошедшие в проверку{% endcomment %}

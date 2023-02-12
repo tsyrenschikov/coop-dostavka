@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/logs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/update_file.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -307,14 +297,7 @@
       <workItem from="1676056711263" duration="1070000" />
       <workItem from="1676119023310" duration="2935000" />
       <workItem from="1676198399627" duration="4419000" />
-      <workItem from="1676202852876" duration="4357000" />
-    </task>
-    <task id="LOCAL-00058" summary="Download">
-      <created>1673699916709</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1673699916709</updated>
+      <workItem from="1676202852876" duration="4872000" />
     </task>
     <task id="LOCAL-00059" summary="style search shop">
       <created>1673717458293</created>
@@ -652,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676129548258</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="update_file">
+      <created>1676208919069</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1676208919069</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +669,6 @@
     <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
-    <MESSAGE value="update_file" />
     <MESSAGE value="edit_file" />
     <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
@@ -696,7 +685,8 @@
     <MESSAGE value="new update_file" />
     <MESSAGE value="sidenav" />
     <MESSAGE value="no_product" />
-    <option name="LAST_COMMIT_MESSAGE" value="no_product" />
+    <MESSAGE value="update_file" />
+    <option name="LAST_COMMIT_MESSAGE" value="update_file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

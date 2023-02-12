@@ -5,6 +5,7 @@ User = get_user_model()
 from django.conf import settings
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from panel.models import *
+from datetime import date
 import time
 @app.task()
 def email(update_ost, html, name):
@@ -21,5 +22,14 @@ def email(update_ost, html, name):
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     # msg.attach_alternative(html, "text/html")
     # fd = open('/home/web/Env/coop-dostavka.ru/www/static/file/panel/css/style.css', 'r')
-    msg.attach_file("/home/web/Env/coop-dostavka.ru/app/panel/tasks.py")
+    # msg.attach_file("/home/web/Env/coop-dostavka.ru/app/panel/tasks.py")
     msg.send()
+
+@app.task()
+def remove_base_logs():
+    today = date.today().strftime('%Y-%m-%d')
+    obj = report.objects.all()
+    for base_obj in obj:
+        date_obj = base_obj.date.strftime('%Y-%m-%d')
+        if today != date_obj:
+            report.objects.filter(id=base_obj.id).delete()

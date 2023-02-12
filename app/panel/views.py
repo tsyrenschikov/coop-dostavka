@@ -752,109 +752,116 @@ def file(request):
 
 
 def export_0(request, id):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Published Products.xls"'
+    try:
+        response = HttpResponse(content_type='application/ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="Published Products.xls"'
 
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('Опубликованные')
+        wb = xlwt.Workbook(encoding='utf-8')
+        ws = wb.add_sheet('Опубликованные')
 
-    # Sheet header, first row
-    row_num = 0
+        # Sheet header, first row
+        row_num = 0
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
+        font_style = xlwt.XFStyle()
+        font_style.font.bold = True
 
-    columns = ['Артикул', 'Название', 'Цена']
+        columns = ['Артикул', 'Название', 'Цена']
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
 
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
 
-    yes = report.objects.values_list('list_yes_product').filter(file_id=id)
-    yes_ = [y for i in yes for y in i][0]
-    i_ = iter(yes_)
-    yes_pub = list(zip_longest(i_, i_, i_))
-    for row in yes_pub:
-        row_num += 1
-        for col_num in range(len(row)):
-            ws.write(row_num, col_num, row[col_num], font_style)
+        yes = report.objects.values_list('list_yes_product').filter(file_id=id)
+        yes_ = [y for i in yes for y in i][0]
+        i_ = iter(yes_)
+        yes_pub = list(zip_longest(i_, i_, i_))
+        for row in yes_pub:
+            row_num += 1
+            for col_num in range(len(row)):
+                ws.write(row_num, col_num, row[col_num], font_style)
 
-    wb.save(response)
+        wb.save(response)
 
-    return response
+        return response
+    except IndexError:
+        return render(request, 'panel/error/file_delete_logs.html')
 
 
 def export_1(request, id):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Unpublished items.xls"'
+    try:
+        response = HttpResponse(content_type='application/ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="Unpublished items.xls"'
 
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('Неопубликованные')
+        wb = xlwt.Workbook(encoding='utf-8')
+        ws = wb.add_sheet('Неопубликованные')
 
-    # Sheet header, first row
-    row_num = 0
+        # Sheet header, first row
+        row_num = 0
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
+        font_style = xlwt.XFStyle()
+        font_style.font.bold = True
 
-    columns = ['Артикул', 'Название', 'Цена']
+        columns = ['Артикул', 'Название', 'Цена']
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
 
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
 
-    yes = report.objects.values_list('list_nopub_product').filter(file_id=id)
-    yes_ = [y for i in yes for y in i][0]
-    i_ = iter(yes_)
-    no_pub = list(zip_longest(i_, i_, i_))
-    for row in no_pub:
-        row_num += 1
-        for col_num in range(len(row)):
-            ws.write(row_num, col_num, row[col_num], font_style)
+        yes = report.objects.values_list('list_nopub_product').filter(file_id=id)
+        yes_ = [y for i in yes for y in i][0]
+        i_ = iter(yes_)
+        no_pub = list(zip_longest(i_, i_, i_))
+        for row in no_pub:
+            row_num += 1
+            for col_num in range(len(row)):
+                ws.write(row_num, col_num, row[col_num], font_style)
 
-    wb.save(response)
+        wb.save(response)
 
-    return response
+        return response
+    except IndexError:
+        return render(request, 'panel/error/file_delete_logs.html')
 
 
 def no_product_(request, id):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="No product items.xls"'
+    try:
+        response = HttpResponse(content_type='application/ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="No product items.xls"'
 
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('Не попали в проверку')
+        wb = xlwt.Workbook(encoding='utf-8')
+        ws = wb.add_sheet('Не попали в проверку')
 
-    # Sheet header, first row
-    row_num = 0
+        # Sheet header, first row
+        row_num = 0
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
+        font_style = xlwt.XFStyle()
+        font_style.font.bold = True
 
-    columns = ['Артикул', 'Количество', 'Цена', 'Название']
+        columns = ['Артикул', 'Количество', 'Цена', 'Название']
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
 
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
-    no = report.objects.values_list('list_no_product').filter(file_id=id)
-    no_ = [y for i in no for y in i][0]
-    i_ = iter(no_)
-    no_list = list(zip_longest(i_, i_, i_, i_))
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+        no = report.objects.values_list('list_no_product').filter(file_id=id)
+        no_ = [y for i in no for y in i][0]
+        i_ = iter(no_)
+        no_list = list(zip_longest(i_, i_, i_, i_))
 
-    for row in no_list:
-        row_num += 1
-        for col_num in range(len(row)):
-            ws.write(row_num, col_num, row[col_num], font_style)
+        for row in no_list:
+            row_num += 1
+            for col_num in range(len(row)):
+                ws.write(row_num, col_num, row[col_num], font_style)
 
-    wb.save(response)
-
-    return response
-
+        wb.save(response)
+        return response
+    except IndexError:
+        return render(request, 'panel/error/file_delete_logs.html')
 
 def update_file(request, id):
     if request.user.is_authenticated:

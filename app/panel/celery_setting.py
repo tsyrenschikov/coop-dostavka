@@ -8,10 +8,10 @@ app = Celery('panel')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-app.conf.beat_schedule = {
-    'every': {
-        'task': 'panel.tasks.remove_base_logs',
-        'schedule': crontab(hour=6,minute=30,day_of_week='mon,thu,wed,thur,fri'),# по умолчанию выполняет каждую минуту, очень гибко
-    },                                                              # настраивается
-
-}
+# app.conf.beat_schedule = {
+#     'every': {
+#         'task': 'panel.tasks.remove_base_logs',
+#         'schedule': crontab(hour=10,minute=42,day_of_week='mon,thu,wed,thur,fri'),# по умолчанию выполняет каждую минуту, очень гибко
+#     },                                                              # настраивается
+#
+# }

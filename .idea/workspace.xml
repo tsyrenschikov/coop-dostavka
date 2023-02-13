@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/file_delete_logs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2023_17_57__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2023_17_57__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/coop_dostavka/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/coop_dostavka/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/celery_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +23,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -301,13 +298,63 @@
       <workItem from="1675778753526" duration="1520000" />
       <workItem from="1675780360371" duration="19039000" />
       <workItem from="1675858382237" duration="14621000" />
-      <workItem from="1675875152681" duration="1705000" />
-      <workItem from="1676036701802" duration="14123000" />
-      <workItem from="1676056711263" duration="1070000" />
-      <workItem from="1676119023310" duration="2935000" />
-      <workItem from="1676198399627" duration="4419000" />
-      <workItem from="1676202852876" duration="4956000" />
-      <workItem from="1676213078686" duration="6384000" />
+      <workItem from="1675875152681" duration="1692000" />
+    </task>
+    <task id="LOCAL-00053" summary="panel sort date">
+      <created>1673372539404</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1673372539404</updated>
+    </task>
+    <task id="LOCAL-00054" summary="panel sort date jquery">
+      <created>1673375336682</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1673375336682</updated>
+    </task>
+    <task id="LOCAL-00055" summary="panel sort date jquery">
+      <created>1673462641362</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1673462641362</updated>
+    </task>
+    <task id="LOCAL-00056" summary="panel sort date jquery">
+      <created>1673463483606</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1673463483606</updated>
+    </task>
+    <task id="LOCAL-00057" summary="panel sort date jquery">
+      <created>1673464096996</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1673464096996</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Download">
+      <created>1673699916709</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1673699916709</updated>
+    </task>
+    <task id="LOCAL-00059" summary="style search shop">
+      <created>1673717458293</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1673717458293</updated>
+    </task>
+    <task id="LOCAL-00060" summary="chetkarino search">
+      <created>1673720184756</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1673720184756</updated>
     </task>
     <task id="LOCAL-00061" summary="product optimizations">
       <created>1673724085789</created>
@@ -596,63 +643,7 @@
       <option name="project" value="LOCAL" />
       <updated>1675875548210</updated>
     </task>
-    <task id="LOCAL-00102" summary="edit file">
-      <created>1675876863775</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1675876863775</updated>
-    </task>
-    <task id="LOCAL-00103" summary="new update_file">
-      <created>1676056535424</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1676056535424</updated>
-    </task>
-    <task id="LOCAL-00104" summary="new update_file">
-      <created>1676057783215</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1676057783215</updated>
-    </task>
-    <task id="LOCAL-00105" summary="sidenav">
-      <created>1676128026122</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1676128026122</updated>
-    </task>
-    <task id="LOCAL-00106" summary="no_product">
-      <created>1676129548258</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1676129548258</updated>
-    </task>
-    <task id="LOCAL-00107" summary="update_file">
-      <created>1676208919069</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1676208919069</updated>
-    </task>
-    <task id="LOCAL-00108" summary="update_file">
-      <created>1676209391677</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1676209391677</updated>
-    </task>
-    <task id="LOCAL-00109" summary="update_file edit">
-      <created>1676213913427</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1676213913427</updated>
-    </task>
-    <option name="localTasksCounter" value="110" />
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,13 +662,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="chetkarino search" />
+    <MESSAGE value="product optimizations" />
+    <MESSAGE value="request GET location&#10;optimization sort list slug" />
     <MESSAGE value="request GET panel" />
     <MESSAGE value="edit" />
     <MESSAGE value="add project" />
     <MESSAGE value="delete celery" />
     <MESSAGE value="edit search" />
+    <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
+    <MESSAGE value="update_file" />
     <MESSAGE value="edit_file" />
     <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
@@ -691,22 +687,6 @@
     <MESSAGE value="update file (no_product, delete base no_product)" />
     <MESSAGE value="meta" />
     <MESSAGE value="edit file" />
-    <MESSAGE value="new update_file" />
-    <MESSAGE value="sidenav" />
-    <MESSAGE value="no_product" />
-    <MESSAGE value="update_file" />
-    <MESSAGE value="update_file edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="update_file edit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="edit file" />
   </component>
 </project>

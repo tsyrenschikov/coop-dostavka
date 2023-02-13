@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/celery_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,21 +295,8 @@
       <workItem from="1675780360371" duration="19039000" />
       <workItem from="1675858382237" duration="14621000" />
       <workItem from="1675875152681" duration="1692000" />
-      <workItem from="1676271324714" duration="893000" />
-    </task>
-    <task id="LOCAL-00054" summary="panel sort date jquery">
-      <created>1673375336682</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1673375336682</updated>
-    </task>
-    <task id="LOCAL-00055" summary="panel sort date jquery">
-      <created>1673462641362</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1673462641362</updated>
+      <workItem from="1676271324714" duration="995000" />
+      <workItem from="1676272706272" duration="1430000" />
     </task>
     <task id="LOCAL-00056" summary="panel sort date jquery">
       <created>1673463483606</created>
@@ -641,7 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676269011213</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="sheduler">
+      <created>1676272494139</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1676272494140</updated>
+    </task>
+    <task id="LOCAL-00104" summary="sheduler">
+      <created>1676272544949</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1676272544949</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

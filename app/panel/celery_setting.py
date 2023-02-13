@@ -11,7 +11,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'every': {
         'task': 'panel.tasks.remove_base_logs',
-        'schedule': crontab(hour=6,minute=0),# по умолчанию выполняет каждую минуту, очень гибко
-    },                                                              # настраивается
+        'schedule': crontab(hour=6,minute=0),
+    },
 
 }

@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/www/static/file/panel/js/filesize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/celery_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/send_update_file_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +28,8 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -298,8 +304,21 @@
       <workItem from="1675858382237" duration="14621000" />
       <workItem from="1675875152681" duration="1692000" />
       <workItem from="1676271324714" duration="995000" />
-      <workItem from="1676272706272" duration="1453000" />
-      <workItem from="1676345041888" duration="2085000" />
+      <workItem from="1676272706272" duration="1430000" />
+    </task>
+    <task id="LOCAL-00056" summary="panel sort date jquery">
+      <created>1673463483606</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1673463483606</updated>
+    </task>
+    <task id="LOCAL-00057" summary="panel sort date jquery">
+      <created>1673464096996</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1673464096996</updated>
     </task>
     <task id="LOCAL-00058" summary="Download">
       <created>1673699916709</created>
@@ -630,21 +649,7 @@
       <option name="project" value="LOCAL" />
       <updated>1676272544949</updated>
     </task>
-    <task id="LOCAL-00105" summary="sheduler">
-      <created>1676276119272</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1676276119273</updated>
-    </task>
-    <task id="LOCAL-00106" summary="sheduler">
-      <created>1676345402636</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1676345402636</updated>
-    </task>
-    <option name="localTasksCounter" value="107" />
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,5 +694,16 @@
     <MESSAGE value="edit file" />
     <MESSAGE value="sheduler" />
     <option name="LAST_COMMIT_MESSAGE" value="sheduler" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

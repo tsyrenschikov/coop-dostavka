@@ -7,107 +7,33 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-static-2 mt-30 mb-30">
-                <div class="card-title-2">
-                    <h4>Обработанные позиции</h4>
-                </div>
                 <br>
                 <div class="card-body-table">
                     <div class="table-responsive">
-                        <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">
+                        <table id="info-table" class="table ucp-table table-hover table_sort">
                             <thead>
                             <tr>
-                                <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Номенклатура</th>
-                                <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Название продукта</th>
-                                <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Статус</th>
+                                <th>Всего позиций в базе</th>
+                                <th>Позиций в файле</th>
+                                <th>Найдено совпадений</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for l in artikul_list %}
-                                <tr>
-                                    <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                        {{ l.0 }}
-                                    </td>
-                                    <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                        {{ l.1 }}
-                                    </td>
-                                    <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                        {% if l.4 == 'True' %}
-                                            <span class="badge-item badge-panel-status">Опубликован</span>
-                                        {% elif l.4 == 'False' %}
-                                            <span class="badge-item badge-status">Не опубликован</span>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
+                            <tr>
+                                <td>
+                                    {{ count_base }} шт.
+                                </td>
+                                <td>
+                                    {{ count }} шт.
+                                </td>
+                                <td>
+                                    {{ file_count }} шт.
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-                {% if message_product %}
-                    <div class="card-title-2">
-                        <h4>Обработанные позиции с 0-ми остатками</h4>
-                    </div>
-                    <br>
-                    <div class="card-body-table">
-                        <div class="table-responsive">
-                            <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">
-                                <thead>
-                                <tr>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Номенклатура</th>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Название продукта</th>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Статус</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for l in message_product %}
-                                    <tr>
-                                        <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                            {{ l.0 }}
-                                        </td>
-                                        <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                            {{ l.1 }}
-                                        </td>
-                                        <td style="font-size: 14px;font-weight: 400;color: #3e3f5e;line-height: 24px;">
-                                            {% if l.4 == 'True' %}
-                                                <span class="badge-item badge-panel-status">Опубликован</span>
-                                            {% elif l.4 == 'False' %}
-                                                <span class="badge-item badge-status">Не опубликован</span>
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% if no_product %}
-                    <div class="card-title-2">
-                        <h4>Несуществующие позиции на сайте</h4>
-                    </div>
-                    <br>
-                    <div class="card-body-table">
-                        <div class="table-responsive">
-                            <table id="info-table" class="table ucp-table table-hover table_sort" style="border-collapse: collapse;width: 100%">
-                                <thead>
-                                <tr>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Номенклатура</th>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Название продукта</th>
-                                    <th style="border: 1px solid #dee2e6 !important;color: #2b2f4c;font-size: 14px;background-color: #ffecec;font-weight: 500;">Статус</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for l in no_product %}
-                                    <p style="color: red; font-size: 1em">{{ l }}</p>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                {% endif %}
-
             </div>
         </div>
     </div>

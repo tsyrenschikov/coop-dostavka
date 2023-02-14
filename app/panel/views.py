@@ -918,7 +918,7 @@ def update_file(request, id):
                         list_nopub_product.extend([i[0], i[1], float(i[2])])
                     report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)
                     update_ost = 'Обновленные позиций товаров с контролем остатков'
-                    html = get_template('panel/send_update_file_product.html').render({})
+                    html = get_template('panel/send_update_file_product.html').render({'count_base': count_base, 'count': count, 'file_count': file_count})
                     email.delay(update_ost, html, name_)
                     export_1(request, id)
                     export_0(request, id)
@@ -955,7 +955,7 @@ def update_file(request, id):
                         list_nopub_product.extend([i[0], i[1], float(i[2])])
                     report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)
                     update_ost = 'Обновленные позиций товаров без контроля остатков'
-                    html = get_template('panel/send_update_file_product.html').render({})
+                    html = get_template('panel/send_update_file_product.html').render({'count_base': count_base, 'count': count, 'file_count': file_count})
                     email.delay(update_ost, html, name_)
                     export_1(request, id)
                     export_0(request, id)

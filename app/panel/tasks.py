@@ -7,6 +7,8 @@ from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from panel.models import *
 from datetime import date
 import time
+
+
 @app.task()
 def email(update_ost, html, name):
     time.sleep(10)
@@ -20,8 +22,7 @@ def email(update_ost, html, name):
     subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
     text_content = 'Список обновленных позиций'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-    # msg.attach_alternative(html, "text/html")
-    # fd = open('/home/web/Env/coop-dostavka.ru/www/static/file/panel/css/style.css', 'r')
+    msg.attach_alternative(html, "text/html")
     # msg.attach_file("/home/web/Env/coop-dostavka.ru/app/panel/tasks.py")
     msg.send()
 

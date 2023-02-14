@@ -10,14 +10,12 @@ $(document).ready(function () {
 
         if (1000000 < size) {
             $('message_file_type').html("<span style='font-size: 14px; color: red'>Файл превышает допустимый размер в 1 мегабайт</span>")
-            $('#butdis').hide()
         } else {
             size_bol='true'
             $('message_file_type').html("<span style='font-size: 14px; color: green'>✓ Размер файла допустимый</span>")
         }
         if ($.inArray(name.split('.').pop().toLowerCase(), fileExtension) == -1) {
             $('message_file_name').html("<span style='font-size: 14px; color: red'>Неверный тип файла</span>")
-            $('#butdis').hide()
         } else {
             name_bol='true'
             $('message_file_name').html("<span style='font-size: 14px; color: green'>✓ Тип файла допустимый</span>")

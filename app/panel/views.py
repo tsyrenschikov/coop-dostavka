@@ -1318,7 +1318,7 @@ def order_total(request, statusord):
                                    'count_order4': count_order4,
                                    'areas': areas, 'address': address})
                 if request.user.is_superuser:
-                    zakaz = orders.objects.all().filter(status=statusord)
+                    zakaz = orders.objects.all().filter(status=statusord).order_by('-id')
                     count_order = orders.objects.filter(status=0).count()
                     count_order1 = orders.objects.filter(status=1).count()
                     count_order2 = orders.objects.filter(status=2).count()

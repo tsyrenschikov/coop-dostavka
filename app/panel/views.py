@@ -1008,10 +1008,6 @@ def logs(request):
         else:
             name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
             obj = report.objects.all().filter(slug=name_).order_by('-id')
-        for base_obj in obj:
-            date_obj = base_obj.date.strftime('%Y-%m-%d')
-            if today != date_obj:
-                report.objects.filter(id=base_obj.id).delete()
         return render(request, 'panel/logs.html', {'obj': obj, 'shops':shops})
     else:
         return redirect('/login')

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/filesize.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/filesize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,13 +298,6 @@
       <workItem from="1675875152681" duration="1692000" />
       <workItem from="1676271324714" duration="995000" />
       <workItem from="1676272706272" duration="1430000" />
-    </task>
-    <task id="LOCAL-00057" summary="panel sort date jquery">
-      <created>1673464096996</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1673464096996</updated>
     </task>
     <task id="LOCAL-00058" summary="Download">
       <created>1673699916709</created>
@@ -642,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676398174066</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="jquery add_product">
+      <created>1676399621449</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1676399621449</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +661,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="request GET location&#10;optimization sort list slug" />
     <MESSAGE value="request GET panel" />
     <MESSAGE value="edit" />
     <MESSAGE value="add project" />
@@ -686,7 +685,8 @@
     <MESSAGE value="edit file" />
     <MESSAGE value="sheduler" />
     <MESSAGE value="send email update_file, jquery add_product" />
-    <option name="LAST_COMMIT_MESSAGE" value="send email update_file, jquery add_product" />
+    <MESSAGE value="jquery add_product" />
+    <option name="LAST_COMMIT_MESSAGE" value="jquery add_product" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

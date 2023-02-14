@@ -1303,7 +1303,7 @@ def order_total(request, statusord):
         for u in users:
             for c, n, slug_p in shops:
                 if request.user.id == c and u == c:
-                    zakaz = orders.objects.filter(slug=slug_p).filter(status=statusord).order_by('id')
+                    zakaz = orders.objects.filter(slug=slug_p).filter(status=statusord).order_by('-id')
                     areas = Area.objects.values_list('name', 'slug').distinct()
                     count_order = orders.objects.filter(slug=slug_p).filter(status=0).count()
                     count_order1 = orders.objects.filter(slug=slug_p).filter(status=1).count()

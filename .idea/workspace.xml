@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/celery_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/celery_setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.csh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.fish" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate.nu" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.nu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/activate_this.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate_this.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/celery" beforeDir="false" afterPath="$PROJECT_DIR$/bin/celery" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/bin/django-admin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/f2py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/f2py3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/f2py3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/get_env_details" beforeDir="false" afterPath="$PROJECT_DIR$/bin/get_env_details" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/normalizer" beforeDir="false" afterPath="$PROJECT_DIR$/bin/normalizer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/pip3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/postactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postactivate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/postdeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postdeactivate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preactivate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/predeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/predeactivate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/segno" beforeDir="false" afterPath="$PROJECT_DIR$/bin/segno" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sqlformat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/wheel" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/wheel-3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel-3.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/wheel3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/wheel3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3.9" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,13 +323,6 @@
       <workItem from="1675875152681" duration="1692000" />
       <workItem from="1676271324714" duration="995000" />
       <workItem from="1676272706272" duration="1430000" />
-    </task>
-    <task id="LOCAL-00059" summary="style search shop">
-      <created>1673717458293</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1673717458293</updated>
     </task>
     <task id="LOCAL-00060" summary="chetkarino search">
       <created>1673720184756</created>
@@ -644,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676399965454</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="celery">
+      <created>1676433100394</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1676433100394</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +698,6 @@
     <MESSAGE value="edit_file" />
     <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
-    <MESSAGE value="celery" />
     <MESSAGE value="Celery OK" />
     <MESSAGE value="export" />
     <MESSAGE value="celery server" />
@@ -688,7 +710,8 @@
     <MESSAGE value="sheduler" />
     <MESSAGE value="send email update_file, jquery add_product" />
     <MESSAGE value="jquery add_product" />
-    <option name="LAST_COMMIT_MESSAGE" value="jquery add_product" />
+    <MESSAGE value="celery" />
+    <option name="LAST_COMMIT_MESSAGE" value="celery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

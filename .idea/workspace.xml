@@ -6,32 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.csh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.fish" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.nu" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.nu" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/activate_this.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/activate_this.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/celery" beforeDir="false" afterPath="$PROJECT_DIR$/bin/celery" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/bin/django-admin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/f2py3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/f2py3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/get_env_details" beforeDir="false" afterPath="$PROJECT_DIR$/bin/get_env_details" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/normalizer" beforeDir="false" afterPath="$PROJECT_DIR$/bin/normalizer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/pip3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/pip3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/postactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/postdeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/postdeactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/preactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/predeactivate" beforeDir="false" afterPath="$PROJECT_DIR$/bin/predeactivate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/segno" beforeDir="false" afterPath="$PROJECT_DIR$/bin/segno" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sqlformat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel-3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel-3.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel3" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/wheel3.9" beforeDir="false" afterPath="$PROJECT_DIR$/bin/wheel3.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,35 +84,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka/app/panel&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "D:/coop-dostavka/app/panel",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.templateLanguages.PyTemplateLanguageModulesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\coop-dostavka\app\panel" />
@@ -142,8 +127,11 @@
       <recent name="D:\coop-dostavka\app\panel" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.uchi">
+  <component name="RunManager" selected="JavaScript Debug.products.html">
     <configuration name="file.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/coop-dostavka/app/panel/templates/panel/file.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="products.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/__init__.py/app/shop/templates/chetkarino/products.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -323,13 +311,8 @@
       <workItem from="1675875152681" duration="1692000" />
       <workItem from="1676271324714" duration="995000" />
       <workItem from="1676272706272" duration="1430000" />
-    </task>
-    <task id="LOCAL-00060" summary="chetkarino search">
-      <created>1673720184756</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1673720184756</updated>
+      <workItem from="1676447381491" duration="1362000" />
+      <workItem from="1676520766589" duration="4025000" />
     </task>
     <task id="LOCAL-00061" summary="product optimizations">
       <created>1673724085789</created>
@@ -667,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676433100394</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="celery">
+      <created>1676447554495</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1676447554496</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

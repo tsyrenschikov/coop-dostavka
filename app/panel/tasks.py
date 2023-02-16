@@ -3,6 +3,7 @@ from .celery_setting import app
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.conf import settings
+from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from panel.models import *
 from datetime import date
@@ -24,6 +25,23 @@ def email(update_ost, html, name):
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html, "text/html")
     # msg.attach_file("/home/web/Env/coop-dostavka.ru/app/panel/tasks.py")
+    msg.send()
+
+@app.task()
+def email_order(s):
+    time.sleep(10)
+    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
+    for i in id_manager:
+        id_man = i['customuser_id']
+    email_manager = User.objects.values('email').filter(id=id_man)
+    # for i in email_manager:
+    #     email_send = i['email']
+    htmly = get_template('shop/send_email.html').render()
+    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, ('tsyrenschikov@gmail.com')
+    text_content = 'В панеле управления Вас ожидает очередной заказ'
+    html_content = htmly
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
     msg.send()
 
 @app.task()

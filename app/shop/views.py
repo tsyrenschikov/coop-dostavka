@@ -12,6 +12,7 @@ from panel.models import *
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect
+from panel.tasks import email_order
 import qr_code
 
 register = template.Library()
@@ -242,6 +243,7 @@ def cart_arti(request):
                                                       commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                       status=status)
                         ord = order.id
+                        email_order.delay(s)
                         return redirect(gr_arti, ord)
                     else:
                         order = orders.objects.create(name=name, phone=phone, products=products, address_city=address_city, address_home=address_home, address_kv=address_kv,
@@ -249,20 +251,9 @@ def cart_arti(request):
                                                       commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                       status=status)
                         ord = order.id
+                        email_order.delay(s)
                         return redirect(cart_ok, ord)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    # msg.send()
+                    email_order.delay(s)
 
                 return render(request, 'arti/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
                                                           'address_str': address_str})
@@ -522,21 +513,9 @@ def cart_arti_p(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
-                    return redirect(cart_artiobschepit_ok, ord)
+                    return redirect(cart_arti_p_ok, ord)
                 return render(request, 'arti/artiprom/cart.html', {'category_product': category_product, 'shop': shop, 'sbp': sbp, 'shops': shops, 'local': local, 'local_d': local_d, 'name': name,
                                                                    'address_str': address_str})
 
@@ -677,19 +656,7 @@ def cart_artiobschepit(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_artiobschepit_ok, ord)
                 return render(request, 'arti/artiobschepit/cart.html',
@@ -832,19 +799,7 @@ def cart_pokrovskoe(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_pokrovskoe, ord)
 
@@ -985,19 +940,7 @@ def cart_rezh(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_rezh, ord)
 
@@ -1131,20 +1074,7 @@ def cart_zajkovskoe(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    # send_mail('Новый заказ', 'Ожидает новый заказ: ',  settings.EMAIL_HOST_USER,[(email_send)], fail_silently=False )
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_zajkovskoe, ord)
 
@@ -1358,19 +1288,7 @@ def cart_bogdan(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_bogdan, ord)
 
@@ -1547,19 +1465,7 @@ def cart_chetkarino(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_chetkarino, ord)
 
@@ -1735,19 +1641,7 @@ def cart_bugalysh(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_bugalysh, ord)
 
@@ -1923,19 +1817,7 @@ def cart_bisert(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_bisert, ord)
 
@@ -2112,19 +1994,7 @@ def cart_chernovskoe(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_chernovskoe, ord)
 
@@ -2300,19 +2170,7 @@ def cart_natalinsk(request):
                                                   cal=cal,
                                                   commit=commit, cart=cart, delivery=delivery, total_price=total_price, slug=slug, email=email, replace=replace, payment=payment, money=money,
                                                   status=status)
-                    id_manager = Shop.objects.values('customuser_id').filter(slug=s)
-                    for i in id_manager:
-                        id_man = i['customuser_id']
-                    email_manager = User.objects.values('email').filter(id=id_man)
-                    for i in email_manager:
-                        email_send = i['email']
-                    htmly = get_template('shop/send_email.html').render()
-                    subject, from_email, to = 'Новый заказ в интернет-магазине КООП', settings.EMAIL_HOST_USER, (email_send)
-                    text_content = 'В панеле управления Вас ожидает очередной заказ'
-                    html_content = htmly
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
+                    email_order.delay(s)
                     ord = order.id
                     return redirect(cart_ok_natalinsk, ord)
 

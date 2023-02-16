@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/celerybeat.service" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +117,7 @@
       <recent name="D:\coop-dostavka\app\panel" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.uchi">
+  <component name="RunManager" selected="JavaScript Debug.file.html">
     <configuration name="file.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/coop-dostavka/app/panel/templates/panel/file.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -210,11 +209,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.uchi" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -300,14 +294,8 @@
       <workItem from="1676271324714" duration="995000" />
       <workItem from="1676272706272" duration="1430000" />
       <workItem from="1676566007020" duration="973000" />
-      <workItem from="1676568855803" duration="350000" />
-    </task>
-    <task id="LOCAL-00061" summary="product optimizations">
-      <created>1673724085789</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1673724085789</updated>
+      <workItem from="1676568855803" duration="2322000" />
+      <workItem from="1676571497176" duration="5000" />
     </task>
     <task id="LOCAL-00062" summary="request GET location&#10;optimization sort list slug">
       <created>1673789042230</created>
@@ -645,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676562561372</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="celery task">
+      <created>1676569322947</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1676569322947</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +659,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="request GET panel" />
     <MESSAGE value="edit" />
     <MESSAGE value="add project" />
     <MESSAGE value="delete celery" />
@@ -689,29 +683,7 @@
     <MESSAGE value="send email update_file, jquery add_product" />
     <MESSAGE value="jquery add_product" />
     <MESSAGE value="celery" />
-    <option name="LAST_COMMIT_MESSAGE" value="celery" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
-          <line>254</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
-          <line>515</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="celery task" />
+    <option name="LAST_COMMIT_MESSAGE" value="celery task" />
   </component>
 </project>

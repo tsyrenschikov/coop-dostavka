@@ -268,6 +268,7 @@ class Product(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -297,6 +298,7 @@ class rezh(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -327,6 +329,7 @@ class arti(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -356,6 +359,7 @@ class arti_p(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -385,6 +389,7 @@ class artiobschepit(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -415,6 +420,7 @@ class bogdan(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -444,6 +450,7 @@ class chetkarino(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -474,6 +481,7 @@ class zajkovskoe(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -503,6 +511,7 @@ class pokrovskoe(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -532,6 +541,7 @@ class krasnoufimsk(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -561,6 +571,7 @@ class bugalysh(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -590,6 +601,7 @@ class chernovskoe(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -620,6 +632,7 @@ class bisert(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)
@@ -650,6 +663,7 @@ class natalinsk(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)

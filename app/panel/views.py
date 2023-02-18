@@ -1071,6 +1071,7 @@ def edit_product(request, id):
                                 products.fabricator = request.POST.get('fabricator')
                                 products.color = request.POST.get('color')
                                 products.material = request.POST.get('material')
+                                products.check_pres = request.POST.get('check_pres')
                                 products.save()
                             if request.method == 'POST':
                                 products.subcat = request.POST.get('subcat')
@@ -1133,6 +1134,7 @@ def add_product(request, **kwargs):
                                 fabricator = request.POST.get('fabricator')
                                 material = request.POST.get('material')
                                 color = request.POST.get('color')
+                                check_pres = request.POST.get('check_pres')
                                 if n.objects.filter(name=request.POST['name']).exists():
                                     alert['name'] = 'Наименование товара уже существует'
                                     return render(request, 'panel/add_product.html', alert)
@@ -1142,7 +1144,7 @@ def add_product(request, **kwargs):
                                                      image=image,
                                                      width=width, \
                                                      height=height,
-                                                     length=length, fabricator=fabricator, material=material, color=color)
+                                                     length=length, fabricator=fabricator, material=material, color=color, check_pres=check_pres)
                                 return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
                         return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:

@@ -29,6 +29,13 @@
                                         <h2>{{ product.name }}</h2>
                                         <div class="no-stock">
                                             <p class="pd-no">Продукт No.<span>{{ product.id }}</span></p>
+                                            {% if product.check_pres == 'yes' %}
+                                                <p class="stock-qty"><span style="color: #78be20; font-weight: 500; font-size: 18px">В наличии</span></p>
+                                            {% elif product.check_pres == 'false' %}
+                                                <p class="stock-qty"><span style="color: #7c72ff; font-weight: 500; font-size: 18px">Под заказ</span></p>
+                                            {% else %}
+                                                <p class="stock-qty"></p>
+                                            {% endif %}
                                         </div>
                                         <p class="pp-descp">{{ product.description }}</p>
                                         <div class="product-group-dt">

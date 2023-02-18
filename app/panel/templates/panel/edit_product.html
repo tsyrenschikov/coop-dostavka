@@ -137,7 +137,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="card card-static-2 mb-30 prom_electro">
+                    <div class="card card-static-2 mb-30 prom_mebel">
                         <div class="card-title-2">
                             <h4>Характеристика товара</h4>
                         </div>
@@ -177,6 +177,65 @@
                                 <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Черный">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <div class="roundedTwo">
+                                    <label class="form-label">Наличие на складе</label>
+                                    <input type="checkbox" id="roundedTwo" name="check_pres"/>
+                                    <label for="roundedTwo"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-static-2 mb-30 prom_electro">
+                        <div class="card-title-2">
+                            <h4>Характеристика товара</h4>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Ширина (мм)</label>
+                                <input type="number" name="width" class="form-control" value="0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Высота (мм)</label>
+                                <input type="number" name="height" class="form-control" value="0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Глубина (мм)</label>
+                                <input type="number" name="length" class="form-control" value="0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Производитель</label>
+                                <input type="text" name="fabricator" class="form-control" value="" placeholder="Пермь">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Макс. напряжение, В</label>
+                                <input type="text" name="material" class="form-control" value="" placeholder="230">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <label class="form-label">Макс. ток, А</label>
+                                <input type="text" name="color" class="form-control" value="" placeholder="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="news-content-right pd-20">
+                                <div class="roundedTwo">
+                                    <label class="form-label">Наличие на складе</label>
+                                    <input type="checkbox" id="roundedTwo" name="check_pres"/>
+                                    <label for="roundedTwo"></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,7 +244,6 @@
     <!--Выбор из списка категорий-->
     <script src="{% static 'file/panel/js/chosen/jquery-ui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'file/panel/js/chosen/editcategory.js' %}" type="text/javascript"></script>
-    <script src="{% static 'file/panel/js/chosen/editorder1.js' %}" type="text/javascript"></script>
     <!--Поиск артикула-->
     <script src="{% static 'file/panel/js/edit_artikul_true.js' %}"></script>
 

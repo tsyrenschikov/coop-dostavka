@@ -23,16 +23,16 @@ $(document).ready(function () {
             $('.cat').append($('<option number="' + i + '" name="categ" value="' + v + '">' + v + '</option>'))
         }
     });
-    $("input[name='discount']").change(function (){
-       var value = $(this);
-       var v = value.val();
-       if(v === ''){
-           value.val(0);
-           value.attr({'value':0})
-       }else{
-           value.val(v)
-           value.attr({'value':v})
-       }
+    $("input[name='discount']").change(function () {
+        var value = $(this);
+        var v = value.val();
+        if (v === '') {
+            value.val(0);
+            value.attr({'value': 0})
+        } else {
+            value.val(v)
+            value.attr({'value': v})
+        }
     });
     $(".cat").on('change', function () {
         var
@@ -71,14 +71,22 @@ $(document).ready(function () {
             if (count > 20) {
                 $('.tpgdiv').show();
                 if (countname === 'Мебель') {
+                    $('.prom_mebel').show();
+                    $('.prom_electro').hide();
+                } else if (countname === 'Бытовая техника') {
                     $('.prom_electro').show();
+                    $('.prom_mebel').hide();
                 }
+                $('input[type="checkbox"]').click(function () {
+                    if ($(this).is(':checked')) {
+                        $('#squaredFour').attr({'value': 'yes'})
+                    } else {
+                        $('#squaredFour').attr({'value': 'false'})
+                    }
+                });
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
-                        if (countsubsub === 'Электротовары') {
-                            $('.prom_electro').show();
-                        }
                         subsubcategory.length = 0;
                         subsubcategory = [];
                         $('namesubname').each(function () {
@@ -122,15 +130,21 @@ $(document).ready(function () {
             }
         });
     }).trigger('change');
-    $( "input[type='number']" ).change(function() {
-        var value=$(this).val();
-        if(value === ''){
-            $(this).attr({'value':0});
+    $("input[type='number']").change(function () {
+        var value = $(this).val();
+        if (value === '') {
+            $(this).attr({'value': 0});
             $(this).val(0)
-        }
-        else{
+        } else {
             $(this).val(value)
-            $(this).attr({'value':value})
+            $(this).attr({'value': value})
         }
+    });
+    //   Hide the border by commenting out the variable below
+    var $on = 'section';
+    $($on).css({
+        'background': 'none',
+        'border': 'none',
+        'box-shadow': 'none'
     });
 });

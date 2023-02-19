@@ -9,7 +9,7 @@ from datetime import date, datetime
 from panel.models import *
 
 
-def do(self):
+def do():
     directory = '/home/web/Env/coop-dostavka.ru/www/media/file/website_exchange'
     content = os.listdir(directory)
     slug = Shop.objects.values_list('slug', flat=True).distinct()

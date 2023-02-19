@@ -914,7 +914,7 @@ def update_file(request, id):
                             list_no_product.extend(line)
 
                         Line = f.readline()
-                    list_nopub = arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
+                    list_nopub = name.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
                     for i in list_nopub:
                         list_nopub_product.extend([i[0], i[1], float(i[2])])
                     report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)
@@ -950,8 +950,8 @@ def update_file(request, id):
                             line.append(Line[line_ + 1:])
                             list_no_product.extend(line)
                         Line = f.readline()
-                    list_nopub = arti.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
-                    list_yes_product.extend = arti.objects.values_list('artikul', 'name', 'price').filter(status=True).distinct().order_by('id')
+                    list_nopub = name.objects.values_list('artikul', 'name', 'price').filter(status=False).distinct().order_by('id')
+                    list_yes_product.extend = name.objects.values_list('artikul', 'name', 'price').filter(status=True).distinct().order_by('id')
                     for i in list_nopub:
                         list_nopub_product.extend([i[0], i[1], float(i[2])])
                     report.objects.update(list_yes_product=list_yes_product, list_nopub_product=list_nopub_product, list_no_product=list_no_product)

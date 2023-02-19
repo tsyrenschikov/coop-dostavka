@@ -7,7 +7,6 @@
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/update_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/update_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,14 +306,7 @@
       <workItem from="1676718372212" duration="141000" />
       <workItem from="1676723302822" duration="11101000" />
       <workItem from="1676792167626" duration="1384000" />
-      <workItem from="1676812873929" duration="2415000" />
-    </task>
-    <task id="LOCAL-00065" summary="edit">
-      <created>1674140843692</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1674140843692</updated>
+      <workItem from="1676812873929" duration="3378000" />
     </task>
     <task id="LOCAL-00066" summary="edit">
       <created>1674236261988</created>
@@ -652,7 +644,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676739431540</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="file update auto">
+      <created>1676815338066</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1676815338066</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +670,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="delete celery" />
     <MESSAGE value="edit search" />
     <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
@@ -696,16 +694,12 @@
     <MESSAGE value="celery task" />
     <MESSAGE value="search panel" />
     <MESSAGE value="edit product" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit product" />
+    <MESSAGE value="file update auto" />
+    <option name="LAST_COMMIT_MESSAGE" value="file update auto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/update_file.py</url>
-          <line>185</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
           <line>931</line>

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/update_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/update_file.py" afterDir="false" />
-    </list>
+    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,21 +303,7 @@
       <workItem from="1676718372212" duration="141000" />
       <workItem from="1676723302822" duration="11101000" />
       <workItem from="1676792167626" duration="1384000" />
-      <workItem from="1676812873929" duration="3378000" />
-    </task>
-    <task id="LOCAL-00066" summary="edit">
-      <created>1674236261988</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1674236261988</updated>
-    </task>
-    <task id="LOCAL-00067" summary="edit">
-      <created>1674834994352</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1674834994353</updated>
+      <workItem from="1676812873929" duration="4006000" />
     </task>
     <task id="LOCAL-00068" summary="edit">
       <created>1674836769119</created>
@@ -651,7 +634,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676815338066</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="file update auto">
+      <created>1676818428930</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818428930</updated>
+    </task>
+    <task id="LOCAL-00116" summary="file update auto">
+      <created>1676818454446</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818454446</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

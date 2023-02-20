@@ -1105,13 +1105,6 @@ def add_product(request, **kwargs):
                 for s, slug, id in shops:
                     if u == s:
                         n = eval(slug)
-                        alert = {
-                            'name': request.GET.get('name', ''),
-                            'products': n.objects.all(),
-                            'category': Category.objects.all().order_by('number'),
-                            'subcategory': SubCategory.objects.values('name', 'subsubcat'),
-                            'subsubcategory': SubSubCategory.objects.all(),
-                        }
                         products = n.objects.all()
                         category = Category.objects.all().order_by('number')
                         subcategory = SubCategory.objects.values('name', 'subsubcat')

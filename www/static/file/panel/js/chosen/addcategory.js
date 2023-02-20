@@ -48,7 +48,7 @@ $(document).ready(function () {
                         $('.prom_electro').show();
                         $('.prom_mebel').hide();
                     }
-                    $('input[type=checkbox]').change(function () {
+                    $('input[type=checkbox]').each(function () {
                         if ($(this).prop('checked')) {
                             $('#squaredFour').attr({'value': 'yes'})
                         } else {

@@ -28,12 +28,6 @@
                                         <label class="form-label">Имя*</label>
                                         <input type="text" name="name" class="form-control" placeholder="Наименование товара" required="">
                                     </div>
-                                    {% if name %}
-                                        <div class="alert alert-danger alert-dismissible">
-                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            {{ name }}
-                                        </div>
-                                    {% endif %}
                                     <div class="form-group">
                                         <label class="form-label">Номенклатура (Артикул)*</label>
                                         <input type="text" name="artikul" id="input_artikul" class="form-control" placeholder="Артикул">
@@ -223,17 +217,6 @@
                                         <label class="form-label">Макс. ток, А</label>
                                         <input type="text" name="color" class="form-control" value="" placeholder="10">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <section>
-                                        <div class="news-content-right pd-20">
-                                            <label class="form-label">Наличие в магазине</label>
-                                            <div class="squaredFour">
-                                                <input type="checkbox" id="squaredFour" name="check_pres"/>
-                                                <label for="squaredFour"></label>
-                                            </div>
-                                        </div>
-                                    </section>
                                 </div>
                             </div>
                         </div>

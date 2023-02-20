@@ -9,6 +9,7 @@ subcategory = [],
     subsubcategory = [];
 
 $(document).ready(function () {
+    $('#squaredFour').prop('checked', false);
     category = 0;
     category = [];
     $('categ').each(function () {

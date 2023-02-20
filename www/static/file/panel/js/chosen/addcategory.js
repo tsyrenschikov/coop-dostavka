@@ -8,8 +8,9 @@ subcategory = [],
     subsubcategory = [];
 
 $(document).ready(function () {
+    $('#squaredFour').prop('checked', false);
     $("#selectcat").on('change', function () {
-
+        $('#squaredFour').attr({'value':'false'})
         var
             count = 0,
             countname = '',
@@ -47,8 +48,8 @@ $(document).ready(function () {
                         $('.prom_electro').show();
                         $('.prom_mebel').hide();
                     }
-                    $('input[type="checkbox"]').click(function () {
-                        if ($(this).is(':checked')) {
+                    $('input[type=checkbox]').change(function () {
+                        if ($(this).prop('checked')) {
                             $('#squaredFour').attr({'value': 'yes'})
                         } else {
                             $('#squaredFour').attr({'value': 'false'})
@@ -103,4 +104,5 @@ $(document).ready(function () {
         'border': 'none',
         'box-shadow': 'none'
     });
-});
+})
+;

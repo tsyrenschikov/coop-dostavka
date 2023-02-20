@@ -10,7 +10,7 @@ subcategory = [],
 $(document).ready(function () {
     $('#squaredFour').prop('checked', false);
     $("#selectcat").on('change', function () {
-        $('#squaredFour').attr({'value':'false'})
+        $('#check_yes_no').attr({'value':'no'})
         var
             count = 0,
             countname = '',
@@ -39,20 +39,14 @@ $(document).ready(function () {
                     $('#selectsub option:first').remove();
                     lens -= 1;
                 }
-                if (count > 20) {
+                if ((count > 20) && (count <24)) {
                     $('.tpgdiv').show();
-                    if (countname === 'Мебель') {
-                        $('.prom_mebel').show();
-                        $('.prom_electro').hide();
-                    } else if (countname === 'Бытовая техника') {
-                        $('.prom_electro').show();
-                        $('.prom_mebel').hide();
-                    }
-                    $('input[type=checkbox]').each(function () {
+                        $('.prom_product').show();
+                    $('input[type=checkbox]').click(function () {
                         if ($(this).prop('checked')) {
-                            $('#squaredFour').attr({'value': 'yes'})
+                            $('#check_yes_no').attr({'value': 'yes'})
                         } else {
-                            $('#squaredFour').attr({'value': 'false'})
+                            $('#check_yes_no').attr({'value': 'no'})
                         }
                     });
 
@@ -90,8 +84,7 @@ $(document).ready(function () {
                     $('.tpgdiv').hide();
                     $('#selectsubsub').attr({'name': ''})
                     $('#selectsubsub option').attr({'name': ''})
-                    $('.prom_mebel').hide();
-                    $('.prom_electro').hide();
+                    $('.prom_product').hide();
                 }
             }
         )

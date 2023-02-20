@@ -5,9 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/characteristiki.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/edit_characteristiki.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_9_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_9_20__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/addcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/addcategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +45,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -75,36 +99,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "last_opened_file_path": "C:/coopdostavka",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\coop-dostavka\app\panel" />
@@ -119,11 +142,8 @@
       <recent name="D:\coop-dostavka\app\panel" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.products.html">
+  <component name="RunManager" selected="Python.uchi">
     <configuration name="file.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/coop-dostavka/app/panel/templates/panel/file.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="products.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/__init__.py/app/shop/templates/chetkarino/products.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -303,44 +323,15 @@
       <workItem from="1675875152681" duration="1692000" />
       <workItem from="1676271324714" duration="995000" />
       <workItem from="1676272706272" duration="1430000" />
-      <workItem from="1676447381491" duration="1362000" />
-      <workItem from="1676520766589" duration="4067000" />
-      <workItem from="1676531726574" duration="649000" />
-    </task>
-    <task id="LOCAL-00064" summary="request GET panel">
-      <created>1673970180600</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1673970180600</updated>
-    </task>
-    <task id="LOCAL-00065" summary="edit">
-      <created>1674140843692</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1674140843692</updated>
-    </task>
-    <task id="LOCAL-00066" summary="edit">
-      <created>1674236261988</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1674236261988</updated>
-    </task>
-    <task id="LOCAL-00067" summary="edit">
-      <created>1674834994352</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1674834994353</updated>
-    </task>
-    <task id="LOCAL-00068" summary="edit">
-      <created>1674836769119</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1674836769119</updated>
+      <workItem from="1676566007020" duration="973000" />
+      <workItem from="1676568855803" duration="2322000" />
+      <workItem from="1676571497176" duration="5000" />
+      <workItem from="1676658544785" duration="1064000" />
+      <workItem from="1676715711829" duration="2586000" />
+      <workItem from="1676718372212" duration="141000" />
+      <workItem from="1676723302822" duration="11101000" />
+      <workItem from="1676792167626" duration="1384000" />
+      <workItem from="1676812873929" duration="5403000" />
     </task>
     <task id="LOCAL-00069" summary="edit">
       <created>1674836801704</created>
@@ -623,34 +614,69 @@
       <updated>1676433100394</updated>
     </task>
     <task id="LOCAL-00109" summary="celery">
-      <created>1676447554495</created>
+      <created>1676562561372</created>
       <option name="number" value="00109" />
       <option name="presentableId" value="LOCAL-00109" />
       <option name="project" value="LOCAL" />
-      <updated>1676447554496</updated>
+      <updated>1676562561372</updated>
     </task>
-    <task id="LOCAL-00110" summary="Харкактеристики">
-      <created>1676530418873</created>
+    <task id="LOCAL-00110" summary="celery task">
+      <created>1676569322947</created>
       <option name="number" value="00110" />
       <option name="presentableId" value="LOCAL-00110" />
       <option name="project" value="LOCAL" />
-      <updated>1676530418874</updated>
+      <updated>1676569322947</updated>
     </task>
-    <task id="LOCAL-00111" summary="add_product">
-      <created>1676877187511</created>
+    <task id="LOCAL-00111" summary="search panel">
+      <created>1676572398776</created>
       <option name="number" value="00111" />
       <option name="presentableId" value="LOCAL-00111" />
       <option name="project" value="LOCAL" />
-      <updated>1676877187511</updated>
+      <updated>1676572398776</updated>
     </task>
-    <task id="LOCAL-00112" summary="add_product">
-      <created>1676879687945</created>
+    <task id="LOCAL-00112" summary="search panel">
+      <created>1676573618204</created>
       <option name="number" value="00112" />
       <option name="presentableId" value="LOCAL-00112" />
       <option name="project" value="LOCAL" />
-      <updated>1676879687945</updated>
+      <updated>1676573618204</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="edit product">
+      <created>1676739431540</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1676739431540</updated>
+    </task>
+    <task id="LOCAL-00114" summary="file update auto">
+      <created>1676815338066</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1676815338066</updated>
+    </task>
+    <task id="LOCAL-00115" summary="file update auto">
+      <created>1676818428930</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818428930</updated>
+    </task>
+    <task id="LOCAL-00116" summary="file update auto">
+      <created>1676818454446</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818454446</updated>
+    </task>
+    <task id="LOCAL-00117" summary="file update auto">
+      <created>1676819762609</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1676819762609</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,8 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add project" />
-    <MESSAGE value="delete celery" />
     <MESSAGE value="edit search" />
     <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
@@ -692,19 +716,21 @@
     <MESSAGE value="send email update_file, jquery add_product" />
     <MESSAGE value="jquery add_product" />
     <MESSAGE value="celery" />
-    <MESSAGE value="Харкактеристики" />
-    <MESSAGE value="add_product" />
-    <option name="LAST_COMMIT_MESSAGE" value="add_product" />
+    <MESSAGE value="celery task" />
+    <MESSAGE value="search panel" />
+    <MESSAGE value="edit product" />
+    <MESSAGE value="file update auto" />
+    <option name="LAST_COMMIT_MESSAGE" value="file update auto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>931</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
     </breakpoint-manager>
   </component>
 </project>

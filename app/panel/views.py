@@ -1105,6 +1105,13 @@ def add_product(request, **kwargs):
                 for s, slug, id in shops:
                     if u == s:
                         n = eval(slug)
+                        alert = {
+                            'name': request.GET.get('name', ''),
+                            'products': n.objects.all(),
+                            'category': Category.objects.all().order_by('number'),
+                            'subcategory': SubCategory.objects.values('name', 'subsubcat'),
+                            'subsubcategory': SubSubCategory.objects.all(),
+                        }
                         products = n.objects.all()
                         category = Category.objects.all().order_by('number')
                         subcategory = SubCategory.objects.values('name', 'subsubcat')
@@ -1127,8 +1134,16 @@ def add_product(request, **kwargs):
                             material = request.POST.get('material')
                             color = request.POST.get('color')
                             check_pres = request.POST.get('check_pres')
-                            n.objects.create( shop_id=id,name=name,artikul=artikul,price=price,discount=discount,categ=categ,subcat=subcat,subsubcat=subsubcat,status=status,description=description,
-                                              image=image,width=width,height=height,length=length,fabricator=fabricator,material=material,color=color,check_pres=check_pres)
+                            if n.objects.filter(name=request.POST['name']).exists():
+                                alert['name'] = 'Наименование товара уже существует'
+                                return render(request, 'panel/add_product.html', alert)
+                            else:
+                                n.objects.create(name=name, artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat,
+                                                 description=description, \
+                                                 image=image,
+                                                 width=width, \
+                                                 height=height,
+                                                 length=length, fabricator=fabricator, material=material, color=color, check_pres=check_pres)
                             return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
                         return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:

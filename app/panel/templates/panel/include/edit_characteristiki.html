@@ -1,0 +1,58 @@
+<form method="post" enctype="multipart/form-data">
+    <div class="col-lg-3 col-md-4">
+        <div class="card card-static-2 mb-30 prom_product">
+            <div class="card-title-2">
+                <h4>Характеристика товара</h4>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Ширина (мм)</label>
+                    <input type="number" name="width" class="form-control" value="{{ products.width }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Высота (мм)</label>
+                    <input type="number" name="height" class="form-control" value="{{ products.height }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Глубина (мм)</label>
+                    <input type="number" name="length" class="form-control" value="{{ products.length }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Производитель</label>
+                    <input type="text" name="fabricator" class="form-control" value="{{ products.fabricator }}" placeholder="Пермь">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Материал</label>
+                    <input type="text" name="material" class="form-control" value="{{ products.material }}" placeholder="ДСП">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="news-content-right pd-20">
+                    <label class="form-label">Цвет изделия</label>
+                    <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Цвет изделия">
+                </div>
+            </div>
+            <div class="form-group">
+                <section>
+                    <div class="news-content-right pd-20">
+                        <label class="form-label">Наличие в магазине</label>
+                        <input type="hidden" id="check_press" value="{{ products.check_pres }}">
+                        <input type="hidden" id="check_yes_no" name="check_pres">
+                        <div class="squaredFour">
+                            <input type="checkbox" id="squaredFour">
+                            <label for="squaredFour"></label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>

@@ -4,58 +4,59 @@
 {% block title %}product{% endblock %}
 
 {% block content %}
-{% load static %}
+    {% load static %}
 
-<div class="wrapper">
-    <div class="all-product-grid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="product-dt-view">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div id="sync1" class="owl-theme">
-                                    {% if product.image %}
-                                    <div class="item">
-                                        {% thumbnail product.image "250x250" crop="center" as im %}
-                                        <img src="{{ im.url }}" alt="">
-                                        {% endthumbnail %}
+    <div class="wrapper">
+        <div class="all-product-grid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product-dt-view">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div id="sync1" class="owl-theme">
+                                        {% if product.image %}
+                                            <div class="item">
+                                                {% thumbnail product.image "250x250" crop="center" as im %}
+                                                    <img src="{{ im.url }}" alt="">
+                                                {% endthumbnail %}
+                                            </div>
+                                        {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8">
-                                <div class="product-dt-right">
-                                    <h2>{{ product.name }}</h2>
-                                    <div class="no-stock">
-                                        <p class="pd-no">Продукт No.<span>{{ product.id }}</span></p>
-                                        {% if product.check_pres == 'yes' %}
+                                <div class="col-lg-8 col-md-8">
+                                    <div class="product-dt-right">
+                                        <h2>{{ product.name }}</h2>
+                                        <div class="no-stock">
+                                            <p class="pd-no">Продукт No.<span>{{ product.id }}</span></p>
+                                            {% if product.check_pres == 'yes' %}
                                                 <p class="stock-qty"><span style="color: #78be20; font-weight: 500; font-size: 18px">В наличии</span></p>
-                                            {% elif product.check_pres == 'false' %}
+                                            {% elif product.check_pres == 'no' %}
                                                 <p class="stock-qty"><span style="color: #7c72ff; font-weight: 500; font-size: 18px">Под заказ</span></p>
                                             {% else %}
                                                 <p class="stock-qty"></p>
                                             {% endif %}
+                                        </div>
+                                        <p class="pp-descp">{{ product.description }}</p>
+                                        <div class="product-group-dt">
+                                            <ul>
+                                                <li>
+                                                    <div class="main-price color-discount">Цена</div>
+                                                </li>
+                                                <li>
+                                                    <div class="main-price mrp-price">{{ product.price }} р</div>
+                                                </li>
+                                            </ul>
+                                            <ul class="ordr-crt-share">
+                                                <li>
+                                                    <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
+                                                        <i class="uil uil-shopping-cart-alt "></i>Добавить в корзину
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {% include 'shop/includes/general_characteristics.html' %}
                                     </div>
-                                    <p class="pp-descp">{{ product.description }}</p>
-                                    <div class="product-group-dt">
-                                        <ul>
-                                            <li>
-                                                <div class="main-price color-discount">Цена</div>
-                                            </li>
-                                            <li>
-                                                <div class="main-price mrp-price">{{ product.price }} р</div>
-                                            </li>
-                                        </ul>
-                                        <ul class="ordr-crt-share">
-                                            <li>
-                                                <button data-name="{{ product.name }}" data-price='{{ product.price }}' class="add-cart-btn hover-btn add-to-cart">
-                                                    <i class="uil uil-shopping-cart-alt "></i>Добавить в корзину
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {% include 'shop/includes/general_characteristics.html' %}
                                 </div>
                             </div>
                         </div>
@@ -64,10 +65,9 @@
             </div>
         </div>
     </div>
-</div>
-{% include 'shop/includes/animation_add_cart.html' %}
-{% include 'shop/includes/cart_modal_pokrovskoe.html' %}
-{% include 'shop/includes/featured_pokrovskoe.html' %}
-{% include 'shop/layouts/footer.html' %}
-{% include 'shop/includes/scripts.html' %}
+    {% include 'shop/includes/animation_add_cart.html' %}
+    {% include 'shop/includes/cart_modal_pokrovskoe.html' %}
+    {% include 'shop/includes/featured_pokrovskoe.html' %}
+    {% include 'shop/layouts/footer.html' %}
+    {% include 'shop/includes/scripts.html' %}
 {% endblock content %}

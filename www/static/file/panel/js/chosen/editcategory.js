@@ -9,7 +9,15 @@ subcategory = [],
     subsubcategory = [];
 
 $(document).ready(function () {
-    $('#squaredFour').prop('checked', false);
+    var check_pres =$('#check_press').val();
+    if (check_pres ==='yes' ){
+        $('#squaredFour').prop('checked', true);
+         $('#check_yes_no').attr({'value':'yes'})
+    }
+    else {
+        $('#squaredFour').prop('checked', false);
+         $('#check_yes_no').attr({'value':'no'})
+    }
     category = 0;
     category = [];
     $('categ').each(function () {
@@ -69,22 +77,16 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if (count > 20) {
-                $('.tpgdiv').show();
-                if (countname === 'Мебель') {
-                    $('.prom_mebel').show();
-                    $('.prom_electro').hide();
-                } else if (countname === 'Бытовая техника') {
-                    $('.prom_electro').show();
-                    $('.prom_mebel').hide();
-                }
-                $('input[type="checkbox"]').click(function () {
-                    if ($(this).is(':checked')) {
-                        $('#squaredFour').attr({'value': 'yes'})
-                    } else {
-                        $('#squaredFour').attr({'value': 'false'})
-                    }
-                });
+            if ((count > 20) && (count <24)) {
+                    $('.tpgdiv').show();
+                        $('.prom_product').show();
+                    $('input[type=checkbox]').click(function () {
+                        if ($(this).prop('checked')) {
+                            $('#check_yes_no').attr({'value': 'yes'})
+                        } else {
+                            $('#check_yes_no').attr({'value': 'no',})
+                        }
+                    });
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');
@@ -124,9 +126,8 @@ $(document).ready(function () {
             } else {
                 $('.tpgdiv').hide();
                 $('#selectsubsub').attr({'name': 'subbsubcat', value: ''});
-                $('#selectsubsub option').attr({'name': 'subbsubcat', value: '', selected: false})
-                $('.prom_mebel').hide();
-                $('.prom_electro').hide();
+                $('#selectsubsub option').attr({'name': 'subbsubcat', value: '', selected: false});
+                $('.prom_product').hide();
 
             }
         });

@@ -310,14 +310,7 @@
       <workItem from="1676723302822" duration="11101000" />
       <workItem from="1676792167626" duration="1384000" />
       <workItem from="1676812873929" duration="5403000" />
-      <workItem from="1676991900991" duration="7228000" />
-    </task>
-    <task id="LOCAL-00070" summary="edit">
-      <created>1674837506098</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1674837506098</updated>
+      <workItem from="1676991900991" duration="10917000" />
     </task>
     <task id="LOCAL-00071" summary="edit">
       <created>1674838501848</created>
@@ -655,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676915713282</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="edit">
+      <created>1677002100520</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1677002100520</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +674,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
     <MESSAGE value="update_file" />
@@ -699,7 +698,8 @@
     <MESSAGE value="edit product" />
     <MESSAGE value="file update auto" />
     <MESSAGE value="product check" />
-    <option name="LAST_COMMIT_MESSAGE" value="product check" />
+    <MESSAGE value="edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

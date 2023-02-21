@@ -10,7 +10,7 @@ subcategory = [],
 $(document).ready(function () {
     $('#squaredFour').prop('checked', false);
     $("#selectcat").on('change', function () {
-        $('#check_yes_no').attr({'value':'no'})
+        $('#check_yes_no').attr({'value': 'None'})
         var
             count = 0,
             countname = '',
@@ -39,9 +39,12 @@ $(document).ready(function () {
                     $('#selectsub option:first').remove();
                     lens -= 1;
                 }
-                if ((count > 20) && (count <24)) {
+                if ((count > 20) && (count < 24)) {
                     $('.tpgdiv').show();
-                        $('.prom_product').show();
+                    if ($(this).prop('checked', false)) {
+                         $('#check_yes_no').attr({'value': 'no'})
+                    }
+                    $('.prom_product').show();
                     $('input[type=checkbox]').click(function () {
                         if ($(this).prop('checked')) {
                             $('#check_yes_no').attr({'value': 'yes'})

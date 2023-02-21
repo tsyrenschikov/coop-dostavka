@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/characteristiki.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/edit_characteristiki.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_02_2023_17_41__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_9_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_9_20__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/addcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/addcategory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,35 +75,37 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</source-data-source-id>\n        <source-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</source-path>\n        <target-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</target-data-source-id>\n        <target-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
+    "last_opened_file_path": "D:/backup",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\coop-dostavka\app\panel" />
@@ -332,13 +310,7 @@
       <workItem from="1676723302822" duration="11101000" />
       <workItem from="1676792167626" duration="1384000" />
       <workItem from="1676812873929" duration="5403000" />
-    </task>
-    <task id="LOCAL-00069" summary="edit">
-      <created>1674836801704</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1674836801704</updated>
+      <workItem from="1676991900991" duration="7228000" />
     </task>
     <task id="LOCAL-00070" summary="edit">
       <created>1674837506098</created>
@@ -676,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676819762609</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="product check">
+      <created>1676915713282</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1676915713282</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +674,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit search" />
     <MESSAGE value="update_file edit" />
     <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
@@ -720,7 +698,8 @@
     <MESSAGE value="search panel" />
     <MESSAGE value="edit product" />
     <MESSAGE value="file update auto" />
-    <option name="LAST_COMMIT_MESSAGE" value="file update auto" />
+    <MESSAGE value="product check" />
+    <option name="LAST_COMMIT_MESSAGE" value="product check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

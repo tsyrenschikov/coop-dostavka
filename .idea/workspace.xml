@@ -7,7 +7,21 @@
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_15_14_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_15_14__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_02_2023_19_15_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_02_2023_19_15__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,37 +89,37 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
-    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</source-data-source-id>\n        <source-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</source-path>\n        <target-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</target-data-source-id>\n        <target-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
-    "last_opened_file_path": "D:/backup",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
+    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/backup&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\coop-dostavka\app\panel" />
@@ -310,14 +324,12 @@
       <workItem from="1676723302822" duration="11101000" />
       <workItem from="1676792167626" duration="1384000" />
       <workItem from="1676812873929" duration="5403000" />
-      <workItem from="1676991900991" duration="10917000" />
-    </task>
-    <task id="LOCAL-00071" summary="edit">
-      <created>1674838501848</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1674838501848</updated>
+      <workItem from="1676991900991" duration="11246000" />
+      <workItem from="1677071727956" duration="1234000" />
+      <workItem from="1677149595885" duration="943000" />
+      <workItem from="1677151320322" duration="478000" />
+      <workItem from="1677152411947" duration="1302000" />
+      <workItem from="1677243291731" duration="4498000" />
     </task>
     <task id="LOCAL-00072" summary="edit">
       <created>1674840260215</created>
@@ -655,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677002100520</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="edit">
+      <created>1677006551419</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1677006551419</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

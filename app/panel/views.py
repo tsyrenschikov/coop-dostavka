@@ -1330,7 +1330,7 @@ def order_total(request, statusord):
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'page_obj': page_obj, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                  {'page_obj': page_obj, 'shops':shops,'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4,
                                    'address': address})
     else:

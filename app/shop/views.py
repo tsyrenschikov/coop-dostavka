@@ -2044,10 +2044,10 @@ def searchchernovskoe(request):
         phone = request.POST.get('phone')
         if orders.objects.filter(name=request.POST['name']).exists() == False:
             alert['name'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
-            return render(request, 'chetkarino/search_order.html', alert)
+            return render(request, 'chernovskoe/search_order.html', alert)
         if orders.objects.filter(phone=request.POST['phone']).exists() == False:
             alert['phone'] = 'Мы не нашли заказ в нашей базе. Попробуйте использовать другие параметры поиска'
-            return render(request, 'chetkarino/search_order.html', alert)
+            return render(request, 'chernovskoe/search_order.html', alert)
         else:
             client = orders.objects.filter(name=name, phone=phone)
             return render(request, 'chernovskoe/search_order.html', {'category_product': category_product, 'client': client, 'local': local, 'address_str': address_str})

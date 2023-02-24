@@ -50,6 +50,9 @@
                                     <thead>
                                     <tr>
                                         <th style="width:130px">ID</th>
+                                        {% if  'super_manager' in groups %}
+                                            <th>Магазин</th>
+                                        {% endif %}
                                         <th>Покупатель</th>
                                         <th>Телефон</th>
                                         <th style="width:200px">Дата доставки</th>
@@ -60,9 +63,9 @@
                                         <th style="width:130px">Статус</th>
                                         <th style="width: 130px">Комментарий пользователя</th>
                                         <th style="width: 130px">Комментарий менеджера</th>
-                                        {% if address == 3 or address == 4 and not 'super_manager' in groups %}
+                                        {% if not 'super_manager' in groups %}
                                             <th style="width:100px"></th>
-                                        {% else %}
+                                        {% elif 'super_manager' in groups %}
                                             <th style="width:100px">Действия</th>
                                         {% endif %}
                                     </tr>
@@ -79,6 +82,15 @@
                                                 <a href="/order_view/{{ zakaz.id }}" class="views-btn">{{ zakaz.id }}</a>
                                             {% endif %}
                                         </td>
+                                        {% if  'super_manager' in groups %}
+                                            <td>
+                                                {% for shop in shops %}
+                                                    {% if shop.2 == zakaz.slug %}
+                                                        {{ shop.1 }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                        {% endif %}
                                         <td>
                                             {{ zakaz.name }}
                                         </td>

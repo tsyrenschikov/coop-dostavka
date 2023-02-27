@@ -41,7 +41,7 @@ def edit_manager(request):
 
 # Получение списка пользователей входящих в группу 'manager'
 def add_manager(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         alert = {
             "email": request.GET.get('email', ''),
             "phone": request.GET.get('phone', ''),
@@ -245,7 +245,6 @@ def panel(request):
                 #     return render(request, 'panel/error_auth.html')
     else:
         return redirect('/login')
-    return render(request, 'panel/error_auth.html')
 
 
 def posts(request):
@@ -301,11 +300,12 @@ def locations(request):
 
 # Населенный пункт редактировать
 def edit_location(request, id):
-    if request.user.groups.filter(name='manager'):
+    shops = Shop.objects.values_list('name', 'slug').distinct().order_by('name')
+    local = Locations.objects.get(id=id)
+    # users_slug = [i[1] for i in shops if i[1] == local.slug][0]
+    if request.user.groups.filter(name='manager') :
         try:
-            local = Locations.objects.get(id=id)
             days = Days.objects.values('id', 'name', 'daysdict').order_by('id')
-            shops = Shop.objects.values_list('name', 'slug').distinct().order_by('name')
             if request.method == "POST":
                 local.name = request.POST.get("name")
                 local.delivery_price = request.POST.get("delivery_price")
@@ -351,7 +351,7 @@ def add_location(request):
     local = Locations.objects.all()
     shops = Shop.objects.all()
     day = Days.objects.values().order_by('id')
-    if request.user.groups.filter(name='manager'):
+    if request.user.groups.filter(name='super_manager'):
         if request.method == 'POST':
             name = request.POST.get('name')
             delivery_price = request.POST.get('delivery_price')

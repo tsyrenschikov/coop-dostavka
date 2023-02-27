@@ -11,9 +11,9 @@
 16384||-9223372036854775808|T|G
 16384||10|T|G
 16384||16385|T|G</Grants>
-      <IntrospectionStateNumber>1928269</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1927578</IntrospectionStateNumber>
       <ServerVersion>14.6</ServerVersion>
-      <StartupTime>1676995955</StartupTime>
+      <StartupTime>1677517771</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1409,7 +1409,7 @@ false posixrules
 13397||10|C|G
 13397||-9223372036854775808|U|G
 13397||10|U|G</Grants>
-      <IntrospectionStateNumber>1928269</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1927578</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4843,7 +4843,7 @@ false posixrules
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1928269</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1927578</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>1594</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -5054,8 +5054,8 @@ false posixrules
     </sequence>
     <sequence id="298" parent="263" name="panel_oblpotrebsoyuz_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>67393</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75514</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <OwnerName>c39682_coop_dostavka_ru</OwnerName>
     </sequence>
     <sequence id="299" parent="263" name="panel_orders_id_seq">
@@ -5353,8 +5353,8 @@ false posixrules
       <OwnerName>c39682_coop_dostavka_ru</OwnerName>
     </table>
     <table id="348" parent="263" name="panel_oblpotrebsoyuz">
-      <ObjectId>67394</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75515</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>c39682_coop_dostavka_ru</OwnerName>
     </table>
@@ -11462,136 +11462,136 @@ default</CollationNames>
       <DefaultExpression>nextval(&apos;panel_oblpotrebsoyuz_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1928034</StateNumber>
-      <SequenceId>67393</SequenceId>
+      <StateNumber>1927566</StateNumber>
+      <SequenceId>75514</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="1108" parent="348" name="name">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1109" parent="348" name="artikul">
       <DasType>varchar(500)|0s</DasType>
       <Position>3</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1110" parent="348" name="image">
       <DasType>varchar(100)|0s</DasType>
       <Position>4</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1111" parent="348" name="description">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="1112" parent="348" name="price">
       <DasType>numeric(10,2 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="1113" parent="348" name="discount">
       <DasType>numeric(10,2 digit)|0s</DasType>
       <Position>7</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="1114" parent="348" name="categ">
       <DasType>varchar(200)|0s</DasType>
       <Position>8</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1115" parent="348" name="subcat">
       <DasType>jsonb|0s</DasType>
       <Position>9</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>3802</TypeId>
     </column>
     <column id="1116" parent="348" name="subsubcat">
       <DasType>varchar(200)|0s</DasType>
       <Position>10</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1117" parent="348" name="width">
       <DasType>integer|0s</DasType>
       <Position>11</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="1118" parent="348" name="height">
       <DasType>integer|0s</DasType>
       <Position>12</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="1119" parent="348" name="length">
       <DasType>integer|0s</DasType>
       <Position>13</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="1120" parent="348" name="fabricator">
       <DasType>varchar(200)|0s</DasType>
       <Position>14</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1121" parent="348" name="color">
       <DasType>varchar(200)|0s</DasType>
       <Position>15</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1122" parent="348" name="material">
       <DasType>varchar(200)|0s</DasType>
       <Position>16</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1123" parent="348" name="count">
       <DasType>varchar(200)|0s</DasType>
       <Position>17</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1124" parent="348" name="status">
       <DasType>boolean|0s</DasType>
       <NotNull>1</NotNull>
       <Position>18</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="1125" parent="348" name="check_pres">
       <DasType>varchar(200)|0s</DasType>
       <Position>19</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="1126" parent="348" name="shop_id">
       <DasType>bigint|0s</DasType>
       <Position>20</Position>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <foreign-key id="1127" parent="348" name="panel_oblpotrebsoyuz_shop_id_0e28e794_fk_panel_shop_id">
       <ColNames>shop_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>67402</ObjectId>
+      <ObjectId>75523</ObjectId>
       <RefColNames>id</RefColNames>
       <RefColPositions>1</RefColPositions>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <RefTableId>16610</RefTableId>
       <RefTableName>panel_shop</RefTableName>
       <RefTableKind>table</RefTableKind>
@@ -11599,22 +11599,22 @@ default</CollationNames>
     <index id="1128" parent="348" name="panel_oblpotrebsoyuz_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>67400</ObjectId>
+      <ObjectId>75521</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1928034</StateNumber>
+      <StateNumber>1927566</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="1129" parent="348" name="panel_oblpotrebsoyuz_id_16fb696f_idx">
       <ColNames>id</ColNames>
-      <ObjectId>67426</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75547</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="1130" parent="348" name="panel_oblpotrebsoyuz_name_7ae75b4b">
       <ColNames>name</ColNames>
-      <ObjectId>67407</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75528</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11622,8 +11622,8 @@ default</CollationNames>
     </index>
     <index id="1131" parent="348" name="panel_oblpotrebsoyuz_name_7ae75b4b_like">
       <ColNames>name</ColNames>
-      <ObjectId>67408</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75529</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11634,8 +11634,8 @@ default</CollationNames>
     </index>
     <index id="1132" parent="348" name="panel_oblpotrebsoyuz_artikul_752a334c">
       <ColNames>artikul</ColNames>
-      <ObjectId>67409</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75530</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11643,8 +11643,8 @@ default</CollationNames>
     </index>
     <index id="1133" parent="348" name="panel_oblpotrebsoyuz_artikul_752a334c_like">
       <ColNames>artikul</ColNames>
-      <ObjectId>67410</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75531</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11655,8 +11655,8 @@ default</CollationNames>
     </index>
     <index id="1134" parent="348" name="panel_oblpotrebsoyuz_categ_894c0f64">
       <ColNames>categ</ColNames>
-      <ObjectId>67411</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75532</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11664,8 +11664,8 @@ default</CollationNames>
     </index>
     <index id="1135" parent="348" name="panel_oblpotrebsoyuz_categ_894c0f64_like">
       <ColNames>categ</ColNames>
-      <ObjectId>67412</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75533</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11676,8 +11676,8 @@ default</CollationNames>
     </index>
     <index id="1136" parent="348" name="panel_oblpotrebsoyuz_subsubcat_2a51e01f">
       <ColNames>subsubcat</ColNames>
-      <ObjectId>67413</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75534</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11685,8 +11685,8 @@ default</CollationNames>
     </index>
     <index id="1137" parent="348" name="panel_oblpotrebsoyuz_subsubcat_2a51e01f_like">
       <ColNames>subsubcat</ColNames>
-      <ObjectId>67414</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75535</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11697,8 +11697,8 @@ default</CollationNames>
     </index>
     <index id="1138" parent="348" name="panel_oblpotrebsoyuz_fabricator_1e64b889">
       <ColNames>fabricator</ColNames>
-      <ObjectId>67415</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75536</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11706,8 +11706,8 @@ default</CollationNames>
     </index>
     <index id="1139" parent="348" name="panel_oblpotrebsoyuz_fabricator_1e64b889_like">
       <ColNames>fabricator</ColNames>
-      <ObjectId>67416</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75537</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11718,8 +11718,8 @@ default</CollationNames>
     </index>
     <index id="1140" parent="348" name="panel_oblpotrebsoyuz_color_eab895f9">
       <ColNames>color</ColNames>
-      <ObjectId>67417</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75538</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11727,8 +11727,8 @@ default</CollationNames>
     </index>
     <index id="1141" parent="348" name="panel_oblpotrebsoyuz_color_eab895f9_like">
       <ColNames>color</ColNames>
-      <ObjectId>67418</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75539</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11739,8 +11739,8 @@ default</CollationNames>
     </index>
     <index id="1142" parent="348" name="panel_oblpotrebsoyuz_material_21c272e2">
       <ColNames>material</ColNames>
-      <ObjectId>67419</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75540</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11748,8 +11748,8 @@ default</CollationNames>
     </index>
     <index id="1143" parent="348" name="panel_oblpotrebsoyuz_material_21c272e2_like">
       <ColNames>material</ColNames>
-      <ObjectId>67420</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75541</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11760,8 +11760,8 @@ default</CollationNames>
     </index>
     <index id="1144" parent="348" name="panel_oblpotrebsoyuz_count_3a217419">
       <ColNames>count</ColNames>
-      <ObjectId>67421</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75542</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11769,8 +11769,8 @@ default</CollationNames>
     </index>
     <index id="1145" parent="348" name="panel_oblpotrebsoyuz_count_3a217419_like">
       <ColNames>count</ColNames>
-      <ObjectId>67422</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75543</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11781,8 +11781,8 @@ default</CollationNames>
     </index>
     <index id="1146" parent="348" name="panel_oblpotrebsoyuz_check_pres_9052cdf7">
       <ColNames>check_pres</ColNames>
-      <ObjectId>67423</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75544</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -11790,8 +11790,8 @@ default</CollationNames>
     </index>
     <index id="1147" parent="348" name="panel_oblpotrebsoyuz_check_pres_9052cdf7_like">
       <ColNames>check_pres</ColNames>
-      <ObjectId>67424</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75545</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -11802,16 +11802,16 @@ default</CollationNames>
     </index>
     <index id="1148" parent="348" name="panel_oblpotrebsoyuz_shop_id_0e28e794">
       <ColNames>shop_id</ColNames>
-      <ObjectId>67425</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75546</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="1149" parent="348" name="panel_oblpotrebsoyuz_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>67401</ObjectId>
+      <ObjectId>75522</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1928034</StateNumber>
-      <UnderlyingIndexId>67400</UnderlyingIndexId>
+      <StateNumber>1927566</StateNumber>
+      <UnderlyingIndexId>75521</UnderlyingIndexId>
     </key>
     <column id="1150" parent="349" name="id">
       <DasType>bigint|0s</DasType>
@@ -14292,8 +14292,8 @@ default</CollationNames>
     </index>
     <index id="1458" parent="358" name="panel_zajkovskoe_check_pres_4373cbf6">
       <ColNames>check_pres</ColNames>
-      <ObjectId>67391</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75512</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
@@ -14301,8 +14301,8 @@ default</CollationNames>
     </index>
     <index id="1459" parent="358" name="panel_zajkovskoe_check_pres_4373cbf6_like">
       <ColNames>check_pres</ColNames>
-      <ObjectId>67392</ObjectId>
-      <StateNumber>1928034</StateNumber>
+      <ObjectId>75513</ObjectId>
+      <StateNumber>1927566</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>

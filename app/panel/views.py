@@ -36,38 +36,41 @@ def edit_manager(request):
         users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
         return render(request, 'panel/edit_manager.html', {'users': users})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Получение списка пользователей входящих в группу 'manager'
 def add_manager(request):
-    alert = {
-        "email": request.GET.get('email', ''),
-        "phone": request.GET.get('phone', ''),
-    }
+    if request.user.is_authenticated and request.user.is_superuser:
+        alert = {
+            "email": request.GET.get('email', ''),
+            "phone": request.GET.get('phone', ''),
+        }
 
-    if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        org = request.POST.get('org')
-        address = request.POST.get('address')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
+        if request.method == 'POST':
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            org = request.POST.get('org')
+            address = request.POST.get('address')
+            password = request.POST.get('password')
+            password2 = request.POST.get('password2')
 
-        if password == password2:
-            if User.objects.filter(email=request.POST['email']).exists():
-                alert['email'] = "E-mail уже используется"
-            elif User.objects.filter(phone=request.POST['phone']).exists():
-                alert['phone'] = "Номер телефона уже используется"
-            else:
-                User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email, password=password)
-                user_group = Group.objects.get(name='manager')
-                users = User.objects.get(email=email)
-                users.groups.add(user_group)
-                return render(request, 'panel/add_ok_manager.html', {'users': users})
-    return render(request, 'panel/add_manager.html', alert)
+            if password == password2:
+                if User.objects.filter(email=request.POST['email']).exists():
+                    alert['email'] = "E-mail уже используется"
+                elif User.objects.filter(phone=request.POST['phone']).exists():
+                    alert['phone'] = "Номер телефона уже используется"
+                else:
+                    User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email, password=password)
+                    user_group = Group.objects.get(name='manager')
+                    users = User.objects.get(email=email)
+                    users.groups.add(user_group)
+                    return render(request, 'panel/add_ok_manager.html', {'users': users})
+        return render(request, 'panel/add_manager.html', alert)
+    else:
+        return redirect('/login')
 
 
 def add_ok_manager(request):
@@ -76,7 +79,7 @@ def add_ok_manager(request):
 
 # Изменение данных в БД менеджера
 def edit_prof_manager(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             users = User.objects.get(id=id)
 
@@ -102,7 +105,7 @@ def edit_prof_manager(request, id):
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_manager.html', {'users': users})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Страница. Результат успешного изменения профиля менеджера
@@ -112,14 +115,14 @@ def edit_ok_manager(request):
 
 # Удаление данных из БД менеджера
 def delete_manager(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             users = User.objects.get(id=id)
             users.delete()
             return render(request, "panel/delete_ok_manager.html")
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_manager.html', {'users': users})
-    return redirect('/login')
+    return render(request,'panel/error_auth.html')
 
 
 # Страница. Результат успешного удаления профиля менеджера
@@ -129,7 +132,7 @@ def delete_ok_manager(request):
 
 # Просмотр карточки менеджера
 def view_manager(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.get(id=id)
         return render(request, "panel/view_manager.html", {'users': users})
     return redirect('/login')
@@ -147,31 +150,33 @@ def contact(request):
 
 # Редактирование собственного профиля
 def edit_profile(request):
-    user = ''
-    try:
+    if request.user.is_superuser:
         user = User.objects.get(email=request.POST.get('email', ''))
+        try:
 
-        if request.method == "POST":
-            user.first_name = request.POST.get("first_name")
-            user.last_name = request.POST.get("last_name")
-            user.email = request.POST.get("email")
-            user.phone = request.POST.get("phone")
-            user.org = request.POST.get("org")
-            user.address = request.POST.get("address")
-            user.save()
-            return render(request, 'panel/edit_profile.html', {'user': user})
-        else:
-            user = User.objects.get(email=request.POST.get('email', ''))
-            return render(request, 'panel/edit_profile.html', {'user': user}, )
-    except User.DoesNotExist:
-        return render(request, 'panel/edit_profile.html')
+            if request.method == "POST":
+                user.first_name = request.POST.get("first_name")
+                user.last_name = request.POST.get("last_name")
+                user.email = request.POST.get("email")
+                user.phone = request.POST.get("phone")
+                user.org = request.POST.get("org")
+                user.address = request.POST.get("address")
+                user.save()
+                return render(request, 'panel/edit_profile.html', {'user': user})
+            else:
+                user = User.objects.get(email=request.POST.get('email', ''))
+                return render(request, 'panel/edit_profile.html', {'user': user}, )
+        except User.DoesNotExist:
+            return render(request, 'panel/edit_profile.html')
+    else:
+        return render(request, 'panel/error_auth.html')
 
 
 # Главна страница панели управления
 def panel(request):
     users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').filter(status=True).order_by('name').distinct()
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         products_count_user = {}
         products_count = {}
         for user in users:
@@ -264,7 +269,7 @@ def locations(request):
     users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
     day = Days.objects.values('name', 'daysdict').order_by('name')
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         if not request.user.is_superuser:
             slug_name = [y[2] for x in users for y in shops if x == y[0] and request.user.id == x][0]
             local = Locations.objects.filter(slug=slug_name).order_by('name')
@@ -291,12 +296,12 @@ def locations(request):
                 return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
             return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Населенный пункт редактировать
 def edit_location(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         try:
             local = Locations.objects.get(id=id)
             days = Days.objects.values('id', 'name', 'daysdict').order_by('id')
@@ -332,7 +337,7 @@ def edit_location(request, id):
         except local.DoesNotExist:
             return render(request, 'panel/edit_error_location.html', {'local': local, 'days': days, 'shops': shops})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Населенный пункт добавить
@@ -346,7 +351,7 @@ def add_location(request):
     local = Locations.objects.all()
     shops = Shop.objects.all()
     day = Days.objects.values().order_by('id')
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         if request.method == 'POST':
             name = request.POST.get('name')
             delivery_price = request.POST.get('delivery_price')
@@ -369,39 +374,42 @@ def add_location(request):
                 return render(request, 'panel/add_ok_location.html', {'local': local, 'shops': shops, 'day': day})
         return render(request, 'panel/add_location.html', {'local': local, 'shops': shops, 'day': day})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Успешное добавления территории
 def add_ok_location(request):
-    local = Locations.objects.all()
-    return render(request, 'panel/add_ok_location.html', {'local': local})
+    if request.user.groups.filter(name='manager'):
+        local = Locations.objects.all()
+        return render(request, 'panel/add_ok_location.html', {'local': local})
+    else:
+        return render(request, 'panel/error_auth.html')
 
 
 # Населенный пункт удалить
 def delete_location(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         local = Locations.objects.get(id=id)
         local.delete()
         return render(request, "panel/delete_ok_location.html", {'local': local})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 # Успешное удаления локации
 def delete_ok_location(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             local = Locations.objects.all()
             return render(request, 'panel/delete_ok_location', {'local': local})
         except local.DoesNotExist:
             return render(request, 'panel/delete_error_location.html', {'local': local})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Список территорий продаж
 def areas(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         areas = Shop.objects.values('name', 'slug').filter(status=True).order_by('slug')
         dict_a = {k['name']: '0' for k in areas}
         list_slug = sorted(list(set([i['slug'] for i in areas])))
@@ -423,31 +431,31 @@ def areas(request):
                         dict_l.update({a['name']: '0'})
         return render(request, 'panel/areas.html', {'list_slug': list_slug, 'dict_a': dict_a, 'dict_l': dict_l})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 def category(request, ):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.all()
         categories = Category.objects.all().order_by('number')
         return render(request, 'panel/category.html', {'categories': categories, 'users': users})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Просмотр категории товаров
 def view_category(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         images = Category.objects.get(id=id)
         categories = Category.objects.values('name', 'status', 'image', 'subcat', 'area__name').get(id=id)
         return render(request, 'panel/view_category.html', {'categories': categories, 'images': images})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Редактировать категорию товара
 def edit_category(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             categories = Category.objects.get(id=id)
             subcategory = SubCategory.objects.all()
@@ -470,21 +478,21 @@ def edit_category(request, id):
         except User.DoesNotExist:
             return render(request, 'panel/edit_category.html', {})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Успешное редактирование категории товара
 def edit_ok_category(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         categories = Category.objects.get(id=id)
         return render(request, 'panel/edit_ok_category.html', {'categories': categories})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить категорию товара категории
 def add_category(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         count = Category.objects.values_list('number', flat=True).order_by('-id').distinct()
         count_name = Category.objects.values_list('name', flat=True).order_by('-id').distinct()
         subcategory = SubCategory.objects.all()
@@ -497,27 +505,28 @@ def add_category(request):
             Category.objects.create(name=name, status=status, subcat=subcat, number=number, image=image)
             return render(request, 'panel/add_ok_category.html')
         return render(request, 'panel/add_category.html', {'subcategory': subcategory, 'count': count, 'count_name': count_name})
-    return redirect('/login')
+    return render(request,'panel/error_auth.html')
 
 
 # Успешное добавления категории
 def add_ok_category(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         subcategory = SubCategory.objects.all()
         return render(request, 'panel/add_ok_category.html', {'subcategory': subcategory})
-    return redirect('/login')
+    return render(request,'panel/error_auth.html')
 
 
 # Удаления категории
 def delete_category(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         categories = Category.objects.get(id=id)
         try:
             categories.delete()
             return render(request, "panel/delete_ok_category.html", {'categories': categories})
         except categories.DoesNotExist:
             return render(request, 'panel/edit_error_category.html', {})
-    else:return redirect('/login')
+    else:
+        return render(request, 'panel/error_auth.html')
 
 
 # Успешное удаления категории
@@ -530,32 +539,35 @@ def delete_ok_category(request):
 
 # Список подкатегорий
 def subcategory(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         subcategories = SubCategory.objects.all().order_by('number')
         return render(request, 'panel/subcategory.html', {'subcategories': subcategories})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить категорию
 def add_subcategory(request):
-    alert = {
-        'number': request.GET.get('number', ''),
-        'name': request.GET.get('name', ''),
-    }
+    if request.user.is_superuser:
+        alert = {
+            'number': request.GET.get('number', ''),
+            'name': request.GET.get('name', ''),
+        }
 
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        number = request.POST.get('number')
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            number = request.POST.get('number')
 
-        if SubCategory.objects.filter(number=request.POST['number']).exists():
-            alert['number'] = 'Номер подкатегории уже существует'
-        elif SubCategory.objects.filter(name=request.POST['name']).exists():
-            alert['name'] = 'Имя подкатегории уже существует'
-        else:
-            SubCategory.objects.create(name=name, number=number)
-            return render(request, 'panel/add_ok_subcategory.html')
-    return render(request, 'panel/add_subcategory.html', alert)
+            if SubCategory.objects.filter(number=request.POST['number']).exists():
+                alert['number'] = 'Номер подкатегории уже существует'
+            elif SubCategory.objects.filter(name=request.POST['name']).exists():
+                alert['name'] = 'Имя подкатегории уже существует'
+            else:
+                SubCategory.objects.create(name=name, number=number)
+                return render(request, 'panel/add_ok_subcategory.html')
+        return render(request, 'panel/add_subcategory.html', alert)
+    else:
+        return render(request, 'panel/error_auth.html')
 
 
 # Успешное добавления подкатегории
@@ -565,16 +577,16 @@ def add_ok_subcategory(request):
 
 # Просмотр подкатегории
 def view_subcategory(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if  request.user.groups.filter(name='manager'):
         subcategory = SubCategory.objects.get(id=id)
         return render(request, 'panel/view_subcategory.html', {'subcategory': subcategory})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удаление подкатегории
 def delete_subcategory(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         subcategory = SubCategory.objects.get(id=id)
         try:
             subcategory.delete()
@@ -586,7 +598,7 @@ def delete_subcategory(request, id):
 
 # Редактировать подкатегорию
 def edit_subcategory(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             subcategory = SubCategory.objects.get(id=id)
             subsubcategory = SubSubCategory.objects.all()
@@ -612,7 +624,7 @@ def edit_subcategory(request, id):
 
 # Успешное удаление подкатегории
 def delete_ok_subcategory(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         subcategory = SubCategory.objects.all()
         return render(request, 'panel/delete_ok_subcategory.html', {'subcategory': subcategory})
     else:
@@ -621,16 +633,16 @@ def delete_ok_subcategory(request):
 
 # Подподкатегория
 def subsubcategory(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         subsubcategory = SubSubCategory.objects.all().order_by('number')
         return render(request, 'panel/subsubcategory.html', {'subsubcategory': subsubcategory})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить подподкатегорию
 def add_subsubcategory(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         alert = {
             'number': request.GET.get('number', ''),
             'name': request.GET.get('name', ''),
@@ -649,7 +661,7 @@ def add_subsubcategory(request):
                 return render(request, 'panel/add_ok_subsubcategory.html')
         return render(request, 'panel/add_subsubcategory.html', alert)
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Успешное добавления подподкатегории
@@ -659,7 +671,7 @@ def add_ok_subsubcategory(request):
 
 # Редактировать подподкатегорию
 def edit_subsubcategory(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         try:
             subsubcategory = SubSubCategory.objects.get(id=id)
 
@@ -677,12 +689,12 @@ def edit_subsubcategory(request, id):
         except SubSubCategory.DoesNotExist:
             return render(request, 'panel/edit_subsubcategory.html', {})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удаление подкатегории
 def delete_subsubcategory(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         subsubcategory = SubSubCategory.objects.get(id=id)
         try:
             subsubcategory.delete()
@@ -695,7 +707,7 @@ def delete_subsubcategory(request, id):
 
 # Успешное удаление подподкатегории
 def delete_ok_subsubcategory(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         subsubcategory = SubSubCategory.objects.all()
         return render(request, 'panel/delete_ok_subsubcategory.html', {'subsubcategory': subsubcategory})
     else:
@@ -707,7 +719,7 @@ def products(request):
     manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
     address = str([i for i in str(request.path).split('/') if i][0])
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         for u in users:
             for m in manager:
                 if u == m and request.user.id == u:
@@ -749,12 +761,12 @@ def products(request):
                                 return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                             return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Список файлов
 def file(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).distinct()
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'name').order_by('name').distinct()
@@ -789,7 +801,7 @@ def file(request):
                     return render(request, 'panel/file.html', {'file': file, 'shops': shops})
 
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 def export_0(request, id):
@@ -905,7 +917,7 @@ def no_product_(request, id):
         return render(request, 'panel/error/file_delete_logs.html')
 
 def update_file(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
         name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
@@ -1036,11 +1048,11 @@ def update_file(request, id):
             dup_1 = [i for i in dup if i != None]
             return render(request, 'panel/error/update_file_multipleobjectreturned.html', {'dup_1': dup_1})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 def logs(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug','name').distinct()
         today = date.today().strftime('%Y-%m-%d')
@@ -1051,12 +1063,12 @@ def logs(request):
             obj = report.objects.all().filter(slug=name_).order_by('-id')
         return render(request, 'panel/logs.html', {'obj': obj, 'shops':shops})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удалить файл
 def delete_file(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         file = files.objects.get(id=id)
         try:
             file.delete();
@@ -1065,12 +1077,12 @@ def delete_file(request, id):
         except file.DoesNotExist:
             return render(request, 'panel/delete_file.html', {})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Просмотр продукта
 def product_view(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
         for u in users:
@@ -1081,12 +1093,12 @@ def product_view(request, id):
                         products = name.objects.get(id=id)
                         return render(request, 'panel/product_view.html', {'products': products})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Редактировать продукт
 def edit_product(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         try:
             users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
             shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
@@ -1134,12 +1146,12 @@ def edit_product(request, id):
             return render(request, 'panel/edit_product.html',
                           {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить продукт
 def add_product(request, **kwargs):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
 
@@ -1190,12 +1202,12 @@ def add_product(request, **kwargs):
                             return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
                         return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Популярные продукты
 def popular_product(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
         for u in users:
@@ -1206,12 +1218,12 @@ def popular_product(request):
                         order_ = orders.objects.filter(slug=n).order_by('name')
                         list_prod = [y for x in order_ for y in x.products]
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удаление товара
 def delete_product(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
         products = ''
@@ -1226,12 +1238,12 @@ def delete_product(request, id):
         except products.DoesNotExist:
             return render(request, 'panel/delete_error_product.html', {})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Список магазинов
 def shops(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         managers = Shop.objects.values('id', 'name', 'status', 'customuser__last_name', 'customuser__first_name', 'area__name')
         users = User.objects.values_list('id', flat=True).distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
@@ -1243,12 +1255,12 @@ def shops(request):
                     return render(request, 'panel/shops.html', {'managers': managers, 'count': count})
 
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Просмотр магазина
 def shop_view(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         object_id = int([i for i in str(request.path).split('/') if i][-1])  # Взять из строки число
         users = Shop.objects.values('id', 'name', 'status', 'descriptions', 'customuser__last_name', 'customuser__first_name', 'customuser__phone', 'customuser__email', 'customuser__address',
                                     'customuser__org', 'area_id', 'area__name', 'ogrn', 'uraddress', 'times', 'days').get(id=id)
@@ -1262,12 +1274,12 @@ def shop_view(request, id):
             if i == object_id:
                 return slug
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить магазины
 def add_shop(request, **kwargs):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         alert = {
             'name': request.GET.get('name', ''),
             'users': User.objects.filter(groups__name='manager').filter(groups__name='manager').order_by('last_name'),
@@ -1328,7 +1340,7 @@ def add_shop(request, **kwargs):
 
 # Успешное добавления магазина
 def add_ok_shop(request):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         return render(request, 'panel/add_ok_shop.html')
     else:
         return redirect('/login')
@@ -1336,7 +1348,7 @@ def add_ok_shop(request):
 
 # Удаление магазина
 def delete_shop(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         shops = Shop.objects.get(id=id)
         try:
             shops.delete()
@@ -1352,7 +1364,7 @@ def order_total(request, statusord):
     shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct()
     users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
     address = int([i for i in str(request.path).split('/') if i][-1])
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         for u in users:
             for c, n, slug_p in shops:
                 if request.user.id == c and u == c:
@@ -1385,7 +1397,7 @@ def order_total(request, statusord):
                                    'count_order4': count_order4,
                                    'address': address})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Блок ожидания заказа
@@ -1436,7 +1448,7 @@ def order_view(request, id):
         zakaz_list = list(zip(count_list, price_list))
         zakaz_dict = dict(zip(product_list, zakaz_list))
 
-        if request.user.is_authenticated:
+        if request.user.groups.filter(name='manager'):
             for u in users:
                 for c, n, slug_p in shops:
                     if request.user.id == c and u == c:
@@ -1475,13 +1487,13 @@ def order_view(request, id):
                                     return redirect('order')
                                 return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
         else:
-            return redirect('/login')
+            return render(request,'panel/error_auth.html')
     except zakaz.DoesNotExist:
         return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
 
 
 def delete_order(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         zakaz = orders.objects.get(id=id)
         try:
             zakaz.delete()
@@ -1494,24 +1506,25 @@ def delete_order(request, id):
 
 # Клиенты
 def customers(request):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
         return render(request, 'panel/customers.html', {'users': users})
-    else:return redirect('/login')
+    else:
+        return render(request,'panel/error_auth.html')
 
 
 # Просмотр клиента
 def view_customer(request, id):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.get(id=id)
         return render(request, "panel/view_customer.html", {'users': users})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Редактировать клиента
 def edit_customers(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             users = User.objects.get(id=id)
 
@@ -1527,12 +1540,12 @@ def edit_customers(request, id):
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_customers.html', {'users': users})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удалить клиента
 def delete_customer(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         try:
             users = User.objects.get(id=id)
             users.delete()
@@ -1545,7 +1558,7 @@ def delete_customer(request, id):
 
 # Успешное удаление клиента
 def delete_ok_customer(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         return render(request, "panel/delete_ok_customer.html", {})
     else:
         return redirect('/login')
@@ -1583,7 +1596,7 @@ def offer_edit(request, id):
 
 # Удалить акции
 def delete_offer(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         offer = offers.objects.get(id=id)
         try:
             offer.delete()
@@ -1667,7 +1680,7 @@ def add_work(request):
 
 # Удалить Вакансии
 def delete_work(request, id):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         work = works.objects.get(id=id)
         try:
             work.delete()
@@ -1680,7 +1693,7 @@ def delete_work(request, id):
 # Редактировать вакансию
 def edit_work(request, id):
     try:
-        if request.user.is_authenticated:
+        if request.user.groups.filter(name='manager'):
             users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
             shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
             supermanager = User.objects.filter(groups__name='manager')
@@ -1720,17 +1733,17 @@ def edit_work(request, id):
                             return render(request, 'panel/edit_ok_work.html', {'work': work})
                         return render(request, 'panel/edit_work.html', {'shops': shops, 'work': work})
         else:
-            return redirect('/login')
+            return render(request,'panel/error_auth.html')
     except work.DoesNotExist:
         return render(request, 'panel/edit_error_work.html', {'shops': shops})
 
 
 # Инструкции
 def instructions(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         return render(request, 'panel/instructions.html', {})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Служба поддержки
@@ -1870,9 +1883,12 @@ def edit_helpdesk(request, id):
 
 # Удаление заявки
 def delete_helpdesk(request, id):
-    try:
-        helpdesk = helpdesk_user.objects.get(id=id)
-        helpdesk.delete()
-        return redirect('/helpdesk')
-    except helpdesk.DoesNotExist:
-        return redirect('/helpdesk')
+    if request.user.is_superuser:
+        try:
+            helpdesk = helpdesk_user.objects.get(id=id)
+            helpdesk.delete()
+            return redirect('/helpdesk')
+        except helpdesk.DoesNotExist:
+            return redirect('/helpdesk')
+    else:
+        return redirect('/login')

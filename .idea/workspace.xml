@@ -5,6 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0054_alter_files_fileart_delete_shalinsk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0055_no_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0056_no_product_list_product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0057_no_product_file_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0058_rename_no_product_report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0059_remove_report_list_product_report_list_no_product_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0060_alter_report_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0061_report_time.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0062_product_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0063_arti_check_pres_arti_p_check_pres_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0064_remove_zajkovskoe_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0065_zajkovskoe_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0066_alter_zajkovskoe_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0067_alter_zajkovskoe_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0068_alter_zajkovskoe_check_pres.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/panel/migrations/0069_alter_zajkovskoe_check_pres_oblpotrebsoyuz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,9 +210,6 @@
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Админ\AppData\Local\Programs\Python\Python310\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -317,13 +332,7 @@
       <workItem from="1677334267861" duration="33000" />
       <workItem from="1677334447472" duration="1002000" />
       <workItem from="1677415142369" duration="5830000" />
-    </task>
-    <task id="LOCAL-00073" summary="add project">
-      <created>1674849112860</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1674849112860</updated>
+      <workItem from="1677502159365" duration="4129000" />
     </task>
     <task id="LOCAL-00074" summary="add project">
       <created>1674849208962</created>
@@ -661,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677248104996</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="edit shop and panel">
+      <created>1677502270233</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1677502270233</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_02_2023_20_08__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_15_14_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_15_14__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_02_2023_19_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_02_2023_19_15__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/search_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,14 +313,10 @@
       <workItem from="1677149595885" duration="943000" />
       <workItem from="1677151320322" duration="478000" />
       <workItem from="1677152411947" duration="1302000" />
-      <workItem from="1677243291731" duration="4498000" />
-    </task>
-    <task id="LOCAL-00072" summary="edit">
-      <created>1674840260215</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1674840260215</updated>
+      <workItem from="1677243291731" duration="4829000" />
+      <workItem from="1677334267861" duration="33000" />
+      <workItem from="1677334447472" duration="1002000" />
+      <workItem from="1677415142369" duration="5830000" />
     </task>
     <task id="LOCAL-00073" summary="add project">
       <created>1674849112860</created>
@@ -674,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677006551419</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="edit shop and panel">
+      <created>1677248104996</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1677248104996</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,7 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit jquery true artikul" />
     <MESSAGE value="POST search NO" />
     <MESSAGE value="update_file" />
     <MESSAGE value="edit_file" />
@@ -718,7 +704,8 @@
     <MESSAGE value="file update auto" />
     <MESSAGE value="product check" />
     <MESSAGE value="edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit" />
+    <MESSAGE value="edit shop and panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit shop and panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

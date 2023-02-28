@@ -1088,18 +1088,16 @@ def delete_file(request, id):
 
 # Просмотр продукта
 def product_view(request, id):
+    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
+    shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
+    slug = [y[1] for x in users for y in shops if x == y[0] and request.user.id == x][0]
     if request.user.groups.filter(name='manager'):
-        users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
-        shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-        for u in users:
-            if request.user.id == u:
-                for s, slug in shops:
-                    if u == s:
-                        name = eval(slug)
-                        products = name.objects.get(id=id)
-                        return render(request, 'panel/product_view.html', {'products': products})
+        name = eval(slug)
+        products = name.objects.get(id=id)
+        return render(request, 'panel/product_view.html', {'products': products})
+
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Редактировать продукт
@@ -1108,49 +1106,46 @@ def edit_product(request, id):
         try:
             users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
             shops = Shop.objects.values_list('customuser_id', 'slug').distinct()
-            for u in users:
-                if request.user.id == u:
-                    for s, slug in shops:
-                        if u == s:
-                            name = eval(slug)
-                            products = name.objects.get(id=id)
-                            product_artikul = name.objects.values('artikul').order_by('id')
-                            category = Category.objects.all().order_by('number')
-                            subcategory = SubCategory.objects.values('name', 'subsubcat')
-                            subsubcategory = SubSubCategory.objects.all()
-                            if request.method == "POST":
-                                products.name = request.POST.get("name")
-                                products.artikul = request.POST.get("artikul")
-                                products.categ = request.POST.get("categ")
-                                products.status = request.POST.get("status")
-                                products.price = request.POST.get("price")
-                                products.discount = request.POST.get("discount")
-                                products.description = request.POST.get("description")
-                                products.width = request.POST.get('width')
-                                products.height = request.POST.get('height')
-                                products.length = request.POST.get('length')
-                                products.fabricator = request.POST.get('fabricator')
-                                products.color = request.POST.get('color')
-                                products.material = request.POST.get('material')
-                                products.check_pres = request.POST.get('check_pres')
-                                products.save()
-                            if request.method == 'POST':
-                                products.subcat = request.POST.get('subcat')
-                                products.save(update_fields=['subcat'])
-                            if request.method == 'POST':
-                                products.subsubcat = request.POST.get('subsubcat')
-                                products.save(update_fields=['subsubcat'])
-                                if request.FILES:
-                                    products.image = request.FILES["image"]
-                                    products.save()
-                                    return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
-                                return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
-                            else:
-                                return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
-                                                                                   'subsubcategory': subsubcategory})
-        except User.DoesNotExist:
-            return render(request, 'panel/edit_product.html',
-                          {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
+            slug = [y[1] for x in users for y in shops if x == y[0] and request.user.id == x][0]
+            address = int([i for i in str(request.path).split('/') if i][-1])
+            name = eval(slug)
+            products = name.objects.get(id=id)
+            product_artikul = name.objects.values('artikul').order_by('id')
+            category = Category.objects.all().order_by('number')
+            subcategory = SubCategory.objects.values('name', 'subsubcat')
+            subsubcategory = SubSubCategory.objects.all()
+            if request.method == "POST":
+                products.name = request.POST.get("name")
+                products.artikul = request.POST.get("artikul")
+                products.categ = request.POST.get("categ")
+                products.status = request.POST.get("status")
+                products.price = request.POST.get("price")
+                products.discount = request.POST.get("discount")
+                products.description = request.POST.get("description")
+                products.width = request.POST.get('width')
+                products.height = request.POST.get('height')
+                products.length = request.POST.get('length')
+                products.fabricator = request.POST.get('fabricator')
+                products.color = request.POST.get('color')
+                products.material = request.POST.get('material')
+                products.check_pres = request.POST.get('check_pres')
+                products.save()
+            if request.method == 'POST':
+                products.subcat = request.POST.get('subcat')
+                products.save(update_fields=['subcat'])
+            if request.method == 'POST':
+                products.subsubcat = request.POST.get('subsubcat')
+                products.save(update_fields=['subsubcat'])
+                if request.FILES:
+                    products.image = request.FILES["image"]
+                    products.save()
+                    return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
+                return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
+            else:
+                return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
+                                                                   'subsubcategory': subsubcategory})
+        except name.DoesNotExist:
+            return render(request, 'panel/error/doesnotexist.html',{'address':address})
     else:
         return render(request,'panel/error_auth.html')
 
@@ -1216,13 +1211,10 @@ def popular_product(request):
     if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug', 'id').distinct()
-        for u in users:
-            if request.user.id == u:
-                for s, slug, id in shops:
-                    if u == s:
-                        n = eval(slug)
-                        order_ = orders.objects.filter(slug=n).order_by('name')
-                        list_prod = [y for x in order_ for y in x.products]
+        slug = [y[1] for x in users for y in shops if x == y[0] and request.user.id == x][0]
+        n = eval(slug)
+        order_ = orders.objects.filter(slug=n).order_by('name')
+        list_prod = [y for x in order_ for y in x.products]
     else:
         return render(request,'panel/error_auth.html')
 

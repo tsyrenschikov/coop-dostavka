@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Магазин доставки*</label>
                                         <select name="slug" value="{{ local.slug }}" class="form-control">
-                                            {% for name,slug in shops %}
+                                            {% for name,slug,customuser_id in shops %}
                                                 {% if slug == local.slug %}
                                                     <option value="{{ slug }}" selected>{{ name }}</option>
                                                 {% endif %}

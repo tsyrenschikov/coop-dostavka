@@ -300,10 +300,10 @@ def locations(request):
 
 # Населенный пункт редактировать
 def edit_location(request, id):
-    shops = Shop.objects.values_list('name', 'slug').distinct().order_by('name')
+    shops = Shop.objects.values_list('name', 'slug', 'customuser_id').distinct().order_by('name')
     local = Locations.objects.get(id=id)
-    # users_slug = [i[1] for i in shops if i[1] == local.slug][0]
-    if request.user.groups.filter(name='manager') :
+    users_slug = [i[2] for i in shops if i[1] == local.slug][0]
+    if (request.user.groups.filter(name='manager') and request.user.id == users_slug) or request.user.is_superuser:
         try:
             days = Days.objects.values('id', 'name', 'daysdict').order_by('id')
             if request.method == "POST":
@@ -379,7 +379,7 @@ def add_location(request):
 
 # Успешное добавления территории
 def add_ok_location(request):
-    if request.user.groups.filter(name='manager'):
+    if request.user.is_superuser:
         local = Locations.objects.all()
         return render(request, 'panel/add_ok_location.html', {'local': local})
     else:
@@ -531,7 +531,7 @@ def delete_category(request, id):
 
 # Успешное удаления категории
 def delete_ok_category(request):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_superuser:
         categories = Category.objects.all()
         return render(request, 'panel/delete_ok_category.html', {'categories': categories})
     return redirect('/login')
@@ -572,7 +572,10 @@ def add_subcategory(request):
 
 # Успешное добавления подкатегории
 def add_ok_subcategory(request):
-    return render(request, 'panel/add_ok_subcategory.html')
+    if request.user.is_superuser:
+        return render(request, 'panel/add_ok_subcategory.html')
+    else:
+        return render(request, 'panel/error_auth.html')
 
 
 # Просмотр подкатегории
@@ -642,7 +645,7 @@ def subsubcategory(request):
 
 # Добавить подподкатегорию
 def add_subsubcategory(request):
-    if request.user.groups.filter(name='manager'):
+    if request.user.is_superuser:
         alert = {
             'number': request.GET.get('number', ''),
             'name': request.GET.get('name', ''),
@@ -666,12 +669,15 @@ def add_subsubcategory(request):
 
 # Успешное добавления подподкатегории
 def add_ok_subsubcategory(request):
-    return render(request, 'panel/add_ok_subsubcategory.html')
+    if request.user.is_superuser:
+        return render(request, 'panel/add_ok_subsubcategory.html')
+    else:
+        return render(request,'panel/error_auth.html')
 
 
 # Редактировать подподкатегорию
 def edit_subsubcategory(request, id):
-    if request.user.groups.filter(name='manager'):
+    if request.user.is_superuser:
         try:
             subsubcategory = SubSubCategory.objects.get(id=id)
 
@@ -1634,7 +1640,7 @@ def work(request):
 
 # Добавить Вакансию
 def add_work(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
         shops = Shop.objects.values_list('customuser_id', 'name', 'slug').distinct().order_by('name')
         supermanager = User.objects.filter(groups__name='manager')
@@ -1675,7 +1681,7 @@ def add_work(request):
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Удалить Вакансии
@@ -1748,7 +1754,7 @@ def instructions(request):
 
 # Служба поддержки
 def helpdesk(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         users = User.objects.values_list('id', 'last_name', 'first_name').distinct()
         shops = Shop.objects.values_list('customuser_id', 'slug').distinct().order_by('name')
         for id_user, first_name, last_name in users:
@@ -1766,12 +1772,12 @@ def helpdesk(request):
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/helpdesk.html', {'helpdesk': helpdesk, 'page_obj': page_obj})
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Добавить заявку
 def add_helpdesk(request):
-    if request.user.is_authenticated:
+    if request.user.groups.filter(name='manager'):
         def email(email_send_manager):
             id_obj = helpdesk_user.objects.order_by('-id').first()
             id_help = id_obj.id if id_obj else 0
@@ -1847,7 +1853,7 @@ def add_helpdesk(request):
                                                                    'custom_id': custom_id})
 
     else:
-        return redirect('/login')
+        return render(request,'panel/error_auth.html')
 
 
 # Редактировать заявку
@@ -1865,7 +1871,7 @@ def add_helpdesk(request):
 
 def edit_helpdesk(request, id):
     try:
-        if request.user.is_authenticated:
+        if request.user.groups.filter(name='manager'):
             helpdesk = helpdesk_user.objects.get(id=id)
             if request.method == 'POST':
                 helpdesk.name_user = request.POST.get('name_user')
@@ -1876,7 +1882,7 @@ def edit_helpdesk(request, id):
                 helpdesk.save(update_fields=['name_user', 'name_user_help', 'descriptions', 'date_time'])
             return render(request, 'panel/edit_helpdesk.html', {'helpdesk': helpdesk})
         else:
-            return redirect('/login')
+            return render(request,'panel/error_auth.html')
     except helpdesk.DoesNotExist:
         return render(request, 'panel/edit_helpdesk.html', {})
 

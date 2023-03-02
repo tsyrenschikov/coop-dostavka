@@ -92,7 +92,6 @@ $(document).ready(function () {
             status_manadger += $(this).text();
         });
         var comm = $('#comm').val();
-        console.log(comm)
         if (((status_manadger === "Закрыт") || (status_manadger === "Отменен")) && (comm === "2")) {
             $('button').hide();
             $('message').show();
@@ -201,7 +200,6 @@ $(document).on('click', '.edit', function () {
             count = $(this).find("td").eq(2).html(),
             price = $(this).find("td").eq(3).html(),
             sum = ((parseFloat(count)) * (parseFloat(price)));
-
         items.push(sum);
         $(this).find('td').eq(4).text(sum.toFixed(2) + ' ' + 'р.');
         if (isNaN(sum)) {

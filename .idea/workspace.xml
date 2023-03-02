@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/panel/templates/panel/error/doesnotexist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/order/editorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/order/editorder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,8 +321,21 @@
       <workItem from="1677334447472" duration="1002000" />
       <workItem from="1677415142369" duration="5830000" />
       <workItem from="1677502159365" duration="4190000" />
-      <workItem from="1677513009875" duration="13304000" />
-      <workItem from="1677599070836" duration="9127000" />
+      <workItem from="1677513009875" duration="13286000" />
+    </task>
+    <task id="LOCAL-00077" summary="edit search">
+      <created>1675014446600</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1675014446600</updated>
+    </task>
+    <task id="LOCAL-00078" summary="update_file edit">
+      <created>1675104162614</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104162614</updated>
     </task>
     <task id="LOCAL-00079" summary="edit jquery true artikul">
       <created>1675104834723</created>
@@ -652,21 +666,7 @@
       <option name="project" value="LOCAL" />
       <updated>1677521819936</updated>
     </task>
-    <task id="LOCAL-00126" summary="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:">
-      <created>1677527647715</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1677527647715</updated>
-    </task>
-    <task id="LOCAL-00127" summary="update django 4.1.7">
-      <created>1677602764927</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1677602764928</updated>
-    </task>
-    <option name="localTasksCounter" value="128" />
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,6 +685,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="edit_file" />
     <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
     <MESSAGE value="Celery OK" />
@@ -709,16 +710,20 @@
     <MESSAGE value="edit shop and panel" />
     <MESSAGE value="edit panel" />
     <MESSAGE value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
-    <MESSAGE value="update django 4.1.7" />
-    <option name="LAST_COMMIT_MESSAGE" value="update django 4.1.7" />
+    <option name="LAST_COMMIT_MESSAGE" value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>1103</line>
-          <option name="timeStamp" value="9" />
+          <line>1224</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
+          <line>305</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

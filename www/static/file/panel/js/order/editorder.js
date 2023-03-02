@@ -214,7 +214,7 @@ $(document).on('click', '.edit', function () {
     $.each(items, function (index, value) {
         cart += value;
     });
-
+console.log(cart)
     $('cart').removeAttr('style').text(cart.toFixed(2) + 'р.');
     $('#cartval').attr({'value': cart.toFixed(2)});
     var coun = counter - 1,

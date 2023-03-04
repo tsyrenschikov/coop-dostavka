@@ -13,7 +13,7 @@ from django.contrib.auth.models import Group
 import os, xlwt
 from functools import reduce
 from django.utils import timezone
-from datetime import date,datetime
+from datetime import date, datetime
 from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
@@ -36,7 +36,7 @@ def edit_manager(request):
         users = User.objects.filter(groups__name='manager').order_by(Lower('last_name'))
         return render(request, 'panel/edit_manager.html', {'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Получение списка пользователей входящих в группу 'manager'
@@ -105,7 +105,7 @@ def edit_prof_manager(request, id):
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_manager.html', {'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Страница. Результат успешного изменения профиля менеджера
@@ -122,7 +122,7 @@ def delete_manager(request, id):
             return render(request, "panel/delete_ok_manager.html")
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_manager.html', {'users': users})
-    return render(request,'panel/error_auth.html')
+    return render(request, 'panel/error_auth.html')
 
 
 # Страница. Результат успешного удаления профиля менеджера
@@ -295,7 +295,7 @@ def locations(request):
                 return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
             return render(request, 'panel/locations.html', {'local': local, 'shops': shops, 'day': day})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Населенный пункт редактировать
@@ -337,7 +337,7 @@ def edit_location(request, id):
         except local.DoesNotExist:
             return render(request, 'panel/edit_error_location.html', {'local': local, 'days': days, 'shops': shops})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Населенный пункт добавить
@@ -374,7 +374,7 @@ def add_location(request):
                 return render(request, 'panel/add_ok_location.html', {'local': local, 'shops': shops, 'day': day})
         return render(request, 'panel/add_location.html', {'local': local, 'shops': shops, 'day': day})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Успешное добавления территории
@@ -393,7 +393,8 @@ def delete_location(request, id):
         local.delete()
         return render(request, "panel/delete_ok_location.html", {'local': local})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
+
 
 # Успешное удаления локации
 def delete_ok_location(request):
@@ -404,7 +405,7 @@ def delete_ok_location(request):
         except local.DoesNotExist:
             return render(request, 'panel/delete_error_location.html', {'local': local})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Список территорий продаж
@@ -431,7 +432,7 @@ def areas(request):
                         dict_l.update({a['name']: '0'})
         return render(request, 'panel/areas.html', {'list_slug': list_slug, 'dict_a': dict_a, 'dict_l': dict_l})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 def category(request, ):
@@ -440,7 +441,7 @@ def category(request, ):
         categories = Category.objects.all().order_by('number')
         return render(request, 'panel/category.html', {'categories': categories, 'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Просмотр категории товаров
@@ -450,7 +451,7 @@ def view_category(request, id):
         categories = Category.objects.values('name', 'status', 'image', 'subcat', 'area__name').get(id=id)
         return render(request, 'panel/view_category.html', {'categories': categories, 'images': images})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Редактировать категорию товара
@@ -478,7 +479,7 @@ def edit_category(request, id):
         except User.DoesNotExist:
             return render(request, 'panel/edit_category.html', {})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Успешное редактирование категории товара
@@ -487,7 +488,7 @@ def edit_ok_category(request, id):
         categories = Category.objects.get(id=id)
         return render(request, 'panel/edit_ok_category.html', {'categories': categories})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить категорию товара категории
@@ -505,7 +506,7 @@ def add_category(request):
             Category.objects.create(name=name, status=status, subcat=subcat, number=number, image=image)
             return render(request, 'panel/add_ok_category.html')
         return render(request, 'panel/add_category.html', {'subcategory': subcategory, 'count': count, 'count_name': count_name})
-    return render(request,'panel/error_auth.html')
+    return render(request, 'panel/error_auth.html')
 
 
 # Успешное добавления категории
@@ -513,7 +514,7 @@ def add_ok_category(request):
     if request.user.is_superuser:
         subcategory = SubCategory.objects.all()
         return render(request, 'panel/add_ok_category.html', {'subcategory': subcategory})
-    return render(request,'panel/error_auth.html')
+    return render(request, 'panel/error_auth.html')
 
 
 # Удаления категории
@@ -543,7 +544,7 @@ def subcategory(request):
         subcategories = SubCategory.objects.all().order_by('number')
         return render(request, 'panel/subcategory.html', {'subcategories': subcategories})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить категорию
@@ -580,11 +581,11 @@ def add_ok_subcategory(request):
 
 # Просмотр подкатегории
 def view_subcategory(request, id):
-    if  request.user.groups.filter(name='manager'):
+    if request.user.groups.filter(name='manager'):
         subcategory = SubCategory.objects.get(id=id)
         return render(request, 'panel/view_subcategory.html', {'subcategory': subcategory})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удаление подкатегории
@@ -640,7 +641,7 @@ def subsubcategory(request):
         subsubcategory = SubSubCategory.objects.all().order_by('number')
         return render(request, 'panel/subsubcategory.html', {'subsubcategory': subsubcategory})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить подподкатегорию
@@ -664,7 +665,7 @@ def add_subsubcategory(request):
                 return render(request, 'panel/add_ok_subsubcategory.html')
         return render(request, 'panel/add_subsubcategory.html', alert)
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Успешное добавления подподкатегории
@@ -672,7 +673,7 @@ def add_ok_subsubcategory(request):
     if request.user.is_superuser:
         return render(request, 'panel/add_ok_subsubcategory.html')
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Редактировать подподкатегорию
@@ -695,7 +696,7 @@ def edit_subsubcategory(request, id):
         except SubSubCategory.DoesNotExist:
             return render(request, 'panel/edit_subsubcategory.html', {})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удаление подкатегории
@@ -718,6 +719,7 @@ def delete_ok_subsubcategory(request):
         return render(request, 'panel/delete_ok_subsubcategory.html', {'subsubcategory': subsubcategory})
     else:
         return redirect('/login')
+
 
 # Продукты
 def products(request):
@@ -751,7 +753,7 @@ def products(request):
                                     page_number = request.GET.get('page')
                                     page_obj = paginator.get_page(page_number)
                                     return render(request, 'panel/products_search.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product,
-                                    'products': products})
+                                                                                          'products': products})
                                 item = [i.split(',') for i in check_][0]
                                 for i in item:
                                     if i == 'on':
@@ -767,7 +769,7 @@ def products(request):
                                 return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
                             return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Список файлов
@@ -807,7 +809,7 @@ def file(request):
                     return render(request, 'panel/file.html', {'file': file, 'shops': shops})
 
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 def export_0(request, id):
@@ -922,6 +924,7 @@ def no_product_(request, id):
     except IndexError:
         return render(request, 'panel/error/file_delete_logs.html')
 
+
 def update_file(request, id):
     if request.user.groups.filter(name='manager'):
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
@@ -943,7 +946,7 @@ def update_file(request, id):
                 Line_ = f.readline()
                 Line_ = Line_.replace('\ufeff', '')
                 Line = list(map(str, Line_.replace(',', ' ').split()))
-                report.objects.create(name='Обновление', slug=name_, file_id=id,time=datetime.now().strftime('%H:%M:%S'))
+                report.objects.create(name='Обновление', slug=name_, file_id=id, time=datetime.now().strftime('%H:%M:%S'))
 
                 # Обновления позиций из файла
                 if str([i for i in Line if i][0]) == 'update' and str([i for i in Line if i][-1]) == '1':
@@ -1054,22 +1057,22 @@ def update_file(request, id):
             dup_1 = [i for i in dup if i != None]
             return render(request, 'panel/error/update_file_multipleobjectreturned.html', {'dup_1': dup_1})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 def logs(request):
     if request.user.groups.filter(name='manager'):
         manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
-        shops = Shop.objects.values_list('customuser_id', 'slug','name').distinct()
+        shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
         today = date.today().strftime('%Y-%m-%d')
         if request.user.is_superuser:
             obj = report.objects.all().order_by('-id')
         else:
             name_ = [x[1] for x in shops for y in manager if x[0] == y and request.user.id == x[0]][0]
             obj = report.objects.all().filter(slug=name_).order_by('-id')
-        return render(request, 'panel/logs.html', {'obj': obj, 'shops':shops})
+        return render(request, 'panel/logs.html', {'obj': obj, 'shops': shops})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удалить файл
@@ -1083,7 +1086,7 @@ def delete_file(request, id):
         except file.DoesNotExist:
             return render(request, 'panel/delete_file.html', {})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Просмотр продукта
@@ -1145,9 +1148,9 @@ def edit_product(request, id):
                 return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
                                                                    'subsubcategory': subsubcategory})
         except name.DoesNotExist:
-            return render(request, 'panel/error/doesnotexist.html',{'address':address})
+            return render(request, 'panel/error/doesnotexist.html', {'address': address})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить продукт
@@ -1182,8 +1185,11 @@ def add_product(request, **kwargs):
                             subsubcat = request.POST.get('subsubcat')
                             status = request.POST.get('status')
                             description = request.POST.get('description')
-                            image = request.FILES["image"]
-                            width = request.POST.get('width')
+                            image = request.FILES.get("image0")
+                            image1 = request.FILES.get("image1")
+                            image2 = request.FILES.get("image2")
+                            image3 = request.FILES.get("image3")
+                            width = request.POST.get('width4')
                             height = request.POST.get('height')
                             length = request.POST.get('length')
                             fabricator = request.POST.get('fabricator')
@@ -1195,15 +1201,12 @@ def add_product(request, **kwargs):
                                 return render(request, 'panel/add_product.html', alert)
                             else:
                                 n.objects.create(name=name, artikul=artikul, shop_id=id, price=price, status=status, discount=discount, categ=categ, subcat=subcat, subsubcat=subsubcat,
-                                                 description=description, \
-                                                 image=image,
-                                                 width=width, \
-                                                 height=height,
-                                                 length=length, fabricator=fabricator, material=material, color=color, check_pres=check_pres)
+                                                 description=description, image=image, image1=image1, image2=image2, image3=image3, width=width, height=height, length=length, fabricator=fabricator,
+                                                 material=material, color=color, check_pres=check_pres)
                             return render(request, 'panel/add_ok_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
                         return render(request, 'panel/add_product.html', {'products': products, 'category': category, 'subcategory': subcategory, 'subsubcategory': subsubcategory})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Популярные продукты
@@ -1216,7 +1219,7 @@ def popular_product(request):
         order_ = orders.objects.filter(slug=n).order_by('name')
         list_prod = [y for x in order_ for y in x.products]
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удаление товара
@@ -1236,7 +1239,7 @@ def delete_product(request, id):
         except products.DoesNotExist:
             return render(request, 'panel/delete_error_product.html', {})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Список магазинов
@@ -1253,7 +1256,7 @@ def shops(request):
                     return render(request, 'panel/shops.html', {'managers': managers, 'count': count})
 
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Просмотр магазина
@@ -1272,7 +1275,7 @@ def shop_view(request, id):
             if i == object_id:
                 return slug
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить магазины
@@ -1391,11 +1394,11 @@ def order_total(request, statusord):
                     page_number = request.GET.get('page')
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/orders.html',
-                                  {'page_obj': page_obj, 'shops':shops,'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
+                                  {'page_obj': page_obj, 'shops': shops, 'count_order': count_order, 'count_order1': count_order1, 'count_order2': count_order2, 'count_order3': count_order3,
                                    'count_order4': count_order4,
                                    'address': address})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Блок ожидания заказа
@@ -1485,7 +1488,7 @@ def order_view(request, id):
                                     return redirect('order')
                                 return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
         else:
-            return render(request,'panel/error_auth.html')
+            return render(request, 'panel/error_auth.html')
     except zakaz.DoesNotExist:
         return render(request, 'panel/order_view.html', {'shop_p': shop_p, 'zakaz': zakaz, 'zakaz_dict': zakaz_dict, 'address': address, 'product': product, 'local': local})
 
@@ -1508,7 +1511,7 @@ def customers(request):
         users = User.objects.filter(groups__name=None).order_by(Lower('last_name'))
         return render(request, 'panel/customers.html', {'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Просмотр клиента
@@ -1517,7 +1520,7 @@ def view_customer(request, id):
         users = User.objects.get(id=id)
         return render(request, "panel/view_customer.html", {'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Редактировать клиента
@@ -1538,7 +1541,7 @@ def edit_customers(request, id):
         except users.DoesNotExist:
             return render(request, 'panel/edit_error_customers.html', {'users': users})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удалить клиента
@@ -1673,7 +1676,7 @@ def add_work(request):
                         return render(request, 'panel/add_ok_work.html')
                     return render(request, 'panel/add_work.html', {'shops': shops})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Удалить Вакансии
@@ -1731,7 +1734,7 @@ def edit_work(request, id):
                             return render(request, 'panel/edit_ok_work.html', {'work': work})
                         return render(request, 'panel/edit_work.html', {'shops': shops, 'work': work})
         else:
-            return render(request,'panel/error_auth.html')
+            return render(request, 'panel/error_auth.html')
     except work.DoesNotExist:
         return render(request, 'panel/edit_error_work.html', {'shops': shops})
 
@@ -1741,7 +1744,7 @@ def instructions(request):
     if request.user.groups.filter(name='manager'):
         return render(request, 'panel/instructions.html', {})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Служба поддержки
@@ -1764,7 +1767,7 @@ def helpdesk(request):
                     page_obj = paginator.get_page(page_number)
                     return render(request, 'panel/helpdesk.html', {'helpdesk': helpdesk, 'page_obj': page_obj})
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Добавить заявку
@@ -1845,7 +1848,7 @@ def add_helpdesk(request):
                                                                    'custom_id': custom_id})
 
     else:
-        return render(request,'panel/error_auth.html')
+        return render(request, 'panel/error_auth.html')
 
 
 # Редактировать заявку
@@ -1874,7 +1877,7 @@ def edit_helpdesk(request, id):
                 helpdesk.save(update_fields=['name_user', 'name_user_help', 'descriptions', 'date_time'])
             return render(request, 'panel/edit_helpdesk.html', {'helpdesk': helpdesk})
         else:
-            return render(request,'panel/error_auth.html')
+            return render(request, 'panel/error_auth.html')
     except helpdesk.DoesNotExist:
         return render(request, 'panel/edit_helpdesk.html', {})
 

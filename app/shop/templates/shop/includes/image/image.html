@@ -1,0 +1,62 @@
+{% load thumbnail %}
+<div id="sync1" class="owl-theme">
+    {% if product.image %}
+        <div class="item">
+            {% thumbnail product.image "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image1 %}
+        <div class="item">
+            {% thumbnail product.image1 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image2 %}
+        <div class="item">
+            {% thumbnail product.image2 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image3 %}
+        <div class="item">
+            {% thumbnail product.image3 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+</div>
+{% comment %}Карусель картинок{% endcomment %}
+<div id="sync2" class="owl-carousel owl-theme">
+    {% if product.image %}
+        <div class="item">
+            {% thumbnail product.image "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image1 %}
+        <div class="item">
+            {% thumbnail product.image1 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image2 %}
+        <div class="item">
+            {% thumbnail product.image2 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+    {% if product.image3 %}
+        <div class="item">
+            {% thumbnail product.image3 "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </div>
+    {% endif %}
+</div>

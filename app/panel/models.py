@@ -345,6 +345,9 @@ class arti_p(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название продукта')
     artikul = models.CharField(max_length=500, db_index=True, null=True, verbose_name='Артикул')
     image = models.ImageField(upload_to='arti_p/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение')
+    image1 = models.ImageField(upload_to='arti_p/1/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение1')
+    image2 = models.ImageField(upload_to='arti_p/2/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение2')
+    image3 = models.ImageField(upload_to='arti_p/3/%Y/%m/%d', blank=True, null=True, verbose_name='Изображение3')
     description = models.TextField(blank=True, verbose_name='Описания продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, verbose_name='Скидка')
@@ -724,6 +727,7 @@ class oblpotrebsoyuz(models.Model):
     material = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Материал')
     count = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Кол-во')
     status = models.BooleanField(default=True, verbose_name='Активный')
+    check_pres = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Наличие')
 
     class Meta:
         ordering = ('name',)

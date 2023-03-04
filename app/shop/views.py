@@ -367,7 +367,7 @@ def sort_list(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -429,7 +429,7 @@ def sort_list_arti_p(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -572,7 +572,7 @@ def sort_list_artiobschepit(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -714,7 +714,7 @@ def sort_list_pokrovskoe(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -857,7 +857,7 @@ def sort_list_rezh(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1150,7 +1150,7 @@ def sort_list_zajkovskoe(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1203,7 +1203,7 @@ def sort_list_bogdan(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1380,7 +1380,7 @@ def sort_list_chetkarino(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1557,7 +1557,7 @@ def sort_list_bugalysh(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1733,7 +1733,7 @@ def sort_list_bisert(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -1909,7 +1909,7 @@ def sort_list_chernovskoe(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -2086,7 +2086,7 @@ def sort_list_natalinsk(request, list):
                 name = name_a
                 name_slug = eval(slug)
                 category_product = dict_category_product(name_slug)
-                products = name_slug.objects.filter(subcat=list)
+                products = name_slug.objects.filter(subcat=list).filter(status=True)
                 paginator = Paginator(products, 50)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)

@@ -98,6 +98,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Загрузка изображения*</label>
                                 </div>
+                            {% comment %}Изображение{% endcomment %}
                                 <div class="form-group">
                                     {% if products.image %}
                                         {% thumbnail products.image '80x80' crop='center' as im %}
@@ -111,6 +112,49 @@
                                         <label type="file" for="file"></label>
                                     </div>
                                 </div>
+                            {% comment %}Изображние1{% endcomment %}
+                                <div class="form-group">
+                                    {% if products.image1 %}
+                                        {% thumbnail products.image1 '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
+                                    {% endif %}
+                                </div>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image1" value="{{ products.image }}" id="file">
+                                        <label type="file" for="file"></label>
+                                    </div>
+                                </div>
+                            {% comment %}Изображние2{% endcomment %}
+                                <div class="form-group">
+                                    {% if products.image2 %}
+                                        {% thumbnail products.image2 '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
+                                    {% endif %}
+                                </div>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image2" value="{{ products.image }}" id="file">
+                                        <label type="file" for="file"></label>
+                                    </div>
+                                </div>
+                            {% comment %}Изображние3{% endcomment %}
+                                <div class="form-group">
+                                    {% if products.image3 %}
+                                        {% thumbnail products.imag3 '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
+                                    {% endif %}
+                                </div>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image3" value="{{ products.image }}" id="file">
+                                        <label type="file" for="file"></label>
+                                    </div>
+                                </div>
+
                                 <div class="form-group"></div>
                                 <div class="form-group">
                                     <label class="form-label">Статус*</label>

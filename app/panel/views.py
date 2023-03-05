@@ -1112,7 +1112,7 @@ def edit_product(request, id):
             slug = [y[1] for x in users for y in shops if x == y[0] and request.user.id == x][0]
             address = int([i for i in str(request.path).split('/') if i][-1])
             name = eval(slug)
-            products = name.objects.get(id=id)
+            products = name.objects.get(pk=id)
             product_artikul = name.objects.values('artikul').order_by('id')
             category = Category.objects.all().order_by('number')
             subcategory = SubCategory.objects.values('name', 'subsubcat')
@@ -1140,8 +1140,11 @@ def edit_product(request, id):
                 products.subsubcat = request.POST.get('subsubcat')
                 products.save(update_fields=['subsubcat'])
                 if request.FILES:
-                    products.image = request.FILES["image"]
-                    products.save()
+                    products.image = request.FILES.get("image0")
+                    products.image1 = request.FILES.get("image1")
+                    products.image2 = request.FILES.get("image2")
+                    products.image3 = request.FILES.get("image3")
+                    products.save(update_fields=['image','image1','image2','image3'])
                     return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
                 return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
             else:
@@ -1189,7 +1192,7 @@ def add_product(request, **kwargs):
                             image1 = request.FILES.get("image1")
                             image2 = request.FILES.get("image2")
                             image3 = request.FILES.get("image3")
-                            width = request.POST.get('width4')
+                            width = request.POST.get('width')
                             height = request.POST.get('height')
                             length = request.POST.get('length')
                             fabricator = request.POST.get('fabricator')

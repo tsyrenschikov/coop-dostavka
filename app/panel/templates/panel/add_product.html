@@ -2,6 +2,7 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% load thumbnail %}
     {% block stylesheet %}
     {% endblock stylesheet %}
     <main>
@@ -95,8 +96,10 @@
                                     {% comment %}Изображение{% endcomment %}
                                     <div class="form-group">
                                         {% if products.image %}
-                                            <label class=""><img src="{{ products.image.url }}"/></label>
-                                        {% endif %}
+                                        {% thumbnail products.image '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
+                                    {% endif %}
                                     </div>
                                     <div class="input-group">
                                         <div class="custom-file">

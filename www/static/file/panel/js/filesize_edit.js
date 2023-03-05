@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    $('input[type=file]').val('')
-    $('#butdis').hide()
-    $('#disbut').hide()
     var button = [];
     $('input[type=file]').each(function (index, value) {
         $('input[name=image' + index + ']').on('change', function () {
@@ -24,12 +21,10 @@ $(document).ready(function () {
             }
             $.each(button,function (i,v){
                 if (v==='false'){
-                    $('#butdis').hide()
                     $('#disbut').hide()
                     return false
                 }
                 else {
-                    $('#butdis').show()
                     $('#disbut').show()
                 }
             })

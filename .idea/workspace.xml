@@ -5,27 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/image/image.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/image/image.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/scripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/scripts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/style.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/style.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/layouts/base_artiprom.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/base_artiprom.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/shop/vendor/OwlCarousel/assets/owl.theme.default.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/shop/vendor/OwlCarousel/assets/owl.theme.default.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +196,9 @@
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\Админ\AppData\Local\Programs\Python\Python310\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -337,14 +324,8 @@
       <workItem from="1677502159365" duration="4190000" />
       <workItem from="1677513009875" duration="13286000" />
       <workItem from="1677934074678" duration="22517000" />
-      <workItem from="1678016342848" duration="7964000" />
-    </task>
-    <task id="LOCAL-00079" summary="edit jquery true artikul">
-      <created>1675104834723</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1675104834723</updated>
+      <workItem from="1678016342848" duration="8020000" />
+      <workItem from="1678031017585" duration="1907000" />
     </task>
     <task id="LOCAL-00080" summary="POST search NO">
       <created>1675106769278</created>
@@ -682,7 +663,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677963799732</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="add product jquery and add multifile image product NO">
+      <created>1678026416699</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1678026416699</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,7 +689,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
     <MESSAGE value="Celery OK" />
     <MESSAGE value="export" />
@@ -726,7 +713,8 @@
     <MESSAGE value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
     <MESSAGE value="edit" />
     <MESSAGE value="add product jquery and add multifile image product" />
-    <option name="LAST_COMMIT_MESSAGE" value="add product jquery and add multifile image product" />
+    <MESSAGE value="add product jquery and add multifile image product NO" />
+    <option name="LAST_COMMIT_MESSAGE" value="add product jquery and add multifile image product NO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

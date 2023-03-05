@@ -469,7 +469,7 @@ def shop_arti_p_product(request, id):
                 slug_name = eval(slug)
                 name_slug = slug_name
                 product = slug_name.objects.get(id=id)
-                products = slug_name.objects.all().filter(status=True).order_by('?')[:10]
+                products = name_slug.objects.all().filter(status=True).order_by('?')[:20]
                 category_product = dict_category_product(name_slug)
                 return render(request, 'arti/artiprom/product.html',
                               {'product': product, 'category_product': category_product, 'products': products, 'shop_name': shop_name, 'local': local, 'name': name,

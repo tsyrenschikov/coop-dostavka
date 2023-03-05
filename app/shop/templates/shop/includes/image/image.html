@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load static %}
 <div id="sync1" class="owl-theme">
     {% if product.image %}
         <div class="item">
@@ -7,7 +8,7 @@
             {% endthumbnail %}
         </div>
     {% endif %}
-    {% if product.image1 %}
+    {% comment %}{% if product.image1 %}
         <div class="item">
             {% thumbnail product.image1 "250x250" crop="center" as im %}
                 <img src="{{ im.url }}" alt="">
@@ -27,10 +28,10 @@
                 <img src="{{ im.url }}" alt="">
             {% endthumbnail %}
         </div>
-    {% endif %}
+    {% endif %}{% endcomment %}
 </div>
 {% comment %}Карусель картинок{% endcomment %}
-<div id="sync2" class="owl-carousel owl-theme">
+{% comment %}<div id="sync2" class="owl-carousel owl-theme">
     {% if product.image %}
         <div class="item">
             {% thumbnail product.image "250x250" crop="center" as im %}
@@ -59,4 +60,4 @@
             {% endthumbnail %}
         </div>
     {% endif %}
-</div>
+</div>{% endcomment %}

@@ -5,17 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/image/image.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/add_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiobschepit/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/artiprom/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/general_characteristics.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/general_characteristics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/arti/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/arti/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bisert/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bogdan/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/bugalysh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chernovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/chetkarino/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/natalinsk/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/pokrovskoe/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/rezh/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/image/image.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/image/image.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/scripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/scripts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/includes/style.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/style.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/layouts/base_artiprom.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/base_artiprom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/zajkovskoe/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/filesize.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/filesize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/shop/vendor/OwlCarousel/assets/owl.theme.default.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/shop/vendor/OwlCarousel/assets/owl.theme.default.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +39,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -326,14 +336,8 @@
       <workItem from="1677415142369" duration="5830000" />
       <workItem from="1677502159365" duration="4190000" />
       <workItem from="1677513009875" duration="13286000" />
-      <workItem from="1677934074678" duration="22460000" />
-    </task>
-    <task id="LOCAL-00078" summary="update_file edit">
-      <created>1675104162614</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1675104162614</updated>
+      <workItem from="1677934074678" duration="22517000" />
+      <workItem from="1678016342848" duration="7964000" />
     </task>
     <task id="LOCAL-00079" summary="edit jquery true artikul">
       <created>1675104834723</created>
@@ -671,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677778443377</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="add product jquery and add multifile image product">
+      <created>1677963799731</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1677963799732</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +701,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit_file" />
     <MESSAGE value="celery service" />
     <MESSAGE value="celery service OK" />
     <MESSAGE value="Celery OK" />
@@ -715,7 +725,8 @@
     <MESSAGE value="edit panel" />
     <MESSAGE value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
     <MESSAGE value="edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit" />
+    <MESSAGE value="add product jquery and add multifile image product" />
+    <option name="LAST_COMMIT_MESSAGE" value="add product jquery and add multifile image product" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -732,5 +743,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/__init___py$uchi.coverage" NAME="uchi Coverage Results" MODIFIED="1678017139637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -1,19 +1,20 @@
 {% load static %}
 <!-- Javascripts -->
-	<script src="{% static 'file/shop/js/jquery-3.3.1.min.js' %}"></script>
-	<script src="{% static 'file/shop/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-	<script src="{% static 'file/shop/vendor/OwlCarousel/owl.carousel.js' %}"></script>
-	<script src="{% static 'file/shop/vendor/semantic/semantic.min.js' %}"></script>
-	<script src="{% static 'file/shop/js/jquery.countdown.min.js' %}"></script>
-	<script src="{% static 'file/shop/js/custom.js' %}"></script>
-	<script src="{% static 'file/shop/js/offset_overlay.js' %}"></script>
-	<script src="{% static 'file/shop/js/night-mode.js' %}"></script>
-    <script src="{% static 'file/shop/js/sidebar.js' %}"></script>
-    <script src="{% static 'file/shop/js/user_password.js' %}"></script>
-    <script src="{% static 'file/shop/js/jquery_custom.js' %}"></script>
+<script src="{% static 'file/shop/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'file/shop/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'file/shop/vendor/OwlCarousel/owl.carousel.js' %}"></script>
+<script src="{% static 'file/shop/js/product.thumbnail.slider.js' %}"></script>
+<script src="{% static 'file/shop/vendor/semantic/semantic.min.js' %}"></script>
+<script src="{% static 'file/shop/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'file/shop/js/custom.js' %}"></script>
+<script src="{% static 'file/shop/js/offset_overlay.js' %}"></script>
+<script src="{% static 'file/shop/js/night-mode.js' %}"></script>
+<script src="{% static 'file/shop/js/sidebar.js' %}"></script>
+<script src="{% static 'file/shop/js/user_password.js' %}"></script>
+<script src="{% static 'file/shop/js/jquery_custom.js' %}"></script>
 
 <!-- Delivery -->
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 <script src="{% static 'file/shop/js/cart.js' %}"></script>
 
@@ -45,30 +46,34 @@
 <script type="text/javascript" src="{% static 'file/shop/js/accordion.js' %}"></script>
 
 <!--Phone-->
-    <script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
+<script src="{% static 'file/shop/js/script_tel2.js' %}"></script>
 
 <!--Category-->
-    <script src="{% static 'file/shop/category/js/hc-offcanvas-nav.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/category_select.js' %}"></script>
+<script src="{% static 'file/shop/category/js/hc-offcanvas-nav.js' %}"></script>
+<script src="{% static 'file/shop/category/js/category_select.js' %}"></script>
 
 <!--Sort products and scroll -->
-    <script src="{% static 'file/shop/category/js/popper.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/jquery.ui.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/jquery.elevatezoom.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/tippy-bundle.umd.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/plugins.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/main.js' %}"></script>
-    <script src="{% static 'file/shop/category/js/scroll.js' %}"></script>
+<script src="{% static 'file/shop/category/js/popper.js' %}"></script>
+<script src="{% static 'file/shop/category/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'file/shop/category/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'file/shop/category/js/jquery.ui.js' %}"></script>
+<script src="{% static 'file/shop/category/js/jquery.elevatezoom.js' %}"></script>
+<script src="{% static 'file/shop/category/js/tippy-bundle.umd.js' %}"></script>
+<script src="{% static 'file/shop/category/js/plugins.js' %}"></script>
+<script src="{% static 'file/shop/category/js/main.js' %}"></script>
+<script src="{% static 'file/shop/category/js/scroll.js' %}"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZV7WLHDFF"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-DZV7WLHDFF');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-DZV7WLHDFF');
 </script>
 {% block script %}{% endblock %}

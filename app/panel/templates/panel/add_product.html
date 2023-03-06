@@ -2,6 +2,7 @@
 {% block title %}panel{% endblock %}
 {% block content %}
     {% load static %}
+    {% load thumbnail %}
     {% block stylesheet %}
     {% endblock stylesheet %}
     <main>
@@ -92,23 +93,81 @@
                                     <div class="form-group">
                                         <label class="form-label">Загрузка изображения*</label>
                                     </div>
+                                    {% comment %}Изображение{% endcomment %}
                                     <div class="form-group">
                                         {% if products.image %}
-                                            <label class=""><img src="{{ products.image.url }}"/></label>
-                                        {% endif %}
+                                        {% thumbnail products.image '80x80' crop='center' as im %}
+                                            <label class=""><img src="{{ im.url }}"></label>
+                                        {% endthumbnail %}
+                                    {% endif %}
                                     </div>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" value="{{ products.image }}" name="image" accept="image/jpeg,image/jpe,image/gif,image/bmp,image/svg,image/tif,image/tiff,image/webp,
+                                            <input type="file" value="{{ products.image }}" name="image0" accept="image/jpeg,image/jpe,image/gif,image/bmp,image/svg,image/tif,image/tiff,image/webp,
                                             image/png"
                                                    id="file"
                                                    required="">
                                             <label type="file" for="file"></label>
                                         </div>
                                     </div>
-                                    <message_file_name></message_file_name>
+
+                                    <message_file_name0></message_file_name0>
                                     <br>
-                                    <message_file_type></message_file_type>
+                                    <message_file_type0></message_file_type0>
+
+                                    {% comment %}Изображение1{% endcomment %}
+                                    <div class="form-group">
+                                        {% if products.image1 %}
+                                            <label class=""><img src="{{ products.image1.url }}"/></label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" value="{{ products.image1 }}" name="image1" accept="image/jpeg,image/jpe,image/gif,image/bmp,image/svg,image/tif,image/tiff,image/webp,
+                                            image/png" id="file">
+                                            <label type="file" for="file"></label>
+                                        </div>
+                                    </div>
+
+                                    <message_file_name1></message_file_name1>
+                                    <br>
+                                    <message_file_type1></message_file_type1>
+
+                                    {% comment %}Изображение2{% endcomment %}
+                                    <div class="form-group">
+                                        {% if products.image2 %}
+                                            <label class=""><img src="{{ products.image2.url }}"/></label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" value="{{ products.image2 }}" name="image2" accept="image/jpeg,image/jpe,image/gif,image/bmp,image/svg,image/tif,image/tiff,image/webp,
+                                            image/png" id="file">
+                                            <label type="file" for="file"></label>
+                                        </div>
+                                    </div>
+
+                                    <message_file_name2></message_file_name2>
+                                    <br>
+                                    <message_file_type2></message_file_type2>
+
+                                    {% comment %}Изображение3{% endcomment %}
+                                    <div class="form-group">
+                                        {% if products.image3 %}
+                                            <label class=""><img src="{{ products.image3.url }}"/></label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" value="{{ products.image3 }}" name="image3" accept="image/jpeg,image/jpe,image/gif,image/bmp,image/svg,image/tif,image/tiff,image/webp,
+                                            image/png" id="file">
+                                            <label type="file" for="file"></label>
+                                        </div>
+                                    </div>
+
+                                    <message_file_name3></message_file_name3>
+                                    <br>
+                                    <message_file_type3></message_file_type3>
                                     <div class="form-group">
                                         <label class="form-label">Статус*</label>
                                         </br>
@@ -129,7 +188,7 @@
                                 </div>
                             </div>
                         </div>
-                    {% include 'panel/include/characteristiki.html' %}
+                        {% include 'panel/include/characteristiki.html' %}
                     </div>
                 </form>
             </div>

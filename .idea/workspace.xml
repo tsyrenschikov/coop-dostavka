@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/order/editorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/order/editorder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -322,41 +320,10 @@
       <workItem from="1677415142369" duration="5830000" />
       <workItem from="1677502159365" duration="4190000" />
       <workItem from="1677513009875" duration="13286000" />
-    </task>
-    <task id="LOCAL-00077" summary="edit search">
-      <created>1675014446600</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1675014446600</updated>
-    </task>
-    <task id="LOCAL-00078" summary="update_file edit">
-      <created>1675104162614</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1675104162614</updated>
-    </task>
-    <task id="LOCAL-00079" summary="edit jquery true artikul">
-      <created>1675104834723</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1675104834723</updated>
-    </task>
-    <task id="LOCAL-00080" summary="POST search NO">
-      <created>1675106769278</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1675106769278</updated>
-    </task>
-    <task id="LOCAL-00081" summary="update_file">
-      <created>1675279292112</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1675279292112</updated>
+      <workItem from="1677934074678" duration="22517000" />
+      <workItem from="1678016342848" duration="8020000" />
+      <workItem from="1678031017585" duration="1931000" />
+      <workItem from="1678035395065" duration="8715000" />
     </task>
     <task id="LOCAL-00082" summary="update_file">
       <created>1675279852131</created>
@@ -666,7 +633,42 @@
       <option name="project" value="LOCAL" />
       <updated>1677521819936</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="edit">
+      <created>1677778443377</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1677778443377</updated>
+    </task>
+    <task id="LOCAL-00127" summary="add product jquery and add multifile image product">
+      <created>1677963799731</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1677963799732</updated>
+    </task>
+    <task id="LOCAL-00128" summary="add product jquery and add multifile image product NO">
+      <created>1678026416699</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1678026416699</updated>
+    </task>
+    <task id="LOCAL-00129" summary="add product jquery and add multifile image product OK">
+      <created>1678033026664</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1678033026664</updated>
+    </task>
+    <task id="LOCAL-00130" summary="edit image NO">
+      <created>1678042360180</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1678042360181</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,10 +687,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit_file" />
-    <MESSAGE value="celery service" />
-    <MESSAGE value="celery service OK" />
-    <MESSAGE value="Celery OK" />
     <MESSAGE value="export" />
     <MESSAGE value="celery server" />
     <MESSAGE value="update file 1" />
@@ -706,20 +704,19 @@
     <MESSAGE value="edit product" />
     <MESSAGE value="file update auto" />
     <MESSAGE value="product check" />
-    <MESSAGE value="edit" />
     <MESSAGE value="edit shop and panel" />
     <MESSAGE value="edit panel" />
     <MESSAGE value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
-    <option name="LAST_COMMIT_MESSAGE" value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
+    <MESSAGE value="edit" />
+    <MESSAGE value="add product jquery and add multifile image product" />
+    <MESSAGE value="add product jquery and add multifile image product NO" />
+    <MESSAGE value="add product jquery and add multifile image product OK" />
+    <MESSAGE value="edit image NO" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit image NO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>1224</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/panel/views.py</url>
           <line>305</line>
@@ -727,5 +724,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/__init___py$uchi.coverage" NAME="uchi Coverage Results" MODIFIED="1678017139637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

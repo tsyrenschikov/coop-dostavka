@@ -14,15 +14,8 @@
                         <div class="product-dt-view">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
-                                    <div id="sync1" class="owl-theme">
-                                        {% if product.image %}
-                                            <div class="item">
-                                                {% thumbnail product.image "300x300" crop="center" as im %}
-                                                    <img src="{{ im.url }}" alt="">
-                                                {% endthumbnail %}
-                                            </div>
-                                        {% endif %}
-                                    </div>
+                                    {% comment %}Картинка{% endcomment %}
+                                    {% include 'shop/includes/image/image.html' %}
                                 </div>
                                 <div class="col-lg-8 col-md-8">
                                     <div class="product-dt-right">

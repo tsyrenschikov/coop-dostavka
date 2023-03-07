@@ -326,14 +326,7 @@
       <workItem from="1678035395065" duration="8862000" />
       <workItem from="1678107125554" duration="1557000" />
       <workItem from="1678191079797" duration="2265000" />
-      <workItem from="1678199942445" duration="331000" />
-    </task>
-    <task id="LOCAL-00083" summary="edit_file">
-      <created>1675443052947</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1675443052948</updated>
+      <workItem from="1678199942445" duration="1716000" />
     </task>
     <task id="LOCAL-00084" summary="edit_file">
       <created>1675443887824</created>
@@ -671,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678044345941</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="thumbnail">
+      <created>1678200359517</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1678200359517</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="export" />
     <MESSAGE value="celery server" />
     <MESSAGE value="update file 1" />
     <MESSAGE value="file excel update_file" />
@@ -715,7 +714,8 @@
     <MESSAGE value="add product jquery and add multifile image product NO" />
     <MESSAGE value="add product jquery and add multifile image product OK" />
     <MESSAGE value="edit image NO" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit image NO" />
+    <MESSAGE value="thumbnail" />
+    <option name="LAST_COMMIT_MESSAGE" value="thumbnail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

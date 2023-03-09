@@ -17,6 +17,7 @@ $(document).ready(function () {
     /*Выбранные элементы*/
     select.chosen().change(function (e) {
         var sel = $('select').val();
+        console.log(sel.indexOf('Крупы')!=-1)
         $.each(sel, function (i, v) {
             $('select option:contains(' + v + ')').val(v).prop('selected', true).trigger("chosen:updated");
         });

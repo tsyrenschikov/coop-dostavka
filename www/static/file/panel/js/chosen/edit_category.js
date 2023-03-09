@@ -1,24 +1,24 @@
 $(document).ready(function () {
     var array = [];
-    var val_cat = $('#categories').val()
     var select = $(".edit-multiselect")
     /*Элементы из базы*/
     $('table tbody td').each(function () {
         array.push($(this).attr('value'));
     });
-    console.log(array)
     $.each(array, function (i,v){
-        $("select").val(v).trigger("chosen:updated")
+        $('#choose').append('<input id="'+ i +'" name="subcat" value="' + v + '">');
+    })
+    select.chosen()
+
+    /*Считать выбранные рание подкатегории*/
+    $.each(array, function (i, v) {
+        $('select option:contains(' + v + ')').val(v).prop('selected', true).trigger("chosen:updated")
     });
     /*Выбранные элементы*/
-    select.chosen().change(function (e, {selected}) {
+    select.chosen().change(function (e) {
+        var sel = $('select').val();
+        $.each(sel, function (i, v) {
+            $('select option:contains(' + v + ')').val(v).prop('selected', true).trigger("chosen:updated");
+        });
     });
-    // select.chosen().change(function (e) {
-    //     // Width must be 100% to fit grid column
-    //     width: "100%"
-    //     $.each(val_cat, function (i, v) {
-    //         console.log(v)
-    //     })
-    //     // $('#select option:contains('+ v +')').prop('selected', true);
-    // });
 })

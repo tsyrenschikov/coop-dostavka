@@ -43,10 +43,11 @@
                                         </br>
                                         <select data-placeholder="Выбор категории" tabindex="2" multiple class="input__control edit-multiselect">
                                             {% for subcategory in subcategory %}
-                                                <option name="subcat">{{ subcategory.name }}</option>
+                                                <option>{{ subcategory.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
+                                <chose name="subcat" hidden id="choose"></chose>
                                     <table style="display:none" class="table ucp-table table-hover">
                                         <tbody>
                                         {% for subcat in categories.subcat %}

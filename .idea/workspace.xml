@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_03_2023_22_32__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,21 +327,10 @@
       <workItem from="1677934074678" duration="22517000" />
       <workItem from="1678016342848" duration="8020000" />
       <workItem from="1678031017585" duration="1931000" />
-      <workItem from="1678035395065" duration="8715000" />
-    </task>
-    <task id="LOCAL-00082" summary="update_file">
-      <created>1675279852131</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1675279852131</updated>
-    </task>
-    <task id="LOCAL-00083" summary="edit_file">
-      <created>1675443052947</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1675443052948</updated>
+      <workItem from="1678035395065" duration="8862000" />
+      <workItem from="1678107125554" duration="1557000" />
+      <workItem from="1678191079797" duration="2265000" />
+      <workItem from="1678199942445" duration="1716000" />
     </task>
     <task id="LOCAL-00084" summary="edit_file">
       <created>1675443887824</created>
@@ -671,7 +661,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678042360181</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="edit image NO">
+      <created>1678044345941</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1678044345941</updated>
+    </task>
+    <task id="LOCAL-00132" summary="thumbnail">
+      <created>1678200359517</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1678200359517</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="export" />
     <MESSAGE value="celery server" />
     <MESSAGE value="update file 1" />
     <MESSAGE value="file excel update_file" />
@@ -715,17 +718,18 @@
     <MESSAGE value="add product jquery and add multifile image product NO" />
     <MESSAGE value="add product jquery and add multifile image product OK" />
     <MESSAGE value="edit image NO" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit image NO" />
+    <MESSAGE value="thumbnail" />
+    <option name="LAST_COMMIT_MESSAGE" value="thumbnail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/panel/views.py</url>
-          <line>305</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

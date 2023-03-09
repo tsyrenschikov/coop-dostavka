@@ -466,7 +466,6 @@ def edit_category(request, id):
                 categories.number = request.POST.get("number")
                 categories.save()
             if request.method == 'POST':
-                categories = Category.objects.get(id=id)
                 categories.subcat = request.POST.getlist('subcat')
                 categories.save(update_fields=['subcat'])
                 if request.FILES:

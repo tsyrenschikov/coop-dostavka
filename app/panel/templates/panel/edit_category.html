@@ -40,14 +40,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label"><em>Товарная группа</em></label>
-                                    </br>
-                                        <select data-placeholder="Выбор категории" tabindex="2" name="subcat" value="{{ categories.subcat }}">
-                                            {{ categories.subcat }}
+                                        </br>
+                                        <select data-placeholder="Выбор категории" tabindex="2" multiple class="input__control edit-multiselect">
                                             {% for subcategory in subcategory %}
                                                 <option name="subcat">{{ subcategory.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
+                                    <table style="display:none" class="table ucp-table table-hover">
+                                        <tbody>
+                                        {% for subcat in categories.subcat %}
+                                            <td value="{{ subcat }}"></td>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
                                     <div class="form-group">
                                         <label class="form-label">Загрузка изображения*</label>
                                     </div>
@@ -85,5 +91,6 @@
             </div>
         </div>
     </main>
+    <script src="{% static 'file/panel/js/chosen/edit_category.js' %}"></script>
     {% comment %}Выбор из списка{% endcomment %}
 {% endblock content %}

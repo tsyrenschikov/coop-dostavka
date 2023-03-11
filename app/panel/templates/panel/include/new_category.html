@@ -1,47 +1,55 @@
 {% load static %}
-                    <div class="row">
-							<div class="col-lg-5 col-md-6">
-								<div class="card card-static-2 mb-30">
-									<div class="card-body-table">
-										<div class="shopowner-content-left text-center pd-20">
-                                        <h4>Категория товара</h4>
-											<div class="customer_img">
-                                                {% if categories.image %}
-												<img src="{{ categories.image.url }}" alt="">
-                                                {% endif %}
-											</div>
-											<div class="shopowner-dt-left mt-4">
-												<span>{{ categories.name }}</span>
-											</div>
-											<div class="shopowner-dts">
-                                            <div class="shopowner-dt-list">
-													<span class="left-dt">Номер категории</span>
-													<span class="right-dt">{{ categories.number }}</span>
-                                            </div>
-												<div class="shopowner-dt-list">
-													<span class="left-dt">Название</span>
-													<span class="right-dt">{{ categories.name }}</span>
-												</div>
-                                            <div class="shopowner-dt-list">
-													<span class="left-dt">Описание категории</span>
-													<span class="right-dt">{{ categories.descriptions }}</span>
-                                            </div>
-                                            <div class="shopowner-dt-list">
-													<span class="left-dt">Статус</span>
-                                                {% if categories.status == 'True' %}
-                                                    <span class="right-dt">Активный</span>
-                                                {% else %}
-                                                    <span class="right-dt">Не активный</span>
-                                                {% endif %}
-                                            </div>
-											</div>
-										</div>
-                                        <div class="col-lg-12">
-								            <a href="{% url 'category' %}" class="add-btn hover-btn">К списку категорий</a>
-                                        </div>
-                                    <div class="shopowner-dt-left mt-4">
-                                    </div>
-									</div>
-								</div>
-							</div>
+<div class="row">
+    <div class="col-lg-5 col-md-6">
+        <div class="card card-static-2 mb-30">
+            <div class="card-body-table">
+                <div class="shopowner-content-left text-center pd-20">
+                    <h4>Категория товара</h4>
+                    <div class="customer_img">
+                        {% if categories.image %}
+                            <img src="{{ categories.image.url }}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="shopowner-dt-left mt-4">
+                        <span>{{ categories.name }}</span>
+                    </div>
+                    <div class="shopowner-dts">
+                        <div class="shopowner-dt-list">
+                            <span class="left-dt">Номер категории</span>
+                            <span class="right-dt">{{ categories.number }}</span>
                         </div>
+                        <div class="shopowner-dt-list">
+                            <span class="left-dt">Название</span>
+                            <span class="right-dt">{{ categories.name }}</span>
+                        </div>
+                        <div class="shopowner-dt-list">
+                            <span class="left-dt">Описание категории</span>
+                            <span class="right-dt">{{ categories.descriptions }}</span>
+                        </div>
+                        <div class="shopowner-dt-list">
+                            <span class="left-dt">Товарная группа</span>
+                            <span class="right-dt">
+                                {% for category in categories.subcat %}
+                                    {{ category }}; &nbsp;
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="shopowner-dt-list">
+                            <span class="left-dt">Статус</span>
+                            {% if categories.status == 'True' %}
+                                <span class="right-dt">Активный</span>
+                            {% else %}
+                                <span class="right-dt">Не активный</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <a href="{% url 'category' %}" class="add-btn hover-btn">К списку категорий</a>
+                </div>
+                <div class="shopowner-dt-left mt-4">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

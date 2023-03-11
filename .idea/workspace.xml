@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/new_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/new_category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,9 +198,6 @@
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Админ\AppData\Local\Programs\Python\Python310\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -327,20 +329,8 @@
       <workItem from="1678107125554" duration="1557000" />
       <workItem from="1678191079797" duration="2265000" />
       <workItem from="1678199942445" duration="1716000" />
-    </task>
-    <task id="LOCAL-00085" summary="celery">
-      <created>1675456043159</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1675456043159</updated>
-    </task>
-    <task id="LOCAL-00086" summary="celery service">
-      <created>1675544727301</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1675544727301</updated>
+      <workItem from="1678538027217" duration="552000" />
+      <workItem from="1678538969814" duration="10410000" />
     </task>
     <task id="LOCAL-00087" summary="celery service">
       <created>1675599624071</created>
@@ -671,7 +661,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678388148779</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="edit_category jquery NO">
+      <created>1678388869341</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1678388869341</updated>
+    </task>
+    <task id="LOCAL-00135" summary="edit_category jquery NO">
+      <created>1678388878417</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1678388878417</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

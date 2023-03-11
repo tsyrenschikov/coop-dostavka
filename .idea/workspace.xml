@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/new_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/new_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/edit_category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,21 +325,7 @@
       <workItem from="1678191079797" duration="2265000" />
       <workItem from="1678199942445" duration="1716000" />
       <workItem from="1678538027217" duration="552000" />
-      <workItem from="1678538969814" duration="10410000" />
-    </task>
-    <task id="LOCAL-00087" summary="celery service">
-      <created>1675599624071</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1675599624071</updated>
-    </task>
-    <task id="LOCAL-00088" summary="celery service">
-      <created>1675616999489</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1675616999489</updated>
+      <workItem from="1678538969814" duration="11636000" />
     </task>
     <task id="LOCAL-00089" summary="celery service OK">
       <created>1675628642534</created>
@@ -675,7 +656,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678388878417</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="edit_category jquery">
+      <created>1678555667857</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1678555667858</updated>
+    </task>
+    <task id="LOCAL-00137" summary="style category">
+      <created>1678555933616</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1678555933616</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,8 +689,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update file 1" />
-    <MESSAGE value="file excel update_file" />
     <MESSAGE value="email_attach" />
     <MESSAGE value="update file (no_product, delete base no_product)" />
     <MESSAGE value="meta" />
@@ -719,7 +712,9 @@
     <MESSAGE value="edit image NO" />
     <MESSAGE value="thumbnail" />
     <MESSAGE value="edit_category jquery NO" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit_category jquery NO" />
+    <MESSAGE value="edit_category jquery" />
+    <MESSAGE value="style category" />
+    <option name="LAST_COMMIT_MESSAGE" value="style category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/career.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/cart_ok.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/grid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/products.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/search_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/oblpotrebsoyuz/search_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/cart_modal_oblpotrebsoyuz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/featured_oblpotrebsoyuz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/includes/search_order_oblpotrebsoyuz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/base_oblpotrebsoyuz.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,44 +89,44 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/backup&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</source-data-source-id>\n        <source-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</source-path>\n        <target-data-source-id>f6add30d-d175-493a-82ef-28d9ecb9a63f</target-data-source-id>\n        <target-path>database/&quot;c39682_coop_dostavka_ru&quot;/schema/&quot;public&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
+    "last_opened_file_path": "D:/coop-dostavka/app/shop/templates/shop/includes",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\coop-dostavka\app\shop\templates\shop\includes" />
+      <recent name="D:\coop-dostavka\app\shop\templates\shop\layouts" />
+      <recent name="D:\coop-dostavka\app\shop\templates\oblpotrebsoyuz" />
       <recent name="D:\coop-dostavka\app\panel" />
       <recent name="D:\coop-dostavka\app\tasks" />
-      <recent name="D:\coop-dostavka\app" />
-      <recent name="C:\coopdostavka\app\coop_dostavka" />
-      <recent name="D:\coop-dostavka\app\panel\templates\panel\error" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\project.tsyrenschikov\app\project\templates\project" />
@@ -325,14 +340,12 @@
       <workItem from="1678191079797" duration="2265000" />
       <workItem from="1678199942445" duration="1716000" />
       <workItem from="1678538027217" duration="552000" />
-      <workItem from="1678538969814" duration="11636000" />
-    </task>
-    <task id="LOCAL-00089" summary="celery service OK">
-      <created>1675628642534</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1675628642534</updated>
+      <workItem from="1678538969814" duration="11656000" />
+      <workItem from="1678622410168" duration="1341000" />
+      <workItem from="1678628633702" duration="382000" />
+      <workItem from="1678634492290" duration="1552000" />
+      <workItem from="1678709590884" duration="2076000" />
+      <workItem from="1678796947839" duration="4974000" />
     </task>
     <task id="LOCAL-00090" summary="celery">
       <created>1675674621238</created>
@@ -670,7 +683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678555933616</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="style category">
+      <created>1678556897063</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1678556897063</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,6 +738,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
+          <line>2057</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/shop/views.py</url>
+          <line>2233</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

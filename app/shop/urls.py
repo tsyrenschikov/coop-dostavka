@@ -138,4 +138,15 @@ urlpatterns = [
     path('natalinsk/cart_natalinsk/', views.cart_natalinsk, name='cart_natalinsk'),
     path('natalinsk/cart_ok_natalinsk/<int:ord>/', views.cart_ok_natalinsk, name='cart_ok_natalinsk'),
 
+#Shop oblpotrebsoyuz
+    path('oblpotrebsoyuz/', views.shop_oblpotrebsoyuz, name='shop_oblpotrebsoyuz'),
+    path('oblpotrebsoyuz/product/<int:id>/', views.shop_oblpotrebsoyuz_product, name='shop_oblpotrebsoyuz_product'),
+    path('oblpotrebsoyuz/grid/', views.shop_oblpotrebsoyuz_grid, name='shop_oblpotrebsoyuz_grid'),
+    path('oblpotrebsoyuz/career/', views.shop_oblpotrebsoyuz_career, name='shop_oblpotrebsoyuz_career'),
+    path('oblpotrebsoyuz/sort_list/<str:list>/', views.sort_list_oblpotrebsoyuz, name='sort_list_oblpotrebsoyuz'),
+    path('oblpotrebsoyuz/searchproduct/', views.searchproduct, name='searchproduct'),
+    path('oblpotrebsoyuz/searchnatalinsk/', views.searchoblpotrebsoyuz, name='searchoblpotrebsoyuz'),
+    path('oblpotrebsoyuz/cart_oblpotrebsoyuz/', views.cart_oblpotrebsoyuz, name='cart_oblpotrebsoyuz'),
+    path('oblpotrebsoyuz/cart_ok_oblpotrebsoyuz/<int:ord>/', views.cart_ok_oblpotrebsoyuz, name='cart_ok_oblpotrebsoyuz'),
+
     ]

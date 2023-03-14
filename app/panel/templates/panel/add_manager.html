@@ -55,12 +55,24 @@
                                         <div class="col-lg-6">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">Email*</label>
-                                                <input type="email" class="form-control" name="email" value="" placeholder="Введите Email Address" required="">
+                                                <input type="email" class="form-control" name="email" value="" placeholder="Введите Email" required="">
                                             </div>
                                             {% if email %}
                                                 <div class="alert alert-danger alert-dismissible">
                                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                     {{ email }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">Резервный Email</label>
+                                                <input type="email" class="form-control" name="email2" value="" placeholder="Введите резервный Email">
+                                            </div>
+                                            {% if email2 %}
+                                                <div class="alert alert-danger alert-dismissible">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    {{ email2 }}
                                                 </div>
                                             {% endif %}
                                         </div>
@@ -78,8 +90,8 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group mb-3">
-                                                <label class="form-label">Наименование организации</label>
-                                                <input type="text" class="form-control" name="org" value="" placeholder="Например: Красноуфимское РАЙПО">
+                                                <label class="form-label">Наименование организации*</label>
+                                                <input type="text" class="form-control" name="org" value="" placeholder="Например: Красноуфимское РАЙПО" required="">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -87,6 +99,9 @@
                                                 <label class="form-label">Адрес отгрузки</label>
                                                 <input type="text" class="form-control" name="address" value="" placeholder="623300 Свердловская область, г. Первоуральск...">
                                             </div>
+                                        </div>
+                                        <div class="col-lg-6">
+
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group mb-3">

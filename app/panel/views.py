@@ -44,6 +44,7 @@ def add_manager(request):
     if request.user.is_superuser:
         alert = {
             "email": request.GET.get('email', ''),
+            "email2": request.GET.get('email2', ''),
             "phone": request.GET.get('phone', ''),
         }
 
@@ -51,6 +52,7 @@ def add_manager(request):
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
             email = request.POST.get('email')
+            email2 = request.POST.get('email2')
             phone = request.POST.get('phone')
             org = request.POST.get('org')
             address = request.POST.get('address')
@@ -60,10 +62,12 @@ def add_manager(request):
             if password == password2:
                 if User.objects.filter(email=request.POST['email']).exists():
                     alert['email'] = "E-mail уже используется"
+                elif User.objects.filter(email2=request.POST['email2']).exists():
+                    alert['email2'] = "Резервный E-mail ужк используется"
                 elif User.objects.filter(phone=request.POST['phone']).exists():
                     alert['phone'] = "Номер телефона уже используется"
                 else:
-                    User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email, password=password)
+                    User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email,email2=email2, password=password)
                     user_group = Group.objects.get(name='manager')
                     users = User.objects.get(email=email)
                     users.groups.add(user_group)
@@ -87,6 +91,7 @@ def edit_prof_manager(request, id):
                 users.first_name = request.POST.get("first_name")
                 users.last_name = request.POST.get("last_name")
                 users.email = request.POST.get("email")
+                users.email2 = request.POST.get("email2")
                 users.org = request.POST.get("org")
                 users.phone = request.POST.get("phone")
                 users.address = request.POST.get("address")

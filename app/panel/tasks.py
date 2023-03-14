@@ -17,12 +17,14 @@ def email(update_ost, html, name):
     time.sleep(10)
     # Отправка сообщения на почту после обновления файлов
     id_manager = Shop.objects.values('customuser_id').filter(slug=name)
-    for i in id_manager:
-        id_man = i['customuser_id']
-    email_manager = User.objects.values('email').filter(id=id_man)
-    for i in email_manager:
-        email_send = i['email']
-    subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
+    id_man = id_manager[0]['customuser_id']
+    email_manager = User.objects.values('email', 'email2').filter(id=id_man)
+    email_send = email_manager[0]['email']
+    email2_send = email_manager[0]['email2']
+    if email2_send:
+        subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send, email2_send)
+    else:
+        subject, from_email, to = update_ost, settings.EMAIL_HOST_USER, (email_send)
     text_content = 'Список обновленных позиций'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html, "text/html")

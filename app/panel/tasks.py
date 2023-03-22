@@ -31,6 +31,7 @@ def email(update_ost, html, name):
     # msg.attach_file("/home/web/Env/coop-dostavka.ru/app/panel/tasks.py")
     msg.send()
 
+
 @app.task()
 def email_order(s):
     time.sleep(10)

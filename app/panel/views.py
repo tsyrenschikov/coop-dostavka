@@ -67,7 +67,7 @@ def add_manager(request):
                 elif User.objects.filter(phone=request.POST['phone']).exists():
                     alert['phone'] = "Номер телефона уже используется"
                 else:
-                    User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email,email2=email2, password=password)
+                    User.objects.create_user(first_name=first_name, last_name=last_name, org=org, phone=phone, address=address, email=email, email2=email2, password=password)
                     user_group = Group.objects.get(name='manager')
                     users = User.objects.get(email=email)
                     users.groups.add(user_group)
@@ -1148,7 +1148,7 @@ def edit_product(request, id):
                     products.image1 = request.FILES.get("image1")
                     products.image2 = request.FILES.get("image2")
                     products.image3 = request.FILES.get("image3")
-                    products.save(update_fields=['image','image1','image2','image3'])
+                    products.save(update_fields=['image', 'image1', 'image2', 'image3'])
                     return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
                 return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
             else:

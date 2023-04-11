@@ -748,7 +748,7 @@ def products(request):
                                 checkbool = request.POST.get("checkbool")
                                 query_name = request.POST.get('name')
 
-                                if query_name:
+                                if query_name :
                                     product = name.objects.filter(
                                         Q(name__icontains=query_name) |
                                         Q(artikul__icontains=query_name)

@@ -9,14 +9,13 @@ subcategory = [],
     subsubcategory = [];
 
 $(document).ready(function () {
-    var check_pres =$('#check_press').val();
-    if (check_pres ==='yes' ){
+    var check_pres = $('#check_press').val();
+    if (check_pres === 'yes') {
         $('#squaredFour').prop('checked', true);
-         $('#check_yes_no').attr({'value':'yes'})
-    }
-    else {
+        $('#check_yes_no').attr({'value': 'yes'})
+    } else {
         $('#squaredFour').prop('checked', false);
-         $('#check_yes_no').attr({'value':'no'})
+        $('#check_yes_no').attr({'value': 'no'})
     }
     category = 0;
     category = [];
@@ -77,16 +76,16 @@ $(document).ready(function () {
                 $('#selectsub option:first').remove();
                 lens -= 1;
             }
-            if ((count > 20) && (count <24)) {
-                    $('.tpgdiv').show();
-                        $('.prom_product').show();
-                    $('input[type=checkbox]').click(function () {
-                        if ($(this).prop('checked')) {
-                            $('#check_yes_no').attr({'value': 'yes'})
-                        } else {
-                            $('#check_yes_no').attr({'value': 'no',})
-                        }
-                    });
+            if ((count > 20) && (count < 24)) {
+                $('.tpgdiv').show();
+                $('.prom_product').show();
+                $('input[type=checkbox]').click(function () {
+                    if ($(this).prop('checked')) {
+                        $('#check_yes_no').attr({'value': 'yes'})
+                    } else {
+                        $('#check_yes_no').attr({'value': 'no',})
+                    }
+                });
                 $("#selectsub").on('change', function () {
                     $("#selectsub option:selected").each(function () {
                         countsubsub = $(this).attr('value');

@@ -7,37 +7,37 @@
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Ширина (мм)</label>
-                    <input type="number" name="width" class="form-control" value="{{ products.width }}">
+                    <input type="number" name="width" class="form-control" value="{% if products.width is not None %}{{ products.width }}{% else %}0{% endif %}">
                 </div>
             </div>
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Высота (мм)</label>
-                    <input type="number" name="height" class="form-control" value="{{ products.height }}">
+                    <input type="number" name="height" class="form-control" value="{% if products.height is not None %}{{ products.height }}{% else %}0{% endif %}">
                 </div>
             </div>
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Глубина (мм)</label>
-                    <input type="number" name="length" class="form-control" value="{{ products.length }}">
+                    <input type="number" name="length" class="form-control" value="{% if products.lenght is not None %}{{ products.length }}{% else %}0{% endif %}">
                 </div>
             </div>
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Производитель</label>
-                    <input type="text" name="fabricator" class="form-control" value="{{ products.fabricator }}" placeholder="Пермь">
+                    <input type="text" name="fabricator" class="form-control" value="{% if products.fabricator is not None %}{{ products.fabricator }}{% else %}{% endif %}" placeholder="Пермь">
                 </div>
             </div>
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Материал</label>
-                    <input type="text" name="material" class="form-control" value="{{ products.material }}" placeholder="ДСП">
+                    <input type="text" name="material" class="form-control" value="{% if products.material is not None %}{{ products.material }}{% else %}{% endif %}" placeholder="ДСП">
                 </div>
             </div>
             <div class="form-group">
                 <div class="news-content-right pd-20">
                     <label class="form-label">Цвет изделия</label>
-                    <input type="text" name="color" class="form-control" value="{{ products.color }}" placeholder="Цвет изделия">
+                    <input type="text" name="color" class="form-control" value="{% if products.color is not None %}{{ products.color }}{% endif %}" placeholder="Цвет изделия">
                 </div>
             </div>
             <div class="form-group">

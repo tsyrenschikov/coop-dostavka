@@ -1116,6 +1116,7 @@ def edit_product(request, id):
             slug = [y[1] for x in users for y in shops if x == y[0] and request.user.id == x][0]
             address = int([i for i in str(request.path).split('/') if i][-1])
             name = eval(slug)
+            shop_id = Shop.objects.values_list('id',flat=True).filter(slug=slug)[0]
             products = name.objects.get(pk=id)
             product_artikul = name.objects.values('artikul').order_by('id')
             category = Category.objects.all().order_by('number')
@@ -1136,6 +1137,7 @@ def edit_product(request, id):
                 products.color = request.POST.get('color')
                 products.material = request.POST.get('material')
                 products.check_pres = request.POST.get('check_pres')
+                products.shop_id = request.POST.get('id')
                 products.save()
             if request.method == 'POST':
                 products.subcat = request.POST.get('subcat')
@@ -1153,7 +1155,7 @@ def edit_product(request, id):
                 return render(request, 'panel/edit_ok_product.html', {'products': products, 'product_artikul': product_artikul})
             else:
                 return render(request, 'panel/edit_product.html', {'products': products, 'product_artikul': product_artikul, 'category': category, 'subcategory': subcategory,
-                                                                   'subsubcategory': subsubcategory})
+                                                                   'subsubcategory': subsubcategory, 'shop_id':shop_id})
         except name.DoesNotExist:
             return render(request, 'panel/error/doesnotexist.html', {'address': address})
     else:

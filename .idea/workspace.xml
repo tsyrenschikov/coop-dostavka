@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f46e0306-6ff0-4e62-9768-9de0c67c93f1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f46e0306-6ff0-4e62-9768-9de0c67c93f1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/sidenav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/edit_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/include/edit_characteristiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/include/edit_characteristiki.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/templates/shop/layouts/meta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/instructions/add_product.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/instructions/edit_product.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/static/file/panel/instructions/update_file.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/static/file/panel/js/chosen/editcategory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,11 +130,14 @@
       <recent name="D:\coop-dostavka\app\coop_dostavka" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.26_bin">
+  <component name="RunManager" selected="Python.test2">
     <configuration name="26_bin" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="D:\python\python.exe" />
       <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -307,11 +302,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test2" />
+        <item itemvalue="Python.uchi2" />
         <item itemvalue="Python.26_bin" />
         <item itemvalue="Python.uchi" />
-        <item itemvalue="Python.test2" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.uchi2" />
       </list>
     </recent_temporary>
   </component>
@@ -471,14 +466,12 @@
       <workItem from="1680691348223" duration="532000" />
       <workItem from="1680704256992" duration="3045000" />
       <workItem from="1680785747316" duration="1071000" />
-      <workItem from="1680790880153" duration="808000" />
-    </task>
-    <task id="LOCAL-00094" summary="update file 1">
-      <created>1675785271215</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1675785271215</updated>
+      <workItem from="1680790880153" duration="1301000" />
+      <workItem from="1680877475739" duration="2766000" />
+      <workItem from="1681042623636" duration="79000" />
+      <workItem from="1681125040647" duration="3791000" />
+      <workItem from="1681132146082" duration="26000" />
+      <workItem from="1681217191997" duration="8351000" />
     </task>
     <task id="LOCAL-00095" summary="file excel update_file">
       <created>1675797481610</created>
@@ -816,7 +809,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679477896444</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="edit">
+      <created>1680791917983</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1680791917984</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

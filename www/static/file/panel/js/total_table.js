@@ -38,6 +38,6 @@ $(document).ready(function () {
     $('.active_price').html(sum_arr_active+' '+ 'шт.');
     $('.order_price').html(sum_arr_order);
     $('.done').html(sum_arr_done);
-    $('.total_').html(sum_arr_total_+' '+'р.');
+    $('.total_').html(sum_arr_total_.toFixed(2)+' '+'р.');
     $('.refusal_price').html(sum_arr_refusal);
 });

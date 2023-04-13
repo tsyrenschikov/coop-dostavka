@@ -65,8 +65,8 @@
                                             <td data-done="{{ value.3 }}">
                                                 {{ value.3 }}
                                             </td>
-                                            <td data-total_="{{ value.4 }}">
-                                                {{ value.4 }} р.
+                                            <td data-total_="{{ value.4|floatformat:2 }}">
+                                                {{ value.4|floatformat:2 }} р.
                                             </td>
                                             <td data-refusal="{{ value.5 }}">
                                                 {{ value.5 }}

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f46e0306-6ff0-4e62-9768-9de0c67c93f1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f46e0306-6ff0-4e62-9768-9de0c67c93f1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/panel/templates/panel/orders.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -465,13 +459,13 @@
       <workItem from="1680704256992" duration="3045000" />
       <workItem from="1680785747316" duration="1071000" />
       <workItem from="1680790880153" duration="808000" />
-    </task>
-    <task id="LOCAL-00094" summary="update file 1">
-      <created>1675785271215</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1675785271215</updated>
+      <workItem from="1681719134471" duration="27000" />
+      <workItem from="1681722414246" duration="86000" />
+      <workItem from="1681725595753" duration="42000" />
+      <workItem from="1681810212082" duration="309000" />
+      <workItem from="1681877467408" duration="484000" />
+      <workItem from="1681971645766" duration="867000" />
+      <workItem from="1682055422828" duration="883000" />
     </task>
     <task id="LOCAL-00095" summary="file excel update_file">
       <created>1675797481610</created>
@@ -809,7 +803,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679477896444</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="edit">
+      <created>1681718486399</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1681718486399</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

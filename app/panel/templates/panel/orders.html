@@ -109,9 +109,6 @@
                                             {{ zakaz.address_city }},<br> {{ zakaz.address_street }}
                                         </td>
                                         <td>{{ zakaz.cart|floatformat:2 }} р.</td>
-                                        {% else %}
-                                        Отредактируйте заказ
-                                        {% endif %}
                                         <td>
                                             {% if zakaz.delivery == 0.00 %}
                                                 <span class="badge-item badge-status">Бесплатно</span>

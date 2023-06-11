@@ -19,7 +19,7 @@
             <mapping deploy="/" local="$PROJECT_DIR$/../tsyrenschikov" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath path="/" />
+            <excludedPath path="/www/static/tsyrenschikov" />
           </excludedPaths>
         </serverdata>
       </paths>

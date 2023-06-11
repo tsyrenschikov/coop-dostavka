@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Project/.idea/Project.iml" filepath="$PROJECT_DIR$/../Project/.idea/Project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../project.tsyrenschikov/.idea/project.tsyrenschikov.iml" filepath="$PROJECT_DIR$/../project.tsyrenschikov/.idea/project.tsyrenschikov.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../flaskProject1/.idea/flaskProject1.iml" filepath="$PROJECT_DIR$/../flaskProject1/.idea/flaskProject1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../flask_shortener/.idea/flask_shortener.iml" filepath="$PROJECT_DIR$/../flask_shortener/.idea/flask_shortener.iml" />
       <module fileurl="file://$PROJECT_DIR$/../project.tsyrenschikov.ru/.idea/project.tsyrenschikov.ru.iml" filepath="$PROJECT_DIR$/../project.tsyrenschikov.ru/.idea/project.tsyrenschikov.ru.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tsyrenschikov/.idea/tsyrenschikov.iml" filepath="$PROJECT_DIR$/../tsyrenschikov/.idea/tsyrenschikov.iml" />
     </modules>
   </component>
 </project>

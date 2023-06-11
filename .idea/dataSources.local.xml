@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-231.9011.38">
-    <data-source name="Django default" uuid="f6add30d-d175-493a-82ef-28d9ecb9a63f">
+    <data-source name="coop-dostavka.ru" uuid="f6add30d-d175-493a-82ef-28d9ecb9a63f">
       <database-info product="PostgreSQL" version="14.6 (Ubuntu 14.6-1.pgdg22.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="14.6" exact-driver-version="42.5">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -18,6 +18,25 @@
       <ssh-properties>
         <enabled>true</enabled>
         <ssh-config-id>ce9a8ae0-da7d-4945-9763-df6bf7ddb7ab</ssh-config-id>
+      </ssh-properties>
+    </data-source>
+    <data-source name="tsyrenschikov" uuid="4d1951df-139e-4d23-a88a-76469be41d30">
+      <database-info product="PostgreSQL" version="10.3 (Debian 10.3-1.pgdg90+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="10.3" exact-driver-version="42.5">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>c25867_tsyrenschikov_ru</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="c25867_tsyrenschikov_ru">
+            <node kind="schema" negative="1" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>bec83570-95d7-47b0-9460-00d2c201032d</ssh-config-id>
       </ssh-properties>
     </data-source>
   </component>

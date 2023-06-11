@@ -13,6 +13,13 @@
           </excludedPaths>
         </serverdata>
       </paths>
+      <paths name="miroca">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/../miroca" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="tsyrenschikov">
         <serverdata>
           <mappings>

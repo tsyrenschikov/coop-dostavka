@@ -17,7 +17,6 @@
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/../tsyrenschikov" web="/" />
-            <mapping local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath path="/" />

@@ -10,14 +10,14 @@
         </fileTransfer>
       </webServer>
       <webServer id="5095207e-1887-4d31-87df-e74755d71808" name="tsyrenschikov" url="http://tsyrenschikov.ru">
-        <fileTransfer host="h19.netangels.ru" port="21">
+        <fileTransfer host="h43.netangels.ru" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
       <webServer id="8ce1715c-2f0f-4953-88e7-1a4a190a83d5" name="miroca" url="https://miroca.ru/">
-        <fileTransfer host="h19.netangels.ru" port="21">
+        <fileTransfer host="h43.netangels.ru" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

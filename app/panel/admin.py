@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Shop, Area, Category, SubCategory,SubSubCategory, Product, Locations, Days
-
 class ShopAdmin(admin.ModelAdmin):
     list_display = ['name']
 admin.site.register(Shop, ShopAdmin)

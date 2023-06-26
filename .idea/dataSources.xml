@@ -13,14 +13,14 @@
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://10.19.4.1:5432/c76533_tsyrenschikov_ru</jdbc-url>
+      <jdbc-url>jdbc:postgresql://10.19.4.2:5432/c76533_tsyrenschikov_ru</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="miroca" uuid="e0a82275-87f7-4b35-849c-30f8cb4dc73b">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://10.19.5.43:5432/c76533_miroca_ru</jdbc-url>
+      <jdbc-url>jdbc:postgresql://10.19.4.2:5432/c76533_miroca_ru</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

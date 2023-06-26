@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="PY-231.9011.38">
+  <component name="dataSourceStorageLocal" created-in="PY-231.9161.41">
     <data-source name="coop-dostavka.ru" uuid="f6add30d-d175-493a-82ef-28d9ecb9a63f">
       <database-info product="PostgreSQL" version="14.6 (Ubuntu 14.6-1.pgdg22.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="14.6" exact-driver-version="42.5">
         <identifier-quote-string>&quot;</identifier-quote-string>
@@ -21,7 +21,7 @@
       </ssh-properties>
     </data-source>
     <data-source name="tsyrenschikov" uuid="4d1951df-139e-4d23-a88a-76469be41d30">
-      <database-info product="PostgreSQL" version="10.3 (Debian 10.3-1.pgdg90+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="10.3">
+      <database-info product="PostgreSQL" version="14.5 (Debian 14.5-1.pgdg100+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.5">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
@@ -43,10 +43,19 @@
       </ssh-properties>
     </data-source>
     <data-source name="miroca" uuid="e0a82275-87f7-4b35-849c-30f8cb4dc73b">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <database-info product="PostgreSQL" version="14.5 (Debian 14.5-1.pgdg100+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.5" exact-driver-version="42.6">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>c76533_miroca_ru</user-name>
-      <schema-mapping />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
       <ssh-properties>
         <enabled>true</enabled>
         <ssh-config-id>bec83570-95d7-47b0-9460-00d2c201032d</ssh-config-id>

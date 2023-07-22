@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="">
+    <list default="true" id="2e7cc3b1-c562-40c8-8890-08008882f6ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6add30d-d175-493a-82ef-28d9ecb9a63f/storage_v2/_src_/database/c39682_coop_dostavka_ru.UYFkag/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_03_2023_22_32_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_03_2023_22_32_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2023_17_57_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2023_17_57_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2023_17_57__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_02_2023_8_43__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12,909 +35,80 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" module-name="Project" is-module-sdk="true">
-    <option name="useSoftWraps" value="true" />
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-    <option name="myUseModuleSdk" value="true" />
-    <option name="myModuleName" value="Project" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="8179bb6b-3609-4451-ba59-8922bd20beb3" />
-        <option name="url" value="https://github.com/tsyrenschikov/coop-dostavka.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/panel/templates/panel/add_offer.html" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="InvalidFacetManager">
-    <ignored-facets>
-      <facet id="Project/invalid/Django" />
-      <facet id="site_test/invalid/Django" />
-    </ignored-facets>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2JSM9owajAZ6LPZKp1QLzgZlfrI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2Sw4lQ08dgCDX3Bvp1o5ZIGqcQY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
-    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;f6add30d-d175-493a-82ef-28d9ecb9a63f&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;database/&amp;quot;c39682_coop_dostavka_ru&amp;quot;/schema/&amp;quot;public&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/coop-dostavka.ru",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "configurable.group.project",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project" />
-      <recent name="D:\flask_shortener" />
-      <recent name="D:\flask" />
-      <recent name="D:\flask\static" />
-      <recent name="D:\flask\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\flask\templates" />
-      <recent name="D:\flask" />
-      <recent name="D:\flask\static" />
-      <recent name="D:\project.tsyrenschikov\app\project\templates\project\kuzmenyh" />
-      <recent name="D:\site_test\test_index\total" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.uchi1">
+}]]></component>
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="Project" />
+      <module name="coop-dostavka.ru" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.PycharmRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="false" />
-        <option name="DIRENV_TRUSTED" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../python/Scripts" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="demo3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.PycharmRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="false" />
-        <option name="DIRENV_TRUSTED" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/demo3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="uchi1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.PycharmRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="false" />
-        <option name="DIRENV_TRUSTED" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/uchi1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="uchi2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.PycharmRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="false" />
-        <option name="DIRENV_TRUSTED" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/uchi2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="weather_with_geocoder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="D:\python\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../python" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.PycharmRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="false" />
-        <option name="DIRENV_TRUSTED" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Информатика/Python Pro/Материалы уроков/Модуль 3/Урок 9 - API/Файлы для урока/weather_with_geocoder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="D:\site_test\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://127.0.0.1:8000/" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.uchi1" />
-      <item itemvalue="Python.demo3" />
-      <item itemvalue="Python.uchi2" />
-      <item itemvalue="Python.weather_with_geocoder" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.uchi1" />
-        <item itemvalue="Python.demo3" />
-        <item itemvalue="Python.uchi2" />
-        <item itemvalue="Python.weather_with_geocoder" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="90bbe6c3-f5ba-4170-b197-f1275878c5db" name="Changes" comment="" />
-      <created>1672066882513</created>
+      <changelist id="2e7cc3b1-c562-40c8-8890-08008882f6ab" name="Changes" comment="" />
+      <created>1690044461086</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1672066882513</updated>
-      <workItem from="1672066884241" duration="543000" />
-      <workItem from="1672067444805" duration="24000" />
-      <workItem from="1672067476970" duration="14969000" />
-      <workItem from="1672082749397" duration="136000" />
-      <workItem from="1672082896252" duration="1655000" />
-      <workItem from="1672127340549" duration="1604000" />
-      <workItem from="1672131815789" duration="434000" />
-      <workItem from="1672149769848" duration="21019000" />
-      <workItem from="1672294957047" duration="337000" />
-      <workItem from="1672295761961" duration="107000" />
-      <workItem from="1672296116259" duration="909000" />
-      <workItem from="1672297114962" duration="487000" />
-      <workItem from="1672308926279" duration="323000" />
-      <workItem from="1672309264615" duration="185000" />
-      <workItem from="1672404006860" duration="471000" />
-      <workItem from="1672406287568" duration="974000" />
-      <workItem from="1672407493461" duration="131000" />
-      <workItem from="1672407905365" duration="307000" />
-      <workItem from="1672409084926" duration="135000" />
-      <workItem from="1672522101949" duration="445000" />
-      <workItem from="1672575528452" duration="28856000" />
-      <workItem from="1672668255198" duration="21834000" />
-      <workItem from="1672729192120" duration="1834000" />
-      <workItem from="1672758274558" duration="550000" />
-      <workItem from="1672987748166" duration="6733000" />
-      <workItem from="1673004772955" duration="22697000" />
-      <workItem from="1673098544009" duration="14000" />
-      <workItem from="1673176123082" duration="7161000" />
-      <workItem from="1673189337012" duration="2482000" />
-      <workItem from="1673244445938" duration="2903000" />
-      <workItem from="1673263263799" duration="22954000" />
-      <workItem from="1673325394129" duration="9497000" />
-      <workItem from="1673348105337" duration="4172000" />
-      <workItem from="1673358662751" duration="15237000" />
-      <workItem from="1673444176559" duration="18361000" />
-      <workItem from="1673699698981" duration="1331000" />
-      <workItem from="1673716210503" duration="1312000" />
-      <workItem from="1673719171162" duration="4876000" />
-      <workItem from="1673764643023" duration="9000" />
-      <workItem from="1673785680397" duration="4461000" />
-      <workItem from="1673807555309" duration="2074000" />
-      <workItem from="1673966788207" duration="3870000" />
-      <workItem from="1674235793809" duration="524000" />
-      <workItem from="1674304866542" duration="1636000" />
-      <workItem from="1674318192032" duration="69000" />
-      <workItem from="1674831307618" duration="1196000" />
-      <workItem from="1674832875036" duration="600000" />
-      <workItem from="1674834407824" duration="1170000" />
-      <workItem from="1674835613439" duration="11995000" />
-      <workItem from="1674849030445" duration="251000" />
-      <workItem from="1674909834892" duration="745000" />
-      <workItem from="1674917047149" duration="251000" />
-      <workItem from="1674979793166" duration="29532000" />
-      <workItem from="1675076943405" duration="33000" />
-      <workItem from="1675082590865" duration="18607000" />
-      <workItem from="1675174553534" duration="1844000" />
-      <workItem from="1675258742686" duration="17723000" />
-      <workItem from="1675433646485" duration="90000" />
-      <workItem from="1675433748702" duration="7624000" />
-      <workItem from="1675443938934" duration="12133000" />
-      <workItem from="1675514279791" duration="10547000" />
-      <workItem from="1675539094491" duration="6000" />
-      <workItem from="1675596038952" duration="3598000" />
-      <workItem from="1675609165526" duration="5475000" />
-      <workItem from="1675617192464" duration="12725000" />
-      <workItem from="1675661786156" duration="10189000" />
-      <workItem from="1675777554943" duration="661000" />
-      <workItem from="1675778383651" duration="148000" />
-      <workItem from="1675778543481" duration="132000" />
-      <workItem from="1675778753526" duration="1520000" />
-      <workItem from="1675780360371" duration="19039000" />
-      <workItem from="1675858382237" duration="14621000" />
-      <workItem from="1675875152681" duration="1692000" />
-      <workItem from="1676271324714" duration="995000" />
-      <workItem from="1676272706272" duration="1430000" />
-      <workItem from="1676566007020" duration="973000" />
-      <workItem from="1676568855803" duration="2322000" />
-      <workItem from="1676571497176" duration="5000" />
-      <workItem from="1676658544785" duration="1064000" />
-      <workItem from="1676715711829" duration="2586000" />
-      <workItem from="1676718372212" duration="141000" />
-      <workItem from="1676723302822" duration="11101000" />
-      <workItem from="1676792167626" duration="1384000" />
-      <workItem from="1676812873929" duration="5403000" />
-      <workItem from="1676991900991" duration="11246000" />
-      <workItem from="1677071727956" duration="1234000" />
-      <workItem from="1677149595885" duration="943000" />
-      <workItem from="1677151320322" duration="478000" />
-      <workItem from="1677152411947" duration="1302000" />
-      <workItem from="1677243291731" duration="4829000" />
-      <workItem from="1677334267861" duration="33000" />
-      <workItem from="1677334447472" duration="1002000" />
-      <workItem from="1677415142369" duration="5830000" />
-      <workItem from="1677502159365" duration="4190000" />
-      <workItem from="1677513009875" duration="13286000" />
-      <workItem from="1677934074678" duration="22517000" />
-      <workItem from="1678016342848" duration="8020000" />
-      <workItem from="1678031017585" duration="1931000" />
-      <workItem from="1678035395065" duration="8862000" />
-      <workItem from="1678107125554" duration="1557000" />
-      <workItem from="1678191079797" duration="2265000" />
-      <workItem from="1678199942445" duration="1716000" />
-      <workItem from="1678538027217" duration="552000" />
-      <workItem from="1678538969814" duration="11656000" />
-      <workItem from="1678622410168" duration="1341000" />
-      <workItem from="1678628633702" duration="382000" />
-      <workItem from="1678634492290" duration="1552000" />
-      <workItem from="1678709590884" duration="2076000" />
-      <workItem from="1678796947839" duration="10091000" />
-      <workItem from="1678889858936" duration="542000" />
-      <workItem from="1678890563534" duration="1893000" />
-      <workItem from="1678973604676" duration="724000" />
-      <workItem from="1678982097423" duration="107000" />
-      <workItem from="1679057733011" duration="2900000" />
-      <workItem from="1679143041835" duration="1661000" />
-      <workItem from="1679225634312" duration="4967000" />
-      <workItem from="1679237006827" duration="1222000" />
-      <workItem from="1679238421762" duration="2163000" />
-      <workItem from="1679310041012" duration="3495000" />
-      <workItem from="1679400593042" duration="2550000" />
-      <workItem from="1679477684717" duration="4953000" />
-      <workItem from="1679493284487" duration="2290000" />
-      <workItem from="1679495735299" duration="770000" />
-      <workItem from="1679496525674" duration="130000" />
-      <workItem from="1679496734985" duration="4044000" />
-      <workItem from="1679501407314" duration="1140000" />
-      <workItem from="1679502919285" duration="3370000" />
-      <workItem from="1679506993435" duration="1015000" />
-      <workItem from="1679508092304" duration="1713000" />
-      <workItem from="1679573313006" duration="2678000" />
-      <workItem from="1679656338538" duration="258000" />
-      <workItem from="1679662252201" duration="8222000" />
-      <workItem from="1679747735880" duration="3903000" />
-      <workItem from="1679915860883" duration="2836000" />
-      <workItem from="1679928933836" duration="602000" />
-      <workItem from="1679935119821" duration="1072000" />
-      <workItem from="1680008231450" duration="1541000" />
-      <workItem from="1680091559015" duration="3120000" />
-      <workItem from="1680101523964" duration="3276000" />
-      <workItem from="1680183279974" duration="883000" />
-      <workItem from="1680191636195" duration="35000" />
-      <workItem from="1680350388971" duration="443000" />
-      <workItem from="1680351165382" duration="2702000" />
-      <workItem from="1680517034960" duration="6721000" />
-      <workItem from="1680611885022" duration="582000" />
-      <workItem from="1680691348223" duration="532000" />
-      <workItem from="1680704256992" duration="3045000" />
-      <workItem from="1680785747316" duration="1071000" />
-      <workItem from="1680790880153" duration="808000" />
-      <workItem from="1682256441154" duration="549000" />
-      <workItem from="1682333950353" duration="4592000" />
-      <workItem from="1682342771807" duration="1556000" />
-      <workItem from="1682427587645" duration="598000" />
-      <workItem from="1682506480375" duration="3422000" />
-      <workItem from="1682603894261" duration="1023000" />
-      <workItem from="1682610535421" duration="1969000" />
-      <workItem from="1682687527717" duration="1075000" />
-      <workItem from="1682759920787" duration="1490000" />
-      <workItem from="1682773503849" duration="3675000" />
-      <workItem from="1682780008578" duration="3447000" />
-      <workItem from="1682795271324" duration="505000" />
-      <workItem from="1682837767982" duration="214000" />
-      <workItem from="1682859406029" duration="447000" />
-      <workItem from="1682861235867" duration="1183000" />
-      <workItem from="1682933411136" duration="6791000" />
-      <workItem from="1683026812244" duration="5588000" />
-      <workItem from="1683113739282" duration="1876000" />
-      <workItem from="1683126035369" duration="1180000" />
-      <workItem from="1683204507579" duration="1649000" />
-      <workItem from="1683287985678" duration="4046000" />
-      <workItem from="1683370894991" duration="7561000" />
-      <workItem from="1683457589464" duration="1505000" />
-      <workItem from="1683465154820" duration="4093000" />
-      <workItem from="1683475420094" duration="606000" />
-      <workItem from="1683543510873" duration="4769000" />
-      <workItem from="1683640428926" duration="2182000" />
-      <workItem from="1683726953941" duration="1019000" />
-      <workItem from="1683730831208" duration="19000" />
-      <workItem from="1683733327951" duration="1124000" />
-      <workItem from="1683734987189" duration="216000" />
-      <workItem from="1683891208120" duration="414000" />
-      <workItem from="1683895253583" duration="245000" />
-      <workItem from="1683895815375" duration="40000" />
-      <workItem from="1683908624496" duration="3976000" />
-      <workItem from="1683992756489" duration="1689000" />
-      <workItem from="1684039184744" duration="187000" />
-      <workItem from="1684054900885" duration="3953000" />
-      <workItem from="1684070343250" duration="2725000" />
-      <workItem from="1684148490946" duration="5410000" />
-      <workItem from="1684162540147" duration="3527000" />
-      <workItem from="1684241246580" duration="3269000" />
-      <workItem from="1684335357267" duration="2986000" />
-      <workItem from="1684338655117" duration="3000" />
-      <workItem from="1684340807865" duration="326000" />
-      <workItem from="1684418579695" duration="2509000" />
-      <workItem from="1684423997212" duration="1305000" />
-      <workItem from="1684425531496" duration="81000" />
-      <workItem from="1684425627012" duration="72000" />
-      <workItem from="1684425711676" duration="176000" />
-      <workItem from="1684425914676" duration="20000" />
-      <workItem from="1684499910941" duration="1085000" />
-      <workItem from="1684592583687" duration="5070000" />
-      <workItem from="1684661309898" duration="2094000" />
-      <workItem from="1684673308432" duration="1221000" />
-      <workItem from="1684683373411" duration="168000" />
-      <workItem from="1684752503090" duration="4014000" />
-      <workItem from="1684773119520" duration="371000" />
-      <workItem from="1684773615859" duration="1334000" />
-      <workItem from="1684845854142" duration="2514000" />
-      <workItem from="1685011594522" duration="2378000" />
-      <workItem from="1685022780069" duration="739000" />
-      <workItem from="1685025409169" duration="595000" />
-      <workItem from="1685028062984" duration="552000" />
-      <workItem from="1685105676619" duration="5096000" />
-      <workItem from="1685184644310" duration="2968000" />
-      <workItem from="1685199400354" duration="3744000" />
-      <workItem from="1685361445221" duration="1021000" />
-      <workItem from="1685372188366" duration="3990000" />
-      <workItem from="1685454694219" duration="1917000" />
-      <workItem from="1685458659970" duration="1183000" />
-      <workItem from="1685534590438" duration="360000" />
-      <workItem from="1685544796679" duration="10000" />
-      <workItem from="1685621057943" duration="987000" />
-      <workItem from="1685624228445" duration="2177000" />
-      <workItem from="1685632048034" duration="1500000" />
-      <workItem from="1685792326268" duration="2632000" />
-      <workItem from="1685804737994" duration="1957000" />
-      <workItem from="1685965379003" duration="2614000" />
-      <workItem from="1685971615026" duration="5045000" />
-      <workItem from="1686055769009" duration="591000" />
-      <workItem from="1686059703264" duration="1047000" />
-      <workItem from="1686064465176" duration="690000" />
-      <workItem from="1686224272962" duration="2051000" />
-      <workItem from="1686235805734" duration="1002000" />
-      <workItem from="1686311408803" duration="5521000" />
-      <workItem from="1686412770934" duration="1047000" />
-      <workItem from="1686490659518" duration="3506000" />
-      <workItem from="1686494618850" duration="10992000" />
-      <workItem from="1686505743082" duration="3054000" />
-      <workItem from="1686546017922" duration="2783000" />
-      <workItem from="1686554587738" duration="1398000" />
-      <workItem from="1686566462008" duration="3519000" />
-      <workItem from="1686583533189" duration="3053000" />
-      <workItem from="1686655056863" duration="3538000" />
-      <workItem from="1686669126801" duration="391000" />
-      <workItem from="1686830852432" duration="1142000" />
-      <workItem from="1686835930395" duration="1984000" />
-      <workItem from="1686843158496" duration="296000" />
-      <workItem from="1686999105765" duration="3291000" />
-      <workItem from="1687013294073" duration="3951000" />
-      <workItem from="1687174132274" duration="4550000" />
-      <workItem from="1687197928581" duration="421000" />
-      <workItem from="1687198369628" duration="7000" />
-      <workItem from="1687198417310" duration="881000" />
-      <workItem from="1687199311836" duration="30000" />
-      <workItem from="1687264694139" duration="139000" />
-      <workItem from="1687265420005" duration="4960000" />
-      <workItem from="1687346141903" duration="1653000" />
-      <workItem from="1687432613265" duration="3016000" />
-      <workItem from="1687439930277" duration="2895000" />
-      <workItem from="1687445402793" duration="153000" />
-      <workItem from="1687778221555" duration="3980000" />
-      <workItem from="1687784013136" duration="18000" />
-      <workItem from="1687793021181" duration="801000" />
-      <workItem from="1687794379558" duration="1001000" />
-      <workItem from="1687795398665" duration="584000" />
-      <workItem from="1687873614867" duration="974000" />
+      <updated>1690044461086</updated>
+      <workItem from="1690044461742" duration="618000" />
+      <workItem from="1690046551647" duration="1835000" />
+      <workItem from="1690048694491" duration="37000" />
     </task>
-    <task id="LOCAL-00104" summary="sheduler">
-      <created>1676272544949</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
+    <task id="LOCAL-00001" summary="new netbook">
+      <option name="closed" value="true" />
+      <created>1690048271055</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1676272544949</updated>
+      <updated>1690048271055</updated>
     </task>
-    <task id="LOCAL-00105" summary="send email update_file, jquery add_product">
-      <created>1676398174066</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1676398174066</updated>
-    </task>
-    <task id="LOCAL-00106" summary="jquery add_product">
-      <created>1676399621449</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1676399621449</updated>
-    </task>
-    <task id="LOCAL-00107" summary="jquery add_product">
-      <created>1676399965454</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1676399965454</updated>
-    </task>
-    <task id="LOCAL-00108" summary="celery">
-      <created>1676433100394</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1676433100394</updated>
-    </task>
-    <task id="LOCAL-00109" summary="celery">
-      <created>1676562561372</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1676562561372</updated>
-    </task>
-    <task id="LOCAL-00110" summary="celery task">
-      <created>1676569322947</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1676569322947</updated>
-    </task>
-    <task id="LOCAL-00111" summary="search panel">
-      <created>1676572398776</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1676572398776</updated>
-    </task>
-    <task id="LOCAL-00112" summary="search panel">
-      <created>1676573618204</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1676573618204</updated>
-    </task>
-    <task id="LOCAL-00113" summary="edit product">
-      <created>1676739431540</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1676739431540</updated>
-    </task>
-    <task id="LOCAL-00114" summary="file update auto">
-      <created>1676815338066</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1676815338066</updated>
-    </task>
-    <task id="LOCAL-00115" summary="file update auto">
-      <created>1676818428930</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1676818428930</updated>
-    </task>
-    <task id="LOCAL-00116" summary="file update auto">
-      <created>1676818454446</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1676818454446</updated>
-    </task>
-    <task id="LOCAL-00117" summary="file update auto">
-      <created>1676819762609</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1676819762609</updated>
-    </task>
-    <task id="LOCAL-00118" summary="product check">
-      <created>1676915713282</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1676915713282</updated>
-    </task>
-    <task id="LOCAL-00119" summary="edit">
-      <created>1677002100520</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1677002100520</updated>
-    </task>
-    <task id="LOCAL-00120" summary="edit">
-      <created>1677006551419</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1677006551419</updated>
-    </task>
-    <task id="LOCAL-00121" summary="edit shop and panel">
-      <created>1677248104996</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1677248104996</updated>
-    </task>
-    <task id="LOCAL-00122" summary="edit shop and panel">
-      <created>1677502270233</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1677502270233</updated>
-    </task>
-    <task id="LOCAL-00123" summary="edit shop and panel">
-      <created>1677509848651</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1677509848651</updated>
-    </task>
-    <task id="LOCAL-00124" summary="edit panel">
-      <created>1677516595245</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1677516595246</updated>
-    </task>
-    <task id="LOCAL-00125" summary="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:">
-      <created>1677521819936</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1677521819936</updated>
-    </task>
-    <task id="LOCAL-00126" summary="edit">
-      <created>1677778443377</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1677778443377</updated>
-    </task>
-    <task id="LOCAL-00127" summary="add product jquery and add multifile image product">
-      <created>1677963799731</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1677963799732</updated>
-    </task>
-    <task id="LOCAL-00128" summary="add product jquery and add multifile image product NO">
-      <created>1678026416699</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1678026416699</updated>
-    </task>
-    <task id="LOCAL-00129" summary="add product jquery and add multifile image product OK">
-      <created>1678033026664</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1678033026664</updated>
-    </task>
-    <task id="LOCAL-00130" summary="edit image NO">
-      <created>1678042360180</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1678042360181</updated>
-    </task>
-    <task id="LOCAL-00131" summary="edit image NO">
-      <created>1678044345941</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1678044345941</updated>
-    </task>
-    <task id="LOCAL-00132" summary="thumbnail">
-      <created>1678200359517</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1678200359517</updated>
-    </task>
-    <task id="LOCAL-00133" summary="edit_category jquery NO">
-      <created>1678388148778</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388148779</updated>
-    </task>
-    <task id="LOCAL-00134" summary="edit_category jquery NO">
-      <created>1678388869341</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388869341</updated>
-    </task>
-    <task id="LOCAL-00135" summary="edit_category jquery NO">
-      <created>1678388878417</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388878417</updated>
-    </task>
-    <task id="LOCAL-00136" summary="edit_category jquery">
-      <created>1678555667857</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1678555667858</updated>
-    </task>
-    <task id="LOCAL-00137" summary="style category">
-      <created>1678555933616</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1678555933616</updated>
-    </task>
-    <task id="LOCAL-00138" summary="style category">
-      <created>1678556897063</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1678556897063</updated>
-    </task>
-    <task id="LOCAL-00139" summary="oblpotrebsoyuz">
-      <created>1678804293548</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1678804293548</updated>
-    </task>
-    <task id="LOCAL-00140" summary="edit and add manager email2">
-      <created>1678813406894</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1678813406894</updated>
-    </task>
-    <task id="LOCAL-00141" summary="edit and add manager email2">
-      <created>1679313353856</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1679313353857</updated>
-    </task>
-    <task id="LOCAL-00142" summary="edit">
-      <created>1679477896444</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1679477896444</updated>
-    </task>
-    <task id="LOCAL-00143" summary="edit">
-      <created>1686493763274</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1686493763282</updated>
-    </task>
-    <task id="LOCAL-00144" summary="edit">
-      <created>1686494820916</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1686494820916</updated>
-    </task>
-    <task id="LOCAL-00145" summary="edit">
-      <created>1686499030965</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1686499030965</updated>
-    </task>
-    <task id="LOCAL-00146" summary="edit">
-      <created>1686499489103</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1686499489103</updated>
-    </task>
-    <task id="LOCAL-00147" summary="new tsyrenschikov">
-      <created>1686502123734</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1686502123734</updated>
-    </task>
-    <task id="LOCAL-00148" summary="new tsyrenschikov">
-      <created>1686504164551</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1686504164551</updated>
-    </task>
-    <task id="LOCAL-00149" summary="new tsyrenschikov">
-      <created>1686507420582</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1686507420582</updated>
-    </task>
-    <task id="LOCAL-00150" summary="new miroca">
-      <created>1686507481113</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1686507481113</updated>
-    </task>
-    <task id="LOCAL-00151" summary="new miroca">
-      <created>1686508152890</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1686508152890</updated>
-    </task>
-    <task id="LOCAL-00152" summary="new miroca">
-      <created>1686556239251</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1686556239254</updated>
-    </task>
-    <option name="localTasksCounter" value="156" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -925,73 +119,14 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/../" />
-    </ignored-roots>
-    <MESSAGE value="jquery add_product" />
-    <MESSAGE value="celery" />
-    <MESSAGE value="celery task" />
-    <MESSAGE value="search panel" />
-    <MESSAGE value="edit product" />
-    <MESSAGE value="file update auto" />
-    <MESSAGE value="product check" />
-    <MESSAGE value="edit shop and panel" />
-    <MESSAGE value="edit panel" />
-    <MESSAGE value="if request.user.groups.filter(name='manager'):&#10;return render(request,'panel/error_auth.html')&#10;&#10;&#10;if request.user.is_authenticated and request.user.is_superuser:" />
-    <MESSAGE value="add product jquery and add multifile image product" />
-    <MESSAGE value="add product jquery and add multifile image product NO" />
-    <MESSAGE value="add product jquery and add multifile image product OK" />
-    <MESSAGE value="edit image NO" />
-    <MESSAGE value="thumbnail" />
-    <MESSAGE value="edit_category jquery NO" />
-    <MESSAGE value="edit_category jquery" />
-    <MESSAGE value="style category" />
-    <MESSAGE value="oblpotrebsoyuz" />
-    <MESSAGE value="edit and add manager email2" />
-    <MESSAGE value="edit" />
-    <MESSAGE value="new tsyrenschikov" />
-    <MESSAGE value="new miroca" />
-    <MESSAGE value="new Git" />
-    <MESSAGE value="README.MD" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.MD" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/__init___py$.coverage" NAME=" Coverage Results" MODIFIED="1679506080860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../site_test/venv" />
-    <SUITE FILE_PATH="coverage/__init___py$main.coverage" NAME="main Coverage Results" MODIFIED="1684337363560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/__init___py$uchi1.coverage" NAME="uchi1 Coverage Results" MODIFIED="1687350215341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python" />
-    <SUITE FILE_PATH="coverage/__init___py$tsyrenschikov.coverage" NAME="tsyrenschikov Coverage Results" MODIFIED="1680768625800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/__init___py$uchi.coverage" NAME="uchi Coverage Results" MODIFIED="1681649393426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/__init___py$uchi2.coverage" NAME="uchi2 Coverage Results" MODIFIED="1686572791954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python" />
+    <MESSAGE value="new netbook" />
+    <option name="LAST_COMMIT_MESSAGE" value="new netbook" />
   </component>
 </project>

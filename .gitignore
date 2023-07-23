@@ -3,3 +3,4 @@
 # ignore bin files
 bin/
 lib/
+/.idea/

@@ -1,2 +1,2 @@
-# ignore all .log files
-*.log
+# ignore all .idea files
+*.idea

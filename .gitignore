@@ -1,6 +1,6 @@
 # ignore bin files
-bin/
-lib/
+/bin/
+/lib/
 ./idea/
 .idea
-logs/
+/logs/

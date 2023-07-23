@@ -1,7 +1,6 @@
-# ignore all .idea files
-.idea/
 # ignore bin files
 bin/
 lib/
 ./idea/
 .idea
+logs/

@@ -727,53 +727,56 @@ def delete_ok_subsubcategory(request):
 
 # Продукты
 def products(request):
-    users = User.objects.values_list('id', flat=True).filter(groups__name='manager').distinct()
-    manager = Shop.objects.values_list('customuser_id', flat=True).distinct()
     shops = Shop.objects.values_list('customuser_id', 'slug', 'name').distinct()
     address = str([i for i in str(request.path).split('/') if i][0])
     if request.user.groups.filter(name='manager'):
-        for u in users:
-            for m in manager:
-                if u == m and request.user.id == u:
-                    for s, slug, n in shops:
-                        if s == m:
-                            name = eval(slug)
-                            products = name.objects.all()
-                            paginator = Paginator(products, 100)
-                            page_number = request.GET.get('page')
-                            page_obj = paginator.get_page(page_number)
+        user = [i for i in shops if i[0] == request.user.id][0]
+        name = eval(user[1])
+        products = name.objects.all()
+        paginator = Paginator(products, 100)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-                            if request.method == 'POST':
-                                check_ = request.POST.getlist("check_")
-                                checkbool = request.POST.get("checkbool")
-                                query_name = request.POST.get('name')
+        if request.method == 'POST':
+            check_ = request.POST.getlist("check_")
+            checkbool = request.POST.get("checkbool")
+            query_name = request.POST.get('name')
 
-                                if query_name :
-                                    product = name.objects.filter(
-                                        Q(name__icontains=query_name) |
-                                        Q(artikul__icontains=query_name)
-                                    ).order_by('name')
-                                    paginator = Paginator(product, 100)
-                                    page_number = request.GET.get('page')
-                                    page_obj = paginator.get_page(page_number)
-                                    return render(request, 'panel/products_search.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'product': product,
-                                                                                          'products': products})
-                                item = [i.split(',') for i in check_][0]
-                                for i in item:
-                                    if i == 'on':
-                                        item.pop(0)
-                                items = list(map(int, item))
-                                if checkbool and checkbool != 'delete':
-                                    name.objects.filter(pk__in=items).update(status=checkbool)
-                                    return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-                                if checkbool == 'delete':
-                                    name.objects.filter(pk__in=items).delete()
-                                    return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-                            else:
-                                return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-                            return render(request, 'panel/products.html', {'n': n, 'slug': slug, 'address': address, 'page_obj': page_obj, 'products': products})
-    else:
-        return render(request, 'panel/error_auth.html')
+            if query_name:
+                product = name.objects.filter(
+                    Q(name__icontains=query_name) |
+                    Q(artikul__icontains=query_name)
+                ).order_by('name')
+                paginator = Paginator(product, 100)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+                return render(request, 'panel/products_search.html',
+                              {'n': user[2], 'slug': user[1], 'address': address, 'page_obj': page_obj,
+                               'product': product,
+                               'products': products})
+            item = [i.split(',') for i in check_][0]
+            for i in item:
+                if i == 'on':
+                    item.pop(0)
+            items = list(map(int, item))
+            if checkbool and checkbool != 'delete':
+                name.objects.filter(pk__in=items).update(status=checkbool)
+                return render(request, 'panel/products.html',
+                              {'n': user[2], 'slug': user[1], 'address': address, 'page_obj': page_obj,
+                               'products': products})
+            if checkbool == 'delete':
+                name.objects.filter(pk__in=items).delete()
+                return render(request, 'panel/products.html',
+                              {'n': user[2], 'slug': user[1], 'address': address, 'page_obj': page_obj,
+                               'products': products})
+        else:
+            return render(request, 'panel/products.html',
+                          {'n': user[2], 'slug': user[1], 'address': address, 'page_obj': page_obj,
+                           'products': products})
+        return render(request, 'panel/products.html',
+                      {'n': user[2], 'slug': user[1], 'address': address, 'page_obj': page_obj,
+                       'products': products})
+    else: return render(request, 'panel/error_auth.html')
 
 
 # Список файлов

@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Project/.idea/Project.iml" filepath="$PROJECT_DIR$/../Project/.idea/Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/coop-dostavka.iml" filepath="$PROJECT_DIR$/.idea/coop-dostavka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dev/flask_app/.idea/flask_app.iml" filepath="$PROJECT_DIR$/../dev/flask_app/.idea/flask_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dev/flask_news/.idea/flask_news.iml" filepath="$PROJECT_DIR$/../dev/flask_news/.idea/flask_news.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../junior/.idea/junior.iml" filepath="$PROJECT_DIR$/../junior/.idea/junior.iml" />
       <module fileurl="file://$PROJECT_DIR$/../miroca/.idea/miroca.iml" filepath="$PROJECT_DIR$/../miroca/.idea/miroca.iml" />
     </modules>
   </component>

@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e7cc3b1-c562-40c8-8890-08008882f6ab" name="Changes" comment="def delete">
+    <list default="true" id="2e7cc3b1-c562-40c8-8890-08008882f6ab" name="Changes" comment="MIROCA">
+      <change afterPath="$PROJECT_DIR$/../miroca_home/miroca_home.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../junior/test_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/../junior/test_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -40,8 +44,22 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../junior" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../miroca" />
     <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tsyrenschikov&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="34b0c687-ddfe-4ad2-bc4f-64df88ae8c86" />
+        <option name="url" value="https://github.com/tsyrenschikov/coop-dostavka.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,52 +68,149 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2Sw4lQ08dgCDX3Bvp1o5ZIGqcQY" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/coop-dostavka&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.1 (1).executor": "Run",
+    "Python.1.executor": "Run",
+    "Python.17.executor": "Run",
+    "Python.login.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.qtdesing.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/miroca_home",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite",
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\miroca\www\static\file\upanel\img" />
+      <recent name="D:\miroca\app\miroca" />
       <recent name="D:\coop-dostavka" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\17" />
+      <recent name="D:\miroca\app\upanel\templates\upanel\upanel" />
+      <recent name="D:\miroca\www\static\file\login" />
+      <recent name="D:\miroca\app" />
+      <recent name="D:\miroca" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.test_data">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="coop-dostavka.ru" />
+  <component name="RunManager" selected="Python.1">
+    <configuration name="1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/17" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/17/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="17" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/17" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/17/17.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="coop-dostavka.ru" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.12" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -110,21 +225,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="demo2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="login" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Project" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/login" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/demo2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/login/login.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,64 +249,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="flask_app" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../dev/flask_app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../dev/flask_app/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="junior" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../junior" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../junior/test_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="we" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Project" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/file" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/we.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/file/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,14 +273,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.1 (1)" />
+      <item itemvalue="Python.17" />
+      <item itemvalue="Python.1" />
+      <item itemvalue="Python.login" />
+      <item itemvalue="Python.test" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_data" />
-        <item itemvalue="Python.demo2" />
-        <item itemvalue="Python.we" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.1" />
+        <item itemvalue="Python.1 (1)" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.17" />
+        <item itemvalue="Python.login" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -259,7 +348,160 @@
       <workItem from="1692792532615" duration="850000" />
       <workItem from="1692800849986" duration="15631000" />
       <workItem from="1692854686265" duration="7547000" />
-      <workItem from="1692871527377" duration="11264000" />
+      <workItem from="1692871527377" duration="13220000" />
+      <workItem from="1693114720090" duration="459000" />
+      <workItem from="1693115240070" duration="65000" />
+      <workItem from="1693115332221" duration="91000" />
+      <workItem from="1693115513311" duration="756000" />
+      <workItem from="1693288235577" duration="6522000" />
+      <workItem from="1693315165052" duration="793000" />
+      <workItem from="1693375565752" duration="1483000" />
+      <workItem from="1693460056249" duration="2656000" />
+      <workItem from="1693550625958" duration="3461000" />
+      <workItem from="1694006018702" duration="16000" />
+      <workItem from="1694088262536" duration="617000" />
+      <workItem from="1694430336216" duration="7000" />
+      <workItem from="1694430360630" duration="5861000" />
+      <workItem from="1694518490688" duration="8640000" />
+      <workItem from="1694605884565" duration="5207000" />
+      <workItem from="1694689162666" duration="6473000" />
+      <workItem from="1694777211162" duration="2896000" />
+      <workItem from="1694785704169" duration="1817000" />
+      <workItem from="1695489658119" duration="814000" />
+      <workItem from="1696596697256" duration="533000" />
+      <workItem from="1696597280523" duration="63000" />
+      <workItem from="1696738970543" duration="15009000" />
+      <workItem from="1696939443448" duration="5009000" />
+      <workItem from="1697116606699" duration="5217000" />
+      <workItem from="1697205412986" duration="714000" />
+      <workItem from="1697361838979" duration="1917000" />
+      <workItem from="1697363820755" duration="26000" />
+      <workItem from="1697367566785" duration="1954000" />
+      <workItem from="1697541694113" duration="1579000" />
+      <workItem from="1697547915368" duration="4314000" />
+      <workItem from="1697717299113" duration="3706000" />
+      <workItem from="1697726417606" duration="201000" />
+      <workItem from="1697972440628" duration="1266000" />
+      <workItem from="1698146018079" duration="2594000" />
+      <workItem from="1698153694444" duration="4204000" />
+      <workItem from="1698231564164" duration="12000" />
+      <workItem from="1698324393559" duration="4149000" />
+      <workItem from="1698333686086" duration="4660000" />
+      <workItem from="1698342135530" duration="2276000" />
+      <workItem from="1698345112339" duration="1116000" />
+      <workItem from="1698393732285" duration="235000" />
+      <workItem from="1698412707676" duration="538000" />
+      <workItem from="1698570307263" duration="2198000" />
+      <workItem from="1698750650869" duration="6282000" />
+      <workItem from="1698931271066" duration="3944000" />
+      <workItem from="1698936735060" duration="220000" />
+      <workItem from="1698991052725" duration="5100000" />
+      <workItem from="1699357634842" duration="3631000" />
+      <workItem from="1699367575809" duration="13000" />
+      <workItem from="1699535991315" duration="2399000" />
+      <workItem from="1699547566849" duration="428000" />
+      <workItem from="1699781280231" duration="1190000" />
+      <workItem from="1699785866601" duration="442000" />
+      <workItem from="1699960412377" duration="6966000" />
+      <workItem from="1700059577343" duration="330000" />
+      <workItem from="1700059948545" duration="133000" />
+      <workItem from="1700139400347" duration="23000" />
+      <workItem from="1700146376692" duration="2671000" />
+      <workItem from="1700311963634" duration="2415000" />
+      <workItem from="1700370675934" duration="15000" />
+      <workItem from="1700390905848" duration="3186000" />
+      <workItem from="1700484816290" duration="3496000" />
+      <workItem from="1700564953378" duration="2116000" />
+      <workItem from="1700586744650" duration="20000" />
+      <workItem from="1700659685950" duration="852000" />
+      <workItem from="1700669150067" duration="516000" />
+      <workItem from="1700669942544" duration="84000" />
+      <workItem from="1700731187718" duration="7861000" />
+      <workItem from="1700746715595" duration="1543000" />
+      <workItem from="1700830810528" duration="3068000" />
+      <workItem from="1700928999413" duration="156000" />
+      <workItem from="1700997309702" duration="767000" />
+      <workItem from="1701004247301" duration="2529000" />
+      <workItem from="1701170108306" duration="712000" />
+      <workItem from="1701178070475" duration="1053000" />
+      <workItem from="1701180845238" duration="526000" />
+      <workItem from="1701189811854" duration="1419000" />
+      <workItem from="1701264201243" duration="4323000" />
+      <workItem from="1701347808812" duration="2484000" />
+      <workItem from="1701697831645" duration="122000" />
+      <workItem from="1701697988105" duration="5392000" />
+      <workItem from="1701703716409" duration="1897000" />
+      <workItem from="1701773741417" duration="5570000" />
+      <workItem from="1701793632484" duration="1399000" />
+      <workItem from="1701795131956" duration="382000" />
+      <workItem from="1701872452857" duration="102000" />
+      <workItem from="1701872750100" duration="107000" />
+      <workItem from="1701874839871" duration="255000" />
+      <workItem from="1701953630479" duration="65000" />
+      <workItem from="1701953805305" duration="1696000" />
+      <workItem from="1701963369445" duration="612000" />
+      <workItem from="1702009511814" duration="1977000" />
+      <workItem from="1702012052533" duration="2209000" />
+      <workItem from="1702019934885" duration="195000" />
+      <workItem from="1702040721031" duration="4122000" />
+      <workItem from="1702104787469" duration="23000" />
+      <workItem from="1702207898978" duration="5182000" />
+      <workItem from="1702219845373" duration="22000" />
+      <workItem from="1702357556136" duration="3037000" />
+      <workItem from="1702380206829" duration="3047000" />
+      <workItem from="1702386357439" duration="2301000" />
+      <workItem from="1702437982322" duration="1425000" />
+      <workItem from="1702475530911" duration="1394000" />
+      <workItem from="1702477660889" duration="598000" />
+      <workItem from="1702645220405" duration="2374000" />
+      <workItem from="1702791566037" duration="1080000" />
+      <workItem from="1702810876794" duration="3355000" />
+      <workItem from="1702983271202" duration="1324000" />
+      <workItem from="1702988601899" duration="195000" />
+      <workItem from="1702992418258" duration="874000" />
+      <workItem from="1703079699069" duration="5500000" />
+      <workItem from="1703159194213" duration="72000" />
+      <workItem from="1703160949176" duration="1110000" />
+      <workItem from="1703162069740" duration="51000" />
+      <workItem from="1703162132518" duration="849000" />
+      <workItem from="1703165359129" duration="2003000" />
+      <workItem from="1703333588001" duration="605000" />
+      <workItem from="1703347349340" duration="11114000" />
+      <workItem from="1703360470036" duration="163000" />
+      <workItem from="1703360642610" duration="26000" />
+      <workItem from="1703360676974" duration="948000" />
+      <workItem from="1703361636317" duration="296000" />
+      <workItem from="1703361941103" duration="486000" />
+      <workItem from="1703413927058" duration="5689000" />
+      <workItem from="1703430127297" duration="26000" />
+      <workItem from="1703430162498" duration="1010000" />
+      <workItem from="1703495970144" duration="412000" />
+      <workItem from="1703503322610" duration="4543000" />
+      <workItem from="1703511383543" duration="15575000" />
+      <workItem from="1703685394186" duration="470000" />
+      <workItem from="1703685925514" duration="6187000" />
+      <workItem from="1703704292938" duration="3535000" />
+      <workItem from="1703792900673" duration="976000" />
+      <workItem from="1703855244712" duration="2520000" />
+      <workItem from="1704800712352" duration="1270000" />
+      <workItem from="1704809703997" duration="26000" />
+      <workItem from="1704892283222" duration="3610000" />
+      <workItem from="1704896578210" duration="30000" />
+      <workItem from="1704979598132" duration="6000" />
+      <workItem from="1705064532603" duration="3889000" />
+      <workItem from="1705403240718" duration="6264000" />
+      <workItem from="1705496858507" duration="1888000" />
+      <workItem from="1705584787047" duration="2700000" />
+      <workItem from="1705667629127" duration="5042000" />
+      <workItem from="1705677251975" duration="13000" />
+      <workItem from="1705754646833" duration="4758000" />
+      <workItem from="1705774708686" duration="1598000" />
+      <workItem from="1705834216681" duration="1130000" />
+      <workItem from="1705922852885" duration="13899000" />
+      <workItem from="1705995454630" duration="2800000" />
+      <workItem from="1706001287874" duration="6138000" />
+      <workItem from="1706008778848" duration="263000" />
+      <workItem from="1706009138246" duration="808000" />
     </task>
     <task id="LOCAL-00001" summary="new netbook">
       <option name="closed" value="true" />
@@ -357,7 +599,119 @@
       <option name="project" value="LOCAL" />
       <updated>1692880526427</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="search">
+      <option name="closed" value="true" />
+      <created>1692883369056</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692883369056</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fifnish">
+      <option name="closed" value="true" />
+      <created>1692884940891</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692884940891</updated>
+    </task>
+    <task id="LOCAL-00015" summary="login">
+      <option name="closed" value="true" />
+      <created>1703361519835</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703361519835</updated>
+    </task>
+    <task id="LOCAL-00016" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1703362186847</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1703362186847</updated>
+    </task>
+    <task id="LOCAL-00017" summary="MIROCA base">
+      <option name="closed" value="true" />
+      <created>1703430310753</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1703430310753</updated>
+    </task>
+    <task id="LOCAL-00018" summary="login + upanel html index">
+      <option name="closed" value="true" />
+      <created>1703505066078</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1703505066078</updated>
+    </task>
+    <task id="LOCAL-00019" summary="logout ssesion clear, html update(upanel index)">
+      <option name="closed" value="true" />
+      <created>1703526844360</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1703526844361</updated>
+    </task>
+    <task id="LOCAL-00020" summary="MIROCA  form get user">
+      <option name="closed" value="true" />
+      <created>1703527098803</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1703527098803</updated>
+    </task>
+    <task id="LOCAL-00021" summary="MIROCA дизайн">
+      <option name="closed" value="true" />
+      <created>1703529335985</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1703529335985</updated>
+    </task>
+    <task id="LOCAL-00022" summary="MIROCA design">
+      <option name="closed" value="true" />
+      <created>1703694090967</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1703694090967</updated>
+    </task>
+    <task id="LOCAL-00023" summary="MIROCA CSS">
+      <option name="closed" value="true" />
+      <created>1703711489362</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1703711489362</updated>
+    </task>
+    <task id="LOCAL-00024" summary="MIROCA   style mobile login">
+      <option name="closed" value="true" />
+      <created>1703793726390</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1703793726390</updated>
+    </task>
+    <task id="LOCAL-00025" summary="MIROCA sshd">
+      <option name="closed" value="true" />
+      <created>1706008808311</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1706008808311</updated>
+    </task>
+    <task id="LOCAL-00026" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706009927210</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1706009927210</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,30 +729,69 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../miroca" />
+      <path value="$PROJECT_DIR$/../Project/Tello-swarm" />
+      <path value="$PROJECT_DIR$/../Project/easytello" />
+      <path value="$PROJECT_DIR$/../Project/education" />
+      <path value="$PROJECT_DIR$/../Project/github" />
+      <path value="$PROJECT_DIR$/../miroca/miroca" />
+    </ignored-roots>
     <MESSAGE value="new netbook" />
     <MESSAGE value="add area" />
     <MESSAGE value="update" />
-    <MESSAGE value="def delete" />
     <MESSAGE value="def update_data" />
-    <option name="LAST_COMMIT_MESSAGE" value="def update_data" />
+    <MESSAGE value="def delete" />
+    <MESSAGE value="fifnish" />
+    <MESSAGE value="login" />
+    <MESSAGE value="search" />
+    <MESSAGE value="MIROCA base" />
+    <MESSAGE value="login + upanel html index" />
+    <MESSAGE value="logout ssesion clear, html update(upanel index)" />
+    <MESSAGE value="MIROCA  form get user" />
+    <MESSAGE value="MIROCA дизайн" />
+    <MESSAGE value="MIROCA design" />
+    <MESSAGE value="MIROCA CSS" />
+    <MESSAGE value="MIROCA   style mobile login" />
+    <MESSAGE value="MIROCA sshd" />
+    <MESSAGE value="MIROCA" />
+    <option name="LAST_COMMIT_MESSAGE" value="MIROCA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/coop_dostavka/settings.py</url>
-          <line>104</line>
+          <url>file://$PROJECT_DIR$/../miroca/app/upanel/managers.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../junior/test_data.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/../miroca_home/upanel/managers.py</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="i" />
+        <watch expression="stack" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/coop_dostavka$main.coverage" NAME="main Coverage Results" MODIFIED="1690631600316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../dev/flask_app" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$12we.coverage" NAME="12we Coverage Results" MODIFIED="1701703610672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$1.coverage" NAME="1 Coverage Results" MODIFIED="1705759115565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$.coverage" NAME=" Coverage Results" MODIFIED="1698346095701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$def.coverage" NAME="def Coverage Results" MODIFIED="1693556178290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$15.coverage" NAME="15 Coverage Results" MODIFIED="1694700633982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$2.coverage" NAME="2 Coverage Results" MODIFIED="1696752495940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
   </component>
 </project>

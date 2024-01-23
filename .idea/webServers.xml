@@ -9,6 +9,20 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="89f7252d-f28b-4c9c-9755-14cbab0f7ba5" name="miroca" url="http://h43.netangels.ru">
+        <fileTransfer host="h43.netangels.ru" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="43725e2c-15dc-468c-bfb1-227edfbf4566" name="miroca_home">
+        <fileTransfer rootFolder="/home/orangepi" accessType="SFTP" host="192.168.88.3" port="22" sshConfigId="e16f81fd-bec2-4eed-b4f7-bf7378fd53ec" sshConfig="orangepi@192.168.88.3:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

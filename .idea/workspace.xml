@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e7cc3b1-c562-40c8-8890-08008882f6ab" name="Changes" comment="MIROCA">
-      <change afterPath="$PROJECT_DIR$/../miroca_home/miroca_home.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,10 +18,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,7 +38,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../miroca" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../miroca_home" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -75,50 +69,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.1 (1).executor": "Run",
-    "Python.1.executor": "Run",
-    "Python.17.executor": "Run",
-    "Python.login.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.qtdesing.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/miroca_home",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python tests.Python tests for tests.TestGetAvg.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.17.executor&quot;: &quot;Run&quot;,
+    &quot;Python.login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qtdesing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/miroca_home/www/static/file/upanel/css&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite",
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;,
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\miroca_home\www\static\file\upanel\css" />
+      <recent name="D:\miroca_home\upanel\migrations" />
+      <recent name="D:\miroca_home\www\static\file\upanel\img" />
       <recent name="D:\miroca\www\static\file\upanel\img" />
       <recent name="D:\miroca\app\miroca" />
-      <recent name="D:\coop-dostavka" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Project\17" />
@@ -177,30 +177,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="17" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.12" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/17" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/17/17.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="coop-dostavka.ru" />
       <option name="ENV_FILES" value="" />
@@ -225,8 +201,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="login" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="miroca_home" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -235,12 +211,12 @@
       </envs>
       <option name="SDK_HOME" value="C:\Users\VC\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="SDK_NAME" value="Python 3.12" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/login" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../miroca_home" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Project/login/login.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../miroca_home/manage.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,27 +249,43 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for tests.TestGetAvg" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Project/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.TestGetAvg&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.1 (1)" />
-      <item itemvalue="Python.17" />
       <item itemvalue="Python.1" />
-      <item itemvalue="Python.login" />
+      <item itemvalue="Python.manage" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python tests.Python tests for tests.TestGetAvg" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.1" />
+        <item itemvalue="Python tests.Python tests for tests.TestGetAvg" />
+        <item itemvalue="Python.manage" />
         <item itemvalue="Python.1 (1)" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.17" />
-        <item itemvalue="Python.login" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -501,7 +493,45 @@
       <workItem from="1705995454630" duration="2800000" />
       <workItem from="1706001287874" duration="6138000" />
       <workItem from="1706008778848" duration="263000" />
-      <workItem from="1706009138246" duration="808000" />
+      <workItem from="1706009138246" duration="2801000" />
+      <workItem from="1706013841675" duration="6022000" />
+      <workItem from="1706079213120" duration="1526000" />
+      <workItem from="1706087232331" duration="31887000" />
+      <workItem from="1706187665982" duration="21000" />
+      <workItem from="1706189794290" duration="1566000" />
+      <workItem from="1706288869935" duration="6678000" />
+      <workItem from="1706360748459" duration="2811000" />
+      <workItem from="1706368487494" duration="16719000" />
+      <workItem from="1706385895406" duration="3235000" />
+      <workItem from="1706427817439" duration="2249000" />
+      <workItem from="1706431762678" duration="4082000" />
+      <workItem from="1706439054441" duration="1196000" />
+      <workItem from="1706453979801" duration="1801000" />
+      <workItem from="1706457242540" duration="6194000" />
+      <workItem from="1706533170287" duration="4942000" />
+      <workItem from="1706613674112" duration="1965000" />
+      <workItem from="1706617505748" duration="49000" />
+      <workItem from="1706623344858" duration="903000" />
+      <workItem from="1706630119677" duration="3990000" />
+      <workItem from="1706694876882" duration="10105000" />
+      <workItem from="1706715170575" duration="365000" />
+      <workItem from="1706789453898" duration="2557000" />
+      <workItem from="1706797469573" duration="533000" />
+      <workItem from="1706808038362" duration="3531000" />
+      <workItem from="1706877798941" duration="22171000" />
+      <workItem from="1707045242002" duration="1680000" />
+      <workItem from="1707218367348" duration="2480000" />
+      <workItem from="1707311195412" duration="2547000" />
+      <workItem from="1707399480833" duration="480000" />
+      <workItem from="1707400454963" duration="1692000" />
+      <workItem from="1707649760835" duration="4461000" />
+      <workItem from="1707822392944" duration="2274000" />
+      <workItem from="1707832261937" duration="534000" />
+      <workItem from="1707915735826" duration="5476000" />
+      <workItem from="1708019466052" duration="894000" />
+      <workItem from="1708255093270" duration="60000" />
+      <workItem from="1708255173907" duration="1646000" />
+      <workItem from="1708427162381" duration="1118000" />
     </task>
     <task id="LOCAL-00001" summary="new netbook">
       <option name="closed" value="true" />
@@ -711,7 +741,127 @@
       <option name="project" value="LOCAL" />
       <updated>1706009927210</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706010058286</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1706010058286</updated>
+    </task>
+    <task id="LOCAL-00028" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706020140442</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1706020140442</updated>
+    </task>
+    <task id="LOCAL-00029" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706124193062</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1706124193062</updated>
+    </task>
+    <task id="LOCAL-00030" summary="miroca status">
+      <option name="closed" value="true" />
+      <created>1706295556148</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1706295556148</updated>
+    </task>
+    <task id="LOCAL-00031" summary="miroca js update json">
+      <option name="closed" value="true" />
+      <created>1706388881113</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1706388881113</updated>
+    </task>
+    <task id="LOCAL-00032" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706389122954</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1706389122954</updated>
+    </task>
+    <task id="LOCAL-00033" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706455175271</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1706455175271</updated>
+    </task>
+    <task id="LOCAL-00034" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706463484266</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1706463484266</updated>
+    </task>
+    <task id="LOCAL-00035" summary="MIROCA">
+      <option name="closed" value="true" />
+      <created>1706633891782</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1706633891782</updated>
+    </task>
+    <task id="LOCAL-00036" summary="MIROCAsettings and settings_world.py ping">
+      <option name="closed" value="true" />
+      <created>1706698603593</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1706698603593</updated>
+    </task>
+    <task id="LOCAL-00037" summary="MIROCA celery.py">
+      <option name="closed" value="true" />
+      <created>1706700424253</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1706700424253</updated>
+    </task>
+    <task id="LOCAL-00038" summary="MIROCA status">
+      <option name="closed" value="true" />
+      <created>1706810563661</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1706810563661</updated>
+    </task>
+    <task id="LOCAL-00039" summary="MIROCA status">
+      <option name="closed" value="true" />
+      <created>1706812534176</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1706812534176</updated>
+    </task>
+    <task id="LOCAL-00040" summary="MIROCA css login">
+      <option name="closed" value="true" />
+      <created>1706900654469</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1706900654469</updated>
+    </task>
+    <task id="LOCAL-00041" summary="MIROCA css login">
+      <option name="closed" value="true" />
+      <created>1706902322385</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1706902322385</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,21 +905,17 @@
     <MESSAGE value="MIROCA CSS" />
     <MESSAGE value="MIROCA   style mobile login" />
     <MESSAGE value="MIROCA sshd" />
+    <MESSAGE value="miroca status" />
+    <MESSAGE value="miroca js update json" />
+    <MESSAGE value="MIROCAsettings and settings_world.py ping" />
+    <MESSAGE value="MIROCA celery.py" />
+    <MESSAGE value="MIROCA status" />
     <MESSAGE value="MIROCA" />
-    <option name="LAST_COMMIT_MESSAGE" value="MIROCA" />
+    <MESSAGE value="MIROCA css login" />
+    <option name="LAST_COMMIT_MESSAGE" value="MIROCA css login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../miroca/app/upanel/managers.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../miroca_home/upanel/managers.py</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -778,18 +924,12 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="i" />
-        <watch expression="stack" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/coop_dostavka$main.coverage" NAME="main Coverage Results" MODIFIED="1690631600316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../dev/flask_app" />
     <SUITE FILE_PATH="coverage/coop_dostavka$12we.coverage" NAME="12we Coverage Results" MODIFIED="1701703610672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
-    <SUITE FILE_PATH="coverage/coop_dostavka$1.coverage" NAME="1 Coverage Results" MODIFIED="1705759115565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
-    <SUITE FILE_PATH="coverage/coop_dostavka$.coverage" NAME=" Coverage Results" MODIFIED="1698346095701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$1.coverage" NAME="1 Coverage Results" MODIFIED="1706363048240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
+    <SUITE FILE_PATH="coverage/coop_dostavka$.coverage" NAME=" Coverage Results" MODIFIED="1706797515123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project/test" />
     <SUITE FILE_PATH="coverage/coop_dostavka$def.coverage" NAME="def Coverage Results" MODIFIED="1693556178290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
     <SUITE FILE_PATH="coverage/coop_dostavka$15.coverage" NAME="15 Coverage Results" MODIFIED="1694700633982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
     <SUITE FILE_PATH="coverage/coop_dostavka$2.coverage" NAME="2 Coverage Results" MODIFIED="1696752495940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Project" />
